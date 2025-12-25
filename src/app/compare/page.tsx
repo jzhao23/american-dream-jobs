@@ -151,7 +151,7 @@ export default function ComparePage() {
             Compare Career Paths
           </h1>
           <p className="text-lg text-secondary-600 max-w-2xl">
-            Select up to 3 careers to compare their lifetime earnings trajectory, including education costs and career progression.
+            Visualize 1 to 3 careers to see their lifetime earnings trajectory, including education costs and career progression.
           </p>
         </div>
       </section>
@@ -224,11 +224,13 @@ export default function ComparePage() {
           </div>
         </div>
 
-        {selectedCareers.length >= 2 && (
+        {selectedCareers.length >= 1 && (
           <>
             {/* Career Path Timeline */}
             <div className="card p-6 mb-8">
-              <h2 className="text-xl font-bold text-secondary-900 mb-2">Career Path Comparison</h2>
+              <h2 className="text-xl font-bold text-secondary-900 mb-2">
+                {selectedCareers.length === 1 ? 'Career Path Visualization' : 'Career Path Comparison'}
+              </h2>
               <p className="text-sm text-secondary-600 mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
 
               <div className="flex gap-4 overflow-x-auto pb-4">
@@ -485,7 +487,8 @@ export default function ComparePage() {
               </div>
             </div>
 
-            {/* Key Insights */}
+            {/* Key Insights - only show when comparing 2+ careers */}
+            {selectedCareers.length >= 2 && (
             <div className="card p-6">
               <h2 className="text-xl font-bold text-secondary-900 mb-4">Key Insights</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -558,17 +561,18 @@ export default function ComparePage() {
                 </div>
               </div>
             </div>
+            )}
           </>
         )}
 
-        {selectedCareers.length < 2 && (
+        {selectedCareers.length < 1 && (
           <div className="card p-12 text-center">
-            <div className="text-6xl mb-4">???</div>
+            <div className="text-6xl mb-4">📊</div>
             <h3 className="text-xl font-semibold text-secondary-900 mb-2">
-              Select at least 2 careers to compare
+              Select a career to visualize
             </h3>
             <p className="text-secondary-600">
-              Use the search above to add careers and see how they stack up against each other.
+              Use the search above to add 1-3 careers and see their lifetime earnings trajectory.
             </p>
           </div>
         )}
