@@ -12,6 +12,16 @@ import * as path from 'path';
 
 const PROCESSED_DIR = path.join(process.cwd(), 'data/processed');
 const DATA_DIR = path.join(process.cwd(), 'data');
+const OXFORD_MAPPING_FILE = path.join(PROCESSED_DIR, 'oxford_ai_risk_mapping.json');
+
+// Type for Oxford mapping
+interface OxfordMapping {
+  onet_code: string;
+  ai_risk: number;
+  ai_risk_label: string;
+  oxford_probability: number | null;
+  match_type: string;
+}
 
 async function main() {
   console.log('\n=== Generating Final Dataset ===\n');
@@ -21,6 +31,50 @@ async function main() {
   const occupationsData = JSON.parse(fs.readFileSync(occupationsFile, 'utf-8'));
   const occupations = occupationsData.occupations;
   console.log(`Processing ${occupations.length} occupations...`);
+
+  // Load Oxford AI risk mapping
+  console.log('Loading Oxford AI risk mapping...');
+  const oxfordData = JSON.parse(fs.readFileSync(OXFORD_MAPPING_FILE, 'utf-8'));
+  const oxfordMappings = new Map<string, OxfordMapping>();
+  for (const mapping of oxfordData.mappings) {
+    oxfordMappings.set(mapping.onet_code, mapping);
+  }
+  console.log(`Loaded ${oxfordMappings.size} Oxford AI risk mappings`);
+
+  // Apply Oxford AI risk scores to occupations
+  let oxfordApplied = 0;
+  for (const occ of occupations) {
+    const oxfordMapping = oxfordMappings.get(occ.onet_code);
+    if (oxfordMapping) {
+      // Update AI risk with Oxford data (maintaining schema compatibility)
+      occ.ai_risk = {
+        score: oxfordMapping.ai_risk,
+        label: oxfordMapping.ai_risk_label,
+        confidence: oxfordMapping.match_type === 'exact' || oxfordMapping.match_type === 'parent_soc' ? 'high' : 'medium',
+        rationale: {
+          summary: oxfordMapping.oxford_probability !== null
+            ? `Based on Frey & Osborne (2013) probability of ${(oxfordMapping.oxford_probability * 100).toFixed(1)}%`
+            : `Based on category median from Frey & Osborne (2013) data`,
+          factors_increasing_risk: oxfordMapping.oxford_probability !== null && oxfordMapping.oxford_probability > 0.5
+            ? ['Routine cognitive or manual tasks', 'Structured work environment']
+            : [],
+          factors_decreasing_risk: oxfordMapping.oxford_probability !== null && oxfordMapping.oxford_probability < 0.5
+            ? ['Complex decision-making', 'Human interaction required', 'Creative problem-solving']
+            : [],
+        },
+        last_assessed: new Date().toISOString().split('T')[0],
+        assessor: 'claude' as const,
+        // Additional Oxford metadata
+        oxford_source: {
+          probability: oxfordMapping.oxford_probability,
+          match_type: oxfordMapping.match_type,
+          paper: 'Frey & Osborne (2013) "The Future of Employment"',
+        },
+      };
+      oxfordApplied++;
+    }
+  }
+  console.log(`Applied Oxford AI risk to ${oxfordApplied} occupations`);
 
   // Validate all occupations have required fields
   let validCount = 0;
@@ -60,9 +114,10 @@ async function main() {
       generated_at: new Date().toISOString(),
       total_occupations: occupations.length,
       data_sources: [
-        { name: 'O*NET 29.1', url: 'https://www.onetcenter.org' },
+        { name: 'O*NET 30.1', url: 'https://www.onetcenter.org' },
         { name: 'BLS OES', url: 'https://www.bls.gov/oes/' },
         { name: 'Levels.fyi (mapped)', url: 'https://www.levels.fyi' },
+        { name: 'Frey & Osborne (2013) - AI Risk', url: 'https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment' },
       ],
       completeness: {
         wages: occupations.filter((o: { wages: unknown }) => o.wages).length,
