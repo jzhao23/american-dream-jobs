@@ -32,17 +32,20 @@ export const SentimentEnum = z.enum([
   "mixed"
 ]);
 
+// Occupation match schema
+export const OccupationMatchSchema = z.object({
+  soc_code: z.string(),
+  slug: z.string(),
+  title: z.string(),
+  confidence: z.number().min(0).max(1),
+});
+
 // Individual review schema
 export const ReviewSchema = z.object({
   id: z.string(),
 
-  // Occupation mapping (follows existing pattern)
-  occupation: z.object({
-    soc_code: z.string(),
-    slug: z.string(),
-    title: z.string(),
-    confidence: z.number().min(0).max(1),
-  }),
+  // Occupation mappings - can match multiple careers
+  occupations: z.array(OccupationMatchSchema).min(1).max(5),
 
   // Source tracking (matches data_sources pattern)
   source: z.object({
@@ -114,6 +117,7 @@ export const CareerReviewsSummarySchema = z.object({
 export type ReviewSource = z.infer<typeof ReviewSourceEnum>;
 export type ReviewTopic = z.infer<typeof ReviewTopicEnum>;
 export type Sentiment = z.infer<typeof SentimentEnum>;
+export type OccupationMatch = z.infer<typeof OccupationMatchSchema>;
 export type Review = z.infer<typeof ReviewSchema>;
 export type FeaturedQuote = z.infer<typeof FeaturedQuoteSchema>;
 export type CareerReviewsSummary = z.infer<typeof CareerReviewsSummarySchema>;

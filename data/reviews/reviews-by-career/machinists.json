@@ -1,0 +1,353 @@
+[
+  {
+    "id": "reddit-1ns4qsr",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Rubik's Cube- Manually machined from aluminum, fully functional",
+    "text": "Hi everyone, thought I'd share a passion project of mine that I did over this summer. I'm a college student who learned the basics of machining for my manufacturing class, and I thought I'd use my college's makers' space to make something really memorable.\n\nDisclaimer: I didn't create the original design myself- the idea and drawings were adapted from this website: [https://lulabs.net/machining/ss-cube/](https://lulabs.net/machining/ss-cube/)\n\nHowever, I did need to do a substantial amount of adjustment to the original plan to suit my needs. I ended up making it out of aluminum, mostly because, as the website points out, a steel cube is way to heavy to be easily solvable.\n\nMaterials used:\n\n\\-4' of 1\"x1\" square 6061 stock\n\n\\-1' of 3/8\" rod 6061 stock\n\n\\-6 4/40 screws\n\n\\-6 small compression springs, max load of 1-2 pounds\n\nLet's go through the basic process. First up are the \"plans\" I used throughout- they ended up looking pretty insane. The best part of solo projects is that your plans only have to make sense to you. The cube consists of:\n\n\\- a six-sided core with tapped holes.\n\n\\- six stems with one small through hole and one larger blind hole as well as external threads. This stem traps a spring-loaded screw, which presses the whole cube together while allowing it to rotate freely.\n\n\\-six face centers, with curved inside faces and a blind, tapped hole for the stems.\n\n\\-eight corner pieces\n\n\\-twelve edge pieces. The edge and corner pieces have straight cuts as well as circular cuts, which was probably the biggest problem I had to solve.\n\nFirst up, cutting parts to size and squaring them up. This was easily the most tedious part of the whole project- the whole thing is really cool and I'd recommend it to anyone who has the skills, tools, and time, but there's no getting around the fact that squaring up 27 parts really sucks.\n\nNext, the stems. These were unexpectedly difficult- it's really hard to precisely machine a part that's only half an inch long in a lathe designed for parts that are multiple feet long. I also had trouble getting the threads straight, which is part of why I had to redo some of the stems.\n\nThe 7th pictures is of the face centers, after they've been given the circular cut to make the internal curved surface. I ended up using a boring bar for all the circular cuts- it was a little scary running a cutting tool at a 1.5\" diameter and 1750 rpm, but all went well.\n\nThe next two pictures are drilling and tapping holes in order to put together the stem-face center assembly. Again, getting straight threads was a challenge, and probably was the biggest contributor to wonkiness in the final product. Notice the hole on the exposed side of the stems- that's where the end of the 4-40 screw will go through.\n\nThe 10th pictures is of the core- dialing in such a tiny part on a large 4-jaw chuck was extremely frustrating, but it ended up working shockingly well.\n\nNext up, the corners and edges. First, they get rectangular cuts with an endmill. This was where the most material was taken off. To finish them off, the circular cuts with the boring bar. The corners get 3 circular cuts each, and the edges get 4 each.\n\nIn the 13th picture, you can start to see how the cube works mechanically- each edge and corner piece is designed to be able to slide freely past the others while being pressed against them. The face center is able to rotate freely, and the edges and corners are brought along for the ride.\n\nAfter all the parts were \"done\", there was a lengthy amount of finishing. Picture 14 shows the middle of the process, after I had used a file to chamfer the internal edges and remove sharp corners that interfered with turning. At this point, the cube had been fully assembled many times but this was the first time it actually behaved like a rubik's cube.\n\nNext, every external edge needed a chamfer, both to prevent people from cutting themselves, and to make it look more like a professional rubik's cube. I did that with some V blocks and an endmill.\n\nI went back and forth on the final look of the cube- I wanted the fact that it was made out of metal to be front and center, so painting it to look like the real thing was out of the question. Some people suggested anodizing it, but you can't really anodize just one face of a part. So I decided to engrave shapes in each face, and paint those shapes. That way, the cube has familiar colors while also preserving the bare metal look (and being solvable while blindfolded!)\n\nThe trouble with this, though, is that the engraving process I used was very susceptible to mistakes. I just used a ball-tipped endmill and cut about 7 thou deep. This looked great when it was done perfectly, but if any part of the setup wasn't flat, then the engraving in question was too shallow and narrow in some places, and too deep and wide in others. A few of them turned out that way... unfortunate, but not really fixable without making a new part.\n\nThen, finishing. I used a scotch-brite buffing wheel, which was much faster than sandpaper, and allowed me to easily align all the surface finish grains in one direction for extra style. I had to be choosy about which nicks and pits to try to buff out, because the engravings were so shallow that I risked making them look weird by taking off too much material. The freshly buffed cube (assembled and disassembled) are shown in pictures 16 and 17.\n\nLastly, painting. I used acrylic, which actually worked really well- when I got the water-paint ratio right, the surface tension of the water allowed the paint to fill up the slot easily without running over or sloshing around. To protect the paint, I also sprayed the whole thing with a clear coat.\n\nAnd that's it! The finished cube is shown in more detail in the last two pictures. You may be wondering, how well does it work? The answer is, about the same as an official rubik's brand. So totally serviceable, but by no means viable for a speedcuber.\n\nIt took a lot of work (at least 50 hours, probably more than 100), but I had a blast doing it. I know a lot more about machining now than I did a few months ago, and it was a much better use of my summer free time than playing video games and reading books.\n\nEdit: Here's a link to a video of me solving the cube, so you can get a sense of how well it turns.\n\n[https://www.reddit.com/r/Cubers/comments/1nsct6a/by\\_popular\\_demand\\_heres\\_a\\_video\\_of\\_me\\_solving\\_the/](https://www.reddit.com/r/Cubers/comments/1nsct6a/by_popular_demand_heres_a_video_of_me_solving_the/)",
+    "score": 3651,
+    "url": "https://reddit.com/r/Machinists/comments/1ns4qsr/rubiks_cube_manually_machined_from_aluminum_fully/",
+    "created_at": "2025-09-27T19:59:16.000Z",
+    "num_comments": 108
+  },
+  {
+    "id": "reddit-1jwy4l7",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Inches vs Millimetres — What’s the Standard in Your Shop?",
+    "text": "Alright machinist hive mind, riddle me this: how many of you are still knee-deep in inches, and how many of you have entered the enlightened world of millimetres?\n\nI’m genuinely curious — especially you lot over in the States. Do you actually choose to work in inches, or is it just whatever lands on your bench that day? Like, do you wake up and think, “Ah yes, today feels like a 1/64 kind of day”?\n\nHere in the UK, we officially use millimetres, but let’s not kid ourselves — it’s a Frankenstein’s monster of metric and imperial. Threads in inches, measurements in mm, tools from who-knows-where. It’s like a bad rom-com where neither system really commits.\n\nFrom what I gather, the EU is strictly millimetres (good for them), and I’m assuming Japan doesn’t entertain our imperial nonsense at all.\n\nSo what’s it like in your corner of the world? Do you stick to one system? Bounce between both and hope for the best? Ever completely borked a job because someone forgot to convert, or missed it totally? \n\nGenuinely curious what it’s like in your shops. ",
+    "score": 2789,
+    "url": "https://reddit.com/r/Machinists/comments/1jwy4l7/inches_vs_millimetres_whats_the_standard_in_your/",
+    "created_at": "2025-04-11T19:18:55.000Z",
+    "num_comments": 518
+  },
+  {
+    "id": "reddit-1lbizlr",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Just got graduated in machining school.",
+    "text": "I just fineshed my 2 year (free) course, and, and got two prizes! The best student in the school and a mitutoyo prize (Gives me a set of calipers) that is one for the best student in the machining course and one for the maintenance course.\n\nThe first pic is our final project, it took a little less than a year, all made by us, on manual and cnc machines.\n\nThe second pic are the parts that I made in the on the cnc machines, I programed, prepared and operated 10/12, (I didn't make the plastic handle and the bass bushings) And I ended up making all the cnc mill parts because, nobody cared to do then, or they just couldn't, on I and one friend got to really learn the basics of a cnc mill, and I could make pretty much any part that the teachers asked, so thats the main reason that I got the prizes. \n\nOur class had 26 of the 32 that started, And there ware a handful of students that actually wanted to be there.\n\nI got to learn a lot, but there is much, much, more to be learned, I want to follow the metalwoking career, and I am looking for my first job, at least as a setup guy, or as aprentice one, but I would be happy with pretty much anything, as I'm still in high school (finishes in december). Wish me luck guys!",
+    "score": 1216,
+    "url": "https://reddit.com/r/Machinists/comments/1lbizlr/just_got_graduated_in_machining_school/",
+    "created_at": "2025-06-14T20:59:55.000Z",
+    "num_comments": 64
+  },
+  {
+    "id": "reddit-1jj74tv",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Yeah, I was a bit overly dramatic...",
+    "text": "I am the whiny little guy that made that overly self deprecating post about not smoking weed as a machinist.\n\nI have gotten over the hump of not smoking any more and I honestly feel great. I never realized how much free time I had since I stopped. Where I would just smoke and watch YouTube videos or mindless play COD until I passed out. \n\nI didn't use fake piss, I used the Qcarbo, drank water and cranberry juice like mad and took B vitamins and ate ramen for the sodium and passed. \n\nI don't plan to smoke again. \n\nI'll miss it, but I like being paid a healthy wage at a job I've always dreamed of. \n\nPlease feel free to razz me all you want, I deserve it, lol. But hey, I did it! \n\nI wanted to say THANK YOU to this subreddit for just making me realize that it wasn't the end of my career, or that I wasn't alone in my situation. \n\nI can't wait to start my new job and work with other machinists that are doing what I ve always dreamt of doing! \n\nThank you all once again!! ❤️",
+    "score": 1107,
+    "url": "https://reddit.com/r/Machinists/comments/1jj74tv/yeah_i_was_a_bit_overly_dramatic/",
+    "created_at": "2025-03-25T00:49:36.000Z",
+    "num_comments": 67
+  },
+  {
+    "id": "reddit-1l8rk0s",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Being a \"good/hard worker\" just gets you more work",
+    "text": "A lesson I learned over my 10 years in this trade so far is that there is no amount of \"Going the extra mile\" you can do to get paid better than the guy who just shows up for the paycheck and nothing else. I've seen plenty of people on here argue the same point.\n\nI'm sure there *are* some shops out there that have a decent competitive salary system that works in this way, but I've never encountered one (I've worked in 3 different shops so it's not like I'm speaking from an echo chamber)\n\nWhen I was new at my current job I was given advice on Day 1 from the oldtimers to not try to do more than what's in my job description. Of course I ignored them and thought I knew better (protip to young guys: you probably don't).\n\nYou'll get a mouthfull of praise and thank you's from management and that's where it ends. Even if you think you're doing the right thing by sticking your neck out for the company and helping improve operational flow and job times, all it's going to do is get *you* a bigger schedule each week while the guy next to you just stays on his one machine and/or takes three times longer than you to finish the same piece.",
+    "score": 309,
+    "url": "https://reddit.com/r/Machinists/comments/1l8rk0s/being_a_goodhard_worker_just_gets_you_more_work/",
+    "created_at": "2025-06-11T12:36:53.000Z",
+    "num_comments": 94
+  },
+  {
+    "id": "reddit-1kwk1fc",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Here’s what being a Machinist in Germany is like, how is it in the US?",
+    "text": "While I am from the US all my machining experience is in Germany. \n\nBasically I want to know if what I experience here will be similar to the US.\n\nExamples:\nI work 4 10s, 6 am - 4:45 pm with a 15 minute breakfast and 30 minute lunch break that I am NOT allowed to skip under any circumstances.\n\nAnything that requires a bandaid or more needs to be documented as as injury.\n\nI have 24 paid vacation days per year. 16 of them are used when the company is closed in the summer and for Christmas the other 8 I choose.\n\nI work salary, is it more common to get hourly or flat rate in the US? \n\nEverything we do is Manual mill / manual lathe but with CAD technical drawings.\nI learned CNC in my vocational school but don’t use it too often. Is CNC and CAM the industry standard in the US or is much still done manually? I think that’s a bit more specific to my company but I’m curious how many of you guys still do it manually? 95% of my experience is manual. \n\nSalary for my experience level is around 40k per year with full health and dental. \n\nI have no idea how to use American measurements anymore I’ve only used metric everywhere I worked. (I was a mechanic at Mercedes in the USA) Does anyone use metric in the States? \n\nAre certifications important in the US? I have a few German certifications because without them you’re not allowed to work here. I remember being a mechanic with no certification, and that is appalling to German people. How could I work without a certification? How could I know what I was doing? \n\n\nThanks in advance!\n\n",
+    "score": 128,
+    "url": "https://reddit.com/r/Machinists/comments/1kwk1fc/heres_what_being_a_machinist_in_germany_is_like/",
+    "created_at": "2025-05-27T10:39:58.000Z",
+    "num_comments": 103
+  },
+  {
+    "id": "reddit-1lxa0wu",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "CNC Operator Job Offer Denmark 🇩🇰",
+    "text": "CNC Operator with MasterCam Experience – Denmark 🇩🇰\n\nWe are currently looking for experienced CNC operators with solid skills in MasterCam.\n\n* English language – mandatory\n\n* Long-term project based in Denmark\n\n* Relocation support for you and your family, with full assistance from the Danish employing company\n\n* Alternatively, a rotational system is also available\n\nSalary: 200-300 DKK/h \n\n📩 To apply, please send your CV to: daniel@zenite.dk",
+    "score": 120,
+    "url": "https://reddit.com/r/Machinists/comments/1lxa0wu/cnc_operator_job_offer_denmark/",
+    "created_at": "2025-07-11T15:35:28.000Z",
+    "num_comments": 65
+  },
+  {
+    "id": "reddit-1pbksrh",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Job Posting: CNC and Machining Master Instructor - Relocation to Honolulu, Hawaii Included",
+    "text": "Hello, we are a contractor for the federal government and are looking to hire a Master Instructor in CNC and Machining for one of our sites in Honolulu, Hawaii. Full relocation assistance is provided. If you would like to apply, [please apply on LinkedIn](https://www.linkedin.com/jobs/view/4336242920/) or email [kbright@bgworkforce.com](mailto:kbright@bgworkforce.com) .\n\n\n\n **Job Description:** Master Instructor - CNC and Machining\n\n**Location:** Honolulu, Hawaii\n\n**Compensation:** Salary ranging from $100k - $125k and relocation assistance including housing and car allowance. Comprehensive benefits package including paid health insurance and 401(k).\n\n \n\n**Position Overview**:\n\nWe are seeking a highly skilled and experienced Master CNC and Machinist Instructor to join our team in beautiful Honolulu, Hawaii. This is a unique opportunity to lead, inspire, and train the next generation of CNC operators and machinists in a state-of-the-art learning environment while enjoying an excellent compensation package and the perks of living in paradise.\n\n \n\n**Key Responsibilities:**\n\n*Instruction and Training:*\n\n* Deliver comprehensive instruction in CNC programming, machine operation, and machining processes, ensuring students acquire practical, real-world skills.\n* Develop and implement lesson plans, hands-on workshops, and training modules aligned with industry standards.\n* Teach the use of various CNC machines, including lathes, mills, and multi-axis machining centers.\n* Deliver comprehensive instruction in manual machining fundamentals, mill and lathe operations and, machining processes, ensuring students acquire practical, real-world skills.\n* Deliver comprehensive instruction in general mechanics and industrial maintenance fundamentals, hand and bench tool use, and QA and measurement processes, ensuring students acquire practical, real-world skills.\n\n \n\n*Curriculum Development:*\n\n* Update and enhance course materials to reflect current industry practices and technological advancements.\n* Collaborate with stakeholders to ensure the curriculum meets the needs of local and national industries.\n* Lead the development of a \"train the trainer\" model for certifying future instructors\n\n \n\n*Mentorship and Leadership:*\n\n* Provide guidance, mentorship, and career counseling to students.\n* Foster a positive learning environment that encourages student engagement and success.\n\n \n\n*Program Support:*\n\n* Maintain and troubleshoot CNC machines and related equipment.\n*  Assist in recruiting and retaining students through outreach and program promotion.\n\n \n\n*Professional Development:*\n\n* Stay updated on industry trends, certifications, and emerging technologies.\n\n \n\n**Qualifications:**\n\n* Proven expertise in CNC programming, machining, and operation with at least 10+ years of hands-on industry experience.\n* Experience operating Haas machinery highly desired.\n* Teaching or training experience, preferably in a vocational or technical education setting.\n* Strong knowledge of CAD/CAM software (e.g., Mastercam, SOLIDWORKS) and G-code programming.\n* Familiarity with diverse materials and machining techniques.\n* Excellent communication, presentation, and organizational skills.\n* Ability to inspire and motivate students from diverse backgrounds.\n* Certifications such as NIMS (National Institute for Metalworking Skills) or equivalent are highly desirable.\n* Prior military service or experience working in military environments highly desired.\n* Must be a US citizen able to pass a military background check.\n\n\n\n**What We Offer**:\n\n* Competitive Salary: Excellent pay reflective of your skills and experience.\n* Housing and Car Allowance: Relocation and ongoing housing and transportation support are provided.\n* Comprehensive Benefits: Paid health insurance, 401(k) with company match, and generous paid time off.\n* Tropical Paradise: Enjoy the unmatched lifestyle of Honolulu, Hawaii, with its beautiful beaches, vibrant culture, and outdoor activities.\n\n \n\n**How to Apply:**\n\nIf you’re passionate about CNC machining, have a love for teaching, and are ready for an adventure in paradise, we want to hear from you! Please submit your resume, a cover letter detailing your teaching philosophy and industry experience, and at least two references. \n\n\n\nJoin us in shaping the future of manufacturing professionals while living and working in one of the most desirable locations in the world!",
+    "score": 47,
+    "url": "https://reddit.com/r/Machinists/comments/1pbksrh/job_posting_cnc_and_machining_master_instructor/",
+    "created_at": "2025-12-01T18:35:53.000Z",
+    "num_comments": 24
+  },
+  {
+    "id": "reddit-1lluzu4",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Want a CAD/CAM position in Queens (NYC) High School? No teaching certificate initially required.",
+    "text": "I am retiring from teaching in NYC as a second career. The school is having real trouble finding a replacement (Yea, I'm irreplaceable...). The program is for Computer Assisted Design and I've brought in a lot of equipment to build the students projects, since when they come in many have never built anything.\n\nThere are a number of pathways to get a teaching certificate including a high school degree and 4 years industry experience or Associates with 2 years.\n\nStarting Salaries range from $66K to $83K with summers off and lots of holidays, good benefits, etc.  \nYes, you have to put up with HS kids, pass background checks, and be able/willing to teach.\n\nIf interested, or know of someone, please give me a shout. I would like to see the program continue.",
+    "score": 39,
+    "url": "https://reddit.com/r/Machinists/comments/1lluzu4/want_a_cadcam_position_in_queens_nyc_high_school/",
+    "created_at": "2025-06-27T14:15:41.000Z",
+    "num_comments": 13
+  },
+  {
+    "id": "reddit-1hybk2t",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Machinists Salary/Hourly Pay in other countries compared to cost of Living?",
+    "text": "Hello Everyone. I work as a CNC Machinist in Toronto, Ontario, Canada, and my hourly pay as a Machinist with 3 years of experience is 25$ per hour ( $50,000 per annum but after taxes $35000-$38000 per annum). Compared with the cost of living in Toronto, this salary is not good. I was wondering how much a Machinist get paid in other countries, compared to the cost of living of that country or city.",
+    "score": 34,
+    "url": "https://reddit.com/r/Machinists/comments/1hybk2t/machinists_salaryhourly_pay_in_other_countries/",
+    "created_at": "2025-01-10T18:43:30.000Z",
+    "num_comments": 114
+  },
+  {
+    "id": "reddit-1ls54wm",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Overtime",
+    "text": "How much overtime does everyone do on avg to boost their wage or none at all? At my last place I used to do 60hrs per month boosting my annual salary by 52% (25k basic, 38k with overtime).\n\nSince moved area and now earn £33k basic, and this year will aim to do 48k with overtime working 48hrs overtime per month (increase in salary of 41%) \n\nI’m reliant on it as I’m saving for a house and sole earner in my household. How about everyone else? ",
+    "score": 18,
+    "url": "https://reddit.com/r/Machinists/comments/1ls54wm/overtime/",
+    "created_at": "2025-07-05T08:30:54.000Z",
+    "num_comments": 75
+  },
+  {
+    "id": "reddit-1kin8ts",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Job offering in Southern California",
+    "text": "[AWS Center for Quantum Computing](https://www.amazon.jobs/en/jobs/2975506/hardware-development-cryogenic-hardware-manufacturing-cryogenic-hardware)\n\nPasadena California, salaried position, $105k to $185k per year base salary depending on a number of things (there are typically bonus and stock offers that can raise that quite a bit, look up Amazon's corporate pay structure for more info). \n\nPrototype and small production run 3 and 5 axis milled parts in C101 copper for the most part, but good to have some all around experience as you are working directly with engineers who have some fun ideas from time to time. \n\nYour day is taking cryogenic hardware engineering concepts from print to part--programming, tool selection, fixture creation and machine operation are all part of the job. Folks from all backgrounds are highly encouraged to apply, we are willing to train the right candidate and no knowledge of cryogenics or quantum computing is necessary (I still don't quite get it myself).\n\nThis is a throwaway account for me so I might not check it often but if you have any questions leave a comment or send a DM. ",
+    "score": 15,
+    "url": "https://reddit.com/r/Machinists/comments/1kin8ts/job_offering_in_southern_california/",
+    "created_at": "2025-05-09T16:48:38.000Z",
+    "num_comments": 19
+  },
+  {
+    "id": "reddit-1oqjh66",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "How is the salary in your country/area?",
+    "text": "I'm from Denmark, 45 years old, became an apprentice as a 16 year old at a steel mill, the same place that my dad had worked for 25 years, with a plate rolling mill attached.\n\nConscript in the military for 9 months.\n\nThen did production work for 6 years and then went back to being a machinist, at the same place as I was apprenticing with the same boss, but under new management. I have now been in the machine shop for 18 years. \n\nI made 500k danish kroner last year (77.276,15 USD) with almost no OT. Which is in the higher end of the pay bracket for machinists, here in Denmark.\n\nIn theory i could make more by finding a job closer to the capital. But i spend an avg. 36 minutes in my car daily and if I worked around the capital it would be around 3 hours daily or more. I can't see myself doing that anytime soon.\n\nAlso work time is 37 hours a week with very little deviation. But overtime does happen but that is usually due to things disappearing in storage.\n\nI was made a leader (small boss) and given some special responsibility (new and improved apprentice program) plus some OT. So I think I'll land around 570k (88.089,85 usd) this year.\n\nI've seen a lot of posts where people, usually from America, say the their salary is really bad. But is it really THAT bad?\n\nWhat about other countries?\n\n",
+    "score": 15,
+    "url": "https://reddit.com/r/Machinists/comments/1oqjh66/how_is_the_salary_in_your_countryarea/",
+    "created_at": "2025-11-07T03:12:43.000Z",
+    "num_comments": 39
+  },
+  {
+    "id": "reddit-1mbjss0",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "General Question",
+    "text": "Hey, I am a European CNC machinist and have been lurking here for a while and i was interested in how it works in other countries. \n\nI see many from the US saying that they don't even do setups? Is that normal?\n\nFor example here we do all programming/setups i have ran mostlly a 5axis mill but also program a fanuc lathe, and I have learned Fusion 360 / Gibbscam / Mastercam. Also using both Fanuc and Heidenhain. \n\nHow does life look over there?. What kinda salary do button pushers or someone closer to what i do make. \n\nThanks \n",
+    "score": 12,
+    "url": "https://reddit.com/r/Machinists/comments/1mbjss0/general_question/",
+    "created_at": "2025-07-28T15:48:37.000Z",
+    "num_comments": 29
+  },
+  {
+    "id": "reddit-1ipka6b",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "How long to stay before moving on?",
+    "text": "How long should I stay at a shop before I consider moving on?  I know the best way for a raise is to go somewhere else. There’s a posting in my area for a union job that would almost double my salary doing the similiar work as I’m already doing. I’ve been in the trade for about 8 years, with a year hiatus to go do industrial maintenance. The posting is for a tool and die position repairing sheet metal stamping components. I’m considering applying. \nMy trouble is how soon is too soon to jump ship?  I’ve been at my current job for about 6 months and the one previous to that for about 18 months. Will this raise a red flag as being a “job hopper”?",
+    "score": 9,
+    "url": "https://reddit.com/r/Machinists/comments/1ipka6b/how_long_to_stay_before_moving_on/",
+    "created_at": "2025-02-14T20:34:55.000Z",
+    "num_comments": 35
+  },
+  {
+    "id": "reddit-1mp1myx",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Options for new employment?",
+    "text": "I’m 30 I’ve been in a manufacturing environment for about 10 years. I’ve worked my way up to machine shop manager. I can program, operate, design, order tooling, materials. I make great money compared to other job salary’s I’ve seen in the area. This company has been good to me but I don’t see us making it out of the slow time. I heard a rumor the owner is selling off his real-estate to keep us afloat.\n\nI’ve been pondering if this would be a good opportunity to get out of the trade. I’d even be willing to take a pay cut for something more enjoyable with better working conditions. Any suggestions for jobs that make around 100k a year that don’t need a degree? ",
+    "score": 9,
+    "url": "https://reddit.com/r/Machinists/comments/1mp1myx/options_for_new_employment/",
+    "created_at": "2025-08-13T11:17:55.000Z",
+    "num_comments": 13
+  },
+  {
+    "id": "reddit-1oe6wv1",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Prototype Machinists Wanted in Eastern PA",
+    "text": "I am leaving my position as a Prototype Machinist / Model Maker in a Research and Development Lab for a Pipe Fittings Company so I figured that I would send this out to see if any one felt it might fit them.\n\n[Prototype / Precision Machinist Position](https://jobs.jobvite.com/victaulic/job/o4ulwfw9) Location would be in Easton, PA.\n\n**Background:** I have been with Victaulic for 6 years and I am transitioning from a Machining position to a Facilities Excellence Management Coordinator position, so I am not leaving due to negativity. I am being given an internal opportunity to do something different in the company.\n\n**Pay:** Associate Level starts in the upper **$60,000s**, full \"Model Makers\" are in the mid to upper **70,000s**. I am leaving the position at $84k a year. I started 6 years ago as a full \"Model Maker\" making $64k.\n\nOvertime exists but it isn't consistent. \n\n**Benefits:** 5% 401K Match, 3% 401K Profit Sharing. Top notch Health Insurance (I pay around $105 a paycheck for a $350 deductible Cadillac Health Plan that covers my $6,000 a month Arthritis Meds 100%), a generous PTO Package (15 days to start, normal holidays off) plus the option to purchase 5 additional days of Optional Time Off over the course of the year. You are also allotted 5 Sick Days per year. PTO can be taken whenever you like. I have had days where I got to the parking lot, texted my boss and took a PTO day. It is written company policy that PTO is your time and you can take it whenever you like.\n\nTuition Reimbursement and Relocation Reimbursement are available as well.\n\nYearly Bonuses have been in effect for the 6 years I have been here, even during COVID. They are issued company wide for either a hard cash amount or 3% of your salary, whichever is higher. Yearly Cost of Living Adjustments have been close to the rate of inflation or just beating it.\n\n**Work Hours:** Shifts are either 7-3:30 for first shift or 2:30P-12A 4 10s for Second. Management is flexible with work times as long as you are producing good quality parts. They have no problem if you decide to work 6:30-3, for example. If you have a Drs Appointment, you can leave early and make up the time later in the week, or take PTO if it is more than 4 hours. Your workday includes 2 15 minute breaks and a 45 minute lunch. We have 2 Onsite Cafeterias that offer reasonably priced chow options.\n\n**Work Environment:** We have Prototrak Lathes, Prototrak Bed Mills, Prototrak K3 Knee Mills, 2 Haas VMCs and a Mazak VMC. This position is very much designed for the \"Jack of All Trades\" kind of worker. You would be expected to be able to learn the Prototrak conversational control and Mastercam for the other machines. Despite having a Mazak, we do no Mazatrol because we are a Mastercam Shop.\n\nThis is a pretty laid back environment where we are trusted to get our work done. I have always likened it to being an \"Independent Contractor\" in the shop. Jobs are doled out by our Tech Lead and we are expected to be able to get the work done independently. The other workers I work with are all pretty chill and are more than willing to help out with a problem or to bounce ideas off of. \n\n**There are no \"Crabs in a Bucket\" in this shop.**\n\n**Expectations:** We are looking for someone that has serious problem solving skills. You would be working directly with our engineering team to develop new products and prototypes as well as the fixturing and workholding the make what they need. A portion of our work is modifying castings before they can be tested, so having a good spatial understanding of non-flat parts is a big plus. \n\nMasterCam experience is a big plus, we are currently running 2024 and we update every 2 years once a stable version is released. Trainings are available, both in person and online with the end goal of becoming a MasterCam Certified Programmer.\n\nWe have a nascent 5S and Lean Manufacturing system in place, so that means the shop is fairly well organized with most tool boxes being Kaizened and all of our machines are kept clean and in well working order. The expectation is that the system will be expanded to include Total Productive Maintenance in the coming years.\n\nWhat we are NOT looking for: Bad Attitudes. We want people that work well with others, both in the Machine Shop day to day as well as Engineering, Design and Management.\n\nNo shop is perfect, but this is one of the better companies I have worked for in the 15+ years I have been slinging chips. The benefits are top notch, the work environment is pretty good and the crew in the machine shop is one of the best I have ever worked with in my entire career.",
+    "score": 6,
+    "url": "https://reddit.com/r/Machinists/comments/1oe6wv1/prototype_machinists_wanted_in_eastern_pa/",
+    "created_at": "2025-10-23T15:50:44.000Z",
+    "num_comments": 22
+  },
+  {
+    "id": "reddit-1i8i8pa",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Question for Career Machinists",
+    "text": "Hey guys, just wanted to get some opinions on my current situation, and whether i'm overblowing the issue.\n\nI'm a machinist just coming into my second year. I work with flat bed CNCs. When I was employed, it was as a general hand at my factory, but after a couple of months of working the floor, management realised I had a knack for machining and started training me up on the CNC, and since then they never took me off it.\n\nOver the last few months, the expectations of quality output have improved, and i've been expected to manage a second flatbed along with my first, this one being more complex with additional training required, such as operating and maintaining an oscilating knife tool, and trying not to snap the blades (having some difficulties with this part).\n\nI'm enjoying my work, but I feel as though both my workload and expectations are far exceeding my pay, which is still a general hand's salary. Is it worth bothering management to try and bump me up to the industry standard that's $6 an hour above my current wage? Or should I be happy with what i'm given as a new machinist with only a year of experience.",
+    "score": 6,
+    "url": "https://reddit.com/r/Machinists/comments/1i8i8pa/question_for_career_machinists/",
+    "created_at": "2025-01-24T00:10:41.000Z",
+    "num_comments": 19
+  },
+  {
+    "id": "reddit-1lc25a6",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "UK Machinists, how much should I be making?",
+    "text": "Hey! I'm working at a shop which is pretty infamous for under paying people and often only give payrises to people who threaten to leave, so I'm just trying to work out how much I should be paid for my skills and my knowledge. \n\nThis will be a long post but I would really appreciate some feedback or some insight. If you are a machinist in the uk or if you run a machine shop, I would love some feedback. \n\nI've just finished getting my level 4 HNC in manufacturing engineering. out of 16 assignments I got 15 distinctions and 1 pass, distinctions being the highest grade possible. \n\nI have nearly 2 years of experience programming and running 3 axis mills. I can program in Tebis CAM and solidworks CAM, im also learning fusion in my free time. I'm most compitent when programming manually in heidenhain however. \n\nI've written macro programs in both fanuc and heidenhain. \n\nIn my working day I usually run 2 machines at once. I program and run one machine first and then set up the second machine while the first is running. I have experience machining plastics, aluminium, mild steels, 303 stainless and D2 tool steel and I regularly  work in tolerances down to 0.025mm \n\nI have experience in machining large parts up to 1000mm * 500mm and as small as 10mm * 10mm. \n\nDue to a lot of people leaving I'm one of 3 fully trained full time machinists. I'm therefore responsible for ensuring my machines are maintained weekly, filters are cleaned, coolant concentration and pH is correct, oil is topped up and that the machine is safe to use. \n\nI would like to say that I kick out parts at a reasonable rate. I work in a place where everything needs to be done yesterday and I usually never get complaints about my speed. \n\nOn top of that I have some specialised knowledge on other machines, I was fully trained on a gundrilling machine by sombody who left, so after I've spent nearly a year using it full time I have the most knowledge in the shop on how to use the machine. \n\nIn the last year I've also been training apprentices which has definitely improved my leadership skills and my ability to manage other people. \n\nLastly, I work in shifts and I regularly do overtime when asked. I work upwards of 50 hours a week sometimes and when at work I like to think I'm working as quickly and as efficiently as I can. For example I take my lunch only when both machines are running and I program parts or write macro programs in my free time instead of sitting on my phone. \n\nI'm pretty young in comparison to everybody else at the shop which is why I think im being underpaid. People in management who don't see me work often assume I'm incompetent or slow in comparison to other people, which makes me really sad because I've worked extremely hard to try and prove myself only for them to make sweeping assumptions. \n\nI'm currently making less than £14 an hour or 28k a year without overtime. Is this standard for this field of work? Can I expect much more concidering my experience and my age? \n\nIn the past I've been given payrises because of my performance however my skills have significantly increased in the past year and I've had nothing. When I ask for a payrise I just want to know what I should expect.  \n\nRemember, I'm in the UK, so our ecomony is very different when compared to the US or Canada. Some of you guys in America are making $100k a year but over here that's pretty rare. \n\nThe average UK salary is £37k a year for full time employees.\n\n",
+    "score": 4,
+    "url": "https://reddit.com/r/Machinists/comments/1lc25a6/uk_machinists_how_much_should_i_be_making/",
+    "created_at": "2025-06-15T14:51:15.000Z",
+    "num_comments": 46
+  },
+  {
+    "id": "reddit-1jrm980",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Machinist position for Space-Flight Instrumentation at University of New Hampshire",
+    "text": "We have just posted an ad for an experienced machinist in the Space Science Center at the University of New Hampshire (UNH).  One of our long-time machinists is retiring. Here's a short blurb from the ad:\n\nThe Space Science Center at the University of New Hampshire seeks an experienced machinist to join our group in continuing a decades-long history of producing world-class space-flight instrumentation. This challenging work requires a broad range of skills that includes experience with various materials (metals, plastics and ceramics), attention to detail, interactions with team members from a wide variety of backgrounds and creative problem-solving capabilities. An ability to work well independently is also required.\n\nOur current equipment includes 3-axis and 2-axis Proto Trak milling machines (SMX/DPM3), a Proto Trak CNC lathe (SLX/TRL 1630SX), and manual lathes. Software used is Solidworks and Camworks.\n\nSalary is \\~80k (negotiable, depending on experience) with very good benefits (medical, dental, retirement, tuition, PTO).\n\nUNH is about an hour north of Boston, and an hour east of Manchester.\n\nFind the ad at [https://usnh.wd5.myworkdayjobs.com/Careers](https://usnh.wd5.myworkdayjobs.com/Careers) and search for \"Machinist\".",
+    "score": 3,
+    "url": "https://reddit.com/r/Machinists/comments/1jrm980/machinist_position_for_spaceflight/",
+    "created_at": "2025-04-04T20:46:54.000Z",
+    "num_comments": 16
+  },
+  {
+    "id": "reddit-1iniu6u",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Need Opinions.",
+    "text": "Need some opinions on the pay I’m getting right now. Family shop, worked here for 5 years or so, located in Louisiana, I can run and program the waterjet and press brake, also milling and lathes set up and programming, making 30 an hour right now, they hired someone else to run the waterjet that I helped trained to take some load off, it’s a small shop so you know everyone can do a little bit of everything , but just wanted some opinions if you think that is too low of a salary. ",
+    "score": 2,
+    "url": "https://reddit.com/r/Machinists/comments/1iniu6u/need_opinions/",
+    "created_at": "2025-02-12T04:32:34.000Z",
+    "num_comments": 3
+  },
+  {
+    "id": "reddit-1j2nx8p",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Looking for Machinist Teacher Columbus Ga area",
+    "text": "[Salary Schedule](https://acrobat.adobe.com/id/urn:aaid:sc:US:5f8b4f28-ada7-4508-acc6-24928a9af8bd)\n\nI am searching for a Machinist who may be interested in Teaching in the Columbus Ga area.  This position would be at a High school and the salary would be on a teacher salary schedule (see link).  Years of work experience as a machinist may count toward years experience as a teacher so the salary could be flexible.  If you or you know of a retiring machinist who may be interested please contact me.  Thanks",
+    "score": 1,
+    "url": "https://reddit.com/r/Machinists/comments/1j2nx8p/looking_for_machinist_teacher_columbus_ga_area/",
+    "created_at": "2025-03-03T17:21:19.000Z",
+    "num_comments": 2
+  },
+  {
+    "id": "reddit-1kwurdm",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Salary of NC Programmer In Germany",
+    "text": "I want to know what is a good salary for a NC Programmer (CATIA V5) with 8 years of experience in the aerospace sector.",
+    "score": 0,
+    "url": "https://reddit.com/r/Machinists/comments/1kwurdm/salary_of_nc_programmer_in_germany/",
+    "created_at": "2025-05-27T18:25:59.000Z",
+    "num_comments": 7
+  },
+  {
+    "id": "reddit-1j3xkhq",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Advice",
+    "text": "Hey guys, I’m looking for advice about my current career conundrum..\n\nI started my machining journey with zero prior experience or knowledge of anything mechanical, the position I applied for was a CNC Lathe Apprentice with zero requirements at a gearbox repairs workshop. Because of my lack of skills I committed very hard, always pitched up half an hour early everyday, worked whenever they needed and bent for them but it hasn’t been reciprocated at all.\nSince day 1 things have been.. bare minimum in terms of my education and rights, minimal information or teaching occurred, low salary as well as zero benefits and being told I’m NOT ALLOWED to join a union. There’s been no formalisation of my training, progress or even a furthering of what skills I already know now. \nI’m really good at my job, I have pride and passion for this work but it seems my employer doesn’t want to take me anywhere but under his boot and earning less than market value.\nI’d really appreciate any advice on options, avenues or just anything you can teach, tell or warn me of would be greatly appreciated \n",
+    "score": 0,
+    "url": "https://reddit.com/r/Machinists/comments/1j3xkhq/advice/",
+    "created_at": "2025-03-05T07:15:53.000Z",
+    "num_comments": 6
+  },
+  {
+    "id": "reddit-1llyjw4",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "CNC Machinist/Programmer 4 Job Opening - North of Seattle, WA - Feedback Welcome",
+    "text": "We've been looking to replace our current machinist/programmer after he had to move out of state with his family. It's been over a month and we're struggling to find qualified candidates. We're not a job shop, we design and manufacture our own products which leads to a more relaxed pace of work. We're offering this position as salary (82,000.00 - 96,400.00 USD per year) and employees are truly expected to work 40 hours, work/life balance is extremely important to our management (our current machinist can vouch). Any feedback on the job posting is greatly appreciated.",
+    "score": 0,
+    "url": "https://reddit.com/r/Machinists/comments/1llyjw4/cnc_machinistprogrammer_4_job_opening_north_of/",
+    "created_at": "2025-06-27T16:38:52.000Z",
+    "num_comments": 13
+  },
+  {
+    "id": "reddit-1jdn973",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "CNC Machinist Job opening in NW Chicago suburb.",
+    "text": "CNC Machinists  \nHoffman Estates/Chicago Area  \n$28.00 to $40.00 range\n\nS. Himmelstein and Company  \n2490 Pembroke Avenue Hoffman Estates, IL 60169  \n847-843-3300  \n[saleshr@himmelstein.com](mailto:saleshr@himmelstein.com) [www.himmelstein.com](http://www.himmelstein.com/)\n\n We are currently hiring an Experienced CNC Machinist for 1st shift, 7:00am-3:30pm Monday through Friday. Overtime is available but not mandatory. Some schedule flexibility may be available. \n\nS. Himmelstein and Company is the pioneer of the torque sensing industry, which allows businesses and organizations that depend on physical measurements for product development and performance testing as well as manufacturing quality control/verification testing of their equipment. \n\nAt S. Himmelstein and Company, we are currently seeking hardworking, talented individuals to fill our open positions and help us grow. When you join Himmelstein, you’re working for a successful company that is interested in helping you advance your skills and career.\n\nRequirements:  \n·         Minimum 3 years of experience programming CNC Lathes or Mills  \n·         Program, set-up, troubleshoot and operate CNC Lathes or Mills  \n·         Develop and refine machining strategies and processes for CNC machines  \n·         Hold tight tolerances for an entire production run  \n·         Instruct operator or fellow machinist on how to run parts when suitable  \n·         Make and recut jaws  \n·         Write new and modify existing G-code programs  \n·         Use measurement instruments to accurately measure dimensions within 0.0001”  \n·         Read, understand and interpret blueprints with geometric tolerancing  \n·         Work independently with respect and consideration for the needs of the team  \n·         Follow all safety and work rules and practices  \n·         Strong mathematics abilities, especially geometry and trigonometry  \n·         Strong verbal communication skills  \n·         Follow directions precisely\n\nIdeal candidate capabilities:  \n(Not all are required.)  \n·         Make programs with both G-code and CAM software  \n·         Operate CAD software  \n·         Have a strong computer or macro programming background  \n·         Have a robotic arm/automaton background (for future shop upgrades)  \n·         Have mill-turn/5-axis experience (for future shop upgrades, no simultaneous 5-axis needed for our parts)  \n·         A strong understanding of Newtonian physics is a plus  \n·         Detail oriented, organized and neat  \n·         Strong knowledge of machining parts in preparation for heat treat, splining, grinding, etc.\n\n \n\nWhat’s In It for You: Team Himmelstein Benefits  \n·         Company-paid Blue Cross PPO Health Insurance  \n·         Dental Insurance  \n·         Company-paid Basic Life Insurance  \n·         Short-Term Disability Insurance  \n·         Growth Opportunities  \n·         Generous PTO and paid holidays for full time employees  \n·         Extra cash opportunities through company incentive program \n\nImmediate start for the right candidate. Salary negotiable depending on experience.\n\nIf you believe that you are the right fit, have the skills and expertise to add to our existing team and are looking to join a company where progression is a core value, please apply at [saleshr@himmelstein.com.](mailto:saleshr@himmelstein.com) \n\nCandidates for all positions with S. Himmelstein and Company must be legally authorized to work in the United States on a permanent basis. Verification of employment eligibility will be required at the time of hire. Visa sponsorship is not available for any positions with Himmelstein.",
+    "score": 0,
+    "url": "https://reddit.com/r/Machinists/comments/1jdn973/cnc_machinist_job_opening_in_nw_chicago_suburb/",
+    "created_at": "2025-03-17T20:43:19.000Z",
+    "num_comments": 1
+  },
+  {
+    "id": "reddit-1m6nzph",
+    "subreddit": "Machinists",
+    "soc_codes": [
+      "51-4041"
+    ],
+    "title": "Job Opportunity in Hawaii",
+    "text": "Job opportunity for “Advanced Manufacturing and Instrumentation Scientist” at the University of Hawaii on Oahu.\n\nLeads research and operational activities in advanced manufacturing (AM) and coordinates the management of specialized instrumentation within the Hawaii Initiative for Advanced Materials and Manufacturing. (Full job description in the listing)\n\nLists monthly salary range $6250-$9000\n",
+    "score": 0,
+    "url": "https://reddit.com/r/Machinists/comments/1m6nzph/job_opportunity_in_hawaii/",
+    "created_at": "2025-07-22T19:42:47.000Z",
+    "num_comments": 20
+  }
+]

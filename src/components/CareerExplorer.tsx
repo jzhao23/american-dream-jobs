@@ -9,6 +9,7 @@ import {
   getAIRiskLabel,
   getImportanceColor,
   getCategoryColor,
+  getCategoryLabel,
 } from "@/types/career";
 
 interface CareerExplorerProps {
@@ -289,7 +290,7 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
                       : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
                   }`}
                 >
-                  {category}
+                  {getCategoryLabel(category)}
                 </button>
               ))}
             </div>
@@ -369,7 +370,7 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
                 </td>
                 <td className="px-4 py-3">
                   <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(career.category)}`}>
-                    {career.category}
+                    {getCategoryLabel(career.category)}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-right font-medium text-secondary-900">
@@ -420,7 +421,7 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
                   {career.title}
                 </h3>
                 <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 ${getCategoryColor(career.category)}`}>
-                  {career.category}
+                  {getCategoryLabel(career.category)}
                 </span>
               </div>
               <span className="text-lg font-bold text-primary-600">

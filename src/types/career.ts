@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { type CategoryId, getCategoryColor as getCategoryColorFromMetadata, getCategoryMetadata, isCategoryId } from "@/lib/categories";
 
 // Training time categories
 export const TrainingTimeEnum = z.enum(["<6mo", "6-24mo", "2-4yr", "4+yr"]);
@@ -265,7 +266,13 @@ export function getImportanceScoreDisplay(score: number): string {
 }
 
 export function getCategoryColor(category: string): string {
-  const colors: Record<string, string> = {
+  // Use new category system if it's a valid CategoryId
+  if (isCategoryId(category)) {
+    return getCategoryColorFromMetadata(category);
+  }
+
+  // Fallback for legacy category names (backwards compatibility)
+  const legacyColors: Record<string, string> = {
     "Healthcare": "bg-rose-100 text-rose-800",
     "Technology": "bg-blue-100 text-blue-800",
     "Construction": "bg-amber-100 text-amber-800",
@@ -288,12 +295,19 @@ export function getCategoryColor(category: string): string {
     "Building & Grounds": "bg-stone-100 text-stone-800",
     "Military": "bg-gray-100 text-gray-800",
   };
-  return colors[category] || "bg-gray-100 text-gray-800";
+  return legacyColors[category] || "bg-gray-100 text-gray-800";
 }
 
 export function getCategoryLabel(category: string): string {
+  // Use new category system if it's a valid CategoryId
+  if (isCategoryId(category)) {
+    return getCategoryMetadata(category).name;
+  }
   return category;
 }
+
+// Re-export CategoryId for use in components
+export type { CategoryId };
 
 export function getImportanceColor(score: number): string {
   if (score >= 7) return "text-blue-600 bg-blue-100";

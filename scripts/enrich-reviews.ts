@@ -27,12 +27,14 @@ interface RedditPost {
   num_comments: number;
 }
 
+interface OccupationMatch {
+  title: string;
+  soc_code: string | null;
+  confidence: number;
+}
+
 interface EnrichmentResult {
-  occupation: {
-    title: string;
-    soc_code: string | null;
-    confidence: number;
-  };
+  occupations: OccupationMatch[];
   summary: string;
   best_quote: string;
   sentiment: 'positive' | 'negative' | 'neutral' | 'mixed';
@@ -53,11 +55,15 @@ const ENRICHMENT_PROMPT = `Analyze this worker testimonial from r/{subreddit}:
 
 Extract the following as JSON (no markdown, just pure JSON):
 {
-  "occupation": {
-    "title": "Standard BLS occupation title (e.g., 'Electricians', 'Registered Nurses')",
-    "soc_code": "If you can determine it (e.g., '47-2111'), otherwise null",
-    "confidence": 0.0-1.0
-  },
+  "occupations": [
+    {
+      "title": "Primary BLS occupation title (e.g., 'Electricians', 'Software Developers')",
+      "soc_code": "SOC code if known (e.g., '47-2111'), otherwise null",
+      "confidence": 0.0-1.0 (how confident this testimonial applies to this occupation)
+    }
+    // Include 1-3 occupations if the testimonial could apply to multiple related careers
+    // Example: A post about "software engineering" could match both "Software Developers" and "Web Developers"
+  ],
   "summary": "1-2 sentence summary suitable for display",
   "best_quote": "The most insightful/quotable sentence from the original text (verbatim, max 200 chars)",
   "sentiment": "positive|negative|neutral|mixed",
@@ -73,6 +79,8 @@ Extract the following as JSON (no markdown, just pure JSON):
 }
 
 Important:
+- Include multiple occupations if the advice applies broadly (e.g., general software engineering advice applies to multiple dev roles)
+- Primary occupation should have highest confidence, related occupations lower
 - Extract years of experience from phrases like "15 years in", "been doing this for 5 years", etc.
 - Identify union status from mentions of "IBEW", "local ###", "union", "non-union", etc.
 - For topics, only include those that are actually discussed
@@ -192,21 +200,34 @@ async function main() {
       const text = post.title + '\n\n' + post.selftext;
       const enriched = await enrichReview(text, post.subreddit);
 
-      // Get fallback SOC code from subreddit mapping
+      // Get fallback SOC codes from subreddit mapping
       const subredditLower = post.subreddit.toLowerCase();
-      const fallbackSocCode = SUBREDDIT_MAPPINGS[subredditLower]?.soc_codes[0] ||
-                              SUBREDDIT_MAPPINGS[post.subreddit]?.soc_codes[0] ||
-                              'unknown';
+      const fallbackSocCodes = SUBREDDIT_MAPPINGS[subredditLower]?.soc_codes ||
+                               SUBREDDIT_MAPPINGS[post.subreddit]?.soc_codes ||
+                               [];
+
+      // Map occupations to our schema (with fallback)
+      let occupations = enriched.occupations.map(occ => ({
+        soc_code: occ.soc_code || fallbackSocCodes[0] || 'unknown',
+        slug: titleToSlug(occ.title),
+        title: occ.title,
+        confidence: occ.confidence,
+      }));
+
+      // If no occupations returned, use fallback from subreddit mapping
+      if (occupations.length === 0 && fallbackSocCodes.length > 0) {
+        occupations = [{
+          soc_code: fallbackSocCodes[0],
+          slug: post.subreddit.toLowerCase(),
+          title: post.subreddit,
+          confidence: 0.5,
+        }];
+      }
 
       // Map to our schema
       const review = {
         id: postId,
-        occupation: {
-          soc_code: enriched.occupation.soc_code || fallbackSocCode,
-          slug: titleToSlug(enriched.occupation.title),
-          title: enriched.occupation.title,
-          confidence: enriched.occupation.confidence,
-        },
+        occupations,
         source: {
           type: 'reddit' as const,
           platform: `r/${post.subreddit}`,
@@ -237,8 +258,8 @@ async function main() {
         enrichment: {
           enriched_by: 'claude' as const,
           enriched_at: new Date().toISOString(),
-          confidence: enriched.occupation.confidence > 0.8 ? 'high' as const :
-                      enriched.occupation.confidence > 0.5 ? 'medium' as const : 'low' as const,
+          confidence: occupations[0]?.confidence > 0.8 ? 'high' as const :
+                      occupations[0]?.confidence > 0.5 ? 'medium' as const : 'low' as const,
         },
         created_at: new Date(post.created_utc * 1000).toISOString(),
         updated_at: new Date().toISOString(),

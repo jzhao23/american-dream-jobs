@@ -1,0 +1,301 @@
+[
+  {
+    "id": "reddit-1ma8qvf",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Unexpected MRI Finding: Quadrigeminal Cistern Lipoma",
+    "text": "Hey everyone. I’m currently a radiologic technology student, and recently I volunteered to be a test patient during my internship—since I’ve never had an MRI myself, I thought it would be a cool learning experience.\n\nBut during the scan, something unexpected showed up in my brain.\n\nOur supervising doctors had varying interpretations at first, but after some review, they concluded that I have a quadrigeminal cistern lipoma—a very rare type of intracranial tumor. Apparently, it occurs in only about 1 in 100,000 people.\n\nTo say I was shocked is an understatement. I had no symptoms and didn’t even suspect anything unusual. I basically found out I have a brain tumor by accident...while helping out for practice.\n\nI’m still processing everything, and while it’s classified as a lipoma (benign fat tissue), it’s still sitting in a pretty delicate area near important brain structures. Some doctors say it doesn’t usually need treatment unless it causes problems, but I’ll definitely be keeping an eye on it moving forward.\n\nJust thought I’d share this wild twist in my journey as a radtech student. Life really has a way of surprising you when you least expect it.",
+    "score": 967,
+    "url": "https://reddit.com/r/Radiology/comments/1ma8qvf/unexpected_mri_finding_quadrigeminal_cistern/",
+    "created_at": "2025-07-27T00:29:49.000Z",
+    "num_comments": 43
+  },
+  {
+    "id": "reddit-1oj5z2f",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "AI Pullback Has Officially Started",
+    "text": "https://medium.com/@wlockett/ai-pullback-has-officially-started-fb6dfa5e4128?source=email-276762ec4be9-1761719895068-digest.reader--fb6dfa5e4128----0-102------------------24da2bad_b9db_4a4d_a8fa_65bcb764c488-1\n\nhttps://archive.ph/v7qZe\n\nThis is definitrly the case in radiology. \n\n\"They found that AI only increases productivity in “low-skill” tasks, such as taking meeting notes or providing customer service. Here, they found that AI can help smooth the outputs of workers who may have poor language skills or are learning new tasks.\n\nFor higher-skilled jobs where accuracy is essential, AIs (even cutting-edge ones) make errors so frequently that the extensive human oversight required to catch them makes the entire effort less productive than not using AI at all.\"\n\n\nIf I was a AI researcher interested in making $$$ in radiology-- I would put more effort into improving low skill tasks in radiology like improving dictation/report creation/incidental follow-up guidelines, PACs workflow, summarizing key clinical info from the EMR (since most clinicians, in particular the ER suck at this).\n",
+    "score": 449,
+    "url": "https://reddit.com/r/Radiology/comments/1oj5z2f/ai_pullback_has_officially_started/",
+    "created_at": "2025-10-29T14:26:11.000Z",
+    "num_comments": 44
+  },
+  {
+    "id": "reddit-1jpbzo7",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Missed diagnosis",
+    "text": "I recently had a 12 year old female present with generalized abdominal pain. CT Abdomen/Pelvis with performed. Send study to our tele service in the early morning hours. \n\nIn my quick review of the images, patient had a large ovarian cyst. Large enough to be surgically removed. We received the report a few hours later. Dictated as normal study. \n\nI simply have no idea what the radiologist was looking at. Maybe they believed the cyst was a full bladder? As technologists and professionals, how often do you find yourself in obvious disagreement with an impression?\n\nI ended up speaking with our morning radiologist and he was shocked this was missed and he created an addendum.  Patient ended up having surgery the next day. It makes me wonder how often this like this example are missed .",
+    "score": 428,
+    "url": "https://reddit.com/r/Radiology/comments/1jpbzo7/missed_diagnosis/",
+    "created_at": "2025-04-02T00:54:23.000Z",
+    "num_comments": 101
+  },
+  {
+    "id": "reddit-1hwhf0w",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Technologist “Shortage”",
+    "text": "PSA: There actually isn’t a Technologist shortage. What there is, is a shortage of technologists who are willing to work in high stress, poor staffed, underpaid positions which is understandable.\n\nEdit to add: I’m not in GA, but when Buc-ee’s offers more to start than local hospitals there’s a problem. \n \n\nhttps://www.reddit.com/r/publix/s/Ev1m5gIDxM",
+    "score": 353,
+    "url": "https://reddit.com/r/Radiology/comments/1hwhf0w/technologist_shortage/",
+    "created_at": "2025-01-08T10:49:34.000Z",
+    "num_comments": 54
+  },
+  {
+    "id": "reddit-1ijghvq",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "To all the NON-imaging professionals",
+    "text": "I truly love that you come here to learn, gawk and enjoy the neat images that people post here.  Most of you are really cool and it's fun to see what kind of questions you have.  I personally, love answering interesting questions about the field.  Like you, I too learn things from this sub.  Thanks for being a part of r/Radiology!  I hope we inspire some of you to join us in this crazy/cool profession",
+    "score": 324,
+    "url": "https://reddit.com/r/Radiology/comments/1ijghvq/to_all_the_nonimaging_professionals/",
+    "created_at": "2025-02-06T23:14:37.000Z",
+    "num_comments": 41
+  },
+  {
+    "id": "reddit-1k32z81",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Preparing for an AI takeover. Radiologist reports are our intellectual property",
+    "text": "AI is creeping into every corner of radiology and our reads are silently fueling someone else’s algorithm and profits at the peril of our work future. We have a window of opportunity to maintain control.\n\nWith the market in our favor, we need a concerted effort to:\n\n1. Lock It Down in Contracts\n\nAdd clauses that ban the use of your reports/images for AI training without explicit consent.\n\nOwn your interpretations—spell it out in your services agreement.\n\n\n\n2. Tag Your Work\n\nUse PACS or DICOM metadata to flag studies: “Not for AI training.” It’s not foolproof, but it sends a signal.\n\n\n\n3. Ask the Right Questions\n\nWho are your hospital or telerad vendors partnering with?\n\nAre they feeding your work into the next ChatGPT of radiology?\n\n\n4. Push for Transparency\n\nAdvocate for opt-out policies and ethical use audits.\n\nJoin forces with your group to demand visibility.\n\n\nYour intellectual property is training AI. We should know about it, and at the least get paid for it.\n ",
+    "score": 281,
+    "url": "https://reddit.com/r/Radiology/comments/1k32z81/preparing_for_an_ai_takeover_radiologist_reports/",
+    "created_at": "2025-04-19T18:31:35.000Z",
+    "num_comments": 57
+  },
+  {
+    "id": "reddit-1jz3prh",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "HIPPA VIOLATION?",
+    "text": "So I work at a trauma hospital in radiology . And it seems like every few months, our lead tech finds a new coworker to hate on and talk bS about to other departments . So to paint a good picture - she isn’t the best “leader” to us.  So recently  A few coworkers and I have been under the suspicion that our lead tech has been recording our convos every time she steps out of the room. We noticed she’d bring up convos that she was never included in and it would make us wonder how she knew this info. Everytime she leaves the work office that we all sit in, she flips her phone face-down and “hides” it. \n\nSo one day, she left the room for a long time and had her phone face down and I kept hearing a phone ringing and vibrating and thought it was coming from her phone so I flipped it over to see if it was hers, turns out her voice memo was open and on record the whole time. \nI know for a fact we talked about patient information while she’s been secretly recording us . So now I know I’m not paranoid \n\nAlso I can’t go to my manager about this because they are both really close to one another . And im afraid if we all take this to HR she will only get a slap on the wrist or written up and then she will still be our lead tech and know what we did and still continue to make working with her very awkward and weird . \n\nSo my question is … does this violate hippa and was it illegal for her to be recording us without our consent? Also how do I go about this now that I know? Do I contact HR? Do I need to get proof? How do I get proof? \n\nThe state I live in says wiretapping law is a \"one-party consent\" law. (State) makes it a crime to intentionally intercept any wire, oral or \"electronic communication\" to overhear or record a phone call or conversation unless one party consents to the conversation.",
+    "score": 219,
+    "url": "https://reddit.com/r/Radiology/comments/1jz3prh/hippa_violation/",
+    "created_at": "2025-04-14T16:51:48.000Z",
+    "num_comments": 98
+  },
+  {
+    "id": "reddit-1iqycd9",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Angry radiologists.",
+    "text": "I have a genuine question. Why do some radiologists think it is appropriate to talk nasty or yell at imaging techs and technologists. Sure radiologists are above us. But you guys are still our coworkers. I and many others find it extremely unprofessional when spoken to out of line. And why is it so widely accepted amongst radiologists. Horror stories of getting yelled at, as if that's appropriate for the workplace. It really blows my mind. You cannot expect people to seriously learn and improve that way. Really very sad. ",
+    "score": 213,
+    "url": "https://reddit.com/r/Radiology/comments/1iqycd9/angry_radiologists/",
+    "created_at": "2025-02-16T18:08:21.000Z",
+    "num_comments": 149
+  },
+  {
+    "id": "reddit-1kmne5y",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Unethical Conduct",
+    "text": "I would like to know if anyone had any experience with unethical conduct violations as radiologic technologists? \n\nI won't beat around the bush with what I want to ask. I took images without having orders. They were for medical purposes but I did not attaine orders from a physician or a provider. It was mistake and I am indeed repentant for what I did. I'm expecting a lot of backlash in the comments, but trust me, I have been beating myself about this since it came to light. It goes without saying I haven't done it again and I will never again. I just want some advice or guidance. I am I'm Texas. I would like to know what the ramifications could be. Thank you.",
+    "score": 75,
+    "url": "https://reddit.com/r/Radiology/comments/1kmne5y/unethical_conduct/",
+    "created_at": "2025-05-14T18:58:47.000Z",
+    "num_comments": 35
+  },
+  {
+    "id": "reddit-1li1tyk",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "How much do you make as an MRI technologist? (NOT technician)",
+    "text": "Whenever I research salaries I keep seeing 80k-90k-100k-150k annual pay for MRI\ntechnologists (NOT technicians). Yet whenever I ask people who are actually in the profession the responses are always different. Do MRI\ntechnologists really make that much? How much do you make annually and per hour as an MRI technologist? \n\nPlease please please include annual if nothing else \n\nAnd it might help if you put how many years of experience you have, and where you’re located\n\nAnd would you recommend others to get your job? Why or why not? \n\nIf you could recommend a healthcare job, which would you recommend and why?\n\n\n(I’m in central North Carolina)",
+    "score": 53,
+    "url": "https://reddit.com/r/Radiology/comments/1li1tyk/how_much_do_you_make_as_an_mri_technologist_not/",
+    "created_at": "2025-06-22T23:29:39.000Z",
+    "num_comments": 112
+  },
+  {
+    "id": "reddit-1j5i0vs",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Through the Lens of COVID: A Radiologic Technologist’s Story",
+    "text": "I’ve been an X-Ray and CT Technologist for almost ten years, and I’ve always taken pride in my work. But nothing could have prepared me—or any of us—for what the COVID-19 pandemic brought. It wasn’t just the virus itself; it was the way it exposed the cracks in our healthcare system, the way it pushed us all to our limits, and the way it changed how we saw our work, our patients, and each other. I want to share some of my story, not just as a technologist, but as someone who stood alongside my colleagues in the trenches, trying to keep up with an endless wave of patients (both COVID and non-COVID) who needed us more than ever.\n\n**The Early Days: Fear and Uncertainty**\n\nWhen COVID first hit, everything changed overnight. The hospital felt like a war zone. Patients were pouring in, and we were scrambling to keep up. I remember the first time I scanned a COVID patient—my hands were shaking as I adjusted the machine, trying to focus on the image while my mind raced with questions. What if I got sick? What if I brought it home to my family? But there was no time to dwell on those fears. The patients needed us, and we had to be there for them.\n\nThe images I saw during those early months still haunt me. Lungs that should have been clear and healthy were filled with the telltale “ground-glass opacities” of COVID pneumonia. It was unique, it was unusual, and it attacked everywhere in the body. It was devastating to see how quickly the virus could take hold, especially in patients who seemed healthy just days before. And the hardest part was knowing that many of them were alone, isolated from their families, relying on us not just for medical care, but for comfort and reassurance.\n\n**The Struggle to Keep Up**\n\nAs the pandemic dragged on, the sheer volume of patients became overwhelming. It wasn’t just COVID cases—it was everything. People who had put off routine care during the early months of the pandemic were now coming in with advanced illnesses. Heart attacks, strokes, cancers that had gone undetected for too long. The waiting rooms were packed, the schedules were overbooked, and we were all running on fumes.\n\nI’ll never forget the look on my colleagues’ faces as we tried to keep up. Nurses, doctors, fellow technologists—we were all exhausted, physically and emotionally. I saw people breaking down in the break room, crying from the stress of it all. I saw coworkers working double shifts, skipping meals, and sacrificing their own health to be there for their patients. And I saw some of the best, most dedicated professionals I’ve ever known leave the field altogether because they just couldn’t take it anymore. Losing them was like losing a piece of our team’s soul. These people were irreplaceable, their wisdom, their dedication… we needed them, and the system failed them. The communities are worse off without them. \n\n**The Human Side of It All**\n\nWhat sticks with me the most, though, are the people—the patients and the families. I remember one elderly man who came in for a CT scan. He was so scared, and all he wanted was to hold his wife’s hand. But she wasn’t allowed in the room because of visitor restrictions. So I held his hand instead, trying to reassure him as I positioned him for the scan. He thanked me afterward, and I had to fight back tears because I knew it wasn’t enough. It wasn’t the same as having his family there. How could it? And many fellow professionals were too busy and exhausted to provide the level of comfort these people needed.. we were stretched way further than the usual. \n\nAnd then there were the families themselves, waiting anxiously for news. I’d see them in the hallways, their faces masked but their fear unmistakable. Sometimes, I’d overhear them talking to doctors, trying to understand what was happening to their loved ones. Other times, I’d see them saying goodbye over video calls, unable to be there in person. Those moments broke my heart in a way I can’t even put into words.\n\n**A System Under Strain**\n\nThe pandemic didn’t just test us as individuals—it tested the entire healthcare system. And in so many ways, the system failed. We didn’t have enough staff, enough equipment, or enough time to give every patient the care they deserved. I saw people waiting hours, even days, for scans that should have been done immediately. I saw patients with treatable conditions getting worse because they couldn’t access care in time. And I saw my colleagues—good, caring people—burn out and walk away because they couldn’t keep fighting a system that felt like it was working against them.\n\nIt’s hard not to feel angry about it. We’re supposed to be a safety net, a place where people can turn when they’re sick or scared. But the pandemic showed just how fragile that net really is. And now, as we try to pick up the pieces, I worry about what happens next. Will we learn from this? Will we invest in our healthcare system, in our workers, in our patients? Or will we go back to the way things were, pretending everything’s fine until the next crisis hits?\n\n**A Call for Change**\n\nI don’t have all the answers, but I know this: we can’t keep going like this. We need more support for healthcare workers—better pay, better staffing, better mental health resources. We need to prioritize access to care for everyone, not just those who can afford it. And we need to remember the lessons of this pandemic, not just the pain and the loss, but the resilience and the humanity that got us through it. Patient volumes have only gotten worse since COVID pandemic, and data trends suggest we will continue to exponentially increase in people needing care, peaking in 2040.  \n\nTo my fellow healthcare workers: thank you. Thank you for showing up, even when it felt impossible. Thank you for caring, even when it hurt. And to everyone else: please don’t forget what we’ve been through. Advocate for change. Support your local hospitals and clinics. And remember that behind every mask, every scan, every diagnosis, there’s a person—a patient, a family, a healthcare worker—just trying to make it through.\n\nThis is my story, but it’s also the story of so many others. I share it not for sympathy, but in the hope that it will inspire action. Because if we don’t learn from this, if we don’t do better, then what was it all for?\n",
+    "score": 42,
+    "url": "https://reddit.com/r/Radiology/comments/1j5i0vs/through_the_lens_of_covid_a_radiologic/",
+    "created_at": "2025-03-07T07:26:38.000Z",
+    "num_comments": 5
+  },
+  {
+    "id": "reddit-1nfgauw",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "RT seeking advice regarding tech comments",
+    "text": "Hey hey! 8 year tech here. Just wanted to get some feedback from fellow techs on something that happened during my shift today.\n\nI had a 10 y/o pt come in with bruising to the 5th digit. The pt was extremely flat in affect, and was not forthcoming about the nature of the injury other than ‘falling’ while playing with their sibling. They did not engage in conversation with me, which seems atypical of that age. The pt was not brought in by a parent, but a temporary caregiver assigned by the state. In my note to the rad, I mentioned the flat affect and lack of engagement during the exam, as well as the reported MOI. \n\nWhen I mentioned this is passing to the NP who saw the pt, she was extremely taken aback and seemed almost. . . Condescending? “Why would that matter for an X-ray?” In my own thinking, should this turn out to be a case of non-incidental trauma, I wanted it to be recorded that I as the performing technologist noticed that the child did seem to be acting in a nature that I personally felt worth documenting.\n\nMy question is, do you guys think I was wrong? Was I overstepping bounds by documenting upon behavior and not sticking solely to physicality? What would you have done in this situation? I am open to criticism, just want to make sure I am doing the best thing for my pts going forward. Thanks! ",
+    "score": 38,
+    "url": "https://reddit.com/r/Radiology/comments/1nfgauw/rt_seeking_advice_regarding_tech_comments/",
+    "created_at": "2025-09-12T22:02:44.000Z",
+    "num_comments": 31
+  },
+  {
+    "id": "reddit-1p5mi3t",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Is radiology effected by Trump's new passing?",
+    "text": "So everyone has probably heard about Trump's new list of professional and non-professional degrees and how the 'non-professional' degrees will be affected especially when it comes to financial aid when attending college. I could not find much information about it, so I came here to get everyone's thoughts about it. I am enrolled for MI but am worried about the funding that may be taken away if this is no longer considered a 'professional degree'. I feel that healthcare would not be able to function without radiology. It's a HUGE part of hospitals and treating patients effectively would be difficult without the presence of radiology and its technologists. Does anyone have more information about this?",
+    "score": 37,
+    "url": "https://reddit.com/r/Radiology/comments/1p5mi3t/is_radiology_effected_by_trumps_new_passing/",
+    "created_at": "2025-11-24T17:01:01.000Z",
+    "num_comments": 40
+  },
+  {
+    "id": "reddit-1pg7pw6",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Does your facility power-inject through IJs or EJs?",
+    "text": "What is your protocol? My critical-access facility recently had a situation where a CRNA placed an 18g IJ. CRNA insisted that it is power injectable at 10 mL/sec. Line was placed for a CTA Chest to rule out PE. At first, consulting radiologist advised not to use the line. After the CRNA spoke to the radiologist, they called back and told us to inject through it. Exam went fine; I was the technologist that injected for it. However, after this, another IJ was placed overnight and the tech scanned a poor-quality A/P W. Looking for advice. Thank you!",
+    "score": 29,
+    "url": "https://reddit.com/r/Radiology/comments/1pg7pw6/does_your_facility_powerinject_through_ijs_or_ejs/",
+    "created_at": "2025-12-07T03:05:48.000Z",
+    "num_comments": 44
+  },
+  {
+    "id": "reddit-1oaao7b",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Cath Lab techs and their role in the Lab vs Nurses",
+    "text": "I’m in Oregon and a Cath Lab tech. Various rules between us and nurses are obvious and make sense. However some make me scratch my head. Iv asked about such things and the answer I usually get is, well we (nurses) have a license we can lose. However ,at least in Oregon, I also carry a license to be a Radiologic Technologist. It’s my understanding that it’s my responsibility to not only control and drive the xray machine in the Cath lab but also be vigilant about the radiation exposure to everyone in the room. If I failed to do my duties I also was under the impression I could lose my license. \n\nDo any of you have insights on this issue? Have you come across this in your work? I want to be a good team player but honestly I’m just confused by the distinction. ",
+    "score": 25,
+    "url": "https://reddit.com/r/Radiology/comments/1oaao7b/cath_lab_techs_and_their_role_in_the_lab_vs_nurses/",
+    "created_at": "2025-10-18T23:27:30.000Z",
+    "num_comments": 12
+  },
+  {
+    "id": "reddit-1p8esvx",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Musculoskeletal radiology md",
+    "text": "I noticed this subreddit has more radiology technologists than physicians but still worth asking here. I'm very interested in sports and msk, and I'm interested in radiology.\nIf I take MSK fellowship in radiology, can I work in sports teams or during sports season as a radiologist as a contract or whatever options there are? Can I work in a sports clinic or msk specific clinics or ortho?",
+    "score": 19,
+    "url": "https://reddit.com/r/Radiology/comments/1p8esvx/musculoskeletal_radiology_md/",
+    "created_at": "2025-11-27T22:28:22.000Z",
+    "num_comments": 12
+  },
+  {
+    "id": "reddit-1n6wur1",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "has anyone else struggled academically throughout their x-ray schooling?",
+    "text": "hi. I just started a radiologic technologist two year program last week! after the first week I was feeling pretty overwhelmed about keeping up, fully understanding/retaining, and maintaining my grades. i’m honestly not the strongest when it comes to retaining information long term, plus i’m not a very good test taker (I suspect I have some form of dyslexia) and I struggle with focusing.\n\nI’ve been looking at a lot of posts on this subreddit and it seems like lot of people seemed to have had a harder time with clinical in comparison to the academics, but really I was wondering if anyone struggled more with the academic portion or both parts equally. I haven’t started clinical yet so i’m sure that’ll add to my current stress, but for now I kinda wanted some tips on surviving the academically + staying on top of everything once clinical does start in about two weeks. I know I can join a study group too, but i’m pretty shy/reserved (honestly I’ll probably just have to put myself out there anyway). if anyone can share their experience and give some advice i’d really appreciate it. thanks!",
+    "score": 18,
+    "url": "https://reddit.com/r/Radiology/comments/1n6wur1/has_anyone_else_struggled_academically_throughout/",
+    "created_at": "2025-09-02T21:55:21.000Z",
+    "num_comments": 18
+  },
+  {
+    "id": "reddit-1ogeqw0",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Any U.S. Based MRI Techs here who have gotten licensure in Canada?",
+    "text": "Hello,\nI’ve tried searching but I cannot seem to find any reliable information that addresses my situation.\n\nI am an ARRT licensed MRI Technologist in the U.S. I am working to obtain licensure in Canada through the CAMRT. Like many MRI Techs here in the states, I first got my XR license. I cross trained into MRI right after getting my license, I never practiced X-ray. Basically, my formal education was in X-ray, but all of my work experience is MRI.\n\nI am wondering if there are other MRI Techs who had a similar path, cross training into MRI without formal education. I had to do the structured education credits the ARRT requires for obtaining MRI licensure. I am just concerned not having formal education in MRI could be a roadblock to obtaining CAMRT licensure. I am still submitting my application and seeing what happens, but curious to know how this has worked for others in my situation.",
+    "score": 15,
+    "url": "https://reddit.com/r/Radiology/comments/1ogeqw0/any_us_based_mri_techs_here_who_have_gotten/",
+    "created_at": "2025-10-26T07:48:30.000Z",
+    "num_comments": 0
+  },
+  {
+    "id": "reddit-1kc4mgv",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "What’s it like being an X-Ray Technologist in Ontario?",
+    "text": "I have 1 more year until I graduate and I’m pretty nervous haha. I switch between being excited and freaking out. I hear so many different things from people of how it’s so easy to get hired and heavily in demand. But I also hear things like it’s impossible to get hired, a woman has been working part time for 8 years and can’t get to full time etc, which scares me. \n\nI’m also interested in what the salary is like. Any time I try and look it up on here, I mostly get threads of what it’s like in the states. \n\nJust hearing anything from people with experience in the field would be nice! ",
+    "score": 12,
+    "url": "https://reddit.com/r/Radiology/comments/1kc4mgv/whats_it_like_being_an_xray_technologist_in/",
+    "created_at": "2025-05-01T09:32:47.000Z",
+    "num_comments": 15
+  },
+  {
+    "id": "reddit-1idle56",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Salary / pay check",
+    "text": "Hi! I’m thinking about going into rad tech school. Not that I’ll choose a job because of the money, but I’m still curious about the salary. \nI’m from Denmark, and when I google the salary is between 4k-5k$ pr month and NOT higher than that. \nBut is it legit? I see TikTok’s all the time about rad techs making 6k, 7k and even 8k or month. Is it true?\nI get that there is a difference between working in USA and Denmark, but what about the rest of Europe? \nThanks in advance! 😊",
+    "score": 11,
+    "url": "https://reddit.com/r/Radiology/comments/1idle56/salary_pay_check/",
+    "created_at": "2025-01-30T12:00:17.000Z",
+    "num_comments": 28
+  },
+  {
+    "id": "reddit-1l01cdl",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Appropriate pay /rvu?",
+    "text": "I'm sure a lot of us have different perspectives on how much we should be paid, and I know that everyone's structure is different. I was curious for those who operate on a productivity basis, what you (or others you know) are being paid /rvu. My group is salaried, with per shift targets and bonuses based on hitting metrics. The thing I'm finding out based on talking to colleagues I feel like ours is on the low end of $20/rvu. To clarify, this comes into place after you have hit your shift targets and accumulates quarterly.\n\nI am also wondering what peoples per diem rates are? Obviously this varies based on shift type and time. I also feel like we are on the low end of starting at $2200/8hrs.",
+    "score": 7,
+    "url": "https://reddit.com/r/Radiology/comments/1l01cdl/appropriate_pay_rvu/",
+    "created_at": "2025-05-31T16:35:12.000Z",
+    "num_comments": 18
+  },
+  {
+    "id": "reddit-1n8tr5x",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Salary in Louisiana?",
+    "text": "I have not been able to find a clear answer on starting pay (in x-ray) anywhere online for my state! Indeed and the like have some wages posted but I’m not keen to trust them. Please tell me what you made starting out or are making now in your modality(ies) in southern LA! \n\nGoing to be starting myself soon and I’m super worried about the prospects of regretting my decision. ",
+    "score": 6,
+    "url": "https://reddit.com/r/Radiology/comments/1n8tr5x/salary_in_louisiana/",
+    "created_at": "2025-09-05T02:42:45.000Z",
+    "num_comments": 18
+  },
+  {
+    "id": "reddit-1ihfvxx",
+    "subreddit": "Radiology",
+    "soc_codes": [
+      "29-2034"
+    ],
+    "title": "Radiologists: What Is the Most Relaxed Specialty of Radiology?",
+    "text": "I'm going to change my major from medical coding and billing to biology soon so I can become a radiologist in the near future. I like to help people and make a good salary while at it too. I come from a family of nurses, but I want something different. However, I'm not a workaholic and I don't like working on call due to feeling of being burnout. From my past, I get burnout pretty easily and I wish I can change that. I really wish I was a workaholic, but I'm truly not. I admire those can handle the workload that's contain in the 50+ hours. Will residency require you to work over 40 hours too?\n\n\nAlso I would like inquire about your shift schedule too alongside your specialty? I like the one week on, two weeks off schedule. I'm not afraid of challenging cases though, and I think I would enjoy it. Thank you for your input. I hope that I don't come across as lazy. I'm bipolar as well. ",
+    "score": 0,
+    "url": "https://reddit.com/r/Radiology/comments/1ihfvxx/radiologists_what_is_the_most_relaxed_specialty/",
+    "created_at": "2025-02-04T11:49:37.000Z",
+    "num_comments": 29
+  }
+]

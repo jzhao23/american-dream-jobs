@@ -9,14 +9,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+interface OccupationMatch {
+  soc_code: string;
+  slug: string;
+  title: string;
+  confidence: number;
+}
+
 interface Review {
   id: string;
-  occupation: {
-    soc_code: string;
-    slug: string;
-    title: string;
-    confidence: number;
-  };
+  occupations: OccupationMatch[];
   source: {
     type: string;
     platform?: string;
@@ -114,14 +116,20 @@ async function main() {
 
   console.log(`Processing ${reviews.length} reviews...\n`);
 
-  // Group by career slug
-  const byCareer: Record<string, Review[]> = {};
+  // Group by career slug (a review can appear in multiple careers)
+  const byCareer: Record<string, { review: Review; occupation: OccupationMatch }[]> = {};
 
   for (const review of reviews) {
-    const slug = review.occupation.slug;
-    if (!byCareer[slug]) byCareer[slug] = [];
-    byCareer[slug].push(review);
+    for (const occupation of review.occupations) {
+      const slug = occupation.slug;
+      if (!byCareer[slug]) byCareer[slug] = [];
+      byCareer[slug].push({ review, occupation });
+    }
   }
+
+  // Count unique reviews (for stats)
+  const uniqueReviewIds = new Set(reviews.map(r => r.id));
+  console.log(`Unique reviews: ${uniqueReviewIds.size}, Total mappings: ${Object.values(byCareer).flat().length}\n`);
 
   // Generate per-career files
   const careerDir = path.join(process.cwd(), 'data/reviews/reviews-by-career');
@@ -129,11 +137,19 @@ async function main() {
 
   const summaries: CareerReviewsSummary[] = [];
 
-  for (const [slug, careerReviews] of Object.entries(byCareer)) {
-    // Save individual career file
+  for (const [slug, careerMappings] of Object.entries(byCareer)) {
+    // Extract reviews for this career
+    const careerReviews = careerMappings.map(m => m.review);
+    const primaryOccupation = careerMappings[0].occupation;
+
+    // Save individual career file (includes occupation match info)
+    const careerFile = careerMappings.map(m => ({
+      ...m.review,
+      matched_occupation: m.occupation, // Which occupation matched this career
+    }));
     fs.writeFileSync(
       path.join(careerDir, `${slug}.json`),
-      JSON.stringify(careerReviews, null, 2)
+      JSON.stringify(careerFile, null, 2)
     );
 
     // Calculate sentiment score (-1 to 1)
@@ -158,7 +174,7 @@ async function main() {
 
     const summary: CareerReviewsSummary = {
       slug,
-      soc_code: careerReviews[0].occupation.soc_code,
+      soc_code: primaryOccupation.soc_code,
       total_reviews: careerReviews.length,
       avg_sentiment_score: Math.round(sentimentScore * 100) / 100,
       topic_counts: topicCounts,

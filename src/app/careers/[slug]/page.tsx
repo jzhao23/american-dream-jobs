@@ -13,7 +13,21 @@ import {
   getImportanceColor,
   getImportanceLabel,
 } from "@/types/career";
-import { formatTopicLabel, type CareerReviewsSummary } from "@/types/review";
+// Raw review type from Reddit
+interface RawCareerReviewsSummary {
+  slug: string;
+  soc_code: string;
+  total_reviews: number;
+  featured_reviews: {
+    id: string;
+    subreddit: string;
+    title: string;
+    text: string;
+    score: number;
+    url: string;
+  }[];
+  last_updated: string;
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -71,9 +85,9 @@ export default async function CareerPage({ params }: PageProps) {
   const aiRiskScore = career.ai_risk?.score || 5;
   const importanceScore = career.national_importance?.score || 5;
 
-  // Find reviews for this career
-  const careerReviews = (reviewsIndex as CareerReviewsSummary[]).find(
-    (r) => r.slug === career.slug
+  // Find reviews for this career (match by slug or SOC code)
+  const careerReviews = (reviewsIndex as RawCareerReviewsSummary[]).find(
+    (r) => r.slug === career.slug || r.soc_code === career.soc_code
   );
 
   return (
@@ -416,26 +430,34 @@ export default async function CareerPage({ params }: PageProps) {
             <Section title="What Workers Say" icon="chat">
               <div className="space-y-4">
                 <p className="text-sm text-secondary-600">
-                  Based on {careerReviews.total_reviews} testimonial{careerReviews.total_reviews !== 1 ? 's' : ''} from{' '}
-                  {Object.entries(careerReviews.sources)
-                    .map(([src, count]) => `${src} (${count})`)
-                    .join(', ')}
+                  Based on {careerReviews.total_reviews} testimonial{careerReviews.total_reviews !== 1 ? 's' : ''} from Reddit
                 </p>
 
-                {careerReviews.featured_quotes.map((quote, i) => (
-                  <div key={i} className="bg-secondary-50 rounded-lg p-4">
-                    <div className="text-xs text-secondary-500 mb-2">
-                      On {formatTopicLabel(quote.topic as Parameters<typeof formatTopicLabel>[0])}
+                {careerReviews.featured_reviews.map((review, i) => (
+                  <a
+                    key={review.id}
+                    href={review.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium text-primary-600">
+                        r/{review.subreddit}
+                      </span>
+                      <span className="text-xs text-secondary-500">
+                        {review.score} upvotes
+                      </span>
                     </div>
-                    <blockquote className="text-secondary-800 italic">
-                      &ldquo;{quote.quote}&rdquo;
-                    </blockquote>
-                    {quote.upvotes && quote.upvotes > 0 && (
-                      <div className="text-xs text-secondary-400 mt-2">
-                        {quote.upvotes} upvotes on {quote.source_type}
-                      </div>
+                    <h4 className="font-medium text-secondary-900 mb-2 text-sm">
+                      {review.title}
+                    </h4>
+                    {review.text && (
+                      <p className="text-secondary-700 text-sm line-clamp-3">
+                        {review.text}
+                      </p>
                     )}
-                  </div>
+                  </a>
                 ))}
               </div>
             </Section>

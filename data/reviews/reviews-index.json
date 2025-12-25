@@ -1,1 +1,1946 @@
-[]
+[
+  {
+    "slug": "network-and-computer-systems-administrators",
+    "soc_code": "15-1244",
+    "total_reviews": 128,
+    "featured_reviews": [
+      {
+        "id": "reddit-1itiu8n",
+        "subreddit": "sysadmin",
+        "title": "IT Team fired",
+        "text": "Showed up to work like any other day. Suddenly, I realize I can’t access any admin centers. While I’m trying to figure out what’s going on, I get a call from HR—I’m fired, along with the entire IT team (helpdesk, network engineers, architects, security).",
+        "score": 16174,
+        "url": "https://reddit.com/r/sysadmin/comments/1itiu8n/it_team_fired/"
+      },
+      {
+        "id": "reddit-1ph0gmo",
+        "subreddit": "sysadmin",
+        "title": "\"Umm, I'm Gen Z.  I know how to use computers.\"",
+        "text": "I was onboarding a new employee in my office the other day and going through the usual setup process. After configuring their 2FA, I had them sign into their assigned laptop.",
+        "score": 9076,
+        "url": "https://reddit.com/r/sysadmin/comments/1ph0gmo/umm_im_gen_z_i_know_how_to_use_computers/"
+      },
+      {
+        "id": "reddit-1p7hmjn",
+        "subreddit": "sysadmin",
+        "title": "What happened to the IT profession?",
+        "text": "I have only been in IT for 10 years, but in those 10 years it has changed dramatically. You used to have tech nerds, who had to act corporate at certain times, leading the way in your IT department. These people grew up liking computers and technology, bringing them into the field.",
+        "score": 7616,
+        "url": "https://reddit.com/r/sysadmin/comments/1p7hmjn/what_happened_to_the_it_profession/"
+      },
+      {
+        "id": "reddit-1juegh5",
+        "subreddit": "sysadmin",
+        "title": "I have to let go of my best SysAdmin. Not because he failed—because we did",
+        "text": "This f***ing sucks. I’ve been fighting to keep my small team intact, but now I have to let go of the best sysadmin I’ve ever worked with. Not because he messed up. Not because of drama. Just cold, brutal economics.",
+        "score": 7528,
+        "url": "https://reddit.com/r/sysadmin/comments/1juegh5/i_have_to_let_go_of_my_best_sysadmin_not_because/"
+      },
+      {
+        "id": "reddit-1hzb91a",
+        "subreddit": "sysadmin",
+        "title": "Tonight, we turn it ALL off",
+        "text": "It all starts at 10pm Saturday night. They want ALL servers, and I do mean ALL turned off in our datacenter.",
+        "score": 4732,
+        "url": "https://reddit.com/r/sysadmin/comments/1hzb91a/tonight_we_turn_it_all_off/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.599Z"
+  },
+  {
+    "slug": "software-developers",
+    "soc_code": "15-1252",
+    "total_reviews": 117,
+    "featured_reviews": [
+      {
+        "id": "reddit-1mvid8s",
+        "subreddit": "cscareerquestions",
+        "title": "[Breaking] AWS Cloud Chief says \"replacing junior employees with AI is one of the dumbest things I'v...",
+        "text": "&gt;Matt Garman, Amazon's cloud boss, has a warning for business leaders rushing to swap workers for AI: Don't ditch your junior employees.   ...",
+        "score": 6869,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1mvid8s/breaking_aws_cloud_chief_says_replacing_junior/"
+      },
+      {
+        "id": "reddit-1k41ad2",
+        "subreddit": "cscareerquestions",
+        "title": "Reminder: If you're in a stable software engineering job right now, STAY PUT!!!!!!!",
+        "text": "I'm honestly amazed this even needs to be said but if you're currently in a stable, low-drama, job especially outside of FAANG, just stay put because the grass that looks greener right now might actually be hiding a sinkhole Let me tell you about my buddy.",
+        "score": 5385,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1k41ad2/reminder_if_youre_in_a_stable_software/"
+      },
+      {
+        "id": "reddit-1ohnh7q",
+        "subreddit": "cscareerquestions",
+        "title": "[BREAKING] Amazon to layoff 30,000 corporate employees in one of the largest layoffs in its history",
+        "text": "&gt;Amazon is planning to cut as many as 30,000 corporate jobs beginning Tuesday, as the company works to pare expenses and compensate for overhiring during the peak demand of the pandemic, according to three people familiar with the matter.",
+        "score": 5348,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1ohnh7q/breaking_amazon_to_layoff_30000_corporate/"
+      },
+      {
+        "id": "reddit-1mrujpf",
+        "subreddit": "cscareerquestions",
+        "title": "4 years at Big tech. Being likeable beats being productive every single time",
+        "text": "**TL;DR: Grinding harder made me less productive AND less likeable. Being calm is the actual cheat code.** I'm 4 years deep at a big tech company, and work-life balance has been absolutely brutal lately.",
+        "score": 4954,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1mrujpf/4_years_at_big_tech_being_likeable_beats_being/"
+      },
+      {
+        "id": "reddit-1m1uw9v",
+        "subreddit": "cscareerquestions",
+        "title": "I just watched an AI agent take a Jira ticket, understand our codebase, and push a PR in minutes and...",
+        "text": "I’m a professional software engineer, and today something happened that honestly shook me. I watched an AI agent, part of an internally built tool our company is piloting, take in a small Jira ticket. It was the kind of task that would usually take me or a teammate about an hour.",
+        "score": 4724,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1m1uw9v/i_just_watched_an_ai_agent_take_a_jira_ticket/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.601Z"
+  },
+  {
+    "slug": "software-quality-assurance-analysts-and-testers",
+    "soc_code": "15-1253",
+    "total_reviews": 90,
+    "featured_reviews": [
+      {
+        "id": "reddit-1mvid8s",
+        "subreddit": "cscareerquestions",
+        "title": "[Breaking] AWS Cloud Chief says \"replacing junior employees with AI is one of the dumbest things I'v...",
+        "text": "&gt;Matt Garman, Amazon's cloud boss, has a warning for business leaders rushing to swap workers for AI: Don't ditch your junior employees.   ...",
+        "score": 6869,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1mvid8s/breaking_aws_cloud_chief_says_replacing_junior/"
+      },
+      {
+        "id": "reddit-1k41ad2",
+        "subreddit": "cscareerquestions",
+        "title": "Reminder: If you're in a stable software engineering job right now, STAY PUT!!!!!!!",
+        "text": "I'm honestly amazed this even needs to be said but if you're currently in a stable, low-drama, job especially outside of FAANG, just stay put because the grass that looks greener right now might actually be hiding a sinkhole Let me tell you about my buddy.",
+        "score": 5385,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1k41ad2/reminder_if_youre_in_a_stable_software/"
+      },
+      {
+        "id": "reddit-1ohnh7q",
+        "subreddit": "cscareerquestions",
+        "title": "[BREAKING] Amazon to layoff 30,000 corporate employees in one of the largest layoffs in its history",
+        "text": "&gt;Amazon is planning to cut as many as 30,000 corporate jobs beginning Tuesday, as the company works to pare expenses and compensate for overhiring during the peak demand of the pandemic, according to three people familiar with the matter.",
+        "score": 5348,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1ohnh7q/breaking_amazon_to_layoff_30000_corporate/"
+      },
+      {
+        "id": "reddit-1mrujpf",
+        "subreddit": "cscareerquestions",
+        "title": "4 years at Big tech. Being likeable beats being productive every single time",
+        "text": "**TL;DR: Grinding harder made me less productive AND less likeable. Being calm is the actual cheat code.** I'm 4 years deep at a big tech company, and work-life balance has been absolutely brutal lately.",
+        "score": 4954,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1mrujpf/4_years_at_big_tech_being_likeable_beats_being/"
+      },
+      {
+        "id": "reddit-1m1uw9v",
+        "subreddit": "cscareerquestions",
+        "title": "I just watched an AI agent take a Jira ticket, understand our codebase, and push a PR in minutes and...",
+        "text": "I’m a professional software engineer, and today something happened that honestly shook me. I watched an AI agent, part of an internally built tool our company is piloting, take in a small Jira ticket. It was the kind of task that would usually take me or a teammate about an hour.",
+        "score": 4724,
+        "url": "https://reddit.com/r/cscareerquestions/comments/1m1uw9v/i_just_watched_an_ai_agent_take_a_jira_ticket/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.601Z"
+  },
+  {
+    "slug": "elementary-school-teachers-except-special-education",
+    "soc_code": "25-2021",
+    "total_reviews": 77,
+    "featured_reviews": [
+      {
+        "id": "reddit-1js4xaw",
+        "subreddit": "Teachers",
+        "title": "My students are getting deported",
+        "text": "I have three students in my class from Haiti. I found out yesterday that their protected status is being revoked and they have two weeks to leave the US.  These kids are seniors, they all have jobs and are just out here to survive.",
+        "score": 41795,
+        "url": "https://reddit.com/r/Teachers/comments/1js4xaw/my_students_are_getting_deported/"
+      },
+      {
+        "id": "reddit-1miopbb",
+        "subreddit": "Teachers",
+        "title": "It’s over.",
+        "text": "Started in service today at my school. It has happened, we had slides directing us that we have to hang the Ten Commandments in our classrooms by Thursday.",
+        "score": 37764,
+        "url": "https://reddit.com/r/Teachers/comments/1miopbb/its_over/"
+      },
+      {
+        "id": "reddit-1kodco4",
+        "subreddit": "Teachers",
+        "title": "14 year old 7th grader still can't read. No answer from mom all year until now...",
+        "text": "I have a student who is 14 in the 7th grade. He's scoring below literate on all his tests. He won't even do work where we write an essay together and all he has to do is copy off the board.  We were working on something and his friend was trying to help him (read--let him cheat).",
+        "score": 28623,
+        "url": "https://reddit.com/r/Teachers/comments/1kodco4/14_year_old_7th_grader_still_cant_read_no_answer/"
+      },
+      {
+        "id": "reddit-1nhb7ja",
+        "subreddit": "Teachers",
+        "title": "Many kids cannot do basic things anymore",
+        "text": "I’ve been teaching since 2011, and I’ve seen a decline in independence and overall capability in many of today’s kids. For instance:  I teach second grade. Most of them cannot tie their shoes or even begin to try. I asked if they are working on it at home with parents and most say no.",
+        "score": 26265,
+        "url": "https://reddit.com/r/Teachers/comments/1nhb7ja/many_kids_cannot_do_basic_things_anymore/"
+      },
+      {
+        "id": "reddit-1parfhf",
+        "subreddit": "Teachers",
+        "title": "I started doing math times tables in homeroom. Now everyone is trying to switch into my homeroom.",
+        "text": "I have a high school senior homeroom. I don’t even remember how it started, but I was appalled that one of my students didn’t know a basic math fact: something like 2 * 7. So I started filling homeroom with quizzing students on times tables, giving them minute worksheets, etc.",
+        "score": 22896,
+        "url": "https://reddit.com/r/Teachers/comments/1parfhf/i_started_doing_math_times_tables_in_homeroom_now/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.597Z"
+  },
+  {
+    "slug": "secondary-school-teachers-except-special-and-career-technica",
+    "soc_code": "25-2031",
+    "total_reviews": 77,
+    "featured_reviews": [
+      {
+        "id": "reddit-1js4xaw",
+        "subreddit": "Teachers",
+        "title": "My students are getting deported",
+        "text": "I have three students in my class from Haiti. I found out yesterday that their protected status is being revoked and they have two weeks to leave the US.  These kids are seniors, they all have jobs and are just out here to survive.",
+        "score": 41795,
+        "url": "https://reddit.com/r/Teachers/comments/1js4xaw/my_students_are_getting_deported/"
+      },
+      {
+        "id": "reddit-1miopbb",
+        "subreddit": "Teachers",
+        "title": "It’s over.",
+        "text": "Started in service today at my school. It has happened, we had slides directing us that we have to hang the Ten Commandments in our classrooms by Thursday.",
+        "score": 37764,
+        "url": "https://reddit.com/r/Teachers/comments/1miopbb/its_over/"
+      },
+      {
+        "id": "reddit-1kodco4",
+        "subreddit": "Teachers",
+        "title": "14 year old 7th grader still can't read. No answer from mom all year until now...",
+        "text": "I have a student who is 14 in the 7th grade. He's scoring below literate on all his tests. He won't even do work where we write an essay together and all he has to do is copy off the board.  We were working on something and his friend was trying to help him (read--let him cheat).",
+        "score": 28623,
+        "url": "https://reddit.com/r/Teachers/comments/1kodco4/14_year_old_7th_grader_still_cant_read_no_answer/"
+      },
+      {
+        "id": "reddit-1nhb7ja",
+        "subreddit": "Teachers",
+        "title": "Many kids cannot do basic things anymore",
+        "text": "I’ve been teaching since 2011, and I’ve seen a decline in independence and overall capability in many of today’s kids. For instance:  I teach second grade. Most of them cannot tie their shoes or even begin to try. I asked if they are working on it at home with parents and most say no.",
+        "score": 26265,
+        "url": "https://reddit.com/r/Teachers/comments/1nhb7ja/many_kids_cannot_do_basic_things_anymore/"
+      },
+      {
+        "id": "reddit-1parfhf",
+        "subreddit": "Teachers",
+        "title": "I started doing math times tables in homeroom. Now everyone is trying to switch into my homeroom.",
+        "text": "I have a high school senior homeroom. I don’t even remember how it started, but I was appalled that one of my students didn’t know a basic math fact: something like 2 * 7. So I started filling homeroom with quizzing students on times tables, giving them minute worksheets, etc.",
+        "score": 22896,
+        "url": "https://reddit.com/r/Teachers/comments/1parfhf/i_started_doing_math_times_tables_in_homeroom_now/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.597Z"
+  },
+  {
+    "slug": "registered-nurses",
+    "soc_code": "29-1141",
+    "total_reviews": 75,
+    "featured_reviews": [
+      {
+        "id": "reddit-1kn2eez",
+        "subreddit": "nursing",
+        "title": "Trump supporters are the worst patients",
+        "text": "I live in TX and this is a whole new breed of patient. They make horrible racist remarks about the doctors treating them and whoever else happens to be on their care team that isn’t Caucasian.",
+        "score": 10695,
+        "url": "https://reddit.com/r/nursing/comments/1kn2eez/trump_supporters_are_the_worst_patients/"
+      },
+      {
+        "id": "reddit-1iycy39",
+        "subreddit": "nursing",
+        "title": "I’m just a random guy",
+        "text": "Random dad here. Not in the medical field at all. During lockdown and Covid, I couldn’t trust all the news and speculation.   I decided to just follow r/nursing to read what was happening in real life.",
+        "score": 9502,
+        "url": "https://reddit.com/r/nursing/comments/1iycy39/im_just_a_random_guy/"
+      },
+      {
+        "id": "reddit-1jih44c",
+        "subreddit": "nursing",
+        "title": "I GOT SPIT ON 3 times today—— and I am pressing charges!",
+        "text": "I don’t even know where to begin. I’m still fuming. Today, a patient SPIT ON ME. Not once. Not twice. THREE. DAMN. TIMES. And guess what? He was completely alert and oriented (AOx4). No confusion, no delirium—just entitled, disgusting behavior.",
+        "score": 7721,
+        "url": "https://reddit.com/r/nursing/comments/1jih44c/i_got_spit_on_3_times_today_and_i_am_pressing/"
+      },
+      {
+        "id": "reddit-1nwz37p",
+        "subreddit": "nursing",
+        "title": "You should not be a nurse if you are against science.",
+        "text": "With light of everything happening in the world right now, it KILLS me to see nurses who are actively advocating for acetaminophen causing autism, anti-vax mandates (Florida), etc. You are in a MEDICAL, SCIENCE-BASED CAREER.",
+        "score": 7521,
+        "url": "https://reddit.com/r/nursing/comments/1nwz37p/you_should_not_be_a_nurse_if_you_are_against/"
+      },
+      {
+        "id": "reddit-1pa386r",
+        "subreddit": "nursing",
+        "title": "Requested a different nurse",
+        "text": "I’m a white OR nurse.  I had a black pt come back for a hysterectomy last week.  The surgeon was also black. She was very sweet, but was obviously very scared, so I asked her what I could do to make her feel safe. She started fumbling her words then started crying.",
+        "score": 7034,
+        "url": "https://reddit.com/r/nursing/comments/1pa386r/requested_a_different_nurse/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.600Z"
+  },
+  {
+    "slug": "anesthesiologists",
+    "soc_code": "29-1211",
+    "total_reviews": 73,
+    "featured_reviews": [
+      {
+        "id": "reddit-1mdrtbb",
+        "subreddit": "medicine",
+        "title": "Today, I was a hero",
+        "text": "A family came in with their 2mo.  And they were very hesitant about vaccines.  \"Which ones are really important?\" So I went through each disease for which the child would be vaccinated today.",
+        "score": 4328,
+        "url": "https://reddit.com/r/medicine/comments/1mdrtbb/today_i_was_a_hero/"
+      },
+      {
+        "id": "reddit-1mdrwxj",
+        "subreddit": "Residency",
+        "title": "Today, I was a hero",
+        "text": "A family came in with their 2mo. And they were very hesitant about vaccines. \"Which ones are really important?\" So I went through each disease for which the child would be vaccinated today.",
+        "score": 3849,
+        "url": "https://reddit.com/r/Residency/comments/1mdrwxj/today_i_was_a_hero/"
+      },
+      {
+        "id": "reddit-1ofuc3y",
+        "subreddit": "Residency",
+        "title": "My patient made me feel ashamed",
+        "text": "I’m a prelim internal medicine resident right now, just trying to make it through the year. It’s been rough. Long days, nonstop stress, and I’m basically in survival mode most of the time.",
+        "score": 3772,
+        "url": "https://reddit.com/r/Residency/comments/1ofuc3y/my_patient_made_me_feel_ashamed/"
+      },
+      {
+        "id": "reddit-1najb9w",
+        "subreddit": "Residency",
+        "title": "My wife died and I don’t know what to do.",
+        "text": "My wife and I had twins last March during my first year of residency. It was unplanned but we figured hey, there’s going to have two of us so my wife can handle most of the childcare and I’ll step in more once I’m done with residency (I’m oversimplifying here).  Flash forward to today.",
+        "score": 3582,
+        "url": "https://reddit.com/r/Residency/comments/1najb9w/my_wife_died_and_i_dont_know_what_to_do/"
+      },
+      {
+        "id": "reddit-1kmwart",
+        "subreddit": "medicine",
+        "title": "Brain dead woman in Georgia kept on ventilator to incubate 9 week pregnancy. Family told they have n...",
+        "text": "https://www.11alive.com/article/news/local/family-claims-atlanta-nurse-declared-brain-dead-kept-alive-pregnancy/85-eac5257d-a329-4dd7-b80f-5c0ecd30225a &gt; The family of a 30-year-old metro Atlanta mother and nurse said she was declared brain dead more than 90 days ago — but is still being kept...",
+        "score": 3446,
+        "url": "https://reddit.com/r/medicine/comments/1kmwart/brain_dead_woman_in_georgia_kept_on_ventilator_to/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.603Z"
+  },
+  {
+    "slug": "general-internal-medicine-physicians",
+    "soc_code": "29-1216",
+    "total_reviews": 73,
+    "featured_reviews": [
+      {
+        "id": "reddit-1mdrtbb",
+        "subreddit": "medicine",
+        "title": "Today, I was a hero",
+        "text": "A family came in with their 2mo.  And they were very hesitant about vaccines.  \"Which ones are really important?\" So I went through each disease for which the child would be vaccinated today.",
+        "score": 4328,
+        "url": "https://reddit.com/r/medicine/comments/1mdrtbb/today_i_was_a_hero/"
+      },
+      {
+        "id": "reddit-1mdrwxj",
+        "subreddit": "Residency",
+        "title": "Today, I was a hero",
+        "text": "A family came in with their 2mo. And they were very hesitant about vaccines. \"Which ones are really important?\" So I went through each disease for which the child would be vaccinated today.",
+        "score": 3849,
+        "url": "https://reddit.com/r/Residency/comments/1mdrwxj/today_i_was_a_hero/"
+      },
+      {
+        "id": "reddit-1ofuc3y",
+        "subreddit": "Residency",
+        "title": "My patient made me feel ashamed",
+        "text": "I’m a prelim internal medicine resident right now, just trying to make it through the year. It’s been rough. Long days, nonstop stress, and I’m basically in survival mode most of the time.",
+        "score": 3772,
+        "url": "https://reddit.com/r/Residency/comments/1ofuc3y/my_patient_made_me_feel_ashamed/"
+      },
+      {
+        "id": "reddit-1najb9w",
+        "subreddit": "Residency",
+        "title": "My wife died and I don’t know what to do.",
+        "text": "My wife and I had twins last March during my first year of residency. It was unplanned but we figured hey, there’s going to have two of us so my wife can handle most of the childcare and I’ll step in more once I’m done with residency (I’m oversimplifying here).  Flash forward to today.",
+        "score": 3582,
+        "url": "https://reddit.com/r/Residency/comments/1najb9w/my_wife_died_and_i_dont_know_what_to_do/"
+      },
+      {
+        "id": "reddit-1kmwart",
+        "subreddit": "medicine",
+        "title": "Brain dead woman in Georgia kept on ventilator to incubate 9 week pregnancy. Family told they have n...",
+        "text": "https://www.11alive.com/article/news/local/family-claims-atlanta-nurse-declared-brain-dead-kept-alive-pregnancy/85-eac5257d-a329-4dd7-b80f-5c0ecd30225a &gt; The family of a 30-year-old metro Atlanta mother and nurse said she was declared brain dead more than 90 days ago — but is still being kept...",
+        "score": 3446,
+        "url": "https://reddit.com/r/medicine/comments/1kmwart/brain_dead_woman_in_georgia_kept_on_ventilator_to/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.604Z"
+  },
+  {
+    "slug": "electricians",
+    "soc_code": "47-2111",
+    "total_reviews": 56,
+    "featured_reviews": [
+      {
+        "id": "reddit-1igvsux",
+        "subreddit": "IBEW",
+        "title": "Repost because some of yall seem to think IBEW is gonna just bend over and take it",
+        "text": "I'm not concerned in the slightest about the political climate regarding unions because as much shit that we talk on jobsites to each other and other trades, there's no way in hell we'll accept bullshit",
+        "score": 31323,
+        "url": "https://reddit.com/r/IBEW/comments/1igvsux/repost_because_some_of_yall_seem_to_think_ibew_is/"
+      },
+      {
+        "id": "reddit-1l7d53t",
+        "subreddit": "IBEW",
+        "title": "Here we are 35 years later and the assault on unions and the working class by the owners has only es...",
+        "text": "There are more of us than there are of them, and we need to stand united as one labor movement. They’re trying to stomp out unions altogether, and the only thing standing between them and succeeding is us.",
+        "score": 9939,
+        "url": "https://reddit.com/r/IBEW/comments/1l7d53t/here_we_are_35_years_later_and_the_assault_on/"
+      },
+      {
+        "id": "reddit-1jj5qvq",
+        "subreddit": "electricians",
+        "title": "Career day",
+        "text": "Heres my career day booth i put together! I had a lot of fun putting it together and a ton of kids were very interested and had fun playing around with the switches.",
+        "score": 9233,
+        "url": "https://reddit.com/r/electricians/comments/1jj5qvq/career_day/"
+      },
+      {
+        "id": "reddit-1jzv52l",
+        "subreddit": "electricians",
+        "title": "The real post; not some 72 year old",
+        "text": "About a week ago, this photo was posted saying that a 72 year old electrician built this in a day. That is simply not true. I am the electrician who, with his apprentice, built this.",
+        "score": 6706,
+        "url": "https://reddit.com/r/electricians/comments/1jzv52l/the_real_post_not_some_72_year_old/"
+      },
+      {
+        "id": "reddit-1o3hkyl",
+        "subreddit": "IBEW",
+        "title": "I’m Jump Shepherd, IBEW 134. I’m running for U.S. Senate in Illinois to tax billionaires and restore...",
+        "text": "https://preview.redd.it/smcr7b0bmduf1.jpg?width=1080&amp;format=pjpg&amp;auto=webp&amp;s=da77327c800d8cfb221c8583760215f370ca546b # Reddit AMA **It’s not Red vs. Blue, it’s Oligarchs vs.",
+        "score": 5286,
+        "url": "https://reddit.com/r/IBEW/comments/1o3hkyl/im_jump_shepherd_ibew_134_im_running_for_us/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.598Z"
+  },
+  {
+    "slug": "chefs-and-head-cooks",
+    "soc_code": "35-1011",
+    "total_reviews": 53,
+    "featured_reviews": [
+      {
+        "id": "reddit-1o9pziv",
+        "subreddit": "KitchenConfidential",
+        "title": "I spent 1 month working as an unpaid apprentice after 20 years as a Chef.",
+        "text": "I have been struggling with my career lately.  The spark had been flickering.  I’ve spent a lot  of my career in management positions at high end- large volume restaurants and kept running into the same problems.",
+        "score": 6216,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1o9pziv/i_spent_1_month_working_as_an_unpaid_apprentice/"
+      },
+      {
+        "id": "reddit-1jmfrdz",
+        "subreddit": "KitchenConfidential",
+        "title": "Remembering the time that I walked from a restaurant and they closed.",
+        "text": "I worked at this bistro for 3 years, I was the sous chef for the final year. Almost to the day. Like the title says, I walked and they closed. Mother’s Day week, I worked 106 hours and slept there once. Only paid for 50, since I was on salary, which amounted to $404 in 2022.",
+        "score": 5087,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1jmfrdz/remembering_the_time_that_i_walked_from_a/"
+      },
+      {
+        "id": "reddit-1mtvo2r",
+        "subreddit": "KitchenConfidential",
+        "title": "Why was this actually my experience managing a kitchen?",
+        "text": "I managed a theater that served food and I swear to god it made me legitimately swear off working anywhere that serves food.",
+        "score": 5061,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1mtvo2r/why_was_this_actually_my_experience_managing_a/"
+      },
+      {
+        "id": "reddit-1jatixd",
+        "subreddit": "KitchenConfidential",
+        "title": "For all my kitchen homies struggling with sobriety",
+        "text": "10 years clean and sober today. Shit was hard af to go cold turkey and give up powder and vodka but worth it and my career has only went up since I made this change. I also got my family and myself back which is the most important thing.",
+        "score": 3636,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1jatixd/for_all_my_kitchen_homies_struggling_with_sobriety/"
+      },
+      {
+        "id": "reddit-1n5e764",
+        "subreddit": "Chefit",
+        "title": "Here I am",
+        "text": "I am 53 years old. I have been cooking professionally since 1989. I graduated culinary school in 1993. I have cooked professionally in Japan for 2 years, Ireland for 4 years, Thailand 2 years, Hong Kong 2 years. I have worked in Michelin star kitchens.",
+        "score": 3610,
+        "url": "https://reddit.com/r/Chefit/comments/1n5e764/here_i_am/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.602Z"
+  },
+  {
+    "slug": "computer-user-support-specialists",
+    "soc_code": "15-1232",
+    "total_reviews": 42,
+    "featured_reviews": [
+      {
+        "id": "reddit-1hpynb0",
+        "subreddit": "ITCareerQuestions",
+        "title": "I GOT THE JOB!!! 60K A YEAR",
+        "text": "After years of being adrift and working every odd job under the sun. I finally got a job as an IT technician! No certs no degree (in school now). Mostly remote too. I’ve never been salaried before so this is all new. It’s a growing company so I’m getting in on the ground floor.",
+        "score": 1833,
+        "url": "https://reddit.com/r/ITCareerQuestions/comments/1hpynb0/i_got_the_job_60k_a_year/"
+      },
+      {
+        "id": "reddit-1jb5psx",
+        "subreddit": "ITCareerQuestions",
+        "title": "Rant: Just found out a good friend who's hiring is \"that guy\".",
+        "text": "A friend of mine is the IT manager of a medium sized company. Yesterday I was sitting in his office, and he was talking about how he's not getting any \"qualified\" applicants for a couple of entry level positions he has open.",
+        "score": 1695,
+        "url": "https://reddit.com/r/ITCareerQuestions/comments/1jb5psx/rant_just_found_out_a_good_friend_whos_hiring_is/"
+      },
+      {
+        "id": "reddit-1kmosh9",
+        "subreddit": "ITCareerQuestions",
+        "title": "JUST RECEIVED A JOB OFFER!",
+        "text": "**HEY GUYS!** I just landed a job offer for $60,000 a year and I’m absolutely thrilled! It’s been a wild ride job hunting since March—hundreds of applications, 20 interviews, 18 rejections, 2 companies moved forward with second-round interviews (I failed both), and then this one came through after...",
+        "score": 1668,
+        "url": "https://reddit.com/r/ITCareerQuestions/comments/1kmosh9/just_received_a_job_offer/"
+      },
+      {
+        "id": "reddit-1kwswnn",
+        "subreddit": "ITCareerQuestions",
+        "title": "Quit looking to do IT; it’s not worth it.",
+        "text": "Honestly, this job feels like a joke sometimes. If you’re cool with being a glorified nerd and under appreciated, then maybe it’s for you. But don’t buy into the hype — the pay isn’t nearly as great as people make it out to be.",
+        "score": 1655,
+        "url": "https://reddit.com/r/ITCareerQuestions/comments/1kwswnn/quit_looking_to_do_it_its_not_worth_it/"
+      },
+      {
+        "id": "reddit-1ks0nym",
+        "subreddit": "ITCareerQuestions",
+        "title": "CEO leaked I'm getting laid off",
+        "text": "Hello, The CEO at my job replied to an email with me accidentally cc'd to the company lawyer this morning with a list of folks for separation agreements. They will begin preparing the drafts today and meet tomorrow. I assume I'm getting laid off Friday.",
+        "score": 1624,
+        "url": "https://reddit.com/r/ITCareerQuestions/comments/1ks0nym/ceo_leaked_im_getting_laid_off/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.606Z"
+  },
+  {
+    "slug": "public-safety-telecommunicators",
+    "soc_code": "43-5031",
+    "total_reviews": 40,
+    "featured_reviews": [
+      {
+        "id": "reddit-1i3g47j",
+        "subreddit": "911dispatchers",
+        "title": "Oof.. when you can’t unhear the screams. ",
+        "text": "I took a call from an absolutely frantic mother this morning after she and her husband woke up smelling smoke and found out their daughter had successfully completed suicide in their garage.",
+        "score": 9337,
+        "url": "https://reddit.com/r/911dispatchers/comments/1i3g47j/oof_when_you_cant_unhear_the_screams/"
+      },
+      {
+        "id": "reddit-1ppvuf1",
+        "subreddit": "911dispatchers",
+        "title": "Had a \"cardiac arrest\" on a 3 year old that turned out to be a Golden Retriever.",
+        "text": "I answer the phone to a woman screaming that her baby is dead. Ask what happened. \"I have no idea. I was working in my office and I went upstairs and my baby is in his bed and he's dead.",
+        "score": 3486,
+        "url": "https://reddit.com/r/911dispatchers/comments/1ppvuf1/had_a_cardiac_arrest_on_a_3_year_old_that_turned/"
+      },
+      {
+        "id": "reddit-1ie5vqg",
+        "subreddit": "911dispatchers",
+        "title": "I took this job to help people",
+        "text": "I’m sure I’ll lose my job for this but I refuse to work with or assist ICE. Nothing to do with politics. Just can’t stand idly by watching this. I’ll find different ways to help the community be safe.",
+        "score": 2658,
+        "url": "https://reddit.com/r/911dispatchers/comments/1ie5vqg/i_took_this_job_to_help_people/"
+      },
+      {
+        "id": "reddit-1m5s970",
+        "subreddit": "911dispatchers",
+        "title": "My Ex-girlfriend tendency to laugh out loud under extremely stressful situations may have saved a li...",
+        "text": "I was with my then-girlfriend when my sister-in-law fainted out of the blue. My girlfriend and I were in the living room when we heard a fall in the kitchen; there she was. I carefully turned her onto her side, checked her vitals, etc.",
+        "score": 2101,
+        "url": "https://reddit.com/r/911dispatchers/comments/1m5s970/my_exgirlfriend_tendency_to_laugh_out_loud_under/"
+      },
+      {
+        "id": "reddit-1ocuck6",
+        "subreddit": "911dispatchers",
+        "title": "Last night I sent my officer to her last call before she died on duty",
+        "text": "Title says it all. She was coming back from jail and pulled over for someone that was in a TC on the freeway. She was hit by a distracted and speeding driver and instantly killed. We sent CHP to check on her after not answering her radio.",
+        "score": 1645,
+        "url": "https://reddit.com/r/911dispatchers/comments/1ocuck6/last_night_i_sent_my_officer_to_her_last_call/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.600Z"
+  },
+  {
+    "slug": "data-scientists",
+    "soc_code": "15-2051",
+    "total_reviews": 38,
+    "featured_reviews": [
+      {
+        "id": "reddit-1lluwlv",
+        "subreddit": "datascience",
+        "title": "Data Science Has Become a Pseudo-Science",
+        "text": "I’ve been working in data science for the last ten years, both in industry and academia, having pursued a master’s and PhD in Europe. My experience in the industry, overall, has been very positive. I’ve had the opportunity to work with brilliant people on exciting, high-impact projects.",
+        "score": 2753,
+        "url": "https://reddit.com/r/datascience/comments/1lluwlv/data_science_has_become_a_pseudoscience/"
+      },
+      {
+        "id": "reddit-1hp7pim",
+        "subreddit": "datascience",
+        "title": "My Data Science Manifesto from a Self Taught Data Scientist",
+        "text": "**Background** I’m a self-taught data scientist, with about 5 years of data analyst experience and now about 5 years as a Data Scientist. I’m more math minded than the average person, but I’m not special.",
+        "score": 2079,
+        "url": "https://reddit.com/r/datascience/comments/1hp7pim/my_data_science_manifesto_from_a_self_taught_data/"
+      },
+      {
+        "id": "reddit-1kw1cik",
+        "subreddit": "datascience",
+        "title": "Am i the only one who truly love this field? It sounds like everyone here is in for the money and ha...",
+        "text": "it's funny because in real life most of the people i know in the field love it",
+        "score": 1898,
+        "url": "https://reddit.com/r/datascience/comments/1kw1cik/am_i_the_only_one_who_truly_love_this_field_it/"
+      },
+      {
+        "id": "reddit-1mlmwk0",
+        "subreddit": "datascience",
+        "title": "AI isn't taking your job. Executives are.",
+        "text": "If AI is ready to replace developers, why aren't developers replacing themselves with AI and just taking it easy at work? I'm a Director at my company. I'm in the meetings and helping set up the tools that cost people their jobs. Here's how they work: 1. Claude AI writes some code 2.",
+        "score": 1833,
+        "url": "https://reddit.com/r/datascience/comments/1mlmwk0/ai_isnt_taking_your_job_executives_are/"
+      },
+      {
+        "id": "reddit-1hxalxo",
+        "subreddit": "datascience",
+        "title": "Companies are finally hiring",
+        "text": "I applied to 80+ jobs before the new year and got rejected or didn’t hear back from most of them. A few positions were a level or two lower than my currently level. I got only 1 interview and I did accept the offer.  In the last week, 4 companies reached out for interviews.",
+        "score": 1587,
+        "url": "https://reddit.com/r/datascience/comments/1hxalxo/companies_are_finally_hiring/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.604Z"
+  },
+  {
+    "slug": "information-security-analysts",
+    "soc_code": "15-1212",
+    "total_reviews": 35,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ifntz6",
+        "subreddit": "cybersecurity",
+        "title": "So… I all the ATOs for basically all of the government are just… voided? Musk is installing his own,...",
+        "text": "This is not a political question, but honestly, what the hell does the ATO say now? I work on govt security and honestly have NO IDEA what is waiting on us when we login on Monday. (Contractor)",
+        "score": 3027,
+        "url": "https://reddit.com/r/cybersecurity/comments/1ifntz6/so_i_all_the_atos_for_basically_all_of_the/"
+      },
+      {
+        "id": "reddit-1iuadbf",
+        "subreddit": "cybersecurity",
+        "title": "NBC News seeking CISA sources",
+        "text": "Hi Reddit, I'm Kevin Collier, the cybersecurity reporter at NBC News. Here's [my bio page at NBC](https://www.nbcnews.com/author/kevin-collier-ncpn1110251).",
+        "score": 2501,
+        "url": "https://reddit.com/r/cybersecurity/comments/1iuadbf/nbc_news_seeking_cisa_sources/"
+      },
+      {
+        "id": "reddit-1ox3bfr",
+        "subreddit": "cybersecurity",
+        "title": "China just used Claude to hack 30 companies. The AI did 90% of the work. Anthropic caught them and i...",
+        "text": "September 2025. Anthropic detected suspicious activity on Claude. Started investigating. Turns out it was Chinese state-sponsored hackers. They used Claude Code to hack into roughly 30 companies. Big tech companies, Banks, Chemical manufacturers, and Government agencies.",
+        "score": 2208,
+        "url": "https://reddit.com/r/cybersecurity/comments/1ox3bfr/china_just_used_claude_to_hack_30_companies_the/"
+      },
+      {
+        "id": "reddit-1ju8d9i",
+        "subreddit": "cybersecurity",
+        "title": "Thousands of North Korean IT workers have infiltrated the Fortune 500—and they keep getting hired fo...",
+        "text": "",
+        "score": 1840,
+        "url": "https://reddit.com/r/cybersecurity/comments/1ju8d9i/thousands_of_north_korean_it_workers_have/"
+      },
+      {
+        "id": "reddit-1ig6jut",
+        "subreddit": "cybersecurity",
+        "title": "Cyber security and all security is a joke",
+        "text": "Guess I worked for nothing, if someone doesn't have clearance I'll just let them into my servers anyway... Can't make this stuff up.",
+        "score": 1632,
+        "url": "https://reddit.com/r/cybersecurity/comments/1ig6jut/cyber_security_and_all_security_is_a_joke/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.604Z"
+  },
+  {
+    "slug": "financial-and-investment-analysts",
+    "soc_code": "13-2051",
+    "total_reviews": 35,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ohh1h7",
+        "subreddit": "FinancialCareers",
+        "title": "Why KPMG is stigmatized?",
+        "text": "I know here’s a strict hierarchy system in finance but why KPMG is rated so inferiorly? I watched a video of a professor saying you’re cooked that you’d be working at McDonald, or even worse, KPMG for a whole life.",
+        "score": 1865,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1ohh1h7/why_kpmg_is_stigmatized/"
+      },
+      {
+        "id": "reddit-1kmntz8",
+        "subreddit": "FinancialCareers",
+        "title": "This Entire twitter thread is making me rethink this job (IB)",
+        "text": "Look up this account on Twitter (X) @ BoringBiz\\_  (IDK why I cant link this thread) Why am I fighting so hard to get a job where I will get chewed out because the font on slide 42 is slightly off or work 140 hours for pitch decks that only the MD will see.",
+        "score": 1462,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1kmntz8/this_entire_twitter_thread_is_making_me_rethink/"
+      },
+      {
+        "id": "reddit-1hplsc2",
+        "subreddit": "FinancialCareers",
+        "title": "Can I (a caveman) break in investment banking?",
+        "text": "Ugg want to break in Merger and Acquisitions. Ugg hunt mammoth when he 6 year old. Ugg learn from village elder. Village elder tell me Morgan Stanley take Ugg. Ugg trade copper for wheel. Ugg not know work life balance. Ugg no know there other jobs with good WLB and ok pay.",
+        "score": 1409,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1hplsc2/can_i_a_caveman_break_in_investment_banking/"
+      },
+      {
+        "id": "reddit-1k1jrp2",
+        "subreddit": "FinancialCareers",
+        "title": "Destroying an entire generation",
+        "text": "Kinda crazy how I’ve been running a small construction company (I hate it I want a office job) for the last few years, but I can’t get a job typing some fucking numbers in excel.",
+        "score": 1291,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1k1jrp2/destroying_an_entire_generation/"
+      },
+      {
+        "id": "reddit-1lsz0cu",
+        "subreddit": "FinancialCareers",
+        "title": "98% of posts on this sub:",
+        "text": "And its always some state school mf with a 3.2 GPA 🤣 “I want to work at the goldman sachs 🤓”",
+        "score": 1276,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1lsz0cu/98_of_posts_on_this_sub/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.605Z"
+  },
+  {
+    "slug": "personal-financial-advisors",
+    "soc_code": "13-2052",
+    "total_reviews": 35,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ohh1h7",
+        "subreddit": "FinancialCareers",
+        "title": "Why KPMG is stigmatized?",
+        "text": "I know here’s a strict hierarchy system in finance but why KPMG is rated so inferiorly? I watched a video of a professor saying you’re cooked that you’d be working at McDonald, or even worse, KPMG for a whole life.",
+        "score": 1865,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1ohh1h7/why_kpmg_is_stigmatized/"
+      },
+      {
+        "id": "reddit-1kmntz8",
+        "subreddit": "FinancialCareers",
+        "title": "This Entire twitter thread is making me rethink this job (IB)",
+        "text": "Look up this account on Twitter (X) @ BoringBiz\\_  (IDK why I cant link this thread) Why am I fighting so hard to get a job where I will get chewed out because the font on slide 42 is slightly off or work 140 hours for pitch decks that only the MD will see.",
+        "score": 1462,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1kmntz8/this_entire_twitter_thread_is_making_me_rethink/"
+      },
+      {
+        "id": "reddit-1hplsc2",
+        "subreddit": "FinancialCareers",
+        "title": "Can I (a caveman) break in investment banking?",
+        "text": "Ugg want to break in Merger and Acquisitions. Ugg hunt mammoth when he 6 year old. Ugg learn from village elder. Village elder tell me Morgan Stanley take Ugg. Ugg trade copper for wheel. Ugg not know work life balance. Ugg no know there other jobs with good WLB and ok pay.",
+        "score": 1409,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1hplsc2/can_i_a_caveman_break_in_investment_banking/"
+      },
+      {
+        "id": "reddit-1k1jrp2",
+        "subreddit": "FinancialCareers",
+        "title": "Destroying an entire generation",
+        "text": "Kinda crazy how I’ve been running a small construction company (I hate it I want a office job) for the last few years, but I can’t get a job typing some fucking numbers in excel.",
+        "score": 1291,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1k1jrp2/destroying_an_entire_generation/"
+      },
+      {
+        "id": "reddit-1lsz0cu",
+        "subreddit": "FinancialCareers",
+        "title": "98% of posts on this sub:",
+        "text": "And its always some state school mf with a 3.2 GPA 🤣 “I want to work at the goldman sachs 🤓”",
+        "score": 1276,
+        "url": "https://reddit.com/r/FinancialCareers/comments/1lsz0cu/98_of_posts_on_this_sub/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.605Z"
+  },
+  {
+    "slug": "real-estate-sales-agents",
+    "soc_code": "41-9022",
+    "total_reviews": 33,
+    "featured_reviews": [
+      {
+        "id": "reddit-1j449i8",
+        "subreddit": "realtors",
+        "title": "Taught 7-8 years old kids and was hired as a realtor to buy $1.2M home",
+        "text": "Last week, I asked in this sub how to teach real estate to my daughter's class who are 7-8 years old. My daughter's teacher asked me to talk to their class regarding real estate. They are writing a paper and there's a real estate portion.",
+        "score": 1749,
+        "url": "https://reddit.com/r/realtors/comments/1j449i8/taught_78_years_old_kids_and_was_hired_as_a/"
+      },
+      {
+        "id": "reddit-1oq9ggu",
+        "subreddit": "realtors",
+        "title": "Thinking of Becoming a Realtor? Here’s the Ugly Truth.",
+        "text": "If you’re getting into real estate because you saw someone on Instagram driving a G-Wagon with a “Just Sold” sign, you’re already cooked. This job looks easy from the outside. It’s not. 80% of new agents quit within two years. No salary, no benefits, no safety net. You don’t close, you don’t eat.",
+        "score": 1168,
+        "url": "https://reddit.com/r/realtors/comments/1oq9ggu/thinking_of_becoming_a_realtor_heres_the_ugly/"
+      },
+      {
+        "id": "reddit-1i8ff46",
+        "subreddit": "realtors",
+        "title": "I had an unrepresented Buyer ask for 9% in Closing Costs 😂 and threatened me 😬",
+        "text": "I haven't really seen an uptick in Buyers reaching out directly on my listings, but when I do most of them have simple questions and almost all \"Just want to see the house\" and expect me to show it on their timeframe.",
+        "score": 956,
+        "url": "https://reddit.com/r/realtors/comments/1i8ff46/i_had_an_unrepresented_buyer_ask_for_9_in_closing/"
+      },
+      {
+        "id": "reddit-1jttfxe",
+        "subreddit": "realtors",
+        "title": "Thinking of Becoming a Realtor? Here's the Ugly Truth (From Someone in the Trenches)",
+        "text": "Let me save you some time and heartache. If you’re thinking of becoming a Realtor because you saw someone on Instagram driving a G-Wagon and holding a “Just Sold” sign, pump the brakes.",
+        "score": 920,
+        "url": "https://reddit.com/r/realtors/comments/1jttfxe/thinking_of_becoming_a_realtor_heres_the_ugly/"
+      },
+      {
+        "id": "reddit-1k7h6f5",
+        "subreddit": "realtors",
+        "title": "When I pulled a listing on the day it was supposed to go live (and why it was the right call)",
+        "text": "Just had the craziest experience I need to share in case it ever happens to you. Longtime lurker but this was too wild not to post. So I got a call last week from this sweet elderly couple wanting to sell their home of 40+ years. Classic story - downsizing, moving closer to grandkids, etc.",
+        "score": 914,
+        "url": "https://reddit.com/r/realtors/comments/1k7h6f5/when_i_pulled_a_listing_on_the_day_it_was/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.606Z"
+  },
+  {
+    "slug": "carpenters",
+    "soc_code": "47-2031",
+    "total_reviews": 32,
+    "featured_reviews": [
+      {
+        "id": "reddit-1hq98pe",
+        "subreddit": "Carpentry",
+        "title": "I built this!",
+        "text": "I spent two years building my off grid house mostly with one helper except I had two for the stucco. (I did hire an electrician, plumber, and excavator) I cut every board in the entire house.",
+        "score": 7469,
+        "url": "https://reddit.com/r/Carpentry/comments/1hq98pe/i_built_this/"
+      },
+      {
+        "id": "reddit-1lpi91p",
+        "subreddit": "Carpentry",
+        "title": "My dad built an octagon",
+        "text": "My dad built an octagon shaped structure about 13 years ago, that I stay in when visiting their summer home. I've just started my journey into amateur woodworking and carpentry and have a new respect for this structure. Just curious what people's thoughts are on his craftsmanship.",
+        "score": 6373,
+        "url": "https://reddit.com/r/Carpentry/comments/1lpi91p/my_dad_built_an_octagon/"
+      },
+      {
+        "id": "reddit-1ng9fqk",
+        "subreddit": "Carpentry",
+        "title": "Some More Custom Carpentry",
+        "text": "I posted a set of curved stairs yesterday that got a lot of love. Much appreciated! I figured I’d post some other pretty neat things I’ve framed in the past.",
+        "score": 5309,
+        "url": "https://reddit.com/r/Carpentry/comments/1ng9fqk/some_more_custom_carpentry/"
+      },
+      {
+        "id": "reddit-1ien7v9",
+        "subreddit": "Carpentry",
+        "title": "A $20 3/16\" angle iron does wonders against breaking in",
+        "text": "Last night 2 am I was woken up by some rando kicking down my door. Luckily homeboy worn himself out. Didn't succeed. When I installed my front door a few years back I fastened a 2x3x3/16\" angle iron by the latch. Fastened it with 3\" Simpson screws to the king/jack studs.",
+        "score": 4174,
+        "url": "https://reddit.com/r/Carpentry/comments/1ien7v9/a_20_316_angle_iron_does_wonders_against_breaking/"
+      },
+      {
+        "id": "reddit-1l3j8oz",
+        "subreddit": "Carpentry",
+        "title": "Hired a local guy to build a shed for us.... Wish I had done it myself...",
+        "text": "We hired a local contractor to build us a shed and the entire experience has been bordering on traumatic at this point. This has been such a nightmare!.... I have attached images of the work... He made racist comments about a painter we hired....",
+        "score": 4100,
+        "url": "https://reddit.com/r/Carpentry/comments/1l3j8oz/hired_a_local_guy_to_build_a_shed_for_us_wish_i/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.600Z"
+  },
+  {
+    "slug": "paralegals-and-legal-assistants",
+    "soc_code": "23-2011",
+    "total_reviews": 32,
+    "featured_reviews": [
+      {
+        "id": "reddit-1l3ig0p",
+        "subreddit": "paralegal",
+        "title": "Mother \"Doesn't Recall\" the 2 Decades her Son was in Prison",
+        "text": "Since everyone seemed to enjoy my last post about the awesome response (basically a smoking gun) I got from my subpoena to Disney, I thought I'd share my all-time favorite paralegal story. The circumstances were tragic: a homeless man, mid-40's, was hit by our Insured and killed.",
+        "score": 1259,
+        "url": "https://reddit.com/r/paralegal/comments/1l3ig0p/mother_doesnt_recall_the_2_decades_her_son_was_in/"
+      },
+      {
+        "id": "reddit-1kaqrm4",
+        "subreddit": "paralegal",
+        "title": "“You’re too smart to be just a paralegal”",
+        "text": "I went on a date. The guy told me he was in law school. We chatted for a while and he asked what I did. I told him I am a legal assistant and in school to be a paralegal. He asked what school was like. I told him I wanted the classes to be accredited and told him what classes I was taking.  “Wow.",
+        "score": 1151,
+        "url": "https://reddit.com/r/paralegal/comments/1kaqrm4/youre_too_smart_to_be_just_a_paralegal/"
+      },
+      {
+        "id": "reddit-1idrr2h",
+        "subreddit": "paralegal",
+        "title": "Left my \"family\" firm, got money.",
+        "text": "I worked for the same form for 10 years. Loved it. We were a \"family,\" they said. We'll take of you, they said. We're a team, they said.",
+        "score": 785,
+        "url": "https://reddit.com/r/paralegal/comments/1idrr2h/left_my_family_firm_got_money/"
+      },
+      {
+        "id": "reddit-1l2o947",
+        "subreddit": "paralegal",
+        "title": "Disney May Help Win My Case",
+        "text": "Insurance defense paralegal here; I get to do a lot of investigating that I enjoy. Recent case is a guy who fell getting out of his truck - nothing slippery, so I'm not sure how we're liable, but he fell on his back and fractured a vertebrae.  Suit alleges lost wages, loss of ability to earn, etc.",
+        "score": 723,
+        "url": "https://reddit.com/r/paralegal/comments/1l2o947/disney_may_help_win_my_case/"
+      },
+      {
+        "id": "reddit-1jsfazf",
+        "subreddit": "paralegal",
+        "title": "“All you had to do was format &amp; doc production. That’s the easy part.” Cool. I resign Monday.",
+        "text": "Hi just needing to vent. I’m the only litigation assistant/paralegal, and of course the attorney had a sudden family “emergency” trip right when 8 discovery responses were due.",
+        "score": 679,
+        "url": "https://reddit.com/r/paralegal/comments/1jsfazf/all_you_had_to_do_was_format_doc_production_thats/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.606Z"
+  },
+  {
+    "slug": "physician-assistants",
+    "soc_code": "29-1071",
+    "total_reviews": 30,
+    "featured_reviews": [
+      {
+        "id": "reddit-1hnjfs7",
+        "subreddit": "physicianassistant",
+        "title": "This is why people hate insurance companies",
+        "text": "Relatively young patient presents with symptoms concerning for cancer and common, non-insidious etiologies of these symptoms already ruled out.",
+        "score": 2682,
+        "url": "https://reddit.com/r/physicianassistant/comments/1hnjfs7/this_is_why_people_hate_insurance_companies/"
+      },
+      {
+        "id": "reddit-1ivqmr0",
+        "subreddit": "physicianassistant",
+        "title": "I regret becoming a PA",
+        "text": "I regret becoming a PA. You can attend a highly respected university, excel academically, gain admission to a PA program with a 3-4% acceptance rate, study 70 hours a week for two years, complete a fellowship—and still have less practice authority, fewer job opportunities, and lower pay than an NP...",
+        "score": 984,
+        "url": "https://reddit.com/r/physicianassistant/comments/1ivqmr0/i_regret_becoming_a_pa/"
+      },
+      {
+        "id": "reddit-1ht4hx5",
+        "subreddit": "physicianassistant",
+        "title": "Please make me feel better about one of the most embarrassing moments of my life in front of a patie...",
+        "text": "New grad working about 4 months. I wore a button down shirt today. All was well in the morning. My MA mentioned before my first patient that my first button was undone, I fixed it and thought nothing else of it. Two patients later I'm in a visit with a young 20 y.o male.",
+        "score": 790,
+        "url": "https://reddit.com/r/physicianassistant/comments/1ht4hx5/please_make_me_feel_better_about_one_of_the_most/"
+      },
+      {
+        "id": "reddit-1j6aijz",
+        "subreddit": "physicianassistant",
+        "title": "I think I encountered why some physicians hate us",
+        "text": "I have a casual position I pick up shifts at. They finally hired someone for a position they had been struggling to fill (undesirable hours) and I’ve worked with the NP who will be taking over 3x now.  I’ll preface this by saying she is a genuinely nice person and I do like her as a person.",
+        "score": 773,
+        "url": "https://reddit.com/r/physicianassistant/comments/1j6aijz/i_think_i_encountered_why_some_physicians_hate_us/"
+      },
+      {
+        "id": "reddit-1m0zjfz",
+        "subreddit": "physicianassistant",
+        "title": "STUDENT LOANS PAID OFF!",
+        "text": "Never thought this day would come. 5 years. Six figures of debt (&gt;180,000). Sweat, tears and sacrifices. First generation! Never thought I could do it. I literally remember sitting during PA school orientation and thinking, I cant pay this off but I did it. Proud moment.",
+        "score": 713,
+        "url": "https://reddit.com/r/physicianassistant/comments/1m0zjfz/student_loans_paid_off/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.605Z"
+  },
+  {
+    "slug": "first-line-supervisors-of-construction-trades-and-extraction",
+    "soc_code": "47-1011",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1l2cglr",
+        "subreddit": "Construction",
+        "title": "Construction equipment left on my property—what do I do?",
+        "text": "There’s been construction equipment on my property for months now—looks like a small company, maybe working on fiber lines. They’ve damaged part of the property and I haven’t been able to get in touch with them. It’s definitely not a city crew.",
+        "score": 17767,
+        "url": "https://reddit.com/r/Construction/comments/1l2cglr/construction_equipment_left_on_my_propertywhat_do/"
+      },
+      {
+        "id": "reddit-1hufxs5",
+        "subreddit": "Construction",
+        "title": "How did old school ironworkers use the bathroom when they were like 70 stories up, did they just whi...",
+        "text": "",
+        "score": 12015,
+        "url": "https://reddit.com/r/Construction/comments/1hufxs5/how_did_old_school_ironworkers_use_the_bathroom/"
+      },
+      {
+        "id": "reddit-1lr3u0f",
+        "subreddit": "Construction",
+        "title": "Electricians what's the point of this?",
+        "text": "What's the point of running the wire like this back and forth from side to side of a joist bay.   Is there some sort of benefit to it?  Just saw it on this job im working and curiosity got the best of me like always.",
+        "score": 8525,
+        "url": "https://reddit.com/r/Construction/comments/1lr3u0f/electricians_whats_the_point_of_this/"
+      },
+      {
+        "id": "reddit-1lbf376",
+        "subreddit": "Construction",
+        "title": "Coworker seen it and said, “not professional.” So mission accomplished.",
+        "text": "I've heard this saying years ago and just got my wife to make a hard hat sticker of it.",
+        "score": 7484,
+        "url": "https://reddit.com/r/Construction/comments/1lbf376/coworker_seen_it_and_said_not_professional_so/"
+      },
+      {
+        "id": "reddit-1lmwr5u",
+        "subreddit": "Construction",
+        "title": "Found some quality labor recently, not easy to do.",
+        "text": "Salary request was a bit steep. But for goldfish crackers, applesauce packets and chocolate-dipped protein bars, I'm not complaining. Osha certainly won't approve of the Crocs, I'll have to get the kid some nice boots.",
+        "score": 359,
+        "url": "https://reddit.com/r/Construction/comments/1lmwr5u/found_some_quality_labor_recently_not_easy_to_do/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.598Z"
+  },
+  {
+    "slug": "construction-laborers",
+    "soc_code": "47-2061",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1l2cglr",
+        "subreddit": "Construction",
+        "title": "Construction equipment left on my property—what do I do?",
+        "text": "There’s been construction equipment on my property for months now—looks like a small company, maybe working on fiber lines. They’ve damaged part of the property and I haven’t been able to get in touch with them. It’s definitely not a city crew.",
+        "score": 17767,
+        "url": "https://reddit.com/r/Construction/comments/1l2cglr/construction_equipment_left_on_my_propertywhat_do/"
+      },
+      {
+        "id": "reddit-1hufxs5",
+        "subreddit": "Construction",
+        "title": "How did old school ironworkers use the bathroom when they were like 70 stories up, did they just whi...",
+        "text": "",
+        "score": 12015,
+        "url": "https://reddit.com/r/Construction/comments/1hufxs5/how_did_old_school_ironworkers_use_the_bathroom/"
+      },
+      {
+        "id": "reddit-1lr3u0f",
+        "subreddit": "Construction",
+        "title": "Electricians what's the point of this?",
+        "text": "What's the point of running the wire like this back and forth from side to side of a joist bay.   Is there some sort of benefit to it?  Just saw it on this job im working and curiosity got the best of me like always.",
+        "score": 8525,
+        "url": "https://reddit.com/r/Construction/comments/1lr3u0f/electricians_whats_the_point_of_this/"
+      },
+      {
+        "id": "reddit-1lbf376",
+        "subreddit": "Construction",
+        "title": "Coworker seen it and said, “not professional.” So mission accomplished.",
+        "text": "I've heard this saying years ago and just got my wife to make a hard hat sticker of it.",
+        "score": 7484,
+        "url": "https://reddit.com/r/Construction/comments/1lbf376/coworker_seen_it_and_said_not_professional_so/"
+      },
+      {
+        "id": "reddit-1lmwr5u",
+        "subreddit": "Construction",
+        "title": "Found some quality labor recently, not easy to do.",
+        "text": "Salary request was a bit steep. But for goldfish crackers, applesauce packets and chocolate-dipped protein bars, I'm not complaining. Osha certainly won't approve of the Crocs, I'll have to get the kid some nice boots.",
+        "score": 359,
+        "url": "https://reddit.com/r/Construction/comments/1lmwr5u/found_some_quality_labor_recently_not_easy_to_do/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.598Z"
+  },
+  {
+    "slug": "accountants-and-auditors",
+    "soc_code": "13-2011",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1p32cb3",
+        "subreddit": "Accounting",
+        "title": "Full list of degrees not classed as ‘professional’ by Trump admin",
+        "text": "[https://www.newsweek.com/full-list-degrees-professional-trump-administration-11085695](https://www.newsweek.com/full-list-degrees-professional-trump-administration-11085695)",
+        "score": 5522,
+        "url": "https://reddit.com/r/Accounting/comments/1p32cb3/full_list_of_degrees_not_classed_as_professional/"
+      },
+      {
+        "id": "reddit-1iihssh",
+        "subreddit": "Accounting",
+        "title": "As an intern this job is so funny how do you all not love it",
+        "text": "Me to client: hey you only sent me invoices for half of the selections I sent you, we need the rest Client: oh we can’t find them Me: oh but we need them Client: OKAY we will try our best but no guarantees 😠 My brother in Christ you are being audited 😭😭😭😭😭 Give me the documents so I can go...",
+        "score": 4659,
+        "url": "https://reddit.com/r/Accounting/comments/1iihssh/as_an_intern_this_job_is_so_funny_how_do_you_all/"
+      },
+      {
+        "id": "reddit-1kamidy",
+        "subreddit": "Accounting",
+        "title": "Anti-WFH people are the laziest employees we've got",
+        "text": "The people who never miss a chance to refer to WFH as \"not at work\" or \"a day off\" are the same ones popping into each other's office to gossip, trying to put together office wide coffee hours, and getting revved up for company conferences and trainings  I've learned to tune out the remarks about...",
+        "score": 4465,
+        "url": "https://reddit.com/r/Accounting/comments/1kamidy/antiwfh_people_are_the_laziest_employees_weve_got/"
+      },
+      {
+        "id": "reddit-1iz42et",
+        "subreddit": "Accounting",
+        "title": "My life changed this week",
+        "text": "I’m a CPA I’m 31 I’ve had a decent career. I just got diagnosed with leukemia and none of it seems worth it looking back on it. Of course, I’ve earned myself a decent salary and decent insurance and nice remote role which probably is all privilege a lot of others are not offered.",
+        "score": 4072,
+        "url": "https://reddit.com/r/Accounting/comments/1iz42et/my_life_changed_this_week/"
+      },
+      {
+        "id": "reddit-1l2ao3p",
+        "subreddit": "Accounting",
+        "title": "New Finance Director doesn't understand depreciation... I'm not joking",
+        "text": "About six weeks ago, our company hired a new Finance Director. I'm a senior accountant and report directly to her. She came with what looked like an impressive resume 20+ years in corporate finance, Big 4 background, MBA from a respected program.",
+        "score": 3320,
+        "url": "https://reddit.com/r/Accounting/comments/1l2ao3p/new_finance_director_doesnt_understand/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.602Z"
+  },
+  {
+    "slug": "airline-pilots-copilots-and-flight-engineers",
+    "soc_code": "53-2011",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1oupzd8",
+        "subreddit": "flying",
+        "title": "I just bought a plane and have 0 flight hours",
+        "text": "I have wanted to fly for years. However, life has gotten in the way, building my business, chasing kids around the state for sports etc.  I have gone up 3 times with a buddy. I bought a hanger lot, 3 min away from my house.",
+        "score": 5386,
+        "url": "https://reddit.com/r/flying/comments/1oupzd8/i_just_bought_a_plane_and_have_0_flight_hours/"
+      },
+      {
+        "id": "reddit-1louy84",
+        "subreddit": "flying",
+        "title": "My student tried to end us, literally!",
+        "text": "**TL;DR: Student, who isn't keen on me, pulled the mixture mid-flight. I saved it. We landed. He will never fly with me nor with anyone else in my flight school, possibly in all of Canada as well.** Apologies for the click-baity title but I couldn't think of a better one.",
+        "score": 5233,
+        "url": "https://reddit.com/r/flying/comments/1louy84/my_student_tried_to_end_us_literally/"
+      },
+      {
+        "id": "reddit-1kvu7bc",
+        "subreddit": "flying",
+        "title": "Engine failure with student yesterday",
+        "text": "My first real emergency in 800 hours. After departing for a routine training flight, my student practiced the “ABCD” checklist for an engine failure. Gave him back the power and we headed for a nearby field to practice ground reference maneuvers. Enroute the engine started running rough.",
+        "score": 3518,
+        "url": "https://reddit.com/r/flying/comments/1kvu7bc/engine_failure_with_student_yesterday/"
+      },
+      {
+        "id": "reddit-1iurfzk",
+        "subreddit": "flying",
+        "title": "It infuriates me to see the Endeavor FO’s name being dragged through the mud and questioned by peopl...",
+        "text": "I’ve already seen countless posts and forums about how the FO of flight 4819 was not qualified because of their gender.",
+        "score": 2889,
+        "url": "https://reddit.com/r/flying/comments/1iurfzk/it_infuriates_me_to_see_the_endeavor_fos_name/"
+      },
+      {
+        "id": "reddit-1prv8fa",
+        "subreddit": "flying",
+        "title": "Well, I’m a twin owner now.",
+        "text": "Made a huge jump in aircraft ownership as of yesterday. I’m now the owner/operator of a 1979 Cessna 340A.",
+        "score": 2822,
+        "url": "https://reddit.com/r/flying/comments/1prv8fa/well_im_a_twin_owner_now/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.602Z"
+  },
+  {
+    "slug": "actuaries",
+    "soc_code": "15-2011",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1pjjja3",
+        "subreddit": "actuary",
+        "title": "I was so annoyed that my husband kept getting doctor-themed gifts but no one ever got me any actuary...",
+        "text": "You may remember me from my other hit r/actuary post, in which I showed my fellow TI 30XS Multiview enjoyers the pair of earrings I made out of polymer clay.",
+        "score": 1117,
+        "url": "https://reddit.com/r/actuary/comments/1pjjja3/i_was_so_annoyed_that_my_husband_kept_getting/"
+      },
+      {
+        "id": "reddit-1kzf6sr",
+        "subreddit": "actuary",
+        "title": "Signing Off",
+        "text": "After 43 years in insurance and 30 years at New York Life, I am hanging up my hat and retiring to the country. I'll be unsubbing from r/actuary and joining r/sailing and r/woodworking. Best of luck on your exams and keep at it.",
+        "score": 1020,
+        "url": "https://reddit.com/r/actuary/comments/1kzf6sr/signing_off/"
+      },
+      {
+        "id": "reddit-1o5wz6h",
+        "subreddit": "actuary",
+        "title": "Where do actuaries work...",
+        "text": "Found this on linkedin and thought it was good information. Haven't verified the information but seems reasonable given the COL and job openings I've seen Also idk who to credit for this since I think it was a repost. If anyone knows just mention the person's name below",
+        "score": 478,
+        "url": "https://reddit.com/r/actuary/comments/1o5wz6h/where_do_actuaries_work/"
+      },
+      {
+        "id": "reddit-1mf719m",
+        "subreddit": "actuary",
+        "title": "TIA's Exam P &amp; FM Courses are Now Completely Free",
+        "text": "We have some huge news we wanted to share with you all. Starting today, our full, comprehensive courses for Exam P and Exam FM are 100% free for everyone.",
+        "score": 419,
+        "url": "https://reddit.com/r/actuary/comments/1mf719m/tias_exam_p_fm_courses_are_now_completely_free/"
+      },
+      {
+        "id": "reddit-1oqwq91",
+        "subreddit": "actuary",
+        "title": "Most likely going to quit for good in March :)",
+        "text": "In my late 30s.  My job is pretty good for an actuary and company is amazing. I’m proud of working for it.",
+        "score": 361,
+        "url": "https://reddit.com/r/actuary/comments/1oqwq91/most_likely_going_to_quit_for_good_in_march/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.607Z"
+  },
+  {
+    "slug": "occupational-therapists",
+    "soc_code": "29-1122",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1lnv30i",
+        "subreddit": "OccupationalTherapy",
+        "title": "Occupational Therapist standing up for their profession and Bernie Sanders is supporting them!",
+        "text": "Bernie Sanders is standing with healthcare workers at HCA-owned Sunrise Hospital in Las Vegas! They’re fighting for a fair contract and showing the power of unity!   This is what all healthcare professionals should be doing.",
+        "score": 474,
+        "url": "https://reddit.com/r/OccupationalTherapy/comments/1lnv30i/occupational_therapist_standing_up_for_their/"
+      },
+      {
+        "id": "reddit-1kqo559",
+        "subreddit": "OccupationalTherapy",
+        "title": "I love being an OT.",
+        "text": "There's a lot of negativity floating around here, some of it justified, some super exaggerated, but I want to share a different viewpoint, especially for anyone thinking about OT as a profession or struggling in their current setting. Practicing as an OT is genuinely rewarding.",
+        "score": 380,
+        "url": "https://reddit.com/r/OccupationalTherapy/comments/1kqo559/i_love_being_an_ot/"
+      },
+      {
+        "id": "reddit-1ms0fz7",
+        "subreddit": "OccupationalTherapy",
+        "title": "What “OT advice” will you never tell your patients again after actually doing/going through it yours...",
+        "text": "I’ll go first- I will never again suggest one of my patients do laundry with a reacher. It is wildly inefficient and don’t get me started on the hand cramps 😩",
+        "score": 331,
+        "url": "https://reddit.com/r/OccupationalTherapy/comments/1ms0fz7/what_ot_advice_will_you_never_tell_your_patients/"
+      },
+      {
+        "id": "reddit-1kdbha7",
+        "subreddit": "OccupationalTherapy",
+        "title": "If your Considering becoming an OT, Read This First.",
+        "text": "OT is a wonderful and rewarding profession. However, if you're considering OT school, it's crucial that you have a clear and realistic financial plan to manage your student debt. Understand exactly what you're committing to financially before diving in.",
+        "score": 313,
+        "url": "https://reddit.com/r/OccupationalTherapy/comments/1kdbha7/if_your_considering_becoming_an_ot_read_this_first/"
+      },
+      {
+        "id": "reddit-1i9ke0h",
+        "subreddit": "OccupationalTherapy",
+        "title": "I was that “older” student in my OTA program. Found a card my husband gave me when I was in school n...",
+        "text": "I’m so so lucky I had a support system. My heart goes out to anyone in school struggling to finish and work at the same time.",
+        "score": 265,
+        "url": "https://reddit.com/r/OccupationalTherapy/comments/1i9ke0h/i_was_that_older_student_in_my_ota_program_found/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.608Z"
+  },
+  {
+    "slug": "dental-hygienists",
+    "soc_code": "29-1292",
+    "total_reviews": 29,
+    "featured_reviews": [
+      {
+        "id": "reddit-1o27har",
+        "subreddit": "DentalHygiene",
+        "title": "Don’t become a dental hygienist. Don’t go into this field. These offices are worse than high school.",
+        "text": "I just quit my job. 3rd office in 1 year. The #1 toxic thing about being a hygienist is the drama these offices have. It’s ridiculous and I’ve experienced these same scenarios at multiple offices. I’ve never had these problems outside of the dental field.",
+        "score": 307,
+        "url": "https://reddit.com/r/DentalHygiene/comments/1o27har/dont_become_a_dental_hygienist_dont_go_into_this/"
+      },
+      {
+        "id": "reddit-1n3hu2v",
+        "subreddit": "DentalHygiene",
+        "title": "Patient made me cry",
+        "text": "I had such a bxtch PT this morning. I got her from the waiting room, and said how are you and she just says “I’m fine.” Which was my first clue because an at least DECENT pts will say fine, how are you.",
+        "score": 226,
+        "url": "https://reddit.com/r/DentalHygiene/comments/1n3hu2v/patient_made_me_cry/"
+      },
+      {
+        "id": "reddit-1k5zoun",
+        "subreddit": "DentalHygiene",
+        "title": "Crying on a Monday Morning...",
+        "text": "Okay, I need to share something that seriously moved me this week. About a year ago, I had a longtime patient come in—someone I’ve seen for over 6 years. His oral health had always been solid, but when he came in that time, everything had changed.",
+        "score": 191,
+        "url": "https://reddit.com/r/DentalHygiene/comments/1k5zoun/crying_on_a_monday_morning/"
+      },
+      {
+        "id": "reddit-1mgxstx",
+        "subreddit": "DentalHygiene",
+        "title": "Trigger warning: dental hygienists “complaining about our easy jobs” again",
+        "text": "Walk into my world for one hygiene appointment: I start by speed‑reading a medical history that would make a nurse sweat. Blood thinners, diabetes, high blood pressure: check, check. My brain juggles a thousand clinical red flags, but the clock started when I opened the door.",
+        "score": 140,
+        "url": "https://reddit.com/r/DentalHygiene/comments/1mgxstx/trigger_warning_dental_hygienists_complaining/"
+      },
+      {
+        "id": "reddit-1l19zy9",
+        "subreddit": "DentalHygiene",
+        "title": "Nevada Association of General Dentists is speaking loudly and opposing the recent bill aiming to cre...",
+        "text": "This is not in the best interest of Nevadans or any Americans. Americans have some of the best healthcare in the world, and the American healthcare education system is what sets America apart.",
+        "score": 134,
+        "url": "https://reddit.com/r/DentalHygiene/comments/1l19zy9/nevada_association_of_general_dentists_is/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.608Z"
+  },
+  {
+    "slug": "respiratory-therapists",
+    "soc_code": "29-1126",
+    "total_reviews": 28,
+    "featured_reviews": [
+      {
+        "id": "reddit-1m7mz28",
+        "subreddit": "respiratorytherapy",
+        "title": "Scrub nurses can all kiss my ass.",
+        "text": "If it sounds like I'm generalizing, then I am. No, I'm not anywhere near your fucking sterile field. We are not in the OR right now. It's up to you to move your shit out of the way so I can get my shit in too, otherwise, this procedure isn't going to start.",
+        "score": 529,
+        "url": "https://reddit.com/r/respiratorytherapy/comments/1m7mz28/scrub_nurses_can_all_kiss_my_ass/"
+      },
+      {
+        "id": "reddit-1l4bpf8",
+        "subreddit": "respiratorytherapy",
+        "title": "I’m not a smart respiratory therapist.",
+        "text": "Random thought for the day.   I was a terrible student.  Rarely studied, still got A's and graduated with honors.  Now a decade into this profession ... I know I'm not smart at this job.  I can't tell you this or that equation or algorithm.  I can't tell you why most things work the way they do.",
+        "score": 208,
+        "url": "https://reddit.com/r/respiratorytherapy/comments/1l4bpf8/im_not_a_smart_respiratory_therapist/"
+      },
+      {
+        "id": "reddit-1o4rvbh",
+        "subreddit": "respiratorytherapy",
+        "title": "I've changed my mind. RTs are very necessary in the hospital.",
+        "text": "A few days ago I was on here lamenting the fact that I felt like being an RT was a waste of time and most of most of the things we do can be outsourced to others (Nurses can do nebs, CNAs can handle CPAPs, etc.). The past few days I was proven wrong.",
+        "score": 199,
+        "url": "https://reddit.com/r/respiratorytherapy/comments/1o4rvbh/ive_changed_my_mind_rts_are_very_necessary_in_the/"
+      },
+      {
+        "id": "reddit-1kmt7zr",
+        "subreddit": "respiratorytherapy",
+        "title": "Almost cried and had to take a 5 minute break but I somehow passed",
+        "text": "If you keep getting answers wrong just realize there’s more simulations and remember you have 4 hours a 5 minute break to regroup yourself after a bad simulation is ok this test is stressful but you got to realize you made it this far and you know it.",
+        "score": 166,
+        "url": "https://reddit.com/r/respiratorytherapy/comments/1kmt7zr/almost_cried_and_had_to_take_a_5_minute_break_but/"
+      },
+      {
+        "id": "reddit-1mxvmz2",
+        "subreddit": "respiratorytherapy",
+        "title": "I just needed to vent.",
+        "text": "I withdrew care on another patient today. It's odd how as an RT, I can give a baby their first breath of life, and later, give someone their last. I honestly can't remember half of the people I've terminally extubated throughout my career.",
+        "score": 134,
+        "url": "https://reddit.com/r/respiratorytherapy/comments/1mxvmz2/i_just_needed_to_vent/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.608Z"
+  },
+  {
+    "slug": "firefighters",
+    "soc_code": "33-2011",
+    "total_reviews": 27,
+    "featured_reviews": [
+      {
+        "id": "reddit-1iuvxc9",
+        "subreddit": "Firefighting",
+        "title": "Made my first grab from a structure fire",
+        "text": "I’ve been on the job for about 6 years or so, but this was definitely my first time with a grab. We responded to a structure fire at about 5 in the morning, upon arrival house was fully involved and there were no reports to dispatch of someone in the house still.",
+        "score": 10891,
+        "url": "https://reddit.com/r/Firefighting/comments/1iuvxc9/made_my_first_grab_from_a_structure_fire/"
+      },
+      {
+        "id": "reddit-1i7kni0",
+        "subreddit": "Firefighting",
+        "title": "Reasons For Calls",
+        "text": "Saw someone ask what all we do besides fire. Here’s a list the shifts add to for dumb calls. It was started a few months ago",
+        "score": 1424,
+        "url": "https://reddit.com/r/Firefighting/comments/1i7kni0/reasons_for_calls/"
+      },
+      {
+        "id": "reddit-1ldq26u",
+        "subreddit": "Firefighting",
+        "title": "I got in! Just wanted to say Thanks",
+        "text": "I’m a 38/M and I felt the fire service calling a few years ago. I never thought about firefighting, not for one second in my life to be completely honest. Then one day, it kind of popped into my head and I couldn’t get it out.",
+        "score": 462,
+        "url": "https://reddit.com/r/Firefighting/comments/1ldq26u/i_got_in_just_wanted_to_say_thanks/"
+      },
+      {
+        "id": "reddit-1o8xl6q",
+        "subreddit": "Firefighting",
+        "title": "A Lawyer asked me to do something that illegal, morally and ethically wrong.",
+        "text": "I'm a FF/EMT-B, the other day a friend of mine asked me to meet him for breakfast. When I got there his brother in law was there with him. Long story short this wasn't just a friendly get together. It was a pitch from the lawyer to start giving him the info from people who were involved in MVAs.",
+        "score": 452,
+        "url": "https://reddit.com/r/Firefighting/comments/1o8xl6q/a_lawyer_asked_me_to_do_something_that_illegal/"
+      },
+      {
+        "id": "reddit-1lsqmlb",
+        "subreddit": "Firefighting",
+        "title": "Major change in my Life !! Chase your dream",
+        "text": "I (32M) just made a major life change. I was recently hired as a full-time firefighter in my city of around 200,000 people. It was a dream I thought I had to let go of mainly because of my age and the salary I was earning (around $100K), since now I’m starting over at the bottom, making $25/hour.",
+        "score": 225,
+        "url": "https://reddit.com/r/Firefighting/comments/1lsqmlb/major_change_in_my_life_chase_your_dream/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.599Z"
+  },
+  {
+    "slug": "machinists",
+    "soc_code": "51-4041",
+    "total_reviews": 27,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ns4qsr",
+        "subreddit": "Machinists",
+        "title": "Rubik's Cube- Manually machined from aluminum, fully functional",
+        "text": "Hi everyone, thought I'd share a passion project of mine that I did over this summer. I'm a college student who learned the basics of machining for my manufacturing class, and I thought I'd use my college's makers' space to make something really memorable.",
+        "score": 3651,
+        "url": "https://reddit.com/r/Machinists/comments/1ns4qsr/rubiks_cube_manually_machined_from_aluminum_fully/"
+      },
+      {
+        "id": "reddit-1jwy4l7",
+        "subreddit": "Machinists",
+        "title": "Inches vs Millimetres — What’s the Standard in Your Shop?",
+        "text": "Alright machinist hive mind, riddle me this: how many of you are still knee-deep in inches, and how many of you have entered the enlightened world of millimetres? I’m genuinely curious — especially you lot over in the States.",
+        "score": 2789,
+        "url": "https://reddit.com/r/Machinists/comments/1jwy4l7/inches_vs_millimetres_whats_the_standard_in_your/"
+      },
+      {
+        "id": "reddit-1lbizlr",
+        "subreddit": "Machinists",
+        "title": "Just got graduated in machining school.",
+        "text": "I just fineshed my 2 year (free) course, and, and got two prizes! The best student in the school and a mitutoyo prize (Gives me a set of calipers) that is one for the best student in the machining course and one for the maintenance course.",
+        "score": 1216,
+        "url": "https://reddit.com/r/Machinists/comments/1lbizlr/just_got_graduated_in_machining_school/"
+      },
+      {
+        "id": "reddit-1jj74tv",
+        "subreddit": "Machinists",
+        "title": "Yeah, I was a bit overly dramatic...",
+        "text": "I am the whiny little guy that made that overly self deprecating post about not smoking weed as a machinist. I have gotten over the hump of not smoking any more and I honestly feel great. I never realized how much free time I had since I stopped.",
+        "score": 1107,
+        "url": "https://reddit.com/r/Machinists/comments/1jj74tv/yeah_i_was_a_bit_overly_dramatic/"
+      },
+      {
+        "id": "reddit-1l8rk0s",
+        "subreddit": "Machinists",
+        "title": "Being a \"good/hard worker\" just gets you more work",
+        "text": "A lesson I learned over my 10 years in this trade so far is that there is no amount of \"Going the extra mile\" you can do to get paid better than the guy who just shows up for the paycheck and nothing else. I've seen plenty of people on here argue the same point.",
+        "score": 309,
+        "url": "https://reddit.com/r/Machinists/comments/1l8rk0s/being_a_goodhard_worker_just_gets_you_more_work/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.604Z"
+  },
+  {
+    "slug": "physical-therapists",
+    "soc_code": "29-1123",
+    "total_reviews": 27,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ia71n0",
+        "subreddit": "physicaltherapy",
+        "title": "What is going on here?!",
+        "text": "I don’t see this kind of posturing working with my senior patient population and I’m a little stumped. I’ve seen folks say that this forward lean is indicative of frontotemporal dementia, but I have never witnessed a fwd lean that’s not kyphotic as well.",
+        "score": 532,
+        "url": "https://reddit.com/r/physicaltherapy/comments/1ia71n0/what_is_going_on_here/"
+      },
+      {
+        "id": "reddit-1lquk85",
+        "subreddit": "physicaltherapy",
+        "title": "Sign the Petition: Keep Pseudoscience Out of Academia - No Chiropractic Program at Pitt",
+        "text": "The University of Pittsburgh is launching a Doctor of Chiropractic program alongside it’s DPT program, a move that threatens to legitimize a field rooted in outdated and dangerous ideas, such as subluxation theory and spinal manipulation for infants.",
+        "score": 421,
+        "url": "https://reddit.com/r/physicaltherapy/comments/1lquk85/sign_the_petition_keep_pseudoscience_out_of/"
+      },
+      {
+        "id": "reddit-1mpjyxj",
+        "subreddit": "physicaltherapy",
+        "title": "A serious message to patients",
+        "text": "OKAY LISTEN, NOBODY — AND I MEAN NOBODY — DOES PHYSICAL THERAPY BETTER THAN ME, FOLKS. THE DOCTORS, VERY SMART PEOPLE, THEY ALL SAY “SIR, YOUR FORM IS PERFECT, ABSOLUTELY PERFECT.” YOU GOTTA DO THE EXERCISES — TREMENDOUS STRETCHES, THE BEST STRETCHES — EVERY SINGLE DAY.",
+        "score": 397,
+        "url": "https://reddit.com/r/physicaltherapy/comments/1mpjyxj/a_serious_message_to_patients/"
+      },
+      {
+        "id": "reddit-1p1vk7a",
+        "subreddit": "physicaltherapy",
+        "title": "No longer considered a \"professional degree\"",
+        "text": "The DoE no longer lists PT (nor OT, NP, PA, ST, or RT) as a professional degree, but fucking chiropractics makes the list.  How bad is our lobby that the APTA can't ensure this basic designation? Clearly the chrios have it figured out. MAHA at its finest...",
+        "score": 365,
+        "url": "https://reddit.com/r/physicaltherapy/comments/1p1vk7a/no_longer_considered_a_professional_degree/"
+      },
+      {
+        "id": "reddit-1idlnki",
+        "subreddit": "physicaltherapy",
+        "title": "I love my job",
+        "text": "A lot of negativity in this sub, some of it warranted and some of it is just absurd. However, for anyone in this sub that’s trying to get into PT school, currently in PT school, or just graduated, this profession is dope.",
+        "score": 335,
+        "url": "https://reddit.com/r/physicaltherapy/comments/1idlnki/i_love_my_job/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.607Z"
+  },
+  {
+    "slug": "welders-cutters-solderers-and-brazers",
+    "soc_code": "51-4121",
+    "total_reviews": 26,
+    "featured_reviews": [
+      {
+        "id": "reddit-1m0ikto",
+        "subreddit": "Welding",
+        "title": "Built myself a railing for my front steps from scratch",
+        "text": "I didn’t feel like spending money on a cookie cutter railing so I bought some 16gauge 2x1 tubing and got to work. Got it cut up with an abrasive chop saw and used my Lincoln 140 mig to assemble. I just got a super powerful 6” Metabo angle grinder that smoothed out the welds like butter.",
+        "score": 11063,
+        "url": "https://reddit.com/r/Welding/comments/1m0ikto/built_myself_a_railing_for_my_front_steps_from/"
+      },
+      {
+        "id": "reddit-1ip01qs",
+        "subreddit": "Welding",
+        "title": "Are glass welders welcome here?",
+        "text": "Semi-serious question here, I used to share my work with glass on a welders forum and people there seemed interested. I am not a welder, but I am a glass blower who welds fused Quartz glass.",
+        "score": 4328,
+        "url": "https://reddit.com/r/Welding/comments/1ip01qs/are_glass_welders_welcome_here/"
+      },
+      {
+        "id": "reddit-1i5h8tr",
+        "subreddit": "Welding",
+        "title": "Boss man say I'm not worth more than 30$/h ",
+        "text": "I think he's right, I'm not that good at welding that's why I'm leaving to become a welding instructor at the end of next month..",
+        "score": 3515,
+        "url": "https://reddit.com/r/Welding/comments/1i5h8tr/boss_man_say_im_not_worth_more_than_30h/"
+      },
+      {
+        "id": "reddit-1k7wpba",
+        "subreddit": "Welding",
+        "title": "Graduated welding school today",
+        "text": "Just wanted to share it, but I’m finally a certified welder! You got soft hands brother",
+        "score": 1616,
+        "url": "https://reddit.com/r/Welding/comments/1k7wpba/graduated_welding_school_today/"
+      },
+      {
+        "id": "reddit-1k9h93z",
+        "subreddit": "Welding",
+        "title": "Welds on a Battleship (USS Wisconsin)",
+        "text": "My battleship visit photo dump. now that I'm a welder professionally, I wanted to see how good the welds on these things look after almost 80 years. found a couple of old welding machines on the ship as well. overall a really cool way to spend my birthday.",
+        "score": 1582,
+        "url": "https://reddit.com/r/Welding/comments/1k9h93z/welds_on_a_battleship_uss_wisconsin/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.599Z"
+  },
+  {
+    "slug": "heating-air-conditioning-and-refrigeration-mechanics-and-ins",
+    "soc_code": "49-9021",
+    "total_reviews": 26,
+    "featured_reviews": [
+      {
+        "id": "reddit-1iawlhr",
+        "subreddit": "HVAC",
+        "title": "Any other women in the field?!",
+        "text": "I am the future owner of my grandfathers 40+ years hvac business. I’m 22, in school and getting on the job training. I love this field and the people in it !",
+        "score": 6907,
+        "url": "https://reddit.com/r/HVAC/comments/1iawlhr/any_other_women_in_the_field/"
+      },
+      {
+        "id": "reddit-1lpki5q",
+        "subreddit": "HVAC",
+        "title": "We are going to kill a private equity shop tomorrow.",
+        "text": "Both of my installers and I got a call from the CEO of a large, local (but not private-equity) hvac company today and he is offering a full benefits package and much higher wages to all 3 of us. This will result in my PE-owned shop getting shut down and I couldnt be happier.",
+        "score": 1176,
+        "url": "https://reddit.com/r/HVAC/comments/1lpki5q/we_are_going_to_kill_a_private_equity_shop/"
+      },
+      {
+        "id": "reddit-1meh0no",
+        "subreddit": "HVAC",
+        "title": "What's up with the previous generation of technicians?",
+        "text": "Edit: We're at the point where even more of you knucle draggers think this is a real post. It's satire. A joke. Chill the fuck out. Okay so like… storytime.",
+        "score": 981,
+        "url": "https://reddit.com/r/HVAC/comments/1meh0no/whats_up_with_the_previous_generation_of/"
+      },
+      {
+        "id": "reddit-1iiqu1d",
+        "subreddit": "HVAC",
+        "title": "Never again",
+        "text": "I did a buddy a favor and installed a new 5 ton R-32 condensing unit and evap and relocated with new line set for $6000.  I told him his ductwork is trash and needs to be replaced.  It's a 4 bedroom 3 bath ranch house, so it's long.",
+        "score": 774,
+        "url": "https://reddit.com/r/HVAC/comments/1iiqu1d/never_again/"
+      },
+      {
+        "id": "reddit-1iz4xhh",
+        "subreddit": "HVAC",
+        "title": "I didn't realize how much I ACTUALLY made as a resi tech!",
+        "text": "I accidentally asked for a raise that was promised to me 2 service managers ago, thank fuck i kept the paper trail with emails. Sitting down with the big honchos showed i have a less than 4% callback rate, but i don't turnover enough.",
+        "score": 736,
+        "url": "https://reddit.com/r/HVAC/comments/1iz4xhh/i_didnt_realize_how_much_i_actually_made_as_a/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.600Z"
+  },
+  {
+    "slug": "pharmacists",
+    "soc_code": "29-1051",
+    "total_reviews": 26,
+    "featured_reviews": [
+      {
+        "id": "reddit-1oi2shx",
+        "subreddit": "pharmacy",
+        "title": "DM lied about promoting me so I wouldn’t qualify for mileage pay. Two years later, his own email cos...",
+        "text": "A number of years ago I worked as a pharmacist at the corner. I was a floater in a geographically large district, meaning I covered different stores across a huge region. One store was 100+ miles from home, in a rough area where staff had been robbed.",
+        "score": 1020,
+        "url": "https://reddit.com/r/pharmacy/comments/1oi2shx/dm_lied_about_promoting_me_so_i_wouldnt_qualify/"
+      },
+      {
+        "id": "reddit-1ju5nyo",
+        "subreddit": "pharmacy",
+        "title": "I cussed out a rude customer today",
+        "text": "I cannot believe this happened, but it felt great.  I am a pharmacist at X store. I’ve worked retail for years, I know the patients that make you want to rip your hair out.",
+        "score": 951,
+        "url": "https://reddit.com/r/pharmacy/comments/1ju5nyo/i_cussed_out_a_rude_customer_today/"
+      },
+      {
+        "id": "reddit-1l99epa",
+        "subreddit": "pharmacy",
+        "title": "Iowa passes PBM overhaul: Pharmacies now reimbursed at cost, can appeal rates &amp; patients choose ...",
+        "text": "Gov. Kim Reynolds signed a new law today (Senate File 383) that places major restrictions on PBMs operating in Iowa.",
+        "score": 861,
+        "url": "https://reddit.com/r/pharmacy/comments/1l99epa/iowa_passes_pbm_overhaul_pharmacies_now/"
+      },
+      {
+        "id": "reddit-1m1t9cm",
+        "subreddit": "pharmacy",
+        "title": "Petty Pharmacists",
+        "text": "I am a floater, but I have a set schedule.  Yesterday I worked with a staff pharmacist (also their set schedule). This person went out of their way to email the DM to say I wrote my own prescription for a spacer. I didn’t use my own license as the prescriber. It was not for me or my family.",
+        "score": 584,
+        "url": "https://reddit.com/r/pharmacy/comments/1m1t9cm/petty_pharmacists/"
+      },
+      {
+        "id": "reddit-1mddw4b",
+        "subreddit": "pharmacy",
+        "title": "Pharmacy is a dead end job",
+        "text": "I've been a pharmacist for 11 years and looked at my social security statement. My salary has essentially been the same since I started 11 years ago. The first few years were highest since I worked overtime and had a per diem job on top of my full time job.",
+        "score": 562,
+        "url": "https://reddit.com/r/pharmacy/comments/1mddw4b/pharmacy_is_a_dead_end_job/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.607Z"
+  },
+  {
+    "slug": "plumbers-pipefitters-and-steamfitters",
+    "soc_code": "47-2152",
+    "total_reviews": 25,
+    "featured_reviews": [
+      {
+        "id": "reddit-1k0jiey",
+        "subreddit": "Plumbing",
+        "title": "Contractor unhappy with my work.",
+        "text": "So I do new build rough in and finish plumbing for residential mostly. I’ll be testing in to get my license this year as my partner is retiring but we do so much more as a company like full on whole home renovations so I’m not constantly plumbing.",
+        "score": 11614,
+        "url": "https://reddit.com/r/Plumbing/comments/1k0jiey/contractor_unhappy_with_my_work/"
+      },
+      {
+        "id": "reddit-1nh819y",
+        "subreddit": "Plumbing",
+        "title": "UPDATE: Today is fucked",
+        "text": "Thought I’d pass on an update and a couple stupid things I did to my last post. If you saw it, you probably laughed at my misfortune. If you didn’t, knock yourself out:  https://www.reddit.com/r/Plumbing/s/xSUy7CvbBk Plumbing was completed today. Took me two hours.",
+        "score": 2876,
+        "url": "https://reddit.com/r/Plumbing/comments/1nh819y/update_today_is_fucked/"
+      },
+      {
+        "id": "reddit-1l0rpkb",
+        "subreddit": "Plumbing",
+        "title": "Boss man wanted a tankless heater upgrade, told him I’ve got it covered.",
+        "text": "Used to be a full-time plumber but currently an apprentice electrician.  Been re-plumbing my new boss’s house with a former apprentice of mine during his remodel over the last few months.",
+        "score": 2782,
+        "url": "https://reddit.com/r/Plumbing/comments/1l0rpkb/boss_man_wanted_a_tankless_heater_upgrade_told/"
+      },
+      {
+        "id": "reddit-1ngbr1a",
+        "subreddit": "Plumbing",
+        "title": "Today is fucked",
+        "text": "While snaking a kitchen drain, I busted through an elbow. Wild thing is the hose, not the attachment rubbed a hole in the elbow. I guess that’s what happens when you run a snake for 4 hours slowly advancing through a wall of grease.",
+        "score": 2647,
+        "url": "https://reddit.com/r/Plumbing/comments/1ngbr1a/today_is_fucked/"
+      },
+      {
+        "id": "reddit-1ktlf1l",
+        "subreddit": "Plumbing",
+        "title": "Question - how wrong is it if my bathtub overflow does not swallow any water?",
+        "text": "EDIT1: RESOLVED - see end of post for resolution :D  In a new house, I just noticed that our bathtub overflow does not take in any water. Meaning, we can fill it up even over the overflow and the water is just steady, there is no drain effect.",
+        "score": 2296,
+        "url": "https://reddit.com/r/Plumbing/comments/1ktlf1l/question_how_wrong_is_it_if_my_bathtub_overflow/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.599Z"
+  },
+  {
+    "slug": "cooks-restaurant",
+    "soc_code": "35-2014",
+    "total_reviews": 25,
+    "featured_reviews": [
+      {
+        "id": "reddit-1o9pziv",
+        "subreddit": "KitchenConfidential",
+        "title": "I spent 1 month working as an unpaid apprentice after 20 years as a Chef.",
+        "text": "I have been struggling with my career lately.  The spark had been flickering.  I’ve spent a lot  of my career in management positions at high end- large volume restaurants and kept running into the same problems.",
+        "score": 6216,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1o9pziv/i_spent_1_month_working_as_an_unpaid_apprentice/"
+      },
+      {
+        "id": "reddit-1jmfrdz",
+        "subreddit": "KitchenConfidential",
+        "title": "Remembering the time that I walked from a restaurant and they closed.",
+        "text": "I worked at this bistro for 3 years, I was the sous chef for the final year. Almost to the day. Like the title says, I walked and they closed. Mother’s Day week, I worked 106 hours and slept there once. Only paid for 50, since I was on salary, which amounted to $404 in 2022.",
+        "score": 5087,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1jmfrdz/remembering_the_time_that_i_walked_from_a/"
+      },
+      {
+        "id": "reddit-1mtvo2r",
+        "subreddit": "KitchenConfidential",
+        "title": "Why was this actually my experience managing a kitchen?",
+        "text": "I managed a theater that served food and I swear to god it made me legitimately swear off working anywhere that serves food.",
+        "score": 5061,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1mtvo2r/why_was_this_actually_my_experience_managing_a/"
+      },
+      {
+        "id": "reddit-1jatixd",
+        "subreddit": "KitchenConfidential",
+        "title": "For all my kitchen homies struggling with sobriety",
+        "text": "10 years clean and sober today. Shit was hard af to go cold turkey and give up powder and vodka but worth it and my career has only went up since I made this change. I also got my family and myself back which is the most important thing.",
+        "score": 3636,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1jatixd/for_all_my_kitchen_homies_struggling_with_sobriety/"
+      },
+      {
+        "id": "reddit-1j5wii2",
+        "subreddit": "KitchenConfidential",
+        "title": "I’m convinced that servers in the US don’t actually want to be paid a livable wage.",
+        "text": "So I remember being a sous chef, I worked infinitely harder and longer than every server in the building, but my take home pay was $404 a week (I was on salary, that’s my own fault and not entirely relevant to this argument).",
+        "score": 2351,
+        "url": "https://reddit.com/r/KitchenConfidential/comments/1j5wii2/im_convinced_that_servers_in_the_us_dont_actually/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.602Z"
+  },
+  {
+    "slug": "heavy-and-tractor-trailer-truck-drivers",
+    "soc_code": "53-3032",
+    "total_reviews": 25,
+    "featured_reviews": [
+      {
+        "id": "reddit-1hvq45p",
+        "subreddit": "Truckers",
+        "title": "Most surreal moment of my career.",
+        "text": "Have you ever had a moment while driving that just felt like an absolute fever dream? I just did tonight. Drunk dude blew a stop sign, ran straight into the side of my DOT bumper as I was passing.",
+        "score": 802,
+        "url": "https://reddit.com/r/Truckers/comments/1hvq45p/most_surreal_moment_of_my_career/"
+      },
+      {
+        "id": "reddit-1n76h53",
+        "subreddit": "Truckers",
+        "title": "PSA for Non-Reefers",
+        "text": "Please stop shutting off our refrigerator when you think we’re asleep. I have a very loud alarm that I transfer trailer to trailer for events like this. I wake up every time.  Aside that fact, we carry expensive food products, chemicals, and so on.",
+        "score": 669,
+        "url": "https://reddit.com/r/Truckers/comments/1n76h53/psa_for_nonreefers/"
+      },
+      {
+        "id": "reddit-1jt0lc4",
+        "subreddit": "Truckers",
+        "title": "Tablet gave me a weigh station bypass, still got pulled over and accused of \"running the scale\"",
+        "text": "Title says it all, I drive for a mega, Drivewyze gave me the green bypass so I passed the weigh station, a couple miles down the road a state trooper pulls me over and says that they have had all bypass off for at least 45 minutes and that I ran the scale.",
+        "score": 451,
+        "url": "https://reddit.com/r/Truckers/comments/1jt0lc4/tablet_gave_me_a_weigh_station_bypass_still_got/"
+      },
+      {
+        "id": "reddit-1nbu60k",
+        "subreddit": "Truckers",
+        "title": "Warning for the younger drivers",
+        "text": "Don't make the same mistake I did.  Keep up with your health.  I was diagnosed diabetic in 2000, 4 years into my career.  I didn't take care of it for many years,  only dieting down just before physical time to keep my med card.",
+        "score": 421,
+        "url": "https://reddit.com/r/Truckers/comments/1nbu60k/warning_for_the_younger_drivers/"
+      },
+      {
+        "id": "reddit-1ipj583",
+        "subreddit": "Truckers",
+        "title": "I think I’m done",
+        "text": "Woke up today and decided to turn in the keys.  I made 531 bucks after 6 days of driving and 2k miles. I’m supposed to have a 1k guaranteed but naturally the companies always come up with some bs stipulation.",
+        "score": 365,
+        "url": "https://reddit.com/r/Truckers/comments/1ipj583/i_think_im_done/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.607Z"
+  },
+  {
+    "slug": "electrical-power-line-installers-and-repairers",
+    "soc_code": "49-9051",
+    "total_reviews": 25,
+    "featured_reviews": [
+      {
+        "id": "reddit-1mz1h5z",
+        "subreddit": "Lineman",
+        "title": "A word of warning for the young bucks",
+        "text": "With so many questions about getting into the trade, it seems important to know the rest of the story. Right now you are young and strong and badass. But this job doesn’t just take your back and your knees, it also uses up all your fucks.",
+        "score": 360,
+        "url": "https://reddit.com/r/Lineman/comments/1mz1h5z/a_word_of_warning_for_the_young_bucks/"
+      },
+      {
+        "id": "reddit-1itlukr",
+        "subreddit": "Lineman",
+        "title": "A brief history- The OG Cutout",
+        "text": "Developed in the early 1900s, the Plug-Type Cutout is considered to be the very first commercially produced primary cutout in the industry.",
+        "score": 272,
+        "url": "https://reddit.com/r/Lineman/comments/1itlukr/a_brief_history_the_og_cutout/"
+      },
+      {
+        "id": "reddit-1lm9dul",
+        "subreddit": "Lineman",
+        "title": "Positivity!",
+        "text": "Took a damn long time, left the military, non union to union Groundman and managed to score well with hard work, studying and effort. I'm now a IBEW Indetured apprentice through MO Valley! If you want it you can get it!",
+        "score": 211,
+        "url": "https://reddit.com/r/Lineman/comments/1lm9dul/positivity/"
+      },
+      {
+        "id": "reddit-1ho3jq3",
+        "subreddit": "Lineman",
+        "title": "LIneman in South Korea",
+        "text": "Hello! I'm someone working as a lineman in South Korea. I became curious about how linemen work overseas, so I searched and ended up here. In the case of the United States, since the supply voltage is different from Korea, I thought the work might be different as well, so I have a lot of questions.",
+        "score": 208,
+        "url": "https://reddit.com/r/Lineman/comments/1ho3jq3/lineman_in_south_korea/"
+      },
+      {
+        "id": "reddit-1o8rnao",
+        "subreddit": "Lineman",
+        "title": "46kV pole changeout",
+        "text": "Nice easy hotstick pole changeout today, and training a group of hot apprentices.",
+        "score": 137,
+        "url": "https://reddit.com/r/Lineman/comments/1o8rnao/46kv_pole_changeout/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.608Z"
+  },
+  {
+    "slug": "radiologic-technologists-and-technicians",
+    "soc_code": "29-2034",
+    "total_reviews": 23,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ma8qvf",
+        "subreddit": "Radiology",
+        "title": "Unexpected MRI Finding: Quadrigeminal Cistern Lipoma",
+        "text": "Hey everyone. I’m currently a radiologic technology student, and recently I volunteered to be a test patient during my internship—since I’ve never had an MRI myself, I thought it would be a cool learning experience. But during the scan, something unexpected showed up in my brain.",
+        "score": 967,
+        "url": "https://reddit.com/r/Radiology/comments/1ma8qvf/unexpected_mri_finding_quadrigeminal_cistern/"
+      },
+      {
+        "id": "reddit-1oj5z2f",
+        "subreddit": "Radiology",
+        "title": "AI Pullback Has Officially Started",
+        "text": "https://medium.com/@wlockett/ai-pullback-has-officially-started-fb6dfa5e4128?source=email-276762ec4be9-1761719895068-digest.reader--fb6dfa5e4128----0-102------------------24da2bad_b9db_4a4d_a8fa_65bcb764c488-1 https://archive.ph/v7qZe This is definitrly the case in radiology.",
+        "score": 449,
+        "url": "https://reddit.com/r/Radiology/comments/1oj5z2f/ai_pullback_has_officially_started/"
+      },
+      {
+        "id": "reddit-1jpbzo7",
+        "subreddit": "Radiology",
+        "title": "Missed diagnosis",
+        "text": "I recently had a 12 year old female present with generalized abdominal pain. CT Abdomen/Pelvis with performed. Send study to our tele service in the early morning hours.  In my quick review of the images, patient had a large ovarian cyst. Large enough to be surgically removed.",
+        "score": 428,
+        "url": "https://reddit.com/r/Radiology/comments/1jpbzo7/missed_diagnosis/"
+      },
+      {
+        "id": "reddit-1hwhf0w",
+        "subreddit": "Radiology",
+        "title": "Technologist “Shortage”",
+        "text": "PSA: There actually isn’t a Technologist shortage. What there is, is a shortage of technologists who are willing to work in high stress, poor staffed, underpaid positions which is understandable.",
+        "score": 353,
+        "url": "https://reddit.com/r/Radiology/comments/1hwhf0w/technologist_shortage/"
+      },
+      {
+        "id": "reddit-1ijghvq",
+        "subreddit": "Radiology",
+        "title": "To all the NON-imaging professionals",
+        "text": "I truly love that you come here to learn, gawk and enjoy the neat images that people post here.  Most of you are really cool and it's fun to see what kind of questions you have.  I personally, love answering interesting questions about the field.  Like you, I too learn things from this sub.",
+        "score": 324,
+        "url": "https://reddit.com/r/Radiology/comments/1ijghvq/to_all_the_nonimaging_professionals/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.607Z"
+  },
+  {
+    "slug": "emergency-medical-technicians",
+    "soc_code": "29-2042",
+    "total_reviews": 21,
+    "featured_reviews": [
+      {
+        "id": "reddit-1klih0h",
+        "subreddit": "ems",
+        "title": "Lost my first peds in the rig, never felt pain like this on the job",
+        "text": "Drunk driver hit family of 4 going on a roadtrip late last night, mom and dad dead, two young twins in critical condition, the twin our rig took on was lucky to still be alive. I did everything I could but she passed away before we got to the hospital, pronounced DOA at hospital.",
+        "score": 1345,
+        "url": "https://reddit.com/r/ems/comments/1klih0h/lost_my_first_peds_in_the_rig_never_felt_pain/"
+      },
+      {
+        "id": "reddit-1mggqtr",
+        "subreddit": "ems",
+        "title": "Our Station Cat of +10 years Passed Away",
+        "text": "Rest easy Catniss Meowverdeen. The only supervisor who never missed a shift, always knew when we needed comfort, and managed to nap through every emergency call. You were more than just a station cat; you were family to everyone.",
+        "score": 1249,
+        "url": "https://reddit.com/r/ems/comments/1mggqtr/our_station_cat_of_10_years_passed_away/"
+      },
+      {
+        "id": "reddit-1m5ksxn",
+        "subreddit": "ems",
+        "title": "I am officially retired.",
+        "text": "20 minutes left,  but already handed off my keys to next crew. Brutal day, got 2 hours down on a 24, put probably 500 miles on the rig (rural private ems emt-b on an ALS unit). 15 years. Nicu/picu team, large city, rural, ran two nonprofit EMS programs. I remember my first patient.",
+        "score": 891,
+        "url": "https://reddit.com/r/ems/comments/1m5ksxn/i_am_officially_retired/"
+      },
+      {
+        "id": "reddit-1ld849j",
+        "subreddit": "ems",
+        "title": "From over on Facebook",
+        "text": "**TLDR: I don't personally have strong opinions for or against this, mostly just posting to hear why others feel this is or isn't a good idea.** IMO it could potentially be beneficial, could potentially be harmful.",
+        "score": 583,
+        "url": "https://reddit.com/r/ems/comments/1ld849j/from_over_on_facebook/"
+      },
+      {
+        "id": "reddit-1kgow6e",
+        "subreddit": "ems",
+        "title": "Seeing this shit PMO",
+        "text": "Nurses should not be educators for Paramedics unless it’s about specialty care like NRP or ICU devices. We should be receiving education from experienced paramedics or physicians ONLY. Side note - STOP letting single role nurses teach at paramedic programs. Happy nurses week.",
+        "score": 553,
+        "url": "https://reddit.com/r/ems/comments/1kgow6e/seeing_this_shit_pmo/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.606Z"
+  },
+  {
+    "slug": "police-and-sheriff-s-patrol-officers",
+    "soc_code": "33-3051",
+    "total_reviews": 2,
+    "featured_reviews": [
+      {
+        "id": "reddit-1ot7x7z",
+        "subreddit": "ProtectAndServe",
+        "title": "Queensland Police Service. Our very own Senior Constable Jade from the Gold Coast now holds the Guin...",
+        "text": "Our very own Senior Constable Jade from the Gold Coast now holds the Guinness World Record for most pull ups in one hour, completing 733 💪 Jade spent eight months training for the 24 hour record and raising money for Blue Hope, (smashing 3,500 pull ups in a 12 hour training session), but tore her...",
+        "score": 1274,
+        "url": "https://reddit.com/r/ProtectAndServe/comments/1ot7x7z/queensland_police_service_our_very_own_senior/"
+      },
+      {
+        "id": "reddit-1j3g4tb",
+        "subreddit": "ProtectAndServe",
+        "title": "Deputy Overdoses on Fentanyl After Smoking Seized Drugs at Sheriff's Station",
+        "text": "\"Based on my training and experience...\" But on a more serious note, addiction can afflict anyone and everyone. Check in with your people. Seek assistance.",
+        "score": 987,
+        "url": "https://reddit.com/r/ProtectAndServe/comments/1j3g4tb/deputy_overdoses_on_fentanyl_after_smoking_seized/"
+      }
+    ],
+    "last_updated": "2025-12-25T19:04:56.606Z"
+  }
+]

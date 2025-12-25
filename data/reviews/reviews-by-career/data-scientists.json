@@ -1,0 +1,496 @@
+[
+  {
+    "id": "reddit-1lluwlv",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Data Science Has Become a Pseudo-Science",
+    "text": "I’ve been working in data science for the last ten years, both in industry and academia, having pursued a master’s and PhD in Europe. My experience in the industry, overall, has been very positive. I’ve had the opportunity to work with brilliant people on exciting, high-impact projects. Of course, there were the usual high-stress situations, nonsense PowerPoints, and impossible deadlines, but the work largely felt meaningful.\n\nHowever, over the past two years or so, it feels like the field has taken a sharp turn. Just yesterday, I attended a technical presentation from the analytics team. The project aimed to identify anomalies in a dataset composed of multiple time series, each containing a clear inflection point. The team’s hypothesis was that these trajectories might indicate entities engaged in some sort of fraud.\n\nThe team claimed to have solved the task using “generative AI”. They didn’t go into methodological details but presented results that, according to them, were amazing. Curious, nespecially since the project was heading toward deployment, i asked about validation, performance metrics, or baseline comparisons. None were presented.\n\nLater, I found out that “generative AI” meant asking ChatGPT to generate a code. The code simply computed the mean of each series before and after the inflection point, then calculated the z-score of the difference. No model evaluation. No metrics. No baselines. Absolutely no model criticism. Just a naive approach, packaged and executed very, very quickly under the label of generative AI.\n\nThe moment I understood the proposed solution, my immediate thought was \"I need to get as far away from this company as possible\". I share this anecdote because it summarizes much of what I’ve witnessed in the field over the past two years. It feels like data science is drifting toward a kind of pseudo-science where we consult a black-box oracle for answers, and questioning its outputs is treated as anti-innovation, while no one really understand how the outputs were generated.\n\nAfter several experiences like this, I’m seriously considering focusing on academia. Working on projects like these is eroding any hope I have in the field. I know this won’t work and yet, the label generative AI seems to make it unquestionable. So I came here to ask if is this experience shared among other DSs?\n\n",
+    "score": 2753,
+    "url": "https://reddit.com/r/datascience/comments/1lluwlv/data_science_has_become_a_pseudoscience/",
+    "created_at": "2025-06-27T14:11:44.000Z",
+    "num_comments": 354
+  },
+  {
+    "id": "reddit-1hp7pim",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "My Data Science Manifesto from a Self Taught Data Scientist",
+    "text": "**Background**\n\nI’m a self-taught data scientist, with about 5 years of data analyst experience and now about 5 years as a Data Scientist. I’m more math minded than the average person, but I’m not special. I have a bachelor’s degree in mechanical engineering, and have worked alongside 6 data scientists, 4 of which have PHDs and the other 2 have a masters. Despite being probably, the 6th out of 7 in natural ability, I have been the 2nd most productive data scientist out of the group.\n\n\n**Gatekeeping**\n\nEvery day someone on this subreddit asks some derivative of “what do I need to know to get started in ML/DS?” The answers are always smug and give some insane list of courses and topics one must master. As someone who’s been on both sides, this is attitude extremely annoying and rampart in the industry. I don’t think you can be bad at math and have no pre-requisite knowledge, and be successful, but the levels needed are greatly exaggerated. Most of the people telling you these things are just posturing due to insecurity.\n\n\n\nAs a mechanical engineering student, I had at least 3 calculus courses, a linear algebra course, and a probability course, but it was 10+ years before I attempted to become a DS, and I didn’t remember much at all. This sub, and others like it, made me think I had to be an expert in all these topics and many more to even think about trying to become a data scientist. \n\n\n\nWhen I started my journey, I would take coding, calculus, stats, linear algebra, etc. courses. I’d take a course, do OK in it, and move onto the next thing. However, eventually I’d get defeated because I realized I couldn’t remember much from the courses I took 3 months prior. It just felt like too much information for me to hold at a single time while working a full-time job. I never got started on actually solving problems because the internet and industry told me I needed to be an expert in all these things.\n\n\n**What you actually need**\n\nThe reality is, 95% of the time you only need a basic understanding of these topics. Projects often require a deeper dive into something else, but that's a case by case basis, and you figure that out as you go.\n\n\nFor calculus, you don't need to know how to integrate multivariable functions by hand. You need to know that derivatives create a function that represents the slope of the original function, and that where the derivative = 0 is a local min/max. You need to know integrals are area under the curve.\n\n\n\nFor stats, you need to understand what a p value represents. You don't need to know all the different tests, and when to use them. You need to know that they exist and why you need them. When it's time to use one, just google it, and figure out which one best suits your use case.\n\n\n\nFor linear algebra, you don't need to know how to solve for eigenvectors by hand, or whatever other specific things you do in that class. You need to know how to ‘read’ it. It is also helpful to know properties of linear algebra. Like the cross product of 2 vectors yields a vector perpendicular to both.\n\n\n\nFor probability, you need to understand basic things, but again, just google your specific problem.\n\n\n\nYou don't need to be an expert software dev. You need to write ok code, and be able to use chatGPT to help you improve it little by little.\n\n\n\nYou don't need to know how to build all the algorithms by hand. A general understanding of how they work is enough in 95% of cases.\n\n\n\nOf all of those things, the only thing you absolutely NEED to get started is basic coding ability. \n\n\n\nBy far the number one technical ability needed to 'master' is understanding how to \"frame\" your problem, and how to test and evaluate and interpret performance. If you can ensure that you're accurately framing the problem and evaluating the model or alogithm, with metrics that correctly align with the use case, that's enough to start providing some real value. I often see people asking things like \"should I do this feature engineering technique for this problem?\" or “which of these algorithms will perform best?”. The answer should usually be, \"I don't know, try it, measure it, and see\". Understanding how the algorithms work can give you clues into what you should try, but at the end of the day, you should just try it and see.   \n\n\n\nDespite the posturing in the industry, very few people are actually experts in all these domains. Some people are better at talking the talk than others, but at the end of the day, you WILL have to constantly research and learn on a project by project basis. That’s what makes it fun and interesting. As you gain PRACTICAL experience, you will grow, you will learn, you will improve beyond what you could've ever imagined. Just get the basics down and get started, don't spin your wheels trying and failing to nail all these disciplines before ever applying anything.\n\n\n\nThe reason I’m near the top in productivity while being near the bottom in natural and technical ability is my 5 years of experience as a data analyst at my company. During this time, I got really good at exploring my companies’ data. When you are stumped on problem, intelligently visualizing the data often reveals the solution. I’ve also had the luxury of analyzing our data from all different perspectives. I’d have assignments from marketing, product, tech support, customer service, software, firmware, and other technical teams. I understand the complete company better than the other data scientists. I’m also just aware of more ‘tips and tricks’ than anyone else.  \n\n\n\nGood domain knowledge and data exploration skills with average technical skills will outperform good technical skills with average domain knowledge and data exploration almost every time. \n\n\n**Advice for those self taught**\n\n\nI’ve been on the hiring side of things a few times now, and the market is certainly difficult. I think it would be very difficult for someone to online course and side project themselves directly into a DS job. The side project would have to be EXTREMELY impressive to be considered. However, I think my path is repeatable.\n\n\n\nI taught myself basic SQL and Tableau and completed a few side projects. I accepted a job as a data analyst, in a medium sized (100-200 total employees) on a team where DS and DA shared the same boss. The barrier to DA is likely higher than it was ~10 years ago, but it's definitely something achievable. My advice would be to find roles that you have some sort of unique experience with, and tailor your resume to that connection. No connection is too small. For example, my DA role required working with a lot of accelerometer data. In my previous job as a test engineer, I sometimes helped set up accelerometers to record data from the tests. This experience barely helped me at all when actually on the job, but it helped my resume actually get looked at. For entry level jobs employers are looking for ANY connection, because most entry level resumes all look the same.\n\n\nThe first year or two I excelled at my role as a DA. I made my boss aware that I wanted to become a DS eventually. He started to make me a small part of some DS projects, running queries, building dashboards to track performance and things like that. I was also a part of some of the meetings, so I got some insight into how certain problems were approached. \n\n\n\nMy boss made me aware that I would need to teach myself to code and machine learning. My role in the data science projects grew over time, but I was ultimately blocked from becoming a DS because I kept trying and failing to learn to code and the 25 areas of expertise reddit tells you that you need by taking MOOCs. \n\n  \n\nEventually, I paid up for DataQuest. I naively thought the course would teach me everything I needed to know. While you will not be proficient in anything DS upon completing, the interactive format made it easy to jump into 30-60 minutes of structured coding every day. Like a real language consistency is vital. \n\n\n\nOnce I got to the point where I could do some basic coding, I began my own side project. THIS IS THE MOST IMPORTANT THING. ONCE YOU GET THE BASELINE KNOWLEDGE, JUST GET STARTED WORKING ON THINGS. This is where the real learning began. You'll screw things up, and that's ok. Titanic problem is fine for day 1, but you really need a project of your own. I picked a project that I was interested in and had a function that I would personally use (I'm on V3 of this project and it's grown to a level that I never could've dreamed of at the time). This was crucial in ensuring that I stuck with the project, and had real investment in doing it correctly. When I didn’t know how to do something in the project, I would research it and figure it out. This is how it works in the real world.\n\n\n\nAfter 3 months of Dataquest and another 3 of a project (along with 4 years of being a data analyst) I convinced my boss to assign me DS project. I worked alongside another data scientist, but I owned the project, and they were mostly there for guidance, and coded some of the more complex things. I excelled at that project, and was promoted to data scientist, and began getting projects of my own, with less and less oversight. We have a very collaborative work environment, and the data scientists are truly out to help each other. We present our progress to each other often which allows us all to learn and improve. I have been promoted twice since I began DS work.\n\n\n\nI'd like to add that you can almost certainly do all this in less time than it took me. I wasted a lot of time spinning my wheels. ChatGPT is also a great resource that could also increase your learning speed. Don't blindly use it, but it's a great resource.\n\n\n**Tldr:** Sir this is Wendy’s.\n\n**Edit:** I’m not saying to never go deeper into things, I’m literally always learning. I go deeper into things all the time. Often in very niche domains, but you don't need to be a master in all things get started or even excel. Be able to understand generalities of those domains, and dig deeper when the problem calls for it. Learning a concept when you have a direct application is much more likely to stick.\n\n\nI thought it went without saying, but I’m not saying those things I listed are literally the only things you need to know about those topics, I was just giving examples of where relatively simple concepts were way more important than specifics.\n\n**Edit #2:** I'm not saying schooling is bad. Yes obviously having a masters and/or PhD is better than not. I'm directing this to those who are working a full time job who want to break into the field, but taking years getting a masters while working full time and going another 50K into debt is unrealistic",
+    "score": 2079,
+    "url": "https://reddit.com/r/datascience/comments/1hp7pim/my_data_science_manifesto_from_a_self_taught_data/",
+    "created_at": "2024-12-29T22:28:05.000Z",
+    "num_comments": 177
+  },
+  {
+    "id": "reddit-1kw1cik",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Am i the only one who truly love this field? It sounds like everyone here is in for the money and hate their jobs",
+    "text": "it's funny because in real life most of the people i know in the field love it",
+    "score": 1898,
+    "url": "https://reddit.com/r/datascience/comments/1kw1cik/am_i_the_only_one_who_truly_love_this_field_it/",
+    "created_at": "2025-05-26T18:13:38.000Z",
+    "num_comments": 143
+  },
+  {
+    "id": "reddit-1mlmwk0",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "AI isn't taking your job. Executives are.",
+    "text": "If AI is ready to replace developers, why aren't developers replacing themselves with AI and just taking it easy at work?\n\nI'm a Director at my company. I'm in the meetings and helping set up the tools that cost people their jobs. Here's how they work:\n\n1. Claude AI writes some code\n\n2. The code gets passed to a developer for validation\n\n3. Since the developer's \"just validating\", he can be replaced with an overseas contractor that'll work for a fraction of the pay\n\nWe've tracked the tools, and we haven't seen any evidence that having Claude take a crack at the code saves anybody any time - but it does let us justify replacing expensive employees with cheap overseas contractors.\n\nYou're not getting replaced by AI.\n\nYour job's being outsourced overseas.",
+    "score": 1833,
+    "url": "https://reddit.com/r/datascience/comments/1mlmwk0/ai_isnt_taking_your_job_executives_are/",
+    "created_at": "2025-08-09T11:13:29.000Z",
+    "num_comments": 183
+  },
+  {
+    "id": "reddit-1hxalxo",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Companies are finally hiring",
+    "text": "I applied to 80+ jobs before the new year and got rejected or didn’t hear back from most of them. A few positions were a level or two lower than my currently level. I got only 1 interview and I did accept the offer. \n\nIn the last week, 4 companies reached out for interviews. Just want to put this out there for those who are still looking. Keep going at it. \n\nEdit - thank you all for the congratulations and I’m sorry I can’t respond to DMs. Here are answers to some common questions. \n\n1. The technical coding challenge was only SQL. Frankly in my 8 years of analytics, none of my peers use Python regularly unless their role is to automate or data engineering. You’re better off mastering SQL by using leetcode and DataLemur\n\n2. Interviews at all the FAANGs are similar. Call with HR rep, first round is with 1 person and might be technical. Then a final round with a bunch of individual interviews on the same day. Most of the questions will be STAR format. \n\n3. As for my skillsets, I advertise myself as someone who can build strategy, project manage, and can do deep dive analyses. I’m never going to compete against the recent grads and experts in ML/LLM/AI on technical skills, that’s just an endless grind to stay at the top. I would strongly recommend others to sharpen their soft skills. A video I watched recently is from The Diary of a CEO with Body Language Expert with Vanessa Edwards. I legit used a few tips during my interviews and I thought that helped ",
+    "score": 1587,
+    "url": "https://reddit.com/r/datascience/comments/1hxalxo/companies_are_finally_hiring/",
+    "created_at": "2025-01-09T11:17:02.000Z",
+    "num_comments": 132
+  },
+  {
+    "id": "reddit-1kcrsyn",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Tired of everyone becoming an AI Expert all of a sudden",
+    "text": "Literally every person who can type prompts into an LLM is now an AI consultant/expert. I’m sick of it, today a sales manager literally said ‘oh I can get Gemini to make my charts from excel directly with one prompt so ig we no longer require Data Scientists and their support hehe’\n\nThese dumbos think making basic level charts equals DS work. Not even data analytics, literally data science? \n\nI’m sick of it. I hope each one of yall cause a data leak, breach the confidentiality by voluntarily giving private info to Gemini/OpenAi and finally create immense tech debt by developing your vibe coded projects.\n\nRant over ",
+    "score": 1559,
+    "url": "https://reddit.com/r/datascience/comments/1kcrsyn/tired_of_everyone_becoming_an_ai_expert_all_of_a/",
+    "created_at": "2025-05-02T03:49:50.000Z",
+    "num_comments": 137
+  },
+  {
+    "id": "reddit-1kjjb32",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "I am a staff data scientist at a big tech company -- AMA",
+    "text": "**Why I’m doing this**\n\nI am low on karma. Plus, it just feels good to help.\n\n**About me**\n\nI’m currently a staff data scientist at a big tech company in Silicon Valley. I’ve been in the field for about 10 years since earning my PhD in Statistics. I’ve worked at companies of various sizes — from seed-stage startups to pre-IPO unicorns to some of the largest tech companies.\n\n**A few caveats**\n\n* Anything I share reflects my personal experience and may carry some bias.\n* My experience is based in the US, particularly in Silicon Valley.\n* I have some people management experience but have mostly worked as an IC\n* Data science is a broad term. I’m most familiar with machine learning scientist, experimentation/causal inference, and data analyst roles.\n* I may not be able to respond immediately, but I’ll aim to reply within 24 hours.\n\n**Update:**\n\nWow, I didn’t expect this to get so much attention. I’m a bit overwhelmed by the number of comments and DMs, so I may not be able to reply to everyone. That said, I’ll do my best to respond to as many as I can over the next week. Really appreciate all the thoughtful questions and discussions!",
+    "score": 1221,
+    "url": "https://reddit.com/r/datascience/comments/1kjjb32/i_am_a_staff_data_scientist_at_a_big_tech_company/",
+    "created_at": "2025-05-10T20:17:33.000Z",
+    "num_comments": 435
+  },
+  {
+    "id": "reddit-1lux7bt",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Saved $100k per year by explaining how AI/LLM work.",
+    "text": "I work in a data science field, and I bring this up because I think it's data science related.\n\nWe have an internal website that is very bare bones. It's made to be simplistic, because it's the reference document for our end-users (1000 of them) use.\n\nExecutives heard about a software that would be completely AI driven, build detailed statistical insights, and change the world as they know it.\n\nI had a demo with the company and they explained its RAG capabilities, but mentioned it doesn't really \"learn\" like the assumption AI does. Our repo is so small and not at all needed for AI. We have used a fuzzy search that has worked for the past three years. Additionally, I have already built out dashboards that retrieve all the information executives have asked for via API (who's viewing pages, what are they searching, etc.)\n\nI showed the c-suite executives our current dashboards in Tableau, and how the actual search works. I also explained what RAG is, and how AI/LLMs work at a high level. I explained to them that AI is a fantastic tool, but I'm not sure if we should be spending 100k a year on it. They also asked if I have built any predictive models. I don't think they quite understood what that was as well, because we don't have the amount of data or need to predict anything.\n\nNeedless to say, they decided it was best not to move forward \"for now\". I am shocked, but also not, that executives want to change the structure of how my team and end-users digest information just because they heard \"AI is awesome!\" They had zero idea how anything works in our shop.\n\nOh yeah, our company has already laid of 250 people this year due to \"financial turbulence\", and now they're wanting to spend 100k on this?!\n\nIt just goes to show you how deep the AI train runs. Did I handle this correctly and can I put this on my resume? LOL",
+    "score": 1183,
+    "url": "https://reddit.com/r/datascience/comments/1lux7bt/saved_100k_per_year_by_explaining_how_aillm_work/",
+    "created_at": "2025-07-08T19:03:19.000Z",
+    "num_comments": 99
+  },
+  {
+    "id": "reddit-1ki9zo3",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Client told me MS Copilot replicated what I built. It didn’t.",
+    "text": "I built three MVP models for a client over 12 weeks. Nothing fancy: an LSTM, a prophet model, and XGBoost. The difficulty, as usual, was getting and understanding the data and cleaning it. The company is largely data illiterate. Turned in all 3 models, they loved it then all of a sudden canceled the pending contract to move them to production. Why? They had a devops person do in MS Copilot Analyst (a new specialized version of MS Copilot studio) and it took them 1 week! Would I like to sign a lesser contract to advise this person though? I finally looked at their code and it’s 40 lines of code using a subset of the California housing dataset run using a Random Forest regressor. They had literally nothing. My advice to them: go f*%k yourself. ",
+    "score": 1098,
+    "url": "https://reddit.com/r/datascience/comments/1ki9zo3/client_told_me_ms_copilot_replicated_what_i_built/",
+    "created_at": "2025-05-09T04:28:25.000Z",
+    "num_comments": 133
+  },
+  {
+    "id": "reddit-1iq0gwj",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Data Science is losing its soul",
+    "text": "DS teams are starting to lose the essence that made them truly groundbreaking. their mixed scientific and business core. What we’re seeing now is a shift from deep statistical analysis and business oriented modeling to quick and dirty engineering solutions. Sure, this approach might give us a few immediate wins but it leads to low ROI projects and pulls the field further away from its true potential. One size-fits-all programming just doesn’t work. it’s not the whole game.\n",
+    "score": 896,
+    "url": "https://reddit.com/r/datascience/comments/1iq0gwj/data_science_is_losing_its_soul/",
+    "created_at": "2025-02-15T12:37:30.000Z",
+    "num_comments": 243
+  },
+  {
+    "id": "reddit-1iby5om",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "NVIDIA's paid Generative AI courses for FREE (limited period)",
+    "text": "NVIDIA has announced free access (for a limited time) to its premium courses, each typically valued between $30-$90, covering advanced topics in Generative AI and related areas.\n\nThe major courses made free for now are :\n\n* **Retrieval-Augmented Generation (RAG) for Production:** Learn how to deploy scalable RAG pipelines for enterprise applications.\n* **Techniques to Improve RAG Systems:** Optimize RAG systems for practical, real-world use cases.\n* **CUDA Programming:** Gain expertise in parallel computing for AI and machine learning applications.\n* **Understanding Transformers:** Deepen your understanding of the architecture behind large language models.\n* **Diffusion Models:** Explore generative models powering image synthesis and other applications.\n* **LLM Deployment:** Learn how to scale and deploy large language models for production effectively.\n\n**Note:** There are redemption limits to these courses. A user can enroll into any one specific course.\n\n**Platform Link**: [NVIDIA TRAININGS](https://nvda.ws/4jtHiOf)",
+    "score": 886,
+    "url": "https://reddit.com/r/datascience/comments/1iby5om/nvidias_paid_generative_ai_courses_for_free/",
+    "created_at": "2025-01-28T09:54:09.000Z",
+    "num_comments": 69
+  },
+  {
+    "id": "reddit-1kpy8ha",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Study looking at AI chatbots in 7,000 workplaces finds ‘no significant impact on earnings or recorded hours in any occupation’",
+    "text": "",
+    "score": 874,
+    "url": "https://reddit.com/r/datascience/comments/1kpy8ha/study_looking_at_ai_chatbots_in_7000_workplaces/",
+    "created_at": "2025-05-19T00:03:15.000Z",
+    "num_comments": 53
+  },
+  {
+    "id": "reddit-1leh4wm",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "My data science dream is slowly dying",
+    "text": "\nI am currently studying Data Science and really fell in love with the field, but the more i progress the more depressed i become.\n\nOver the past year, after watching job postings especially in tech I’ve realized most Data Scientist roles are basically advanced data analysts, focused on dashboards, metrics, A/B tests. (It is not a bad job dont get me wrong, but it is not the direction i want to take)\n\nThe actual ML work seems to be done by ML Engineers, which often requires deep software engineering skills which something I’m not passionate about.\n\nRight now, I feel stuck. I don’t think I’d enjoy spending most of my time on product analytics, but I also don’t see many roles focused on ML unless you’re already a software engineer (not talking about research but training models to solve business problems).\n\nDo you have any advice?                                      \n\n**Also will there ever be more space for Data Scientists to work hands on with ML or is that firmly in the engineer’s domain now? I mean which is your idea about the field?**",
+    "score": 850,
+    "url": "https://reddit.com/r/datascience/comments/1leh4wm/my_data_science_dream_is_slowly_dying/",
+    "created_at": "2025-06-18T13:29:00.000Z",
+    "num_comments": 236
+  },
+  {
+    "id": "reddit-1lcemw6",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Don’t be the data scientist who’s in love with models, be the one who solves real problems",
+    "text": "work at a company with around 100 data scientists, ML and data engineers.\n\nThe most frustrating part of working with many data scientists and honestly, I see this on this sub all the time too, is how obsessed some folks are with using ML or whatever the latest SoTA causal inference technique is. Earlier in my career plus during my masters, I was exactly the same, so I get it.\n\nBut here’s the best advice I can give you: **don’t be that person.**\n\nUnless you’re literally working on a product where ML is the core feature, **your job is basically being an internal consultant.** That means understanding what stakeholders actually want, challenging their assumptions when needed, and giving them something useful, not just something that will disappear into a slide deck or notebook. \n\nAlways try and make something run in production, don’t do endless proof of concepts. If you’re doing deep dives / analysis, define success criteria of your initiatives, try and measure them (e.g., some of my less technical but awesome DS colleagues made their career of finding drivers of key KPIs, reporting them to key stakeholders and measuring improvement over time). In short, **prove you’re worth it**.\n\nA lot of the time, that means building a dashboard. Or doing proper data/software engineering. Or using GenAI. Or whatever else some of my colleagues (and a loads of people on this sub) roll their eyes at.\n\nSolve the problem. Use whatever gets the job done, not just whatever looks cool on a résumé.",
+    "score": 848,
+    "url": "https://reddit.com/r/datascience/comments/1lcemw6/dont_be_the_data_scientist_whos_in_love_with/",
+    "created_at": "2025-06-15T23:52:42.000Z",
+    "num_comments": 99
+  },
+  {
+    "id": "reddit-1l10fes",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "How I scraped 4.1 million jobs with GPT4o-mini",
+    "text": "**Background**: During my PhD in Data Science at Stanford, I got sick and tired of ghost jobs &amp; 3rd party offshore agencies on LinkedIn &amp; Indeed. So I wrote a script that fetches jobs from 100k+ company websites' career pages and uses GPT4o-mini to extract relevant information (ex salary, remote, etc.) from job descriptions. I made it publicly available here [https://hiring.cafe](https://hiring.cafe) and you can follow my progress and give me feedback at r/hiringcafe\n\n**Tech details (from a DS perspective)**\n\n1. Verifying legit companies. This I did manually, but it was crucial that I exclude any recruiting firms, 3rd party offshore agencies, etc. I manually sorted through the \\~100,000 company career pages (this took several weeks) and picked the ones that looked legit. At Stanford, we call this technique \"occular regression\" :) \n2. Removing ghost jobs. I discovered that a strong predictor of if a job is a ghost job is that if it keeps being reposted. I was able to identify reposting by doing a embedding text similarity search for jobs from the same company. If 2 job descriptions overlap too much, I only show the date posted for the *earliest* listing. This allowed me to weed out most ghost jobs simply by using a date filter (for example, excluding any jobs posted over a month ago). \n3. Scraping fresh jobs 3x/day. To ensure that my database is reflective of the company career page, I check each company career page 3x/day. To avoid rate-limits, I used a rotating proxy from Oxylabs for now.\n4. Building advanced NLP text filters. After playing with GPT4o-mini API, I realized I could can effectively dump raw job descriptions (in HTML) and ask it to give me back formatted information back in JSON (ex salary, yoe, etc). I used this technique to extract a variety of information, including technical keywords, job industry, required licenses &amp; security clearance, if the company sponsors visa, etc.\n\n**Question for the DS community:** Beyond job search, one thing I'm really excited about this 4.1 million job dataset is to be able to do a yearly or quarterly trend report. For instance, to look at what technical skills are growing in demand. What kinds of cool job trends analyses would you do if you had access to this data.\n\n**Edit:** A few folks DMed asking to explore the data for job searching. I put together a minimal frontend to make the scraped jobs searchable: [https://hiring.cafe](https://hiring.cafe) — note that it's currently non-commercial, unsupported, just a PhD side-project at the moment until I gradute.\n\n**Edit 2::** thank you for all the super positive comments. you can follow my progress on scraping more jobs on r/hiringcafe .Aalso to comments saying this is an ad, my full-time job is my phd, this is just a fun side project beofore I get an actual job haha",
+    "score": 561,
+    "url": "https://reddit.com/r/datascience/comments/1l10fes/how_i_scraped_41_million_jobs_with_gpt4omini/",
+    "created_at": "2025-06-01T21:27:39.000Z",
+    "num_comments": 65
+  },
+  {
+    "id": "reddit-1ia175l",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "[Official] 2024 End of Year Salary Sharing thread",
+    "text": "This is the official thread for sharing your current salaries (or recent offers).\n\nSee [last year's Salary Sharing thread here](https://www.reddit.com/r/datascience/comments/18tevwk/official_2023_end_of_year_salary_sharing_thread/). There was also [an unofficial one from an hour ago here](https://www.reddit.com/r/datascience/comments/1i9zcgm/unofficial_2024_salary_thread/).\n\nPlease only post salaries/offers if you're including hard numbers, but feel free to use a throwaway account if you're concerned about anonymity. You can also generalize some of your answers (e.g. \"Large biotech company\"), or add fields if you feel something is particularly relevant.\n\n**Title:**\n\n* **Tenure length:**\n* **Location:**\n   * **$Remote:**\n* **Salary:**\n* **Company/Industry:**\n* **Education:**\n* **Prior Experience:**\n   * **$Internship**\n   * **$Coop**\n* **Relocation/Signing Bonus:**\n* **Stock and/or recurring bonuses:**\n* **Total comp:**\n\nNote that while the primary purpose of these threads is obviously to share compensation info, discussion is also encouraged.",
+    "score": 409,
+    "url": "https://reddit.com/r/datascience/comments/1ia175l/official_2024_end_of_year_salary_sharing_thread/",
+    "created_at": "2025-01-26T00:18:34.000Z",
+    "num_comments": 344
+  },
+  {
+    "id": "reddit-1jwbevk",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "What technical skills should young data scientists be learning?",
+    "text": "Data science is obviously a broad and ill-defined term, but most DS jobs today fall into one of the following flavors:\n\n- Data analysis (a/b testing, causal inference, experimental design)\n\n- Traditional ML (supervised learning, forecasting, clustering) \n\n- Data engineering (ETL, cloud development, model monitoring, data modeling)\n\n- Applied Science (Deep learning, optimization, Bayesian methods, recommender systems, typically more advanced and niche, requiring doctoral education)\n\nThe notion of a “full stack” data scientist has declined in popularity, and it seems that many entrants into the field need to decide one of the aforementioned areas to specialize in to build a career. \n\nFor instance, a seasoned product DS will be the best candidate for senior product DS roles, but not so much for senior data engineering roles, and vice versa. \n\nSince I find learning and specializing in everything to be infeasible, I am interested in figuring out which of these “paths” will equip one with the most employable skillset, especially given how fast “AI” is changing the landscape. \n\nFor instance, when I talk to my product DS friends, they advise to learn how to develop software and use cloud platforms since it is essential in the age of big data, even though they rarely do this on the job themselves. \n\nMy data engineer friends on the other hand say that data engineering tools are easy to learn, change too often, and are becoming increasingly abstracted, making developing a strong product/business sense a wiser choice. \n\nIs either group right? \n\nAm I overthinking and would be better off just following whichever path interests me most? \n\nEDIT: I think the essence of my question was to assume that candidates have solid business knowledge. Given this, which skillset is more likely to survive in today and tomorrow’s job market given AI advancements and market conditions. Saying all or multiple pathways will remain important is also an acceptable answer. ",
+    "score": 395,
+    "url": "https://reddit.com/r/datascience/comments/1jwbevk/what_technical_skills_should_young_data/",
+    "created_at": "2025-04-10T23:02:18.000Z",
+    "num_comments": 76
+  },
+  {
+    "id": "reddit-1mb49xm",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "New Grad Data Scientist feeling overwhelmed and disillusioned at first job",
+    "text": "Hi all,\n\nI recently graduated with a degree in Data Science and just started my first job as a data scientist. The company is very focused on staying ahead/keeping up with the AI hype train and wants my team (which has no other data scientists except myself) to explore deploying AI agents for specific use cases. \n\nThe issue is, my background, both academic and through internships, has been in more traditional machine learning (regression, classification, basic NLP, etc.), not agentic AI or LLM-based systems. The projects I’ve been briefed on, have nothing to do with my past experiences and are solely concerned with how we can infuse AI into our workflows and within our products. I’m feeling out of my depth and worried about the expectations being placed on me so early in my career. I was wondering if anyone had advice on how to quickly get up to speed with newer techniques like agentic AI, or how I should approach this situation overall. Any learning resources, mindset tips, or career advice would be greatly appreciated.",
+    "score": 382,
+    "url": "https://reddit.com/r/datascience/comments/1mb49xm/new_grad_data_scientist_feeling_overwhelmed_and/",
+    "created_at": "2025-07-28T02:14:45.000Z",
+    "num_comments": 101
+  },
+  {
+    "id": "reddit-1iuw9ow",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "To the avid fans of R, I respect your fight for it but honestly curious what keeps you motivated?",
+    "text": "I started my career as an R user and loved it! Then after some years in I started looking for new roles and got the slap of reality that no one asks for R. Gradually made the switch to Python and never looked back. I have nothing against R and I still fend off unreasonable attacks on R by people who never used it calling it only good for adhoc academic analysis and bla bla. But, is it still worth fighting for?",
+    "score": 342,
+    "url": "https://reddit.com/r/datascience/comments/1iuw9ow/to_the_avid_fans_of_r_i_respect_your_fight_for_it/",
+    "created_at": "2025-02-21T17:22:51.000Z",
+    "num_comments": 195
+  },
+  {
+    "id": "reddit-1i03pk7",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Where do you go to stay up to date on data analytics/science?",
+    "text": "Are there any people or organizations you follow on Youtube, Twitter, Medium, LinkedIn, or some other website/blog/podcast that you always tend to keep going back to? \n\nMy previous career absolutely lacked all the professional \"content creators\" that data analytics have, so I was wondering what content you guys tend to consume, if any. Previously I'd go to two sources: one to stay up to date on semi-relevant news, and the other was a source that'd do high level summaries of interesting research papers. \n\nReally, the kind of stuff would be talking about new tools/products that might be of use, tips and tricks, some re-learning of knowledge you might have learned 10+ years ago, deep dives of random but pertinent topics, or someone that consistently puts out unique visualizations and how to recreate them. You can probably see what I'm getting at: sources for stellar information.",
+    "score": 314,
+    "url": "https://reddit.com/r/datascience/comments/1i03pk7/where_do_you_go_to_stay_up_to_date_on_data/",
+    "created_at": "2025-01-13T02:23:54.000Z",
+    "num_comments": 47
+  },
+  {
+    "id": "reddit-1lg5mrg",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Ridiculous offer, how to proceed?",
+    "text": "Hello All, after a very long struggle with landing my first data science job, I got a ridiculous offer and would like to know how to proceed. For context, I have 7 years of medtech experience, not specifically in data science but similar and an undergrad in stats and now a masters in data science. I am located in the US.\n\nI've been talking with a company for months now and had several interviews even without a specific position available. Well they finally opened two positions, one associate and one senior with salary ranges of 66-99k and 130k-180k respectively. I applied for both and when HR got involved for the offer they said they could probably just split the difference for 110k. Sure that's fine. However, a couple days later, they called again and offered 60-70k, below even the lower limit of the associate range. So my question is has this happened to anyone else? Is this HR's way of trying to get me to just go away?\n\nMaybe I'm just frustrated since HR said the salary range listed on the job req isn't actually what they are willing to pay",
+    "score": 270,
+    "url": "https://reddit.com/r/datascience/comments/1lg5mrg/ridiculous_offer_how_to_proceed/",
+    "created_at": "2025-06-20T14:38:34.000Z",
+    "num_comments": 120
+  },
+  {
+    "id": "reddit-1khu4f8",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "This is how I got a (potential) offer revoked: A learning lesson",
+    "text": "I’m based in the Bay Area with 5 YOE. A couple of months ago, I interviewed for a role I wasn’t too excited about, but the pay was super compelling. In the first recruiter call, they asked for my salary expectations. I asked for their range, as an example here, let’s say they said $150K–$180K. I said, “That works, I’m looking for something above $150K.” I think this was my first mistake, more on that later.\n\nI am a person with low self esteem(or serious imposter syndrome) and when I say I nailed all 8 rounds, I really must believe that. The recruiter followed up the day after 8th round saying team is interested in extending an offer. Then on compensation expectations the recruiter said, “You mentioned $150K earlier.” I clarified that I was targeting the upper end based on my fit and experience. They responded with, “So $180K?” and I just said yes. It felt a bit like putting words in my mouth.\n\nNext day, I got an email saying that I have to wait for the offer decision as they are interviewing  other candidates. Haven’t heard back since. I don’t think I did anything fundamentally wrong or if I should have regrets but curious what others think.\n\nEdit: Just to clarify, in my mind I thought that’s how negotiations work. They will come back and say can’t do 150 but can do 140. But I guess not.",
+    "score": 240,
+    "url": "https://reddit.com/r/datascience/comments/1khu4f8/this_is_how_i_got_a_potential_offer_revoked_a/",
+    "created_at": "2025-05-08T16:16:55.000Z",
+    "num_comments": 121
+  },
+  {
+    "id": "reddit-1mcd3n5",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Since when did “meets” expectations become a bad thing in this industry?",
+    "text": "I work at a pretty big named company on west coast. It is pretty shocking to see that in my company anyone who gets “meets” expectations have not been getting any salary increments, not even a dollar each year. I’d think if you are meeting expectations, it means you are holding up your end of the deal and it shouldn’t be a bad thing. But now, you actually have to exceeds expectations to get measly 1% salary raises and sometimes to just keep your job.\n\nDid this used to happen pre covid as well?",
+    "score": 231,
+    "url": "https://reddit.com/r/datascience/comments/1mcd3n5/since_when_did_meets_expectations_become_a_bad/",
+    "created_at": "2025-07-29T14:35:17.000Z",
+    "num_comments": 54
+  },
+  {
+    "id": "reddit-1jxl18x",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Ace The Interview - SQL Intuitively and Exhaustively Explained",
+    "text": "SQL is easy to learn and hard to master. Realistically, the difficulty of the questions you get will largely be dictated by the job role you're trying to fill.\n\nFrom it's highest level, SQL is a \"declarative language\", meaning it doesn't define a set of operations, but rather a desired end result. This can make SQL incredibly expressive, but also a bit counterintuitive, especially if you aren't fully aware of it's declarative nature.\n\nSQL expressions are passed through an SQL engine, like PostgreSQL, MySQL, and others. Thes engines parse out your SQL expressions, optimize them, and turn them into an actual list of steps to get the data you want. While not as often discussed, for beginners I recommend SQLite. It's easy to set up in virtually any environment, and allows you to get rocking with SQL quickly. If you're working in big data, I recommend also brushing up on something like PostgreSQL, but the differences are not so bad once you have a solid SQL understanding.\n\nIn being a high level declaration, SQL’s grammatical structure is, fittingly, fairly high level. It’s kind of a weird, super rigid version of English. SQL queries are largely made up of:\n\n* **Keywords:** special words in SQL that tell an engine what to do. Some common ones, which we’ll discuss, are `SELECT, FROM, WHERE, INSERT, UPDATE, DELETE, JOIN, ORDER BY, GROUP BY` . They can be lowercase or uppercase, but usually they’re written in uppercase.\n* **Identifiers:** Identifiers are the names of database objects like tables, columns, etc.\n* **Literals:** numbers, text, and other hardcoded values\n* **Operators:** Special characters or keywords used in comparison and arithmetic operations. For example `!=`, `&lt;` ,`OR`, `NOT` , `*`, `/`, `%` , `IN`, `LIKE` . We’ll cover these later.\n* **Clauses:** These are the major building block of SQL, and can be stitched together to combine a queries general behavior. They usually start with a keyword, like \n   * `SELECT` – defines which columns to return \n   * `FROM` – defines the source table \n   * `WHERE` – filters rows \n   * `GROUP BY` – groups rows etc.  \n\nBy combining these clauses, you create an SQL query\n\nThere are a ton of things you can do in SQL, like create tables:\n\n    CREATE TABLE People(first_name, last_name, age, favorite_color)\n\nInsert data into tables:\n\n    INSERT INTO People\n    VALUES\n        ('Tom', 'Sawyer', 19, 'White'),\n        ('Mel', 'Gibson', 69, 'Green'),\n        ('Daniel', 'Warfiled', 27, 'Yellow')\n\nSelect certain data from tables:\n\n    SELECT first_name, favorite_color FROM People\n\nSearch based on some filter\n\n    SELECT * FROM People WHERE id = 3\n\nAnd Delete Data\n\n    DELETE FROM People WHERE age &lt; 30 \n\nWhat was previously mentioned makes up the cornerstone of pretty much all of SQL. Everything else builds on it, and there is a lot.\n\n**Primary and Foreign Keys**  \nA *primary key* is a unique identifier for each record in a table. A *foreign key* references a primary key in another table, allowing you to relate data across tables. This is the backbone of relational database design.\n\n**Super Keys and Composite Keys**  \nA *super key* is any combination of columns that can uniquely identify a row. When a unique combination requires multiple columns, it’s often called a *composite key* — useful in complex schemas like logs or transactions.\n\n**Normalization and Database Design**  \nNormalization is the process of splitting data into multiple related tables to reduce redundancy. First Normal Form (1NF) ensures atomic rows, Second Normal Form (2NF) separates logically distinct data, and Third Normal Form (3NF) eliminates derived data stored in the same table.\n\n**Creating Relational Schemas in SQLite**  \nYou can explicitly define tables with `FOREIGN KEY` constraints using `CREATE TABLE`. These relationships enforce referential integrity and enable behaviors like cascading deletes. SQLite enforces `NOT NULL` and `UNIQUE` constraints strictly, making your schema more robust.\n\n**Entity Relationship Diagrams (ERDs)**  \nERDs visually represent tables and their relationships. Dotted lines and cardinality markers like `{0,1}` or `0..N` indicate how many records in one table relate to another, which helps document and debug schema logic.\n\n**JOINs**  \nJOIN operations combine rows from multiple tables using foreign keys. `INNER JOIN` includes only matched rows, `LEFT JOIN` includes all from the left table, and `FULL OUTER JOIN` (emulated in SQLite) combines both. Proper JOINs are critical for data integration.\n\n**Filtering and LEFT/RIGHT JOIN Differences**  \nJOIN order affects which rows are preserved when there’s no match. For example, using `LEFT JOIN` ensures all left-hand rows are kept — useful for identifying unmatched data. SQLite lacks `RIGHT JOIN`, but you can simulate it by flipping the table order in a `LEFT JOIN`.\n\n**Simulating FULL OUTER JOINs**  \nSQLite doesn’t support `FULL OUTER JOIN`, but you can emulate it with a `UNION` of two `LEFT JOIN` queries and a `WHERE` clause to catch nulls from both sides. This approach ensures no records are lost in either table.\n\n**The WHERE Clause and Filtration**  \n`WHERE` filters records based on conditions, supporting logical operators (`AND`, `OR`), numeric comparisons, and string operations like `LIKE`, `IN`, and `REGEXP`. It's one of the most frequently used clauses in SQL.\n\n**DISTINCT Selections**  \nUse `SELECT DISTINCT` to retrieve unique values from a column. You can also select distinct combinations of columns (e.g., `SELECT DISTINCT name, grade`) to avoid duplicate rows in the result.\n\n**Grouping and Aggregation Functions**  \nWith `GROUP BY`, you can compute metrics like `AVG`, `SUM`, or `COUNT` for each group. `HAVING` lets you filter grouped results, like showing only departments with an average salary above a threshold.\n\n**Ordering and Limiting Results**  \n`ORDER BY` sorts results by one or more columns in ascending (`ASC`) or descending (`DESC`) order. `LIMIT` restricts the number of rows returned, and `OFFSET` lets you skip rows — useful for pagination or ranked listings.\n\n**Updating and Deleting Data**  \n`UPDATE` modifies existing rows using `SET`, while `DELETE` removes rows based on `WHERE` filters. These operations can be combined with other clauses to selectively change or clean up data.\n\n**Handling NULLs**  \n`NULL` represents missing or undefined values. You can detect them using `IS NULL` or replace them with defaults using `COALESCE`. Aggregates like `AVG(column)` ignore NULLs by default, while `COUNT(*)` includes all rows.\n\n**Subqueries**  \nSubqueries are nested `SELECT` statements used inside `WHERE`, `FROM`, or `SELECT`. They’re useful for filtering by aggregates, comparisons, or generating intermediate results for more complex logic.\n\n**Correlated Subqueries**  \nThese are subqueries that reference columns from the outer query. Each row in the outer query is matched against a custom condition in the subquery — powerful but often inefficient unless optimized.\n\n**Common Table Expressions (CTEs)**  \nCTEs let you define temporary named result sets with `WITH`. They make complex queries readable by breaking them into logical steps and can be used multiple times within the same query.\n\n**Recursive CTEs**  \nRecursive CTEs solve hierarchical problems like org charts or category trees. A base case defines the start, and a recursive step extends the output until no new rows are added. Useful for generating sequences or computing reporting chains.\n\n**Window Functions**  \nWindow functions perform calculations across a set of table rows related to the current row. Examples include `RANK()`, `ROW_NUMBER()`, `LAG()`, `LEAD()`, `SUM() OVER ()`, and moving averages with sliding windows.\n\nThese all can be combined together to do a lot of different stuff.\n\nIn my opinion, this is too much to learn efficiently learn outright. It requires practice and the slow aggregation of concepts over many projects. If you're new to SQL, I recommend studying the basics and learning through doing. However, if you're on the job hunt and you need to cram, you might find this breakdown useful: [https://iaee.substack.com/p/structured-query-language-intuitively](https://iaee.substack.com/p/structured-query-language-intuitively)",
+    "score": 224,
+    "url": "https://reddit.com/r/datascience/comments/1jxl18x/ace_the_interview_sql_intuitively_and/",
+    "created_at": "2025-04-12T16:20:55.000Z",
+    "num_comments": 14
+  },
+  {
+    "id": "reddit-1n9yrfy",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Europe Salary Thread 2025 - What's your role and salary?",
+    "text": "The yearly Europe-centric salary thread. You can find the last one here:\n\nhttps://old.reddit.com/r/datascience/comments/1fxrmzl/europe_salary_thread_2024_whats_your_role_and/\n\nI think it's worthwhile to learn from one another and see what different flavours of data scientists, analysts and engineers are out there in the wild. In my opinion, this is especially useful for the beginners and transitioners among us. So, do feel free to talk a bit about your work if you can and want to. 🙂\n\nWhile not the focus, non-Europeans are of course welcome, too. Happy to hear from you!\n\n**Data Science Flavour:** .\n\n**Location:** .\n\n**Title:** .\n\n**Compensation (gross):** .\n\n**Education level:** .\n\n**Experience:** .\n\n**Industry/vertical:** .\n\n**Company size:** .\n\n**Majority of time spent using (tools):** .\n\n**Majority of time spent doing (role):** .",
+    "score": 190,
+    "url": "https://reddit.com/r/datascience/comments/1n9yrfy/europe_salary_thread_2025_whats_your_role_and/",
+    "created_at": "2025-09-06T12:50:59.000Z",
+    "num_comments": 125
+  },
+  {
+    "id": "reddit-1pg2x2x",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Lost and Feel Like a Fraud",
+    "text": "This might not be the appropriate place to say this, but I honestly feel like the biggest fraud ever. If I could go back, I don’t think I would have went into data science.\n\nI did my undergraduate in biology, and then did a masters in data science. I’ve continued to get better with coding (still not good enough like a CS major), learning, using AI, but I feel like I’m getting no where. In fact, I’m just getting more frustrated.\n\nMy job is not related to data science AT ALL, just analyzing incoming live data. I’ve been polishing my resume, no luck at all for even 1 interview. I know the market is brutal, but even when you’re lucky enough to land a job, the salary is horrible in Canada. I don’t even think I enjoy doing data science work anymore since it’s becoming more and more dependant on AI.\n\nI’m too out of it to go back to school to do something else. In truth, I don’t know what I’m doing. I don’t even know why I’m writing this.",
+    "score": 107,
+    "url": "https://reddit.com/r/datascience/comments/1pg2x2x/lost_and_feel_like_a_fraud/",
+    "created_at": "2025-12-06T23:14:17.000Z",
+    "num_comments": 41
+  },
+  {
+    "id": "reddit-1hx286f",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Am I underpaid/underemployed at $65k for a Data Analyst position in a MCOL city?",
+    "text": "I'm in a mcol city. I have a master's in Data Analytics that I finished in October 2024, and I've been working as a Data Analyst for 1.5 years. Before that, I was a study lead Clinical Data Manager for over a year (and before that I was a tax researcher and worked in HR). Currently, I make $65k base salary, but $85k total compensation. \n\nI keep getting interviews for Data Scientist positions that are well into the $100k+ base salary range, but I haven't landed an offer yet (it's really disheartening). Am I underpaid?\n\nP.S. I'm open to job suggestions lol",
+    "score": 69,
+    "url": "https://reddit.com/r/datascience/comments/1hx286f/am_i_underpaidunderemployed_at_65k_for_a_data/",
+    "created_at": "2025-01-09T02:25:52.000Z",
+    "num_comments": 57
+  },
+  {
+    "id": "reddit-1o8ipwa",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Would you move from DS to BI/DA/DE for a salary increase?",
+    "text": "I’m a DS but salary is below average. Getting recruiters reaching out for other data roles though because my experience is broad. Sometimes these roles start at ~$40k over what I’m making now, and even over other open DS roles I see on LinkedIn in my area for my yoe.\n\nThe issue is I love DS work, and don’t want to make it super difficult to get future DS jobs. But I also wouldn’t mind working in another data role for a bit to get that money though. \n\nWhat are everyone’s thoughts on this? Would you leave DS for more money?",
+    "score": 59,
+    "url": "https://reddit.com/r/datascience/comments/1o8ipwa/would_you_move_from_ds_to_bidade_for_a_salary/",
+    "created_at": "2025-10-16T21:23:15.000Z",
+    "num_comments": 44
+  },
+  {
+    "id": "reddit-1ptlund",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Deciding on an offer: Higher Salary vs Stability",
+    "text": "Trying to decide between staying in a stable, but stagnating position or move for higher pay and engagement with higher risk of layoff. Would love to hear the subreddits thoughts on a move in this climate.\n\nI currently work for a city as a Senior DS. The position has good WLB, early retirement healthcare (in 5 years), and relative security. However, my role has shifted to mostly reporting in Tableau and Excel with shrinking DS opportunities. There is no growth in terms of salary or position.\n\nI have an offer from a mature startup that would give me a large pay bump and allow me to work on DS projects with a more contemporary tech stack. However, their reviews have mentioned recent layoffs and slow career growth.\n\nBelow are some more specifics:\n\nI am 35 in a VHCOL city. DINK with a mortgage and student loans\n\nCurrent Job:\n-$130k \n- Okay pension with early retirement Healthcare in 5 years\n- Good WLB, but non-DS work with an aging tech stack\n- Raises and promotions are extremely rare (none for my team in the last 4 years)\n- 2 days in office\n\nNew Job - same title:\n- $170k\n- DS work with a much more modern tech stack\nstack\n- fully remote\n- 1st year off 2 years of layoffs\n- reviews frequently cite few raises and promotions; however, really good wlb.\n\nOne nice thing is I don't lose my pension progress if I leave, so if I do end up in a city or state position again I start up where I left off.\n\n",
+    "score": 59,
+    "url": "https://reddit.com/r/datascience/comments/1ptlund/deciding_on_an_offer_higher_salary_vs_stability/",
+    "created_at": "2025-12-23T05:29:49.000Z",
+    "num_comments": 26
+  },
+  {
+    "id": "reddit-1ljhuda",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "How to tell the difference between whether managers are embracing reality of AI or buying into hype?",
+    "text": "I work in data science with a skillset that comprises of data science, data engineering and analytics. My team seems to want to eventually make my role completely non-technical (I'm not sure what a non-technical role would entail). The reason is because there's a feeling all the technical aspects will be completely eliminated by AI. The rationale, in theory, makes sense - we focus on the human aspects of our work, which is to develop solutions that can clearly be transferred to a fully technical team or AI to do the job for us. \n\nThe reality in my experience is that this makes a strong assumptions data processes have the capacity to fit cleanly and neatly into something like a written prompt that can easily be given to somebody or AI with no 'context' to develop. I don't feel like in my work, our processes are there yet....like at all. Some things, maybe, but most things no. I also feel I'm navigating a lot of ever evolving priorities, stakeholder needs, conflicting advice (do this, no revert this, do this, rinse, repeat). This is making my job honestly frustrating and burning me out FAST. I'm working 12 hour days, sometimes up to 3 AM. My technical skills are deteriorating and I feel like my mind is becoming into a fried egg. Don't have time or energy to do anything to upskill.\n\nOn one hand, I'm not sure if management has a point - if I let go of the 'technical' parts that I like b/c of AI and instead just focus on more of the 'other stuff', would I have more growth, opportunity and salary increase in my career? Or is it better off to have a balance between those skills and the technical aspects? In an ideal world, I want to be able to have a good compromise between subject matter and technical skills and have a job where I get to do a bit of both. I'm not sure if the narrative I'm hearing is one of hype or reality. Would be interested in hearing thoughts. ",
+    "score": 26,
+    "url": "https://reddit.com/r/datascience/comments/1ljhuda/how_to_tell_the_difference_between_whether/",
+    "created_at": "2025-06-24T17:47:58.000Z",
+    "num_comments": 24
+  },
+  {
+    "id": "reddit-1ibkw2h",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Would you rather be comfortable or take risks moving around?",
+    "text": "I recently received a job offer from a mid-to-large tech company in the gig economy space. The role comes with a competitive salary, offering a 15-20k increase over my current compensation. While the pay bump is nice, the job itself will be challenging as it focuses on logistics and pricing. However, I do have experience in pricing and have demonstrated my ability to handle optimization work. This role would also provide greater exposure to areas like causal inference, optimization, and real-time analytics, which are areas I’d like to grow in.\n\nThat said, I’m concerned about my career trajectory. I’ve moved around frequently in the past—for example, I spent 1.5 years at a big bank in my first role but left due to a toxic team. While I’m currently happy and comfortable in my role, I haven’t been here for a full year yet.\n\nMy current total compensation is $102k. While the work-life balance is great, my team is lacking in technical skills, and I’ve essentially been responsible for upskilling the entire practice. Another area of concern is that technically we are not able to keep up with bigger companies and the work is highly regulated so innovation isnt as easy.\n\nGiven the frequency move what would you do in my shoes? Take it and try to improve career opportunities for big tech?",
+    "score": 24,
+    "url": "https://reddit.com/r/datascience/comments/1ibkw2h/would_you_rather_be_comfortable_or_take_risks/",
+    "created_at": "2025-01-27T21:38:39.000Z",
+    "num_comments": 34
+  },
+  {
+    "id": "reddit-1i40izz",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Do these recruiters sound like a scam?",
+    "text": "Hi all, unsure of where else to ask this so asking here. \n\nI had a recruiter (heavy Indian accent) call/email me with an interesting proposition. They work for the candidate rather than the company. If they place you in a job within 45 days they ask for 9% of your first year's salary.\n\nThey claim their value add is in a couple of things. First they promise that they have advanced ATS software that will help tweak professional qualifications. Second, they say they will apply to approximately 50 JDs per day (I am skeptical this many relevant jobs are even being posted).\n\nI have never had luck with Indian recruiters before but I have had good experiences professionally in offshoring some repetitive tasks for cheap. This process sounds like it fits the bill. The part where it gets sketchy is they want either access to my LinkedIn/Gmail or they want me to create second LinkedIn/Gmail accounts that they would have control over. Access to my gmail is a nonstarter obviously. But creating spoof LinkedIn/Gmails feels a little sketchy. \n\nIf we're living in a universe where these guys are simply trying to provide the service they've described, I'm all in. I just don't want to get soft-rolled into some sort of scam.",
+    "score": 15,
+    "url": "https://reddit.com/r/datascience/comments/1i40izz/do_these_recruiters_sound_like_a_scam/",
+    "created_at": "2025-01-18T05:22:57.000Z",
+    "num_comments": 36
+  },
+  {
+    "id": "reddit-1ptr5zo",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Got an offer manager track in my smaller fintech or go to major retailer",
+    "text": "I have a job offer of manager with big retailer around 160-170 total comp with all the benefits. I expect just salary and bonus to be 143k then we add in the profit sharing, stocks and equity, rrsp contributions we expect the comp to push that generous number. Big retailer.\n\nCurrently i make 120.5k. Small niche fintech.\n\n3 years of experience i perform as a DS but did a pretty good job in my current role and i do genuinely innovate. So i am also on track to be manager in my current role.\n\nType of work:\nRetailer is a lot of causal inference. I have to manage 4 people eventually 6. Building team from scratch in a pressure cooker environment.\n\nFintech is a lot of credit risk and end to end ownership + docker + portfolio management + causal inference.\n\nI am going to take it to my manager and see the offer on the table. My big boss is super generous so it’s not out of the table to get great salaries. Unprompted i got an offer from 102500 total to 120.5. So i am 100%.\n\nEnvironment:\nBig retailer: 4 days in office\nFintech: 2-3 days in offie probably 3  by next years.\n\nPeople:\nBig retailer: dont know but i go back to corporate.\nFintech: we do have a bunch of idiots in the company and execs are not really my favorite. I do like some of our senior leadership but the top exec other than 1 exec i dont really like them.\n\n\nCareer outlook: i came from original bank i had more interviews with big tech in the big bank than i did with fintech. Most of my interviews came from the fact i work in a big bank. So maybe going to big tech might be the play.\n\nI am gunning for the big tech roles so i am pushing as much as possible to hit the 180-200k comps so i can then climb the ladder.\n\nDo note for retailer I rejected their senior ds offer as it matched my comp. So they went in with manager and then svps sought me out. I interviewed and left a strong impression of how I explain + scope things as I do end to end ownership on my fintech role.\n\n\nCareer insight is appreciated.\n\n\n",
+    "score": 12,
+    "url": "https://reddit.com/r/datascience/comments/1ptr5zo/got_an_offer_manager_track_in_my_smaller_fintech/",
+    "created_at": "2025-12-23T11:00:17.000Z",
+    "num_comments": 7
+  },
+  {
+    "id": "reddit-1jrr35h",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "How do you calculate your hourly rate, if you were to consider contract over FTE?!",
+    "text": "I have always been an FTE in this field, receiving compensations and benefits that extend far beyond the base salary.\n\nFor many years now, every contract opportunity a recruiter presented never made financial sense to me, regardless of the level, and even for top FAANG employers known for generous pay packages. Is this really the case and contract workers are scammed in this field? or is it just my luck? Or is it the recruiters robbing us?\n\nFor reference, I take my annual TC, divide it by 48 × 40 (weeks times hours), because there will be at least 4 unpaid vacation weeks if I contract, to estimate my hourly rate, which isn't even fair to me because I am not factoring benefits. Anyway, the value I get is always multiples more than the best contract offer a recruiter presented. So am I doing it wrong?!\n\n\nt",
+    "score": 8,
+    "url": "https://reddit.com/r/datascience/comments/1jrr35h/how_do_you_calculate_your_hourly_rate_if_you_were/",
+    "created_at": "2025-04-05T00:30:58.000Z",
+    "num_comments": 17
+  },
+  {
+    "id": "reddit-1iogppw",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Data Team Benchmarks",
+    "text": "I put together some charts to help benchmark data teams: [http://databenchmarks.com/](http://databenchmarks.com/)\n\nFor example\n\n* Average data team size as % of the company (hint: 3%)\n* Median salary across data roles for 500 job postings in Europe\n* Distribution of analytics engineers, data engineers, and analysts\n* The data-to-engineer ratio at top tech companies\n\nThe data comes from LinkedIn, open job boards, and a few other sources.",
+    "score": 7,
+    "url": "https://reddit.com/r/datascience/comments/1iogppw/data_team_benchmarks/",
+    "created_at": "2025-02-13T11:07:35.000Z",
+    "num_comments": 1
+  },
+  {
+    "id": "reddit-1p6ihbi",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Accept small internal promotion (DS) raise on current team or wait for another role (DE)?",
+    "text": "Hi all.\n\nGot a career dilemma and looking for some thoughts.\n\nAdditional context to my cross post. I'm Currently a DS and offered a promotion to stay on my current team for a 10% salary bump. The role I interviewed for was a DE position and would bring me a new title and ability to develop new skill set.\n\nThanks!",
+    "score": 3,
+    "url": "https://reddit.com/r/datascience/comments/1p6ihbi/accept_small_internal_promotion_ds_raise_on/",
+    "created_at": "2025-11-25T17:24:02.000Z",
+    "num_comments": 3
+  },
+  {
+    "id": "reddit-1k20azb",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "Have a lot of experience but not getting any interviews - help",
+    "text": "Hi,\n\nI was here a few weeks back and you helped me to cut down my CV and demo more impact.  I have applied to jobs all over and get only rejections.\n\nI know the market is hard right now, but I would think that I would at least get invited to have at least initial conversations.  This makes me think, there must be something really missing.  Could you tell me what you think it could be?\n\nDue to AI hype there are a lot of postings with LLMs.  I don't have corporate experience there but I plan to do projects to learn &amp; demo it.\n\nThis week I have lowered my salary requirements by 10k and still get rejections.\n\nI have 2 versions - a 2 pager and a 1 pager.  Have been applying with the 2 pager mostly until now.\n\nAm grateful for your feedback and any help you can give me\n\nhttps://preview.redd.it/e4pubfms4kve1.png?width=1414&amp;format=png&amp;auto=webp&amp;s=853c4ae00db446784cb42ff17048611e5fb03a81\n\nhttps://preview.redd.it/mzsfifmv4kve1.png?width=1414&amp;format=png&amp;auto=webp&amp;s=ca35aeac336eb834a54b55008efc51936c26658d\n\nhttps://preview.redd.it/l9jz6b6w4kve1.png?width=1414&amp;format=png&amp;auto=webp&amp;s=802f98f4dfdb7cc5d39346c6d1a91cf6b08b95b6\n\n",
+    "score": 0,
+    "url": "https://reddit.com/r/datascience/comments/1k20azb/have_a_lot_of_experience_but_not_getting_any/",
+    "created_at": "2025-04-18T08:53:19.000Z",
+    "num_comments": 19
+  },
+  {
+    "id": "reddit-1ng1xk3",
+    "subreddit": "datascience",
+    "soc_codes": [
+      "15-2051"
+    ],
+    "title": "The “three tiers” of data engineering pay — and how to move up",
+    "text": "**The “three tiers” of data engineering pay — and how to move up (shout out to the article by geergly orosz which i placed in the bottom)**\n\nI keep seeing folks compare salaries across wildly different companies and walk away confused. A useful mental model I’ve found is that comp clusters into *three tiers* based on company type, not just your years of experience or title. Sharing this to help people calibrate expectations and plan the next move.\n\n# The three tiers\n\n* **Tier 1 — “Engineering is a cost center.”** Think traditional companies, smaller startups, internal IT/BI, or teams where data is a support function. Pay is the most modest, equity/bonuses are limited, scope is narrower, and work is predictable (reports, ELT to a warehouse, a few Airflow dags, light stakeholder churn).\n* **Tier 2 — “Data is a growth lever.”** Funded startups/scaleups and product-centric companies. You’ll see modern stacks (cloud warehouses/lakehouses, dbt, orchestration, event pipelines), clearer paths to impact, and some equity/bonus. companies expect design thinking and hands-on depth. Faster pace, more ambiguity, bigger upside.\n* **Tier 3 — “Data is a moat.”** Big tech, trading/quant, high-scale platforms, and companies competing globally for talent. Total comp can be multiples of Tier 1. hiring process are rigorous (coding + system design + domain depth). Expectations are high: reliability SLAs, cost controls at scale, privacy/compliance, streaming/near-real-time systems, complex data contracts.\n\nNone of these are “better” by default. They’re just different trade-offs: stability vs. upside, predictability vs. scope, lower stress vs. higher growth.\n\n# Signals you’re looking at each tier\n\n* **Tier 1:** job reqs emphasize tools (“Airflow, SQL, Tableau”) over outcomes; little talk of SLAs, lineage, or contracts; analytics asks dominate; compensation is mainly base.\n* **Tier 2:** talks about metrics that move the business, experimentation, ownership of domains, real data quality/process governance; base + some bonus/equity; leveling exists but is fuzzy.\n* **Tier 3:** explicit levels/bands, RSUs or meaningful options, on-call for data infra, strong SRE practices, platform/mesh/contract language, cost/perf trade-offs are daily work.\n\n# If you want to climb a tier, focus on evidence of impact at scale\n\nThis is what consistently changes comp conversations:\n\n* **Design → not just build.** Bring written designs for one or two systems you led: ingestion → storage → transformation → serving. Show choices and trade-offs (batch vs streaming, files vs tables, CDC vs snapshots, cost vs latency).\n* **Reliability &amp; correctness.** Prove you’ve owned SLAs/SLOs, data tests, contracts, backfills, schema evolution, and incident reviews. Screenshots aren’t necessary—bullet the incident, root cause, blast radius, and the guardrail you added.\n* **Cost awareness.** Know your unit economics (e.g., cost per 1M events, per TB transformed, per dashboard refresh). If you’ve saved the company money, quantify it.\n* **Breadth across the stack.** A credible story across ingestion (Kafka/Kinesis/CDC), processing (Spark/Flink/dbt), orchestration (Airflow/Argo), storage (lakehouse/warehouse), and serving (feature store, semantic layer, APIs). You don’t need to be an expert in all—show you can choose appropriately.\n* **Observability.** Lineage, data quality checks, freshness alerts, SLIs tied to downstream consumers.\n* **Security &amp; compliance.** RBAC, PII handling, row/column-level security, audit trails. Even basic exposure here is a differentiator.\n\n# prep that actually moves the needle\n\n* **Coding:** you don’t need to win ICPC, but you *do* need to write clean Python/SQL under time pressure and reason about complexity.\n* **Data system design:** practice 45–60 min sessions. Design an events pipeline, CDC into a lakehouse, or a real-time metrics system. Cover partitioning, backfills, late data, idempotency, dedupe, compaction, schema evolution, and cost.\n* **Storytelling with numbers:** have 3–4 impact bullets with metrics: “Reduced warehouse spend 28% by switching X to partitioned Parquet + object pruning,” “Cut pipeline latency from 2h → 15m by moving Y to streaming with windowed joins,” etc.\n* **Negotiation prep:** know base/bonus/equity ranges for the level (bands differ by tier). Understand RSUs vs options, vesting, cliffs, refreshers, and how performance ties to bonus.\n\n# Common traps that keep people stuck\n\n* **Tool-first resumes.** Listing ten tools without outcomes reads Tier 1. Frame with “problem → action → measurable result.”\n* **Only dashboards.** Valuable, but hiring loops for higher tiers want ownership of data *as a product*.\n* **Ignoring reliability.** If you’ve never run an incident call for data, you’re missing a lever that Tier 2/3 value highly.\n* **No cost story.** At scale, cost is a feature. Even a small POC that trims spend is compelling signal.\n\n# Why this matters\n\nAverages hide the spread. Two data engineers with the same YOE can be multiple tiers apart in pay purely based on company type and scope. When you calibrate to tiers, expectations and strategy get clearer.\n\nIf you want a deeper read on the broader “three clusters” concept for software salaries, Gergely Orosz has a solid breakdown (“The Trimodal Nature of Software Engineering Salaries”). The framing maps neatly onto data engineering roles too. link in the bottom\n\nCurious to hear from this sub:\n\n* If you moved from Tier 1 → 2 or 2 → 3, what was the single project or proof point that unlocked it?\n* For folks hiring: what signals *actually* distinguish tiers in your loop?\n\narticle: [https://blog.pragmaticengineer.com/software-engineering-salaries-in-the-netherlands-and-europe/](https://blog.pragmaticengineer.com/software-engineering-salaries-in-the-netherlands-and-europe/)",
+    "score": 0,
+    "url": "https://reddit.com/r/datascience/comments/1ng1xk3/the_three_tiers_of_data_engineering_pay_and_how/",
+    "created_at": "2025-09-13T16:30:33.000Z",
+    "num_comments": 4
+  }
+]

@@ -7,8 +7,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getCategory as getCategoryId, getCategoryMetadata, type CategoryId } from '../src/lib/categories';
 
-const ONET_DIR = path.join(process.cwd(), 'data/sources/onet/db_29_1_text');
+const ONET_DIR = path.join(process.cwd(), 'data/sources/onet/db_30_1_text');
 const OUTPUT_DIR = path.join(process.cwd(), 'data/processed');
 
 // Ensure output directory exists
@@ -101,35 +102,47 @@ const JOB_ZONE_DESCRIPTIONS: Record<number, { education: string, experience: str
   5: { education: 'Graduate degree or professional degree', experience: 'Extensive experience', training: 'Extensive training' },
 };
 
-// Category mapping based on SOC major groups
-function getCategory(socCode: string): { category: string; subcategory: string } {
+// SOC major group to subcategory mapping
+const SOC_SUBCATEGORIES: Record<string, string> = {
+  '11': 'Management Occupations',
+  '13': 'Business and Financial Operations',
+  '15': 'Computer and Mathematical',
+  '17': 'Architecture and Engineering',
+  '19': 'Life, Physical, and Social Science',
+  '21': 'Community and Social Service',
+  '23': 'Legal Occupations',
+  '25': 'Educational Instruction and Library',
+  '27': 'Arts, Design, Entertainment, Sports, and Media',
+  '29': 'Healthcare Practitioners and Technical',
+  '31': 'Healthcare Support',
+  '33': 'Protective Service',
+  '35': 'Food Preparation and Serving',
+  '37': 'Building and Grounds Cleaning and Maintenance',
+  '39': 'Personal Care and Service',
+  '41': 'Sales and Related',
+  '43': 'Office and Administrative Support',
+  '45': 'Farming, Fishing, and Forestry',
+  '47': 'Construction and Extraction',
+  '49': 'Installation, Maintenance, and Repair',
+  '51': 'Production Occupations',
+  '53': 'Transportation and Material Moving',
+  '55': 'Military Specific',
+};
+
+// Category mapping using new standardized categories
+function getCategory(socCode: string): { category: CategoryId; subcategory: string } {
   const major = socCode.substring(0, 2);
-  const categories: Record<string, { category: string; subcategory: string }> = {
-    '11': { category: 'Management', subcategory: 'Management Occupations' },
-    '13': { category: 'Business & Finance', subcategory: 'Business and Financial Operations' },
-    '15': { category: 'Technology', subcategory: 'Computer and Mathematical' },
-    '17': { category: 'Technology', subcategory: 'Architecture and Engineering' },
-    '19': { category: 'Science', subcategory: 'Life, Physical, and Social Science' },
-    '21': { category: 'Social Services', subcategory: 'Community and Social Service' },
-    '23': { category: 'Legal', subcategory: 'Legal Occupations' },
-    '25': { category: 'Education', subcategory: 'Educational Instruction and Library' },
-    '27': { category: 'Arts & Media', subcategory: 'Arts, Design, Entertainment, Sports, and Media' },
-    '29': { category: 'Healthcare', subcategory: 'Healthcare Practitioners and Technical' },
-    '31': { category: 'Healthcare', subcategory: 'Healthcare Support' },
-    '33': { category: 'Protective Services', subcategory: 'Protective Service' },
-    '35': { category: 'Food Service', subcategory: 'Food Preparation and Serving' },
-    '37': { category: 'Building & Grounds', subcategory: 'Building and Grounds Cleaning and Maintenance' },
-    '39': { category: 'Personal Care', subcategory: 'Personal Care and Service' },
-    '41': { category: 'Sales', subcategory: 'Sales and Related' },
-    '43': { category: 'Office & Admin', subcategory: 'Office and Administrative Support' },
-    '45': { category: 'Agriculture', subcategory: 'Farming, Fishing, and Forestry' },
-    '47': { category: 'Construction', subcategory: 'Construction and Extraction' },
-    '49': { category: 'Installation & Repair', subcategory: 'Installation, Maintenance, and Repair' },
-    '51': { category: 'Production', subcategory: 'Production Occupations' },
-    '53': { category: 'Transportation', subcategory: 'Transportation and Material Moving' },
-    '55': { category: 'Military', subcategory: 'Military Specific' },
-  };
-  return categories[major] || { category: 'Other', subcategory: 'Other Occupations' };
+  try {
+    const categoryId = getCategoryId(socCode);
+    const metadata = getCategoryMetadata(categoryId);
+    return {
+      category: categoryId,
+      subcategory: SOC_SUBCATEGORIES[major] || 'Other Occupations'
+    };
+  } catch {
+    // Fallback for unknown codes
+    return { category: 'production' as CategoryId, subcategory: SOC_SUBCATEGORIES[major] || 'Other Occupations' };
+  }
 }
 
 // Generate URL-friendly slug
@@ -338,7 +351,7 @@ async function main() {
 
   const occupationListOutput = {
     metadata: {
-      source: 'O*NET 29.1',
+      source: 'O*NET 30.1',
       retrieved_at: new Date().toISOString().split('T')[0],
       total_occupations: occupationList.length
     },
@@ -432,7 +445,7 @@ async function main() {
       // Metadata
       data_sources: [
         {
-          source: 'O*NET 29.1',
+          source: 'O*NET 30.1',
           url: `https://www.onetonline.org/link/summary/${code}`,
           retrieved_at: new Date().toISOString().split('T')[0]
         }
@@ -455,7 +468,7 @@ async function main() {
 
   const occupationsCompleteOutput = {
     metadata: {
-      source: 'O*NET 29.1 + estimates',
+      source: 'O*NET 30.1 + estimates',
       retrieved_at: new Date().toISOString().split('T')[0],
       total_occupations: occupationsComplete.length,
       fields_pending: ['wages', 'outlook', 'ai_risk', 'national_importance', 'career_progression']
