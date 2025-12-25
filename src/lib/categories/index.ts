@@ -24,3 +24,19 @@ export {
   MANAGER_TO_CATEGORY,
   PURE_MANAGEMENT_CODES,
 } from './manager-redistribution';
+
+// Extended category content for landing pages
+export {
+  type CategoryContent,
+  CATEGORY_CONTENT,
+  getCategoryContent,
+} from './category-content';
+
+// Category statistics utilities
+export {
+  type CategoryStats,
+  computeCategoryStats,
+  getCareersByCategory,
+  getAIRiskLevel,
+  formatCategoryStatsSummary,
+} from './category-stats';

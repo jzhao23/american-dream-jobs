@@ -14,6 +14,7 @@ import {
 
 interface CareerExplorerProps {
   careers: CareerIndex[];
+  hideCategoryFilter?: boolean;
 }
 
 type SortField = "median_pay" | "ai_risk" | "importance" | "title";
@@ -21,7 +22,7 @@ type SortDirection = "asc" | "desc";
 
 const TRAINING_TIME_ORDER: TrainingTime[] = ["<6mo", "6-24mo", "2-4yr", "4+yr"];
 
-export function CareerExplorer({ careers }: CareerExplorerProps) {
+export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerExplorerProps) {
   // Filter states
   const [searchQuery, setSearchQuery] = useState("");
   const [minPay, setMinPay] = useState(0);
@@ -274,27 +275,29 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
             </div>
           </div>
 
-          {/* Category Filter */}
-          <div className="lg:col-span-2">
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-              Category ({categories.length} total)
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => toggleCategory(category)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                    selectedCategories.includes(category)
-                      ? "bg-primary-600 text-white border-primary-600"
-                      : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
-                  }`}
-                >
-                  {getCategoryLabel(category)}
-                </button>
-              ))}
+          {/* Category Filter - Hidden when showing single category */}
+          {!hideCategoryFilter && (
+            <div className="lg:col-span-2">
+              <label className="block text-sm font-medium text-secondary-700 mb-2">
+                Category ({categories.length} total)
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => toggleCategory(category)}
+                    className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+                      selectedCategories.includes(category)
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
+                    }`}
+                  >
+                    {getCategoryLabel(category)}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

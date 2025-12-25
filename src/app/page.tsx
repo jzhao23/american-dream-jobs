@@ -1,4 +1,5 @@
 import { CareerExplorer } from "@/components/CareerExplorer";
+import { CategoryStrip } from "@/components/CategoryStrip";
 import { EmailCapture } from "@/components/EmailCapture";
 import careersIndex from "../../data/careers-index.json";
 import type { CareerIndex } from "@/types/career";
@@ -77,19 +78,18 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Category Strip */}
+      <CategoryStrip />
+
       {/* Career Explorer Section */}
       <section id="careers" className="bg-secondary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-4">
+            <h2 className="text-3xl font-bold text-secondary-900">
               Explore Careers
             </h2>
-            <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
-              Filter by what matters to you: pay, training time, AI resilience,
-              and importance to America.
-            </p>
           </div>
-          <CareerExplorer careers={careers} />
+          <CareerExplorer careers={careers} hideCategoryFilter />
         </div>
       </section>
 
