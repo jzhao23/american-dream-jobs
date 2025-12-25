@@ -243,9 +243,11 @@ export function getTrainingTimeLabel(time: TrainingTime, actualYears?: { min: nu
 }
 
 export function getAIRiskColor(score: number): string {
-  if (score <= 3) return "text-green-600 bg-green-100";
-  if (score <= 6) return "text-yellow-600 bg-yellow-100";
-  return "text-red-600 bg-red-100";
+  if (score <= 2) return "text-green-600 bg-green-100";      // Very Low
+  if (score <= 4) return "text-emerald-600 bg-emerald-100";  // Low
+  if (score <= 6) return "text-yellow-600 bg-yellow-100";    // Medium
+  if (score <= 8) return "text-orange-600 bg-orange-100";    // High
+  return "text-red-600 bg-red-100";                          // Very High
 }
 
 export function getAIRiskLabel(score: number): string {
