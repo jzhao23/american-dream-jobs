@@ -1,0 +1,3523 @@
+{
+  "metadata": {
+    "source": "Frey & Osborne (2013)",
+    "paper": "The Future of Employment: How Susceptible Are Jobs to Computerisation?",
+    "authors": "Carl Benedikt Frey & Michael A. Osborne",
+    "url": "https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment",
+    "total_occupations": 702,
+    "extracted_from": "Plotly datasets (GitHub)",
+    "original_source": "Oxford Martin School / Technological Forecasting and Social Change (2017)"
+  },
+  "occupations": [
+    {
+      "soc_code": "51-4033",
+      "title": "Grinding, Lapping, Polishing and Buffing Machine Tool Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "51-9012",
+      "title": "Separating, Filtering, Clarifying, Precipitating and Still Machine Setters, Operators and Tenders",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "41-4012",
+      "title": "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "53-1031",
+      "title": "First-Line Supervisors of Transportation and Material-Moving Machine and Vehicle Operators",
+      "probability": 0.029
+    },
+    {
+      "soc_code": "51-4072",
+      "title": "Molding, Coremaking and Casting Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "51-6091",
+      "title": "Extruding and Forming Machine Setters, Operators and Tenders, Synthetic and Glass Fibers",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "51-4031",
+      "title": "Cutting, Punching and Press Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.78
+    },
+    {
+      "soc_code": "41-4011",
+      "title": "Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "51-4032",
+      "title": "Drilling and Boring Machine Tool Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "51-9041",
+      "title": "Extruding, Forming, Pressing and Compacting Machine Setters, Operators and Tenders",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "51-4034",
+      "title": "Lathe and Turning Machine Tool Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "51-4021",
+      "title": "Extruding and Drawing Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "51-6064",
+      "title": "TextileWinding, Twisting and Drawing Out Machine Setters, Operators and Tenders",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "37-1012",
+      "title": "First-Line Supervisors of Landscaping, Lawn Service and Groundskeeping Workers",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "43-6014",
+      "title": "Secretaries and Administrative Assistants, Except Legal, Medical and Executive",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "49-2093",
+      "title": "Electrical and Electronics Installers and Repairers, Transportation Equipment",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "15-1179",
+      "title": "Information Security Analysts, Web Developers and Computer Network Architects",
+      "probability": 0.21
+    },
+    {
+      "soc_code": "51-4035",
+      "title": "Milling and Planing Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-4193",
+      "title": "Plating and Coating Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "49-2022",
+      "title": "Telecommunications Equipment Installers and Repairers, Except Line Installers",
+      "probability": 0.36
+    },
+    {
+      "soc_code": "51-4012",
+      "title": "Computer Numerically Controlled Machine Tool Programmers, Metal and Plastic",
+      "probability": 0.36
+    },
+    {
+      "soc_code": "51-3091",
+      "title": "Food and Tobacco Roasting, Baking and Drying Machine Operators and Tenders",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "17-2111",
+      "title": "Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",
+      "probability": 0.028
+    },
+    {
+      "soc_code": "25-3011",
+      "title": "Adult Basic and Secondary Education and Literacy Teachers and Instructors",
+      "probability": 0.19
+    },
+    {
+      "soc_code": "49-2094",
+      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+      "probability": 0.41
+    },
+    {
+      "soc_code": "51-4191",
+      "title": "Heat Treating Equipment Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "47-3011",
+      "title": "Helpers–Brickmasons, Blockmasons, Stonemasons and Tile and Marble Setters",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "33-9092",
+      "title": "Lifeguards, Ski Patrol and Other Recreational Protective Service Workers",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "43-5053",
+      "title": "Postal Service Mail Sorters, Processors and Processing Machine Operators",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "25-2031",
+      "title": "Secondary School Teachers, Except Special and Career/Technical Education",
+      "probability": 0.0078
+    },
+    {
+      "soc_code": "51-9021",
+      "title": "Crushing, Grinding and Polishing Machine Setters, Operators and Tenders",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "41-9091",
+      "title": "Door-to-Door Sales Workers, News and Street Vendors and Related Workers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "53-3011",
+      "title": "Ambulance Drivers and Attendants, Except Emergency Medical Technicians",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "49-2095",
+      "title": "Electrical and Electronics Repairers, Powerhouse, Substation and Relay",
+      "probability": 0.38
+    },
+    {
+      "soc_code": "51-4081",
+      "title": "MultipleMachine Tool Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "51-9121",
+      "title": "Coating, Painting and Spraying Machine Setters, Operators and Tenders",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "53-1021",
+      "title": "First-Line Supervisors of Helpers, Laborers and Material Movers, Hand",
+      "probability": 0.42
+    },
+    {
+      "soc_code": "25-2022",
+      "title": "Middle School Teachers, Except Special and Career/Technical Education",
+      "probability": 0.17
+    },
+    {
+      "soc_code": "51-4122",
+      "title": "Welding, Soldering and Brazing Machine Setters, Operators and Tenders",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "51-9192",
+      "title": "Cleaning, Washing and Metal Pickling Equipment Operators and Tenders",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "47-1011",
+      "title": "First-Line Supervisors of Construction Trades and Extraction Workers",
+      "probability": 0.17
+    },
+    {
+      "soc_code": "49-9021",
+      "title": "Heating, Air Conditioning and Refrigeration Mechanics and Installers",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "13-1078",
+      "title": "Human Resources, Training and Labor Relations Specialists, All Other",
+      "probability": 0.31
+    },
+    {
+      "soc_code": "43-1011",
+      "title": "First-Line Supervisors of Office and Administrative Support Workers",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "51-6063",
+      "title": "Textile Knitting and Weaving Machine Setters, Operators and Tenders",
+      "probability": 0.73
+    },
+    {
+      "soc_code": "35-3021",
+      "title": "Combined Food Preparation and Serving Workers, Including Fast Food",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "49-9012",
+      "title": "Control and Valve Installers and Repairers, Except Mechanical Door",
+      "probability": 0.63
+    },
+    {
+      "soc_code": "19-4091",
+      "title": "Environmental Science and Protection Technicians, Including Health",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "17-2151",
+      "title": "Mining and Geological Engineers, Including Mining Safety Engineers",
+      "probability": 0.14
+    },
+    {
+      "soc_code": "51-4022",
+      "title": "Forging Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "51-4023",
+      "title": "Rolling Machine Setters, Operators and Tenders, Metal and Plastic",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "51-7042",
+      "title": "Woodworking Machine Setters, Operators and Tenders, Except Sawing",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "13-1011",
+      "title": "Agents and Business Managers of Artists, Performers and Athletes",
+      "probability": 0.24
+    },
+    {
+      "soc_code": "11-9031",
+      "title": "Education Administrators, Preschool and Childcare Center/Program",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "49-2097",
+      "title": "Electronic Home Entertainment Equipment Installers and Repairers",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "45-1011",
+      "title": "First-Line Supervisors of Farming, Fishing and Forestry Workers",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "39-4831",
+      "title": "Funeral Service Managers, Directors, Morticians and Undertakers",
+      "probability": 0.2
+    },
+    {
+      "soc_code": "51-8093",
+      "title": "Petroleum Pump System Operators, Refinery Operators and Gaugers",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "35-3022",
+      "title": "Counter Attendants, Cafeteria, Food Concession and Coffee Shop",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "33-1021",
+      "title": "First-Line Supervisors of Fire Fighting and Prevention Workers",
+      "probability": 0.0036
+    },
+    {
+      "soc_code": "35-1012",
+      "title": "First-Line Supervisors of Food Preparation and Serving Workers",
+      "probability": 0.63
+    },
+    {
+      "soc_code": "47-2073",
+      "title": "Operating Engineers and Other Construction Equipment Operators",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "43-4181",
+      "title": "Reservation and Transportation Ticket Agents and Travel Clerks",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "51-4011",
+      "title": "Computer-Controlled Machine Tool Operators, Metal and Plastic",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "49-2096",
+      "title": "Electronic Equipment Installers and Repairers, Motor Vehicles",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "43-6011",
+      "title": "Executive Secretaries and Executive Administrative Assistants",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "49-1011",
+      "title": "First-Line Supervisors of Mechanics, Installers and Repairers",
+      "probability": 0.003
+    },
+    {
+      "soc_code": "37-2011",
+      "title": "Janitors and Cleaners, Except Maids and Housekeeping Cleaners",
+      "probability": 0.66
+    },
+    {
+      "soc_code": "43-9051",
+      "title": "Mail Clerks and Mail Machine Operators, Except Postal Service",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "51-9151",
+      "title": "Photographic Process Workers and Processing Machine Operators",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "13-1023",
+      "title": "Purchasing Agents, Except Wholesale, Retail and Farm Products",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "23-1021",
+      "title": "Administrative Law Judges, Adjudicators and Hearing Officers",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "51-2011",
+      "title": "Aircraft Structure, Surfaces, Rigging and Systems Assemblers",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "27-1013",
+      "title": "Fine Artists, Including Painters, Sculptors and Illustrators",
+      "probability": 0.042
+    },
+    {
+      "soc_code": "37-1011",
+      "title": "First-Line Supervisors of Housekeeping and JanitorialWorkers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "47-3014",
+      "title": "Helpers–Painters, Paperhangers, Plasterers and Stucco Masons",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "49-9091",
+      "title": "Coin, Vending and Amusement Machine Servicers and Repairers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "51-9051",
+      "title": "Furnace, Kiln, Oven, Drier and Kettle Operators and Tenders",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "41-3031",
+      "title": "Securities, Commodities and Financial Services Sales Agents",
+      "probability": 0.016
+    },
+    {
+      "soc_code": "51-9032",
+      "title": "Cutting and Slicing Machine Setters, Operators and Tenders",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "35-9011",
+      "title": "Dining Room and Cafeteria Attendants and Bartender Helpers",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "19-2041",
+      "title": "Environmental Scientists and Specialists, Including Health",
+      "probability": 0.033
+    },
+    {
+      "soc_code": "51-1011",
+      "title": "First-Line Supervisors of Production and Operating Workers",
+      "probability": 0.016
+    },
+    {
+      "soc_code": "47-3015",
+      "title": "Helpers–Pipelayers, Plumbers, Pipefitters and Steamfitters",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "43-4161",
+      "title": "Human Resources Assistants, Except Payroll and Timekeeping",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "49-2021",
+      "title": "Radio, Cellular and Tower Equipment Installers and Repairs",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "51-6061",
+      "title": "Textile Bleaching and Dyeing Machine Operators and Tenders",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "11-9032",
+      "title": "Education Administrators, Elementary and Secondary School",
+      "probability": 0.0046
+    },
+    {
+      "soc_code": "47-5031",
+      "title": "ExplosivesWorkers, Ordnance Handling Experts and Blasters",
+      "probability": 0.48
+    },
+    {
+      "soc_code": "29-9799",
+      "title": "Healthcare Practitioners and Technical Workers, All Other",
+      "probability": 0.055
+    },
+    {
+      "soc_code": "51-9023",
+      "title": "Mixing and BlendingMachine Setters, Operators and Tenders",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "21-1092",
+      "title": "Probation Officers and Correctional Treatment Specialists",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "51-8031",
+      "title": "Water and Wastewater Treatment Plant and System Operators",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "43-5111",
+      "title": "Weighers, Measurers, Checkers and Samplers, Recordkeeping",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "19-4099",
+      "title": "Life, Physical and Social Science Technicians, All Other",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "49-3053",
+      "title": "Outdoor Power Equipment and Other Small Engine Mechanics",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "37-3012",
+      "title": "Pesticide Handlers, Sprayers and Applicators, Vegetation",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "11-9141",
+      "title": "Property, Real Estate and Community Association Managers",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "49-2011",
+      "title": "Computer, Automated Teller and Office Machine Repairers",
+      "probability": 0.74
+    },
+    {
+      "soc_code": "21-1012",
+      "title": "Educational, Guidance, School and Vocational Counselors",
+      "probability": 0.0085
+    },
+    {
+      "soc_code": "29-1199",
+      "title": "Health Diagnosing and Treating Practitioners, All Other",
+      "probability": 0.02
+    },
+    {
+      "soc_code": "35-9031",
+      "title": "Hosts and Hostesses, Restaurant, Lounge and Coffee Shop",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "49-9799",
+      "title": "Installation, Maintenance and Repair Workers, All Other",
+      "probability": 0.5
+    },
+    {
+      "soc_code": "27-4031",
+      "title": "Camera Operators, Television, Video and Motion Picture",
+      "probability": 0.6
+    },
+    {
+      "soc_code": "51-9195",
+      "title": "Molders, Shapers and Casters, Except Metal and Plastic",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "51-6062",
+      "title": "Textile Cutting Machine Setters, Operators and Tenders",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "31-9096",
+      "title": "Veterinary Assistants and Laboratory Animal Caretakers",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "49-3031",
+      "title": "Bus and Truck Mechanics and Diesel Engine Specialists",
+      "probability": 0.73
+    },
+    {
+      "soc_code": "25-2032",
+      "title": "Career/Technical Education Teachers, Secondary School",
+      "probability": 0.0088
+    },
+    {
+      "soc_code": "53-7032",
+      "title": "Excavating and Loading Machine and Dragline Operators",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "33-9031",
+      "title": "Gaming Surveillance Officers and Gaming Investigators",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "53-7062",
+      "title": "Laborers and Freight, Stock and Material Movers, Hand",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "47-4061",
+      "title": "Rail-Track Laying and Maintenance Equipment Operators",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "51-9193",
+      "title": "Cooling and Freezing Equipment Operators and Tenders",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "25-2021",
+      "title": "Elementary School Teachers, Except Special Education",
+      "probability": 0.0044
+    },
+    {
+      "soc_code": "49-9098",
+      "title": "Helpers–Installation, Maintenance and Repair Workers",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "25-9011",
+      "title": "Audio-Visual and Multimedia Collections Specialists",
+      "probability": 0.39
+    },
+    {
+      "soc_code": "13-1141",
+      "title": "Compensation, Benefits and Job Analysis Specialists",
+      "probability": 0.47
+    },
+    {
+      "soc_code": "17-3029",
+      "title": "Engineering Technicians, Except Drafters, All Other",
+      "probability": 0.24
+    },
+    {
+      "soc_code": "51-9061",
+      "title": "Inspectors, Testers, Sorters, Samplers and Weighers",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-9111",
+      "title": "Packaging and Filling Machine Operators and Tenders",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-7041",
+      "title": "Sawing Machine Setters, Operators and Tenders, Wood",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "53-6061",
+      "title": "Transportation Attendants, Except Flight Attendants",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "25-2023",
+      "title": "Career/Technical Education Teachers, Middle School",
+      "probability": 0.26
+    },
+    {
+      "soc_code": "17-3023",
+      "title": "Electrical and Electronics Engineering Technicians",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "41-1012",
+      "title": "First-Line Supervisors of Non-Retail Sales Workers",
+      "probability": 0.075
+    },
+    {
+      "soc_code": "39-1021",
+      "title": "First-Line Supervisors of Personal Service Workers",
+      "probability": 0.076
+    },
+    {
+      "soc_code": "19-2042",
+      "title": "Geoscientists, Except Hydrologists and Geographers",
+      "probability": 0.63
+    },
+    {
+      "soc_code": "39-3093",
+      "title": "Locker Room, Coatroom and Dressing Room Attendants",
+      "probability": 0.43
+    },
+    {
+      "soc_code": "13-1161",
+      "title": "Market Research Analysts and Marketing Specialists",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "29-2071",
+      "title": "Medical Records and Health Information Technicians",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "51-9196",
+      "title": "Paper Goods Machine Setters, Operators and Tenders",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "53-4013",
+      "title": "Rail Yard Engineers, Dinkey Operators and Hostlers",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "49-9045",
+      "title": "Refractory Materials Repairers, Except Brickmasons",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "21-1011",
+      "title": "Substance Abuse and Behavioral Disorder Counselors",
+      "probability": 0.033
+    },
+    {
+      "soc_code": "43-2011",
+      "title": "Switchboard Operators, Including Answering Service",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "11-9013",
+      "title": "Farmers, Ranchers and Other Agricultural Managers",
+      "probability": 0.047
+    },
+    {
+      "soc_code": "33-2022",
+      "title": "Forest Fire Inspectors and Prevention Specialists",
+      "probability": 0.048
+    },
+    {
+      "soc_code": "29-2061",
+      "title": "Licensed Practical and Licensed Vocational Nurses",
+      "probability": 0.058
+    },
+    {
+      "soc_code": "47-2071",
+      "title": "Paving, Surfacing and Tamping Equipment Operators",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "11-3071",
+      "title": "Transportation, Storage and Distribution Managers",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "13-1022",
+      "title": "Wholesale and Retail Buyers, Except Farm Products",
+      "probability": 0.29
+    },
+    {
+      "soc_code": "17-3021",
+      "title": "Aerospace Engineering and Operations Technicians",
+      "probability": 0.48
+    },
+    {
+      "soc_code": "49-2092",
+      "title": "Electric Motor, Power Tool and Related Repairers",
+      "probability": 0.76
+    },
+    {
+      "soc_code": "49-3041",
+      "title": "Farm Equipment Mechanics and Service Technicians",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "47-2042",
+      "title": "Floor Layers, Except Carpet, Wood and Hard Tiles",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "53-7071",
+      "title": "Gas Compressor and Gas Pumping Station Operators",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "49-9095",
+      "title": "Manufactured Building and Mobile Home Installers",
+      "probability": 0.18
+    },
+    {
+      "soc_code": "21-1023",
+      "title": "Mental Health and Substance Abuse Social Workers",
+      "probability": 0.0031
+    },
+    {
+      "soc_code": "49-3042",
+      "title": "Mobile Heavy Equipment Mechanics, Except Engines",
+      "probability": 0.4
+    },
+    {
+      "soc_code": "51-6021",
+      "title": "Pressers, Textile, Garment and Related Materials",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "19-3099",
+      "title": "Social Scientists and Related Workers, All Other",
+      "probability": 0.04
+    },
+    {
+      "soc_code": "49-9052",
+      "title": "Telecommunications Line Installers and Repairers",
+      "probability": 0.49
+    },
+    {
+      "soc_code": "33-1011",
+      "title": "First-Line Supervisors of Correctional Officers",
+      "probability": 0.025
+    },
+    {
+      "soc_code": "33-1012",
+      "title": "First-Line Supervisors of Police and Detectives",
+      "probability": 0.0044
+    },
+    {
+      "soc_code": "29-2799",
+      "title": "Health Technologists and Technicians, All Other",
+      "probability": 0.4
+    },
+    {
+      "soc_code": "25-2012",
+      "title": "Kindergarten Teachers, Except Special Education",
+      "probability": 0.15
+    },
+    {
+      "soc_code": "13-2081",
+      "title": "Tax Examiners and Collectors and Revenue Agents",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "51-9191",
+      "title": "Adhesive Bonding Machine Operators and Tenders",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "43-5032",
+      "title": "Dispatchers, Except Police, Fire and Ambulance",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "51-2022",
+      "title": "Electrical and Electronic Equipment Assemblers",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "49-9051",
+      "title": "Electrical Power-Line Installers and Repairers",
+      "probability": 0.097
+    },
+    {
+      "soc_code": "41-1011",
+      "title": "First-Line Supervisors of Retail Sales Workers",
+      "probability": 0.28
+    },
+    {
+      "soc_code": "53-2011",
+      "title": "Airline Pilots, Copilots and Flight Engineers",
+      "probability": 0.18
+    },
+    {
+      "soc_code": "13-1031",
+      "title": "Claims Adjusters, Examiners and Investigators",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "19-3031",
+      "title": "Clinical, Counseling and School Psychologists",
+      "probability": 0.0047
+    },
+    {
+      "soc_code": "21-2021",
+      "title": "Directors, Religious Activities and Education",
+      "probability": 0.025
+    },
+    {
+      "soc_code": "43-4061",
+      "title": "Eligibility Interviewers, Government Programs",
+      "probability": 0.7
+    },
+    {
+      "soc_code": "39-5012",
+      "title": "Hairdressers, Hairstylists and Cosmetologists",
+      "probability": 0.11
+    },
+    {
+      "soc_code": "43-9041",
+      "title": "Insurance Claims and Policy Processing Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-9071",
+      "title": "Jewelers and Precious Stone and Metal Workers",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "53-7033",
+      "title": "Loading Machine Operators, Underground Mining",
+      "probability": 0.5
+    },
+    {
+      "soc_code": "29-2011",
+      "title": "Medical and Clinical Laboratory Technologists",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "47-5042",
+      "title": "Mine Cutting and Channeling Machine Operators",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "47-4071",
+      "title": "Septic Tank Servicers and Sewer Pipe Cleaners",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "53-6031",
+      "title": "Automotive and Watercraft Service Attendants",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "49-3023",
+      "title": "Automotive Service Technicians and Mechanics",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "29-2031",
+      "title": "Cardiovascular Technologists and Technicians",
+      "probability": 0.23
+    },
+    {
+      "soc_code": "15-1111",
+      "title": "Computer and Information Research Scientists",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "29-2041",
+      "title": "Emergency Medical Technicians and Paramedics",
+      "probability": 0.049
+    },
+    {
+      "soc_code": "51-4051",
+      "title": "Metal-Refining Furnace Operators and Tenders",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "25-2011",
+      "title": "Preschool Teachers, Except Special Education",
+      "probability": 0.0074
+    },
+    {
+      "soc_code": "25-2054",
+      "title": "Special Education Teachers, Secondary School",
+      "probability": 0.0077
+    },
+    {
+      "soc_code": "27-2023",
+      "title": "Umpires, Referees and Other Sports Officials",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "43-3031",
+      "title": "Bookkeeping, Accounting and Auditing Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "13-1021",
+      "title": "Buyers and Purchasing Agents, Farm Products",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "49-9061",
+      "title": "Camera and Photographic Equipment Repairers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "53-5021",
+      "title": "Captains, Mates and Pilots of Water Vessels",
+      "probability": 0.27
+    },
+    {
+      "soc_code": "47-4799",
+      "title": "Construction and Related Workers, All Other",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "47-2131",
+      "title": "Insulation Workers, Floor, Ceiling and Wall",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "51-3022",
+      "title": "Meat, Poultry and Fish Cutters and Trimmers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "29-2012",
+      "title": "Medical and Clinical Laboratory Technicians",
+      "probability": 0.47
+    },
+    {
+      "soc_code": "49-3051",
+      "title": "Motorboat Mechanics and Service Technicians",
+      "probability": 0.66
+    },
+    {
+      "soc_code": "15-1142",
+      "title": "Network and Computer Systems Administrators",
+      "probability": 0.03
+    },
+    {
+      "soc_code": "53-4021",
+      "title": "Railroad Brake, Signal and Switch Operators",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "47-5013",
+      "title": "Service Unit Operators, Oil, Gas and Mining",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "49-3011",
+      "title": "Aircraft Mechanics and Service Technicians",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "13-1199",
+      "title": "Business Operations Specialists, All Other",
+      "probability": 0.23
+    },
+    {
+      "soc_code": "51-3093",
+      "title": "Food Cooking Machine Operators and Tenders",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "39-3012",
+      "title": "Gaming and Sports Book Writers and Runners",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "45-2041",
+      "title": "Graders and Sorters, Agricultural Products",
+      "probability": 0.41
+    },
+    {
+      "soc_code": "39-5091",
+      "title": "Makeup Artists, Theatrical and Performance",
+      "probability": 0.01
+    },
+    {
+      "soc_code": "19-1042",
+      "title": "Medical Scientists, Except Epidemiologists",
+      "probability": 0.0045
+    },
+    {
+      "soc_code": "27-1026",
+      "title": "Merchandise Displayers and Window Trimmers",
+      "probability": 0.48
+    },
+    {
+      "soc_code": "29-9011",
+      "title": "Occupational Health and Safety Specialists",
+      "probability": 0.17
+    },
+    {
+      "soc_code": "29-9012",
+      "title": "Occupational Health and Safety Technicians",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "43-5061",
+      "title": "Production, Planning and Expediting Clerks",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "27-3012",
+      "title": "Public Address System and Other Announcers",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "49-2098",
+      "title": "Security and Fire Alarm Systems Installers",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "23-2093",
+      "title": "Title Examiners, Abstractors and Searchers",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "39-3031",
+      "title": "Ushers, Lobby Attendants and Ticket Takers",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "19-4011",
+      "title": "Agricultural and Food Science Technicians",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "49-3022",
+      "title": "Automotive Glass Installers and Repairers",
+      "probability": 0.55
+    },
+    {
+      "soc_code": "11-3021",
+      "title": "Computer and Information Systems Managers",
+      "probability": 0.035
+    },
+    {
+      "soc_code": "39-9031",
+      "title": "Fitness Trainers and Aerobics Instructors",
+      "probability": 0.085
+    },
+    {
+      "soc_code": "43-4111",
+      "title": "Interviewers, Except Eligibility and Loan",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "23-1023",
+      "title": "Judges",
+      "probability": 0.4
+    },
+    {
+      "soc_code": "43-9071",
+      "title": "Office Machine Operators, Except Computer",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "11-2031",
+      "title": "Public Relations and Fundraising Managers",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "53-7081",
+      "title": "Refuse and Recyclable Material Collectors",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "25-2053",
+      "title": "Special Education Teachers, Middle School",
+      "probability": 0.016
+    },
+    {
+      "soc_code": "51-8021",
+      "title": "Stationary Engineers and Boiler Operators",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "51-9011",
+      "title": "Chemical Equipment Operators and Tenders",
+      "probability": 0.76
+    },
+    {
+      "soc_code": "41-2012",
+      "title": "Gaming Change Persons and Booth Cashiers",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "53-3033",
+      "title": "Light Truck or Delivery Services Drivers",
+      "probability": 0.69
+    },
+    {
+      "soc_code": "51-9123",
+      "title": "Painting, Coating and Decorating Workers",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "29-2037",
+      "title": "Ambulance Drivers and Attendants",
+      "probability": 0.23
+    },
+    {
+      "soc_code": "49-3092",
+      "title": "Recreational Vehicle Service Technicians",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "51-2041",
+      "title": "Structural Metal Fabricators and Fitters",
+      "probability": 0.41
+    },
+    {
+      "soc_code": "29-2056",
+      "title": "Veterinary Technologists and Technicians",
+      "probability": 0.029
+    },
+    {
+      "soc_code": "13-2021",
+      "title": "Appraisers and Assessors of Real Estate",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "23-1022",
+      "title": "Arbitrators, Mediators and Conciliators",
+      "probability": 0.06
+    },
+    {
+      "soc_code": "21-1021",
+      "title": "Child, Family and School Social Workers",
+      "probability": 0.028
+    },
+    {
+      "soc_code": "43-4041",
+      "title": "Credit Authorizers, Checkers and Clerks",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "11-9033",
+      "title": "Education Administrators, Postsecondary",
+      "probability": 0.01
+    },
+    {
+      "soc_code": "53-3032",
+      "title": "Heavy and Tractor-Trailer Truck Drivers",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "19-3032",
+      "title": "Industrial-Organizational Psychologists",
+      "probability": 0.012
+    },
+    {
+      "soc_code": "49-9071",
+      "title": "Maintenance and Repair Workers, General",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "49-9063",
+      "title": "Musical Instrument Repairers and Tuners",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "53-7072",
+      "title": "Pump Operators, Except Wellhead Pumpers",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "51-4121",
+      "title": "Welders, Cutters, Solderers and Brazers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "17-1011",
+      "title": "Architects, Except Landscape and Naval",
+      "probability": 0.018
+    },
+    {
+      "soc_code": "11-9041",
+      "title": "Architectural and Engineering Managers",
+      "probability": 0.017
+    },
+    {
+      "soc_code": "51-2023",
+      "title": "Electromechanical Equipment Assemblers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "17-2072",
+      "title": "Electronics Engineers, Except Computer",
+      "probability": 0.025
+    },
+    {
+      "soc_code": "53-7051",
+      "title": "Industrial Truck and Tractor Operators",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "37-3011",
+      "title": "Landscaping and Groundskeeping Workers",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "13-1121",
+      "title": "Meeting, Convention and Event Planners",
+      "probability": 0.037
+    },
+    {
+      "soc_code": "47-2141",
+      "title": "Painters, Construction and Maintenance",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "47-2152",
+      "title": "Plumbers, Pipefitters and Steamfitters",
+      "probability": 0.35
+    },
+    {
+      "soc_code": "43-5031",
+      "title": "Police, Fire and Ambulance Dispatchers",
+      "probability": 0.49
+    },
+    {
+      "soc_code": "43-5071",
+      "title": "Shipping, Receiving and Traffic Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-6041",
+      "title": "Shoe and Leather Workers and Repairers",
+      "probability": 0.52
+    },
+    {
+      "soc_code": "51-6052",
+      "title": "Tailors, Dressmakers and Custom Sewers",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "51-2093",
+      "title": "Timing Device Assemblers and Adjusters",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "27-4011",
+      "title": "Audio and Video Equipment Technicians",
+      "probability": 0.55
+    },
+    {
+      "soc_code": "49-3021",
+      "title": "Automotive Body and Related Repairers",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "53-3022",
+      "title": "Bus Drivers, School or Special Client",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "33-3021",
+      "title": "Detectives and Criminal Investigators",
+      "probability": 0.34
+    },
+    {
+      "soc_code": "17-3025",
+      "title": "Environmental Engineering Technicians",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "51-2091",
+      "title": "Fiberglass Laminators and Fabricators",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "31-9799",
+      "title": "Healthcare Support Workers, All Other",
+      "probability": 0.63
+    },
+    {
+      "soc_code": "17-2121",
+      "title": "Marine Engineers and Naval Architects",
+      "probability": 0.01
+    },
+    {
+      "soc_code": "51-8099",
+      "title": "Plant and System Operators, All Other",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "11-9151",
+      "title": "Social and Community Service Managers",
+      "probability": 0.0067
+    },
+    {
+      "soc_code": "15-1133",
+      "title": "Software Developers, Systems Software",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "47-2051",
+      "title": "Cement Masons and Concrete Finishers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "47-4011",
+      "title": "Construction and Building Inspectors",
+      "probability": 0.63
+    },
+    {
+      "soc_code": "19-4041",
+      "title": "Geological and Petroleum Technicians",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "51-9022",
+      "title": "Grinding and Polishing Workers, Hand",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "11-9111",
+      "title": "Medical and Health Services Managers",
+      "probability": 0.0073
+    },
+    {
+      "soc_code": "33-3051",
+      "title": "Police and Sheriff’s Patrol Officers",
+      "probability": 0.098
+    },
+    {
+      "soc_code": "11-9131",
+      "title": "Postmasters and Mail Superintendents",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "33-9021",
+      "title": "Private Detectives and Investigators",
+      "probability": 0.31
+    },
+    {
+      "soc_code": "43-4171",
+      "title": "Receptionists and Information Clerks",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "51-4194",
+      "title": "Tool Grinders, Filers and Sharpeners",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "13-1151",
+      "title": "Training and Development Specialists",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "11-2011",
+      "title": "Advertising and Promotions Managers",
+      "probability": 0.039
+    },
+    {
+      "soc_code": "53-1011",
+      "title": "Aircraft Cargo Handling Supervisors",
+      "probability": 0.066
+    },
+    {
+      "soc_code": "39-3091",
+      "title": "Amusement and Recreation Attendants",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "17-1021",
+      "title": "Cartographers and Photogrammetrists",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "51-8091",
+      "title": "Chemical Plant and System Operators",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "27-1021",
+      "title": "Commercial and Industrial Designers",
+      "probability": 0.037
+    },
+    {
+      "soc_code": "47-5041",
+      "title": "Continuous Mining Machine Operators",
+      "probability": 0.54
+    },
+    {
+      "soc_code": "43-4031",
+      "title": "Court, Municipal and License Clerks",
+      "probability": 0.46
+    },
+    {
+      "soc_code": "41-9011",
+      "title": "Demonstrators and Product Promoters",
+      "probability": 0.51
+    },
+    {
+      "soc_code": "47-2081",
+      "title": "Drywall and Ceiling Tile Installers",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "17-3012",
+      "title": "Electrical and Electronics Drafters",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "51-2031",
+      "title": "Engine and Other Machine Assemblers",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "45-3011",
+      "title": "Fishers and Related Fishing Workers",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "19-4093",
+      "title": "Forest and Conservation Technicians",
+      "probability": 0.42
+    },
+    {
+      "soc_code": "47-4041",
+      "title": "Hazardous Materials Removal Workers",
+      "probability": 0.53
+    },
+    {
+      "soc_code": "43-4081",
+      "title": "Hotel, Motel and Resort Desk Clerks",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "25-4013",
+      "title": "Museum Technicians and Conservators",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "51-5113",
+      "title": "Print Binding and Finishing Workers",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "53-4031",
+      "title": "Railroad Conductors and Yardmasters",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "47-5012",
+      "title": "Rotary Drill Operators, Oil and Gas",
+      "probability": 0.53
+    },
+    {
+      "soc_code": "21-1093",
+      "title": "Social and Human Service Assistants",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "25-3999",
+      "title": "Teachers and Instructors, All Other",
+      "probability": 0.0095
+    },
+    {
+      "soc_code": "53-3021",
+      "title": "Bus Drivers, Transit and Intercity",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "51-7011",
+      "title": "Cabinetmakers and Bench Carpenters",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "53-7061",
+      "title": "Cleaners of Vehicles and Equipment",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "51-2021",
+      "title": "Coil Winders, Tapers and Finishers",
+      "probability": 0.73
+    },
+    {
+      "soc_code": "11-3111",
+      "title": "Compensation and Benefits Managers",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "47-5021",
+      "title": "Earth Drillers, Except Oil and Gas",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "17-3026",
+      "title": "Industrial Engineering Technicians",
+      "probability": 0.03
+    },
+    {
+      "soc_code": "17-3027",
+      "title": "Mechanical Engineering Technicians",
+      "probability": 0.38
+    },
+    {
+      "soc_code": "45-2090",
+      "title": "Miscellaneous Agricultural Workers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "51-9122",
+      "title": "Painters, Transportation Equipment",
+      "probability": 0.69
+    },
+    {
+      "soc_code": "51-8012",
+      "title": "Power Distributors and Dispatchers",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "47-2171",
+      "title": "Reinforcing Iron and Rebar Workers",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "25-3021",
+      "title": "Self-Enrichment Education Teachers",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "51-6042",
+      "title": "Shoe Machine Operators and Tenders",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "19-4061",
+      "title": "Social Science Research Assistants",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "19-1023",
+      "title": "Zoologists and Wildlife Biologists",
+      "probability": 0.3
+    },
+    {
+      "soc_code": "19-3091",
+      "title": "Anthropologists and Archeologists",
+      "probability": 0.0077
+    },
+    {
+      "soc_code": "33-3012",
+      "title": "Correctional Officers and Jailers",
+      "probability": 0.6
+    },
+    {
+      "soc_code": "47-4021",
+      "title": "Elevator Installers and Repairers",
+      "probability": 0.39
+    },
+    {
+      "soc_code": "25-9021",
+      "title": "Farm and Home Management Advisors",
+      "probability": 0.0075
+    },
+    {
+      "soc_code": "33-2021",
+      "title": "Fire Inspectors and Investigators",
+      "probability": 0.48
+    },
+    {
+      "soc_code": "19-1012",
+      "title": "Food Scientists and Technologists",
+      "probability": 0.077
+    },
+    {
+      "soc_code": "13-1032",
+      "title": "Insurance Appraisers, Auto Damage",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "51-4192",
+      "title": "Layout Workers, Metal and Plastic",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "51-9083",
+      "title": "Ophthalmic Laboratory Technicians",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "49-9097",
+      "title": "Signal and Track Switch Repairers",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "15-1132",
+      "title": "Software Developers, Applications",
+      "probability": 0.042
+    },
+    {
+      "soc_code": "47-2221",
+      "title": "Structural Iron and Steel Workers",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "17-3031",
+      "title": "Surveying and Mapping Technicians",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "11-3131",
+      "title": "Training and Development Managers",
+      "probability": 0.0063
+    },
+    {
+      "soc_code": "11-3011",
+      "title": "Administrative Services Managers",
+      "probability": 0.73
+    },
+    {
+      "soc_code": "17-3011",
+      "title": "Architectural and Civil Drafters",
+      "probability": 0.52
+    },
+    {
+      "soc_code": "19-2021",
+      "title": "Atmospheric and Space Scientists",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "19-1029",
+      "title": "Biological Scientists, All Other",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "35-2012",
+      "title": "Cooks, Institution and Cafeteria",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "43-4051",
+      "title": "Customer Service Representatives",
+      "probability": 0.55
+    },
+    {
+      "soc_code": "51-6092",
+      "title": "Fabric and Apparel Patternmakers",
+      "probability": 0.0049
+    },
+    {
+      "soc_code": "13-2099",
+      "title": "Financial Specialists, All Other",
+      "probability": 0.33
+    },
+    {
+      "soc_code": "51-6011",
+      "title": "Laundry and Dry-Cleaning Workers",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "27-1014",
+      "title": "Multimedia Artists and Animators",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "51-4062",
+      "title": "Patternmakers, Metal and Plastic",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "51-5111",
+      "title": "Prepress Technicians and Workers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "53-7121",
+      "title": "Tank Car, Truck and Ship Loaders",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "53-2022",
+      "title": "Airfield Operations Specialists",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "27-2021",
+      "title": "Athletes and Sports Competitors",
+      "probability": 0.28
+    },
+    {
+      "soc_code": "15-1799",
+      "title": "Computer Occupations, All Other",
+      "probability": 0.22
+    },
+    {
+      "soc_code": "29-2032",
+      "title": "Diagnostic Medical Sonographers",
+      "probability": 0.35
+    },
+    {
+      "soc_code": "45-4011",
+      "title": "Forest and Conservation Workers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "11-1021",
+      "title": "General and Operations Managers",
+      "probability": 0.16
+    },
+    {
+      "soc_code": "37-2012",
+      "title": "Maids and Housekeeping Cleaners",
+      "probability": 0.69
+    },
+    {
+      "soc_code": "51-4061",
+      "title": "Model Makers, Metal and Plastic",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "51-8011",
+      "title": "Nuclear Power Reactor Operators",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "31-2011",
+      "title": "Occupational Therapy Assistants",
+      "probability": 0.028
+    },
+    {
+      "soc_code": "29-1022",
+      "title": "Oral and Maxillofacial Surgeons",
+      "probability": 0.0036
+    },
+    {
+      "soc_code": "23-2011",
+      "title": "Paralegals and Legal Assistants",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "27-3011",
+      "title": "Radio and Television Announcers",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "29-2054",
+      "title": "Respiratory Therapy Technicians",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "53-7011",
+      "title": "Conveyor Operators and Tenders",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "47-5011",
+      "title": "Derrick Operators, Oil and Gas",
+      "probability": 0.8
+    },
+    {
+      "soc_code": "17-3024",
+      "title": "Electro-Mechanical Technicians",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "11-9161",
+      "title": "Emergency Management Directors",
+      "probability": 0.003
+    },
+    {
+      "soc_code": "49-9093",
+      "title": "Fabric Menders, Except Garment",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "49-9041",
+      "title": "Industrial Machinery Mechanics",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "11-3051",
+      "title": "Industrial Production Managers",
+      "probability": 0.03
+    },
+    {
+      "soc_code": "47-2132",
+      "title": "Insulation Workers, Mechanical",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "53-7063",
+      "title": "Machine Feeders and Offbearers",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "49-9043",
+      "title": "Maintenance Workers, Machinery",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "21-1013",
+      "title": "Marriage and Family Therapists",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "29-2033",
+      "title": "Nuclear Medicine Technologists",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "43-3051",
+      "title": "Payroll and Timekeeping Clerks",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "19-2099",
+      "title": "Physical Scientists, All Other",
+      "probability": 0.43
+    },
+    {
+      "soc_code": "43-5081",
+      "title": "Stock Clerks and Order Fillers",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "53-4041",
+      "title": "Subway and Streetcar Operators",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "47-2053",
+      "title": "Terrazzo Workers and Finishers",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "19-1021",
+      "title": "Biochemists and Biophysicists",
+      "probability": 0.027
+    },
+    {
+      "soc_code": "17-3022",
+      "title": "Civil Engineering Technicians",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "51-9081",
+      "title": "Dental Laboratory Technicians",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "49-9094",
+      "title": "Locksmiths and Safe Repairers",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "51-9082",
+      "title": "Medical Appliance Technicians",
+      "probability": 0.45
+    },
+    {
+      "soc_code": "39-3021",
+      "title": "Motion Picture Projectionists",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "27-2041",
+      "title": "Music Directors and Composers",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "31-2021",
+      "title": "Physical Therapist Assistants",
+      "probability": 0.018
+    },
+    {
+      "soc_code": "51-9399",
+      "title": "Production Workers, All Other",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "43-9081",
+      "title": "Proofreaders and Copy Markers",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "51-3023",
+      "title": "Slaughterers and Meat Packers",
+      "probability": 0.6
+    },
+    {
+      "soc_code": "27-4014",
+      "title": "Sound Engineering Technicians",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "39-6011",
+      "title": "Baggage Porters and Bellhops",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "15-1150",
+      "title": "Computer Support Specialists",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "29-1031",
+      "title": "Dietitians and Nutritionists",
+      "probability": 0.0039
+    },
+    {
+      "soc_code": "19-4092",
+      "title": "Forensic Science Technicians",
+      "probability": 0.0095
+    },
+    {
+      "soc_code": "27-3091",
+      "title": "Interpreters and Translators",
+      "probability": 0.38
+    },
+    {
+      "soc_code": "43-4121",
+      "title": "Library Assistants, Clerical",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "43-4131",
+      "title": "Loan Interviewers and Clerks",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "15-2031",
+      "title": "Operations Research Analysts",
+      "probability": 0.035
+    },
+    {
+      "soc_code": "47-2161",
+      "title": "Plasterers and Stucco Masons",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "43-5052",
+      "title": "Postal Service Mail Carriers",
+      "probability": 0.68
+    },
+    {
+      "soc_code": "27-3031",
+      "title": "Public Relations Specialists",
+      "probability": 0.18
+    },
+    {
+      "soc_code": "27-3022",
+      "title": "Reporters and Correspondents",
+      "probability": 0.11
+    },
+    {
+      "soc_code": "29-1127",
+      "title": "Speech-Language Pathologists",
+      "probability": 0.0064
+    },
+    {
+      "soc_code": "43-3011",
+      "title": "Bill and Account Collectors",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "47-2021",
+      "title": "Brickmasons and Blockmasons",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "17-2061",
+      "title": "Computer Hardware Engineers",
+      "probability": 0.22
+    },
+    {
+      "soc_code": "47-2043",
+      "title": "Floor Sanders and Finishers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "35-3041",
+      "title": "Food Servers, Nonrestaurant",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "51-4071",
+      "title": "Foundry Mold and Coremakers",
+      "probability": 0.67
+    },
+    {
+      "soc_code": "47-4051",
+      "title": "Highway Maintenance Workers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "45-4022",
+      "title": "Logging Equipment Operators",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "39-5092",
+      "title": "Manicurists and Pedicurists",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "31-9093",
+      "title": "Medical Equipment Preparers",
+      "probability": 0.78
+    },
+    {
+      "soc_code": "49-9062",
+      "title": "Medical Equipment Repairers",
+      "probability": 0.27
+    },
+    {
+      "soc_code": "29-2091",
+      "title": "Orthotists and Prosthetists",
+      "probability": 0.0035
+    },
+    {
+      "soc_code": "53-7064",
+      "title": "Packers and Packagers, Hand",
+      "probability": 0.38
+    },
+    {
+      "soc_code": "33-3041",
+      "title": "Parking Enforcement Workers",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "13-2052",
+      "title": "Personal Financial Advisors",
+      "probability": 0.58
+    },
+    {
+      "soc_code": "53-3041",
+      "title": "Taxi Drivers and Chauffeurs",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "49-3093",
+      "title": "Tire Repairers and Changers",
+      "probability": 0.7
+    },
+    {
+      "soc_code": "33-3052",
+      "title": "Transit and Railroad Police",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "19-3051",
+      "title": "Urban and Regional Planners",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "43-9022",
+      "title": "Word Processors and Typists",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "43-3021",
+      "title": "Billing and Posting Clerks",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "51-9031",
+      "title": "Cutters and Trimmers, Hand",
+      "probability": 0.64
+    },
+    {
+      "soc_code": "47-5081",
+      "title": "Helpers–Extraction Workers",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "51-9198",
+      "title": "Helpers–Production Workers",
+      "probability": 0.66
+    },
+    {
+      "soc_code": "25-9031",
+      "title": "Instructional Coordinators",
+      "probability": 0.0042
+    },
+    {
+      "soc_code": "53-7111",
+      "title": "Mine Shuttle Car Operators",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "31-2012",
+      "title": "Occupational Therapy Aides",
+      "probability": 0.27
+    },
+    {
+      "soc_code": "51-4052",
+      "title": "Pourers and Casters, Metal",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "51-3021",
+      "title": "Butchers and Meat Cutters",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "15-1121",
+      "title": "Computer Systems Analysts",
+      "probability": 0.0065
+    },
+    {
+      "soc_code": "41-2021",
+      "title": "Counter and Rental Clerks",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "53-7021",
+      "title": "Crane and Tower Operators",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "21-1022",
+      "title": "Healthcare Social Workers",
+      "probability": 0.0035
+    },
+    {
+      "soc_code": "53-7041",
+      "title": "Hoist and Winch Operators",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "49-9011",
+      "title": "Mechanical Door Repairers",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "31-9094",
+      "title": "Medical Transcriptionists",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "11-9121",
+      "title": "Natural Sciences Managers",
+      "probability": 0.018
+    },
+    {
+      "soc_code": "39-2021",
+      "title": "Nonfarm Animal Caretakers",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "21-1015",
+      "title": "Rehabilitation Counselors",
+      "probability": 0.0094
+    },
+    {
+      "soc_code": "53-5011",
+      "title": "Sailors and Marine Oilers",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "27-1027",
+      "title": "Set and Exhibit Designers",
+      "probability": 0.0055
+    },
+    {
+      "soc_code": "19-1013",
+      "title": "Soil and Plant Scientists",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "53-6051",
+      "title": "Transportation Inspectors",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "37-3013",
+      "title": "Tree Trimmers and Pruners",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "13-2011",
+      "title": "Accountants and Auditors",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "41-3011",
+      "title": "Advertising Sales Agents",
+      "probability": 0.54
+    },
+    {
+      "soc_code": "43-5011",
+      "title": "Cargo and Freight Agents",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "35-2013",
+      "title": "Cooks, Private Household",
+      "probability": 0.3
+    },
+    {
+      "soc_code": "35-2021",
+      "title": "Food Preparation Workers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "49-9031",
+      "title": "Home Appliance Repairers",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "11-3121",
+      "title": "Human Resources Managers",
+      "probability": 0.0055
+    },
+    {
+      "soc_code": "15-2091",
+      "title": "Mathematical Technicians",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "21-1014",
+      "title": "Mental Health Counselors",
+      "probability": 0.0048
+    },
+    {
+      "soc_code": "43-5041",
+      "title": "Meter Readers, Utilities",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "31-2022",
+      "title": "Physical Therapist Aides",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "51-5112",
+      "title": "Printing Press Operators",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "19-3039",
+      "title": "Psychologists, All Other",
+      "probability": 0.0043
+    },
+    {
+      "soc_code": "41-9022",
+      "title": "Real Estate Sales Agents",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "47-5071",
+      "title": "Roustabouts, Oil and Gas",
+      "probability": 0.68
+    },
+    {
+      "soc_code": "51-9141",
+      "title": "Semiconductor Processors",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "51-6031",
+      "title": "Sewing Machine Operators",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "45-2011",
+      "title": "Agricultural Inspectors",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "53-2021",
+      "title": "Air Traffic Controllers",
+      "probability": 0.11
+    },
+    {
+      "soc_code": "53-6011",
+      "title": "Bridge and Lock Tenders",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "27-3021",
+      "title": "Broadcast News Analysts",
+      "probability": 0.067
+    },
+    {
+      "soc_code": "19-1031",
+      "title": "Conservation Scientists",
+      "probability": 0.016
+    },
+    {
+      "soc_code": "43-5021",
+      "title": "Couriers and Messengers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "15-1141",
+      "title": "Database Administrators",
+      "probability": 0.03
+    },
+    {
+      "soc_code": "17-2081",
+      "title": "Environmental Engineers",
+      "probability": 0.018
+    },
+    {
+      "soc_code": "45-4023",
+      "title": "Log Graders and Scalers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "29-1122",
+      "title": "Occupational Therapists",
+      "probability": 0.0035
+    },
+    {
+      "soc_code": "29-1060",
+      "title": "Physicians and Surgeons",
+      "probability": 0.0042
+    },
+    {
+      "soc_code": "27-2012",
+      "title": "Producers and Directors",
+      "probability": 0.022
+    },
+    {
+      "soc_code": "29-2053",
+      "title": "Psychiatric Technicians",
+      "probability": 0.043
+    },
+    {
+      "soc_code": "29-1125",
+      "title": "Recreational Therapists",
+      "probability": 0.0028
+    },
+    {
+      "soc_code": "47-2044",
+      "title": "Tile and Marble Setters",
+      "probability": 0.75
+    },
+    {
+      "soc_code": "39-7011",
+      "title": "Tour Guides and Escorts",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "17-2021",
+      "title": "Agricultural Engineers",
+      "probability": 0.49
+    },
+    {
+      "soc_code": "33-9011",
+      "title": "Animal Control Workers",
+      "probability": 0.21
+    },
+    {
+      "soc_code": "19-4021",
+      "title": "Biological Technicians",
+      "probability": 0.3
+    },
+    {
+      "soc_code": "13-1074",
+      "title": "Farm Labor Contractors",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "27-4032",
+      "title": "Film and Video Editors",
+      "probability": 0.31
+    },
+    {
+      "soc_code": "41-3021",
+      "title": "Insurance Sales Agents",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "13-2053",
+      "title": "Insurance Underwriters",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "43-9061",
+      "title": "Office Clerks, General",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "53-6021",
+      "title": "Parking Lot Attendants",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "25-1000",
+      "title": "Postsecondary Teachers",
+      "probability": 0.032
+    },
+    {
+      "soc_code": "29-1126",
+      "title": "Respiratory Therapists",
+      "probability": 0.066
+    },
+    {
+      "soc_code": "47-5051",
+      "title": "Rock Splitters, Quarry",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "43-9111",
+      "title": "Statistical Assistants",
+      "probability": 0.66
+    },
+    {
+      "soc_code": "29-2055",
+      "title": "Surgical Technologists",
+      "probability": 0.34
+    },
+    {
+      "soc_code": "35-3031",
+      "title": "Waiters and Waitresses",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "27-4012",
+      "title": "Broadcast Technicians",
+      "probability": 0.74
+    },
+    {
+      "soc_code": "47-2061",
+      "title": "Construction Laborers",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "11-9021",
+      "title": "Construction Managers",
+      "probability": 0.071
+    },
+    {
+      "soc_code": "43-4021",
+      "title": "Correspondence Clerks",
+      "probability": 0.86
+    },
+    {
+      "soc_code": "51-9194",
+      "title": "Etchers and Engravers",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "33-3031",
+      "title": "Fish and Game Wardens",
+      "probability": 0.08
+    },
+    {
+      "soc_code": "11-9051",
+      "title": "Food Service Managers",
+      "probability": 0.083
+    },
+    {
+      "soc_code": "27-2042",
+      "title": "Musicians and Singers",
+      "probability": 0.074
+    },
+    {
+      "soc_code": "29-2081",
+      "title": "Opticians, Dispensing",
+      "probability": 0.71
+    },
+    {
+      "soc_code": "47-2072",
+      "title": "Pile-Driver Operators",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "43-5051",
+      "title": "Postal Service Clerks",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "51-8013",
+      "title": "Power Plant Operators",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "49-2091",
+      "title": "Avionics Technicians",
+      "probability": 0.7
+    },
+    {
+      "soc_code": "17-2031",
+      "title": "Biomedical Engineers",
+      "probability": 0.037
+    },
+    {
+      "soc_code": "35-1011",
+      "title": "Chefs and Head Cooks",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "19-4031",
+      "title": "Chemical Technicians",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "15-1131",
+      "title": "Computer Programmers",
+      "probability": 0.48
+    },
+    {
+      "soc_code": "29-2051",
+      "title": "Dietetic Technicians",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "53-3031",
+      "title": "Driver/Sales Workers",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "17-2071",
+      "title": "Electrical Engineers",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "17-2199",
+      "title": "Engineers, All Other",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "47-3013",
+      "title": "Helpers–Electricians",
+      "probability": 0.74
+    },
+    {
+      "soc_code": "45-3021",
+      "title": "Hunters and Trappers",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "17-2112",
+      "title": "Industrial Engineers",
+      "probability": 0.029
+    },
+    {
+      "soc_code": "17-1012",
+      "title": "Landscape Architects",
+      "probability": 0.045
+    },
+    {
+      "soc_code": "53-4011",
+      "title": "Locomotive Engineers",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "19-2032",
+      "title": "Materials Scientists",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "17-2141",
+      "title": "Mechanical Engineers",
+      "probability": 0.011
+    },
+    {
+      "soc_code": "49-3052",
+      "title": "Motorcycle Mechanics",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "37-2021",
+      "title": "Pest Control Workers",
+      "probability": 0.66
+    },
+    {
+      "soc_code": "29-2052",
+      "title": "Pharmacy Technicians",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "29-1071",
+      "title": "Physician Assistants",
+      "probability": 0.14
+    },
+    {
+      "soc_code": "19-3094",
+      "title": "Political Scientists",
+      "probability": 0.039
+    },
+    {
+      "soc_code": "29-1124",
+      "title": "Radiation Therapists",
+      "probability": 0.34
+    },
+    {
+      "soc_code": "39-9041",
+      "title": "Residential Advisors",
+      "probability": 0.064
+    },
+    {
+      "soc_code": "47-5061",
+      "title": "Roof Bolters, Mining",
+      "probability": 0.49
+    },
+    {
+      "soc_code": "39-5094",
+      "title": "Skincare Specialists",
+      "probability": 0.29
+    },
+    {
+      "soc_code": "17-2011",
+      "title": "Aerospace Engineers",
+      "probability": 0.017
+    },
+    {
+      "soc_code": "13-1041",
+      "title": "Compliance Officers",
+      "probability": 0.08
+    },
+    {
+      "soc_code": "13-2061",
+      "title": "Financial Examiners",
+      "probability": 0.17
+    },
+    {
+      "soc_code": "51-7021",
+      "title": "Furniture Finishers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "43-3041",
+      "title": "Gaming Cage Workers",
+      "probability": 0.39
+    },
+    {
+      "soc_code": "51-8092",
+      "title": "Gas Plant Operators",
+      "probability": 0.78
+    },
+    {
+      "soc_code": "23-1012",
+      "title": "Judicial Law Clerks",
+      "probability": 0.41
+    },
+    {
+      "soc_code": "25-4031",
+      "title": "Library Technicians",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "13-1111",
+      "title": "Management Analysts",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "11-9199",
+      "title": "Managers, All Other",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "17-2131",
+      "title": "Materials Engineers",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "17-3013",
+      "title": "Mechanical Drafters",
+      "probability": 0.68
+    },
+    {
+      "soc_code": "43-6013",
+      "title": "Medical Secretaries",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "53-5022",
+      "title": "Motorboat Operators",
+      "probability": 0.62
+    },
+    {
+      "soc_code": "43-4141",
+      "title": "New Accounts Clerks",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "19-4051",
+      "title": "Nuclear Technicians",
+      "probability": 0.85
+    },
+    {
+      "soc_code": "51-7032",
+      "title": "Patternmakers, Wood",
+      "probability": 0.91
+    },
+    {
+      "soc_code": "39-9021",
+      "title": "Personal Care Aides",
+      "probability": 0.74
+    },
+    {
+      "soc_code": "17-2171",
+      "title": "Petroleum Engineers",
+      "probability": 0.16
+    },
+    {
+      "soc_code": "29-1123",
+      "title": "Physical Therapists",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "11-3061",
+      "title": "Purchasing Managers",
+      "probability": 0.03
+    },
+    {
+      "soc_code": "41-9021",
+      "title": "Real Estate Brokers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "41-2031",
+      "title": "Retail Salespersons",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "47-2211",
+      "title": "Sheet Metal Workers",
+      "probability": 0.82
+    },
+    {
+      "soc_code": "43-2021",
+      "title": "Telephone Operators",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "51-4111",
+      "title": "Tool and Die Makers",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "53-6041",
+      "title": "Traffic Technicians",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "27-3043",
+      "title": "Writers and Authors",
+      "probability": 0.038
+    },
+    {
+      "soc_code": "17-2041",
+      "title": "Chemical Engineers",
+      "probability": 0.017
+    },
+    {
+      "soc_code": "27-2022",
+      "title": "Coaches and Scouts",
+      "probability": 0.013
+    },
+    {
+      "soc_code": "43-9011",
+      "title": "Computer Operators",
+      "probability": 0.78
+    },
+    {
+      "soc_code": "35-2015",
+      "title": "Cooks, Short Order",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "39-3092",
+      "title": "Costume Attendants",
+      "probability": 0.61
+    },
+    {
+      "soc_code": "43-9031",
+      "title": "Desktop Publishers",
+      "probability": 0.16
+    },
+    {
+      "soc_code": "13-2051",
+      "title": "Financial Analysts",
+      "probability": 0.23
+    },
+    {
+      "soc_code": "11-3031",
+      "title": "Financial Managers",
+      "probability": 0.069
+    },
+    {
+      "soc_code": "39-4021",
+      "title": "Funeral Attendants",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "39-1011",
+      "title": "Gaming Supervisors",
+      "probability": 0.28
+    },
+    {
+      "soc_code": "47-3012",
+      "title": "Helpers–Carpenters",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "27-1025",
+      "title": "Interior Designers",
+      "probability": 0.022
+    },
+    {
+      "soc_code": "11-2021",
+      "title": "Marketing Managers",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "31-9011",
+      "title": "Massage Therapists",
+      "probability": 0.54
+    },
+    {
+      "soc_code": "31-9092",
+      "title": "Medical Assistants",
+      "probability": 0.3
+    },
+    {
+      "soc_code": "51-7031",
+      "title": "Model Makers, Wood",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "41-2022",
+      "title": "Parts Salespersons",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "43-3061",
+      "title": "Procurement Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "49-3043",
+      "title": "Rail Car Repairers",
+      "probability": 0.88
+    },
+    {
+      "soc_code": "39-9032",
+      "title": "Recreation Workers",
+      "probability": 0.0061
+    },
+    {
+      "soc_code": "19-3022",
+      "title": "Survey Researchers",
+      "probability": 0.23
+    },
+    {
+      "soc_code": "25-9041",
+      "title": "Teacher Assistants",
+      "probability": 0.56
+    },
+    {
+      "soc_code": "19-1011",
+      "title": "Animal Scientists",
+      "probability": 0.061
+    },
+    {
+      "soc_code": "29-9091",
+      "title": "Athletic Trainers",
+      "probability": 0.0071
+    },
+    {
+      "soc_code": "49-3091",
+      "title": "Bicycle Repairers",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "47-2041",
+      "title": "Carpet Installers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "39-9011",
+      "title": "Childcare Workers",
+      "probability": 0.084
+    },
+    {
+      "soc_code": "49-9092",
+      "title": "Commercial Divers",
+      "probability": 0.18
+    },
+    {
+      "soc_code": "53-2012",
+      "title": "Commercial Pilots",
+      "probability": 0.55
+    },
+    {
+      "soc_code": "35-2014",
+      "title": "Cooks, Restaurant",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "13-2071",
+      "title": "Credit Counselors",
+      "probability": 0.04
+    },
+    {
+      "soc_code": "43-9021",
+      "title": "Data Entry Keyers",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "31-9091",
+      "title": "Dental Assistants",
+      "probability": 0.51
+    },
+    {
+      "soc_code": "29-2021",
+      "title": "Dental Hygienists",
+      "probability": 0.68
+    },
+    {
+      "soc_code": "29-1021",
+      "title": "Dentists, General",
+      "probability": 0.0044
+    },
+    {
+      "soc_code": "27-1022",
+      "title": "Fashion Designers",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "53-2031",
+      "title": "Flight Attendants",
+      "probability": 0.35
+    },
+    {
+      "soc_code": "27-1024",
+      "title": "Graphic Designers",
+      "probability": 0.082
+    },
+    {
+      "soc_code": "31-1011",
+      "title": "Home Health Aides",
+      "probability": 0.39
+    },
+    {
+      "soc_code": "43-6012",
+      "title": "Legal Secretaries",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "53-4012",
+      "title": "Locomotive Firers",
+      "probability": 0.93
+    },
+    {
+      "soc_code": "17-2161",
+      "title": "Nuclear Engineers",
+      "probability": 0.07
+    },
+    {
+      "soc_code": "31-1013",
+      "title": "Psychiatric Aides",
+      "probability": 0.47
+    },
+    {
+      "soc_code": "29-1111",
+      "title": "Registered Nurses",
+      "probability": 0.009
+    },
+    {
+      "soc_code": "27-3042",
+      "title": "Technical Writers",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "43-4011",
+      "title": "Brokerage Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "11-1011",
+      "title": "Chief Executives",
+      "probability": 0.015
+    },
+    {
+      "soc_code": "35-2011",
+      "title": "Cooks, Fast Food",
+      "probability": 0.81
+    },
+    {
+      "soc_code": "53-7031",
+      "title": "Dredge Operators",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "27-1023",
+      "title": "Floral Designers",
+      "probability": 0.047
+    },
+    {
+      "soc_code": "51-3092",
+      "title": "Food Batchmakers",
+      "probability": 0.7
+    },
+    {
+      "soc_code": "21-1091",
+      "title": "Health Educators",
+      "probability": 0.045
+    },
+    {
+      "soc_code": "11-9081",
+      "title": "Lodging Managers",
+      "probability": 0.0039
+    },
+    {
+      "soc_code": "47-4091",
+      "title": "Segmental Pavers",
+      "probability": 0.83
+    },
+    {
+      "soc_code": "39-1012",
+      "title": "Slot Supervisors",
+      "probability": 0.54
+    },
+    {
+      "soc_code": "53-7073",
+      "title": "Wellhead Pumpers",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "45-2021",
+      "title": "Animal Breeders",
+      "probability": 0.95
+    },
+    {
+      "soc_code": "39-2011",
+      "title": "Animal Trainers",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "13-2031",
+      "title": "Budget Analysts",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "17-2051",
+      "title": "Civil Engineers",
+      "probability": 0.019
+    },
+    {
+      "soc_code": "13-1051",
+      "title": "Cost Estimators",
+      "probability": 0.57
+    },
+    {
+      "soc_code": "23-2091",
+      "title": "Court Reporters",
+      "probability": 0.5
+    },
+    {
+      "soc_code": "13-2041",
+      "title": "Credit Analysts",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "33-9091",
+      "title": "Crossing Guards",
+      "probability": 0.49
+    },
+    {
+      "soc_code": "19-1041",
+      "title": "Epidemiologists",
+      "probability": 0.2
+    },
+    {
+      "soc_code": "11-9071",
+      "title": "Gaming Managers",
+      "probability": 0.091
+    },
+    {
+      "soc_code": "47-3016",
+      "title": "Helpers–Roofers",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "19-1022",
+      "title": "Microbiologists",
+      "probability": 0.012
+    },
+    {
+      "soc_code": "29-1024",
+      "title": "Prosthodontists",
+      "probability": 0.055
+    },
+    {
+      "soc_code": "27-4013",
+      "title": "Radio Operators",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "41-9031",
+      "title": "Sales Engineers",
+      "probability": 0.0041
+    },
+    {
+      "soc_code": "33-9032",
+      "title": "Security Guards",
+      "probability": 0.84
+    },
+    {
+      "soc_code": "51-2092",
+      "title": "Team Assemblers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "49-9064",
+      "title": "Watch Repairers",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "27-2032",
+      "title": "Choreographers",
+      "probability": 0.004
+    },
+    {
+      "soc_code": "47-4031",
+      "title": "Fence Erectors",
+      "probability": 0.92
+    },
+    {
+      "soc_code": "39-3011",
+      "title": "Gaming Dealers",
+      "probability": 0.96
+    },
+    {
+      "soc_code": "15-2021",
+      "title": "Mathematicians",
+      "probability": 0.047
+    },
+    {
+      "soc_code": "31-9095",
+      "title": "Pharmacy Aides",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "11-2022",
+      "title": "Sales Managers",
+      "probability": 0.013
+    },
+    {
+      "soc_code": "53-5031",
+      "title": "Ship Engineers",
+      "probability": 0.041
+    },
+    {
+      "soc_code": "27-1011",
+      "title": "Art Directors",
+      "probability": 0.023
+    },
+    {
+      "soc_code": "29-1011",
+      "title": "Chiropractors",
+      "probability": 0.027
+    },
+    {
+      "soc_code": "27-1012",
+      "title": "Craft Artists",
+      "probability": 0.035
+    },
+    {
+      "soc_code": "13-2072",
+      "title": "Loan Officers",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "29-1023",
+      "title": "Orthodontists",
+      "probability": 0.023
+    },
+    {
+      "soc_code": "27-4021",
+      "title": "Photographers",
+      "probability": 0.021
+    },
+    {
+      "soc_code": "15-2041",
+      "title": "Statisticians",
+      "probability": 0.22
+    },
+    {
+      "soc_code": "13-2082",
+      "title": "Tax Preparers",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "41-9041",
+      "title": "Telemarketers",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "51-9197",
+      "title": "Tire Builders",
+      "probability": 0.94
+    },
+    {
+      "soc_code": "41-3041",
+      "title": "Travel Agents",
+      "probability": 0.099
+    },
+    {
+      "soc_code": "39-7012",
+      "title": "Travel Guides",
+      "probability": 0.057
+    },
+    {
+      "soc_code": "29-1131",
+      "title": "Veterinarians",
+      "probability": 0.038
+    },
+    {
+      "soc_code": "29-1181",
+      "title": "Audiologists",
+      "probability": 0.0033
+    },
+    {
+      "soc_code": "47-2011",
+      "title": "Boilermakers",
+      "probability": 0.68
+    },
+    {
+      "soc_code": "47-2111",
+      "title": "Electricians",
+      "probability": 0.15
+    },
+    {
+      "soc_code": "33-2011",
+      "title": "Firefighters",
+      "probability": 0.17
+    },
+    {
+      "soc_code": "19-2043",
+      "title": "Hydrologists",
+      "probability": 0.014
+    },
+    {
+      "soc_code": "13-1081",
+      "title": "Logisticians",
+      "probability": 0.012
+    },
+    {
+      "soc_code": "29-1041",
+      "title": "Optometrists",
+      "probability": 0.14
+    },
+    {
+      "soc_code": "43-4151",
+      "title": "Order Clerks",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "47-2142",
+      "title": "Paperhangers",
+      "probability": 0.87
+    },
+    {
+      "soc_code": "51-6051",
+      "title": "Sewers, Hand",
+      "probability": 0.99
+    },
+    {
+      "soc_code": "19-3041",
+      "title": "Sociologists",
+      "probability": 0.059
+    },
+    {
+      "soc_code": "51-6093",
+      "title": "Upholsterers",
+      "probability": 0.39
+    },
+    {
+      "soc_code": "19-2011",
+      "title": "Astronomers",
+      "probability": 0.041
+    },
+    {
+      "soc_code": "35-9021",
+      "title": "Dishwashers",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "43-4071",
+      "title": "File Clerks",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "19-3092",
+      "title": "Geographers",
+      "probability": 0.25
+    },
+    {
+      "soc_code": "49-9044",
+      "title": "Millwrights",
+      "probability": 0.59
+    },
+    {
+      "soc_code": "29-1051",
+      "title": "Pharmacists",
+      "probability": 0.012
+    },
+    {
+      "soc_code": "29-1081",
+      "title": "Hosts and Hostesses",
+      "probability": 0.0046
+    },
+    {
+      "soc_code": "47-2022",
+      "title": "Stonemasons",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "25-4011",
+      "title": "Archivists",
+      "probability": 0.76
+    },
+    {
+      "soc_code": "35-3011",
+      "title": "Bartenders",
+      "probability": 0.77
+    },
+    {
+      "soc_code": "47-2031",
+      "title": "Carpenters",
+      "probability": 0.72
+    },
+    {
+      "soc_code": "39-6012",
+      "title": "Concierges",
+      "probability": 0.21
+    },
+    {
+      "soc_code": "19-3011",
+      "title": "Economists",
+      "probability": 0.43
+    },
+    {
+      "soc_code": "19-3093",
+      "title": "Historians",
+      "probability": 0.44
+    },
+    {
+      "soc_code": "25-4021",
+      "title": "Librarians",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "51-4041",
+      "title": "Machinists",
+      "probability": 0.65
+    },
+    {
+      "soc_code": "19-2012",
+      "title": "Physicists",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "47-2151",
+      "title": "Pipelayers",
+      "probability": 0.62
+    },
+    {
+      "soc_code": "39-5093",
+      "title": "Shampooers",
+      "probability": 0.79
+    },
+    {
+      "soc_code": "15-2011",
+      "title": "Actuaries",
+      "probability": 0.21
+    },
+    {
+      "soc_code": "39-4011",
+      "title": "Embalmers",
+      "probability": 0.54
+    },
+    {
+      "soc_code": "19-1032",
+      "title": "Foresters",
+      "probability": 0.0081
+    },
+    {
+      "soc_code": "17-1022",
+      "title": "Surveyors",
+      "probability": 0.38
+    },
+    {
+      "soc_code": "33-3011",
+      "title": "Bailiffs",
+      "probability": 0.36
+    },
+    {
+      "soc_code": "41-2011",
+      "title": "Cashiers",
+      "probability": 0.97
+    },
+    {
+      "soc_code": "19-2031",
+      "title": "Chemists",
+      "probability": 0.1
+    },
+    {
+      "soc_code": "25-4012",
+      "title": "Curators",
+      "probability": 0.0068
+    },
+    {
+      "soc_code": "47-2121",
+      "title": "Glaziers",
+      "probability": 0.73
+    },
+    {
+      "soc_code": "39-5011",
+      "title": "Barbers",
+      "probability": 0.8
+    },
+    {
+      "soc_code": "27-2031",
+      "title": "Dancers",
+      "probability": 0.13
+    },
+    {
+      "soc_code": "27-3041",
+      "title": "Editors",
+      "probability": 0.055
+    },
+    {
+      "soc_code": "45-4021",
+      "title": "Fallers",
+      "probability": 0.76
+    },
+    {
+      "soc_code": "23-1011",
+      "title": "Lawyers",
+      "probability": 0.035
+    },
+    {
+      "soc_code": "49-9096",
+      "title": "Riggers",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "47-2181",
+      "title": "Roofers",
+      "probability": 0.9
+    },
+    {
+      "soc_code": "43-3071",
+      "title": "Tellers",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "27-2011",
+      "title": "Actors",
+      "probability": 0.37
+    },
+    {
+      "soc_code": "51-3011",
+      "title": "Bakers",
+      "probability": 0.89
+    },
+    {
+      "soc_code": "21-2011",
+      "title": "Clergy",
+      "probability": 0.0081
+    },
+    {
+      "soc_code": "41-9012",
+      "title": "Models",
+      "probability": 0.98
+    },
+    {
+      "soc_code": "47-2082",
+      "title": "Tapers",
+      "probability": 0.62
+    }
+  ]
+}

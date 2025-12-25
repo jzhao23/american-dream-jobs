@@ -44,8 +44,9 @@ data/cache/careeronestop/*.json
 # Processed data (can be regenerated)
 data/processed/
 
-# Raw source data (can be re-downloaded)
-data/sources/
+# Raw source data (can be re-downloaded, except Oxford)
+data/sources/*
+!data/sources/oxford/
 
 # Review source data (raw Reddit data, can be re-fetched)
 data/reviews/sources/
