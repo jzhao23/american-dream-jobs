@@ -255,8 +255,13 @@ export function getAIRiskLabel(score: number): string {
   return "Very High Risk";
 }
 
+// Legacy function - kept for backwards compatibility
 export function getImportanceFlags(flagCount: number): string {
   return "🇺🇸".repeat(flagCount);
+}
+
+export function getImportanceScoreDisplay(score: number): string {
+  return `${score}/10`;
 }
 
 export function getCategoryColor(category: string): string {

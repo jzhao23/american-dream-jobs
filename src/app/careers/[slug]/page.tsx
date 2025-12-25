@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import careers from "../../../../data/careers.generated.json";
+import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
 import {
   formatPay,
@@ -9,10 +10,10 @@ import {
   getCategoryColor,
   getAIRiskColor,
   getAIRiskLabel,
-  getImportanceFlags,
   getImportanceColor,
   getImportanceLabel,
 } from "@/types/career";
+import { formatTopicLabel, type CareerReviewsSummary } from "@/types/review";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -69,7 +70,11 @@ export default async function CareerPage({ params }: PageProps) {
   const trainingYears = career.education?.time_to_job_ready;
   const aiRiskScore = career.ai_risk?.score || 5;
   const importanceScore = career.national_importance?.score || 5;
-  const flagCount = career.national_importance?.flag_count || 2;
+
+  // Find reviews for this career
+  const careerReviews = (reviewsIndex as CareerReviewsSummary[]).find(
+    (r) => r.slug === career.slug
+  );
 
   return (
     <div className="min-h-screen bg-secondary-50">
@@ -149,7 +154,7 @@ export default async function CareerPage({ params }: PageProps) {
                 National Importance
               </div>
               <div className="flex items-center gap-2">
-                <span>{getImportanceFlags(flagCount)}</span>
+                <span className="text-xl font-bold text-secondary-900">{importanceScore}/10</span>
                 <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(importanceScore)}`}>
                   {getImportanceLabel(importanceScore)}
                 </span>
@@ -325,12 +330,12 @@ export default async function CareerPage({ params }: PageProps) {
           {career.national_importance && (
             <Section title="Why This Job Matters" icon="flag">
               <div className="flex items-center gap-4 mb-4">
-                <div className="text-4xl">
-                  {getImportanceFlags(flagCount)}
+                <div className={`text-4xl font-bold ${getImportanceColor(importanceScore)} px-4 py-2 rounded-lg`}>
+                  {importanceScore}/10
                 </div>
                 <div>
                   <div className="font-bold text-xl text-secondary-900">
-                    {career.national_importance.score}/10 - {getImportanceLabel(importanceScore)}
+                    {getImportanceLabel(importanceScore)}
                   </div>
                   {career.national_importance.rationale.critical_infrastructure_sector && (
                     <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mt-1">
@@ -406,6 +411,36 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
+          {/* What Workers Say */}
+          {careerReviews && careerReviews.total_reviews > 0 && (
+            <Section title="What Workers Say" icon="chat">
+              <div className="space-y-4">
+                <p className="text-sm text-secondary-600">
+                  Based on {careerReviews.total_reviews} testimonial{careerReviews.total_reviews !== 1 ? 's' : ''} from{' '}
+                  {Object.entries(careerReviews.sources)
+                    .map(([src, count]) => `${src} (${count})`)
+                    .join(', ')}
+                </p>
+
+                {careerReviews.featured_quotes.map((quote, i) => (
+                  <div key={i} className="bg-secondary-50 rounded-lg p-4">
+                    <div className="text-xs text-secondary-500 mb-2">
+                      On {formatTopicLabel(quote.topic as Parameters<typeof formatTopicLabel>[0])}
+                    </div>
+                    <blockquote className="text-secondary-800 italic">
+                      &ldquo;{quote.quote}&rdquo;
+                    </blockquote>
+                    {quote.upvotes && quote.upvotes > 0 && (
+                      <div className="text-xs text-secondary-400 mt-2">
+                        {quote.upvotes} upvotes on {quote.source_type}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Section>
+          )}
+
           {/* Sources */}
           <Section title="Data Sources" icon="link">
             <div className="text-sm text-secondary-600 mb-4">
@@ -470,6 +505,7 @@ const icons: Record<string, string> = {
   star: "⭐",
   tag: "🏷️",
   link: "🔗",
+  chat: "💬",
 };
 
 function Section({

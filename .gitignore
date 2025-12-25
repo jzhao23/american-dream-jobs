@@ -46,3 +46,6 @@ data/processed/
 
 # Raw source data (can be re-downloaded)
 data/sources/
+
+# Review source data (raw Reddit data, can be re-fetched)
+data/reviews/sources/

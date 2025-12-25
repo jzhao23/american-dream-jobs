@@ -9,7 +9,6 @@ import {
   getCategoryColor,
   getAIRiskColor,
   getAIRiskLabel,
-  getImportanceFlags,
   getImportanceColor,
   getImportanceLabel,
 } from "@/types/career";
@@ -471,10 +470,15 @@ export default function ComparePage() {
                       <td className="px-4 py-4 font-medium text-secondary-900">National Importance</td>
                       {selectedCareers.map((career, index) => {
                         const score = career.national_importance?.score || 5;
-                        const flagCount = career.national_importance?.flag_count || 2;
                         return (
                           <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                            <div className="text-2xl">{getImportanceFlags(flagCount)}</div>
+                            <div className={`text-2xl font-bold ${
+                              score >= 7 ? 'text-blue-600' :
+                              score >= 4 ? 'text-indigo-600' :
+                              'text-gray-600'
+                            }`}>
+                              {score}/10
+                            </div>
                             <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(score)}`}>
                               {getImportanceLabel(score)}
                             </span>

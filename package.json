@@ -13,9 +13,14 @@
     "data:score-importance": "npx tsx scripts/score-importance.ts",
     "data:create-progression": "npx tsx scripts/create-progression-mappings.ts",
     "data:generate-final": "npx tsx scripts/generate-final.ts",
-    "data:refresh": "npm run data:process-onet && npm run data:fetch-wages && npm run data:score-ai-risk && npm run data:score-importance && npm run data:create-progression && npm run data:generate-final"
+    "data:refresh": "npm run data:process-onet && npm run data:fetch-wages && npm run data:score-ai-risk && npm run data:score-importance && npm run data:create-progression && npm run data:generate-final",
+    "reviews:fetch": "npx tsx scripts/fetch-reddit-reviews.ts",
+    "reviews:enrich": "npx tsx scripts/enrich-reviews.ts",
+    "reviews:generate": "npx tsx scripts/generate-reviews-index.ts",
+    "reviews:update": "npx tsx scripts/update-reviews.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
     "next": "^15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

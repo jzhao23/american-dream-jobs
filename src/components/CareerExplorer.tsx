@@ -7,7 +7,7 @@ import {
   getTrainingTimeLabel,
   getAIRiskColor,
   getAIRiskLabel,
-  getImportanceFlags,
+  getImportanceColor,
   getCategoryColor,
 } from "@/types/career";
 
@@ -390,8 +390,8 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
                   </span>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <span title={`Importance: ${career.importance}/10`}>
-                    {getImportanceFlags(career.flag_count)}
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
+                    {career.importance}/10
                   </span>
                 </td>
               </tr>
@@ -436,7 +436,9 @@ export function CareerExplorer({ careers }: CareerExplorerProps) {
                 AI Risk: {career.ai_risk}/10
               </span>
               <span className="text-secondary-300">•</span>
-              <span>{getImportanceFlags(career.flag_count)}</span>
+              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
+                Importance: {career.importance}/10
+              </span>
             </div>
           </a>
         ))}
