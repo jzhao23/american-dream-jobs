@@ -1,0 +1,578 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import careersIndex from "../../../data/careers-index.json";
+import careersData from "../../../data/careers.generated.json";
+import type { CareerIndex, Career } from "@/types/career";
+import {
+  formatPay,
+  getCategoryColor,
+  getAIRiskColor,
+  getAIRiskLabel,
+  getImportanceFlags,
+  getImportanceColor,
+  getImportanceLabel,
+} from "@/types/career";
+
+const careers = careersIndex as CareerIndex[];
+const fullCareers = careersData as Career[];
+
+interface CareerPathStage {
+  type: "education" | "career" | "retirement";
+  label: string;
+  ageStart: number;
+  ageEnd: number;
+  annualAmount: number; // negative for costs, positive for earnings
+  cumulative: number;
+  levelName?: string;
+}
+
+export default function ComparePage() {
+  const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [startAge] = useState(18); // Age when starting education/training
+  const [retirementAge] = useState(65);
+
+  const selectedCareers = useMemo(() => {
+    return selectedSlugs.map(slug => fullCareers.find(c => c.slug === slug)).filter(Boolean) as Career[];
+  }, [selectedSlugs]);
+
+  const filteredCareers = useMemo(() => {
+    if (!searchQuery) return careers.slice(0, 50);
+    const query = searchQuery.toLowerCase();
+    return careers
+      .filter(c => c.title.toLowerCase().includes(query) || c.category.toLowerCase().includes(query))
+      .slice(0, 50);
+  }, [searchQuery]);
+
+  // Build career paths for each selected career
+  const careerPaths = useMemo(() => {
+    return selectedCareers.map(career => {
+      const stages: CareerPathStage[] = [];
+      const educationYears = career.education?.time_to_job_ready?.typical_years || 2;
+      const educationCost = career.education?.estimated_cost?.typical_cost || 0;
+      const timeline = career.career_progression?.timeline || [];
+
+      let cumulative = 0;
+
+      // Education stage
+      const educationEnd = startAge + educationYears;
+      cumulative -= educationCost;
+      stages.push({
+        type: "education",
+        label: career.education?.typical_entry_education || "Training",
+        ageStart: startAge,
+        ageEnd: educationEnd,
+        annualAmount: -educationCost,
+        cumulative,
+      });
+
+      // Career stages in 5-year blocks
+      const careerStartAge = educationEnd;
+      const yearsUntilRetirement = retirementAge - careerStartAge;
+      const numBlocks = Math.ceil(yearsUntilRetirement / 5);
+
+      for (let block = 0; block < numBlocks; block++) {
+        const blockStartAge = careerStartAge + block * 5;
+        const blockEndAge = Math.min(blockStartAge + 5, retirementAge);
+        const yearsInBlock = blockEndAge - blockStartAge;
+
+        // Calculate earnings for this block based on timeline
+        let blockEarnings = 0;
+        let levelName = "Entry";
+
+        for (let year = 0; year < yearsInBlock; year++) {
+          const careerYear = block * 5 + year;
+          const timelineIndex = Math.min(careerYear, timeline.length - 1);
+          if (timeline[timelineIndex]) {
+            blockEarnings += timeline[timelineIndex].expected_compensation;
+            levelName = timeline[timelineIndex].level_name;
+          }
+        }
+
+        cumulative += blockEarnings;
+
+        stages.push({
+          type: "career",
+          label: `Years ${block * 5 + 1}-${Math.min((block + 1) * 5, yearsUntilRetirement)}`,
+          ageStart: blockStartAge,
+          ageEnd: blockEndAge,
+          annualAmount: blockEarnings,
+          cumulative,
+          levelName,
+        });
+      }
+
+      // Retirement marker
+      stages.push({
+        type: "retirement",
+        label: "Retirement",
+        ageStart: retirementAge,
+        ageEnd: retirementAge,
+        annualAmount: 0,
+        cumulative,
+      });
+
+      return {
+        career,
+        stages,
+        totalEarnings: cumulative,
+        educationCost,
+      };
+    });
+  }, [selectedCareers, startAge, retirementAge]);
+
+  const addCareer = (slug: string) => {
+    if (selectedSlugs.length < 3 && !selectedSlugs.includes(slug)) {
+      setSelectedSlugs([...selectedSlugs, slug]);
+    }
+    setSearchQuery("");
+    setShowSearch(false);
+  };
+
+  const removeCareer = (slug: string) => {
+    setSelectedSlugs(selectedSlugs.filter(s => s !== slug));
+  };
+
+  const colors = ['blue', 'green', 'purple'] as const;
+  const colorClasses = {
+    blue: { bg: 'bg-blue-500', bgLight: 'bg-blue-100', border: 'border-blue-400', text: 'text-blue-700' },
+    green: { bg: 'bg-green-500', bgLight: 'bg-green-100', border: 'border-green-400', text: 'text-green-700' },
+    purple: { bg: 'bg-purple-500', bgLight: 'bg-purple-100', border: 'border-purple-400', text: 'text-purple-700' },
+  };
+
+  return (
+    <div className="min-h-screen bg-secondary-50">
+      {/* Header */}
+      <section className="bg-white border-b border-secondary-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+            Compare Career Paths
+          </h1>
+          <p className="text-lg text-secondary-600 max-w-2xl">
+            Select up to 3 careers to compare their lifetime earnings trajectory, including education costs and career progression.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Career Selection */}
+        <div className="card p-6 mb-8">
+          <h2 className="text-xl font-bold text-secondary-900 mb-4">Select Careers to Compare</h2>
+
+          <div className="flex flex-wrap gap-3 mb-4">
+            {selectedCareers.map((career, index) => (
+              <div
+                key={career.slug}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 ${colorClasses[colors[index]].border} ${colorClasses[colors[index]].bgLight}`}
+              >
+                <span className="font-medium">{career.title}</span>
+                <button
+                  onClick={() => removeCareer(career.slug)}
+                  className="text-secondary-400 hover:text-secondary-600 text-xl leading-none"
+                >
+                  &times;
+                </button>
+              </div>
+            ))}
+
+            {selectedSlugs.length < 3 && (
+              <div className="relative">
+                <button
+                  onClick={() => setShowSearch(true)}
+                  className="px-4 py-2 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 transition-colors"
+                >
+                  + Add Career ({3 - selectedSlugs.length} remaining)
+                </button>
+
+                {showSearch && (
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
+                    <input
+                      type="text"
+                      placeholder="Search careers..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full px-4 py-3 border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                      autoFocus
+                    />
+                    <div className="max-h-60 overflow-y-auto">
+                      {filteredCareers.map(career => (
+                        <button
+                          key={career.slug}
+                          onClick={() => addCareer(career.slug)}
+                          disabled={selectedSlugs.includes(career.slug)}
+                          className={`w-full px-4 py-2 text-left hover:bg-secondary-50 ${
+                            selectedSlugs.includes(career.slug) ? 'opacity-50 cursor-not-allowed' : ''
+                          }`}
+                        >
+                          <div className="font-medium text-secondary-900">{career.title}</div>
+                          <div className="text-sm text-secondary-500">{career.category} - {formatPay(career.median_pay)}</div>
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => setShowSearch(false)}
+                      className="w-full px-4 py-2 text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {selectedCareers.length >= 2 && (
+          <>
+            {/* Career Path Timeline */}
+            <div className="card p-6 mb-8">
+              <h2 className="text-xl font-bold text-secondary-900 mb-2">Career Path Comparison</h2>
+              <p className="text-sm text-secondary-600 mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
+
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {careerPaths.map((path, pathIndex) => (
+                  <div key={path.career.slug} className="flex-1 min-w-[280px]">
+                    {/* Career header */}
+                    <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border}`}>
+                      <div className="font-bold text-secondary-900 text-sm">{path.career.title}</div>
+                      <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
+                        {path.career.category}
+                      </div>
+                    </div>
+
+                    {/* Stages */}
+                    <div className="border-x-2 border-b-2 border-secondary-200 rounded-b-lg overflow-hidden">
+                      {path.stages.map((stage, stageIndex) => (
+                        <div
+                          key={stageIndex}
+                          className={`p-3 border-b border-secondary-100 last:border-b-0 ${
+                            stage.type === 'education' ? 'bg-amber-50' :
+                            stage.type === 'retirement' ? 'bg-secondary-100' :
+                            stageIndex % 2 === 0 ? 'bg-white' : 'bg-secondary-50'
+                          }`}
+                        >
+                          <div className="flex justify-between items-start mb-1">
+                            <div>
+                              <div className="text-xs text-secondary-500">
+                                {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
+                              </div>
+                              <div className="font-medium text-sm text-secondary-900">
+                                {stage.type === 'education' ? stage.label :
+                                 stage.type === 'retirement' ? 'Retirement' :
+                                 stage.label}
+                              </div>
+                              {stage.levelName && stage.type === 'career' && (
+                                <div className="text-xs text-secondary-500">{stage.levelName}</div>
+                              )}
+                            </div>
+                            <div className="text-right">
+                              {stage.type === 'education' ? (
+                                <div className="text-red-600 font-bold text-sm">
+                                  -{formatPay(Math.abs(stage.annualAmount))}
+                                </div>
+                              ) : stage.type === 'career' ? (
+                                <div className="text-green-600 font-bold text-sm">
+                                  +{formatPay(stage.annualAmount)}
+                                </div>
+                              ) : null}
+                            </div>
+                          </div>
+                          {stage.type !== 'retirement' && (
+                            <div className="text-xs text-secondary-500 mt-1">
+                              Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-red-600'}>
+                                {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
+                              </span>
+                            </div>
+                          )}
+                          {stage.type === 'retirement' && (
+                            <div className="mt-2 p-2 bg-white rounded border border-secondary-200">
+                              <div className="text-xs text-secondary-600">Total Lifetime Net</div>
+                              <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                {formatPay(path.totalEarnings)}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Legend */}
+              <div className="flex justify-center gap-6 mt-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
+                  <span className="text-secondary-600">Education (Cost)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-white border border-secondary-200 rounded" />
+                  <span className="text-secondary-600">Career (Earnings)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-secondary-100 border border-secondary-200 rounded" />
+                  <span className="text-secondary-600">Retirement</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Summary Comparison Table */}
+            <div className="card overflow-hidden mb-8">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-secondary-50">
+                    <tr>
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-secondary-700 w-40">
+                        Metric
+                      </th>
+                      {selectedCareers.map((career, index) => (
+                        <th
+                          key={career.slug}
+                          className={`text-center px-4 py-3 ${colorClasses[colors[index]].bgLight}`}
+                        >
+                          <a
+                            href={`/careers/${career.slug}`}
+                            className="text-primary-600 hover:underline font-semibold"
+                          >
+                            {career.title}
+                          </a>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-secondary-100">
+                    {/* Education Cost */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">Education Cost</td>
+                      {careerPaths.map((path, index) => (
+                        <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                          <div className="text-xl font-bold text-red-600">
+                            -{formatPay(path.educationCost)}
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+
+                    {/* Education Duration */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">Training Time</td>
+                      {selectedCareers.map((career, index) => {
+                        const years = career.education?.time_to_job_ready;
+                        return (
+                          <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                            <div className="font-semibold">
+                              {years ? `${years.min_years}-${years.max_years} years` : 'Varies'}
+                            </div>
+                            <div className="text-xs text-secondary-500">
+                              {career.education?.typical_entry_education}
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Median Pay */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">Median Pay</td>
+                      {selectedCareers.map((career, index) => (
+                        <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                          <div className="text-xl font-bold text-primary-600">
+                            {formatPay(career.wages?.annual?.median || 0)}
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+
+                    {/* 10-Year Net Earnings */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">
+                        10-Year Net
+                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                      </td>
+                      {careerPaths.map((path, index) => {
+                        const timeline = path.career.career_progression?.timeline || [];
+                        const tenYearEarnings = timeline
+                          .filter(t => t.year < 10)
+                          .reduce((sum, t) => sum + t.expected_compensation, 0);
+                        const netAmount = tenYearEarnings - path.educationCost;
+                        return (
+                          <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                            <div className={`text-xl font-bold ${netAmount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                              {netAmount >= 0 ? '' : '-'}{formatPay(Math.abs(netAmount))}
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* 20-Year Net Earnings */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">
+                        20-Year Net
+                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                      </td>
+                      {careerPaths.map((path, index) => {
+                        const timeline = path.career.career_progression?.timeline || [];
+                        const twentyYearEarnings = timeline.reduce((sum, t) => sum + t.expected_compensation, 0);
+                        const netAmount = twentyYearEarnings - path.educationCost;
+                        return (
+                          <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                            <div className={`text-xl font-bold ${netAmount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                              {formatPay(netAmount)}
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Lifetime Net */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">
+                        Lifetime Net (to 65)
+                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                      </td>
+                      {careerPaths.map((path, index) => (
+                        <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                          <div className="text-xl font-bold text-green-600">
+                            {formatPay(path.totalEarnings)}
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+
+                    {/* AI Risk */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">AI Risk</td>
+                      {selectedCareers.map((career, index) => {
+                        const score = career.ai_risk?.score || 5;
+                        return (
+                          <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                            <div className={`text-2xl font-bold ${
+                              score <= 3 ? 'text-green-600' :
+                              score <= 6 ? 'text-yellow-600' :
+                              'text-red-600'
+                            }`}>
+                              {score}/10
+                            </div>
+                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(score)}`}>
+                              {getAIRiskLabel(score)}
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* National Importance */}
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-secondary-900">National Importance</td>
+                      {selectedCareers.map((career, index) => {
+                        const score = career.national_importance?.score || 5;
+                        const flagCount = career.national_importance?.flag_count || 2;
+                        return (
+                          <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
+                            <div className="text-2xl">{getImportanceFlags(flagCount)}</div>
+                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(score)}`}>
+                              {getImportanceLabel(score)}
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Key Insights */}
+            <div className="card p-6">
+              <h2 className="text-xl font-bold text-secondary-900 mb-4">Key Insights</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* Highest Lifetime Earnings */}
+                <div className="bg-green-50 rounded-lg p-4">
+                  <div className="text-sm text-green-700 mb-1">Highest Lifetime Net</div>
+                  <div className="font-bold text-green-800">
+                    {careerPaths.reduce((best, p) => p.totalEarnings > best.totalEarnings ? p : best).career.title}
+                  </div>
+                  <div className="text-sm text-green-600">
+                    {formatPay(Math.max(...careerPaths.map(p => p.totalEarnings)))}
+                  </div>
+                </div>
+
+                {/* Lowest Education Cost */}
+                <div className="bg-amber-50 rounded-lg p-4">
+                  <div className="text-sm text-amber-700 mb-1">Lowest Education Cost</div>
+                  <div className="font-bold text-amber-800">
+                    {careerPaths.reduce((best, p) => p.educationCost < best.educationCost ? p : best).career.title}
+                  </div>
+                  <div className="text-sm text-amber-600">
+                    {formatPay(Math.min(...careerPaths.map(p => p.educationCost)))}
+                  </div>
+                </div>
+
+                {/* Lowest AI Risk */}
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="text-sm text-blue-700 mb-1">Lowest AI Risk</div>
+                  <div className="font-bold text-blue-800">
+                    {selectedCareers.reduce((best, c) =>
+                      (c.ai_risk?.score || 10) < (best.ai_risk?.score || 10) ? c : best
+                    ).title}
+                  </div>
+                </div>
+
+                {/* Fastest to Start */}
+                <div className="bg-purple-50 rounded-lg p-4">
+                  <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
+                  <div className="font-bold text-purple-800">
+                    {selectedCareers.reduce((best, c) =>
+                      (c.education?.time_to_job_ready?.typical_years || 10) < (best.education?.time_to_job_ready?.typical_years || 10) ? c : best
+                    ).title}
+                  </div>
+                </div>
+
+                {/* Highest Importance */}
+                <div className="bg-indigo-50 rounded-lg p-4">
+                  <div className="text-sm text-indigo-700 mb-1">Highest National Importance</div>
+                  <div className="font-bold text-indigo-800">
+                    {selectedCareers.reduce((best, c) =>
+                      (c.national_importance?.score || 0) > (best.national_importance?.score || 0) ? c : best
+                    ).title}
+                  </div>
+                </div>
+
+                {/* Best ROI */}
+                <div className="bg-emerald-50 rounded-lg p-4">
+                  <div className="text-sm text-emerald-700 mb-1">Best 10-Year ROI</div>
+                  <div className="font-bold text-emerald-800">
+                    {(() => {
+                      const withROI = careerPaths.map(p => {
+                        const timeline = p.career.career_progression?.timeline || [];
+                        const earnings = timeline.filter(t => t.year < 10).reduce((sum, t) => sum + t.expected_compensation, 0);
+                        const cost = p.educationCost || 1;
+                        return { path: p, roi: (earnings - cost) / Math.max(cost, 1) };
+                      });
+                      return withROI.reduce((best, curr) => curr.roi > best.roi ? curr : best).path.career.title;
+                    })()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {selectedCareers.length < 2 && (
+          <div className="card p-12 text-center">
+            <div className="text-6xl mb-4">???</div>
+            <h3 className="text-xl font-semibold text-secondary-900 mb-2">
+              Select at least 2 careers to compare
+            </h3>
+            <p className="text-secondary-600">
+              Use the search above to add careers and see how they stack up against each other.
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

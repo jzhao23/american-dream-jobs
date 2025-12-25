@@ -1,0 +1,159 @@
+[
+  {
+    "slug": "welder",
+    "title": "Welders, Cutters, Solderers, and Brazers",
+    "onetCode": "51-4121.00",
+    "category": "trades",
+    "flagship": true
+  },
+  {
+    "slug": "electrician",
+    "title": "Electricians",
+    "onetCode": "47-2111.00",
+    "category": "trades",
+    "flagship": true
+  },
+  {
+    "slug": "plumber",
+    "title": "Plumbers, Pipefitters, and Steamfitters",
+    "onetCode": "47-2152.00",
+    "category": "trades",
+    "flagship": true
+  },
+  {
+    "slug": "hvac-technician",
+    "title": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+    "onetCode": "49-9021.00",
+    "category": "trades",
+    "flagship": true
+  },
+  {
+    "slug": "elevator-installer",
+    "title": "Elevator and Escalator Installers and Repairers",
+    "onetCode": "47-4021.00",
+    "category": "trades",
+    "flagship": true
+  },
+  {
+    "slug": "industrial-machinery-mechanic",
+    "title": "Industrial Machinery Mechanics",
+    "onetCode": "49-9041.00",
+    "category": "trades"
+  },
+  {
+    "slug": "cnc-machinist",
+    "title": "Computer Numerically Controlled Tool Operators",
+    "onetCode": "51-4011.00",
+    "category": "trades"
+  },
+  {
+    "slug": "diesel-mechanic",
+    "title": "Bus and Truck Mechanics and Diesel Engine Specialists",
+    "onetCode": "49-3031.00",
+    "category": "trades"
+  },
+  {
+    "slug": "carpenter",
+    "title": "Carpenters",
+    "onetCode": "47-2031.00",
+    "category": "trades"
+  },
+  {
+    "slug": "lineworker",
+    "title": "Electrical Power-Line Installers and Repairers",
+    "onetCode": "49-9051.00",
+    "category": "trades"
+  },
+  {
+    "slug": "registered-nurse",
+    "title": "Registered Nurses",
+    "onetCode": "29-1141.00",
+    "category": "healthcare",
+    "flagship": true
+  },
+  {
+    "slug": "dental-hygienist",
+    "title": "Dental Hygienists",
+    "onetCode": "29-1292.00",
+    "category": "healthcare"
+  },
+  {
+    "slug": "radiologic-technologist",
+    "title": "Radiologic Technologists and Technicians",
+    "onetCode": "29-2034.00",
+    "category": "healthcare"
+  },
+  {
+    "slug": "surgical-technologist",
+    "title": "Surgical Technologists",
+    "onetCode": "29-2055.00",
+    "category": "healthcare"
+  },
+  {
+    "slug": "respiratory-therapist",
+    "title": "Respiratory Therapists",
+    "onetCode": "29-1126.00",
+    "category": "healthcare"
+  },
+  {
+    "slug": "medical-sonographer",
+    "title": "Diagnostic Medical Sonographers",
+    "onetCode": "29-2032.00",
+    "category": "healthcare"
+  },
+  {
+    "slug": "truck-driver",
+    "title": "Heavy and Tractor-Trailer Truck Drivers",
+    "onetCode": "53-3032.00",
+    "category": "operations",
+    "flagship": true
+  },
+  {
+    "slug": "air-traffic-controller",
+    "title": "Air Traffic Controllers",
+    "onetCode": "53-2021.00",
+    "category": "operations"
+  },
+  {
+    "slug": "power-plant-operator",
+    "title": "Power Plant Operators",
+    "onetCode": "51-8013.00",
+    "category": "operations"
+  },
+  {
+    "slug": "water-treatment-operator",
+    "title": "Water and Wastewater Treatment Plant and System Operators",
+    "onetCode": "51-8031.00",
+    "category": "operations"
+  },
+  {
+    "slug": "wind-turbine-technician",
+    "title": "Wind Turbine Service Technicians",
+    "onetCode": "49-9081.00",
+    "category": "operations"
+  },
+  {
+    "slug": "data-center-technician",
+    "title": "Computer Network Support Specialists",
+    "onetCode": "15-1231.00",
+    "category": "technology"
+  },
+  {
+    "slug": "web-developer",
+    "title": "Web Developers",
+    "onetCode": "15-1254.00",
+    "category": "technology"
+  },
+  {
+    "slug": "cybersecurity-analyst",
+    "title": "Information Security Analysts",
+    "onetCode": "15-1212.00",
+    "category": "technology"
+  },
+  {
+    "slug": "database-administrator",
+    "title": "Database Administrators",
+    "onetCode": "15-1242.00",
+    "category": "technology"
+  }
+]
