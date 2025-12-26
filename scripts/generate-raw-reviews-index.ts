@@ -99,10 +99,15 @@ async function main() {
   // Convert to our review format and group by SOC code
   const bySocCode: Record<string, RawReview[]> = {};
 
+  // Create case-insensitive mapping lookup
+  const mappingLookup: Record<string, typeof SUBREDDIT_MAPPINGS[string]> = {};
+  for (const [key, value] of Object.entries(SUBREDDIT_MAPPINGS)) {
+    mappingLookup[key.toLowerCase()] = value;
+  }
+
   for (const post of posts) {
     const subredditLower = post.subreddit.toLowerCase();
-    const mapping = SUBREDDIT_MAPPINGS[subredditLower] ||
-                    SUBREDDIT_MAPPINGS[post.subreddit];
+    const mapping = mappingLookup[subredditLower];
 
     if (!mapping) {
       console.warn(`  No mapping for r/${post.subreddit}`);

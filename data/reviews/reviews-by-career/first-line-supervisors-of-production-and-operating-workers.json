@@ -1,0 +1,632 @@
+[
+  {
+    "id": "reddit-1k59ake",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "US simply cannot manufacture what comes from China.",
+    "text": "With all the tariff news, I found this video where an engineer basically explains that the US simply cannot manufacture most of the things we do today in China. He basically explains that US manufacturers: \n\n1) complain a lot, they don't want to work long hours. \n\n2) No interest in small amounts. Require minimum batches of several hundred units which is not flexible for the client \n\n3) Most US workforce lacks the technical skillset as most of this knowledge went overseas as US and western economies outsourced manufacturing to cheaper countries. \n\nAll of this makes total sense to me, and the guy explains that it is still cheaper and will give him less headaches to pay manufacture in China and pay the tariff.\n\nI'm interested in knowing if technicians/engineers here agree with this. Please state your sector/industry before replying. Thanks! \n\n[https://x.com/CarlZha/status/1911336243709034651](https://x.com/CarlZha/status/1911336243709034651)\n\n",
+    "score": 940,
+    "url": "https://reddit.com/r/manufacturing/comments/1k59ake/us_simply_cannot_manufacture_what_comes_from_china/",
+    "created_at": "2025-04-22T15:34:23.000Z",
+    "num_comments": 469
+  },
+  {
+    "id": "reddit-1k6z3w3",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Just announced no more overtime due to ..... tariffs...",
+    "text": "Lots of commotion because it will result in a large reduction in take home pay for the factory floor. Most of the people affected voted for it... Uncertainty in sales and supply chains resulted in reduced sales and poor company performance. ",
+    "score": 521,
+    "url": "https://reddit.com/r/manufacturing/comments/1k6z3w3/just_announced_no_more_overtime_due_to_tariffs/",
+    "created_at": "2025-04-24T18:10:04.000Z",
+    "num_comments": 167
+  },
+  {
+    "id": "reddit-1l56qhw",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "California: The gangster state in manufacturing that nobody talks about in a positive light.",
+    "text": "Recently, had a chance to go through California, traveling from borders with Oregon, Nevada and Arizona to the coast and to Bay area and to SoCal.\n\nFor all its faults, there is absolutely massive amounts manufacturing activity that goes on in the state.\n\nA small manufacturing unit, run out of a strip mall made server racks. For Nvidia 4000 series gpus, to be used for AI. That small shop actually had a fkin metal 3D printer, which they used for a custom manifold that ensures turbulent flow of water for cooling purposes.\n\nWent to a screen printing shop, absolutely bonkers technology there. They took an off the shelf automatic screen printing added their own stuff to it, and now they made a hybrid digital printing press, CMYK+ RGBY, that's right colors which is basically not heard of. A similar operation in DFW - which is a large screen printing hub in US, would need to many more people and wouldn't even be able to produce the stuff that they made. Hyper-realistic prints of faces, animals etc., like 3-4k images, but on clothes, hats, etc.\n\nWent to a manufacturing company that builds bio-reactors, and specifically experimental bio-reactors. Don't get confused by the sciency name. They're just regular reactors, but built for reactions and processes which have a biological component to them. They're building multiple different pilot level bio-reactors for a large variety of research projects - their own research and their customer's research projects. Honestly - I have never seen such bio-reactors anywhere. Absolutely amazing. Some projects were so that you reduce the amount of reactors you need in a large scale operation, multiple reactions happening simultaneously in a single reactor. Possibly might have seen the bleeding edge of bio-reactors built anywhere in the world.\n\nVisited multiple companies that are working hard to build a competent electric shunt trucks for port operations. Even though current administration has cancelled or is trying to cancel California's electric vehicle mandate (that starts in 2035 I think), most companies like these say, current admin is temporary. California remaining blue is permanent. Some of them have come up with absolutely amazing stuff - battery modules that slide on rails, connect with actuated quick connects for cooling loops, and for information they have contact points into the quick connects themselves. A single battery module can be replaced with a forklift in less than 3 mins.\n\nNow some statistics - \n\nCalifornia has 1.2M manufacturing jobs, actually it has 1.2M manufacturing employment, and about ~100k jobs unfulfilled (bad pay, bad companies - who knows!)\n\nFor a state with 39.43M population, 3.3% of the population can be employed by manufacturing alone. Remove kids, seniors/retirees, 19.75M employees. 2% unemployment rate, you get a figure around 20.2M people.\n1.2M/20.2M, about 6% of workforce is employed by manufacturing in one of the most expensive places.\n\nStates like Ohio, Michigan and possibly Texas, have a far larger percentage working in manufacturing, California still has the largest by numbers.\nAnd by manufacturing value. California manufacturing GDP is ~$350B. Second rank is Texas, at ~$240B, a cool $100B+ behind California.\n\nMost of the goods made in California also have distinction of not really being made anywhere else. Advanced satellites, research and pilot production, extremely advanced specialty chemicals which sound like magic, major defense production, large scale food production with some matching extremely high quality foods from trademark regions in Europe! \n\nCalifornia has many issues, BUT it is still the defacto manufacturing king in US. Except for some Chinese provinces and large provincial cities, no state/province anywhere in the world come close to California in manufacturing. Now, manufacturing is exiting California, that is true and Texas is getting a major share of that, BUT newer manufacturing is being added to California at a far faster rate than what is leaving the state.\n\nIf Californian manufacturing GDP was a separate state, it would rank 23rd in a list of statewise GDP list, right above Connecticut. If it was a separate country, it would rank 40th, right above Romania.",
+    "score": 504,
+    "url": "https://reddit.com/r/manufacturing/comments/1l56qhw/california_the_gangster_state_in_manufacturing/",
+    "created_at": "2025-06-06T23:30:40.000Z",
+    "num_comments": 81
+  },
+  {
+    "id": "reddit-1l0fiig",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Manufacturing can't find jobs, because of endless cost cutting persuasion through managing people and their time, rather than through innovation. And shitty pay.",
+    "text": "I recently had a chance to visit a medium sized manufacturer of stamped metal products, an hour or so outside of Portland, and was amazed at\n\n- them competing successfully against dirt cheap manufacturing from China, Vietnam and Thailand.\n- absolutely unimaginable retention rates. Their floor retention rate over a year is &gt;95%, which is unbelievable - incredible for manufacturing.\n- no minimum wage workers. The minimum wage in their 'standard' county according to state law is ~$15. They pay a minimum wage of $25/hr. Nobody makes less than that.\n- Lowest number of supervisors/managers. For an operation that is a total of 220 people (includes office staff, support staff, floor staff like including EVERYBODY) they only have 5 managers, and 5 supervisors. Delegation of responsibility to the lowest level seems to work amazingly well when people are motivated by a good wage.\n- profit sharing for employees through employee investment plan.\n- they still provide a defined benefit pension plan, although decreasing number of people choose that. For 401ks and other such stuff, they will do a 100% match from the very next month of employment. No waiting for 6 months or any probationary period.\n- Work schedules are well managed in advance, and there is typically a 2-5% extra workforce scheduled to manage unexpected/emergency call-outs.\n\n\nSo, I recently had a wonderful opportunity to work on a few engineering projects for a medium sized manufacturing company, an hour or so South of Portland.\n\nIn today's world ideally, their job should have been offshored. They innovated. They have developed a stamping method to make stamped assemblies of some products, that otherwise require assembly. As such, they successfully compete against manufacturers from Asia. Even dirt cheap Asian labor cannot match their costs - they have innovated a way to eliminate assembly line requirements and basically their assembly is done through stamping. This actually results in better quality and production speed.\n\nRegarding their managerial philosophy\n\nThey have a director of operations, HR director, stamping manager, warehouse manager, procurement manager. Receiving supervisor, shipping supervisor, stamping supervisor, maintenance supervisor, material handling supervisor. That's it. For a 220 people operation, only 4.5% are managers/supervisors. Otherwise, the typical rate is 10-20%. This keeps their overhead costs very low.\n\nThey pay their people well, and schedule 2-5% more than needed, so they manage emergency call outs extremely well. All the extra scheduled people are directed towards material handling and cleaning tasks. If call-outs occur, the extra people go do those jobs. Because they pay their people well, they don't need janitors or cleaning staff. Everybody - including the owners themselves whose grandfather started the company as a small shop nearly 90 years ago, do cleaning at least once a week. You could be cleaning the break room toilets and your big boss might be right next to you doing the same. You don't know. This makes dignity of labor, which in other companies you can't really tell your 'regular' people to clean out the toilets. People here don't care. Because they are paid well.\n\nHiring is very rare. Typically happens when somebody leaves. They haven't had to hire since '23. And when they hire, it is usually an existing employee's kids/nephews.\n\nThey have a profit-sharing program for employees. About 45% of the net income is distributed to employees.\n\nThey still have a defined benefits pension plan, though nobody in the last decade has taken them on it. Older employees still have those and most plan to retire from this company. Younger, newer employees seem to take preference towards 401ks, and begining the very next month, you are eligible for 100% employer match. \"We only have employees. We don't have probationary employees who don't get all the benefits.\"\n\nThey've had offers from private equity and bigger investors to invest in their company and expand, but they typically reject it, and have only taken in one investment offer since 2000. \"We want people to invest on our own terms. If you can't digest that, we're okay being smaller and we don't want your money. Typically offers from private equity have riders that we must get rid of defined benefits pensions and convert them to defined contribution plans. We want people to not worry about how much they get when they retire. We want them to worry about their work at work, and worry about whether their kid is going to be on the baseball team or not at home.\"\n\nIf you come up with an idea that saves money or a new process that makes your offering competitive, for first two years you are eligible for 60% of savings, and then it sunsets reducing by 7.5% every year or till they keep using your idea, whichever comes first. \"We have minted 6 millionaire workers through this program of ours and even today we payout $2.3M a year for this.\" Private equity investment offers have come with conditions to reduce this program, and they will kick out the PE guys with no second thoughts. \"If you save us money, you are entitled to a fair share\". The owners have rejected countless offers for investments and even threats to fund their rivals, because most offers want to see that money coming into the company coffers and not going to employees.\n\nTo me, they are a beacon of American manufacturing excellence and American ingenuity. It is a sad world that more manufacturers don't operate this way, but rather trying to cut costs by removing money from employees rather than improving processes and innovation.",
+    "score": 370,
+    "url": "https://reddit.com/r/manufacturing/comments/1l0fiig/manufacturing_cant_find_jobs_because_of_endless/",
+    "created_at": "2025-06-01T03:45:09.000Z",
+    "num_comments": 38
+  },
+  {
+    "id": "reddit-1mffdjv",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "More (painfully accurate) truths I’ve learned as a manufacturing engineer – Part 2.",
+    "text": "      1. If you walk fast with a clipboard and look angry, you can avoid 90% of conversations.\n\n\t2. “Machine learning” usually means: the operator learned to smack the side of the machine just right to make it work.\n\n\t3. There’s a direct correlation between how urgent a hot job is and how likely it is to get stuck in QA for 3 business days.\n\n\t4. That barcode scanner worked perfectly — until someone important was watching.\n\n    5. Nothing breaks faster than the thing you just bragged about fixing. \n\n    6. Every emergency meeting could’ve been prevented by reading the email from 3 weeks ago — the one no one opened.\n\n    7. Label printers and Wi-Fi signals form a union every time there’s an audit.\n\n    8. The one person who knows how the legacy system works is retiring next month. Documentation? Never heard of her.\n\n    9. You can spend 3 months validating a process, and it’ll still fail the minute someone from corporate walks in.\n\n    10. A work instruction isn’t real until it’s been ignored, reprinted 7 times, and covered in oil.\n",
+    "score": 341,
+    "url": "https://reddit.com/r/manufacturing/comments/1mffdjv/more_painfully_accurate_truths_ive_learned_as_a/",
+    "created_at": "2025-08-02T02:35:15.000Z",
+    "num_comments": 51
+  },
+  {
+    "id": "reddit-1k1k479",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Funny (and slightly painful) facts I’ve learned as a manufacturing engineer",
+    "text": "1. No one reads the full ECN. But somehow everyone still has strong opinions about it.\n\n2. MES stands for \"Mostly Everyone's Screaming\" during go-lives.\n\n3. Label printers know when you're in a rush. That's when they jam, go offline, or start printing hieroglyphics.\n\n4. ERP stands for \"Eternal Reconciliation Process.\" Especially when the physical count and SAP haven't agreed since 2017.\n\n5. Fixtures will break only after they've passed 3 FMEA reviews, 2 design sign-offs, and a soul-binding ritual.\n\n6. Kaizen = \"We're gonna moveeverything you know and love to the other side of the building.\"\n\n7. 5S= My wrench has been in the same place for 3 years — until a 5S audit. Now it's in a shadowboarded graveyard.\n\n8. Engineers and operators have different units of time. Engineer: \"This takes 30 seconds.\" Operator: \"This takes forever.\" Both are correct, depending on caffeine levels.\n\n9. The moment you say, \"We've never had that issue before,\" congratulations - you just cursed yourself.\n\n10. Excel is the most powerful MES in any factory. Change my mind.\n",
+    "score": 334,
+    "url": "https://reddit.com/r/manufacturing/comments/1k1k479/funny_and_slightly_painful_facts_ive_learned_as_a/",
+    "created_at": "2025-04-17T18:32:59.000Z",
+    "num_comments": 93
+  },
+  {
+    "id": "reddit-1kw33sf",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Manufacturing in the us.",
+    "text": "Life as a Machinist\n\nI worked at a small, family-owned machine shop where one of the two owners was a workaholic who expected his entire family to work for him—and he demanded the same from his employees. Mandatory overtime was a permanent fixture, with a full eight-hour shift required on Saturdays and four hours on Sundays. The pay was low, and the benefits were poor. The shop primarily employed machinists fresh out of trade school, older machinists with multiple DUIs or tarnished reputations, and a few undocumented migrant workers from Mexico who were paid under the table. The place was a true sweatshop.\n\nThe shop handled significant aerospace contract work for Boeing, and one owner boasted about earning $33 million from Boeing the previous year. However, the experience soured me on manufacturing. I realized that as a machinist in the U.S., I would never earn a fair wage for such a highly skilled trade. Manufacturing in America struggles not because of lazy workers but due to greedy CEOs, owners, and management.",
+    "score": 261,
+    "url": "https://reddit.com/r/manufacturing/comments/1kw33sf/manufacturing_in_the_us/",
+    "created_at": "2025-05-26T19:24:37.000Z",
+    "num_comments": 85
+  },
+  {
+    "id": "reddit-1ops059",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Granular products - how to deal with static charge?",
+    "text": "Hey chat, my warehouse has some older somewhat bespoke packaging equipment for dry granular goods. \n\nIs an anti-static ionizer fan a potential solution to neutralize the charge in those particles landing in the scoop? I could point it either along the small conveyor belt bringing the granules to the scoop, or at the scoop itself?\n\nSomeone recommended attaching a vibrator motor to the scoop and increasing the dumping speed. \n\nBut i think getting rid of static still is super valuable because the particles get stuck everywhere.\n\nWe use this machine for packing coconut shavings, poppy seeds, etc, and by the time they land in the scoop, they've picked up quite some charge. \nThen a person needs to brush off the remainder every time, making the process slow, and causing inconsistencies in packaged weight.\n\nI've linked to a video I filmed to illustrate the mechanism. It's not from all angles but I hope it's good enough to get a gist. Welcome all input!",
+    "score": 216,
+    "url": "https://reddit.com/r/manufacturing/comments/1ops059/granular_products_how_to_deal_with_static_charge/",
+    "created_at": "2025-11-06T06:51:13.000Z",
+    "num_comments": 95
+  },
+  {
+    "id": "reddit-1kwx4xd",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Just got laid off. I'm an automation PM. Literally have watched our sales decline from the first threat of tariffs to now. Our deal pipeline gutted over the last 3 months especially.",
+    "text": "Title. Just finished a successful install on Friday. Have not even had SAT signed off on by the customer yet and I walk in after lunch and get the talk. \"Its not performance based, its a restructuring.\"\n\nSucks man. I enjoyed this company. Loved who I work with but the sales just are not there. No one has wanted to buy anything. Why would they with everything up in the air. Dozens of manufacturers pushed back for months, then 6 months, then next year. On and on until finally our pipeline has practically nothing in it. I've got 2 projects on the floor, 2 to go, and nothing after August. \n\n  \nIve soft applied to 50 or 60 jobs over the last year thinking this might be coming lo' and behold it is. I've gotten one no. The rest never responded.",
+    "score": 180,
+    "url": "https://reddit.com/r/manufacturing/comments/1kwx4xd/just_got_laid_off_im_an_automation_pm_literally/",
+    "created_at": "2025-05-27T19:58:53.000Z",
+    "num_comments": 32
+  },
+  {
+    "id": "reddit-1jta602",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "TROUBLE IN PARADISE",
+    "text": "G'day Guys! I'm having trouble making my marriage work!\n\nMy plan is to have a tool made in China and exported to the US for the production of the actual parts. \n\nI would prefer to have a US company provide input into the mold design and tooling to ensure everything goes smoothly; however, all the US companies I have had quotes from are using in-house or are adding massive mark-ups with tooling costs coming back at $100,000 USD +.  \nWhen I try to approach it from the Chinese side, I can get quotes of around $20,000 USD for the mold tooling but they do not have US contacts to liaise with for design input/producing.\n\nI understand I want my cake and to eat it too, but given the current trade climate, this seems like the only viable option (if I can make it work).\n\nSeeking any advice or contacts that may be willing to look at the project or point me to those who might.\n\nThanks in advance!\n\n(also posted in r/InjectionMolding )",
+    "score": 154,
+    "url": "https://reddit.com/r/manufacturing/comments/1jta602/trouble_in_paradise/",
+    "created_at": "2025-04-07T01:49:05.000Z",
+    "num_comments": 38
+  },
+  {
+    "id": "reddit-1n89r62",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Where is the next generation of manufacturing talent meant to come from?",
+    "text": "Half the people on our floor have been here 20+ years, they know their jobs inside out, but even they get lost in the systems we use. When a younger hire comes in, we throw them into the same maze and expect them to stick it out. That first impression says everything. If the industry’s already ageing, we can’t just be selfish on our way out. I want my factory up and running even after I hit the stairs.\n\nIn our case, it reached the point where my nephew, the youngest in the family, stepped in and built something on the procurement side that actually worked. Instead of messy engineering drawings, supplier spreadsheets and PDFs that normally take weeks to process, his tool turned them into clean, structured data in minutes. Nothing fancy, just functional enough so the work flowed and people weren’t stuck chasing ERP exports all day. The difference was night and day, and it felt like a glimpse of how the shop could actually run if we modernised properly.\n\nNow we’re looking at scaling that same approach across other parts of operations, step by step, so nothing breaks. But it left me wondering, am I the only one out on this humanitarian approach to make the workplace more appealing to the next generation, or is everyone else doing the same?",
+    "score": 142,
+    "url": "https://reddit.com/r/manufacturing/comments/1n89r62/where_is_the_next_generation_of_manufacturing/",
+    "created_at": "2025-09-04T13:12:10.000Z",
+    "num_comments": 113
+  },
+  {
+    "id": "reddit-1kdtmm8",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Advice I got early in my career",
+    "text": "The best manufacturing advice I ever got when i started 20+ years ago.\n\n\"Nobody’s truly an expert.\"\n\nIt’s a field so vast and dynamic that even the sharpest minds are always playing catch-up.\n\nThe top manufacturers I’ve met aren’t know-it-alls - they’re curious, lifelong learners who aren’t afraid to experiment, fail, and try again. \r\n\nDon’t let the fear of “getting it wrong” hold you back from diving in. Every misstep is a lesson, and every tweak brings you closer to mastery.\n\nWhen you feel that you have mastered it, someone else comes along or markets shift, and you start all over again.",
+    "score": 134,
+    "url": "https://reddit.com/r/manufacturing/comments/1kdtmm8/advice_i_got_early_in_my_career/",
+    "created_at": "2025-05-03T13:59:57.000Z",
+    "num_comments": 22
+  },
+  {
+    "id": "reddit-1oh4hcc",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Bought a manufacturing plant 6 months ago",
+    "text": "TLDR; seeking suggestions for how to improve our operations starting 6 months from now.\n\nI’ve been waiting to post this because I wanted to make sure I’d be thoughtful about the questions I’m asking after having a chance to learn the business.\n\nQuick background - sold a software company in 2022. I spent over a year exploring my next venture. However, I didn’t want to start from scratch this time, I didn’t want to find a day job (ownership is important to me) and I was tired of working in the tech sector. I looked into buying an existing service business (HVAC and the like), but I was ultimately drawn to manufacturing.\n\nThe first rule we’re taught after buying a business is to just run it as-is for the first year, so you can learn and not break anything. \n\nI’ve been reading into lean principles, factory of the future, industry 4.0 (5.0?). I see a lot of opportunities for improvement, not just for profit, but just seeing if people’s day to day could be better, including mine, which brings me to my questions…\n\nQuestions:\n1. What should I actually start with? We have machines, manual assembly, inspection. The company has Microsoft suite for ERP, “MES”, analytics with PowerBI. \n\n2. I am no longer confident I could play the GM role, as I’d like to focus 100% of my time on acquiring customers to increase our capacity utilization and invest in digital improvements for the business. The previous owner is expected to transition out in 6 months (he was contracted for 12 months as interim GM + consulting afterwards, as part of his earnout structure when I bought his business). Is this realistic? We could afford to hire a GM or promote our Manufacturing Engineering Manager, who has ideas for robotic automation, computer vision, and upgrading our MES (I’m not opposed, but it was not in our business plan when we acquired the business and I am not sure more analytics/dashboards will help).\n\n3. How are you making people work faster in back office? We’re looking at quoting software and project management software to start. \n\n4. How are you making people contribute more? We want our purchasing and accounting departments to assist with materials planning, not just doing quotes. I would like our engineers and quality team to find improvement opportunities in production to increase OEE and throughput. I would like our Sales people to adopt a CRM so we can apply more proven sales strategies \n\n5. Catch all question: What have you done that gave you the best ROI (EBIT margin, quality of life, sales)?\n\nBtw I am 38. We supply parts and subassemblies for automotive and heavy machinery sectors. Revenue is 8 figures. (Can’t be too specific sorry)",
+    "score": 132,
+    "url": "https://reddit.com/r/manufacturing/comments/1oh4hcc/bought_a_manufacturing_plant_6_months_ago/",
+    "created_at": "2025-10-27T03:42:44.000Z",
+    "num_comments": 238
+  },
+  {
+    "id": "reddit-1oudpw3",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Our factory IoT devices needed to work when internet went down",
+    "text": "We make car parts and have sensors everywhere checking temperature, vibration, pressure and all the data goes to cloud for analytics but our internet goes down 3-4 times a week for 10 minutes to 3 hours, we are in a rural area, better internet would cost $100k.\n\nTried saving data locally in sqlite but operators couldn't see what was happening in real time during outages, if something was overheating we'd be blind to it. So we flipped it instead of cloud first with edge added on, we made edge devices the main thing and cloud is just for long term storage. Found a messaging setup where edge stuff works fine when disconnected and syncs back when internet returns, devices talk locally, local dashboards show everything, nothing gets lost because it saves locally first, it took 2 months to set up, running solid for 8 months now, operators don't notice when internet drops, monitoring works locally and syncs to cloud when connection comes back, you can't just take cloud design and add \"offline mode\". has to be built edge first from the start.",
+    "score": 128,
+    "url": "https://reddit.com/r/manufacturing/comments/1oudpw3/our_factory_iot_devices_needed_to_work_when/",
+    "created_at": "2025-11-11T16:19:25.000Z",
+    "num_comments": 51
+  },
+  {
+    "id": "reddit-1kcqumn",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Just started as a project manager for a $1B company that seriously lacks systems",
+    "text": "I started with a company about six weeks ago that  seemed pretty organized when I interviewed. They had manufacturing work instructions hanging on the wall when you first entered the production floor. As a former manufacturing engineer I was impressed. Little did I know at the time, this company does not even have an ERP/MRP system. Everything is managed by Google Sheets, and I mean everything. The mess that is caused by this lack of systems is mind boggling. Every production depart has missing materials and we are constantly overpaying for next day air rush orders. To be fair the company has had a growth explosion over the past couple years. The industry we are in is causing many companies to boom, but who knows how long it will last. There doesn't seem to be much of an interest in implementing an ERP system and I have spoken with the VP of operations about it.\n\nI am torn between staying and bearing through the pain or finding a company I can add more value to that's not struggling with the basics of an organization.",
+    "score": 112,
+    "url": "https://reddit.com/r/manufacturing/comments/1kcqumn/just_started_as_a_project_manager_for_a_1b/",
+    "created_at": "2025-05-02T02:56:19.000Z",
+    "num_comments": 82
+  },
+  {
+    "id": "reddit-1ka5iyp",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Thought we'd switch ERPs in 6 months - it took 16",
+    "text": "Worked with a mid-size plant that thought ERP migration would be quick. They forgot about customizations, integrations, dirty data... Took them 16 months. I don't get if its a provider issue or if there's something lacking on our end but wtf",
+    "score": 104,
+    "url": "https://reddit.com/r/manufacturing/comments/1ka5iyp/thought_wed_switch_erps_in_6_months_it_took_16/",
+    "created_at": "2025-04-28T20:20:45.000Z",
+    "num_comments": 55
+  },
+  {
+    "id": "reddit-1mwelys",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "If ERPs are the “solution” for manufacturing, why does everyone still spend more on custom fixes?",
+    "text": "A buddy of mine went through a big ERP rollout. The system was meant to “do everything,” but within a year they were already another £120k deep in custom automation just to make procurement workable.\n\nThat’s what I don’t get, if ERPs are the backbone, why are companies always still unhappy at the end of it? Wouldn’t it make more sense to have something that does 90% of the job properly, instead of 35% and then patching the rest with six-figure add-ons?\n\nIn procurement alone:\n\nBills of materials are still uploaded manually.\n\nCustomer POs have to be retyped because the ERP can’t read them.\n\nSupplier chasing still means endless reminder emails from people, not the system.\n\nIf there were proper solutions for just those gaps, mid-sized manufacturers could probably save or make millions every year. Yet the real “automation” always seems to happen outside the ERP.\n\nHas anyone here seen an ERP actually deliver the whole promise, or is it always partial fixes and disappointment?",
+    "score": 96,
+    "url": "https://reddit.com/r/manufacturing/comments/1mwelys/if_erps_are_the_solution_for_manufacturing_why/",
+    "created_at": "2025-08-21T15:44:37.000Z",
+    "num_comments": 77
+  },
+  {
+    "id": "reddit-1kjk734",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "I always enjoy visiting manufacturing plants and the good ones know exactly what truly is their product",
+    "text": "I swung by a local food manufacturer yesterday and was seriously impressed by how dialed-in the owner was. From the office to the production floor, he had a handle on every detail.\n\nAs we toured the facility, I fired off some specific questions to dig deeper. The guy didn’t miss a beat:\n\n• Jobs at each station, including quality checks\n\n• Machine cycle times, costs, utilization, changeovers - you name it\n\n• Labor costs broken down by product, station, job, etc...\n\nHe could rattle off numbers down to the second and the cent. It’s refreshing to meet someone who gets what makes manufacturing thrive.\n\nI always say this, and I stand by it:\n\n“Your plant is your product, not just what you ship. The better you know your operations, the more successful you’ll be.”\n\nWhy am I sharing this experience?\n\nToo many just want to build, while ignoring all the details that make the plant a success. I experienced this from the smallest companies building out of their garage to global billion dollar juggernaut.\n\nDo it right and live by the numbers.\n",
+    "score": 92,
+    "url": "https://reddit.com/r/manufacturing/comments/1kjk734/i_always_enjoy_visiting_manufacturing_plants_and/",
+    "created_at": "2025-05-10T20:58:49.000Z",
+    "num_comments": 32
+  },
+  {
+    "id": "reddit-1o0gd96",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How do you decide wage increases for long term employees?",
+    "text": "I am a plant manager at a small manufacturing company, 1 of 2 plants. All of the employees at my plant are overdue for a performance/wage review. Not to make excuses, but we went through an acquisition last year and I'm 4 months into my role here, so the dust is finally settling allowing me to address this.\n\nMy family previously owned the company and we would often joke about how we had all the employees in \"golden handcuffs\", meaning we were paying them all well over market rate. Turnover here is close to zero, most of our employees have been here 10-25 years.\n\nThis puts me in an awkward position now. People are ready for another raise naturally. At the same time, most employees seem to be making over market rate and well over rates being paid at our main plant.\n\nA few employees are easier to address. They have taken on significant responsibility and I can easily justify a sizeable increase in pay. Others have averaged 12% increase per year and  I'm struggling to justify anything beyond a 3% bump.\n\nI want to pay my employees well, for their sake and for morale. I also want to be profitable.\n\nAny managers/owners here, how do you evaluate pay per employee? Do you try to figure out a baseline market rate to compare them to?",
+    "score": 81,
+    "url": "https://reddit.com/r/manufacturing/comments/1o0gd96/how_do_you_decide_wage_increases_for_long_term/",
+    "created_at": "2025-10-07T14:29:46.000Z",
+    "num_comments": 58
+  },
+  {
+    "id": "reddit-1ndevg3",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How to decline work politely because the buyer is just exceptionally messy to work with?",
+    "text": "I am the plant manager at a locally owned facility employing around 30 people. \n\nI have a person that comes to me occasionally wanting to place orders for custom cut stuff. He came to know us because he works for one of our clients and is often the the guy picking up the product. So I see him occasionally.\n\nHe's trying to do a lot of stuff \"on the side\" (meaning, on his own time) and that's fine, everyone is ok with that concept, but he's just an absolute mess to work with. \n\nI do not have time or mental patience to deal with him. His communication skills are horrible, he's pushy, makes a ton of mistakes, and just all around unpleasant to deal with.\n\nWe don't accept cash (most of our orders are $50k+ and his are going to be $500-1000), and I most certainly don't trust a check and I don't really care to wait for the deposit to clear to order material and write CNC code for this.\n\nHis information isn't sufficient, takes a lot of time to explain the requirements for submitting an order, and just assumes you know what he's thinking.\n\nThere is also a bit of a language barrier, he's very difficult to understand when he speaks, and doesn't like working with the English spreadsheets we use for our custom orders. He wants to give me a handwritten list with very little details about expectations.\n\nNone of us at the facility want to see this guy drive up for an order pick up when he's working for our client but we deal with it since he's just a delivery guy in that capacity.   \n\n\nSo, I have no interest in doing business with him, but I struggle to know HOW to get this communicated to him without just straight up telling him that we don't have time to deal with a total clusterfck that isn't even going to be a reasonably profitable purchase size.\n\nAny tips here?",
+    "score": 63,
+    "url": "https://reddit.com/r/manufacturing/comments/1ndevg3/how_to_decline_work_politely_because_the_buyer_is/",
+    "created_at": "2025-09-10T13:55:11.000Z",
+    "num_comments": 63
+  },
+  {
+    "id": "reddit-1kr1dux",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Transitioning out of manufacturing. What other fields have transferable skills?",
+    "text": "I think I am starting to get tired of the high stress and shitty environments local to me in the manufacturing facilities (100+ summers, unreasonable expectations, etc). \n\nJust curious of some other fields or careers that might use similar skill sets? For reference I’m a quality manager and have worked as a chemist, process engineer, PM, and quality manager. I have an MBA and have experience with lean. \n\nCurious if any others have experience or have seen others transition out with success. I left once to be a PM for the govmt and that was too slow lol. I have a kid now and am really wanting to get away from the long, nasty, and stressful days. ",
+    "score": 57,
+    "url": "https://reddit.com/r/manufacturing/comments/1kr1dux/transitioning_out_of_manufacturing_what_other/",
+    "created_at": "2025-05-20T10:21:01.000Z",
+    "num_comments": 35
+  },
+  {
+    "id": "reddit-1l2mzh9",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Who writes work instructions / SOPs at your company?",
+    "text": "I am a plant manager for a small manufacturer. Our plant is at 15 employees. This number will likely double over the next 1-2 years. I am working on letting go of control on some projects, but it's a struggle. One of those projects is writing SOPs / work instructions. I am passionate about having accurate SOPs. It gives a baseline if there is ever confusion, makes training straightforward, and makes it easy to discuss improvements to compare old vs proposed processes.\n\nI have had most of my employees write SOPs in a shared document. The problem is some people are better than others at writing effective and easy to understand work instructions. I don't want to give a new employee poorly written work instructions that are confusing.\n\nWho do you have document work instructions for various processes? Order entry, confirmation, job creation, shipping, inventory, etc.\n\nAlso, how do you maintain work instructions? How often are you reviewing for accuracy and updating?",
+    "score": 51,
+    "url": "https://reddit.com/r/manufacturing/comments/1l2mzh9/who_writes_work_instructions_sops_at_your_company/",
+    "created_at": "2025-06-03T20:49:26.000Z",
+    "num_comments": 73
+  },
+  {
+    "id": "reddit-1is3zup",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "I am the production manager for a small manufacturing company. Am I crazy, or am I being asked too much?",
+    "text": "TL;DR: My family's business was aquired, I am fast tracking to plant manager. We went from no changes in 20 years to changing everything we've ever known within 12 months. It's beginning to feel like too much and I'm not sure how to keep it together.\n\n**Aquisition of the Business**\n\nI have posted here a few times, in the past about my family's small manufacturing business and what to do about my Aunt, the now past-owner. Like those posts, this one is also for me to vent and get my thoughts in order...\n\nIn January 2024 I pushed her to sell, to my surprise she found and interested buyer fairly quickly. Even more to my surprise, I liked the new ownership and was very on board with their plan for their company. We are both relatively small companies, our location had 12 employees ($2M), theirs around 50 employees ($12M).\n\nIn early conversations I stated I wanted to be plant manager of our facility, which would be their Texas branch of the California based parent organization. Owner and president were on board, but wanted me to get some training/mentoring for 1-2 years before taking the role. We closed August 2024, my aunt retired in December. I have been working with our interim plant manager who came out of retirement to train me since October 2024.\n\n**New Ownership**\n\nThere is a lot I enjoy and am on board with under new ownership. We share many of the same goals for the business and have similar strategies to achieve them. I am able to finally learn from experienced leaders about what it looks like to operate a profitable business focused on growth. If anything I'm learning a bit too much too fast.\n\nI have the backing of the president and our plant manager who are both optimistic about my ability to quickly step in as plant manager in 1 year. My issues are mostly stemming from how aggressive the plant manager is with change and growth. I can handle some of this, but not all of this at once.\n\n**MRP System Issues**\n\nOne of the biggest challenges is this MRP system. It's clunky and outdated. We have to remote in to the California plant's local server to access it. The remote desktop regularly crashes. Within the remote desktop, the software crashes or lags. We received close to zero training on the system, and no SOPs existed. I have been having my team build out SOPs and have California review for accuracy. We have to manually run reports that apparently can't be edited.\n\nA big reason we had to sell was my aunt micromanaged. Our employees are flourishing now, but are still learning to problem solve on their own. I have to instruct people daily to reach out to others in CA to figure out how to use the MRP system. We get some information but it's not always clear or exactly what we are needing. The MRP system is managed and maintained by our CFO for some reason, and he doesn't seem interested in letting that go.\n\nSo I now have multiple employees working in half converted processes that can't find the data they need to do their job. I want to help them but there is no time.\n\n**Is this too much?**\n\nI am delegating as fast as I can. This includes:\n\n* Training a new engineer to take quoting and job creation off of my plate.\n* Training the QA manager to take our ISO QMS management off of my plate.\n* Handing over account management duties to our customer service team\n* Handing over MRP / process control to our projects guy (formerly full-time machine operator)\n* Training existing office assistant on raw material and outside process purchasing\n\nI can't seem to catch a breath. I need to spend some time with each of these people, but only get maybe 2 hours a day between all of them. Until I have the engineer fully trained, I'm still having to review all quotes and job travelers. I am also still sending out the majority of our quotes and answering most engineering questions. All while trying to help everyone properly convert old processes over.\n\nWhen I do seem to have a moment, my plant manager has a new plan or thing to implement. We are having 2-3 meetings a day, each around an hour long to plan this stuff. Here is a short list of changes I am involved in:\n\n* Restructuring of all roles\n* New plant layout. We are reorganizing nearly every machine and our inventory areas.\n* Installation of 7 new pieces of major equipment. We previously had 10 pieces of equipment, so nearly double\n* Training shop employees on new job travelers / MRP\n* New safety plan\n* Conversion from ISO 9001:2015 to AS9100D\n* Creating new sales goals, working with new sales reps\n* Review resumes / interviews for prospective hires\n\nOutside of this I'm supposed to be planning and coordinating production. Luckily the shop can run itself fairly well but that's not me doing my job. I'm doing pretty much everything except for the responsibilities of my new role.\n\nI don't know if this is sustainable. I want to learn, and I want to take this on. I also want to make this transition fully without breaking my team or ending up with a bunch of terrible processes. The plant manager knows I am stressing out, and can see I'm overloaded. He keeps saying I need to trust my team more and hand them more. But from my perspective, they are also stressed out and overloaded as it is. Plus any additional delegation requires more conversations and follow-up.\n\nMy main questions are:\n\n* How do I communicate this to the plant manager and president without them thinking I can't handle this?\n* How do I delegate things even faster than I currently am?",
+    "score": 49,
+    "url": "https://reddit.com/r/manufacturing/comments/1is3zup/i_am_the_production_manager_for_a_small/",
+    "created_at": "2025-02-18T04:09:15.000Z",
+    "num_comments": 35
+  },
+  {
+    "id": "reddit-1iquli6",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Manufacturing Consulting",
+    "text": "I am looking to start a manufacturing consulting company - I have been in the Manufacturing Industry for over 13 years, i have a Masters Degree in Industrial &amp; Manufacturing Engineering. I also have a Green Belt in Lean Six Sigma, and am on track to become a Professional Engineer. I have been in the Pharmaceutical, OTC, Medical Devices and Chemical Manufacturing industries. I also have experience in Electronics and Mechanical applications from my Graduate School and side ventures. \n\nI would love to hear others perspectives, what has worked, where to find clients, I have a deep rooted passion for continuous process improvement, looking for inefficiencies and making positive changes, designing and implementing new automation techniques and equipment. \n\nMy background is in Process &amp; Equipment Validation, Plant Management, Automation, Manufacturing Engineering &amp; Operations Excellence, and Project Management. \n\nThank you very much. Would love to hear more of others experiences here. ",
+    "score": 41,
+    "url": "https://reddit.com/r/manufacturing/comments/1iquli6/manufacturing_consulting/",
+    "created_at": "2025-02-16T15:28:39.000Z",
+    "num_comments": 52
+  },
+  {
+    "id": "reddit-1owbwbv",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How are you handling skill gaps on the shop floor lately?",
+    "text": "Hey everyone,  \nI’ve been hearing a lot of talk about how hard it’s getting to find and keep skilled operators or maintenance techs. In your plants or facilities, how are you dealing with that?\n\nAre you focusing more on internal training, automation, or just trying to hire continuously?  \nWould love to hear how different teams are handling it  especially in smaller or mid-size setups.",
+    "score": 40,
+    "url": "https://reddit.com/r/manufacturing/comments/1owbwbv/how_are_you_handling_skill_gaps_on_the_shop_floor/",
+    "created_at": "2025-11-13T20:23:36.000Z",
+    "num_comments": 102
+  },
+  {
+    "id": "reddit-1kmw47p",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Is my Plant manager out of touch? Or do I need a reality check?",
+    "text": "Tl;dr: plant manager is old school. I want to have a formal job offer up front and think myself and our skilled employees are worth more.\n\nI could use some feedback here, especially from anyone in senior management in manufacturing. \n\nI’ve been with the company for 6 years. Very short version is I pushed my aunt to sell the family business after 40 mostly successful years. We were acquired August last year and I moved to a production manager role with plans to move to plant manager within a year. First they wanted me to be engineering manager, I said no, I am interested in running our plant. I wanted to own the business before, if anything this is a step down in what I was aiming for. \n\nIn October we brought on our current plant manager with the plan to have him train me for a year. That has been cut short and I am now moving to plant manager the end of this month. \n\nTo start, I’ve learned a ton from this guy. But we naturally disagree on some areas. The biggest being how to approach pay structure for myself and new employees. We are hiring a production planner with solid 8 years experience in more complex/management roles, I will likely move him to production manager within 1 year. \n\nPM wants to hire him at $55k, maybe bump him to $70k when I promote. I know he will add to my overhead and I know he will add much much more to my throughput. Id like to bring him on with at least $65k and offer at least $90k when we move him up, assuming he does well in the starting role. He also is adamant that I should always promote, then after a 6 and 12 month review actually adjust an employees salary. \n\nThis lead to discussing my salary. He got on me for telling our president I want to see my new job description, pay structure, and raise structure in writing in the next 2 weeks. That I’m putting him in a tough position when he’s already busy. I’m being put in a tough position with cutting my training and my personnel hiring/training plan short by 4 months. I’m stepping up to the plate and I’d like a formal offer. \n\nAgain PM reiterated that I should start the plant manager position at my current salary. Then in 6 months I can negotiate a raise which he says I should offer first. I told him no, President will offer first then I may counteroffer. I’ve shown my worth, I’ve executed on every major project that has been put forth and our plant has beat our parent company on profit margin now 2 months in a row. All while transitioning MRP systems, training new employees, building SOPs, etc.\n\nWhen I took the project manager position they tried to keep me at $90k. I said I need an offer and am looking for more. They offered $100k, I countered with $130k. We agreed on $110k start with $5k raises at 6 and 12 months after a performance review. All that to say that this strategy already worked for me and it will work again. I’m not going to just trust ownership / president to take care of me and increase my pay, especially given their reluctance the first time around. \n\nLast thing, PM told me he’s making less than me. I had to contain myself. The man is 70 years old with decades of proven experience and came out of retirement for a year… for $100k? I half want to pull out an inflation calculator and show him it’s not the 90s anymore. \n\nSo… am I out of line? Am I expecting too much or being too firm with our president?\n\nJust need a sanity check. Thank you!\n\n",
+    "score": 38,
+    "url": "https://reddit.com/r/manufacturing/comments/1kmw47p/is_my_plant_manager_out_of_touch_or_do_i_need_a/",
+    "created_at": "2025-05-15T01:26:27.000Z",
+    "num_comments": 38
+  },
+  {
+    "id": "reddit-1lgk1z5",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Quality Manager here. Huge disconnect between all facets of the company and it’s affecting our reputation.",
+    "text": "Took this job 2 years ago for a newer (10 years old) manufacturer. Interesting company that was rough around the edges but huge growth potential and ability to make a large impact. \n\nWell, now 2 years later and we’ve had huge growth but are struggling to scale. My frustrations are coming to a head and I’m looking at leaving but want to know if I’m overblowing things or if I’m justified. Here are my issues:\n\n1) Company says, but does not prioritize safety. Had an employee quit after i escalated a safety issue and it was blown off. I’ve also escalated a lot of safety issues and repeatedly get blown off. \n\n2) Huge disconnect between sales and ops. Sales says we can do everything and even sets ship dates without conferring with production on what’s doable. We are now in a position with an impossible schedule and it’s killing us. \n\n3) Production will not schedule. Processes and tasks are not created to ensure proper measures are taken to meet ship dates. It’s just throw more people and hours at it. We are compressing a 2 week schedule to create units into 2 days. \n\n4) Quality is not a priority. These schedules are so awful we’re finishing products the day they ship, often late into the day even into the night. Production doesn’t double check their work and it’s up to quality to catch everything and tell production what to do. Once they finish work inspectors are pressured by production and the plant manager to hurry inspections. And I’m having to work inspectors 12+ hours a day because the CEO pushed me to eliminate positions when he started this year. Now i have free rein to hire however many people i want but it’s almost too late. Quality issues are reaching the field and I feel like it’s my fault but honestly the environment that’s been created is not conducive to creating a quality product. \n\n5) ops leadership does not support continuous improvement, or even general initiatives. Signing off on paperwork, double checking their work, supporting 5S, and any corrective and preventative measures we put in place to reduce quality issues. \n\n6) So much lying, deceiving, politics that’s just toxic. As well as old as directors and VP’s that refuse to change or improve the shitty processes in place. \n\nCurious if this is common at other manufacturers and I need to suck it up/ transition to another field. Honestly I’m tired of having to rally the troops and do everything I can to get things even out the door every day, let alone lead and manage the quality department for my company. We’ve had so many issues over the past few months I just feel helpless. \n\n",
+    "score": 36,
+    "url": "https://reddit.com/r/manufacturing/comments/1lgk1z5/quality_manager_here_huge_disconnect_between_all/",
+    "created_at": "2025-06-21T00:56:24.000Z",
+    "num_comments": 67
+  },
+  {
+    "id": "reddit-1mfxjwk",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Career as wire arc additive manufacturing printer operator?",
+    "text": "1. Pay : What is the starting pay range for Midwest USA? Highest pay range possible?\n2. Lifestyle : Can you work seasonally/contract jobs?\n3. Progression : What is the career progression like ? Operator &gt; Plant Manager possible?\n4. Future proofing : Is this job vulnerable to being replaced by offshoring / Ai? \n\nlet me know if I'm posting in the wrong subreddit folks. Thanks!",
+    "score": 33,
+    "url": "https://reddit.com/r/manufacturing/comments/1mfxjwk/career_as_wire_arc_additive_manufacturing_printer/",
+    "created_at": "2025-08-02T18:25:05.000Z",
+    "num_comments": 23
+  },
+  {
+    "id": "reddit-1n2w54n",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How demanding is the role of Plant Manager?",
+    "text": "\\+3,000 employees, in a global company that designs, manufactures, and markets electronic and electromechanical components and subsystems for various markets such as automotive, industrial, and interface. The plant also runs night shifts.\n\nSomeone I really care about was recently promoted to this position, and I just want to better understand it since I work in a different industry. Also, what advice would you give me to be supportive? Thanks a lot!",
+    "score": 33,
+    "url": "https://reddit.com/r/manufacturing/comments/1n2w54n/how_demanding_is_the_role_of_plant_manager/",
+    "created_at": "2025-08-29T02:56:19.000Z",
+    "num_comments": 59
+  },
+  {
+    "id": "reddit-1oexdnl",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Why do some manufacturing sectors suck more than others?",
+    "text": "Some neighbor asked me this -  are all sectors the same from an enjoyment or lack? I've  worked in chemical processing and food processing my whole career so couldn't answer honestly.  I found food worse than chemical because of the amount of time on my feet. How'd you rank or rate from worst to best if you've bounced around?  What are your factors to determine?  There are so many different sub industries I'm not listing them all just big 10 \n\nAutomotive\nElectronics and Telecommunications \nFood and Beverages \nProcessing and packaging of consumable goods.\nPharmaceuticals and Chemicals \nMachinery and Industrial Equipment\nMetals\nAerospace and Defense -Aircraft\nTextiles and Apparel\nFurniture and Wood \nEnergy Equipment and Supplies\nHundreds more?\n",
+    "score": 32,
+    "url": "https://reddit.com/r/manufacturing/comments/1oexdnl/why_do_some_manufacturing_sectors_suck_more_than/",
+    "created_at": "2025-10-24T13:12:08.000Z",
+    "num_comments": 38
+  },
+  {
+    "id": "reddit-1igyxv8",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How do you do your production scheduling?",
+    "text": "***UPDATE***\nI went with Monday.com to do my scheduling. Our customer service manager is going to start using it for her shipping and tracking. The CEO's executive assistant is starting to use it for her info gathering and project organization. More departments seem to be interested in it as well. Thank you, everyone, for your suggestions and replies!\n\n\nOriginal post:\nI've been scheduling for about a year and a half. The schedule has always been just a plain Excel spreadsheet, and I hate it. I've been trying to find a better, more \"realistic\" way to schedule. \n\nWe are not an assembly plant. What we do is comparable to baking. Put raw materials in, mix, blend, and finish product comes out.\n\nWhat programs or templates (free or not) do you use?",
+    "score": 29,
+    "url": "https://reddit.com/r/manufacturing/comments/1igyxv8/how_do_you_do_your_production_scheduling/",
+    "created_at": "2025-02-03T20:23:03.000Z",
+    "num_comments": 69
+  },
+  {
+    "id": "reddit-1lwel9o",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "What factory-floor software do you swear by? (Production Monitoring / MES / Quality / Scheduling / CMMS)",
+    "text": "I’m doing a little reasearch and would love to tap the hive-mind of r/manufacturing. For those of you running *discrete* plants, what software tools are actually making a difference on your shop floor right now?\n\nI’m especially interested in:\n\n* **Production Monitoring / OEE dashboards** – real-time data capture, bottleneck alerts, shift reports\n* **MES (Manufacturing Execution Systems)** – job dispatching, work instructions, traceability\n* **Quality Management** – in-process checks, SPC, non-conformance handling\n* **Maintenance / CMMS** – predictive maintenance, work orders, part inventory\n* **ERP Systems** \\- inventory, scheduling, purchasing",
+    "score": 25,
+    "url": "https://reddit.com/r/manufacturing/comments/1lwel9o/what_factoryfloor_software_do_you_swear_by/",
+    "created_at": "2025-07-10T14:46:37.000Z",
+    "num_comments": 54
+  },
+  {
+    "id": "reddit-1m1yt5a",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Corporate Politics",
+    "text": "Caution: vent post.\n\nI’ve worked in operations as an engineer for a few years now at a large company. Doing well, making decent money, work great with everyone on the factory floor. I support a couple of different programs and take regular meetings with “program engineers” to give them updates on what’s going on with their specific product. \n\nThe longer I’m at this company the more I realize these guys just make pretty power points taking credit for what the operations engineers do for their product, take credit for our successes yet blame us when shit goes wrong. You try to talk to them about the process that goes into making their product and you quickly realize just how little they know. The number of times I solve technical issues for different programs just to have some asshat outside of operations take credit is starting to weigh on me. These guys are making twice as much, working half as many hours.\n\nThe cherry on top is when my buddy I’ve known since high school (who works in finance at the same company) told me he got a soft offer to fill into one of these rolls. Said the hiring manager told him program engineering was simply trading “operations meat” back and forth until the technical issues got fixed.\n\nAre all large companies like this where there is a giant difference between people who solve issues and move product on the floor and those who play corporate politics? Kind of feel like Im wearing golden handcuffs because I’m making decent money early in my career and people seem to like having me around to fix issues. Just kind of hate doing it for these dickheads who just take all the credit.",
+    "score": 22,
+    "url": "https://reddit.com/r/manufacturing/comments/1m1yt5a/corporate_politics/",
+    "created_at": "2025-07-17T05:03:37.000Z",
+    "num_comments": 10
+  },
+  {
+    "id": "reddit-1n4gzc1",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "What’s the hardest part of moving a proven manufacturing process abroad?",
+    "text": "Our firm is considering licensing out one of our processes to another firm abroad in exchange for $$$. Still considering things that could go wrong.\n\nCurious to hear from folks who’ve been through something similar (or just given it a thought).\n\nIt could be setting up a new plant, licensing out, or doing a JV…what’s the part that ends up being the biggest headache? (Eg. Equipment, training, IP, new/local suppliers etc.)\n\nWould love to hear what you’ve seen go wrong (or surprisinglly smooth) in practice!",
+    "score": 22,
+    "url": "https://reddit.com/r/manufacturing/comments/1n4gzc1/whats_the_hardest_part_of_moving_a_proven/",
+    "created_at": "2025-08-31T00:28:58.000Z",
+    "num_comments": 74
+  },
+  {
+    "id": "reddit-1iwtrj6",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "What Qualities Make for a Good Manufacturing Engineer?",
+    "text": "I've got my Bachelors' in industrial engineering and I'm currently working in quality control in the aerospace industry. Though I like my job, I've been told by several people that I'd be better off as a manufacturing engineer since I \"have an eye for process improvement and people skills for management\". If this is the case, I want to know what things people look for in a good manufacturing engineer.\n\nMy hope is that I can nail interviews or placements for such positions and make a move towards that career path. For that to happen, I want to know what skills and traits are sought after for MfgEs so I can get better at those. I'm sure there's at least a few of you on this subreddit that do this for a living and wouldn't mind offering some advice!",
+    "score": 21,
+    "url": "https://reddit.com/r/manufacturing/comments/1iwtrj6/what_qualities_make_for_a_good_manufacturing/",
+    "created_at": "2025-02-24T04:34:31.000Z",
+    "num_comments": 29
+  },
+  {
+    "id": "reddit-1lqdbpa",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Has anyone successfully implemented an MES?",
+    "text": "Our plant’s production planning process is really showing its age. It takes nearly a full week to generate a plan and by the time it reaches the floor, it’s already outdated. On top of that, shop floor management is mostly reactive, so the plan ends up being ignored anyway.\n\nThere’s no feedback loop either. Problem jobs just get rescheduled and forgotten, which turns into a blame game between planning and production.\n\nI’ve been researching Manufacturing Execution Systems (MES) as a potential fix. It seems like the right solution, but I’d love to hear from people who’ve actually implemented one:\n\n* What was your experience like?\n* What pitfalls should we avoid?\n* Are there other types of systems (maybe less complex) worth considering for a low-volume, high-mix environment?\n\nAny insights, tools, or advice would be much appreciated.",
+    "score": 21,
+    "url": "https://reddit.com/r/manufacturing/comments/1lqdbpa/has_anyone_successfully_implemented_an_mes/",
+    "created_at": "2025-07-03T01:39:29.000Z",
+    "num_comments": 52
+  },
+  {
+    "id": "reddit-1jmf20z",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Machine Safety Bypass",
+    "text": "We have a machine where I work that is equipped with a light curtin at the operator access point. The rest of the machine is caged off. This machine bends tubing. \n\nSome tubes require the operator to turn off the light curtin, turn down the speed of the machine, and manually help the machine grab the tube with their hands. This isn't how it's supposed to run, it's due to poor engineering on the plants side. This is a pretty big machine. There's no estop on the inside because your not supposed to be in there when it's running. It could break your hand and potentially rip your arm off if it caught you depending on the length of the program.\n\nLong story short, this issue was brought to upper management. The key to turn off the light curtin has been left in the machine for months and operators have been bypassing it to assist the machine. Not sure if engineering instructed them to do this or they are just doing it to \"get the job done\". I turned on the light curtin and pulled the key. I do not believe in bypassing safety mechanisms. I gave to key to management. I was made aware of this because the shift before me was made aware of this and didn't do anything.\n\nUpper management did not want to stop production of these specific tubes when made aware of this. Their solution was to have someone stand at the estop button while another operator walked into the machine to assist it \"just in case\". Until they can get a manufacturing engineer to look at it.\n\nI kinda made a big deal about it because iv seen people first hand get hurt on similar machines at this job due to no safety features. Our engineering half asses everything, so I don't expect an appropriate fix anytime soon. \n\nAm I over reacting? I let them know this is kinda wild and we shouldn't be in there while it's running, even if you slow it down. Is safety really a priority or is it a taking point? Do we throw safety out the window when facing production goals? \n\nGive me your thoughts on this? \n",
+    "score": 20,
+    "url": "https://reddit.com/r/manufacturing/comments/1jmf20z/machine_safety_bypass/",
+    "created_at": "2025-03-29T05:06:34.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1ozvm8g",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Motivating Employees",
+    "text": "This would really apply to any business but I struggle with this particularly with shop floor employees at my manufacturing company so hoping others can provide advice. \n\nI have so many employees that want 1) to be millionaires 2) move up in the company 3) take on more responsibility, etc.\n\nBut literally do nothing to hit that goal. \n\nI'm newer in my career so I'm trying to determine if it's worth spending anytime trying to fix this or just move on and let them never hit their goals and be stuck in their current position. \n\nFor years now I've tried having 1-on-1 conversations, explaining what it takes to move up, etc and have never seen a difference from that. \n\nAny advice?",
+    "score": 16,
+    "url": "https://reddit.com/r/manufacturing/comments/1ozvm8g/motivating_employees/",
+    "created_at": "2025-11-17T23:11:54.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1i1ogwv",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Anyone have a remote/hybrid job? Salary?",
+    "text": "I accept it’s impossible to start a career in manufacturing remote or hybrid, but curious if many years have lead one to securing a niche position with either privilege.\n\nI enjoy this industry, but it’s hard to continue knowing there are so many options with more flexible schedules.",
+    "score": 11,
+    "url": "https://reddit.com/r/manufacturing/comments/1i1ogwv/anyone_have_a_remotehybrid_job_salary/",
+    "created_at": "2025-01-15T03:27:16.000Z",
+    "num_comments": 27
+  },
+  {
+    "id": "reddit-1jjb20c",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Why is switching MRP systems so costly?",
+    "text": "I have seen costs as high as $1 Mil for switching to a new software. I understand a lot comes down to the labor cost of data input, but even if you had 10 people inputting data with an annual salary of $100K, it shouldn't take a year should it? I also understand that cost of the software is expensive but that should be a different line item should it since that is the replacement cost difference of whatever MRP service you are using",
+    "score": 7,
+    "url": "https://reddit.com/r/manufacturing/comments/1jjb20c/why_is_switching_mrp_systems_so_costly/",
+    "created_at": "2025-03-25T04:14:08.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1ilrszo",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Unique machine operator compensation program for a small, continuous process manufacturer- need ideas!",
+    "text": " I have a bit of a difficult manufacturing process in which we have 3-4 operators per shift. each operator has an entirely different role in the process, however each of them are all 100% critical to manufacturing the product at all. The operator position requires skill and a solid base understanding of the equipment in order for the product to be produced at a high enough volume/quality level to substantiate the business. The production line is a continuos process. at best you have short term storage between the processes of about 1 hour, so you cant split them up in order to maximize efficiency throughout. everything has to work 100% of the time to produce 100% of the time. if any part breaks or stops, the entire process stops and production ceases.\n\nWe are considering changing our operator pay scales in order to incentivize strong production and create a less welcoming environment for breakdowns, carelessness, and overall promote fully the team spirit culture that drives accountability within the operators. \n\ncurrently they are paid by the hour, and considering the amount of time it takes to get the process flow moving, the operators can sometimes work for half of a day and produce 20% of what they should have in that time period, only to finally realize that something is holding them back from producing such as a maintenance issue or lack of operating by our SOPs. Then you have the issue of, \"my car broke down, ill be in 2.5 hours late today\" while the other operators are already there waiting. My thoughts are a combination of a low base hourly salary plus commission from production. the only issue here is that sometimes things happen that are not at all the operators fault and out of their control such as random machines breaking. if this causes 1-2 days of downtime, the operators may not be able to make up for that lost time that week due to maximum capacity of the production line in the first place. this would mean their checks would not be what they needed and they would also share in the risk of unplanned, unpreventable downtime. We are a small team trying to scale (10 employees) and I need a better compensation program that gives us these things:\n\n1. incentivizes them to operate under SOP guidelines\n\n2. incentivizes them to operate at max capacity\n\n3. incentivize them to show up on time, and hold each other accountable for preventable downtime. \n\n4. incentivizes them to clean the facility while operating, and if there is inevidible downtime, to use the time as wisely as possible to keep their areas clean.\n\n5. ensures that even on bad weeks, they get a good enough paycheck to not quit and go somewhere else\n\n6. incentivizes them to hit a certain production quota or target, \n\n7. dis-incentivize careless errors\n\n8. promote basic maintenance activities and pushes operators to take ownership of their machines. \n\n  \nI think this would be pretty simple to structure, however, I think the issue I have is the fact that you cannot individually compensate the operators for their individual performance, as each of their jobs is entirely different yet they are all imperative to production whatsoever. \n\n  \nplease let me know what you guys have seen or done that works in this instance. ",
+    "score": 6,
+    "url": "https://reddit.com/r/manufacturing/comments/1ilrszo/unique_machine_operator_compensation_program_for/",
+    "created_at": "2025-02-09T22:59:45.000Z",
+    "num_comments": 19
+  },
+  {
+    "id": "reddit-1mdujlk",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "where to begin in manufacturing",
+    "text": "I'm in college studying business management and I want to get into manufacturing on the business side, all of my peers are going into finance and other areas of general business. This industry interests me more especially manufacturing shifting into the us. I am not sure where to start to begin learning and building a career here. I want to eventually run my own operations although I'm not sure what sector. Any advice for now?",
+    "score": 6,
+    "url": "https://reddit.com/r/manufacturing/comments/1mdujlk/where_to_begin_in_manufacturing/",
+    "created_at": "2025-07-31T06:50:25.000Z",
+    "num_comments": 16
+  },
+  {
+    "id": "reddit-1nemcln",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Struggling to find something with my experience, any ideas?",
+    "text": "So for a little background, I’m 24 (Fort Worth, TX) and I worked as a Machine Operator for a company about 1 1/2 years ago for about 2 years. I started off as a regular production worker, and got promoted 2 months into working there as the main Machine Operator. We made paper tubes and cores for construction, roofing, and food companies. I was in charge of the whole entire line and crew that consisted of me and 2 others. I ran Winder Machines, CNC saw, and the assembly line. Unfortunately my wife started having pregnancy complications with our first child, and I knew it was best to leave the company to take that time to spend with her and make sure she was okay. I also felt as if I hit the ceiling as far as advancing to a higher role at the company, so that played a part in my decision of leaving as well. I was getting paid around $27 an hour in that position, but ever since I’ve been actively looking for another job… It seems my experience is practically useless to these companies. I know the job market is terrible, but I never thought I’d have this much trouble. I had an interview yesterday that went phenomenal, and I met majority of their requirements for $2 less than what I was making at my previous job. She went as far to say halfway through the interview that they were probably going to “snag” me. Today I received a text saying I wasn’t selected, needless to say I am so stressed and mad at myself because I feel like I messed up leaving… However, I wouldn’t trade the time I had with my wife and daughter through that difficult time for the world. If you’re wondering, yes we ended up having a healthy baby girl 2 months early, and after many trips to the NICU we were able to take her home.\n\nI just want to do the right thing and provide for my family, and I’d love any advice that any of you have to offer. Companies that you recommend, good career path to chase. Really anything at this point, thank you in advance everyone.\n\nIf this is the wrong place to ask, I apologize. Please guide me to the best subreddit for this type of question.",
+    "score": 6,
+    "url": "https://reddit.com/r/manufacturing/comments/1nemcln/struggling_to_find_something_with_my_experience/",
+    "created_at": "2025-09-11T22:18:54.000Z",
+    "num_comments": 6
+  },
+  {
+    "id": "reddit-1mday9o",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "How do i open my own job shop? Financing companies to go to?",
+    "text": "For context, I am a mechanical engineer, work for a job shop, basically we build things to other companies design. have been in the industry for 5 years. Enough knowledge on the design end, maybe could get better understanding of the paint and polish end but want to open my own business. I have a good salary and i can get more if i ask for but i think my companies owner is going to sell the place, as he is getting on the ages. I asked him about buying the place myself but what he wants for the place is absurd as i know all the machines are really old and falling apart. He is just trying to get a good end of the year report and sell the place as he is not maintaining the machines properly. Now I just want to rent a warehouse finance some of the machines from diffrernt vendors i know and just do this for my current customer as i know their product well and i am sure i can get their business. Now how do i go about this. I have some land and apartments. i would prefer not to sell them. who do i go to finance this and how do i finance the machines. If any body has done this please le me know.",
+    "score": 5,
+    "url": "https://reddit.com/r/manufacturing/comments/1mday9o/how_do_i_open_my_own_job_shop_financing_companies/",
+    "created_at": "2025-07-30T16:18:57.000Z",
+    "num_comments": 15
+  },
+  {
+    "id": "reddit-1l9234q",
+    "subreddit": "manufacturing",
+    "soc_codes": [
+      "51-1011",
+      "17-2112"
+    ],
+    "title": "Doubts about the pharma industry and my long-term goal of becoming a Plant Manager – need insight",
+    "text": "Hi everyone,\nI’m 25 and currently at a crossroads in my early career. I recently accepted a new offer in the pharmaceutical industry after working for just over two months in another pharma company. My background is in Industrial Engineering, and I’ve previously worked in the food &amp; beverage and FMCG sectors.\n\nHere’s where I’m at:\n\nI’ve realized that purely office-based roles don’t fulfill me — I had a brief experience in supply chain and found it too detached from the real action. What I truly enjoy is being in the field, working directly on processes, driving improvements, and making things happen on the shop floor. That’s what energizes me.\n\nThe new role I’m about to start is in Production Excellence at a large pharmaceutical company (recently acquired a manufacturing site), and it focuses on Lean, Six Sigma, KPI analysis, and process optimization — things I genuinely enjoy and am good at. So far, so good.\n\nBUT… I’m starting to wonder whether the pharma sector itself is the right long-term fit for me. It’s highly regulated, slow to change, and often has rigid structures. My fear is that, even if I like the role now, I might eventually feel limited by the industry’s nature.\n\nMy long-term goal is to become a Plant Manager in a multinational company — ideally in a fast-paced, results-driven environment where I can lead teams, manage operations, and create tangible impact.\n\nSo I’m turning to this community for advice:\n\t•\tHas anyone here worked in pharma and then switched to other industries? Was it hard to make the jump later?\n\t•\tCan you truly grow into a Plant Manager role within pharma, or is it more suitable to look toward FMCG, food, manufacturing, etc.?\n\t•\tIf I want to keep that Plant Manager path open, is pharma a strong launchpad — or more of a trap?\n\t•\tHow do I balance choosing the right role now with keeping doors open for the future?\n\nAny honest insights from people in operations, CI, production, or leadership are really appreciated.\nThanks for reading — this is stressing me out more than it probably should, but I want to make the right move.",
+    "score": 5,
+    "url": "https://reddit.com/r/manufacturing/comments/1l9234q/doubts_about_the_pharma_industry_and_my_longterm/",
+    "created_at": "2025-06-11T19:41:13.000Z",
+    "num_comments": 7
+  }
+]

@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import * as fs from "fs";
+import * as path from "path";
 import careers from "../../../../data/careers.generated.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
@@ -13,6 +15,7 @@ import {
   getImportanceColor,
   getImportanceLabel,
 } from "@/types/career";
+import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -27,6 +30,33 @@ interface RawCareerReviewsSummary {
     url: string;
   }[];
   last_updated: string;
+}
+
+// Full review from per-career file
+interface FullReview {
+  id: string;
+  subreddit: string;
+  soc_codes: string[];
+  title: string;
+  text: string;
+  score: number;
+  url: string;
+  created_at: string;
+  num_comments: number;
+}
+
+// Helper to load all reviews for a career
+function loadCareerReviews(slug: string): FullReview[] {
+  try {
+    const reviewsPath = path.join(process.cwd(), `data/reviews/reviews-by-career/${slug}.json`);
+    if (fs.existsSync(reviewsPath)) {
+      const data = fs.readFileSync(reviewsPath, 'utf-8');
+      return JSON.parse(data) as FullReview[];
+    }
+  } catch {
+    // Fall back to empty array if file doesn't exist
+  }
+  return [];
 }
 
 interface PageProps {
@@ -86,9 +116,12 @@ export default async function CareerPage({ params }: PageProps) {
   const importanceScore = career.national_importance?.score || 5;
 
   // Find reviews for this career (match by slug or SOC code)
-  const careerReviews = (reviewsIndex as RawCareerReviewsSummary[]).find(
+  const careerReviewsSummary = (reviewsIndex as RawCareerReviewsSummary[]).find(
     (r) => r.slug === career.slug || r.soc_code === career.soc_code
   );
+
+  // Load all reviews for this career (for scrollable display)
+  const allReviews = loadCareerReviews(career.slug);
 
   return (
     <div className="min-h-screen bg-secondary-50">
@@ -189,6 +222,32 @@ export default async function CareerPage({ params }: PageProps) {
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8">
+          {/* Career Video */}
+          {career.video && (
+            <Section title="Career Video" icon="video">
+              <div className="space-y-4">
+                <CareerVideoPlayer video={career.video} careerTitle={career.title} />
+                <a
+                  href="https://www.careeronestop.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-emerald-600">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                  <span className="text-sm font-medium text-secondary-700">
+                    CareerOneStop
+                  </span>
+                  <span className="text-xs text-secondary-500">
+                    U.S. Department of Labor
+                  </span>
+                </a>
+              </div>
+            </Section>
+          )}
+
           {/* Key Tasks */}
           {career.tasks && career.tasks.length > 0 && (
             <Section title="Key Responsibilities" icon="clipboard">
@@ -275,13 +334,62 @@ export default async function CareerPage({ params }: PageProps) {
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-secondary-600">Estimated Cost</div>
+                      <div className="text-sm text-secondary-600">Estimated Education Cost</div>
                       <div className="font-semibold">
                         {formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}
                       </div>
                       {career.education.time_to_job_ready.earning_while_learning && (
                         <div className="text-sm text-green-600 mt-1">
                           Can earn while learning
+                        </div>
+                      )}
+                      {/* Institution type breakdown */}
+                      {career.education.cost_by_institution_type && (
+                        <div className="mt-3 pt-3 border-t border-secondary-200 space-y-1 text-sm">
+                          {career.education.cost_by_institution_type.public_in_state && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Public (in-state):</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_in_state.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.public_out_of_state && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Public (out-of-state):</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_out_of_state.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.private_nonprofit && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Private nonprofit:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.private_nonprofit.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.community_college && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Community college:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.community_college.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.trade_school && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Trade school:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.trade_school.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.apprenticeship && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Apprenticeship:</span>
+                              <span className="font-medium text-green-600">
+                                {career.education.cost_by_institution_type.apprenticeship.cost === 0 ? '$0 (paid training)' : formatPay(career.education.cost_by_institution_type.apprenticeship.cost)}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {/* Data source */}
+                      {career.education.cost_data_source && (
+                        <div className="mt-2 text-xs text-secondary-400">
+                          Source: {career.education.cost_data_source.primary.replace(/_/g, ' ')} ({career.education.cost_data_source.year})
                         </div>
                       )}
                     </div>
@@ -426,39 +534,41 @@ export default async function CareerPage({ params }: PageProps) {
           )}
 
           {/* What Workers Say */}
-          {careerReviews && careerReviews.total_reviews > 0 && (
+          {allReviews.length > 0 && (
             <Section title="What Workers Say" icon="chat">
               <div className="space-y-4">
                 <p className="text-sm text-secondary-600">
-                  Based on {careerReviews.total_reviews} testimonial{careerReviews.total_reviews !== 1 ? 's' : ''} from Reddit
+                  {allReviews.length} testimonial{allReviews.length !== 1 ? 's' : ''} from Reddit
                 </p>
 
-                {careerReviews.featured_reviews.map((review, i) => (
-                  <a
-                    key={review.id}
-                    href={review.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-medium text-primary-600">
-                        r/{review.subreddit}
-                      </span>
-                      <span className="text-xs text-secondary-500">
-                        {review.score} upvotes
-                      </span>
-                    </div>
-                    <h4 className="font-medium text-secondary-900 mb-2 text-sm">
-                      {review.title}
-                    </h4>
-                    {review.text && (
-                      <p className="text-secondary-700 text-sm line-clamp-3">
-                        {review.text}
-                      </p>
-                    )}
-                  </a>
-                ))}
+                <div className="max-h-[600px] overflow-y-auto space-y-4 pr-2">
+                  {allReviews.map((review) => (
+                    <a
+                      key={review.id}
+                      href={review.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-primary-600">
+                          r/{review.subreddit}
+                        </span>
+                        <span className="text-xs text-secondary-500">
+                          {review.score} upvotes
+                        </span>
+                      </div>
+                      <h4 className="font-medium text-secondary-900 mb-2 text-sm">
+                        {review.title}
+                      </h4>
+                      {review.text && (
+                        <p className="text-secondary-700 text-sm line-clamp-3">
+                          {review.text}
+                        </p>
+                      )}
+                    </a>
+                  ))}
+                </div>
               </div>
             </Section>
           )}
@@ -528,6 +638,7 @@ const icons: Record<string, string> = {
   tag: "🏷️",
   link: "🔗",
   chat: "💬",
+  video: "🎬",
 };
 
 function Section({

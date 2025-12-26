@@ -9,11 +9,13 @@
     "lint": "next lint",
     "data:process-onet": "npx tsx scripts/process-onet.ts",
     "data:fetch-wages": "npx tsx scripts/fetch-bls-wages.ts",
+    "data:fetch-education": "npx tsx scripts/fetch-education-costs.ts",
     "data:score-ai-risk": "npx tsx scripts/score-ai-risk.ts",
     "data:score-importance": "npx tsx scripts/score-importance.ts",
     "data:create-progression": "npx tsx scripts/create-progression-mappings.ts",
+    "data:fetch-videos": "npx tsx scripts/fetch-career-videos.ts",
     "data:generate-final": "npx tsx scripts/generate-final.ts",
-    "data:refresh": "npm run data:process-onet && npm run data:fetch-wages && npm run data:score-ai-risk && npm run data:score-importance && npm run data:create-progression && npm run data:generate-final",
+    "data:refresh": "npm run data:process-onet && npm run data:fetch-wages && npm run data:fetch-education && npm run data:score-ai-risk && npm run data:score-importance && npm run data:create-progression && npm run data:fetch-videos && npm run data:generate-final",
     "reviews:fetch": "npx tsx scripts/fetch-reddit-reviews.ts",
     "reviews:enrich": "npx tsx scripts/enrich-reviews.ts",
     "reviews:generate": "npx tsx scripts/generate-reviews-index.ts",
@@ -25,6 +27,7 @@
     "next": "^15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "xlsx": "^0.18.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {

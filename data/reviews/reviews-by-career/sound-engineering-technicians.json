@@ -1,0 +1,613 @@
+[
+  {
+    "id": "reddit-1p3tlug",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Quitting after 10 years",
+    "text": "Got the Grammy got the billboard #1s been in the room with everyone imaginable and I’m quitting. This industry is falling apart labels don’t want to pay anymore no one wants to pay actual rates your worth and you have to chase every person down and they act like you should be kissing their feet just cause they paid you the money your owed. Idk I love recording and mixing but can’t do it anymore I want to have a happy life with my wife and eventually have some kids and finally realized if I want that life being in the rooms just isn’t  gonna give it to me. Will have awesome stories to tell my kids and grandkids about the people I met and worked with in my twenties and will always have some cool stuff on the shelves and walls with my name on it but I want a life with consistent pay and actual livable work hours. Sorry for my rant haven’t told my clients yet but wanted to get it off my chest to someone so ran to the internet lol \n\nEdit:\n\nI’d just like to say too, this was more a post for seasoned audio engineers I didn’t expect this post to blow up like this. Please follow your dreams and don’t let my post scare you away from following them. I got the chance to fulfill my dreams and it just turned out what I was chasing at the end of the rainbow didn’t work for me once I caught it. That being said that is just my experience I know other people in the industry who are at my level and are very happy with their life. If you wanna pursue music I think you should absolutely do it. Just be prepared for an industry that doesn’t love you as much as you love it. Just because I had one experience by no means means your experience will be the same or you will have the same outcome as me :)",
+    "score": 1237,
+    "url": "https://reddit.com/r/audioengineering/comments/1p3tlug/quitting_after_10_years/",
+    "created_at": "2025-11-22T13:45:38.000Z",
+    "num_comments": 363
+  },
+  {
+    "id": "reddit-1mb4ubx",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Can we all agree? (Rant)",
+    "text": "I, as a seasoned veteran in audio engineering, get so sick of rolling my eyes at these responses to 90% of the posts in here asking for advice;\n\n“If it sounds good it is good” or “use your ears” or “there’s no right way of doing anything”\n\nI understand these are critical pieces of advice, but I’m getting tired of seeing them as the only response to people seeking real help/guidance. It’s ok to remind folks to use their ears, but if that’s all you’ve got to say to someone who’s asking how to mic a guitar amp then you’re not contributing! Try something like this…\n\n“There’s no “right” way to mic a guitar amp, but what I do is blah blah blah. In the end, experiment with it and find what you like”\n\nRant over.\n\nEdit to make abundantly clear; using one’s ears and understanding that there is no “right” way of doing things are very good pieces of advice. Some would like to believe using your ears is a prerequisite to the job, but I understand it can help to be reminded of that. ",
+    "score": 598,
+    "url": "https://reddit.com/r/audioengineering/comments/1mb4ubx/can_we_all_agree_rant/",
+    "created_at": "2025-07-28T02:44:02.000Z",
+    "num_comments": 169
+  },
+  {
+    "id": "reddit-1kdk1cn",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "A message to audio engineers and redditors, and especially audio engineer redditors",
+    "text": "If you know what i’m getting at, just answer the damn question. \n\nIf I understood everything about the topic, I wouldn’t be asking a question about it. \n\nIf you find yourself three paragraphs deep into a reply about how I clearly don’t know what I’m talking about, I haven’t considered the phase implications, and “people get whole degrees studying this you know,” please stop and ask yourself if you are being helpful whatsoever.\n\nI understand that the divorce has been really difficult but please, please go to therapy rather than spending hours maintaining your top 1% badge and demonstrating your intellectual superiority over people just trying to learn.\n\nSincerely,\n\npax\n\n\nedit: oh this ruffled more feathers than i expected…",
+    "score": 531,
+    "url": "https://reddit.com/r/audioengineering/comments/1kdk1cn/a_message_to_audio_engineers_and_redditors_and/",
+    "created_at": "2025-05-03T03:57:11.000Z",
+    "num_comments": 179
+  },
+  {
+    "id": "reddit-1nqcik0",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Im a Grammy Nominated engineer who has worked with artists ranging from Taylor Swift and The Killers to Empire of The Sun and Modest Mouse. AMA",
+    "text": "Hi Everyone! My name is Math Bishop, over the last 15 years of my career I have had the pleasure of collaborating with some of my favorite artists and learned so much along the way. As someone who has a tendency to keep their head down and work work work, I really want to help contribute more practical information to the engineering community! AMA! \n\n***update***\nThanks for all the questions, I tried to get through most of them and my apologies if I didnt get to yours. A lot of the ones I didnt answer towards the end of the day had been answered in earlier questions or have no actual correct answer...if that makes sense. Feel free to shoot me a message on instagram, always love talking with other engineers. \n  \nFeel free to check out a longer list of project I have been involved in and follow my on instagram:\n\n @Mathbishop \n\n[https://www.allmusic.com/artist/matt-bishop-mn0000393441#credits](https://www.allmusic.com/artist/matt-bishop-mn0000393441#credits)",
+    "score": 508,
+    "url": "https://reddit.com/r/audioengineering/comments/1nqcik0/im_a_grammy_nominated_engineer_who_has_worked/",
+    "created_at": "2025-09-25T17:10:48.000Z",
+    "num_comments": 302
+  },
+  {
+    "id": "reddit-1hwwztg",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "ALWAYS LEVEL MATCH",
+    "text": "Mixing is all about constant epiphanies. Here’s one that needs to hit you if it hasn’t already: aggressively and militantly level match everything!\n\nBy this I mean, any plugin you plop down or even hardware insert you flick on - make sure your input level matches the output level.\n\nObviously this is more for individual tracks - not when you actually want to use the plugin to increase the output.\n\nSo many plugins add a db or two to the output before it’s done anything, making you think “this sounds great!”\n\nI remember when I started to strictly level match everything or make sure I use the auto-gain if available. I then realised how much processing was either doing very little or just harming the clarity, quality, or whatever.\n\nA big one is saturation plugins - you plop them down and go “wow that sounds great!” But then later on down the line, your mix is turning to weird mush. You realise it’s all the saturation going ham everywhere.\n\nUAD Pultec, one of my favourite plugins of all time, does this and I always have to turn down the gain knob a bit.\n\nCompressors too. With auto-gain on, I often think “eh maybe this track doesn’t need compression at all…” but if it doesn’t have auto-gain, I might be tricked into “wow this sounds great!” And I might be compressing something that would be better without it in the context of the mix further down the line.\n\nI wish every plugin just had auto-gain…",
+    "score": 368,
+    "url": "https://reddit.com/r/audioengineering/comments/1hwwztg/always_level_match/",
+    "created_at": "2025-01-08T22:32:07.000Z",
+    "num_comments": 108
+  },
+  {
+    "id": "reddit-1jrdvg2",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Did I waste a year of my life making a plugin?",
+    "text": "There is finally a slowdown VST plugin and speedup VST plugin that goes beyond what most DAWs can do for producers and sound designers. It’s called SpeedShift. Unlike other plugins like Gross Beat or HalfTime, SpeedShift is simpler, cheaper, and higher quality. It gives you individual control over speed, pitch, and tempo so you can time stretch any sample or an entire track with ease.\n\nMost slowdown tools are clunky, uninspiring, and don’t spark new ideas. SpeedShift is the opposite. You can literally take any sample from Splice and transform it with SpeedShift (built by Sottovoce DSP) to get a completely new sound using its smooth speedup/slowdown effect.\n\nThis isn’t just another gimmick. It’s a slowdown audio plugin and speedup audio plugin that finally works the way producers always wanted. Tools like Audacity use outdated methods for time stretching and can’t compete with the clarity and musicality of SpeedShift.\n\nDid I waste a year of my life making it? Like you all say, absolutely not. Interest keeps growing because slowdown and speedup effects plugins are more in demand than ever.\n\nSpeedShift is more than a simple tempo changer. It’s a true pitch shift VST plugin and tempo shifter. With one button you can double-time, half-time, or warp samples into completely new grooves. For producers, remixers, and DJs, it’s the smoothest real-time audio warper out there.\n\nAnd the best part? It’s cheaper than the competition. At only $35 USD, SpeedShift is affordable without cutting corners. It’s available for all major DAWs, including Ableton Live, FL Studio, Logic Pro, and Pro Tools. \n\nWhether you need a slowdown VST plugin to practice and analyze songs, or a speedup VST plugin to streamline your production workflow, SpeedShift is pretty much ready to drop into your sessions and stretch time exactly how you want.\n\nThe plugin is called [SpeedShift Speedup by Sottovoce DSP](https://sottovocedsp.com/products/speedshift-the-speedup-plugin)",
+    "score": 365,
+    "url": "https://reddit.com/r/audioengineering/comments/1jrdvg2/did_i_waste_a_year_of_my_life_making_a_plugin/",
+    "created_at": "2025-04-04T14:55:37.000Z",
+    "num_comments": 197
+  },
+  {
+    "id": "reddit-1o7o0jh",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Don't fall for the marketing. Your daw plugins are good enough.",
+    "text": "This is for the hobbyists and beginners. Given how much daws have progressed in the last decade, you rarely, if ever, need 3rd party plugins. What comes with your daw now is typically pretty amazing and more than enough to put out really great sounding records, especially having something like cubase or studio one. I understand the people who do this for a living and work with a shit ton of clients might need all of them, but for the everyday engineer, you don't need 90% of them. Look, if you just love FX plugins and like to collect them like I do,, that's fine. But if you're blowing thousands of dollars on FX plugins thinking that they will somehow make your mixes and masters sound better, you are wrong.My biggest regret in the 20 years I've been doing this was falling for the marketing and spending literally 15k worth on FX plugins and bundles because almost all of them sound the same, like there's only so many different ways a compressor clone can sound, most of my plugs collect dust and I only use about 15% of them. 9/10 times I'm just using the stock shit in studio one.  ",
+    "score": 361,
+    "url": "https://reddit.com/r/audioengineering/comments/1o7o0jh/dont_fall_for_the_marketing_your_daw_plugins_are/",
+    "created_at": "2025-10-15T21:37:00.000Z",
+    "num_comments": 163
+  },
+  {
+    "id": "reddit-1jx9mbr",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Finally reached my limit with UA marketing emails - an open letter to whoever is running the company now.",
+    "text": "Hey Y’all - apologies if this isn’t the right place for this but I just wanted to rant a lil bit and in the hopes that anyone can relate.\n\nDear Mr Audio - or should I call you Universal?\n\nI have been a customer of UA for 20 years. In recent years your incessant marketing and constant reminders of sales have become grating, but I abided it because I was grateful for the tens of thousands of dollars worth of products, both physical and digital, I’ve purchased from you over the years. \n\nBut just when I had nearly reached my limit with your seemingly endless emails to “save now before it’s too late” on some bloody plugin bundle you developed 10 years ago and which I probably already own, I decided to click on the teensy tiny and nearly invisible unsubscribe link at the bottom of the email to see what that’s all about. \n\nWell guess what? It’s a f***ing 404! NICE. \n\nWith a sigh, I decided to contact customer support. \n\nWHOOPS. You only use AI chat bots now. MY FAVOURITE. \n\nAfter having no other choice, I engaged with HAL 9000 and discovered that, in fact, this is the way to contact customer support and someone from your team will apparently read this. Why include a customer support email on your site when you can send people on a fun little scavenger hunt instead? \n\nI know capitalism is a bitch and business is hard now, especially in music. But seriously UA. Get your shit together. Try and remember the company you used to be instead of emulating every other corporate behemoth on earth and hiding behind a black wall of chatbots. With subscription models, zero innovation and desperate marketing emails touting a near-constant state of markdown as your main deliverables, who needs creativity and novel ideas to grow your business? Just keep touting your potential future revenue based on recent subscriber trends, and those private equity folks will be knocking on your door with a golden parachute in no time! Fuck your customer base! And God help the poor sap who buys one of your plugins during the one week a year they’re at regular price!\n\nI used to be able to have conversations with your engineers and techs and they would have amazing insights. They’d take on customer feedback to inform new product ideas or improvements. Hey at least you stopped using photos of dear old Bill Putnam on everything. The man was an innovator whose name held weight because of his contributions to the field. You know, like Universal Audio used to. \n\nSincerely, GW\n",
+    "score": 341,
+    "url": "https://reddit.com/r/audioengineering/comments/1jx9mbr/finally_reached_my_limit_with_ua_marketing_emails/",
+    "created_at": "2025-04-12T04:57:30.000Z",
+    "num_comments": 95
+  },
+  {
+    "id": "reddit-1on68k6",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "(Rant) Can we stop with the \"it's not about the gear\" nonsense?",
+    "text": "Just saw a video today of a guy showing his +100k home studio setup of ampeg svt heads, 1176, distressor, api, neve, neumann etc only to end up in the video saying \"remember it's not about the gear\". \n\nI certainly beleive the philosophy of the statement and agree that you should first learn the basics of recording, miking etc and not focus on collecting gear. But seeing guys like this makes my blood boil, since we all know that better gear is better. The statement is the audio engineers equivalent of a rich guy saying \"money doesn't make you happy\" to a person struggling with making ends meet.\n\nWhat I have found is better gear will make the process of getting pro results waaaaay faster, better sounding, more inspiring and easier. Better pre's sound better, expensive Neumann mics sound better than Oktava and AT2020. Not that the latter ones never sound great, but 9/10 times the Neumann ends up being my gear of choice. Shitty mics in shitty rooms recorded through shitty interface will sound shitty.\n\nSo it is about the gear to a certain extent isn't it? Why do 99% of the pros end up with Apis, Neumanns, Ludwigs etc if this wasn't the case?\n\nAnd yeah to add: treating your room is also expensive and in my life considered \"gear\" as well.",
+    "score": 339,
+    "url": "https://reddit.com/r/audioengineering/comments/1on68k6/rant_can_we_stop_with_the_its_not_about_the_gear/",
+    "created_at": "2025-11-03T08:16:40.000Z",
+    "num_comments": 275
+  },
+  {
+    "id": "reddit-1p596sz",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "A piece of advice to new producers, stop listening to producer content creators.",
+    "text": "As the title says. Over the years I’ve heard so much contradicting information from producer content creators, and honestly… it’s because most of them are content creators first, producers second. Their actual job is to get views, not to teach you how to make better music.\n\nPeople like Busyworks beats, Reid Stefan and Larry oh sometimes give good advice and tips but never take their word as gospel.\n\nI’m not saying all of them are bad, but a lot of the “advice” floating around is either misleading, oversimplified, or just flat-out wrong.\n\nThis is a long read because the amount of misleading information I come across daily pisses me off\n\n\n\n“You must mix your drums to –6 LUFS / always do X exact setting”\n\nCreators love giving hyper-specific numbers because it sounds scientific, but mixing is contextual. If you follow their numbers blindly, you’ll end up chasing someone else’s mix instead of learning to listen to your own.\n\nUse your ears, reference tracks you like, and learn gain staging instead of copying exact settings.\n\n\n“This secret plugin will make your beats industry standard”\n\nThese videos are basically ads mostly by Karra and her puppet husband who live of these paid promos. No plugin will fix lack of arrangement, composition, sound choice, or mixing fundamentals.\n\nYou can make industry-level music with stock plugins if you understand EQ, compression, saturation, and balance.\n\n\n\n“If you’re not making 10 beats a day you’ll never improve”\n\nQuantity &gt; quality makes good content, but it doesn’t make good producers. Following this advice burns out tons of beginners.\n\nConsistency matters, but thoughtful, deliberate practice beats spamming unfinished beats.\n\n\n\n“Never use presets / Only real producers design their sounds”\n\nThis creates unnecessary shame around using tools that professionals use every single day.\n\nPresets are fine. What matters is how you shape sounds to fit your track.\n\n\n\n“All pros mix in mono / never mix in mono / never use master chain / always have master chain”\n\nEvery creator contradicts the next. They present workflow opinions as if they’re universal laws.\n\nThere are many workflows that lead to great results. Choose what makes you faster and helps you hear clearly.\n\n\n\nSo what should new producers actually do?\n\nHere’s some advice that will actually help you grow:\n\n1. Trust your ears over YouTubers and Tiktokers\n\nMusic is an auditory craft. Your ears matter more than their thumbnail titles.\n\n2. Use reference tracks\n\nCompare your mix with professional songs regularly. This is the best reality check possible.\n\n3. Learn fundamentals, not hacks\n\nEQ, compression, sound selection, arrangement, and gain staging will take you further than any “secret sauce”.\n\n4. Experiment\n\nThere is no “wrong” way to make music if it sounds good. Break rules. Try weird things.\n\n5. Watch pros, not influencers\n\nLook for engineers, producers, and musicians who show their actual workflow—not people who only make short-form “tip” content.\n\n6. Make music consistently\n\nNot 10 beats a day. Just consistently enough to build muscle memory and good habits.\n\n\n\nAt the end of the day, learning production is a long-term journey. The more you rely on using your ears, experimenting, and studying actual music, the less you’ll be tossed around by misleading content.\n\nIf you’re a beginner: keep creating, stay curious, and don’t let content creators convince you there’s only one right way to make music.",
+    "score": 319,
+    "url": "https://reddit.com/r/audioengineering/comments/1p596sz/a_piece_of_advice_to_new_producers_stop_listening/",
+    "created_at": "2025-11-24T05:52:33.000Z",
+    "num_comments": 78
+  },
+  {
+    "id": "reddit-1o361za",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "The Fender enshittification of Studio One is getting out of hand",
+    "text": "Well, here we go, folks. After Fender's acquisition of PreSonus in 2021, it seems like the slow decline of Studio One has begun, and it's becoming more obvious by the day.\n\nJust this month, PreSonus quietly started merging their user accounts with Fender IDs without any announcement. The result? Dozens of users suddenly couldn't log into their accounts or access their legally purchased software. Check out r/StudioOne. People are getting error messages saying their passwords “don't meet criteria” or that their accounts “cannot be found”. Some users are stuck in support ticket hell where they're told to log into their accounts to view the reply about why they can't log into their accounts. Absolutely brilliant.\n\nWhen Studio One 7 was announced with promises of 3-4 major updates per year? Well, we're now 12 months since the October 2024 release, and we've gotten exactly one legitimate update (7.1 in January) and one minor update (7.2 in June). Sure, maybe they meant 3-4 updates starting from January 2025, but that's still looking pretty fishy given the current pace. People bought a subscription that lasted a year from the release date, only to receive 2 useless updates.\n\nIn November 2024, PreSonus straight up killed their official forum. No transition period, just “thanks for all the fish” and they redirected people to Facebook groups. Thankfully, community hero Lukas Ruschitzka stepped up and created his own unofficial forum, because apparently a community member has to do what the actual company won't.\n\nAnd here's the kicker. Lukas has created more useful Studio One add-ons and tools than PreSonus themselves have managed to produce. The guy literally wrote Harmony Wizard, Scoring Tools, and a bunch of other extensions that make Studio One actually usable for certain workflows.\n\nThis is where it gets really concerning. Fender CEO Andy Mooney has openly stated that he finds Studio One (one of the easiest DAWs ever made) to be “too complicated”. His exact quote: *“Having dabbled in recording myself, I've never found a DAW I didn't need an MIT degree to actually use”.*\n\nSurprise, surprise. Fender launched their own “Fender Studio” app in May 2025, a dumbed-down mobile/desktop recording app that's clearly where their development focus has shifted. Meanwhile, Studio One users are left wondering where those promised updates are.\n\nIt's becoming clear that Fender bought PreSonus not to improve Studio One, but to cannibalize its technology for their own simplified products, while letting the main DAW slowly rot through neglect and zero substantial changes.\n\nThe writing's on the wall, folks. We're watching the classic tech acquisition playbook unfold in real time: acquire the competition, gut the advanced features, redirect development resources, and slowly squeeze the existing user base.\n\nRIP Studio One's golden era. It was good while it lasted.",
+    "score": 313,
+    "url": "https://reddit.com/r/audioengineering/comments/1o361za/the_fender_enshittification_of_studio_one_is/",
+    "created_at": "2025-10-10T16:42:22.000Z",
+    "num_comments": 250
+  },
+  {
+    "id": "reddit-1kri5xi",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "RIP Michael B. Tretow who engineered all of ABBA",
+    "text": "I'm swedish and he maybe isn't a household name internationally but I bet you love him too, for what he did.\n\nI just replied on a Swedish sub about this and just googled the news and Benny Andersson said it as well: *Tretow var den som fick Abbas musik att ”låta tidlös”*\n\n\\- Tretow was he who made ABBA's music sound timeless.\n\nHe was a key player in the S-tier of the late 70s which seemed to set the standard for what can be called timeless perfection in my view.\n\nI love *ABBA The Album* in particular. The beginning of *Take a Chance On Me* always leaves me stunned pretty much. I don't know anything of the time that can compare. He managed ABBA's brave layering like I bet very few others ever could, and I kind of feel no-one proved they could, at that time. The most tasteful balance of each element just makes ABBA what they were: pop of genius melodies with an archangelic vocal-blend weaved into genius orchestration and endless hooks over the most catchy groove.\n\nAs more of an arranger and songwriter admirer at the core I'm so happy I have always admitted my immense love for ABBA and I'm so glad he was there to serve the engineering side of things. It's hard to beat them as an inspiration.\n\n**Tell me about your favourites from ABBA please!**\n\nI can leave you with another: as a part time bass player, I admire how far they pushed the bass forward in *Mama Mia*, letting the magnificent Rutger Gunnarsson shine, which is another obvious hero of mine. He could drive the song so they let him absolutely rule the groove!\n\nI kind of have to mention the midrange bomb that is *Hole In Your Soul* as well. It just runs you over with this compression and midrange that sure blew me away the first time I heard it!",
+    "score": 302,
+    "url": "https://reddit.com/r/audioengineering/comments/1kri5xi/rip_michael_b_tretow_who_engineered_all_of_abba/",
+    "created_at": "2025-05-20T22:29:45.000Z",
+    "num_comments": 20
+  },
+  {
+    "id": "reddit-1lxevpo",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Sure 32-bit float lets you red line without distortion (in certain situations), but that is not what makes it cool.",
+    "text": "I have seen many many posts on here about how mixing in the red sounds better, and 32-bit means you don't need to watch the meters, etc. \n\nFirst I will say I don't agree with any of that. Proper gain structure and mixing within the meters does have benefits (I have talked about this elsewhere). If the waveform is the same, just louder, by definition, it does not sound better, just louder. \n\nThe cool thing about 32-bit float is not that you can mix louder, it is that you can mix softer. 32-bit still uses a 24-bit word to describe the waveform. The other 8 bits define the window within which those 24-bits are scaled. How does this benefit soft sounds? With 24-bit fixed, as things get softer, fewer bits are used to define the waveform. Meaning the resolution is reduced. In extreme circumstances, you could be using only 4 bits to define a complex waveform, with the other 20 bits just sitting unused at zero. With 32-bit float, the entire 24 bit word is used on the low volume waveform because the scale window is defined down to maximize the resolution. Why is this awesome? Reverb tails become smoother, fades retain their detail. Break downs have more depth, etc.\n\nSo love 32-bit float. Maintain good gain structure and don't sweat the occasional over. But listen for the soft things. The subtle things. That is where the magic is happening.",
+    "score": 296,
+    "url": "https://reddit.com/r/audioengineering/comments/1lxevpo/sure_32bit_float_lets_you_red_line_without/",
+    "created_at": "2025-07-11T18:44:30.000Z",
+    "num_comments": 123
+  },
+  {
+    "id": "reddit-1ig3gg5",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "\"It must be nice...\"",
+    "text": "Half venting, half curious if some of you experience the same thing and how you handle it.\n\nI'm over 50. I worked a job I hated for 30 years while all my friends were working at record stores, coffee shops, on tour, etc. I retired 3 years ago and still work a job I don't like, mostly to fund my studio goals and set myself up to enjoy what I do without the worry of needing to generate a sustainable income from it (because who can anymore?).\n\nI drive an old car with 200K miles on it. I do not have a bass boat, hunting club membership, golf cart, 4-wheeler, sports car, or any of the other mid-age-crisis vices. My wife works full-time and doesn't break 40K. We live in an old neighborhood near a lot of crime, are fairly frugal, but do ok. We also don't have kids (so that's a perk). The only extravagance (if you can call it that) is the gear in my home studio.\n\nBy modern studio standards, mine is very humble. I have a really nice set of monitors, a rack full of common outboard gear, and a good mic collection. I have guitars and amps (some mine, some were my dad's, RIP), a drum kit, an open reel recorder, pedals, and that's about it. I built my bass traps and acoustic treatment, learned to solder and DIY'd as much as possible. I purchased my first 4-track cassette recorder in 1992 and have worked at this every chance I could since then (just didn't run out and buy all this shit overnight).\n\nI never expected to make a dime off of this, become a \"known\" engineer, or anything. I only wanted to participate and help others record their music.\n\nNow that my \"studio\" is *kinda* legit, It seems like whenever anyone comes over, I get/feel a lot of negativity. I've experienced everything from passive-aggressive remarks to full-on insults. People my age that stop by say things like \"it must be nice...\", I guess if I had your money I could...\", \"I'll never be able to afford a....\" And shit like that. I had an old bandmate friend (who I recorded for free) look up the cost of one of my preamps he enjoyed, and he literally got angry with me. I had someone from a college band I recorded (for free) walk around with his head hung low because he \"will never be able to get a blah, blah, blah.\" And then he got pissed when his recordings \"didn't sound like Weezer's blue album we talked about.\" These kids didn't even know their own songs, let alone play like Weezer. Yet it's my fault. I've had people actually ask me if I could disassemble everything I own, set it up at their practice space, and let them \"borrow it for a while.\" Didn't even want me involved, just wanted my toys.\n\nWhen non-music people come over, they're confused: \"So, are you trying to be, like, famous at your age? What did that cost? and that? So if I were to get one of those, what would it cost? So what would it take to get a band like Smashing Pumkins to record here?\" \"NO CRAIG, YOU ASSHOLE. ARE YOU TRYING TO GET INTO WIMBLETON? THEN WHY DO YOU HAVE ALL THOSE TENNIS RACKETS AND GO TO THE CLUBHOUSE EVERY SATURDAY? WHY DON'T YOU AN MARGO HAVE SOME MORE FUCKING KIDS?\"\n\nWhen I was in bands in the 90's, we used to drive hundreds of miles just to record in places we only heard about word of mouth. They didn't have near the capabilities we have now. We were SO stoked and SO appreciative to be in those places. Never did any of us walk around in self-pity pointing at gear and saying shit like \"Muuhhh... I guess I'll never have an amp like that. Muhhhh... it must be nice...\"\n\nPeople don't understand the countless hours I've spent reading and studying about this stuff. They don't know how many nights I stayed up until the sun came up just listening to a kick drum over and over while they were out impregnating last-call bar flies. Or the consistent early mornings I was at a job they were too cool to work (and made fun of me for) while they slept in. Not to mention the recording school that totally ripped me off in 2002.\n\nPerhaps I've aged out already. I still feel exactly like the same person I was at 16, but I'm not. These days, I keep the studio door closed when people come over. When my wife asks me to show someone my room, I make an excuse not to. When people ask about recording, I make an excuse about something being broke or it not being a good time right now. I still enjoy sitting in here by myself, listening to music, fiddling with knobs and faders.  I'm still thankful. And it is nice, but would be a lot nicer if I could share it with others. Oh well.\n\nThanks for letting me vent.\n\nUPDATE: Wow. I am simply overwhelmed by the amount of support, advice and encouragement from this community. I suppose I was throwing myself a small pity-party. Those days happen but every once in a while something magical does happen, and that's what we hope to keep our knives sharp for. I wish I could personally thank each and every person who read and responded to this post, even the ones who offered up a hard dose of reality. I am recalibrating my mind and adjusting my attitude. Thanks, all of you!",
+    "score": 292,
+    "url": "https://reddit.com/r/audioengineering/comments/1ig3gg5/it_must_be_nice/",
+    "created_at": "2025-02-02T18:11:10.000Z",
+    "num_comments": 80
+  },
+  {
+    "id": "reddit-1ofcbax",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "After decades elevating and educating others, Dave Pensado begins a new chapter with family and friends. Support and more info inside.",
+    "text": "Link to his IG post: [https://www.instagram.com/p/DQNOmVkkrG8/](https://www.instagram.com/p/DQNOmVkkrG8/)  \nSupport: [https://www.davepensado.com/donate](https://www.davepensado.com/donate)\n\nText from post:\n\n\"Dave spent a lifetime elevating others. He’s now living with Alzheimer’s, and care costs are heavy. If his work moved you, please consider giving or sharing this post. Thank you for helping us keep his care dignified. Find the link in bio to view his website with links for donation and a special run of merchandise.  \n  \nA note from the family:  \nFor decades, Dave helped shape the soundtracks of our lives. He poured care into artists, crews, and friends, always making others feel bigger than the moment.  \nToday, Dave is living with Alzheimer’s and facing a difficult decline. He’s in a new chapter—spending precious time with family and grandchildren—remembering with warmth his years as a recording engineer, even as day-to-day life has become challenging.  \nWe want to speak plainly and respectfully: Dave does not have the financial cushion many assumed. Ongoing care costs are significant, and our family is doing everything we can—but we need help.  \nIf Dave’s work moved you—as a colleague, artist, student, or listener—this is a chance for the community he loved to give back.  \n  \n\\*How your gift helps\\*  \n• Medical and memory care support  \n• Dignified daily care and supervision  \n• Basic living needs not covered by insurance  \n  \n\\*Ways to give\\*  \n• Make a one-time gift  \n• Become a monthly supporter to help with steady care costs  \n• Share this page with a note about how Dave impacted you  \nYour messages mean the world. Please feel free to include a story—Dave always lit up hearing how the work connected. His family visits him daily and will make sure he receives your words of love and encouragement.  \n  \nWith deep gratitude,  \n  \nThe Family of Dave Pensado\"",
+    "score": 284,
+    "url": "https://reddit.com/r/audioengineering/comments/1ofcbax/after_decades_elevating_and_educating_others_dave/",
+    "created_at": "2025-10-24T23:11:50.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1muk9gs",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Just a rant: I miss tracking rock music.",
+    "text": "TL:DR - I f-ing miss recording rock! Can we bring it back please? \n\nThere’s really no need to respond to this but I had a bit of free time yesterday and I cranked up the Bogner Ecstasy in the studio and it made me realize just how much I miss tracking rock tunes.  Like proper slamming big guitar big drums rock music.   It’s just so much fun to record and it just feels non existent now.  \n\nLooking at all this gear around me, a beautiful live room that is a dream to track drums in, a stunning DW kit that is begging to be hit and I’m just getting so worn out by virtual instruments, samples, synths etc.  \n\nMy only hope is I see my daughter’s highschool band (and her peers bands) doing loads of covers of Weezer, Soundgarden, No Doubt, Pearl Jam, even Sabbath and Zeppelin and so on.  It gives me a little faith that maybe this up and coming generation is going to embrace some of that rock influence into their music. \n\nListen I’m glad to be busy.  I love my job.  Got to do some great scoring work this year…worked with some singer songwriters that I love too.  But I’m a product of the 90s and I would give a great rock or alt rock band 2 free weeks in my studio just for the pleasure of doing that style again.  I really do miss it.  \n\nSo hey if anyone is in a really solid band and wants to road trip to Vermont…hit me up!  \n\n\n\n\n",
+    "score": 280,
+    "url": "https://reddit.com/r/audioengineering/comments/1muk9gs/just_a_rant_i_miss_tracking_rock_music/",
+    "created_at": "2025-08-19T14:37:26.000Z",
+    "num_comments": 183
+  },
+  {
+    "id": "reddit-1ian5pk",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "BAD client….that I also kind of love",
+    "text": "Howdy all, here to shake it up from the normal gear talk with a fun story/ realization that I made and to see if anyone else has similar clients :)\n\nSo ive been working with this one dude for about 5 years now on and off who is essentially a 1 man alt rock band. He brings in lots of featured artists for parts, different friends to play random parts on different songs, and he has a drummer, but the “core” of every song we work on is him, they’re all his brain children 100%.\n\nAnyways, in pretty much every way shape and form (other than payment, he pays good), he is what we in the industry would call a “bad client”. Short list of things he does regularly:\n\n- shows up to the studio with a rough, not ironed out idea to basically just noodle around and “come back later to finish it”\n\n- brings a million and 1 random friends who have nothing to do with the production of the song into the sessions to “hang out”\n\n- literally plays guitar CONSTANTLY (and loudly) from the second he walks in the door. Its like an ACTUAL impulse. He cant stop. Just randomly riffing at every moment while I am trying to do edits/ set up mics/ move thing around/ do general audio engineering. It drives me up the fucking wall. I tell him to stop and he stops for about 5 minutes, only to start right back up again, and louder than before.\n\n- touches/ plays all of my guitars with grubby gross hands. Now this one I’m actually relatively used to. I have nice guitars here and they are here to be played. I have LOTS of those ernie ball wipes/ cloth kits around, so cleaning and polishing necks after a session is a pretty normal part of my life I guess. But still, it genuinely feels like he leaves a “film” on everything he touches.\n\n- drinks the entire time he’s here from beginning to end\n\n- brings in featured artists who have noooo idea what songs they are working on just to “mess around and try something”\n\n- asks me to pull up sessions from 5 years ago that are on hard drives long-buried in a closet somewhere so he can “add another layer”\n\nTBH, there is actually a lot more, but i’ll just stop there.\n\nAnyways, I have this BIZZARE thing with him. He drives me absolutely up the fucking wall, I spend 70% of the session annoyed, and we rarely get “great” takes because of the nature of his internally driven workflow\n\nBUT\n\nat the end of the day, I hate to admit it, but if I were to cut him off as a client, I would like, GENUINELY miss him. Not necessarily financially…like I said, he pays, but I could cut him off from that perspective and not miss it too much…I mean I would actually miss our monthly sessions and all of his ridiculous bull shit. At the end of the day, he makes me laugh, and even though I usually feel annoyed at the beginning and middle of our sessions, by the time he’s about to head out, we always end up in some sort of down to earth, real life conversation that just kinda makes me happy. Its like, from a philosophical perspective, we actually really “get” eachother. Ya know?\n\nAnybody else have an “enigma” client story? Id be fascinated to hear :)",
+    "score": 260,
+    "url": "https://reddit.com/r/audioengineering/comments/1ian5pk/bad_clientthat_i_also_kind_of_love/",
+    "created_at": "2025-01-26T19:06:07.000Z",
+    "num_comments": 34
+  },
+  {
+    "id": "reddit-1ior798",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Bluetooth has no place in live audio",
+    "text": "I used to be involved with my high school’s AV team, doing morning announcements and live audio at events. Typically, we would set up a small mixer alongside a set of PAs. 1-2 of our crew would operate the equipment. However, there were times where it was more efficient to just use the cheap home stereo system that was on our projector cart (e.g. staff meetings after school when we couldn’t be around). \n\nOne of these times was a presentation by the local police department to the middle school group about staying safe online, consent, the works. As most of our senior team didn’t care to sit through another of what always was usually a really awkward event, we took the easy route and set up the projector cart with the stereo and handed them a wireless mic that was hooked into the ceiling of the auditorium. Everything was going great.\n\nAbout five minutes in, I was paged down to the auditorium because “the speaker system was hacked”. This was heavily concerning to me as out of any guest we could have, it was the police. It turned out, the stereo system (that we had for about eight years at this point) had a Bluetooth mode that could be activated by anyone who had a cellphone. The device was setup to ALWAYS be in pairing mode with no off setting, and even if music was playing from an aux input, a Bluetooth connection would override it.\n\nSafe to say, I was PISSED, as I scrambled to setup a PA and mixer while about 200 middle schoolers watched and laughed as I tried to quickly setup a backup plan (and admin attempted to figure out who hooked their phone to play “movies” on the speakers at the consent presentation. \n\nAs for the poor cop, he took it well, considering it was his first day doing a presentation in front of students. Now for the stereo system, it sits on the cart with a massive label warning any future people to NEVER use that speaker for any events where students are present. The middle schoolers got one hell of a scolding on the morning announcements the next morning. And I learned to NEVER underestimate the power of a middle schooler.\n\nTLDR: Middle schooler discovered how to connect their phone over Bluetooth to our speaker system at a police event.",
+    "score": 255,
+    "url": "https://reddit.com/r/audioengineering/comments/1ior798/bluetooth_has_no_place_in_live_audio/",
+    "created_at": "2025-02-13T19:25:25.000Z",
+    "num_comments": 45
+  },
+  {
+    "id": "reddit-1j1zmpm",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Musician is a conspiracy theorist and thinks I’m a sheep",
+    "text": "I’ve been recording an artist who likes to bring up politics. Specifically, he likes to weaponize his viewpoint and beat me over the head with it. I tried to remain calm and civil. I concede the point every time and he just continues to beat a dead horse. Especially when he has had a beer or two. \n\nHe keeps telling me to wake up and to do my research. He admonishes me for not looking for the information in the correct places.\n\nI am seriously considering ending our professional relationship. I like his music and I enjoy recording him, but he is a curmudgeon and makes it hard for me to continue. \n\nHave you ever had an experience like this? Did you keep recording with them or did you part ways?",
+    "score": 251,
+    "url": "https://reddit.com/r/audioengineering/comments/1j1zmpm/musician_is_a_conspiracy_theorist_and_thinks_im_a/",
+    "created_at": "2025-03-02T19:50:03.000Z",
+    "num_comments": 306
+  },
+  {
+    "id": "reddit-1j68dj2",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "And this ladies and gentlemen, is why you always, always, always charge your rate",
+    "text": "I’m a reasonable guy, I like to help someone when I see talent. Always remembering that my journey into audio engineering started recording through a WebCam microphone that I got from my aunt into the built-in audio manipulation tool in Windows XP, I like to assist talent where I can.\nLast year, I started working with this kid. Really talented guy, really promising. The deal went as follows… I’ll mix you two or three free songs, but then it’s $500 per mix. After going through some music, I phoned him yesterday , in connection with some music he wanted to release. I informed him, that the standard rate was now in effect. His response, and what if I tell you I can get someone to mix it for me?\nTo say I was flabbergasted would be an understatement. In this moment, it’s dawned on me that a. I had been mixing for someone who had options, the ability to pay and simply choose to enjoy the free ride… And B. He never really had any intentions of paying me. After this experience, I don’t think I’m giving anyone any more grace.\nAnd guys… You’ve got to understand… These weren’t normal recordings. This guy recorded in the worst possible rooms… Supplying two tracks 128 kilobit MP3s to record over… With a singing voice that required loads of manual tuning. I don’t quite know What is my goal for sharing this experience… But I figured I would place it in the audio engineering sub Reddit since someone would be able to… I don’t know… Understand the feeling.",
+    "score": 244,
+    "url": "https://reddit.com/r/audioengineering/comments/1j68dj2/and_this_ladies_and_gentlemen_is_why_you_always/",
+    "created_at": "2025-03-08T03:40:47.000Z",
+    "num_comments": 80
+  },
+  {
+    "id": "reddit-1o0sof1",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Is the audio engineering industry also f*cked like the rest of the creative fields?",
+    "text": "I've been doing video post production for over a decade and I've never seen it this bad in terms of job scarcity, add to it a healthy dose of burnout and I was thinking of maybe start learning audio post, which is something that I've always been intrigued about but never learned.\n\nQuestion is: Is it worth it? I'm not young anymore and I'm experiencing a lot of ageism in my job quest being super senior at what I do, I worry that trying to break into audio is going to be impossible considering that I would be a newbie with a barebones portfolio but old.\n\n\n\n",
+    "score": 211,
+    "url": "https://reddit.com/r/audioengineering/comments/1o0sof1/is_the_audio_engineering_industry_also_fcked_like/",
+    "created_at": "2025-10-07T22:00:08.000Z",
+    "num_comments": 166
+  },
+  {
+    "id": "reddit-1jfg9wo",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Too much technical knowledge can be a bad thing",
+    "text": "Just going on a rant here, but I've noticed that, with the advent of Plugin Doctor and the popularity of certain YouTubers, there's been a much greater emphasis on the technical side of mixing in the audio world. On the one hand, this is great, because the more we understand our tools, the better we are at using them, myself included. However, there is a downside to it, which is making mountains out of the most nerd crap molehills.\n\nFor example, recently I saw a video by Sage Audio [debunking bad mixing advice](https://www.youtube.com/watch?v=qzOW0QZFNsQ), and overall I found the video itself perfectly agreeable, but there was one part where he was talking about the idea that putting a HPF on your mix buss increases headroom by cutting out subsonic frequencies, and pointing out the resultant phase shift could actually decrease your headroom. Fine, whatever, I guess, but then I went down to the comment section and I saw people talking about using a HPF on tracks, and one person said that, in order to be on the safe side, you should use a low shelf instead. Even setting aside the fact that a shelf also introduces phase shift, I was just imagining how much of a pain in the ass replacing everything I use a HPF for with a low shelf would be, and to what end?\n\nOr how there's so much worry about aliasing. I've been guilty of this myself, but recently I've been really into the Waves NLS plugin, especially with the \"Mike\" setting, and on the mix I'm currently working on, I set the pre-amp to mic to overdrive some wimpy-sounding guitars in the chorus. On a whim, I decided to try an aliasing test on it, and it turns out that \"Mike\" makes the plugin audibly alias on its own, and overdriving it makes the aliasing go bananas. Does that make me wanna not use the plugin? No, because I still like the way it sounds.\n\nThat's all it comes down to, at the end of the day: this is music, not rocket surgery. My go-to story when thinking about this topic is one which Malcolm Toft tells about when an engineer told him that the EQ on the Trident A-Range causes X degree of phase shift at Y frequency. \"Yeah,\" Toft responded, \"but do you like the sound of the console?\"\n\nIt seems like some of this is just nonsense, too. Imagine if I told you that you should only use saturators which emphasize the second, rather that the third harmonic, since the third harmonic is mathematically three times the frequency of the fundamental, it's a Pythagorean fifth, and therefore won't sound musical in an equal tempered tuning system. I have no clue if that has any validity whatsoever, but I wonder if I could get people to repeat it if I put it in a YouTube video called \"Neve Saturation Is a SCAM! (And Here's Why).\" Anything can be a problem if you overthink it enough.\n\nHere endeth my rant, but does anyone else feel me on this?",
+    "score": 209,
+    "url": "https://reddit.com/r/audioengineering/comments/1jfg9wo/too_much_technical_knowledge_can_be_a_bad_thing/",
+    "created_at": "2025-03-20T03:51:29.000Z",
+    "num_comments": 92
+  },
+  {
+    "id": "reddit-1kb7aa5",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Audio engineering is the worst job in the world - you just have to love it",
+    "text": "This may be a bit controversial but what’s not now a days haha. \n\nI got into the live sound world very early in my career and very young. Around 18 years old. I started working for a large church that had all the gear I could want to learn on and develop my skills. I also got into doing some studio work and other gigs around my city. \n\nI have a friend and mentor that’s been with me since I first started. He moved to my city from Nashville and spent years doing exactly what I want to do. He has his own studio, worked with some of my favorite bands, and had some great connections. \n\nOne day we were up at my church job talking away about tricks and technique and how I could improve my mixing (I was still very young then) and our conversation moved to talking about some drawbacks and some roadblocks I had started running into. After some more discussion and venting from me he told me this: “You picked the worst job in the world, you just have to love it.” And it stuck with me ever since. Nothing about my job has gotten easier, in fact quite the opposite. But I still love it and all the intricacies of audio that I can spend forever learning about. ",
+    "score": 180,
+    "url": "https://reddit.com/r/audioengineering/comments/1kb7aa5/audio_engineering_is_the_worst_job_in_the_world/",
+    "created_at": "2025-04-30T03:47:46.000Z",
+    "num_comments": 61
+  },
+  {
+    "id": "reddit-1hqfq28",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Finding work is possible!",
+    "text": "I’m honestly frustrated by how many people are posting about going to audio engineering school without considering where they’ll work afterward.\n\nWhen I went to audio engineering school, it was nothing like what many here describe. The instructors were upfront about the realities of the industry and guided us toward viable career paths. Personally, I chose live audio and now have a full-time job with above-minimum wage pay, benefits, a paid phone plan, and often paid meals. On the side, I run a home studio as a hustle.\n\nThis wasn’t my original dream—I went in thinking more about studio work—but before starting school, I realized I needed to broaden my perspective and be open to any audio-related opportunities.\n\nThe point is: don’t fall into a doomer mindset. If you truly love audio, think about what it takes to support yourself while staying in the field. There are more paths than you might think—be open to them.",
+    "score": 134,
+    "url": "https://reddit.com/r/audioengineering/comments/1hqfq28/finding_work_is_possible/",
+    "created_at": "2024-12-31T14:26:08.000Z",
+    "num_comments": 30
+  },
+  {
+    "id": "reddit-1j7aolb",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Anyone here just engineer for themselves?",
+    "text": "I know a lot of the people here are professionals who work with various clients, but how many people here only learned engineering for their own projects or maybe for a few friends? I've personally been learning just for recording and producing my band's music, and I'd maybe be willing to help a few friends out if they needed it, but I'm fairly uninterested in doing it professionally. Kinda sounds like a pain in the ass, just like any other client-based career. ",
+    "score": 133,
+    "url": "https://reddit.com/r/audioengineering/comments/1j7aolb/anyone_here_just_engineer_for_themselves/",
+    "created_at": "2025-03-09T16:00:57.000Z",
+    "num_comments": 76
+  },
+  {
+    "id": "reddit-1l8dav0",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "i give up.",
+    "text": "I know I know, its really easy to say these words but honestly I give up.\n\nI've been looking into audio jobs for YEARS. 4 freaking years. none. I've tried everything I can. emailing 100+ times, calling 25+ places, reaching out to multiple people, interviewed for a job 2 times but employers bailed out, trying to go to any place I know and can find to even get a internship.\n\nI live in a kind of rural area, and don't have much support. yes, I know I'm young, but everyone keeps telling me to quit. I've loved audio for years now. studying at home, learning electronics and engineering and taking classes. I love it. I love setting up the stage for shows. its my dream. its the career I want. but every single time I feel like I'm hitting a roadblock. I want to be able to intern, to show everyone I can actually do something but everyone keeps telling me I wont do anything. even my guidance consoler said I wouldn't be good for anything in music. I'm just done.\n\nI want a internship, but traveling isn't free, and I want a job but I don't think I'm qualified, I've tried every local place to at least get something and either a few responded and said no- or some just never replied. it makes me think if I'm actually worthy of being in music and if it is the place for me. I cant see myself doing anything else. I recently reached out to a collage (their sound department) to see if I can get a internship or at least a low paying job. but we haven't discussed it fully yet.\n\nyes, I'm young, but I don't see myself being happy anywhere else. I feel like hitting roadblock after roadblock. its stressing me out. I feel so unprepared. it sucks because its making me depressed and worsening it. I don't want anybody telling me \"find something else\" or \"maybe it isn't for you\" well- maybe it isn't. but people have downed me so much to the point I feel so tired. I just want a simple audio job helping people. all I want. but I give up.",
+    "score": 104,
+    "url": "https://reddit.com/r/audioengineering/comments/1l8dav0/i_give_up/",
+    "created_at": "2025-06-10T23:07:24.000Z",
+    "num_comments": 284
+  },
+  {
+    "id": "reddit-1iq24mi",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "For all engineers wanting a full-time career: don't give up!",
+    "text": "Full-time? Not yet; Projects? over 30, ratings? Good. Grateful!!\n\nfor those wanting to be full-time engineers like me, just an advice: don't be sad about what you want not being a truth right now, but be grateful about what was possible to you succeed.",
+    "score": 98,
+    "url": "https://reddit.com/r/audioengineering/comments/1iq24mi/for_all_engineers_wanting_a_fulltime_career_dont/",
+    "created_at": "2025-02-15T14:10:28.000Z",
+    "num_comments": 40
+  },
+  {
+    "id": "reddit-1mfhflf",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Are there any women in here who have made a living in audio engineering?",
+    "text": "Okay long story short a family member asked what I was going to pursue after school so I told them I wanted to be an audio engineer and the first thing they said was “well as a women…”😭😭 ever since then I’ve been rethinking my career choice but I can’t think of anything else that I want to do.",
+    "score": 90,
+    "url": "https://reddit.com/r/audioengineering/comments/1mfhflf/are_there_any_women_in_here_who_have_made_a/",
+    "created_at": "2025-08-02T04:22:48.000Z",
+    "num_comments": 168
+  },
+  {
+    "id": "reddit-1njx4pp",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Looking to get out",
+    "text": "I hate to say it, folks, but after 16 years making my living entirely from audio I feel like I need an out. Working conditions at my current spot (large regional theatre) are becoming intolerable.  Until about last year this was the best job ive ever had, but it underwent a management change and went to the dogs. I've reached out to some local corporate a/v companies and audio rental shops, but honestly the thought of freelancing and gigging again just makes me depressed. I think i need a regular job. \n\nHas anyone here successfully left the audio industry for a new career? Where should I even look? Never went to college. Late thirties now, been doing this professionally since my early twenties and never had to develop other job skills. Am I just trapped? Any advice would be a godsend. ",
+    "score": 90,
+    "url": "https://reddit.com/r/audioengineering/comments/1njx4pp/looking_to_get_out/",
+    "created_at": "2025-09-18T02:57:25.000Z",
+    "num_comments": 60
+  },
+  {
+    "id": "reddit-1iduqpu",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Pivoting OUT of engineering",
+    "text": "The recent post about pivoting into music from a stable career (lol) had me thinking the opposite and ‘what is my exit plan?’ \n\nI have been in music for the past 15 years. It’s all I’ve ever done post uni as I did the classic runner &gt; assistant &gt; engineer &gt; mixer. I would consider myself pretty successful but this career is so fickle and so potentially unreliable. Looking forward, if you haven’t got points on a few HUGE hits by the time you’re 40, what the fuck are you doing when no one wants to hire a 50 year old engineer. \n\nHas anyone here successfully made a move out of the industry or maybe just out of engineering, into a related role. What transferable skills do us mixers and engineers have in the real world?",
+    "score": 69,
+    "url": "https://reddit.com/r/audioengineering/comments/1iduqpu/pivoting_out_of_engineering/",
+    "created_at": "2025-01-30T19:09:25.000Z",
+    "num_comments": 97
+  },
+  {
+    "id": "reddit-1kvick5",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Does being a Logic based engineer REALLY stunt your chances on getting a gig?",
+    "text": "Hey everyone,\n\nI’ve been working in Logic Pro for a while now and I feel pretty comfortable with it—from tracking to mixing, even a bit of mastering. But as I look more seriously into the professional side of the industry, I keep hearing that Pro Tools is the industry standard, especially in studio and post environments.\n\nThat said, I’m wondering:\nIs sticking with Logic really a career-limiting move?\nWould being Logic-based hurt my chances at landing gigs in studio settings, or are there places where Logic is still respected and viable?\n\nNot trying to start a DAW war—just genuinely curious about how much this matters when it comes to actually getting hired or working in pro studios.\n\nThanks in advance for any insight!\n",
+    "score": 59,
+    "url": "https://reddit.com/r/audioengineering/comments/1kvick5/does_being_a_logic_based_engineer_really_stunt/",
+    "created_at": "2025-05-26T01:27:04.000Z",
+    "num_comments": 96
+  },
+  {
+    "id": "reddit-1o6qxxw",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "New Job Board for Audio Engineers — Live Sound, AV, and Sound Design Opportunities",
+    "text": "Hey folks,\n\nI’m an acoustics engineer who recently launched AudJobs.net, a site dedicated to career opportunities in audio, acoustics, and DSP engineering. This is a bit of a plug, hopefully this is allowed on the sub, but if not I am happy to take it down. I'm also looking for feedback from you guys into what you might be looking for in a job board.\n\nI know a lot of people here are looking to move between studio, live, and technical roles, so I’ve tried to make the listings broad but still relevant — there are currently over 100 open positions in live audio, AV system design, and sound design.\n\nSome companies are already posting directly to the site, which means these aren’t stale aggregator listings — they’re current and industry-specific.\n\nIt’s completely free to use, and I’d love feedback from the community if you check it out:\nhttps://AudJobs.net\n\nAlways open to ideas on how to make it more useful for working audio engineers.",
+    "score": 57,
+    "url": "https://reddit.com/r/audioengineering/comments/1o6qxxw/new_job_board_for_audio_engineers_live_sound_av/",
+    "created_at": "2025-10-14T20:34:22.000Z",
+    "num_comments": 6
+  },
+  {
+    "id": "reddit-1o3bwmi",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Scored a CL1B for $3K Off Facebook — Still Can’t Believe It",
+    "text": "What’s up everyone,\n\nJust had to share a crazy win — I picked up a Tube-Tech CL1B for $3,000 off Facebook Marketplace and it still doesn’t feel real.\n\nI’ve been hunting for one for a while but never thought I’d actually get my hands on one without shelling out $4.5K+. Then boom — this listing pops up somewhat local, I messaged immediately, met the guy the next day, and it was legit. Super clean, fully functional, no sketchy vibes. Total unicorn deal.\n\nFinally got it racked up and running in my vocal chain, and yeah… it absolutely lives up to the hype. It’s buttery smooth, the compression is invisible in the best way, and it just adds that pro sheen instantly. I’ve used plugins that try to emulate it, but nothing touches the real thing.\n\nAnyone else ever scored a dream piece of gear for a steal? I feel like this is a once-in-a-career kind of find.",
+    "score": 56,
+    "url": "https://reddit.com/r/audioengineering/comments/1o3bwmi/scored_a_cl1b_for_3k_off_facebook_still_cant/",
+    "created_at": "2025-10-10T20:22:33.000Z",
+    "num_comments": 38
+  },
+  {
+    "id": "reddit-1lzktko",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "People who got Gullfoss a few years ago, do you still use it?",
+    "text": "Specifically interested to hear from people who don't master their own tracks. I tried the demo a while ago and I found it was really helping me with my mixes, but im not at a professional stage in my career. I found I'd put it on a bus or on the master, get it sounding better, then disable it and go make EQ curves that kinda matched what it was doing.\n\nIm just wondering if this is a tool thats made it into people's professional workflow as a mixer long term? Or is it just something useful for when you're not quite there with your skills?",
+    "score": 52,
+    "url": "https://reddit.com/r/audioengineering/comments/1lzktko/people_who_got_gullfoss_a_few_years_ago_do_you/",
+    "created_at": "2025-07-14T12:16:12.000Z",
+    "num_comments": 73
+  },
+  {
+    "id": "reddit-1ocyan9",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Feeling demotivated about studying Audio Engineering",
+    "text": "I'm 19 right now. For the most part of the last few years, I have been dead set on becoming a Sound Engineer. I love music and I have always been curious about what goes on behind the scenes. Ever since I first saw a mixer I wanted to know how it all worked. Ever since I first saw people using synths, I wanted to do that too.\n\nI have been learning German for more than a year now, just to study at a public university and work in Germany  as a Sound Engineer. I'm at the last stage of learning German (minimum required level of B2) and my exams are next month.\n\nBut recently, I have been feeling demotivated about pursuing this full time. Everywhere I look, it's people saying \"Stay away from the Industry\" or \"Keep it as a passion while doing a day job\". Adding to that, my family has been trying to talk me out of this decision as well. Is it really unwise to pursue this career in 2025? Would it be better study something else that gives me a stable income, while pursuing this on the side? Would I still have the passion or even time to learn it while having another job? Too many questions lingering on.\n\nI also thought of doing an Ausbildung, but I can't seem to find many on Audio Engineering, let alone one that accepts foreigners with limited German knowledge.\n\nPlease give me advice on what step I should take.\n",
+    "score": 49,
+    "url": "https://reddit.com/r/audioengineering/comments/1ocyan9/feeling_demotivated_about_studying_audio/",
+    "created_at": "2025-10-22T04:03:41.000Z",
+    "num_comments": 69
+  },
+  {
+    "id": "reddit-1hu92l8",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Am I cooked guys? Working to Complete Bachelor in Arts for Audio Engineering",
+    "text": "I’m starting to worry I’ve maybe chosen the wrong thing, the good news is I still have time to change focus because I’ve only completed a few years in community so far and haven’t transferred to a four year school yet. Should I continue and complete my bachelors at a 4 year (Columbia college Chicago) or find something else to do? I’ve seen so many people say this job is super inconsistent and stressful. I’m really into sound design, production, mixing, mastering, and making beats, which I’ve done for like 10 years now. Is there any Job for me or should I just put the fries in the bag?\nAnother alternative is something nature related as I’m also into outdoors type of stuff and environmental science. Is there any hope for a young fella?\n\nAlso I’m looking for something more consistent. I’ve managed to have a few clients over the years but nothing anywhere near a sustainable income. Is there any consistent work in this field or better off switching entirely?\n\nI’m not worried about making it in the “music industry” either, I’m well aware of the other jobs in the field like live sound, post production, commercials, video games. I’m not worried about being a “traditional engineer” just worried about having a stable career path. \n\nWhy is everybody downvoting lol. \n",
+    "score": 45,
+    "url": "https://reddit.com/r/audioengineering/comments/1hu92l8/am_i_cooked_guys_working_to_complete_bachelor_in/",
+    "created_at": "2025-01-05T15:12:30.000Z",
+    "num_comments": 143
+  },
+  {
+    "id": "reddit-1ic8z1t",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "What’s a good rate for a mix?",
+    "text": "I’m pretty mid-career as a mixer in NYC. I’ve got a few successful clients (millions of streams but no plaques, label signees, etc), but no huge names. I’ve been at it for about 4-5 years now and I know I deliver a quality mix. I have a few very happy regular clients. \n\nI generally charge $300 per mix with master included, but recently I’ve been thinking it’s time to bump up. Generally do not include bundles for albums. Do you guys think this is a valid rate or should I be increasing at this point?",
+    "score": 41,
+    "url": "https://reddit.com/r/audioengineering/comments/1ic8z1t/whats_a_good_rate_for_a_mix/",
+    "created_at": "2025-01-28T18:50:32.000Z",
+    "num_comments": 50
+  },
+  {
+    "id": "reddit-1m65s91",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "MD421 love/hate - what’s your take?",
+    "text": "Old discussion in the audio world. Well, I was always a fan but never owned any, borrowed some for recording sessions a couple times, used it in other people’s studios here and there, and so on.\n\nWell a couple years ago I decided to buy a pair, now straight talk here: they sound like shit. Every time I use them I regret it dearly.\n\n“Flaccid” low end, and a ridiculous amount of high mids so prominent that by EQing it out you’re left with nothing but an unusable mushy low end. \n\nI used in on toms a couple times, no real definition on the low end, and so much cymbal bleed that the channels are barely usable.\n\nTried it on kick drum some other time (for some dry 70s type kick without sub lows), same as above.\n\nUsed on a bass amp the other day, absolute trash, as described at the top, mushy flaccid low end and an ugly mid high that’s there to stay or there’s no sound left.\n\nSeasoned engineer with international career here so I ask: did I buy a couple lemons? New Chinese-without-brand-quality control modern version that’s bad, or am I doing something wrong?\n\nSo, anyone interested in buying a couple MD421s? Keep in a professional, smoke free studio etc.",
+    "score": 38,
+    "url": "https://reddit.com/r/audioengineering/comments/1m65s91/md421_lovehate_whats_your_take/",
+    "created_at": "2025-07-22T05:29:49.000Z",
+    "num_comments": 106
+  },
+  {
+    "id": "reddit-1k4d9jc",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Could bone conduction headphones be just as effective as other types of headphones for music or audio engineering?",
+    "text": "I went to my ENT recently and they told me that my hearing was steadily getting worse. While I can still hear mostly okay, I do have to stage my headphones a lot more to compensate for the loss. When I told him I make music, he said \"yeah that makes sense,\" and then he recommended that I get some bone conduction headphones instead to stop it from getting worse. He even said it could make my music sound even better than before.\n\nIs this actually true? Would my music sound different than it used to? Could you, for example, be a fully capable audio engineer with a successful career even with these headphones? I know beehtoven did something like this, but music is a lot more technical and specific than it used to be.",
+    "score": 34,
+    "url": "https://reddit.com/r/audioengineering/comments/1k4d9jc/could_bone_conduction_headphones_be_just_as/",
+    "created_at": "2025-04-21T13:16:16.000Z",
+    "num_comments": 19
+  },
+  {
+    "id": "reddit-1n3dhxe",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Has anyone pivoted from studio work to corporate audio?",
+    "text": "Hey everyone,\n\nI’m 35 with over 17 years of experience as a studio engineer. I worked for a studio in Chicago for about 10 years and had a pretty busy and successful career. I decided a few years ago that I wanted to be closer to family so moved to Connecticut and opened a recording studio there. \n\nI’m very happy with how the studio turned out. It’s a beautiful, 2000 sq foot facility with the gear of my dreams. I didn’t start from scratch as I still had a modest amount of clients who send me work from Chicago and elsewhere, and the studio is slowly gaining attention from artists in the surrounding areas. \n\nSo what’s the problem?\n\nWell, I’m 35 years old and have been feeling the pressure of time lately. I live with family to save money until my business takes off, but would like to buy a house and start a family in the near future. I have no doubt that the studio will eventually become fully booked, but even if it does, it’s not exactly the most stable career. It was fine when I was in my 20’s, but the uncertainty is an extra stress that I don’t need as I try to settle down. Ironically, I find that I’m envious of my friends who have 9-5 jobs. \n\nI don’t want to abandon the studio, as I can always hire engineers to run it for me, but as far as my career, I’d like to find a way to pivot into something in the audio industry that is more reliable (and maybe even better paying)\n\nI have bachelors degree in audio engineering, and my instinct is pushing me toward pursuing an MBA, with the hope of pivoting into a more corporate role within the audio space — things like product marketing, operations, or management at an audio plugin company, audio hardware brand, or a tech company with audio divisions. \n\nMy only fear is that even after getting an MBA, these roles still require prior business environment experience. Sure, I started my own business, but it’s not exactly like I run a team of 30 people. It’s me, my partner, and an intern and frankly I’m no business expert. I can take apart a mixing console and put it back together again, but I had to google what ROI means (lmao).\n\nI guess my question is:\n\nHas anyone here transitioned from a studio/audio engineering background into a more corporate/business-focused role in the audio industry (or outside of it)?\n\nIf so what did you land on and how did you do it?\n\nWill an MBA alone allow me to work in a corporate audio environment? Or do they only hire people with prior corporate experience? \n\nThanks for reading this far, and I appreciate any advice!\n\n\nTLDR; How do I pivot from studio engineering to something more stable in the audio industry? \n",
+    "score": 31,
+    "url": "https://reddit.com/r/audioengineering/comments/1n3dhxe/has_anyone_pivoted_from_studio_work_to_corporate/",
+    "created_at": "2025-08-29T17:21:32.000Z",
+    "num_comments": 35
+  },
+  {
+    "id": "reddit-1ppciog",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "I built 16 free AV calculators and wanted to share with the community",
+    "text": "Hey everyone,\n\nI've been in the AV industry for a while and got tired of juggling Excel sheets, outdated tools, and doing the same calculations repeatedly. So I built something I wish existed earlier in my career.\n\n**AV Tools Pro** (avtoolspro.com), a free collection of 16 professional calculators:\n\n**Video/Display:**\n\n* AVoIP Bandwidth (supports up to 8K, HDR, all major codecs)\n* Projector Throw &amp; Brightness\n* Display Size Calculator (AVIXA DISCAS method)\n* DvLED Pixel Pitch Calculator\n* Video Wall Builder\n\n**Infrastructure:**\n\n* Conduit Fill with JAM Ratio (NEC compliant)\n* PoE Budget Calculator\n* Rack Builder (EIA-310 compliant)\n* Rack Cooling/BTU Calculator\n\n**Audio:**\n\n* Speaker Coverage Calculator\n* DSP System Designer\n* Audio Data Rate Calculator\n\n**For security pros:**\n\n* Camera Distance Calculator (IEC 62676-4 DORI standard)\n\n**What makes it different:**\n\n* Actually follows industry standards (AVIXA, NEC, IEC, EIA-310)\n* Works on mobile (designed jobs sites in mind)\n* No account required\n* No premium tier BS, everything is free\n* Clean UI that doesn't look like it's from 2005\n\nI'm actively maintaining it and adding new tools based on feedback.\n\n**What I'm looking for:**\n\n* Feedback on accuracy and usability\n* Suggestions for calculators you wish existed\n* Bug reports if you find any\n\nNot trying to sell anything — just wanted to give back to the community. Bookmark it if it's useful.\n\n🔗 [**avtoolspro.com**](http://avtoolspro.com/)\n\nHappy to answer any questions!",
+    "score": 30,
+    "url": "https://reddit.com/r/audioengineering/comments/1ppciog/i_built_16_free_av_calculators_and_wanted_to/",
+    "created_at": "2025-12-18T00:09:50.000Z",
+    "num_comments": 10
+  },
+  {
+    "id": "reddit-1n2ks1v",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Is vintage style hardware the right choice in 2025 or is modern analog a better fit?",
+    "text": "Over my career I’ve amassed a large collection of some of the best analog hardware out there. (Neve, API, Chandler, Urei, Undertone etc). I love the sounds I get with this stuff - they help me create the sounds I grew up on, get to a place that satisfies my ears quicker and subsequently gets projects out the door quicker.\n\nHowever…\n\nIt dawned on me that as I get older… the artists that my clients grew up with are becoming the generation below mine. Soon these sounds will not be the ones that they grew up with. Good sound is good sound - but I feel this needs to be relatable to the artists perception of “good sound”.\n\nWe’ve had a good run with this 60’s and 70’s tech; our industry thrives on nostalgia… but maybe it’s time to be looking forward?\n\nThe most modern piece of outboard I own is an Unfairchild. Which I feel strikes a good balance of keeping the best of the old in terms of sonics but with modern control. Despite being 60s tech primarily - it doesn’t sound “vintage”. It’s still quite a “throwback” piece though.\n\nWhat’s good in the world of modern analog? Who’s got genuinely new and unique designs coming out? What’s relatable to the current sound…. or did we really peak in the 70’s?\n\nFor the record - I’m very aware that this generation will now be coming up with 100% digital records. Whilst I’m still in demand for recording live instruments - analog is still very important for my work.\n\nLooking forward to your thoughts ✌️",
+    "score": 29,
+    "url": "https://reddit.com/r/audioengineering/comments/1n2ks1v/is_vintage_style_hardware_the_right_choice_in/",
+    "created_at": "2025-08-28T18:50:51.000Z",
+    "num_comments": 62
+  },
+  {
+    "id": "reddit-1mmyys5",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Noticing a lot of production critiques of big records these days",
+    "text": "I’m sure this has always been the case to some degree, but with the abundance of YouTube “mixing guys” and just endless online content around music production, I’m seeing more and more armchair producers critiquing big releases from bands, particularly on YouTube and Reddit.\n\nThe latest Tyler Childers record and the Spiritbox record that came out in March are the first two that spring to mind, but I’ve seen it a ton this year across all genres. Sometimes the critiques make sense to me, sometimes they are put forth as a mix critique but are in actuality an arrangement critique, and other times they’re downright stupid. \n\nI’m curious, because I know there are probably several people in this sub who have worked on big-ish records that have been critiqued online, how have you handled that in your career? I do this full time, but I rarely work with artists on a scale big enough for there to be entire threads devoted to shitting on the mix. How do you work through that psychologically and keep your confidence moving forward when it inevitably happens?",
+    "score": 24,
+    "url": "https://reddit.com/r/audioengineering/comments/1mmyys5/noticing_a_lot_of_production_critiques_of_big/",
+    "created_at": "2025-08-11T00:38:28.000Z",
+    "num_comments": 28
+  },
+  {
+    "id": "reddit-1kgacze",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Any advice for a slightly depressed musician?",
+    "text": "Hey guys! I'll try and keep it brief... basically I'm a composition graduate from the Royal College of Music... I interned with a big British film composer before Covid hit and yeah... that basically destroyed my plans. I've since moved to a smaller city where all of the established film composers are running lone wolf operations, so no possibility really of continuing as an assistant. \n\nSince Covid I've been freelancing as a producer/mix engineer. I am a very proficient guitarist as I've been playing since I was 8 and have amassed a collection of old instruments and can play drums, keys, banjo, mandolin etc... Basically I was just looking for some general advice from others in this field. I'd love to build a website but with the way things are nowadays I'm not sure whether to build said website around a niche or literally just somewhere with a bunch of my music, plus things I've mixed...\n\nEssentially should I focus my career on media composition like films and games OR should I focus my attention on producing for others and mixing their project whilst continuing with my own music? The internet is a great place for research but I've hit a point of diminishing returns... I'd just love some advice basically. \n\nI know I have the skills and the ears, I'm just a little lost as to where to put my energy. I have sample recordings from documentaries I've scored, plus albums I've produced and mixed. Can anyone offer some pointers as to where they'd pool their focus if they were in my position? I feel like I'm stuck with the know-how musically... but without the faintest idea how to make it my career. Thanks in advance!",
+    "score": 23,
+    "url": "https://reddit.com/r/audioengineering/comments/1kgacze/any_advice_for_a_slightly_depressed_musician/",
+    "created_at": "2025-05-06T17:28:26.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1p422xh",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Anyone here take a break from recording for a higher-paying career and come back?",
+    "text": "Hey y’all. I am a pro-ish recording engineer and studio tech who graduated school pretty recently. I’ve been doing recording freelance since the studios in my area almost exclusively take interns, and working in a shop as a wiring guy. I like what I do, but the town I am in is getting exhausting. It’s over saturated with engineering grads, the cost of living is getting insanely expensive, and I can barely afford to pay rent, let alone have enough capital to build a tiny home rig and start taking on more clients. \n\nI won’t get into details of how or why, but I have the opportunity to switch fields and make a healthy six-figure salary doing so, with a high possibility for it to increase drastically as I go on. I would be able to have a very low cost of living while making a crap ton of cash. This is basically a no-brainer, but I don’t wanna give up on my dreams forever. It would be nice to one day be able to have the capital to have my own studio, and work the way that I want. \n\nThat’s why I am wondering if anyone has switched careers to something higher-paying and returned. I am hesitant to “give-up” on my recording dreams, but it’s hard for me to not chase financial stability. If I did take the job, I wouldn’t wanna fully separate from it, and I’d love to return to it at some point. If anyone has any insight, I’d appreciate it. ",
+    "score": 19,
+    "url": "https://reddit.com/r/audioengineering/comments/1p422xh/anyone_here_take_a_break_from_recording_for_a/",
+    "created_at": "2025-11-22T19:34:58.000Z",
+    "num_comments": 36
+  },
+  {
+    "id": "reddit-1nc8d1i",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "Is my research accurate?",
+    "text": "From my notes in obsidian:\n\nThe median annual wage for sound engineering technicians was $66,430 in 2024. [1]\n\nOlder data from 2023 shows the median hourly wage is in the range of $24.83-$28.57/hr. [2] [3]\n\nHowever, there is a caveat when we look at percentile data.\n\n- The bottom 10% make less than $17.38/hr, while 90% make more than that.\n- 25% of workers make less than $22.03/hr, meaning 75% make more.\n- Half of all workers earn less than $28.57/hr (~$59,430/year), while the other half earns more.\n\n\nThat means half the workforce is below $59k/year, and if you’re at the 25th percentile, you’re only earning about $45k/year, which is ok, but not great. The real jump doesn’t come until the 75th percentile, where workers earn over $94k/year, but reaching that level is very competitive and not the norm, even the median is competitive, and the curve only gets steeper as you advance into the higher percentiles.\n\nIf this was a different career that has smoother transitions into earning a higher salary, these numbers would seem fine, but in audio engineering, it's not.\n\nFootnotes\n\n1. Broadcast, Sound, and Video Technicians : Occupational Outlook Handbook: : U.S. Bureau of Labor Statistics↩︎\n\n2. May 2023 National Occupational Employment and Wage Estimates↩︎\n\n3. Sound Engineering Technicians↩︎\n\n4. Broadcast, Sound, and Video Technicians : Occupational Outlook Handbook: : U.S. Bureau of Labor Statistics↩︎\n\nSound engineering looks interesting to me but that really drives me away from it, I'm looking into potential careers alongside music.\n\n",
+    "score": 18,
+    "url": "https://reddit.com/r/audioengineering/comments/1nc8d1i/is_my_research_accurate/",
+    "created_at": "2025-09-09T03:25:35.000Z",
+    "num_comments": 58
+  },
+  {
+    "id": "reddit-1mi1bxh",
+    "subreddit": "audioengineering",
+    "soc_codes": [
+      "27-4014"
+    ],
+    "title": "My best friend is stuck in this industry, and I don't know what to do to help him",
+    "text": "TL;DR: talented friend is professionally stuck at this industry because of some knowledge gaps he is not able to close. Current company is not willing to support his growth, and lacks confidence and direction to take next steps in his carrer.\n\nHi everyone,\n\nI’m reaching out to see if you might have some advice for my best friend. He lives in the UK, and for a while now I’ve felt like he’s professionally stuck, and I’m not sure how to help him.\n\nHe works at a recording and sound services company as a technician (for example, he records dubbing, voiceovers for videos and apps, and similar projects) and has been there for quite a few years. From what I understand, he’s quite good at what he does - there are clients who specifically request to work with him, he’s known by competitors and clients alike, and similar things. The catch is that he doesn’t have any formal education or training; he got into the job in a rather unusual way years ago and learned everything on the job.\n\nEven though he’s good at his work, his problem (as I understand it) is that, because he has no formal training, he has gaps in his skills that he would need to fill in order to apply for jobs at other studios where he could earn more. His current company apparently has no intention of promoting him, giving him more responsibilities, or providing the training that would cover those gaps (he has offered to help at other functions for free just to learn, and they turned him down). My impression is that he’s already a great asset as he is and they don’t want to do anything that might give him more freedom to leave. I've heard there are clients that are there just because they like working with him.\n\nBut obviously, he can’t stay like this forever. Some things we’ve discussed include:\n\n* Enrolling in a course/degree to learn what he’s missing: he says he could do that, but if he can’t practice those skills (and his current job won’t allow it), he feels it wouldn’t be useful - like trying to learn Photoshop just by reading a book.\n* Moving to a similar role at a competing company: he’s afraid of making the change, even though competitors have reached out to him a couple times. They’d offer him roughly the same salary, and he’d lose the strong internal reputation he has now. In my opinion, it could be worth it because it might open new doors, but that’s how he feels.\n* Studying something broader (e.g., Project Management, a Master’s in Business, or similar): he can’t really picture himself doing that or isn’t sure he’d want to.\n\nIt’s a combination of factors: he feels trapped, and at the same time, he lacks both direction and the confidence/optimism to take a leap toward something new.\n\nI wanted to see if anyone here has ideas for a viable path to grow in this industry or any insights that might be helpful. Sorry for being so vague; I don’t know much about the field. Just trying to help my talented, stuck and slightly depressed friend.",
+    "score": 11,
+    "url": "https://reddit.com/r/audioengineering/comments/1mi1bxh/my_best_friend_is_stuck_in_this_industry_and_i/",
+    "created_at": "2025-08-05T06:03:29.000Z",
+    "num_comments": 22
+  }
+]

@@ -26,12 +26,111 @@ interface CareerPathStage {
   levelName?: string;
 }
 
+interface InstitutionOption {
+  value: string;
+  label: string;
+  cost: number;
+}
+
+// Helper function to get available institution types for each education stage
+function getAvailableInstitutionTypes(
+  stageItem: string,
+  costByType: Career['education']['cost_by_institution_type'],
+  stageCost: { min: number; max: number; typical?: number }
+): InstitutionOption[] {
+  const item = stageItem.toLowerCase();
+  const options: InstitutionOption[] = [
+    { value: 'average', label: 'Average', cost: stageCost.typical || Math.round((stageCost.min + stageCost.max) / 2) }
+  ];
+
+  if (!costByType) return options;
+
+  if (item.includes('bachelor')) {
+    // Bachelor's degree options
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public (in-state)', cost: costByType.public_in_state.total });
+    }
+    if (costByType.public_out_of_state) {
+      options.push({ value: 'public_out_of_state', label: 'Public (out-of-state)', cost: costByType.public_out_of_state.total });
+    }
+    if (costByType.private_nonprofit) {
+      options.push({ value: 'private_nonprofit', label: 'Private', cost: costByType.private_nonprofit.total });
+    }
+    // Add transfer options (2 years CC + 2 years 4-year)
+    if (costByType.community_college) {
+      const ccCost = costByType.community_college.per_year * 2;
+      if (costByType.public_in_state) {
+        const transferCost = ccCost + costByType.public_in_state.per_year * 2;
+        options.push({ value: 'cc_transfer_public', label: 'CC → Public (transfer)', cost: transferCost });
+      }
+      if (costByType.private_nonprofit) {
+        const transferCost = ccCost + costByType.private_nonprofit.per_year * 2;
+        options.push({ value: 'cc_transfer_private', label: 'CC → Private (transfer)', cost: transferCost });
+      }
+    }
+  } else if (item.includes('master') || item.includes('graduate') || item.includes('mba')) {
+    // Master's/Graduate degree - use proportional costs
+    const typicalCost = stageCost.typical || Math.round((stageCost.min + stageCost.max) / 2);
+    const totalTypicalCost = costByType.public_in_state?.total || costByType.public_out_of_state?.total || typicalCost;
+    const proportion = typicalCost / (totalTypicalCost || 1);
+
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public (in-state)', cost: Math.round(stageCost.min) });
+    }
+    if (costByType.public_out_of_state) {
+      options.push({ value: 'public_out_of_state', label: 'Public (out-of-state)', cost: Math.round((stageCost.min + stageCost.max) / 2) });
+    }
+    if (costByType.private_nonprofit) {
+      options.push({ value: 'private_nonprofit', label: 'Private', cost: Math.round(stageCost.max) });
+    }
+  } else if (item.includes('associate')) {
+    if (costByType.community_college) {
+      options.push({ value: 'community_college', label: 'Community College', cost: costByType.community_college.total });
+    }
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public 4-year', cost: Math.round(costByType.public_in_state.per_year * 2) });
+    }
+  } else if (item.includes('apprentice')) {
+    // Apprenticeship - just show the one option
+    if (costByType.apprenticeship) {
+      options.length = 0; // Clear the average option
+      options.push({ value: 'apprenticeship', label: 'Apprenticeship (paid)', cost: 0 });
+    }
+  } else if (item.includes('certificate') || item.includes('trade') || item.includes('vocational')) {
+    if (costByType.trade_school) {
+      options.push({ value: 'trade_school', label: 'Trade School', cost: costByType.trade_school.total });
+    }
+    if (costByType.community_college) {
+      options.push({ value: 'community_college', label: 'Community College', cost: costByType.community_college.total });
+    }
+  } else if (item.includes('doctor') || item.includes('md') || item.includes('medical') ||
+             item.includes('law') || item.includes('jd') || item.includes('professional')) {
+    // Professional degrees - use min/max from stage
+    options.push({ value: 'public_in_state', label: 'Public', cost: stageCost.min });
+    options.push({ value: 'private_nonprofit', label: 'Private', cost: stageCost.max });
+  }
+
+  return options;
+}
+
 export default function ComparePage() {
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [startAge] = useState(18); // Age when starting education/training
   const [retirementAge] = useState(65);
+  // Track institution type selections: { [careerSlug]: { [stageIndex]: institutionType } }
+  const [institutionTypes, setInstitutionTypes] = useState<Record<string, Record<number, string>>>({});
+
+  const updateInstitutionType = (careerSlug: string, stageIndex: number, value: string) => {
+    setInstitutionTypes(prev => ({
+      ...prev,
+      [careerSlug]: {
+        ...(prev[careerSlug] || {}),
+        [stageIndex]: value,
+      },
+    }));
+  };
 
   const selectedCareers = useMemo(() => {
     return selectedSlugs.map(slug => fullCareers.find(c => c.slug === slug)).filter(Boolean) as Career[];
@@ -50,8 +149,23 @@ export default function ComparePage() {
     return selectedCareers.map(career => {
       const stages: CareerPathStage[] = [];
       const educationYears = career.education?.time_to_job_ready?.typical_years || 2;
-      const educationCost = career.education?.estimated_cost?.typical_cost || 0;
       const timeline = career.career_progression?.timeline || [];
+      const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
+      const costByType = career.education?.cost_by_institution_type;
+
+      // Calculate total education cost based on institution type selections
+      let educationCost = 0;
+      if (costBreakdown.length > 0) {
+        costBreakdown.forEach((stage, idx) => {
+          const selectedType = institutionTypes[career.slug]?.[idx] || 'average';
+          const options = getAvailableInstitutionTypes(stage.item, costByType, stage);
+          const selectedOption = options.find(o => o.value === selectedType) || options[0];
+          educationCost += selectedOption.cost;
+        });
+      } else {
+        // Fallback to typical cost if no breakdown
+        educationCost = career.education?.estimated_cost?.typical_cost || 0;
+      }
 
       let cumulative = 0;
 
@@ -120,7 +234,7 @@ export default function ComparePage() {
         educationCost,
       };
     });
-  }, [selectedCareers, startAge, retirementAge]);
+  }, [selectedCareers, startAge, retirementAge, institutionTypes]);
 
   const addCareer = (slug: string) => {
     if (selectedSlugs.length < 3 && !selectedSlugs.includes(slug)) {
@@ -222,6 +336,78 @@ export default function ComparePage() {
             )}
           </div>
         </div>
+
+        {/* Education Cost Settings */}
+        {selectedCareers.length > 0 && (
+          <div className="card p-6 mb-8">
+            <h2 className="text-lg font-bold text-secondary-900 mb-2">Education Cost Settings</h2>
+            <p className="text-sm text-secondary-500 mb-4">
+              Default uses average of public and private school costs.
+              Select specific institution types for more accurate estimates.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {selectedCareers.map((career, idx) => {
+                const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
+                const costByType = career.education?.cost_by_institution_type;
+                const hasBreakdown = costBreakdown.length > 0;
+
+                return (
+                  <div key={career.slug} className={`p-4 rounded-lg ${colorClasses[colors[idx]].bgLight} border ${colorClasses[colors[idx]].border}`}>
+                    <div className={`font-semibold mb-3 ${colorClasses[colors[idx]].text}`}>
+                      {career.title}
+                    </div>
+
+                    {hasBreakdown ? (
+                      <div className="space-y-3">
+                        {costBreakdown.map((stage, stageIdx) => {
+                          const options = getAvailableInstitutionTypes(stage.item, costByType, stage);
+                          const selectedValue = institutionTypes[career.slug]?.[stageIdx] || 'average';
+                          const selectedOption = options.find(o => o.value === selectedValue) || options[0];
+                          const isLocked = options.length === 1;
+
+                          return (
+                            <div key={stageIdx}>
+                              <div className="text-xs text-secondary-600 mb-1">{stage.item}</div>
+                              {isLocked ? (
+                                <div className="text-sm font-medium text-green-600 bg-white rounded px-2 py-1">
+                                  {selectedOption.label} - {selectedOption.cost === 0 ? '$0 (paid training)' : formatPay(selectedOption.cost)}
+                                </div>
+                              ) : (
+                                <select
+                                  value={selectedValue}
+                                  onChange={(e) => updateInstitutionType(career.slug, stageIdx, e.target.value)}
+                                  className="w-full text-sm border border-secondary-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                >
+                                  {options.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                      {option.label} - {formatPay(option.cost)}
+                                    </option>
+                                  ))}
+                                </select>
+                              )}
+                            </div>
+                          );
+                        })}
+                        <div className="pt-2 border-t border-secondary-200">
+                          <div className="text-xs text-secondary-500">Total Education Cost</div>
+                          <div className="font-bold text-secondary-900">
+                            {formatPay(careerPaths.find(p => p.career.slug === career.slug)?.educationCost || 0)}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-sm text-secondary-600">
+                        <div className="font-medium">{formatPay(career.education?.estimated_cost?.typical_cost || 0)}</div>
+                        <div className="text-xs text-secondary-500 mt-1">No breakdown available</div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {selectedCareers.length >= 1 && (
           <>

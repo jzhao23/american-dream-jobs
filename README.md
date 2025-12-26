@@ -104,11 +104,19 @@ american-dream-jobs/
 
 ## Scripts
 
+### Development
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
-- `npm run fetch-careers` - Generate career data (uses cache)
-- `npm run fetch-careers:refresh` - Force refresh career data
+
+### Data Pipeline
+- `npm run data:process-onet` - Process O*NET occupation data
+- `npm run data:fetch-wages` - Fetch BLS wage data
+- `npm run data:fetch-education` - Calculate education costs
+- `npm run data:score-ai-risk` - Calculate AI automation risk scores
+- `npm run data:score-importance` - Calculate industrial importance scores
+- `npm run data:generate-final` - Generate final JSON files
+- `npm run data:refresh` - Run full data pipeline
 
 ## Deployment
 
@@ -130,9 +138,19 @@ american-dream-jobs/
 
 ## Data Sources
 
-- [CareerOneStop](https://www.careeronestop.org/) - U.S. Department of Labor
-- [O*NET OnLine](https://www.onetonline.org/) - Occupational database
+### Occupational Data
+- [O*NET OnLine](https://www.onetonline.org/) - Occupational database (education requirements, job zones)
 - [Bureau of Labor Statistics](https://www.bls.gov/) - Wage and employment data
+- [CareerOneStop](https://www.careeronestop.org/) - U.S. Department of Labor
+
+### Education Cost Data
+- [College Board Trends in College Pricing](https://research.collegeboard.org/trends/college-pricing) - National average tuition by institution type
+- [NCES CIP-SOC Crosswalk](https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56) - Maps occupations to educational programs
+- [AAMC](https://www.aamc.org/) - Medical school costs
+- [ABA/LSAC](https://www.lsac.org/) - Law school costs
+- Professional association data for specialized programs
+
+See [docs/education-cost-methodology.md](docs/education-cost-methodology.md) for detailed methodology.
 
 ## Adding New Careers
 

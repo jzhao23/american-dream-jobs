@@ -133,9 +133,44 @@ export const EducationSchema = z.object({
       item: z.string(),
       min: z.number(),
       max: z.number(),
+      typical: z.number().optional(),
     })),
     notes: z.string(),
   }),
+  // NEW: Cost breakdown by institution type
+  cost_by_institution_type: z.object({
+    public_in_state: z.object({
+      total: z.number(),
+      per_year: z.number(),
+    }).nullable(),
+    public_out_of_state: z.object({
+      total: z.number(),
+      per_year: z.number(),
+    }).nullable(),
+    private_nonprofit: z.object({
+      total: z.number(),
+      per_year: z.number(),
+    }).nullable(),
+    community_college: z.object({
+      total: z.number(),
+      per_year: z.number(),
+    }).nullable(),
+    trade_school: z.object({
+      total: z.number(),
+      program_length_months: z.number(),
+    }).nullable(),
+    apprenticeship: z.object({
+      cost: z.number(),
+      earn_while_learning: z.boolean(),
+    }).nullable(),
+  }).optional(),
+  // NEW: Data source metadata
+  cost_data_source: z.object({
+    primary: z.enum(['college_board', 'professional_association', 'trade_data', 'estimated']),
+    cip_codes: z.array(z.string()).optional(),
+    year: z.number(),
+    confidence: z.enum(['high', 'medium', 'low']),
+  }).optional(),
 });
 
 // Wages schema
@@ -195,6 +230,22 @@ export const CareerSchema = z.object({
   ai_risk: AIRiskSchema.nullable(),
   national_importance: NationalImportanceSchema.nullable(),
   career_progression: CareerProgressionSchema.nullable(),
+  video: z.object({
+    source: z.enum(["careeronestop", "practitioner"]),
+    youtubeId: z.string(),
+    title: z.string(),
+    thumbnailUrl: z.string().url(),
+    lastVerified: z.string(),
+  }).nullable().optional(),
+});
+
+// Career Video schema (standalone for component use)
+export const CareerVideoSchema = z.object({
+  source: z.enum(["careeronestop", "practitioner"]),
+  youtubeId: z.string(),
+  title: z.string(),
+  thumbnailUrl: z.string().url(),
+  lastVerified: z.string(),
 });
 
 // TypeScript types
@@ -209,6 +260,7 @@ export type NationalImportance = z.infer<typeof NationalImportanceSchema>;
 export type Education = z.infer<typeof EducationSchema>;
 export type Wages = z.infer<typeof WagesSchema>;
 export type Career = z.infer<typeof CareerSchema>;
+export type CareerVideo = z.infer<typeof CareerVideoSchema>;
 
 // Helper functions
 export function formatPay(amount: number): string {

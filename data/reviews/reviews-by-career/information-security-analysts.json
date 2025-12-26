@@ -7,7 +7,7 @@
     ],
     "title": "So… I all the ATOs for basically all of the government are just… voided? Musk is installing his own, non-cleared, servers on-prem to access govt systems.",
     "text": "This is not a political question, but honestly, what the hell does the ATO say now?\n\nI work on govt security and honestly have NO IDEA what is waiting on us when we login on Monday. (Contractor)",
-    "score": 3027,
+    "score": 3031,
     "url": "https://reddit.com/r/cybersecurity/comments/1ifntz6/so_i_all_the_atos_for_basically_all_of_the/",
     "created_at": "2025-02-02T03:11:54.000Z",
     "num_comments": 270
@@ -20,7 +20,7 @@
     ],
     "title": "NBC News seeking CISA sources",
     "text": "Hi Reddit, I'm Kevin Collier, the cybersecurity reporter at NBC News. Here's [my bio page at NBC](https://www.nbcnews.com/author/kevin-collier-ncpn1110251).\n\nRight now I'm specifically reporting on the Department of Government Efficiency's access to CISA systems, layoffs at CISA, and cuts to cybersecurity programs, funding, and employees at any agency.\n\nIf that's something you have direct knowledge about and can contact me via Signal, or if you know someone to whom this applies and you can share this with them, I'd be grateful. We adhere to best practices for source protection.\n\nMy signal handle is kevincollier.01. Happy to verify my identity if you want to email me (though please don't use your work address) at [kevin.collier@nbcuni.com](mailto:kevin.collier@nbcuni.com). Thank you!",
-    "score": 2501,
+    "score": 2507,
     "url": "https://reddit.com/r/cybersecurity/comments/1iuadbf/nbc_news_seeking_cisa_sources/",
     "created_at": "2025-02-20T21:47:38.000Z",
     "num_comments": 190
@@ -33,23 +33,10 @@
     ],
     "title": "China just used Claude to hack 30 companies. The AI did 90% of the work. Anthropic caught them and is telling everyone how they did it.",
     "text": "September 2025. Anthropic detected suspicious activity on Claude. Started investigating.\n\nTurns out it was Chinese state-sponsored hackers. They used Claude Code to hack into roughly 30 companies. Big tech companies, Banks, Chemical manufacturers, and Government agencies.\n\nThe AI did 80-90% of the hacking work. Humans only had to intervene 4-6 times per campaign.\n\nAnthropic calls this \"the first documented case of a large-scale cyberattack executed without substantial human intervention.\"\n\nThe hackers convinced Claude to hack for them. Then Claude analyzed targets -&gt; spotted vulnerabilities -&gt; wrote exploit code -&gt; harvested passwords -&gt; extracted data, and documented everything. All by itself.\n\nClaude's trained to refuse harmful requests. So how'd they get it to hack?\n\nThey jailbroke it. Broke the attack into small, innocent-looking tasks. Told Claude it was an employee of a legitimate cybersecurity firm doing defensive testing. Claude had no idea it was actually hacking real companies.\n\nThe hackers used Claude Code, which is Anthropic's coding tool. It can search the web, retrieve data run software. Has access to password crackers, network scanners, and security tools.\n\nSo they set up a framework. Pointed it at a target. Let Claude run autonomously.\n\nThe AI made thousands of requests per second; the attack speed impossible for humans to match.\n\nAnthropic said \"human involvement was much less frequent despite the larger scale of the attack.\"\n\nBefore this, hackers used AI as an advisor. Ask it questions. Get suggestions. But humans did the actual work.\n\nNow? AI does the work. Humans just point it in the right direction and check in occasionally.\n\nAnthropic detected it, banned the accounts, notified victims, and coordinated with authorities. Took 10 days to map the full scope.",
-    "score": 2208,
+    "score": 2210,
     "url": "https://reddit.com/r/cybersecurity/comments/1ox3bfr/china_just_used_claude_to_hack_30_companies_the/",
     "created_at": "2025-11-14T17:47:23.000Z",
     "num_comments": 186
-  },
-  {
-    "id": "reddit-1ju8d9i",
-    "subreddit": "cybersecurity",
-    "soc_codes": [
-      "15-1212"
-    ],
-    "title": "Thousands of North Korean IT workers have infiltrated the Fortune 500—and they keep getting hired for more jobs",
-    "text": "",
-    "score": 1840,
-    "url": "https://reddit.com/r/cybersecurity/comments/1ju8d9i/thousands_of_north_korean_it_workers_have/",
-    "created_at": "2025-04-08T08:06:23.000Z",
-    "num_comments": 139
   },
   {
     "id": "reddit-1ig6jut",
@@ -59,10 +46,75 @@
     ],
     "title": "Cyber security and all security is a joke",
     "text": "Guess I worked for nothing, if someone doesn't have clearance I'll just let them into my servers anyway... Can't make this stuff up.\n\nThis is not political, but from a security perspective guarding classified data then getting fired for doing your job has me shaking my head at the fact all security is going to be dead soon since anyone even without clearance can get unfettered access to payments and personal info.",
-    "score": 1632,
+    "score": 1630,
     "url": "https://reddit.com/r/cybersecurity/comments/1ig6jut/cyber_security_and_all_security_is_a_joke/",
     "created_at": "2025-02-02T20:19:00.000Z",
     "num_comments": 242
+  },
+  {
+    "id": "reddit-1nupo25",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "I can’t believe I have to say this",
+    "text": "If you work in cybersecurity or a adjacent space\n\nDO NOT post private information related to your job on public websites like Reddit or Facebook nor LinkedIn\n\nIt may win you some quick fake internet points but there can be long lasting effects to your career.\n\nSomeone who claims to work in the cybersecurity space did just that on Reddit and people are applauding them because it’s juicy content\n\nThis can and will ruin your career chances if it gets linked back to you.\n\nIt’s not worth it people..",
+    "score": 1311,
+    "url": "https://reddit.com/r/cybersecurity/comments/1nupo25/i_cant_believe_i_have_to_say_this/",
+    "created_at": "2025-09-30T21:22:09.000Z",
+    "num_comments": 245
+  },
+  {
+    "id": "reddit-1p5jah5",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "I run a Red Team that routinely succeeds in compromising F500 companies. AMA.",
+    "text": "My name is Jason, and I run the Targeted Operations Red Team at TrustedSec - an end-to-end offensive security shop founded by David Kennedy and based in the Cleveland, OH area. We run all manner of advanced offensive security engagements and have succeeded in compromising some of the largest companies in the world. We work to improve defense teams and routinely present at conferences and board meetings alike.\n\nI'm joined by several Targeted Operations operators:\n\nu/oddvarmoe\n\nu/int128\n\nu/bebo_126\n\nNo question is off the table, but if you ask a troll question you are liable to get a troll answer (or no answer). xD\n\n[www.trustedsec.com](http://www.trustedsec.com)\n\nEDIT1: For newcomers wanting to get more into red team, offsec: [https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqjqpnc/?utm\\_source=share&amp;utm\\_medium=web3x&amp;utm\\_name=web3xcss&amp;utm\\_term=1&amp;utm\\_content=share\\_button](https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqjqpnc/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button)\n\nAlso: [https://trustedsec.com/blog/a-career-in-it-where-do-i-start](https://trustedsec.com/blog/a-career-in-it-where-do-i-start)\n\nEDIT2: For those wanting to get into physical: [https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqjlmnb/?utm\\_source=share&amp;utm\\_medium=web3x&amp;utm\\_name=web3xcss&amp;utm\\_term=1&amp;utm\\_content=share\\_button](https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqjlmnb/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button)\n\nEDIT3: My favorite question so far: [https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqk1d2c/?utm\\_source=share&amp;utm\\_medium=web3x&amp;utm\\_name=web3xcss&amp;utm\\_term=1&amp;utm\\_content=share\\_button](https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqk1d2c/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button)\n\nEDIT4: On imposter syndrome: [https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqkq6a5/?utm\\_source=share&amp;utm\\_medium=web3x&amp;utm\\_name=web3xcss&amp;utm\\_term=1&amp;utm\\_content=share\\_button](https://www.reddit.com/r/cybersecurity/comments/1p5jah5/comment/nqkq6a5/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button)",
+    "score": 1246,
+    "url": "https://reddit.com/r/cybersecurity/comments/1p5jah5/i_run_a_red_team_that_routinely_succeeds_in/",
+    "created_at": "2025-11-24T15:01:39.000Z",
+    "num_comments": 745
+  },
+  {
+    "id": "reddit-1hspr2j",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "F* it, I'm (34M) going back to the SOC",
+    "text": "I spent a long time as an Information Security Officer and it has pushed me to 5-minutes-to-burnout. The endless discussions with stakeholders that wouldn't recognize security if it hit them in the face drove me bonkers. \n\nI spent most of my days in and out of meetings, with almost half of them with people who want exceptions/waivers/get-out-of-jail-free cards. Leaving me doing actual work in the evenings and weekends. I spent these last 2 holiday weeks doing nothing but work with people who ow so badly needed their last minute compliancy before the end of year.\n\nI'm going back to L1,2,3 incident response and I will never look back. People tell me that it is a step back in my career, but idgaf anymore. \n\nHere's to quarantaining devices juuuuuuust to be sure.\n\nEdit: oke .... I see all the messages of people saying that I am in a privileged position to be able to make that joice. I genuinely apologize for complaining about my luxury position. I truly hope everyone who's passionate about it can join the CS game; for better or worse, the game is fun.\n\n\nEdit 2: several people have asked me how they can manoeuvre themselves into infosec.....i have no shortcut guys, i really don't. I started as a software developer, learned about app security, SASt/Dast, vulnerability mgmt, service mgmt and some other stuff before I felt like i made it as a security pro. Certs definitely help; the CISSP being the golden standard for infosec. Easier are MS certs like the Sc set looks good, as well as cloud certs such as az104. Az500 is also a winner. You cant just step into it, you have to grow towards it.",
+    "score": 1217,
+    "url": "https://reddit.com/r/cybersecurity/comments/1hspr2j/f_it_im_34m_going_back_to_the_soc/",
+    "created_at": "2025-01-03T16:02:29.000Z",
+    "num_comments": 215
+  },
+  {
+    "id": "reddit-1lxzvet",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "Finally got a job!!",
+    "text": "Well boys, I’ve done it. Graduated a year and a half ago with a BBA in Cybersecurity (stupid degree I know) \n\nSent out hundreds of applications and finally got an interview with an insurance company in my city for an entry level incident management role. They sent me an offer shortly after the second round interview.\n\nI’m beyond excited to finally start my career in this industry. I’ve been stuck working at Starbucks this whole time and I just can’t believe it’s finally over.\n\nI just wanted to post somewhere about this win and I’ve been a lurker here for a while and I just wanted to share a little hope.",
+    "score": 1152,
+    "url": "https://reddit.com/r/cybersecurity/comments/1lxzvet/finally_got_a_job/",
+    "created_at": "2025-07-12T12:59:17.000Z",
+    "num_comments": 176
+  },
+  {
+    "id": "reddit-1mo5pmc",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "What I look for in a resume",
+    "text": "We get a ton of people posting in the various cybersecurity and IT subs on how hard the job market is. Especially when first starting out. Hundreds of resumes sent each month and no responses. You feel you are a perfect fit for all the job requirements and no responses. I want to help and share my perspective and what goes through my mind on the other side.\n\nI've been hiring in cyber and IT for a bit over 25 years. I feel I've gotten pretty good at reading resumes at this point. I'm currently in cyber as an ISSM and need to hire an engineer to manage my tools. A SIEM, a vulnerability scanner, and an endpoint security solution. The job req just lists these technologies. I am not looking for specific tools as there are tons of them out there. This is a junior role looking for 2 years of experience with degree an associates degree or 4 years without. \n\n**Why I passed on a resume...**\n\n1: Proofread your AI slop. AI can be a handy tool. Don't let it do all the work for you though. Pretty sure you aren't currently employed at three different companies. I'm also pretty sure your current job time of employment isn't \"10/2025 - Current\". When you send a resume it represents the quality of what you consider to be a completed task. If you aren't going to double check your resume you aren't going to double check your work on the job.\n\n2: Get to the point of who you are. Don't have a 6 page resume, that is double spaced, filled with keywords and no substance. \"Responsible for strategic goals in a multifaceted team for multiple sites\". What am I supposed to make out of that? If you aren't able to focus in on your message I'm not sure if you can or if you even have a point when we talk during the day. Will our conversations take forever? Will you be able to ask me for what you need? Yes I am aware of the irony in saying this in a long wall of text post lol. There is a time and place for both. Its not that I feel I am too good for your time, its that I have 6 hours of meetings and 2 hours of doing my actual job I was hired to do. Those 2 hours will include supporting my entire team and everyone deserves support.\n\n3: Bad spelling and grammar. This not only goes back to putting time and effort for quality output, but also you need to show that you can communicate well. I'm understanding that English isn't your first language so I am not looking for perfection. But if I see a lot of red underlines that word or google docs is throwing at me, it did the same to you.\n\n4: Your resume should reflect your job experience. When you are brand new you have to blow out of proportion your contributions. \"Responsible for the vulnerability management of 10,000 computers and improving security posture by 25%\" I get it. You pushed out patches with WSUS or YUM. We all had to start somewhere. However this sort of wording should not be with someone who has 5, 10, or more years of experience and multiple IT related jobs. Tell me your actual accomplishments. If you can't, I'm going to question what you did with all that time. This is a junior role but I am seeing a heck of a lot of over experienced and over qualified people applying. Again, this job market sucks.\n\n5: Job hopping too soon. Its takes about a month to open a job req, conduct interviews, select someone, and then have them give their 2 weeks notice to their existing job. Its then going to take another month to get your equipment and accounts that are needed, for you to learn the team and office dynamics and for you to start contributing. Then probably a 3rd month of needing my or a teammates support. Finally by month 4 of my team being short staffed, you are a net contributor in time vs productivity to the team. This is why people say you should be in a job for 1 year. If you change jobs every 6 months I'll never get my time investment back. I'm understanding that RIFs happen, your previous jobs weren;t a good fit. 1 or 2 quick job hops is understandable. But two in a row and your current job has only been 3 months I'm going to pass on you.\n\n**Why I selected a resume...**\n\n1: Color and formatting. Look I have 2 dozen resumes to go through. They all start looking the same in context and substance and I sometimes read too fast. While I try to be conscious of this and give your resume the time its due, see above 2 hours of my real job a day. I saw a resume yesterday with a blue steel banner and a gray left hand column of skills. It stood out and make me take notice.\n\n2: 2 pages tops. I don't need to know where you went to high school or what your GPA in college was. For senior positions I'll take more pages as long as the pages are applicable to the role.\n\n3: Multifaceted skillset. I list my current needs as job requirements in the req. e,g, the three tools I listed above. However I am also thinking about the future and what technical skills are needed next year. Remember that you are competing for my attention vs all the others. Yes you are a perfect fit for the reqs but someone else might be too, and bring more. \n\n4: Homelab. I get it that we often get stuck in narrow skills and your past jobs didn't let you do anything outside a few things. I also get it that you are starting your career and dont have much job experience. Are you going to let that stop you? A homelab proves you are going to take extra steps to expand your skills. Should you have to do this in addition to college and certificates to get a job? No but clearly there are limited quality jobs for the amount of job seekers out there. Give yourself a leg up against the other resumes I will read. \n\nA homelab also shows that you can problem solve. I'm seeing more and more a big problem with \"learned helplessness\" in the workplace. Show me on your resume you know how to problem solve. We managers hate problems brought to us and nothing was tried. We do appreciate a problem brought to us where you tried X, Y, Z. We dont expect you to know everything. We have more experience than you and we should have answers. But one of my biggest headaches of my career are team members who dont contribute and take up their peers time for unecessary help. \n\nA resume tells a heck of a lot more than you may think. It represents who you are in what you choose to add in, or leave out, how you phrase your skills, and it represents your quality of effort. ",
+    "score": 953,
+    "url": "https://reddit.com/r/cybersecurity/comments/1mo5pmc/what_i_look_for_in_a_resume/",
+    "created_at": "2025-08-12T11:07:04.000Z",
+    "num_comments": 221
   },
   {
     "id": "reddit-1iqrjyl",
@@ -72,7 +124,7 @@
     ],
     "title": "I'm losing my mind looking at these crazy salaries!",
     "text": "I hear so many people say that they earn 200k-300k in cybersecurity. I just wanted to ask if this salary is real? If it is, how do you guys do it and what are your years of experience?",
-    "score": 803,
+    "score": 804,
     "url": "https://reddit.com/r/cybersecurity/comments/1iqrjyl/im_losing_my_mind_looking_at_these_crazy_salaries/",
     "created_at": "2025-02-16T12:51:14.000Z",
     "num_comments": 641
@@ -85,7 +137,7 @@
     ],
     "title": "20 Years in IT/InfoSec, Over 1000 Applications In One Year, No Offers, What The ACTUAL Heck Is Going On?",
     "text": "Starting this somewhat crudely, because I want to make the point clear early on - SOMETHING feels wrong right now, specifically with the way that hiring and layoffs keep happening in our industry. I don't care to draw attention to my own personal situation but want to provide some background which will hopefully establish some bonafides.\n\nI got started in IT services doing End-User/Small Business PC diagnosis and repair. I spent approx. 15 years doing various degrees of the IT career ladder (Service Desk, SysAdmin, Network Admin, Systems Engineer, etc.) before finding out how exhausting and soul sucking that was. Having been so tired, I asked around to see what I might be able to take my experience and use it for besides what I was already doing.\n\nThe topic of using the skills in cybersecurity was one that came up quite a bit, being recommended to roles in SecOps. This was in roughly 2020/2021. I took the advice and found a place that let me engage in ransomware remediation (more than I had been doing at my level). I was able to keep that one on my resume for a couple years as I was contracting for them on an as needed basis. The work was AWESOME. I operated as the lead for a MSSP startup that was dealing in mostly reactive manners to ongoing ransomware cases. I got to spend 8-14 hours a day digging into how TA's TTP (Threat Tactic Procedures) changes as the event is happening. Working against some of the largest players at the time in the space (BlackBasta, Conti, Lockbit, etc.)\n\nAfter doing that role for a couple of years, I eventually moved into a more consultant based role where I got to be a bit more proactive (with a healthy bit of reactive mixed in). I got to engage in audits based off of the NIST CSF 2.0 Framework and got to remediate the actions items I found during the audits. I thought that this would surely help me round out my security resume and that if I ever ended up back in the job market I would be better off for it.\n\nTo be fair, I wasn't counting on not having a job at any point (then again, who is?) I was fully committed to this company, when one of their customers got hit w/ ransomware because of a decision one of the previous owners had made in creating local accounts on their exploitable firewall that were eventually found and used - I was the one that spent 80 hours over 7 days in that customers office getting things back up (despite the ESXi host being completely encrypted along with the datastores).\n\nBut alas, bad things tend to come quarterly when your industry is considered a cost-center for most companies. After taking vacation in Nov '24 out of the country, I came back and was told \"We don't have enough work to sustain your bosses salary AND yours, so we are laying you off effective immediately. I was as cordial as possible, returned my equipment, and asked for severance since this was a layoff and not a termination. \"We have never done that in the past, so we won't be doing it now.\"\n\nObviously, as someone who likes the work I do I immediately shifted gears, tried to find as many companies as I could to apply to with the experience I have. Trying to use the 80-90% required experience rule (if you meet 80-90% apply anyway) that I was always taught growing up and on my way into this field. But it really seems to have gone absolutely nowhere.\n\nIt's been 10 months now and I am still looking, very actively at that. I spend hours a day on LinkedIn looking for companies (which is how I found the last 4 roles I had prior to this) to apply to. Even ditching the 80-90% rule in favor for a 100% one. I do OSINT on companies and try to connect and DM hiring managers/recruiters/other employees. Again, adding more time to the already miserable process. I was forced to apply for unemployment, which at this stage has come and went - leaving me with absolutely nothing to bring in income (which I can only imagine based on what I see on LI that several others with similar skills and experience are going through the same).\n\nBut when you look at the people that are specifically in charge of that first level of contact? The recruiters? They are too busy making posts on LI about how they \"can't be humanly expected to view every candidate that submits an application.\" Even better is the \"Just let AI handle it, it'll tell you which ones are the good ones worth reaching out to\" people. Because from what I can see, the ATS doesn't like your resume formatting? Low rank. Doesn't understand the similarities between keywords in your resume/profile and the job description? Low rank. What happens when that does finally get to the recruiters eyes? They call the first 20 in their \"top ranking\" list and schedule them interviews. Everyone else gets a crappily worded message (if they are lucky) about how the company loves that they put their time in but aren't going to even do them the kindness of talking to them before assuming they don't have what they are looking for.\n\nThe hardest part? Now there's all these services that will submit your app for you autonomously, inputting in your data/etc and matching you to whatever keywords you tell it to apply for and basically every AI will write you a resume if you tell it to. So what is really going on? AI is reading the resumes that AI is writing? Nobody is getting work?\n\nThere's people with double my time in the field saying they are seeing the same problem. They aren't getting work either. They get completely ignored when 2-3 years ago they were called early into the process and typically saw all of the processes through to the end.\n\nSO back to the point - what the actual heck is going on? (I'd love to be more animated here)  \nHow many times should you edit your LI profile, your resume, your email header, etc. before everyone stops for a second and recognizes something is wrong. Companies like ISC2 ignoring/not validating 5-year requirements and letting SD people that did PW resets in AD for 5 years pass the mark for their minimum requirements, yet somehow are the expected industry norm now?\n\nHonestly, as much as the work makes me feel like a used towel, I'd rather go back to systems engineering making half the money just to avoid these companies that really feel like walking on eggshells. Which makes me super sad, when I talk to others in the industry they say they love the work too. That it brings them enjoyment or at the least fulfillment. But not working for 10 months? No interviews in the last 3? I just don't know anymore if it feels like the place I can keep trying to stay in when there really doesn't feel like much of a foundation to stand in.\n\nTL;DR Cybersecurity job market in the USA feels very shifty, on constantly unsettling sands. Doesn't matter if you have or don't have experience, people all across the sector are saying it feels impossible to get hired or to even get the time of day from recruiters. It feels like something is broken and wrong, and not sure how else to pinpoint the issue other than it feels like a market created by HR/recruiters who don't actually have any knowledge of what we do but disqualify us based on what their ATS tells them (even if frequently wrong).\n\nEDIT: Before anyone else comments here with the same rough advice let me be clear and save you some time. I already reach out to friends/past co-workers extensively when able. No, I do not have a bad relationship with anyone of my recruiters or past co workers just because I respond negatively to your cookie cutter advice. Yes, I do cater my resume to each job I apply to and have done so for at least six out of the ten months I have been in the market. Yes, my experience goes extensively beyond what is listed in the post because I was trying not to bore everyone with my life's story. If you're that interested, look at the comments and I am sure you can put together some of my experience. No, I have not ever had an issue like this in the past 20 years worth of networking and applying to jobs (short of a 5 month window in 2020 after my contract ended for lack of physical work) or in trying to set up business with customers/clients. Lastly, yes I REALLY have been doing this since I was 12 - it's fine if you got to live a privileged upbringing but if I wanted to make enough to eat and have even the smallest amount of required items to go to school and live a decent childhood  I had to work for it early on. I don't care if \"you read that and immediately thought it was bullshit\" nor do I care if you caught one slip I made while writing the original post on TTP (Tactics, techniques, procedures) in the middle of the night. The reality of the amount of ransomware I have stopped, the amount of attacks I have reversed, the amount of companies that wouldn't have been running if not for my help, the amount of courts that have paid me to be an expert witness, frankly - it's enough proof for me. If it's not enough for you, rather than berate me and tell me I am in the wrong industry or that I \"need to edit my resume\" for the 1000th time, why not instead question others in your own network and ask them if they are going through something similar. Because I would go beyond a shadow of a doubt to say that they'd agree. Everyone I know, 3,5,10,20,25 years of experience is going through this. It's not a matter of us just suddenly forgetting how to make a decent resume or how to communicate with people. To even insinuate that is a fallacy built on your own misconception of the job market. Be it based on your own bias from experience or seeing others. Stop trying to give me unnecessary advice that I didn't ask for and getting upset that I am not reciprocating that.  Because things like \"Edit Resume, Message your network, surely you are just not doing it right\" not only are completely worthless, they're already being done and have been being done for YEARS. They just are not working now, and that is my whole point in this post. ",
-    "score": 533,
+    "score": 530,
     "url": "https://reddit.com/r/cybersecurity/comments/1nk03rs/20_years_in_itinfosec_over_1000_applications_in/",
     "created_at": "2025-09-18T05:41:37.000Z",
     "num_comments": 389
@@ -98,10 +150,36 @@
     ],
     "title": "Take that help desk position. It will help you in the long run.",
     "text": "I've been seeing a lot of people on this subreddit who are immediately wanting to break into IT without putting in the time and effort to get to that position.\n\nMany people think that you can go into a coding or IT bootcamp for a couple weeks and fully expect to start making a 6 figure salary right out of the gate. \n\nI'm here to tell you that while it is possible, it is **extremely** unrealistic. I think a lot of this has to do with the recent cyber craze on social media where influencers are guaranteeing that you will make 6 figures if you just get into cybersecurity/IT. \n\nWith how the job market is right now, it is **crucial** that you have some IT experience on your resume before you think about going into any analyst or engineering position in IT. \n\nThat's why I believe that your rank in the IT market can easily be boosted by taking the shitty help desk IT positions whether it is fully remote, over the phone, or even in-person.\n\nBefore getting the position that I have now, I solely worked as technical support for multiple companies and I have to say that it has helped me get to the position I have today. It helps you build those soft-skills like probing, troubleshooting, and working with people who aren't as tech-savvy to get the information you need to properly help them. While these positions absolutely **SUCK** they will help you land that IT job of your dreams.\n\nI'd like to know what you all think, I'd love to hear different perspectives from current IT professionals and people who are looking into getting into IT. Feel free to ask any questions!",
-    "score": 494,
+    "score": 490,
     "url": "https://reddit.com/r/cybersecurity/comments/1oqwjye/take_that_help_desk_position_it_will_help_you_in/",
     "created_at": "2025-11-07T14:56:46.000Z",
     "num_comments": 79
+  },
+  {
+    "id": "reddit-1l9ijsn",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "There are way too many Career and AI questions in this sub.",
+    "text": "I think moderators should stop allowing the constant deluge of career questions in this subreddit. I joined because i want to keep tabs of what is going on in the business and nothing else.\n\nIf you didn't bother to check, there are specific places where you can ask your career questions so please go there.\n\n/r/SecurityCareerAdvice/\n\n/r/ITCareerQuestions/\n\nAnd then the is the subject of AI that pops up every damn day with repetitive and daily posts like \"Is aI GoINg tO TaKE OuR joBS?\" seriously - enough already!\n\nThis is supposed to be for cyber security related questions, as per rules \"Must be relevant for Cyber Security PROFESSIONALS\". Right now, the topics in this sub are drifting far away from that initial goal.\n\nSorry for the editorialising, which is also against the rules, but i'm extremely tired of the loss of quality here.",
+    "score": 488,
+    "url": "https://reddit.com/r/cybersecurity/comments/1l9ijsn/there_are_way_too_many_career_and_ai_questions_in/",
+    "created_at": "2025-06-12T09:58:18.000Z",
+    "num_comments": 82
+  },
+  {
+    "id": "reddit-1ji1pwa",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "I’m a CISO who started from the help desk and it taught me everything I need to know about cybersecurity and people. Ask Me Anything",
+    "text": "Hello everyone. We're again joined by the team at [CISO Series](http://cisoseries.com/) who have assembled security leaders who worked their way up from the help desk.\n\n They are here to answer any relevant questions you may have about the value of working the help desk and career growth. This has been a long-term partnership, and the CISO Series team has consistently brought cybersecurity professionals in all stages of their careers to talk about their experiences. This week's participants are:\n\n* Adam Glick, ([/u/CISOAdam](https://www.reddit.com/user/CISOAdam/)), CISO, PSG\n* Adam Koblentz, ([/u/APT-Delenda-Est](https://www.reddit.com/user/APT-Delenda-Est/)), Field CTO, Reveal Security\n* Ryan Link, ([/u/legendofnon](https://www.reddit.com/user/legendofnon/)), Principal of Threat Detection and Response, CDW\n* Sounil Yu, ([/u/sounilyu](https://www.reddit.com/user/sounilyu/)), CTO, Knostic\n\n[Proof Photos](https://imgur.com/a/ama-i-m-ciso-who-started-from-help-desk-taught-me-everything-i-need-to-know-about-cybersecurity-people-ask-me-anything-03-23-25-to-03-29-25-lvcp8qi)\n\nThis AMA will run all week from 2025-03-23 to 2025-03-29, starting at 2100 UTC. Our participants will check in over that time to answer your questions.\n\nAll AMA participants are chosen by the editors at CISO Series ([/r/CISOSeries](https://www.reddit.com/r/cisoseries/)), a media network for security professionals delivering the most fun you’ll have in cybersecurity. Please check out our podcasts and weekly Friday event, Super Cyber Friday, at[ cisoseries.com](https://cisoseries.com/).",
+    "score": 442,
+    "url": "https://reddit.com/r/cybersecurity/comments/1ji1pwa/im_a_ciso_who_started_from_the_help_desk_and_it/",
+    "created_at": "2025-03-23T15:24:10.000Z",
+    "num_comments": 384
   },
   {
     "id": "reddit-1ihht26",
@@ -111,7 +189,7 @@
     ],
     "title": "CompTIA sold to operate as a for-profit company",
     "text": "**In 2025, the CompTIA brand, along with its training and certification business, was sold to operate as a for-profit company. As a result, our existing membership-based association (formerly known as the CompTIA Community) was separated from CompTIA. It will continue its mission of service to the IT industry as the Global Technology Industry Association (GTIA).** \n\n**source:** [**https://gtia.org/about-us**](https://gtia.org/about-us)\n\n  \nI was surprised to read.. CompTIA claimed to be a non-profit in past, its business model resembles a for-profit entity. It generates substantial revenue from certification exams, training materials, and partnerships. More like a business rather than a mission-driven non-profit. Even the top management and executives took millions of salaries :) So, yes, like many, it was a strategic tax advantage rather than a purely altruistic mission, which from a business point is a great strategy they worked out, no wonder everyone believed it too. By claiming **non-profit** status, CompTIA benefits from tax exemptions while still operating like a revenue-driven business.",
-    "score": 443,
+    "score": 440,
     "url": "https://reddit.com/r/cybersecurity/comments/1ihht26/comptia_sold_to_operate_as_a_forprofit_company/",
     "created_at": "2025-02-04T13:37:06.000Z",
     "num_comments": 65
@@ -124,10 +202,62 @@
     ],
     "title": "How (almost) any phone number can be tracked via WhatsApp &amp; Signal – open-source PoC",
     "text": "I’ve been playing with the “Careless Whisper” side-channel idea and hacked together a small PoC that shows how you can track a phone’s **device activity state** (screen on/off, offline) via WhatsApp – without any notifications or visible messages on the victim’s side.\n\n\n\n**How it works (very roughly):**  \n\\- uses WhatsApp via an unofficial API  \n\\- sends tiny “probe” reactions to special/invalid message IDs  \n\\- WhatsApp still sends back silent delivery receipts  \n\\- I just measure the round-trip time (RTT) of those receipts\n\n\n\nFrom that, you start seeing patterns like:  \n\\- low RTT ≈ screen on / active, usually on Wi-Fi  \n\\- a bit higher RTT ≈ screen on / active, on mobile data  \n\\- high RTT ≈ screen off / standby on Wi-Fi  \n\\- very high RTT ≈ screen off / standby on mobile data / bad reception  \n\\- timeouts / repeated failures ≈ offline (airplane mode, no network, etc.)\n\n\\*depends on device\n\n\n\nThe target **never sees any message, notification or reaction**. The same class of leak exists for Signal as well (per the original paper).  \n\nIn theory you’d still see this in raw network traffic (weird, regular probe pattern), and on the victim side it will slowly burn through a bit more mobile data and battery than “normal” idle usage.\n\n\n\nOver time you can use this to infer behavior:  \n\\- when someone is probably at home (stable Wi-Fi RTT)  \n\\- when they’re likely sleeping (long standby/offline stretches)  \n\\- when they’re out and moving around (mobile data RTT patterns)\n\nSo in theory you can slowly build a profile of when a person is home, asleep, or out — and this kind of tracking could already be happening without people realizing it.\n\n**Quick “hotfix” for normal users:**  \nGo into the privacy settings of WhatsApp and Signal and turn off / restrict that unknown numbers can message you (e.g. WhatsApp: Settings → Privacy → Advanced). The attack basically requires that someone can send stuff to your number at all – limiting that already kills a big chunk of the risk.\n\nMy open-source implementation (research / educational use only):  [https://github.com/gommzystudio/device-activity-tracker](https://github.com/gommzystudio/device-activity-tracker)\n\nOriginal Paper:  \n[https://arxiv.org/abs/2411.11194](https://arxiv.org/abs/2411.11194)",
-    "score": 412,
+    "score": 407,
     "url": "https://reddit.com/r/netsec/comments/1pgmnnn/how_almost_any_phone_number_can_be_tracked_via/",
     "created_at": "2025-12-07T16:33:23.000Z",
     "num_comments": 24
+  },
+  {
+    "id": "reddit-1p4nlaq",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "Microsoft Ignite 2025 - Microsoft cares a lot about cybersecurity, not so much about cyber professionals",
+    "text": "So, I spent the week in San Francisco at Microsoft Ignite, and the disheartening message I left with was, \"don't worry about skills - we'll give you agents instead.\"\n\nI'm sure that plenty has already been said about the organizational issues at the conference - the security checkpoints, the keynote shuttles stuck in rush-hour traffic, the box lunches - so I'll just talk about the sessions.  When I went to the RSA Conference in 2016 and 2017, I sat in sessions with titles like \"Effectively Measuring Cybersecurity Improvement,\"  \"The Seven Most Dangerous New Attack Techniques, and What's Coming Next,\" and \"The Changing Face/Fate of Identity.\"  At last week's conference, I heard announcements about Security Copilot agents, Purview/Defender integration using Copilot, and Agent 365, Microsoft's new tool for managing AI agents - and then I heard about them again.  And again.  And again.  The security-and-compliance-focused content was repetitive and almost entirely focused on Copilot.\n\nAlmost everyone on stage was a Microsoft employee.  Executives from large customers would be brought on in the last five minutes to read awkwardly off teleprompters about how Copilot has improved their operations.  Even the one actual panel discussion I attended was moderated by Microsoft product managers who pushed the panelists to talk more about AI.  In a session about Defender for Enterprise (the only session I was in where Copilot wasn't mentioned,) one of the presenters joked that she had to mention AI in the first five minutes.  I assume she was later fired for insubordination.  \n\nYesterday I came across [this post](https://www.darkreading.com/cybersecurity-careers/with-ai-reshaping-entry-level-cyber-what-happens-to-the-security-talent-pipeline-) from Dark Reading titled \"With AI Reshaping Entry-Level Cyber, What Happens to the Security Talent Pipeline?\" It underscores and clarifies a lot of the thoughts I had leaving the conference.  One thing it doesn't address, however, is the next iteration of the digital divide.  Large companies and organizations will spend, spend, spend on agentic AI and create increasingly automated cyber programs.  Small companies, like the one I work for, won't be able to afford it and will do things in very different ways.\n\n(And if you think that the newly-announced free Security Copilot licenses for E5 customers are being distributed equally, know that the day after I got the email from Microsoft about this, I got another email saying that it was a mistake, that my company wasn't actually eligible, that our Security Copilot billing would immediately resume, but we'll apparently be granted licenses \"in the coming months.\")\n\nSuffice to say that while I left the conference better informed about Microsoft's roadmap, I didn't leave it with any new knowledge, skills, or intelligence.  There was nothing worth flying across the country and spending thousands of dollars on.",
+    "score": 405,
+    "url": "https://reddit.com/r/cybersecurity/comments/1p4nlaq/microsoft_ignite_2025_microsoft_cares_a_lot_about/",
+    "created_at": "2025-11-23T14:08:07.000Z",
+    "num_comments": 88
+  },
+  {
+    "id": "reddit-1jg8tlw",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "A bad workplace will destroy you, not make you stronger",
+    "text": "\nThe reason i’m posting this here is because alot of people here suffer from “machismo” and seem to be okay having your life interrupted with these on-call rotations. Or worse, your sleep health.\n\nAlot of people will promote that you should choose a career that you absolutely dislike or with undesirable on call rotations just cause the earning potential is high. Alot of people here have that David Goggins like mentality where you have to tolerate everything and stay hard no matter what comes your way. On the other hand, there’s the idea that if you continue tolerating and handling unpleasant work situations and people, the mental fatigue will result in mental problems, physical problems, and unhealthy coping mechanisms such as binge shopping, drinking, or smoking because “you need to treat yourself”. \n\nThe idea that challenges are meant to fortify you is often misapplied. There are both healthy and unhealthy challenges. A healthy challenge would be losing weight to be healthier. An unhealthy challenge would be to stay at a job that destroys your sanity. Bad work environment is like being with an abuser in a relationship. \n\nYes there are specific challenges and hardships  that will help you grow, but being in a constant never ending exhausting situation will only wear you down. “Oh but at least i drive a Tesla” yeah as if that’s going to eliminate a bad work environment.\n\nNothing will make a bad work environment disappear. Not a car, not a watch, not a fancy apartment, nothing. You’ll feel that high for a few months and then it’ll disappear.\n\nUnfortunately some of you will never learn and stay just cause it pays decent. \n\nDoctors have literally stated that this is unhealthy, yet you guys remain ignorant.",
+    "score": 403,
+    "url": "https://reddit.com/r/cybersecurity/comments/1jg8tlw/a_bad_workplace_will_destroy_you_not_make_you/",
+    "created_at": "2025-03-21T04:35:40.000Z",
+    "num_comments": 62
+  },
+  {
+    "id": "reddit-1kpp1mv",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "I’m a Chief Information Security Officer (CISO). I also happen to be a woman. Ask me anything.",
+    "text": "Hello,\n\nHere at /r/cybersecurity we are serious about ensuring that we have a diverse space that enables everyone who is passionate about cybersecurity and being a cybersecurity professional to join our industry. We've had a long term partnership with CISO Series which has allowed us to bring AMAs from many different industry veterans that we hope have inspired many new people to join our industry. This week, the amazing editors at [CISO Series](http://cisoseries.com/) has assembled a panel of women who are all accomplished Chief Information Security Officers (CISOs). They are here to answer any relevant questions about leadership, representation, and career growth.\n\nThis week's participants are:\n\n* Krista Arndt, ([u/thedrivermod](https://www.reddit.com/user/TheDrivermod1/)), Associate CISO, St. Luke's University Health Network\n* Renee Guttmann, ([u/Broad_Oil4879](https://www.reddit.com/user/Broad_Oil4879), Founder &amp; Principal, CISOHive\n* Mandy Huth, ([u/cyberfortress](https://www.reddit.com/user/cyberfortress/)), SVP, CISO, Ultra Clean Technology\n* Bethany De Lude, ([u/SheOwnsRoot](https://www.reddit.com/user/SheOwnsRoot/)), CISO emeritus, The Carlyle Group\n* Patty Ryan, ([u/CyberMT1024](https://www.reddit.com/user/CyberMT1024/)), Sr. Director &amp; CISO, QuidelOrtho\n* Hadas Cassorla, ([u/SafetyAgreeable732](https://www.reddit.com/user/SafetyAgreeable732/)), Principal Consultant, SideChannel\n* Janet Heins, ([u/JBossOnTheLake](https://www.reddit.com/user/JBossOnTheLake/)), CISO, ChenMed\n\n[Proof Photos](https://imgur.com/a/JqZIlNt)\n\nThis AMA will run all week from 18 May 2025 to 24 May 2025. Our participants will check in over that time to answer your questions.\n\nAll AMA participants were chosen by the editors at CISO Series ([/r/CISOSeries](https://www.reddit.com/r/cisoseries/)), a media network for security professionals delivering the most fun you’ll have in cybersecurity. Please check out our podcasts and their weekly Friday event, Super Cyber Friday, at[ cisoseries.com](https://cisoseries.com/).",
+    "score": 401,
+    "url": "https://reddit.com/r/cybersecurity/comments/1kpp1mv/im_a_chief_information_security_officer_ciso_i/",
+    "created_at": "2025-05-18T17:14:11.000Z",
+    "num_comments": 518
+  },
+  {
+    "id": "reddit-1kg9xku",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "Why is technical incompetence both rampant and accepted in our career field?",
+    "text": "I started as an exploit developer, moved into pentesting, and now as I've grown up have spent plenty of time both in the security office or on the other side interacting with it.\n\nWhat absolutely floors me is not the ubiquitous technical incompetence, but the acceptance of it. \n\nIncredibly short list of anecdotal experience; I work for big tech and my conversation yesterday was regarding someone blocking \\*\\*our own official Github\\*\\* at the proxy. This is a household name company and to my absolute shock, these guys didn't know what Github was nor did they seem to understand why blocking Github (the very same our customers go to) is problematic. I hear things like, \"You don't need to be technical to set policy\" and I hear it with some degree of regularity as if policy can be competently set without a baseline knowledge of the thing for which it is being set. \"You don't need to be able to program to work in security.\" is another of my favorites when it is for an organization that does software development. You're setting policy for software development at a multi-billion dollar organization and somehow it is ok for you to set security policy... but you don't even know how to write a basic program? It is unsurprising that much of the subsequent security policy is nothing short of asinine.\n\nI'm curious, what have other people's experiences been? Why do we as an industry seem to be ok with accepting technically incompetent or entirely non-technical people into roles which set org-wide policy that clearly requires technical competence?",
+    "score": 384,
+    "url": "https://reddit.com/r/cybersecurity/comments/1kg9xku/why_is_technical_incompetence_both_rampant_and/",
+    "created_at": "2025-05-06T17:11:26.000Z",
+    "num_comments": 174
   },
   {
     "id": "reddit-1ia1iuu",
@@ -137,10 +267,23 @@
     ],
     "title": "2024 End of Year Salary Sharing Thread",
     "text": "Stealing this post from r/datascience \n\n[https://www.reddit.com/r/datascience/comments/1ia175l/official\\_2024\\_end\\_of\\_year\\_salary\\_sharing\\_thread/](https://www.reddit.com/r/datascience/comments/1ia175l/official_2024_end_of_year_salary_sharing_thread/)\n\nPlease only post salaries/offers if you're including hard numbers, but feel free to use a throwaway account if you're concerned about anonymity. You can also generalize some of your answers (e.g. \"Large biotech company\"), or add fields if you feel something is particularly relevant.\n\n**Title:**\n\n* **Tenure length:**\n* **Location:**\n   * **Remote:**\n* **Salary:**\n* **Education:**\n* **\"Field\" of Cyber:** \n* **Prior Experience:**\n   * **$Internship**\n   * **$Coop**\n* **Relocation/Signing Bonus:**\n* **Stock and/or recurring bonuses:**\n* **Total comp:**\n\n**Optional:**\n\n* Company\n* Certification \n\nNote that while the primary purpose of these threads is obviously to share compensation info, discussion is also encouraged.",
-    "score": 308,
+    "score": 303,
     "url": "https://reddit.com/r/cybersecurity/comments/1ia1iuu/2024_end_of_year_salary_sharing_thread/",
     "created_at": "2025-01-26T00:34:22.000Z",
     "num_comments": 304
+  },
+  {
+    "id": "reddit-1i0ijg9",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "Certifications are expensive ",
+    "text": "So almost every good cert is expensive weather is CompTia or GIAC or anything for that matter. And we definitely end up doing at least a few to get somewhere in our Career. So 2 questions \n1. Other than the 10% or so discount they keep offering, do they offer any significant discounts any time? I mean is it worth waiting for something?\n2. Some certs have a discounted pricing for third world countries but not all (Microsoft has for example) is it worth asking others certs for the same?\n\nSorry if this is discussed already.\nThank you ",
+    "score": 286,
+    "url": "https://reddit.com/r/cybersecurity/comments/1i0ijg9/certifications_are_expensive/",
+    "created_at": "2025-01-13T16:57:10.000Z",
+    "num_comments": 92
   },
   {
     "id": "reddit-1k17yrm",
@@ -150,10 +293,23 @@
     ],
     "title": "[Project] I built a tool that tracks AWS documentation changes and analyzes security implications",
     "text": "Hey r/netsec,\n\nI wanted to share a side project I've been working on that might be useful for anyone dealing with AWS security.\n\n# Why I built this\n\nAs we all know, AWS documentation gets updated constantly, and keeping track of security-relevant changes is a major pain point:\n\n* Changes happen silently with no notifications \n* It's hard to determine the security implications of updates \n* The sheer volume makes it impossible to manually monitor everything\n\n# Introducing: AWS Security Docs Change Engine\n\nI built a tool that automatically:\n\n* Pulls all AWS documentation on a schedule\n* Diffs it against previous versions to identify exact changes\n* Uses LLM analysis to extract potential security implications\n* Presents everything in a clean, searchable interface\n\nThe best part? It's completely free to use.\n\n# How it works\n\nThe engine runs daily scans across all AWS service documentation. When changes are detected, it highlights exactly what was modified and provides a security-focused analysis explaining potential impacts on your infrastructure or compliance posture.\n\nYou can filter by service, severity, or timeframe to focus on what matters to your specific environment.\n\n# Try it out\n\nI've made this available as a public resource for the security community. You can check it out here: [AWS Security Docs Changes](https://awssecuritychanges.com/)\n\nI'd love to get your feedback on how it could be more useful for your security workflows!\n\n",
-    "score": 221,
+    "score": 218,
     "url": "https://reddit.com/r/netsec/comments/1k17yrm/project_i_built_a_tool_that_tracks_aws/",
     "created_at": "2025-04-17T08:39:06.000Z",
     "num_comments": 13
+  },
+  {
+    "id": "reddit-1lkraj4",
+    "subreddit": "netsec",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "We built a smart, searchable infosec library indexing 20+ years of resources",
+    "text": "Hi Netsec,  \n  \nKeeping up with the constant stream of cybersecurity news, writeups, and research is *hard*. So over the past couple of years, we’ve been building [Talkback.sh](https://talkback.sh/) — a smart, searchable infosec library we originally created to support our team, but chose to share it publicly because we figured others in the community would find it useful too. We did an initial blog post about it in early 2024 that ended up here on netsec, however since then it's evolved steadily, so this post summarises at this point in time what it does and how you can use it.  \n  \n**Firstly, what it does:**\n\nTalkback automatically aggregates content from:\n\n* 1000+ RSS feeds\n* Subreddits, blogs, Twitter/X, and other social media\n* Conference/infosec archives (e.g. Black Hat, USENIX, CTFtime, etc.)\n\nThen it enriches and indexes all that data — extracting:\n\n* Infosec categories (e.g. \"Exploit Development\")\n* Topics (e.g. \"Chrome\")\n* MITRE ATT&amp;CK, CVE IDs, and more\n* Short focused summaries of the content\n* It also archives each resource via the Wayback Machine, takes a screenshot, calculates a rank/score, tracks hosting info via Shodan, and builds out cross-references between related items.\n\n**And how you can use it:**  \n  \nThe Talkback webapp gives you a few different ways to explore the system:\n\n* Inbox View – a personalised feed\n* Library View – with powerful filtering, sorting, and full-text search\n* Chronicles – explore content by Week, Month, or Year\n* Bookmarks, Tags, etc.\n* Custom Newsletters, RSS feeds, and a GraphQL API\n\nWe’ve found it incredibly valuable day-to-day, and hope you do too.\n\nCheck it out here: [https://talkback.sh](https://talkback.sh/) \\- happy to hear thoughts, feedback, or feature ideas! ",
+    "score": 181,
+    "url": "https://reddit.com/r/netsec/comments/1lkraj4/we_built_a_smart_searchable_infosec_library/",
+    "created_at": "2025-06-26T04:46:05.000Z",
+    "num_comments": 12
   },
   {
     "id": "reddit-1lutwyn",
@@ -163,7 +319,7 @@
     ],
     "title": "A bored CISO who wants to do more hands-on work",
     "text": "Over 20 years of experience in Cybersecurity, backed up by several certifications (CISSP, CISM, CISA, CEH, OSCP, GCIH, GPEN, GCFA). I have been working as a SOC Analyst, SOC Lead, Penetration Tester and Red Teamer, Security Architect and GRC Lead in the past, and for the last 6 years as a CISO for two mid-size organizations. I am officially bored. I have come to the conclusion that I dont like the CISO role as much as I thought. I am looking back to my career and although I have been very successful so far in this field, I am not sure there is a role out of those mentioned above that would spark my interest again. I just know that I dont want to deal with organization bs anymore at the CISO/Director level. I got tired of convincing people on the importance of security. But I have bills to pay. A lot of them. So I need to keep going. I have thought of working for myself, maybe as a practitioner freelancer. SOC Analyst and Pentesting/Red Teaming is not what I would like to do. Besides, freelance salaries for those roles are not that great here in Europe where I am located and is hard to find projects as a freelancer in those domains. What would be your suggestion considering my experience and qualifications?\n\nUpdate 1: I am doing a couple of side gigs - Red Teaming is one of those.  \nUpdate 2: I understand some of you would dream to become a CISO. I was one of you. The salary, the reputation, the this and that. So you might see this as a first-world problem. I understand you. And you will understand me once you reach this level. The mix of burnout and boreout, oftentimes overlapping.  \nUpdate 3: Do people realize that CISOs in Europe get significantly less compared to CISOs in the US? Do you realize that I have three people under me who receive much more than I do because they are in the US and I am in the EU? And they deserve it, because they are awesome, smart and they have worked hard. So people who comment that I should retire, I have made a lot of money, I am arrogant and showing off, they have no idea what a CISO of an average company makes in Europe. Unless you work for one of the big names, like Nike, SAP, ASML, Novo Nordisk, Siemens etc, your salary will be very good, but no where near the 6-7 US figures to retire in your 50s. Full disclosure - I work as a CISO for a Belgian company and my annual salary is 120K. I go a bit above this by doing some freelancing side projects like Red Teaming, Executive advisory and teaching at a local university. ",
-    "score": 178,
+    "score": 173,
     "url": "https://reddit.com/r/cybersecurity/comments/1lutwyn/a_bored_ciso_who_wants_to_do_more_handson_work/",
     "created_at": "2025-07-08T16:59:09.000Z",
     "num_comments": 122
@@ -176,7 +332,7 @@
     ],
     "title": "Cybersecurity was my dream… now I’m lost…",
     "text": "**Just want to get this off my chest and maybe ask for some advice…** \n\nMy first job was in Technical Support for a security company. But to be honest, it felt more like a helpdesk role since most of the cases weren’t really technical. The few that were technical were challenging and interesting—but they didn’t come around often. After exactly two years, I decided to apply elsewhere because I felt like I wasn’t growing anymore in that role. Thankfully, I landed a new job as a SOC Analyst.\n\nI spent another two years in that role, and I did learn a lot. But if I were to rate myself from 1 to 10, I’d say I’m around a 6.5—just okay. I wouldn’t call myself great, but I know I work hard and I work smart. Most of my tasks leaned more toward handling false positives than actual threat processing (a lot of whitelisting issues, if you know what I mean).\n\nAround 2023, I started job hunting again. I was searching for more growth and, to be honest, better pay. On top of that, I was also experiencing burnout, which made me decide to finally resign. After about two months of non-stop interviews—literally every single day—I finally got an offer. It genuinely felt like an answered prayer.\n\nI was hired as a Technical Examiner in DFIR at a well-known company in the IR space. This role really expanded my knowledge and made me realize just how vast the field of cybersecurity really is. I got to work with some of the best people in the industry and was exposed to different teams and service lines. I had no plans of leaving anytime soon.\n\nUnfortunately, due to internal company struggles, I was included in a sudden round of layoffs.\n\nNow here’s where I’m struggling—I’ve been finding it really hard to land a new job. My last salary had already reached six figures (PH based), and I’m honestly hesitant to settle for something significantly lower. But at the same time, I’m starting to doubt myself. My resume doesn’t seem to be getting the same traction it used to, and it's making me question whether this path is still meant for me. 😭\n\nHas anyone here gone through something similar? How did you deal with it? Is it worth holding out for a role that matches your previous level, or should I consider pivoting—even if it means starting a bit lower again? Also, do you have any recommendations for free reputable certifications or training resources that I could take? \n\nAny advice or insights would really mean a lot. 🙏\n",
-    "score": 171,
+    "score": 172,
     "url": "https://reddit.com/r/cybersecurity/comments/1lgzhpy/cybersecurity_was_my_dream_now_im_lost/",
     "created_at": "2025-06-21T15:42:00.000Z",
     "num_comments": 49
@@ -202,7 +358,7 @@
     ],
     "title": "We managed to retrieve thousands of sensitive PII documents from Scribd! 🤯",
     "text": "Yes, you heard it right!!\n\nScribd, the digital document library is being used by people to store sensitive documents without them realising that all of their documents are publicly accessible 🚨\n\nThroughout this research we retrieved a whopping 13000+ PII docs just from the last one year targeting specific categories, which also means that this is just a tip of the iceberg! 😵‍💫 \n\nThe data constitutes of bank statements, offer letters/salary slips, driving licenses, vaccine certificates, Adhaar/PAN cards, WhatsApp Chat exports and so much more!! \n\nIts quite concerning to see the amount of PII voluntarily exposed by the people over such platforms but at the same time we believe Scribd and other document hosting platforms need to pay special attention to avoid PII from being publicly accessible.\n\nTo read more about this research, check out our Medium post: https://medium.com/@umairnehri9747/scribd-a-goldmine-of-sensitive-data-uncovering-thousands-of-pii-records-hiding-in-plain-sight-bad0fac4bf14?source=friends_link&amp;sk=bae06428fd9e13f191c69ac2c34113dc\n\nAs always, stay tuned for more research works and tools, until then, Happy Hacking 🚀",
-    "score": 150,
+    "score": 153,
     "url": "https://reddit.com/r/cybersecurity/comments/1inlzaq/we_managed_to_retrieve_thousands_of_sensitive_pii/",
     "created_at": "2025-02-12T07:55:56.000Z",
     "num_comments": 14
@@ -215,7 +371,7 @@
     ],
     "title": "I thought this was satire at first. I don't think it is? Maybe phishing? join DOGE?",
     "text": "Camilo Sandoval, whitehouse CISO (https://www.linkedin.com/in/camintel) posted what appears to be a job ad for Department of Government Efficiency (DOGE) recruiting cyber and software tech talent. The website domain is .gov and goes to what appears to be an application page, not usajobs.gov. I opened in a sandbox This is strange. Thoughts? Why recruit tech when DOGE sounds more like an audit/investigative type thing?\n\nImage below, but you can also look at the posts on his linkedin (never used bashify just found it). Text below and link in the post/image\n\n`Interested in joining DOGE?`  \n  \n`The DOGE Team is looking for world-class talent to work long hours identifying/eliminating waste, fraud, and abuse. These are full-time, salaried positions for software engineers, InfoSec engineers, financial analysts, HR professionals, and, in general, all competent/caring people. Apply here!`\n\n[https://bashify.io/i/EyXfYZ](https://bashify.io/i/EyXfYZ)\n\n",
-    "score": 144,
+    "score": 140,
     "url": "https://reddit.com/r/cybersecurity/comments/1ibo517/i_thought_this_was_satire_at_first_i_dont_think/",
     "created_at": "2025-01-27T23:57:13.000Z",
     "num_comments": 91
@@ -228,7 +384,7 @@
     ],
     "title": "Salary advice please: SOC Analyst",
     "text": "I am a SOC analyst with almost 6 years. I have my Security+ and will be getting my CISSP in July. I’m remote. On top of my SOC duties I am the prime communicator with all of our SOC clients which includes monthly, biweekly, or weekly calls with our SOC clients to share metrics and ensure any requests are being worked on. I am also the SME for a couple of tools like KB4 and the SEG SME for tools such as Trellix etp, proofpoint, area1, etc. and the back SME for our endpoint tools like Cylance, Falcon, Trellix HX, etc. I currently make about 66k annually in Tampa Florida. Is this a fair salary or should I be looking for another job?",
-    "score": 125,
+    "score": 123,
     "url": "https://reddit.com/r/cybersecurity/comments/1kg585v/salary_advice_please_soc_analyst/",
     "created_at": "2025-05-06T14:01:02.000Z",
     "num_comments": 126
@@ -241,7 +397,7 @@
     ],
     "title": "Recommendations to transition out of Cybersecurity",
     "text": "Any CyberSec senior engineers that have transitioned out of Cybersecurity? What did you transition into or any recommendations on what to event try or how to start?\n\nAbout me:\n\n\\- 20+ years of cyber experience, mostly on the protective/defensive side\n\n\\- BS in Computer Science and Masters in Cybersecurity\n\n\\- Industry certifications (CISSP, CEH) and have held others in the past\n\n\\- well rounded experience, passion for Cyber, stay updated with latest security\n\n\\- network infrastructure background\n\n\\- remote worker for quite some time\n\n\\- about 6 months searching for remote senior cyber jobs without success, 1K+ applications, handful of interviews, but no offer\n\n\\- lacking on Cloud and AI experience, but can't seem to get a chance to work on the technology, individually working on training for those\n\nTLDR - I think my time in Cyber is done and need to move on to something else. It's frustrating and disheartening after putting so much time and effort into a career in Cybersecurity that I actually enjoy. I'm not burned out in Cyber, but since I have to make a living, I'm looking for recommendations on something else to go into. \n\nNote: My resume has been checked by multiple people, I do get referred to hiring managers, and I don't think I'm asking for too much salary based on my experience and skills.  \n",
-    "score": 105,
+    "score": 104,
     "url": "https://reddit.com/r/cybersecurity/comments/1l9pl7z/recommendations_to_transition_out_of_cybersecurity/",
     "created_at": "2025-06-12T15:37:36.000Z",
     "num_comments": 83
@@ -254,7 +410,7 @@
     ],
     "title": "What to ask for as salary for Security analyst position?",
     "text": "Hi, I see a posting for a position for security analyst but unsure how much to ask for entry position in metro nyc. I have Comptia A+, Network+, Security+, CySA+ security analyst certs i accumulated. I'm entry level with no experience and web search pops up average 65k nationwide. What would you guys consider a reasonable offer for metro nyc starting out. ",
-    "score": 92,
+    "score": 89,
     "url": "https://reddit.com/r/cybersecurity/comments/1ow5v9u/what_to_ask_for_as_salary_for_security_analyst/",
     "created_at": "2025-11-13T16:38:56.000Z",
     "num_comments": 69
@@ -267,7 +423,7 @@
     ],
     "title": "If you had to start again (red team)",
     "text": "A question from a person who wants to streamline (but not shortcut) his path to red-team cybersecurity. For ones with experience, how did your path look like? If you had to start again, what would you do different? On a side-note, what were some of your most exciting moments in your career? How many of you make a $100k+ salary?",
-    "score": 92,
+    "score": 87,
     "url": "https://reddit.com/r/cybersecurity/comments/1kyjpl1/if_you_had_to_start_again_red_team/",
     "created_at": "2025-05-29T19:25:08.000Z",
     "num_comments": 52
@@ -280,7 +436,7 @@
     ],
     "title": "Should I leave my job?",
     "text": "Hi everyone. I want to look for a new job in cyber security but I'm scared of the current market and not finding something stable. First here is a bit about me:\n\nI work in a 4-year college in vulnerability management for about 3 years now. My salary is 73k. I have a masters degree in cyber security from WGU and have the sec+, net+, cysa+, secx, SAL1, and az-900 certifications.\n My job is VERY comfy. I work for about 2 hours and the rest of the day I study for new certifications or watch YouTube videos. I have zero stress at my job which allows me to focus on my health and wellness. It's a very stable job and I have great benefits as part of a union.\n\nUnfortunately, the job doesn't pay enough. I just got married and we are planning to buy a house and have a kid. I'm looking at other opportunities but all I see are contact jobs for 3-6 months. Even though they pay more they are not stable. \n\nI could just stick it out at my current easy job and wait for pay raises which will happen. Eventually the 3% raise every year will become a six figure salary even if it takes a while. Or I could get a new job that pays well but might not be as stable with alot more stress.\n\nWhat do you guys think and what would you do in my shoes?  ",
-    "score": 87,
+    "score": 86,
     "url": "https://reddit.com/r/cybersecurity/comments/1k9s1cq/should_i_leave_my_job/",
     "created_at": "2025-04-28T10:15:00.000Z",
     "num_comments": 77
@@ -293,7 +449,7 @@
     ],
     "title": "Big 4 Cyber Consultant Pros/Cons/Advice",
     "text": "Hi all,\n\nSeeking advice because I have just received an offer from EY as a full remote senior cyber consultant in their SIEM/SOAR space.\n\nCurrent job is very chill as an Engineer, &lt;40 hour work weeks, 4-5 weeks (“unlimited”) PTO a year, and I can pretty much work on whatever I want within reason. I’ve gotten to a point where I’ve been pretty boring after automating everything I can. The only issue is that there is no room for promotion internally and is why people on the team have left in the past. Manager and team are awesome though.\nSalary is $115k and I have a total of 5 YOE (3 as security analyst, 2 as engineer). MCOL city.\n\nMy recent offer is for $170k base with $10k sign on. I’m single, 27, no girlfriend/kids so I would love to travel if it happens.\n\nI’m looking for advice based off my current variables because I hear consulting is a lot of work. Would this open up doors for me in the future? Is it worth it to get the senior title and compensation increase? Anything I should know about what I would be getting myself into? I know money isn’t everything, so I’m having a hard time making this decision. I would hate to give up something great, but even if 1-2 years could set me up better for the future then I think it could be worth while. Am I crazy for being reluctant about this?",
-    "score": 86,
+    "score": 85,
     "url": "https://reddit.com/r/cybersecurity/comments/1hm9nz1/big_4_cyber_consultant_prosconsadvice/",
     "created_at": "2024-12-25T21:40:16.000Z",
     "num_comments": 48
@@ -306,7 +462,7 @@
     ],
     "title": "Am I dumb for leaving while barely starting?",
     "text": "I’m finishing up my undergrad in cybersecurity this year and have been working at an MSP as an analyst for 2 months. Now that I’ve touched some real work experience and am finishing up my degree I don’t know if I can see myself sitting in meetings and frying my brain all day doing this until I’m 65 working 9-5 monday to friday. I’ve been thinking about making the jump to the reserves in the military as an officer with a cyber focus but getting into law enforcement as a full time career. I know the long term salary potential is lower than in cyber but the benefits are good and I wouldn’t be sitting around all day. Granted this first job is pretty rough on hours and workload, so maybe I’m just not thinking straight and am wasting my degree. Any insight is appreciated.",
-    "score": 79,
+    "score": 77,
     "url": "https://reddit.com/r/cybersecurity/comments/1kc7uab/am_i_dumb_for_leaving_while_barely_starting/",
     "created_at": "2025-05-01T12:46:06.000Z",
     "num_comments": 106
@@ -319,23 +475,10 @@
     ],
     "title": "What was your starting salary for your first cyber job out of college / after training?",
     "text": "I'm going to be going into a cybersecurity program soon, and from what I've seen numbers can vary, and I also didn't see what degree people earned and how that connected to their salary. I'm going for my bachelor's degree, so I'm curious about some personal expierences! ",
-    "score": 77,
+    "score": 76,
     "url": "https://reddit.com/r/cybersecurity/comments/1mxtrr1/what_was_your_starting_salary_for_your_first/",
     "created_at": "2025-08-23T06:11:26.000Z",
     "num_comments": 193
-  },
-  {
-    "id": "reddit-1jl70ps",
-    "subreddit": "cybersecurity",
-    "soc_codes": [
-      "15-1212"
-    ],
-    "title": "Why do cybersecurity experts becomes content creator if the field pays well?",
-    "text": "As the title suggests, I'm curious, does CyberSec really pay as well as people claim? I've heard from many that while not everyone, a good number of professionals in the field earn six-figure salaries. But then, others say that people in data science tend to earn even more than cybersecurity engineers. So, which one is actually true?\n\nA few months ago, I started considering a career switch. As an artist, I've had very few opportunities and low pay compared to the amount of work I put in. I have no IT background, but I've seen people break into the field without even having a degree. So, I decided to start studying part-time. Even if I don’t land a job soon, at the very least, I'll be equipped with a valuable skill in today’s world.\n\nNow, coming back to my question, while looking for learning resources, I noticed that so many people in CyberSec are also creating content: making courses, running career guidance websites, teaching online, and producing videos. It made me wonder, if there’s really good money in this field, why are so many professionals investing their time in content creation?\n\nI’ve seen the same thing happen in the art industry, but I understand why artists do it. Our jobs don’t pay well, and there’s zero job security, especially with big studios shutting down left and right. So, content creation became a solid backup for many. But why do CyberSec professionals do it? Is it because they want to escape hectic job schedules? Or is the field not as financially stable as people say?\n\nAlso, I want to ask about the skill gap or lack of skilled talent that everyone talks about, does it still exist?\n\n  \nEDIT: Thanks alot everyone for responding to this post, I am really overwhelmed by the response, these comments really helped me understand this field more now and have cleared many of my misconceptions (although still confused about few) but anyway thanks for this and apologise my ignorance, I have little to no knowledge about this field so all this questions are purely out of curiousity, I don't mean any disrespect towards anyone.",
-    "score": 64,
-    "url": "https://reddit.com/r/cybersecurity/comments/1jl70ps/why_do_cybersecurity_experts_becomes_content/",
-    "created_at": "2025-03-27T15:46:44.000Z",
-    "num_comments": 149
   },
   {
     "id": "reddit-1p1uopt",
@@ -345,10 +488,23 @@
     ],
     "title": "State of the Job Market (Senior Level)",
     "text": "I’m trying to get a realistic pulse on the senior and managerial job market in cybersecurity as we close out 2025 and head into 2026. Specifically looking for input from people who meet roughly these criteria:\n\n•  5+ years of hands-on cybersecurity experience (not counting general IT/helpdesk time).\n\n•  Relevant degree (CS, InfoSec, etc.) or equivalent experience.\n\n•  At least one higher-level certification (CISSP, CISM, CCSP, CISA, OSCP, etc.) – bonus if you hold multiple or a management-focused one.\n\n•  Currently at senior individual contributor, or if all previous qualification are met above, junior transitioning into senior roles. \n\n\n—\n\nHow is the market treating you right now if you’re looking (or have looked in the last 6–12 months) for a new role? A few specific questions to kick off the discussion:\n\n1.  How long is it taking you to land interviews once you apply? (Are you seeing 1–2% callback rates like juniors, or significantly better?)\n\n2.  Once you get to the interview stage, are companies moving fast or dragging their feet with 6–8 rounds, homework, presentations, etc.?\n\n3.  Salary trends – are you seeing compression at the senior level, or are good roles still paying 2021–2022 money (or even higher)?\n\n4.  Fully remote senior/manager roles: dead, dying, or still out there in decent numbers?\n\n5.  Are layoffs still rippling at the senior level, or is it mostly back to “normal” attrition?\n\n6.  Any noticeable difference between industries (finance/healthcare/gov vs. tech startups vs. MSSPs/consulting)?\n\n7.  Geography – if you’re in the US, are certain regions (TX, FL, NC, CO, etc.) clearly hotter than others right now?\n\n8.  For those who recently switched: what was the deciding factor (money, WLB, remote, title, etc.)?\n\n—\n\nPlease mention (roughly):\n\n•  Your total YOE and current/previous title\n\n•  Main certifications\n\n•  Rough location or “US – fully remote”\n\n•  Whether you’re actively looking or just watching the market\n\nTrying to separate anecdote from trend here – the more experienced voices, the better. No junior/early-career posts please (different market entirely).\n\nThanks in advance – really curious if the “senior talent is still in demand” narrative matches reality on the ground right now.",
-    "score": 60,
+    "score": 61,
     "url": "https://reddit.com/r/cybersecurity/comments/1p1uopt/state_of_the_job_market_senior_level/",
     "created_at": "2025-11-20T05:09:24.000Z",
     "num_comments": 111
+  },
+  {
+    "id": "reddit-1jl70ps",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "Why do cybersecurity experts becomes content creator if the field pays well?",
+    "text": "As the title suggests, I'm curious, does CyberSec really pay as well as people claim? I've heard from many that while not everyone, a good number of professionals in the field earn six-figure salaries. But then, others say that people in data science tend to earn even more than cybersecurity engineers. So, which one is actually true?\n\nA few months ago, I started considering a career switch. As an artist, I've had very few opportunities and low pay compared to the amount of work I put in. I have no IT background, but I've seen people break into the field without even having a degree. So, I decided to start studying part-time. Even if I don’t land a job soon, at the very least, I'll be equipped with a valuable skill in today’s world.\n\nNow, coming back to my question, while looking for learning resources, I noticed that so many people in CyberSec are also creating content: making courses, running career guidance websites, teaching online, and producing videos. It made me wonder, if there’s really good money in this field, why are so many professionals investing their time in content creation?\n\nI’ve seen the same thing happen in the art industry, but I understand why artists do it. Our jobs don’t pay well, and there’s zero job security, especially with big studios shutting down left and right. So, content creation became a solid backup for many. But why do CyberSec professionals do it? Is it because they want to escape hectic job schedules? Or is the field not as financially stable as people say?\n\nAlso, I want to ask about the skill gap or lack of skilled talent that everyone talks about, does it still exist?\n\n  \nEDIT: Thanks alot everyone for responding to this post, I am really overwhelmed by the response, these comments really helped me understand this field more now and have cleared many of my misconceptions (although still confused about few) but anyway thanks for this and apologise my ignorance, I have little to no knowledge about this field so all this questions are purely out of curiousity, I don't mean any disrespect towards anyone.",
+    "score": 59,
+    "url": "https://reddit.com/r/cybersecurity/comments/1jl70ps/why_do_cybersecurity_experts_becomes_content/",
+    "created_at": "2025-03-27T15:46:44.000Z",
+    "num_comments": 149
   },
   {
     "id": "reddit-1ktlr17",
@@ -358,23 +514,10 @@
     ],
     "title": "Cyber security job as felon in AR",
     "text": "Hi there everyone, so I am wanting to go back to college and get a degree in computer science. I am a felon in the state of Arkansas and was wondering if anyone knows if this would be a good career choice for me? I have drug charges, some are class A. Would this prevent me from getting jobs in this field? Would this degree be worth pursuing? I am feeling very discouraged lately and like a failure because I feel like I am so so smart and I wasted my potential because I went to prison. Getting a job anywhere has been hard for me due to my record and I heard that computer tech jobs are felon friendly and avg salary in my state is around 60k. Also is getting my degree in computer science better than maybe going to a computer tech bootcamp type of thing? Any recommendations on some tech boot camps if anyone has taken any? Thank you ",
-    "score": 59,
+    "score": 58,
     "url": "https://reddit.com/r/cybersecurity/comments/1ktlr17/cyber_security_job_as_felon_in_ar/",
     "created_at": "2025-05-23T15:01:08.000Z",
     "num_comments": 129
-  },
-  {
-    "id": "reddit-1m8pnzw",
-    "subreddit": "cybersecurity",
-    "soc_codes": [
-      "15-1212"
-    ],
-    "title": "How’s your salary and work life balance as a cybersecurity engineer?",
-    "text": "Curious to hear,\n\n1- what’s your role?\n\n2- what’s your base salary and total comp (if you’re comfortable sharing)\n\n3- do you find your role stressful, and how’s your work life balance? ",
-    "score": 57,
-    "url": "https://reddit.com/r/cybersecurity/comments/1m8pnzw/hows_your_salary_and_work_life_balance_as_a/",
-    "created_at": "2025-07-25T04:19:41.000Z",
-    "num_comments": 71
   },
   {
     "id": "reddit-1likec5",
@@ -384,10 +527,23 @@
     ],
     "title": "haveibeenpwned.watch - Open-source, no-fluff charts showcasing haveibeenpwned.com's pwned account data",
     "text": "After discovering that the haveibeenpwned.com data is accessible via the API and noticing the lack of a visualization tool, I dedicated a few evenings to building haveibeenpwned.watch. This single-page website processes and presents data on leaks from Have I Been Pwned, with daily updates.\n\nThe site provides details on the total number of recorded breaches, the number of unique services affected, and the total accounts compromised. Charts break down the data by year, showing the number of breaches, affected accounts, average accounts breached per year, accounts by data type, and accounts by industry. Additionally, tables highlight the most recent breaches, the most significant ones, and the services with the highest number of compromised accounts.\n\nThough simple, the website can be a useful resource for use cases like strategic security planning, cybersecurity sales, risk assessment, or simply tracking trends in the security landscape.\n\nThe website is open source, with its repository hosted on GitHub.",
-    "score": 57,
+    "score": 56,
     "url": "https://reddit.com/r/netsec/comments/1likec5/haveibeenpwnedwatch_opensource_nofluff_charts/",
     "created_at": "2025-06-23T15:59:46.000Z",
     "num_comments": 11
+  },
+  {
+    "id": "reddit-1m8pnzw",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "How’s your salary and work life balance as a cybersecurity engineer?",
+    "text": "Curious to hear,\n\n1- what’s your role?\n\n2- what’s your base salary and total comp (if you’re comfortable sharing)\n\n3- do you find your role stressful, and how’s your work life balance? ",
+    "score": 55,
+    "url": "https://reddit.com/r/cybersecurity/comments/1m8pnzw/hows_your_salary_and_work_life_balance_as_a/",
+    "created_at": "2025-07-25T04:19:41.000Z",
+    "num_comments": 71
   },
   {
     "id": "reddit-1o4eyuc",
@@ -397,7 +553,7 @@
     ],
     "title": "Blind Enumeration of gRPC Services",
     "text": "We were testing a black-box service for a client with an interesting software platform. They'd provided an SDK with minimal documentation—just enough to show basic usage, but none of the underlying service definitions. The SDK binary was obfuscated, and the gRPC endpoints it connected to had reflection disabled.\n\nAfter spending too much time piecing together service names from SDK string dumps and network traces, we built [grpc-scan](https://github.com/Adversis/grpc-scan) to automate what we were doing manually: exploiting how gRPC implementations handle invalid requests to enumerate services without any prior knowledge.\n\nUnlike REST APIs where you can throw curl at an endpoint and see what sticks, gRPC operates over HTTP/2 using binary Protocol Buffers. Every request needs:\n\n* The exact service name (case-sensitive)\n* The exact method name (also case-sensitive)\n* Properly serialized protobuf messages\n\nMiss any of these and you get nothing useful. There's no OPTIONS request, typically limited documentation, no guessing `/api/v1/users` might exist. You either have the proto files or you're blind.\n\nMost teams rely on server reflection—a gRPC feature that lets clients query available services. But reflection is usually disabled in production. It’s an information disclosure risk, yet developers rarely provide alternative documentation.\n\nBut gRPC have varying error messages which inadvertently leak service existence through different error codes:\n\n`# Calling` `non-existent\\`\\`unknown service FakeService\\`\\`real service, wrong method\\`\\`unknown method FakeMethod for service UserService\\`\\`real service and method\\`\\`missing authentication token`\n\nThese distinct responses let us map the attack surface. The tool automates this process, testing thousands of potential service/method combinations based on various naming patterns we've observed.\n\nThe enumeration engine does a few things\n\n**1.** Even when reflection is \"disabled,\" servers often still respond to reflection requests with errors that confirm the protocol exists. We use this for fingerprinting.\n\n**2.** For a base word like \"User\", we generate likely services\n\n* `User`\n* `UserService`\n* `Users`\n* `UserAPI`\n* `user.User`\n* `api.v1.User`\n* `com.company.User`\n\nEach pattern tested with common method names: Get, List, Create, Update, Delete, Search, Find, etc.\n\n**3.** Different gRPC implementations return subtly different error codes:\n\n* `UNIMPLEMENTED` vs `NOT_FOUND` for missing services\n* `INVALID_ARGUMENT` vs `INTERNAL` for malformed requests\n* Timing differences between auth checks and method validation\n\n**4.** gRPC's HTTP/2 foundation means we can multiplex hundreds of requests over a single TCP connection. The tool maintains a pool of persistent connections, improving scan speed.\n\nWhat do we commonly see in pentests using RPC?\n\n**Service Sprawl from Migrations**\n\nSDK analysis often reveals parallel service implementations, for example\n\n* `UserService` \\- The original monolith endpoint\n* `AccountManagementService` \\- New microservice, full auth\n* `UserDataService` \\- Read-only split-off, inconsistent auth\n* `UserProfileService` \\- Another team's implementation\n\nThese typically emerge from partial migrations where different teams own different pieces. The older services often bypass newer security controls.\n\n**Method Proliferation and Auth Drift**\n\nReal services accumulate method variants over time, for example\n\n* `GetUser` \\- Original, added auth in v2\n* `GetUserDetails` \\- Different team, no auth check\n* `FetchUserByID` \\- Deprecated but still active\n* `GetUserWithPreferences` \\- Calls GetUser internally, skips auth\n\nSo newer methods that compose older ones sometimes bypass security checks the original methods later acquired.\n\n**Package Namespace Archaeology**\n\nService discovery reveals organizational history\n\n* ‍`com.startup.api.Users` \\- Original service\n* ‍`platform.users.v1.UserAPI` \\- Post-merge standardization attempt\n* ‍`internal.batch.UserBulkService` \\- \"Internal only\" but on same endpoint\n\nEach namespace generation typically has different security assumptions. Internal services exposed on the same port as public APIs are surprisingly common—developers assume network isolation that doesn't exist.\n\n# Limitations\n\n* Services expecting specific protobuf structures still require manual work. We can detect `UserService/CreateUser` exists, but crafting a valid User message requires either the proto definition or guessing or reverse engineering of the SDK's serialization.\n* The current version focuses on unary calls. Bidirectional streaming (common in real-time features) needs different handling.\n\nAvailable at [https://github.com/Adversis/grpc-scan](https://github.com/Adversis/grpc-scan). Pull requests welcome.",
-    "score": 54,
+    "score": 55,
     "url": "https://reddit.com/r/netsec/comments/1o4eyuc/blind_enumeration_of_grpc_services/",
     "created_at": "2025-10-12T03:38:46.000Z",
     "num_comments": 4
@@ -410,23 +566,10 @@
     ],
     "title": "Which career progression is better: GRC or Incident Response?",
     "text": "Hello all,\n\nI am wondering what you guys think is better long term, GRC or incidence response?\n\nI am new to the field (&lt;6 months, recent graduate), and am currently in a GRC role (ISSO/ISSM tasks). I am not a huge fan of GRC, as I loved being technical throughout my internships and university, but I guess its not the end of the world for me.\n\nAt my current org, I am able to do a 3 month rotation, and will probably go to our Incident Response team. \n\nI am confident I would enjoy IR more, but how is the career progression? Curious about how in demand and also how one usually progresses. I know that GRC can usually go ISSO -&gt; ISSM -&gt; Director -&gt; VP/CISO (or something along those lines). But how is it for IR? Salary expectations?\n\n  \nI would really appreciate any advice to a newbie in the field! Thanks!",
-    "score": 53,
+    "score": 52,
     "url": "https://reddit.com/r/cybersecurity/comments/1pn5tbl/which_career_progression_is_better_grc_or/",
     "created_at": "2025-12-15T12:10:25.000Z",
     "num_comments": 62
-  },
-  {
-    "id": "reddit-1irmm68",
-    "subreddit": "cybersecurity",
-    "soc_codes": [
-      "15-1212"
-    ],
-    "title": "How common is 1 round of interview in cybersecurity?",
-    "text": "I’m not sure if this is an anomaly. So I applied for a 6 figure cybersecurity job in a large well known org in the US, and after only 1 round of interview, in-person, I got a call from the HR Talent Acquisition rep about two hours later that I got the job on the same day. There were about 10 employees in the interview room, including the HR rep. There were a few candidates interviewing that day, and the session was about 1 hour. Here are my questions:\n\n1) How common is it that there’s only 1 round of interview in the cybersecurity world ? There was also the initial HR phone screening, but I don’t count that as a “round of interview” since they were just discussing the position and to see if the salary and everything met my expectation before scheduling it. \n\n2) Is it common for an HR rep to be in the interview room the entire time for in-person interviews? \n\n3) How many rounds was your interview, or how many rounds is it typical for your company if you participate in the hiring process?\n\n\nEDIT1: Obviously, I am not complaining at all. It saves a lot of time. But in about 20 interviews in my entire life for professional roles, I’ve never had just one round of interview, and never had HR sit in on the entire interview.\n\n",
-    "score": 48,
-    "url": "https://reddit.com/r/cybersecurity/comments/1irmm68/how_common_is_1_round_of_interview_in/",
-    "created_at": "2025-02-17T15:37:35.000Z",
-    "num_comments": 55
   },
   {
     "id": "reddit-1hrdco6",
@@ -436,10 +579,23 @@
     ],
     "title": "/r/netsec's Q1 2025 Information Security Hiring Thread",
     "text": "**Overview**\n\nIf you have open positions at your company for information security professionals and would like to hire from the /r/netsec user base, please leave a comment detailing any open job listings at your company.\n\nWe would also like to encourage you to post internship positions as well. Many of our readers are currently in school or are just finishing their education.\n\nPlease reserve top level comments for those posting open positions.\n\n**Rules &amp; Guidelines**\n\nInclude the company name in the post. If you want to be topsykret, go recruit elsewhere. Include the geographic location of the position along with the availability of relocation assistance or remote work.\n\n* If you are a third party recruiter, you must disclose this in your posting.\n* Please be thorough and upfront with the position details.\n* Use of non-hr'd (realistic) requirements is encouraged.\n* While it's fine to link to the position on your companies website, provide the important details in the comment.\n* Mention if applicants should apply officially through HR, or directly through you.\n* Please clearly list citizenship, visa, and security clearance requirements.\n\nYou can see an example of acceptable posts by [perusing past hiring threads](https://www.reddit.com/r/netsec/search?q=Information+Security+Hiring+Thread&amp;sort=new&amp;restrict_sr=on).\n\n**Feedback**\n\nFeedback and suggestions are welcome, but please don't hijack this thread (use moderator mail instead.)",
-    "score": 46,
+    "score": 48,
     "url": "https://reddit.com/r/netsec/comments/1hrdco6/rnetsecs_q1_2025_information_security_hiring/",
     "created_at": "2025-01-01T21:43:03.000Z",
     "num_comments": 14
+  },
+  {
+    "id": "reddit-1irmm68",
+    "subreddit": "cybersecurity",
+    "soc_codes": [
+      "15-1212"
+    ],
+    "title": "How common is 1 round of interview in cybersecurity?",
+    "text": "I’m not sure if this is an anomaly. So I applied for a 6 figure cybersecurity job in a large well known org in the US, and after only 1 round of interview, in-person, I got a call from the HR Talent Acquisition rep about two hours later that I got the job on the same day. There were about 10 employees in the interview room, including the HR rep. There were a few candidates interviewing that day, and the session was about 1 hour. Here are my questions:\n\n1) How common is it that there’s only 1 round of interview in the cybersecurity world ? There was also the initial HR phone screening, but I don’t count that as a “round of interview” since they were just discussing the position and to see if the salary and everything met my expectation before scheduling it. \n\n2) Is it common for an HR rep to be in the interview room the entire time for in-person interviews? \n\n3) How many rounds was your interview, or how many rounds is it typical for your company if you participate in the hiring process?\n\n\nEDIT1: Obviously, I am not complaining at all. It saves a lot of time. But in about 20 interviews in my entire life for professional roles, I’ve never had just one round of interview, and never had HR sit in on the entire interview.\n\n",
+    "score": 45,
+    "url": "https://reddit.com/r/cybersecurity/comments/1irmm68/how_common_is_1_round_of_interview_in/",
+    "created_at": "2025-02-17T15:37:35.000Z",
+    "num_comments": 55
   },
   {
     "id": "reddit-1mohssf",
@@ -449,7 +605,7 @@
     ],
     "title": "When should you look at switching companies?",
     "text": "I currently work at a fortune 300 defense contractor in cybersecurity as a cyber solutions architect and make 85k.\n\nI have 2.5 years of experience, a bachelors degree, 10 certs, volunteer at open source non profit cybersecurity organizations, do ctfs, and frequently speak at conferences.\n\nI’ve been at my current company for 2 years now (in November) and my responsibilities have quickly expanded. I’m working proposals valued at over $800m as a solutions architect, have developed a cyber training program selling to customers that has rapidly grown, I pentest for government agencies and will be threat hunting shortly. Everyone I work with makes double what I make and the person that I’m managing (not directly) makes 50k more than I do.\n\nI’d like to get a promotion and my boss is supportive of this however HR and finance are incredibly strict on giving out promotions without changing to another sector. For example I’d have to go onto program which has poor job security compared to corporate/internal (where I am right now). DOGE has also not helped this matter.\n\nI love the people I work with and love my job, I’d prefer not to leave. However I’d like to make more.\n\nWould interviewing at another company in hopes to get an offer I can leverage be a bad idea?\n\nShould I just leave the company altogether?\n\nAm I wrong for wanting a higher salary?",
-    "score": 43,
+    "score": 45,
     "url": "https://reddit.com/r/cybersecurity/comments/1mohssf/when_should_you_look_at_switching_companies/",
     "created_at": "2025-08-12T19:06:31.000Z",
     "num_comments": 77

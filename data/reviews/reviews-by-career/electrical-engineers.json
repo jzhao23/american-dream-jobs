@@ -1,0 +1,522 @@
+[
+  {
+    "id": "reddit-1mcrvvo",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "University housing said no resistive cooktops. Challenge accepted.",
+    "text": "I love canned soup like, a lot. The university I’m transferring to said no resistive cooktops or heaters in the dorms and the communal kitchen is all the way on the other side of the residence hall so I made this to cook my soup in the comfort of my dorm room. \n\nArduino Nano controlled, 120V, 6A, half-bridge, passively cooled, fixed switching of 25kHz, auto shut off if overcurrent/pot is removed.",
+    "score": 2907,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1mcrvvo/university_housing_said_no_resistive_cooktops/",
+    "created_at": "2025-07-30T00:08:29.000Z",
+    "num_comments": 133
+  },
+  {
+    "id": "reddit-1p3dp6m",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Switching to EE Won’t Save You",
+    "text": "I keep seeing people talk about switching from CS or other majors into EE because it’s “in demand” or pays better. Here’s the reality, it won’t magically make you successful.\n\nThe CS job market isnt cooked, you just chased the myth of instant high-paying FAANG success.\nTons of SWE/CS majors are still landing jobs, just most people chased that remote 150k a year out of school lifestyle, while coasting and are now thinking they can bring those same bad habits in EE and succeed.\n\nThe problem is not the program, it’s that you have a short term mindset and chase hype, instead of investing time into your skills.\n\nIf you’re gonna switch do it cuz you want to learn, if not you’ll fail out, stop thinking short term, dedicate yourself to something and stick to it, no matter how hard it gets",
+    "score": 1803,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1p3dp6m/switching_to_ee_wont_save_you/",
+    "created_at": "2025-11-21T23:22:11.000Z",
+    "num_comments": 294
+  },
+  {
+    "id": "reddit-1poeas4",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Certified vs Non-Certified HDMI Cable X-Ray Follow-Up",
+    "text": "As a follow-up from my post last week comparing the RF emissions performance of two different HDMI cables, I was able to get X-rays of both cable connectors today. I also have a third cable that will be tested later this week which appears to fall between the other two in terms of construction. This wasn’t a task I expected to be doing, but it has been an interesting exploration of the differences between cables both from functional EMC and construction perspectives. \n\nI've not had experience looking through x-rays like this so these are my interpretations of what I'm seeing. I'd love to hear from others with more experience where I am correct and where my interpretation was wrong. I'd also be interested in other thoughts from those who have more experience with high speed cabling. \n\n \n\nCertified Cable:\n\n* The signal wires are soldered to a PCB which breaks out into the connector pins. This is a more robust connection and easier to maintain impedance control for the differential pairs (though at this small size it probably doesn’t matter).\n* There appears to be a foil(?) shield around the whole connector body that has a 360 degree termination around the metal HDMI connector shell.\n* The cable has a heavy braided shield. I’m also curious if it has a foil shield in there but I suspect it does. I may tear one down in the future but that can’t happen right now.\n* The braided shield appears to be contiguous with the connector shield. It’s hard to tell what exactly is happening here and I might be able to get Micro CT scans in January.\n\n \n\n \n\nBrand Name Cable:\n\n* The signal wires terminated directly at the connector pins, not a PCB. Not sure if these are solder cups or welds.\n* The cable looks like it has a very thin foil shield, but it’s hard to tell.\n* The metal HDMI connector shell is only attached to the foil shield (presuming it’s there) by a splice and a very fine wire with a solder attachment. This is an extra-bad attempt at pigtailing and probably the cause of many of the emissions.\n* The connector body has no metal enclosure surrounding the signal wires or other shielding wrap.\n\n \n\n \n\nNew Commercial Grade Brand Name Cable. I have not tested this one yet but expect its RF emissions to be between the other two cables:\n\n* The signal wires terminated directly at the connector pins, not a PCB. Not sure if these are solder cups or welds.\n* There is either a foil or very thin braided shield around the cable\n* The connector body houses a metal enclosure that has a (nearly) 360 degree crimp around the cable shield. It appears to go from the cable all the way to where the pins escape the body.\n\n ",
+    "score": 1497,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1poeas4/certified_vs_noncertified_hdmi_cable_xray_followup/",
+    "created_at": "2025-12-16T21:33:42.000Z",
+    "num_comments": 61
+  },
+  {
+    "id": "reddit-1jrbez9",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Any tips?",
+    "text": "I'm turning 39 this year, and I feel burned out from my teaching job in Special Education. I want to change careers and pursue Electrical Engineering. However, my qualifications and background do not align with the admission requirements of the school I am applying to. I've been refused twice—do you have any tips?",
+    "score": 1453,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1jrbez9/any_tips/",
+    "created_at": "2025-04-04T13:06:27.000Z",
+    "num_comments": 55
+  },
+  {
+    "id": "reddit-1nois7x",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "My post-first job career search",
+    "text": "I love these charts so thought I would make one for my recent job search !!!!\n\nI have 2-3 YOE. I'm in the Midwest for location context.  \nI eventually took the role that a recruiter reached out on LinkedIn for. I will be making 110k-125k.\n\nMy takeaways  \n\\- most jobs I interview for I get an offer from. This was my experience searching in college too. The only job I got denied from was Apple. It was also my least favorite interview, they jumped straight into 3 textbook questions and wanted me to write out everything. If I apply to FAANG again I now know you have to treat it like a final exam almost!\n\n\\- networking is key. I always thought it was kind of a thing people just say, but I was really impressed by how when I reached out to connections they were like \"oh I have a posting do you want it?\"\n\n\\- do some personal projects. This is how I got my internship in college, how I got my first job, and is what really sold me as a candidate for this most recent job. I brought in some PCBs I designed and left the interview knowing I killed it and they were very interested in me.\n\n",
+    "score": 919,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1nois7x/my_postfirst_job_career_search/",
+    "created_at": "2025-09-23T14:23:50.000Z",
+    "num_comments": 55
+  },
+  {
+    "id": "reddit-1ldsbaf",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Life in the food chain: things I did not expect as an electrical engineer",
+    "text": "**Offered for insight into the career of an electrical engineer.**\n\n1. That I would spend so much time in *meetings*.\n\n2. That I would spend so much time *writing*.  The computer tool that I use the most is a word processor.\n\n3. That it would be almost impossible to get anyone to read a detailed specification.  It is totally impossible to get them to read it after it was revised, even if they requested the revision.\n\n4. The higher the manager, the shorter the attention span.  Try to boil it down to two Power Point slides.\n\n5. Schedules would always have impossible deadlines and/or cost objectives.\n\n6. That I would have to make and defend many decisions made with incomplete data.\n\n7. That I would have to explain statistical concepts so many times.\n\n8. There will always be people on the team who are below average; but you need those people anyway.\n\n9. Charm matters.\n\n10. The closer an integrated circuit is to the ideal solution for your product, the more likely it is to become obsolete.\n\n11. You never get a part that is as good as its typical spec, unless the vendor knows that you are evaluating the part.\n\n12. You must discount management’s promises for resources.  You can count on something else coming along that needs the resources that you were promised.  Nevertheless you will be held to the original schedule. \n\n13. It’s a good year if you can spend 10% of it actually designing.\n\n***In spite of that, engineering has given me a good life.***  \n\n\nWhat are your thoughts.",
+    "score": 693,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1ldsbaf/life_in_the_food_chain_things_i_did_not_expect_as/",
+    "created_at": "2025-06-17T16:52:05.000Z",
+    "num_comments": 129
+  },
+  {
+    "id": "reddit-1l8cbwf",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Is it just me or EE Salaries suck?",
+    "text": "Hi everyone. EE in Florida with a PE. I have noticed most companies don't want to pay. I have 6 years of experience in consulting, and I am still under 6 fugures. I just had a review and my boss didn't wanted to get me to the avg salary after getting my license because it would be too big of a raise. My realization is that if you want to get a better salary you have to switch \n\nI just had an interview for a Project Manager position in a big company and they offered 90k plus some benefits that get close to 100k but insurance is way higher and I'll have to get used to the new responsibilities.\n\nI am even thinking to start doing side jobs or even start my own venture.\n\nIs it me or salaries for EEs suck?\n\nI would like to hear your thoughts...\n\n",
+    "score": 294,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1l8cbwf/is_it_just_me_or_ee_salaries_suck/",
+    "created_at": "2025-06-10T22:25:21.000Z",
+    "num_comments": 223
+  },
+  {
+    "id": "reddit-1kyqbmf",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Interesting development: Social media users now consider Electrical Engineering a “low paying” career (along with other “traditional” forms of engineering)",
+    "text": "Stagnant engineering wages are finally being noticed by people outside the field, while almost every other field has grown tremendously over the past 15 years, engineering wages (electrical, mechanical, civil) have mostly flatlined. If you were on the internet 15 years ago, these were considered high paying careers, after over a decade of stagnation while the cost of living has soared, they're considered low paying and under appreciated by those looking in from the outside.",
+    "score": 293,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1kyqbmf/interesting_development_social_media_users_now/",
+    "created_at": "2025-05-30T00:09:01.000Z",
+    "num_comments": 323
+  },
+  {
+    "id": "reddit-1l8waip",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Regretting engineering",
+    "text": "Recently Ive been regretting going into engineering. I find myself loving the field when I get to work with my hands but I accepted a job about a year ago that strictly is computer based. Using AutoCAD and excel all day long. Maybe my previous work history (about 8 years of experience in product design) has contorted my expectations, but I feel like this job is draining my soul. I feel stuck and trapped. Electrician work at this point sounds really fun, but landing an electrician gig at this point in my career would be silly due to the pay cut and work environment. \n\nAny advice? I can't be the only one to ever feel like this, right? ",
+    "score": 245,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1l8waip/regretting_engineering/",
+    "created_at": "2025-06-11T15:54:53.000Z",
+    "num_comments": 126
+  },
+  {
+    "id": "reddit-1mr5m66",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "I'm Thankful I Chose Electrical Engineering",
+    "text": "This thought just hit me today, but I feel pretty thankful that I chose the electrical route over programming. In high school I was pretty solid at all my C++ courses, even landed 2 separate internships before college, however I wasn't enjoying the work and that lead to me getting my bachelor's in EET in college. Now I'm working as a design engineer at a nuclear power plant.\n\nEvery once in a while I see posts online from people in \"coder\" communities, decrying the industry, the over saturation of the entry-level market, and all the off-shoring that is going on with the H1b debacle. All the noise coming from those spaces makes me glad I just ducked away from that life and chose to go into Power.\n\nAnyone else feel similar, or dodged an unfortunate career choice?",
+    "score": 224,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1mr5m66/im_thankful_i_chose_electrical_engineering/",
+    "created_at": "2025-08-15T18:09:59.000Z",
+    "num_comments": 83
+  },
+  {
+    "id": "reddit-1jwqbm9",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Normal to be bored at work?",
+    "text": "I work in power electronics (SMPS). I'm 25 and so am still pretty new to this field. Basically the senior engineer(s) designs the schematics and PCBs and then get them to work. So my actual work is mostly doing whatever they tell me - go evaluate this board, go get this data, go build these magnetics, go do this rework, go find a new part with this spec, etc. It's very prescriptive. \n\nThis is all fine, but half or more of the time I have nothing to do. So I do personal stuff. Sometimes I read and try to learn more about my field, but eventually that gets dry and I start to fall asleep. \n\nTo be honest it all makes me feel a bit useless. I actually get stressed out all the time wondering if my bosses secretly think I'm lazy and useless. \n\nAnyone else deal with this kind of early career boredom?",
+    "score": 224,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1jwqbm9/normal_to_be_bored_at_work/",
+    "created_at": "2025-04-11T13:48:40.000Z",
+    "num_comments": 105
+  },
+  {
+    "id": "reddit-1k5kuyp",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "I feel like this sub is becoming 70% career questions",
+    "text": "Should this maybe split into another subreddit? The amount of people just asking for some sort of career advice is so  abundant that I find it distracting to find actual EE content. ",
+    "score": 221,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1k5kuyp/i_feel_like_this_sub_is_becoming_70_career/",
+    "created_at": "2025-04-22T23:30:40.000Z",
+    "num_comments": 48
+  },
+  {
+    "id": "reddit-1l9vcij",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "How to prepare for electrical engineering career?",
+    "text": "Hewwo I am  seven years old. What should I do to prepare for a career as a substation design engineer. Any recommended middle school classes in particular?",
+    "score": 209,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1l9vcij/how_to_prepare_for_electrical_engineering_career/",
+    "created_at": "2025-06-12T19:21:47.000Z",
+    "num_comments": 26
+  },
+  {
+    "id": "reddit-1j97ech",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "EE as a felon",
+    "text": "What are the odds of success finding a career in EE (given I complete my bachelors)? 6 years ago I was convicted of possessing 2 unregistered firearms and trafficking methamphetamine. I did 3 years in prison, and have been home for another 3 years. I just completed my probation and parole, and I’m looking to change careers. While most people in my shoes would most likely try to become an electrician or plumber, I have been toying with the notion of going back to college. While I’m not 100% what I want to study, CS, and EE both pique my interest. I’m aware that felony convictions can automatically disqualify you from many jobs, so I’m tentative to spend my time working towards a degree that might be of no use to me. Do you guys think it’s worth it to try? Is it in the realm of possibility?",
+    "score": 187,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1j97ech/ee_as_a_felon/",
+    "created_at": "2025-03-12T01:20:08.000Z",
+    "num_comments": 147
+  },
+  {
+    "id": "reddit-1kkw768",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "I'm a 41 year old with an unused EE degree. NEED ADVICE on getting an EE job.",
+    "text": "I graduated college with my EE degree and the company I had my internship with went on a hiring freeze. I tried to wait it out by getting a full time job in the creative industry at a non-profit. That turned into a career, but the pay was low. I eventually started my own business and I'm currently doing that full time. I'm in the position where I'm open (and somewhat needing) to make a shift. What advice and steps can I take to get into the engineering field as a 41 year old?",
+    "score": 176,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1kkw768/im_a_41_year_old_with_an_unused_ee_degree_need/",
+    "created_at": "2025-05-12T16:00:37.000Z",
+    "num_comments": 57
+  },
+  {
+    "id": "reddit-1o2r44t",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Why go into electrical engineering if you don't like/are neutral about your job?",
+    "text": "Am a current freshman and saw a post the other day here asking if people like their electrical engineering (or related to it) jobs and a lot of people said no/are neutral about it. My question is why go into the field if you aren't going to like your future profession? Did you just pursue the career because you simply liked the material taught in it? Or are there other factors at play?",
+    "score": 159,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1o2r44t/why_go_into_electrical_engineering_if_you_dont/",
+    "created_at": "2025-10-10T04:12:23.000Z",
+    "num_comments": 120
+  },
+  {
+    "id": "reddit-1pe4jzq",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Will Electrical Engineering Boom with Rise of AI, Renewables etc?",
+    "text": "A LOT of people in tech and tech adjacent communities and subreddits are talking about switching into Electrical Engineering, and recommending those who want to study CS or similair to study electrical engineering instead. A lot of the comments I've seen so far are more speculative with the rise of AI, renewable energy, and general increased electrical consumption. However, if people capable of drawing salaries common in the tech industry are saying this, it makes me think there must be something in it. \n\nThose who work in the field, is the hype about electrical engineering from these industries justified? Do you think it will compete with tech salaries while providing better job security?\n\nYour expertise is much appreciated! \n\n",
+    "score": 152,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1pe4jzq/will_electrical_engineering_boom_with_rise_of_ai/",
+    "created_at": "2025-12-04T16:32:47.000Z",
+    "num_comments": 70
+  },
+  {
+    "id": "reddit-1lldflq",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What They Didn’t Teach at Uni",
+    "text": "I’ll start out here by saying I don’t consider myself too proud of an engineer. I’m proud of my work, but I try to stay away from being egotistical. I’m eager to learn and ask questions of my leads and peers. I’m three years post grad, and while I’m not necessarily at the bottom of the totem pole, I still understand I’ve to earn my place in the field. \n\nI took the usual grueling classes, labs, etc, but nothing in the classroom could have prepared me for the workplace drama. I’m the only woman on the electrical team with 15 other men. That doesn’t scare me, and I expected that since I entered a male dominated field. In fact, I enjoy talking with them and contributing to sports conversations (let’s go 49ers!). Mostly my coworkers are great to work with. However, there’s a few I’d say that surprised me, and I wasn’t sure how to react. \n\nI had a conversation with one of my coworkers and told him my future career aspirations to work as a design lead soon. He said (no joke), “People won’t listen to you.” When I asked why he said verbatim, “You’re a woman and you’re short. Sure, you might get the job, but nobody will ever respect you.” After that I didn’t really know how to respond so I laughed it off.\n\nAnother one of my coworkers outrightly refuses to look at me when I speak to him. At first, I thought this was just a social awkwardness thing, but he seems to have no issue talking to others. I tried to make light conversation with him during a team meeting, and he went from one word answers to outrightly turning his back and ignoring me. I was a bit confused as to what I did to offend him. I’ve hardly had chances to speak with this coworker or even work closely with him. I’m very quiet in the office for the most part and get my work done. Honestly, it’s not about being liked in the office. I get it. Sometimes you can be the best apple on the tree and people just don’t like apples. However, I’d rather be respected than loved, and it’s frustrating when I thought we’d put childish behaviors behind us. As far as seniority of these guys, no. They started around the same time I did. I always heard extreme examples of annoying coworkers in the office, but I never thought I’d actually see them in real life. I just keep going about my day, but I’ll admit. It starts to feel a little dehumanizing day after day. \nAs a woman in this field, I feel like I have to work twice as hard to earn the respect of my colleagues. It’s frustrating, but at the end of the day I try and let the integrity of my work speak for itself. That’s all I can do. ",
+    "score": 151,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1lldflq/what_they_didnt_teach_at_uni/",
+    "created_at": "2025-06-26T22:19:42.000Z",
+    "num_comments": 41
+  },
+  {
+    "id": "reddit-1pnik4m",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Resume advice from a hiring manager",
+    "text": "I just went through a painful round of reviewing resumes for a job posting and deciding who to interview. I keep seeing the same mistakes that make me throw out resumes, or send them to the bottom of the stack. So I wanted to share some blunt advice to help out others. My perspective is working for a very large employer with a lot of rules set up do that I can't just hire my buddy Joe, but everyone has the same chance. I'm sure these tips also apply to the small to medium businesses. \n\n**Objective/Summary**  \nIf this boils down to \"I need a job and I'm a hard worker\" then just leave it off. I know you want a job because I have your resume, and it should show me you're a hard worker on its own. This doesn't hurt you, but resume space is limited, and this doesn't give you anything. The only way I can see it being helpful is if you're looking to change careers and this helps show that. \n\n**Education**  \nI can't hire you if you don't have at least bachelor's degree, so make sure you have it on there. Usually the school, major, GPA, and graduation date (or expexted date) are enough. I personally don't care if your GPA is a 3.0 or 4.0, but I know other employers do care. If your degree doesn't quite align to the job, you could mention courses that do align. The information may be on your transcript that you submitted, but HR gives me resumes, not the transcripts. \n\nIf you have both a bachelor's and masters, then list them both. This helps me, but more importantly, if I want to offer a job then having them both can help encourage to HR give a higher offering salary. \n\nCertifications and other classes are also good if they're applicable. \n\n**Skills**  \nHaving a bunch of skills at the top helps me quickly see if you have the skills I'm looking for (or something close to it.) Just remember to justify them with the rest of your resume. For example, my job postings typically say I want someone with programming experience. I've seen a few resumes that list C/C++ in the skills, but that claim is never justified so I can't say they have that experience. \n\nOn the flip side, I keep getting calls from recruiters because they saw Altium on my LinkedIn profile. I used to do that, but that's not the kind of job I'd want. Feel free to take off a skill if you don't want a job in that. \n\n**Work experience**  \nObviously this is the meat of the resume. Be specific when describing what you do. Show me that you're an engineer. What kind of things did you work on? What tools did you use? Sometimes I'll read a job description that says \"electrical engineer,\" but the description sounds more like a software programmer or a technician. \n\nRecent graduates often have unrelated work experience. I don't mind it because it shows work ethic, but getting the college degree also shows work ethic, so the unrelated jobs don't help. I know other hiring managers don't want to see that.  \n\n**Engineering projects**  \nThis is a staple on new graduate resumes, and for good reason. The top complaint of a new grad looking for a job is \"everyone wants experience, but I can't get experience until someone hires me.\" This can help you overcome that by showcasing projects done in school, and what skills were used in them. Sometimes I'll see a project that I remember doing in my schooldays, and that's ok. It shows me what the applicant learned from the class. ",
+    "score": 132,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1pnik4m/resume_advice_from_a_hiring_manager/",
+    "created_at": "2025-12-15T20:46:14.000Z",
+    "num_comments": 51
+  },
+  {
+    "id": "reddit-1iip8jo",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What do you do when you hit the top of your pay band?",
+    "text": "From what I gather through external salaries I am close to the top of my pay band. I have about 20 years as a power systems engineer. \n\nI'd like to broaden my skills but won't see more than a 10% pay bump for leaving. I really love the company I'm at now. WFH anytime, probably paying me above market, great benefits, and rarely work 40hrs to get my projects finished. But I don't think i can do the same thing for 20 more years.\n\nManagement positions only offer a 10-15% pay bump which would not be worth it for all the extra responsibilities and then I'm at the top of that pay band anyway.\n\nWhat does life after engineering look like?\n",
+    "score": 132,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1iip8jo/what_do_you_do_when_you_hit_the_top_of_your_pay/",
+    "created_at": "2025-02-06T00:14:05.000Z",
+    "num_comments": 46
+  },
+  {
+    "id": "reddit-1l4uqhv",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What Electrical Engineers do?",
+    "text": "Ik this is obviously a dumb question cuz I’m on here. But I’m trying to get a feel for different engineering jobs and seeing if anything catches my attention. So what all do electrical engineers do and (since I’ve found google very misleading when it comes to salaries) what is the average salary/what some of you in the field make a year? \nEdit: I’m based in SoCal so what are some common jobs in LA that you often find yourselves doing? ",
+    "score": 121,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1l4uqhv/what_electrical_engineers_do/",
+    "created_at": "2025-06-06T15:05:57.000Z",
+    "num_comments": 41
+  },
+  {
+    "id": "reddit-1nekfez",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Finally got my first job as an electrical/avionics engineer! Any advice for my first days?",
+    "text": "So after two years on the job hunt after finishing my MSEE, I actually landed a dream job working on rockets. \n\nI actually interviewed for an internship, got through all 3 interviews and they all went incredibly well. I got along with everyone really well, everyone there is well established, passionate, and I felt like I was dealing with “the best of the best”. I brought in prototypes of designs I had been working on over the past several years and they loved them, with the lead engineer even calling them “badass.” The final interview with 5 engineers ended up being a lot of fun, talking about electronics, and even  all of us joking and laughing about common pcb design errors and stuff. \n\nThey offered me the internship the day after the last interview, and I ecstatically accepted it. To my extreme surprise, they called me back the next day and said that the avionics team discussed it, and they didn’t want either of us to settle for an internship. They offered me a full time permanent job with a great salary, great benefits, and a month of paid time off. \n\nThe facility is brand new, the tools and equipment they have is insane, everyone I have dealt with has been warm and friendly, and this honestly feels like a major dream come true. Especially after struggling for so long and becoming less and less hopeful that things would pan out for me.\n\nSo now I really don’t want to mess this up. I start this coming Monday, and I want to live up to everyone’s expectations of me, and really contribute. The company’s mission is genuinely very important to me, and I see it as a real opportunity to make change and have an impact on the world. \n\nI’m still shocked that they offered me full time after interviewing for an internship, it’s been a tough couple years trying to keep myself afloat in a tough economy and poor job market. \n\nI suppose this post is half asking for advice, half wanting to share this success after a long slog. \n\nSo does anybody have any advice on keeping this momentum and how to hit the ground running? Any thoughts would be greatly appreciated!",
+    "score": 115,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1nekfez/finally_got_my_first_job_as_an_electricalavionics/",
+    "created_at": "2025-09-11T20:58:35.000Z",
+    "num_comments": 37
+  },
+  {
+    "id": "reddit-1ov9rz8",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What do you look for in your first job out of college is it money, experience, or quality of life?",
+    "text": "I’m a senior EE student getting ready to graduate soon, and I’ve been thinking a lot about what actually matters most in that first full-time job.\n\nSome people say to chase the highest pay. Others say to take the role that gives you the best technical experience or growth potential. Then there’s the lifestyle factor is it commute, hours, cost of living, being near family, etc.\n\nI’m curious what other engineers value most when they’re starting out:\n\n* Do you prioritize salary or work-life balance?\n* Any regrets about decisions you made early in your career?\n* Does being close to home/family matter?\n* Would you take a lower-paying job for a better location or less stress?\n* How much does “experience in the right industry” actually matter versus just getting experience anywhere?\n* Have you ever felt stuck after taking a job in a competitive or niche field?\n\nI’d really like to hear how people weighed these trade-offs when they graduated, what you chose, and how it worked out.\n\n  \nThank you for your time, have an AWESOME DAY ",
+    "score": 102,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1ov9rz8/what_do_you_look_for_in_your_first_job_out_of/",
+    "created_at": "2025-11-12T16:27:06.000Z",
+    "num_comments": 45
+  },
+  {
+    "id": "reddit-1mom78d",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "The employment situation in 2025 is difficult",
+    "text": "I have a year and a half of experience as a graduate plus 6 months of internship experience, I have worked in industrial maintenance and in a consulting firm, in both the salary was a pittance, I was fired a month and a half ago but before that while I was working I was looking for a job, I still haven't found a job, I haven't even managed to get to interviews, in my city on the job portal there are only 19 offers if you are looking for an electrical engineer exactly, but you have to search by job titles but they all ask for more than 3 years of experience, things are difficult even though I am studying a specialty in power systems, the network operator in my city is not hiring.",
+    "score": 99,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1mom78d/the_employment_situation_in_2025_is_difficult/",
+    "created_at": "2025-08-12T21:52:08.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1iy03ji",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Salary ceiling cap as engineer?",
+    "text": "Do you believe there's a low ceiling for technical engineers? \nI seem to have the conception that there is a relatively low ceiling (100-200k) a year for engineers doing technical stuff e.g design, calculations for a company. Instead, bigger money is made in management/projects management/sales/consulatancy, which some technically are beyond the scope of a bachelors in engineering.\n\nFor those working/in the industry, do you agree? If so, what advice would you give to someone doing their bachelor's? thank you!\n\nEdit:\nThanks everyone for your input. I learnt a lot from all of y'all. here's a tldr of the comment section\n\n1. Yes, for purely technical jobs the ceiling exists at about 100-200k, after much experience in the industry for most people. Very very good snr engineers can hit 500k to 1M.\n\n2. However, not difficult to pivot to management/similar roles by that time\n\n3. Engineering typically isn't the \"big bucks\" career, which is understandable. Ceiling is still quite high however.\n\n4. Possibility of pivoting into certain industries such as tech for higher salary.",
+    "score": 97,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1iy03ji/salary_ceiling_cap_as_engineer/",
+    "created_at": "2025-02-25T17:11:17.000Z",
+    "num_comments": 126
+  },
+  {
+    "id": "reddit-1p9mc0v",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Switching from Medical school to electrical engineering",
+    "text": "Hey guys, I finished the 1st year of medicine bachelor’s and I realized that I don’t enjoy medical school, I don’t like how it’s full of memorization. I’m more into critical thinking, mathematics and physics, so I’m thinking of engineering, specifically Electrical Engineering. Is electrical engineering worth it in terms of job market and salary and in general?",
+    "score": 95,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1p9mc0v/switching_from_medical_school_to_electrical/",
+    "created_at": "2025-11-29T11:04:24.000Z",
+    "num_comments": 65
+  },
+  {
+    "id": "reddit-1jt48rv",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Compromise salary for getting an entry level job in the current job market?",
+    "text": "I, like many others, have had to apply to hundreds of jobs and deal with many rejections. I've also found it difficult finding companies that are looking for entry level engineers in my fields of interest (renewable energy and EVs). As I was applying I found myself lowering my standards for my salary expectations, just in the hopes of getting into the work force, gaining experience, and then being able to leverage myself at another company later on.\n\nA friend of mine got a job at his dream company, however even with a masters and it being in a HCOL he was offered 85k, eventually negotiating to 90k. The initial offer was much lower than his target of 95k-100k. He spoke with his former manager, who also worked at the same company when he graduated college, about this and the manager mentioned he was offered 105k back in 2021 (granted this was a competing offer with another company that also offered him a job).\n\nDo you think the offer he took was good or not? Is this good overall since he got a decent salary and will be employed? Would you take a slightly lower salary then your expected range just to get your foot in the door and be employed? Appreciate any thoughts on this\n\nEDIT: I don't have the same range as my friend. Ideally I would go for 80-90k considering I'm in a HCOL area",
+    "score": 94,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1jt48rv/compromise_salary_for_getting_an_entry_level_job/",
+    "created_at": "2025-04-06T20:53:43.000Z",
+    "num_comments": 41
+  },
+  {
+    "id": "reddit-1l76njj",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "For those who have a masters in EE, what was your starting salary and how much did it increase over the years",
+    "text": "I’m pursuing a master’s in electrical engineering specializing in power systems, and I’m stressed about managing my monthly expenses after graduation. I’ve seen salary estimates on Indeed and Glassdoor, but they seem unreliable—either too high or too low. So, for those who’ve already graduated and have been in the field, any insight would be helpful. ",
+    "score": 87,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1l76njj/for_those_who_have_a_masters_in_ee_what_was_your/",
+    "created_at": "2025-06-09T14:44:49.000Z",
+    "num_comments": 69
+  },
+  {
+    "id": "reddit-1mbkd69",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Recent Salary Hikes...Are they across the board?",
+    "text": "I've seen posts/comments here in the past where it seems most people seem to agree the average range is 85k +/- to 120k +/-, from starting to senior and a little higher if the company has a principal engineer distinction. I'm curious if thats still the case or if we see salaries finally catching up with the times across the various disciplines. \n\nSo I'd love to see the range you see, the industry you are in, and the locale, to get a lay of the land.  On top of that, what do you think an engineer should make?\n\nEngineers used to be considered up there with MDs and Lawyers, but we've definitely stagnated in pay.  When I started  20 years ago I got 65k during probationary period and bumped to 75k within a year.  The COL has gone up quite a bit since then and pay really hasn't. I think an engineer should be on par with a doctor...we hold a lot of lives in our hands too and support the entire infrastructure that keeps progress moving. \n\nI'm an employer in the power and automation industry and I've been seeing salaries in my realm skyrocket over the last yearish.  I've raised my average engineering salary by about 30% to make sure I stay competitive and keep people happy. I'm on the front side of that curve but only slightly, or at least I think. I figure it's better for people to just get what they deserve instead of having to look around and beg for more money. I've been reworking my contracts to get that extra money built in and I'm at a place now where I can do it and am happy to.  My range from starting to principal is 100-190k USD right now with managers in the 2's. My team has a ton of responsibility though designing, implementing and troublehsooting life safety, and mission critical systems. ",
+    "score": 78,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1mbkd69/recent_salary_hikesare_they_across_the_board/",
+    "created_at": "2025-07-28T16:09:00.000Z",
+    "num_comments": 108
+  },
+  {
+    "id": "reddit-1j90rnt",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What certifications lead to tangible increase to salary?",
+    "text": "I’m getting closer to graduation and I’ve been thinking about the possible certifications to get after I graduate. From what I’ve found it depends on the field you work in but in general for electrical engineering it seems like getting a PE certification is the most important. Then again I have no experience in the industry so I’m interested to know what people experienced. ",
+    "score": 58,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1j90rnt/what_certifications_lead_to_tangible_increase_to/",
+    "created_at": "2025-03-11T20:29:52.000Z",
+    "num_comments": 52
+  },
+  {
+    "id": "reddit-1j65lnj",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Just got an offer from a startup. 170k total comp. SoCal, apprehensive to accept.",
+    "text": "To start, I have 10 years of experience as an engineer, but 3 of those years I have been on active military orders since I'm a reservist. Gonna leave this somewhat vague. \n\nI currently work in the defense industry doing RF things as part of a team. Pay is 120k+10% 401k match before any bonus I'm on track to make 10k in bonus/extra work this year since I've already received a 4k bonus for a successful test campaign and have at least one more campaign coming this year. \n\nI interviewed at a startup that is basically down the street that has no involvement with defense, but would make me a lead RF person, doing RF things that are not what I'm used to, but I think I can come up to speed fast. \n\nThey offered me $145k base with a 4% 401k match, but an option of shares that would bring me up to $170k per year as they vest over 4 years (at current valuation its roughly 100k in stock options, or 25k per year). It's a startup so the stock could swing wildly in either direction, if they even doubled in value, it would make my salary more like $190k per year. \n\nI am apprehensive because this is my first startup, and the base salary isn't that much higher than what I currently make, but obviously the bet is on the stock options. I'm not fully into the overlying vision of the company, but I am for the tech they need built, and I see that as an out if they get in over their head, they pivot and possibly sell just the tech. The commute is the same, but the expectations of my working would go up from a pretty cushy 40 hrs with a few days work from home to almost expected 50+ hr weeks. I would plan on finding a place closer to live, but that move may take 3ish months. \n\nI'm having a hard time knowing if this is a good move. First company I left I was at for 4.5 years and they were being bought out, and I got my current job basically in the industry I wanted and it was back closer to home so it was like a triple win, which I don't have that same feeling for this job. How have any of you guys overcome the apprehension? ",
+    "score": 56,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1j65lnj/just_got_an_offer_from_a_startup_170k_total_comp/",
+    "created_at": "2025-03-08T01:12:05.000Z",
+    "num_comments": 43
+  },
+  {
+    "id": "reddit-1oik14f",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Scared the shit out of the job market.",
+    "text": "I'm second year student, and i picked this major 100% out of passion and curiosity. Didn't really research the job market.\nThe reason that it scares the hell out of me, is that not many people do this major and worried that it's kind of one of that \"mickey mouse\" degrees. I get surprised when i meet someone  that has done/is currently doing this major.\nUnlike something like law, which everyone and their mom does it in my country, in which you would feel safe since so many people do it and is considered one of the \"good\" majors.\nYou feel like you're in some sort of an alliance when you're doing popular major.\nYeah being bit special feels cool but bit scary at the same time.\n\n\n\nHow does job market for BSEE compare to other popular fields like medicine, law, economics e.t.c? In terms of getting a job(supply/demand), idc about salary.\nWould you say it's better/equal/worse?",
+    "score": 56,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1oik14f/scared_the_shit_out_of_the_job_market/",
+    "created_at": "2025-10-28T20:11:14.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1pr8gll",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Can i get a job with 2.0-3.0 gpa",
+    "text": "Can i get low paying interesting job with gpa between 2.0 and 3.0?\n\nI'm very unmaterialistic person and Idc about salary, as long as i can survive(afford food and rent)\nAnd as long as it's interesting and physics heavy.(so something like power utility or rf)\n\nLow gpa gives me bit of anxiety, but should the fact that engineers and especially power engineers are very sought after keep me calm?",
+    "score": 55,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1pr8gll/can_i_get_a_job_with_2030_gpa/",
+    "created_at": "2025-12-20T07:17:58.000Z",
+    "num_comments": 69
+  },
+  {
+    "id": "reddit-1lgjzc9",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Deathly scared of college",
+    "text": "\nI need to come one here and spew my feelings so here i am.I want to start by saying i’m genuinely interested in electronics and electricity also interested in computers and coding.However In the fall i will be attending college and it want to start by saying that im not a very smart person.My freshmen year i failed algebra 1 due to me just being immature and never paying attention.Sophomore year i barely passed chem i want to add i also have ADHD .My 3rd year i passed my classes well because i started to realize time is ticking.My senior year i had pre cal and some dual credit which wasn’t too bad precal made me question my life sometimes but i did well with like a 87 for the year.So for college i was thinking i should go to community college however my parents insist i go to Praire view A&amp;M unversity which is literally a PRIVATE expensive school (30k).They have to take out a whole loan for it and i’m really scared i won’t do good like really scared.My major is electrical engineering yes i know it’s hard but im really into computers and coding it’s what i do on my free time im not interested in salary.How ever im just really scared is it normal to feel like this and am i making a mistake please.If anyone has gone through something like this please tell me how you overcame your fear and succeed when all you’ve done your entire life is fail.\n\n(Forgot to mention ADHD is not medicated)",
+    "score": 54,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1lgjzc9/deathly_scared_of_college/",
+    "created_at": "2025-06-21T00:52:29.000Z",
+    "num_comments": 57
+  },
+  {
+    "id": "reddit-1pjyw4t",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "How much does a PhD Electrical Engineer makes?",
+    "text": "I am putting together a job description for a Phd level Electrical Engineer for our R&amp;D department. I have researched salary range from various websites such as Glassdoor, DOL actual wage and even used chatgpt. However, the range seems a bit off. $85k-$145k in NY.",
+    "score": 54,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1pjyw4t/how_much_does_a_phd_electrical_engineer_makes/",
+    "created_at": "2025-12-11T14:29:39.000Z",
+    "num_comments": 80
+  },
+  {
+    "id": "reddit-1op06gs",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Expected Salary",
+    "text": "Hey guys! I’m currently a freshman studying electrical engineering and was just curious what everyone is making and how many years of experience you have! I live in michigan I am kind of freaking out because i’ve heard the job market is terrible right now…",
+    "score": 53,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1op06gs/expected_salary/",
+    "created_at": "2025-11-05T11:18:38.000Z",
+    "num_comments": 153
+  },
+  {
+    "id": "reddit-1o0u6n5",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Starting Salary for Recently Graduated Electrical Engineer",
+    "text": "Hello electrical engineers!   \n  \nI got my first job offer yesterday and they want me to make a decision within a week! Pretty scary for me as it's my first offer so far.   \n  \nI will be graduating May of 2026 (current GPA: 3.7 with previous internship) and the job offer comes with a starting pay of $82k annually (TX), the company will pay for my masters degree while I work full time, and I also see that they have a salary review bi-annually for the first three years of employment. As well, I get a signing bonus of around $4k and an extra $4k for relocation. \n\nI was wondering if this is a good deal, how much higher I should negotiate salary, or if I should even negotiate salary. I'll be honest I have no knowledge of the job market and I've never negotiated for a position before, so I'm afraid they'll rescind their offer if I go to high. I'm not sure if this is a valid concern but it's something that's on my mind. I feel like I aced the interview and they called and let me know they were giving me an offer 2 hours after my interview ended, I would have seen this as a red flag, but they are a very reputable company.\n\nI wouldn't have taken the job in order to pursue a masters but the offer to pay for my further education has me really really really wanting to take the offer. My current plan is to research starting salaries for similar jobs and take some steps from there.   \n  \nFor those who have graduated with an EE degree, do you believe this is a good deal? As well, do you think that I should negotiate for a higher salary?\n\nIf you guys need any more info (that's not too personal) please let me know! Thank you in advance for your help!",
+    "score": 49,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1o0u6n5/starting_salary_for_recently_graduated_electrical/",
+    "created_at": "2025-10-07T23:02:14.000Z",
+    "num_comments": 51
+  },
+  {
+    "id": "reddit-1jkyo3c",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Telecom/RF engineers, how's your daily routine?",
+    "text": "And which part of telecom tech you're working on mostly? antennas, signals, circuits, networks etc.  \nAlso it'd be greate if you mention your salary, yoe and whether you're overally satisfied with your career",
+    "score": 48,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1jkyo3c/telecomrf_engineers_hows_your_daily_routine/",
+    "created_at": "2025-03-27T07:44:56.000Z",
+    "num_comments": 17
+  },
+  {
+    "id": "reddit-1jzhsi0",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "What electrical engineering field should I go with ?",
+    "text": "Good evening yall, I currently enrolled into college in pursue of electrical engineering, and I'm stuck in between if I should choose a RF or microprocessor field. I'm looking into something in high demand,high salary, maybe even government related.\nI would much appreciate yalls opinion on this matter\nThank you.\nP.s.\nIm also a veteran with a electrical experience background and currently working as a service technician engineer that maintains several equipment involving electrical components.",
+    "score": 45,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1jzhsi0/what_electrical_engineering_field_should_i_go_with/",
+    "created_at": "2025-04-15T03:14:22.000Z",
+    "num_comments": 33
+  },
+  {
+    "id": "reddit-1nqmc88",
+    "subreddit": "ElectricalEngineering",
+    "soc_codes": [
+      "17-2071"
+    ],
+    "title": "Transitioning to a different field or industry for higher salary",
+    "text": "I am dissatisfied with the salary range of electrical engineering. I have an bachelor's and a few years experience. Will have the PE next year. I know from my previous company and current company 140k is about where I can easily reach and top out. 160k if I am the star of the team. I am coming from operational engineering in oil and gas and architectural/MEP engineering. (EE's in oil and gas seem to miss out on the increased salaries chemical engineers and petroleum engineers get as we are not in exploration or upstream (but I was in midstream).)\n\nI am wanting a master's to switch to a niche field rather than the general electrical engineering I am doing now with NEC doing site plans, power studies, and relay commissioning.\n\nI am also considering computer science as I can code, but I am afraid a good chunk of them will be obsolete  soon with AI replacing them.\n\nSignals/RF to do missiles in defence doesn't seem to be a big salary increase just more interesting work. Computer engineering to enter the semi-conductor industry seems to be a salary increase. I also thought of patant attorney but the salary is about the same for mid-level lawyers and a very good law school is likely out of my reach so I would never obtain the high salaries peak lawyers are able to get.\n\nData science is about the same. I am assuming get the degree and be employed at a middle range company not FAANG to be realistic.\n\nWhat careers can an electrical engineer transition to? What industries and fields to obtain a higher salary ceiling?",
+    "score": 43,
+    "url": "https://reddit.com/r/ElectricalEngineering/comments/1nqmc88/transitioning_to_a_different_field_or_industry/",
+    "created_at": "2025-09-25T23:44:21.000Z",
+    "num_comments": 32
+  }
+]

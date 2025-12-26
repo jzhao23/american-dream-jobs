@@ -23,6 +23,15 @@ interface OxfordMapping {
   match_type: string;
 }
 
+// Type for career video
+interface CareerVideo {
+  source: 'careeronestop' | 'practitioner';
+  youtubeId: string;
+  title: string;
+  thumbnailUrl: string;
+  lastVerified: string;
+}
+
 async function main() {
   console.log('\n=== Generating Final Dataset ===\n');
 
@@ -40,6 +49,21 @@ async function main() {
     oxfordMappings.set(mapping.onet_code, mapping);
   }
   console.log(`Loaded ${oxfordMappings.size} Oxford AI risk mappings`);
+
+  // Load career videos
+  const videosFile = path.join(DATA_DIR, 'videos/career-videos.json');
+  const videosMap = new Map<string, CareerVideo>();
+  if (fs.existsSync(videosFile)) {
+    const videosData = JSON.parse(fs.readFileSync(videosFile, 'utf-8'));
+    if (videosData.videos) {
+      for (const [socCode, video] of Object.entries(videosData.videos)) {
+        videosMap.set(socCode, video as CareerVideo);
+      }
+    }
+    console.log(`Loaded ${videosMap.size} career videos`);
+  } else {
+    console.log('No career videos file found (data/videos/career-videos.json)');
+  }
 
   // Apply Oxford AI risk scores to occupations
   let oxfordApplied = 0;
@@ -73,8 +97,17 @@ async function main() {
       };
       oxfordApplied++;
     }
+
+    // Add video data if available
+    const video = videosMap.get(occ.soc_code);
+    if (video) {
+      occ.video = video;
+    } else {
+      occ.video = null;
+    }
   }
   console.log(`Applied Oxford AI risk to ${oxfordApplied} occupations`);
+  console.log(`Applied videos to ${videosMap.size} occupations`);
 
   // Validate all occupations have required fields
   let validCount = 0;
@@ -118,12 +151,14 @@ async function main() {
         { name: 'BLS OES', url: 'https://www.bls.gov/oes/' },
         { name: 'Levels.fyi (mapped)', url: 'https://www.levels.fyi' },
         { name: 'Frey & Osborne (2013) - AI Risk', url: 'https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment' },
+        { name: 'CareerOneStop Videos', url: 'https://www.careeronestop.org/Videos/' },
       ],
       completeness: {
         wages: occupations.filter((o: { wages: unknown }) => o.wages).length,
         ai_risk: occupations.filter((o: { ai_risk: unknown }) => o.ai_risk).length,
         national_importance: occupations.filter((o: { national_importance: unknown }) => o.national_importance).length,
         career_progression: occupations.filter((o: { career_progression: unknown }) => o.career_progression).length,
+        videos: occupations.filter((o: { video: unknown }) => o.video).length,
       },
     },
     occupations,
