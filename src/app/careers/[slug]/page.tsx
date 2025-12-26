@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import * as fs from "fs";
 import * as path from "path";
 import careers from "../../../../data/careers.generated.json";
+import careersIndex from "../../../../data/careers-index.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
 import {
@@ -12,8 +13,9 @@ import {
   getCategoryColor,
   getAIRiskColor,
   getAIRiskLabel,
-  getImportanceColor,
-  getImportanceLabel,
+  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
+  // getImportanceColor,
+  // getImportanceLabel,
 } from "@/types/career";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 // Raw review type from Reddit
@@ -94,7 +96,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${career.title} | American Dream Jobs`,
-    description: `Learn about becoming a ${career.title}. Median pay: ${formatPay(medianPay)}. Training: ${getTrainingTimeLabel(trainingTime)}. Real career info with AI resilience and national importance scores.`,
+    description: `Learn about becoming a ${career.title}. Median pay: ${formatPay(medianPay)}. Training: ${getTrainingTimeLabel(trainingTime)}. Real career info with AI resilience scores.`,
   };
 }
 
@@ -113,7 +115,8 @@ export default async function CareerPage({ params }: PageProps) {
   const trainingTime = getTrainingTimeFromYears(career.education?.time_to_job_ready?.typical_years || 2);
   const trainingYears = career.education?.time_to_job_ready;
   const aiRiskScore = career.ai_risk?.score || 5;
-  const importanceScore = career.national_importance?.score || 5;
+  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
+  // const importanceScore = career.national_importance?.score || 5;
 
   // Find reviews for this career (match by slug or SOC code)
   const careerReviewsSummary = (reviewsIndex as RawCareerReviewsSummary[]).find(
@@ -196,17 +199,7 @@ export default async function CareerPage({ params }: PageProps) {
                 </span>
               </div>
             </div>
-            <div className="bg-secondary-50 rounded-lg p-4">
-              <div className="text-sm text-secondary-600 mb-1">
-                National Importance
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-secondary-900">{importanceScore}/10</span>
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(importanceScore)}`}>
-                  {getImportanceLabel(importanceScore)}
-                </span>
-              </div>
-            </div>
+            {/* ARCHIVED: National Importance removed - see data/archived/importance-scores-backup.json */}
             <div className="bg-secondary-50 rounded-lg p-4">
               <div className="text-sm text-secondary-600 mb-1">
                 Education
@@ -215,6 +208,28 @@ export default async function CareerPage({ params }: PageProps) {
                 {career.education?.typical_entry_education || "Varies"}
               </div>
             </div>
+          </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap gap-3 mt-6">
+            <a
+              href={`/compare?career=${career.slug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Compare with other careers
+            </a>
+            <a
+              href={`/calculator?career=${career.slug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              Calculate lifetime earnings
+            </a>
           </div>
         </div>
       </section>
@@ -259,6 +274,19 @@ export default async function CareerPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+            </Section>
+          )}
+
+          {/* Inside This Career */}
+          {career.inside_look && (
+            <Section title="Inside This Career" icon="insight">
+              <div className="prose prose-secondary max-w-none">
+                {career.inside_look.content.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className="text-secondary-700 leading-relaxed mb-4 last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </Section>
           )}
 
@@ -448,45 +476,7 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
-          {/* National Importance */}
-          {career.national_importance && (
-            <Section title="Why This Job Matters" icon="flag">
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`text-4xl font-bold ${getImportanceColor(importanceScore)} px-4 py-2 rounded-lg`}>
-                  {importanceScore}/10
-                </div>
-                <div>
-                  <div className="font-bold text-xl text-secondary-900">
-                    {getImportanceLabel(importanceScore)}
-                  </div>
-                  {career.national_importance.rationale.critical_infrastructure_sector && (
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mt-1">
-                      {career.national_importance.rationale.critical_infrastructure_sector} Sector
-                    </span>
-                  )}
-                </div>
-              </div>
-              <p className="text-secondary-700 mb-4">{career.national_importance.rationale.summary}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {career.national_importance.rationale.defense_related && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-indigo-100 text-indigo-800">
-                    Defense Related
-                  </span>
-                )}
-                {career.national_importance.rationale.shortage_occupation && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-amber-100 text-amber-800">
-                    Shortage Occupation
-                  </span>
-                )}
-                {career.national_importance.rationale.cannot_offshore && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
-                    Cannot Offshore
-                  </span>
-                )}
-              </div>
-            </Section>
-          )}
+          {/* ARCHIVED: National Importance section removed - see data/archived/importance-scores-backup.json */}
 
           {/* Technology Skills */}
           {career.technology_skills && career.technology_skills.length > 0 && (
@@ -532,6 +522,50 @@ export default async function CareerPage({ params }: PageProps) {
               </div>
             </Section>
           )}
+
+          {/* Related Careers */}
+          {(() => {
+            // Get related careers in the same category (sorted by median pay)
+            // ARCHIVED: was sorted by national_importance_score - see data/archived/importance-scores-backup.json
+            const relatedCareers = (careersIndex as { slug: string; title: string; category: string; median_pay: number }[])
+              .filter(c => c.category === career.category && c.slug !== career.slug)
+              .sort((a, b) => (b.median_pay || 0) - (a.median_pay || 0))
+              .slice(0, 5);
+
+            if (relatedCareers.length === 0) return null;
+
+            return (
+              <Section title="Related Careers" icon="link">
+                <p className="text-sm text-secondary-600 mb-4">
+                  Other careers in {career.category}
+                </p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {relatedCareers.map((related) => (
+                    <div key={related.slug} className="bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors">
+                      <a
+                        href={`/careers/${related.slug}`}
+                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline block mb-1"
+                      >
+                        {related.title}
+                      </a>
+                      <div className="text-sm text-secondary-600 mb-3">
+                        {formatPay(related.median_pay)}/yr
+                      </div>
+                      <a
+                        href={`/compare?careers=${career.slug},${related.slug}`}
+                        className="inline-flex items-center gap-1 text-xs text-secondary-500 hover:text-primary-600"
+                      >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        Compare
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            );
+          })()}
 
           {/* What Workers Say */}
           {allReviews.length > 0 && (
@@ -620,6 +654,20 @@ export default async function CareerPage({ params }: PageProps) {
                 Report an Error
               </a>
             </div>
+            <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-primary-400/30">
+              <a
+                href={`/compare?career=${career.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+              >
+                Compare Careers
+              </a>
+              <a
+                href={`/calculator?career=${career.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+              >
+                Calculate Earnings
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -639,6 +687,7 @@ const icons: Record<string, string> = {
   link: "🔗",
   chat: "💬",
   video: "🎬",
+  insight: "💡",
 };
 
 function Section({

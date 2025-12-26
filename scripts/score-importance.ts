@@ -1,6 +1,18 @@
 /**
- * National Importance Scoring
+ * ARCHIVED - National Importance Scoring
  *
+ * ⚠️ This script is currently NOT IN USE. The importance feature has been
+ * temporarily removed from the UI. All existing importance data has been
+ * preserved in: data/archived/importance-scores-backup.json
+ *
+ * To restore importance scoring:
+ * 1. Run this script to regenerate scores
+ * 2. Uncomment importance fields in scripts/generate-final.ts
+ * 3. Uncomment importance fields in src/types/career.ts
+ * 4. Re-add importance UI components to career pages
+ *
+ * ---
+ * Original description:
  * Scores all occupations on a 1-10 scale for importance to US national interest.
  * Aligned with DHS Critical Infrastructure Sectors and DoD priorities.
  *

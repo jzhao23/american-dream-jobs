@@ -26,9 +26,10 @@ export const CareerIndexSchema = z.object({
   typical_education: z.string().optional(),
   ai_risk: z.number(),
   ai_risk_label: AIRiskLabelEnum,
-  importance: z.number(),
-  importance_label: ImportanceLabelEnum,
-  flag_count: z.number(),
+  // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
+  // importance: z.number(),
+  // importance_label: ImportanceLabelEnum,
+  // flag_count: z.number(),
   description: z.string().optional(),
 });
 
@@ -237,6 +238,10 @@ export const CareerSchema = z.object({
     thumbnailUrl: z.string().url(),
     lastVerified: z.string(),
   }).nullable().optional(),
+  inside_look: z.object({
+    content: z.string(),
+    generated_at: z.string(),
+  }).nullable().optional(),
 });
 
 // Career Video schema (standalone for component use)
@@ -246,6 +251,12 @@ export const CareerVideoSchema = z.object({
   title: z.string(),
   thumbnailUrl: z.string().url(),
   lastVerified: z.string(),
+});
+
+// Inside Career schema (standalone for component use)
+export const InsideCareerSchema = z.object({
+  content: z.string(),
+  generated_at: z.string(),
 });
 
 // TypeScript types
@@ -261,6 +272,7 @@ export type Education = z.infer<typeof EducationSchema>;
 export type Wages = z.infer<typeof WagesSchema>;
 export type Career = z.infer<typeof CareerSchema>;
 export type CareerVideo = z.infer<typeof CareerVideoSchema>;
+export type InsideCareer = z.infer<typeof InsideCareerSchema>;
 
 // Helper functions
 export function formatPay(amount: number): string {
@@ -310,7 +322,8 @@ export function getAIRiskLabel(score: number): string {
   return "Very High Risk";
 }
 
-// Legacy function - kept for backwards compatibility
+// ARCHIVED: Importance functions - kept for potential restoration
+// See data/archived/importance-scores-backup.json for preserved data
 export function getImportanceFlags(flagCount: number): string {
   return "🇺🇸".repeat(flagCount);
 }
@@ -355,7 +368,7 @@ export function getCategoryColor(category: string): string {
 export function getCategoryLabel(category: string): string {
   // Use new category system if it's a valid CategoryId
   if (isCategoryId(category)) {
-    return getCategoryMetadata(category).name;
+    return getCategoryMetadata(category).shortName;
   }
   return category;
 }
@@ -363,6 +376,8 @@ export function getCategoryLabel(category: string): string {
 // Re-export CategoryId for use in components
 export type { CategoryId };
 
+// ARCHIVED: Importance functions - kept for potential restoration
+// See data/archived/importance-scores-backup.json for preserved data
 export function getImportanceColor(score: number): string {
   if (score >= 7) return "text-blue-600 bg-blue-100";
   if (score >= 4) return "text-indigo-600 bg-indigo-100";

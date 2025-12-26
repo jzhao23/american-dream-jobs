@@ -7,7 +7,8 @@ import {
   getTrainingTimeLabel,
   getAIRiskColor,
   getAIRiskLabel,
-  getImportanceColor,
+  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
+  // getImportanceColor,
   getCategoryColor,
   getCategoryLabel,
 } from "@/types/career";
@@ -17,7 +18,8 @@ interface CareerExplorerProps {
   hideCategoryFilter?: boolean;
 }
 
-type SortField = "median_pay" | "ai_risk" | "importance" | "title";
+// ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
+type SortField = "median_pay" | "ai_risk" | "title";
 type SortDirection = "asc" | "desc";
 
 const TRAINING_TIME_ORDER: TrainingTime[] = ["<6mo", "6-24mo", "2-4yr", "4+yr"];
@@ -29,10 +31,11 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>([]);
   const [maxAIRisk, setMaxAIRisk] = useState(10);
-  const [minImportance, setMinImportance] = useState(1);
+  // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
+  // const [minImportance, setMinImportance] = useState(1);
 
   // Sort state
-  const [sortField, setSortField] = useState<SortField>("importance");
+  const [sortField, setSortField] = useState<SortField>("median_pay");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
 
   // Mobile filter toggle
@@ -75,8 +78,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
       // AI risk filter
       if (career.ai_risk > maxAIRisk) return false;
 
-      // Importance filter
-      if (career.importance < minImportance) return false;
+      // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
+      // if (career.importance < minImportance) return false;
 
       return true;
     });
@@ -92,9 +95,10 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         case "ai_risk":
           comparison = a.ai_risk - b.ai_risk;
           break;
-        case "importance":
-          comparison = a.importance - b.importance;
-          break;
+        // ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
+        // case "importance":
+        //   comparison = a.importance - b.importance;
+        //   break;
         case "title":
           comparison = a.title.localeCompare(b.title);
           break;
@@ -111,7 +115,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     selectedCategories,
     selectedTrainingTimes,
     maxAIRisk,
-    minImportance,
+    // ARCHIVED: minImportance removed
     sortField,
     sortDirection,
   ]);
@@ -156,7 +160,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     setSelectedCategories([]);
     setSelectedTrainingTimes([]);
     setMaxAIRisk(10);
-    setMinImportance(1);
+    // ARCHIVED: setMinImportance(1);
     setCurrentPage(1);
   };
 
@@ -165,16 +169,16 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     minPay > 0 ||
     selectedCategories.length > 0 ||
     selectedTrainingTimes.length > 0 ||
-    maxAIRisk < 10 ||
-    minImportance > 1;
+    maxAIRisk < 10;
+    // ARCHIVED: || minImportance > 1;
 
   // Count active filters (excluding search) for mobile display
   const activeFilterCount =
     (minPay > 0 ? 1 : 0) +
     selectedCategories.length +
     selectedTrainingTimes.length +
-    (maxAIRisk < 10 ? 1 : 0) +
-    (minImportance > 1 ? 1 : 0);
+    (maxAIRisk < 10 ? 1 : 0);
+    // ARCHIVED: + (minImportance > 1 ? 1 : 0);
 
   return (
     <div>
@@ -253,23 +257,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               </select>
             </div>
 
-            {/* Min Importance */}
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-secondary-700">Min Importance</label>
-              <select
-                value={minImportance}
-                onChange={(e) => {
-                  setMinImportance(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
-              >
-                <option value={1}>Any</option>
-                <option value={5}>5+</option>
-                <option value={7}>7+</option>
-                <option value={9}>9+</option>
-              </select>
-            </div>
+            {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
 
             {/* Training Time */}
             <div>
@@ -300,7 +288,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     <button
                       key={category}
                       onClick={() => toggleCategory(category)}
-                      className={`px-3 py-2 min-h-[44px] text-sm rounded-full border transition-colors ${
+                      className={`px-3 py-2 min-h-[44px] text-sm rounded-full border transition-colors whitespace-nowrap ${
                         selectedCategories.includes(category)
                           ? "bg-primary-600 text-white border-primary-600"
                           : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
@@ -386,25 +374,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
             </select>
           </div>
 
-          {/* Min Importance */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-medium text-secondary-600 whitespace-nowrap">
-              Importance ≥
-            </label>
-            <select
-              value={minImportance}
-              onChange={(e) => {
-                setMinImportance(Number(e.target.value));
-                setCurrentPage(1);
-              }}
-              className="px-2 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
-            >
-              <option value={1}>Any</option>
-              <option value={5}>5+</option>
-              <option value={7}>7+</option>
-              <option value={9}>9+</option>
-            </select>
-          </div>
+          {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
 
           {/* Training Time */}
           <div className="flex items-center gap-1">
@@ -442,7 +412,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <button
                 key={category}
                 onClick={() => toggleCategory(category)}
-                className={`px-2 py-0.5 text-xs rounded-full border transition-colors ${
+                className={`px-2 py-0.5 text-xs rounded-full border transition-colors whitespace-nowrap ${
                   selectedCategories.includes(category)
                     ? "bg-primary-600 text-white border-primary-600"
                     : "bg-white text-secondary-600 border-secondary-300 hover:border-primary-300"
@@ -465,7 +435,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
           <span className="text-sm text-secondary-600">Sort by:</span>
           <div className="flex gap-1">
             {[
-              { field: "importance" as const, label: "Importance" },
+              // ARCHIVED: { field: "importance" as const, label: "Importance" },
               { field: "median_pay" as const, label: "Pay" },
               { field: "ai_risk" as const, label: "AI Risk" },
               { field: "title" as const, label: "A-Z" },
@@ -509,9 +479,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
                 AI Risk
               </th>
-              <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
-                Importance
-              </th>
+              {/* ARCHIVED: Importance column removed - see data/archived/importance-scores-backup.json */}
             </tr>
           </thead>
           <tbody className="divide-y divide-secondary-100">
@@ -526,9 +494,12 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   </a>
                 </td>
                 <td className="px-4 py-3">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(career.category)}`}>
+                  <a
+                    href={`/categories/${career.category}`}
+                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium hover:opacity-80 transition-opacity ${getCategoryColor(career.category)}`}
+                  >
                     {getCategoryLabel(career.category)}
-                  </span>
+                  </a>
                 </td>
                 <td className="px-4 py-3 text-right font-medium text-secondary-900">
                   {formatPay(career.median_pay)}
@@ -547,11 +518,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     {career.ai_risk}/10
                   </span>
                 </td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                    {career.importance}/10
-                  </span>
-                </td>
+                {/* ARCHIVED: Importance cell removed - see data/archived/importance-scores-backup.json */}
               </tr>
             ))}
           </tbody>
@@ -567,25 +534,38 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
       {/* Mobile Card View */}
       <div className="lg:hidden space-y-4">
         {paginatedCareers.map((career) => (
-          <a
+          <div
             key={career.slug}
-            href={`/careers/${career.slug}`}
             className="card p-4 block hover:shadow-md transition-shadow"
           >
             <div className="flex justify-between items-start mb-2">
               <div>
                 <h3 className="font-semibold text-secondary-900">
-                  {career.title}
+                  <a
+                    href={`/careers/${career.slug}`}
+                    className="text-primary-600 hover:text-primary-700 hover:underline"
+                  >
+                    {career.title}
+                  </a>
                 </h3>
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 ${getCategoryColor(career.category)}`}>
+                <a
+                  href={`/categories/${career.category}`}
+                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 hover:opacity-80 transition-opacity ${getCategoryColor(career.category)}`}
+                >
                   {getCategoryLabel(career.category)}
-                </span>
+                </a>
               </div>
-              <span className="text-lg font-bold text-primary-600">
+              <a
+                href={`/careers/${career.slug}`}
+                className="text-lg font-bold text-primary-600 hover:text-primary-700"
+              >
                 {formatPay(career.median_pay)}
-              </span>
+              </a>
             </div>
-            <div className="flex flex-wrap gap-2 mt-3">
+            <a
+              href={`/careers/${career.slug}`}
+              className="flex flex-wrap gap-2 mt-3"
+            >
               <span className="text-sm text-secondary-600">
                 {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
               </span>
@@ -593,12 +573,9 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
                 AI Risk: {career.ai_risk}/10
               </span>
-              <span className="text-secondary-300">•</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                Importance: {career.importance}/10
-              </span>
-            </div>
-          </a>
+              {/* ARCHIVED: Importance badge removed - see data/archived/importance-scores-backup.json */}
+            </a>
+          </div>
         ))}
 
         {paginatedCareers.length === 0 && (

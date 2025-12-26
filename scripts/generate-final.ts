@@ -9,6 +9,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getCategory } from '../src/lib/categories';
 
 const PROCESSED_DIR = path.join(process.cwd(), 'data/processed');
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -32,6 +33,12 @@ interface CareerVideo {
   lastVerified: string;
 }
 
+// Type for inside career content
+interface InsideCareer {
+  content: string;
+  generated_at: string;
+}
+
 async function main() {
   console.log('\n=== Generating Final Dataset ===\n');
 
@@ -40,6 +47,20 @@ async function main() {
   const occupationsData = JSON.parse(fs.readFileSync(occupationsFile, 'utf-8'));
   const occupations = occupationsData.occupations;
   console.log(`Processing ${occupations.length} occupations...`);
+
+  // Re-apply category mapping (to pick up any overrides from career-overrides.ts)
+  let categoryOverrides = 0;
+  for (const occ of occupations) {
+    const newCategory = getCategory(occ.onet_code);
+    if (newCategory !== occ.category) {
+      console.log(`  Category override: ${occ.title} (${occ.onet_code}): ${occ.category} → ${newCategory}`);
+      occ.category = newCategory;
+      categoryOverrides++;
+    }
+  }
+  if (categoryOverrides > 0) {
+    console.log(`Applied ${categoryOverrides} category override(s)`);
+  }
 
   // Load Oxford AI risk mapping
   console.log('Loading Oxford AI risk mapping...');
@@ -63,6 +84,21 @@ async function main() {
     console.log(`Loaded ${videosMap.size} career videos`);
   } else {
     console.log('No career videos file found (data/videos/career-videos.json)');
+  }
+
+  // Load inside career content
+  const insideCareerFile = path.join(DATA_DIR, 'inside-career/inside-career.json');
+  const insideCareerMap = new Map<string, InsideCareer>();
+  if (fs.existsSync(insideCareerFile)) {
+    const insideCareerData = JSON.parse(fs.readFileSync(insideCareerFile, 'utf-8'));
+    if (insideCareerData.careers) {
+      for (const [socCode, content] of Object.entries(insideCareerData.careers)) {
+        insideCareerMap.set(socCode, content as InsideCareer);
+      }
+    }
+    console.log(`Loaded ${insideCareerMap.size} inside career entries`);
+  } else {
+    console.log('No inside career file found (data/inside-career/inside-career.json)');
   }
 
   // Apply Oxford AI risk scores to occupations
@@ -105,9 +141,18 @@ async function main() {
     } else {
       occ.video = null;
     }
+
+    // Add inside career content if available
+    const insideLook = insideCareerMap.get(occ.soc_code);
+    if (insideLook) {
+      occ.inside_look = insideLook;
+    } else {
+      occ.inside_look = null;
+    }
   }
   console.log(`Applied Oxford AI risk to ${oxfordApplied} occupations`);
   console.log(`Applied videos to ${videosMap.size} occupations`);
+  console.log(`Applied inside career content to ${insideCareerMap.size} occupations`);
 
   // Validate all occupations have required fields
   let validCount = 0;
@@ -159,6 +204,7 @@ async function main() {
         national_importance: occupations.filter((o: { national_importance: unknown }) => o.national_importance).length,
         career_progression: occupations.filter((o: { career_progression: unknown }) => o.career_progression).length,
         videos: occupations.filter((o: { video: unknown }) => o.video).length,
+        inside_look: occupations.filter((o: { inside_look: unknown }) => o.inside_look).length,
       },
     },
     occupations,
@@ -171,19 +217,20 @@ async function main() {
   console.log('Generated: occupations_final.json');
 
   // Generate priority occupations (200 most important/interesting)
+  // ARCHIVED: national_importance removed from priority scoring - see data/archived/importance-scores-backup.json
   const priorityOccupations = occupations
     .map((occ: {
       onet_code: string;
       title: string;
       category: string;
       wages: { annual: { median: number } };
-      national_importance: { score: number };
+      // national_importance: { score: number }; // ARCHIVED
       ai_risk: { score: number };
     }) => ({
       ...occ,
       priority_score: (
-        (occ.national_importance?.score || 0) * 2 +
-        (10 - (occ.ai_risk?.score || 5)) +
+        // (occ.national_importance?.score || 0) * 2 + // ARCHIVED
+        (10 - (occ.ai_risk?.score || 5)) * 2 +
         (occ.wages?.annual?.median || 0) / 10000
       ),
     }))
@@ -197,7 +244,7 @@ async function main() {
       metadata: {
         generated_at: new Date().toISOString(),
         total: priorityOccupations.length,
-        selection_criteria: 'High national importance + Low AI risk + Good wages',
+        selection_criteria: 'Low AI risk + Good wages', // ARCHIVED: was 'High national importance + Low AI risk + Good wages'
       },
       occupations: priorityOccupations,
     }, null, 2)
@@ -213,7 +260,8 @@ async function main() {
     wages: { annual: { median: number } };
     education: { time_to_job_ready: { min_years: number; typical_years: number; max_years: number }; typical_entry_education: string };
     ai_risk: { score: number; label: string };
-    national_importance: { score: number; label: string; flag_count: number };
+    // ARCHIVED: national_importance removed from UI - see data/archived/importance-scores-backup.json
+    // national_importance: { score: number; label: string; flag_count: number };
     description: string;
   }) => ({
     title: occ.title,
@@ -221,7 +269,7 @@ async function main() {
     category: occ.category,
     subcategory: occ.subcategory,
     median_pay: occ.wages?.annual?.median || 0,
-    training_time: getTrainingTimeCategory(occ.education?.time_to_job_ready?.typical_years || 2),
+    training_time: getTrainingTimeCategory(occ.education?.time_to_job_ready?.typical_years ?? 2),
     training_years: occ.education?.time_to_job_ready ? {
       min: occ.education.time_to_job_ready.min_years,
       typical: occ.education.time_to_job_ready.typical_years,
@@ -230,9 +278,10 @@ async function main() {
     typical_education: occ.education?.typical_entry_education || 'High school diploma',
     ai_risk: occ.ai_risk?.score || 5,
     ai_risk_label: occ.ai_risk?.label || 'medium',
-    importance: occ.national_importance?.score || 5,
-    importance_label: occ.national_importance?.label || 'important',
-    flag_count: occ.national_importance?.flag_count || 2,
+    // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
+    // importance: occ.national_importance?.score || 5,
+    // importance_label: occ.national_importance?.label || 'important',
+    // flag_count: occ.national_importance?.flag_count || 2,
     description: occ.description?.substring(0, 200) || '',
   }));
 
@@ -277,12 +326,13 @@ async function main() {
   console.log('\nTop 10 Priority Occupations:');
   priorityOccupations.slice(0, 10).forEach((occ: {
     title: string;
-    national_importance: { flag_count: number };
+    // national_importance: { flag_count: number }; // ARCHIVED
     wages: { annual: { median: number } };
     ai_risk: { score: number };
   }, i: number) => {
-    const flags = '🇺🇸'.repeat(occ.national_importance?.flag_count || 1);
-    console.log(`  ${i + 1}. ${flags} ${occ.title} - $${(occ.wages?.annual?.median || 0).toLocaleString()} (AI Risk: ${occ.ai_risk?.score})`);
+    // ARCHIVED: flags removed - see data/archived/importance-scores-backup.json
+    // const flags = '🇺🇸'.repeat(occ.national_importance?.flag_count || 1);
+    console.log(`  ${i + 1}. ${occ.title} - $${(occ.wages?.annual?.median || 0).toLocaleString()} (AI Risk: ${occ.ai_risk?.score})`);
   });
 
   console.log('\n=== Final Dataset Generation Complete ===\n');

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import careersIndex from "../../../data/careers-index.json";
 import careersData from "../../../data/careers.generated.json";
 import type { CareerIndex, Career } from "@/types/career";
@@ -20,7 +21,8 @@ interface YearlyProjection {
   careerLevel: string;
 }
 
-export default function CalculatorPage() {
+function CalculatorContent() {
+  const searchParams = useSearchParams();
   const [selectedSlug, setSelectedSlug] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -34,6 +36,18 @@ export default function CalculatorPage() {
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
   }, [selectedSlug]);
+
+  // Parse URL params for pre-selecting career
+  useEffect(() => {
+    const careerParam = searchParams.get("career");
+    if (careerParam && !selectedSlug) {
+      // Validate the career exists
+      const careerExists = fullCareers.some(c => c.slug === careerParam);
+      if (careerExists) {
+        setSelectedSlug(careerParam);
+      }
+    }
+  }, [searchParams, selectedSlug]);
 
   const filteredCareers = useMemo(() => {
     if (!searchQuery) return careers.slice(0, 50);
@@ -146,7 +160,12 @@ export default function CalculatorPage() {
                 <div className="mb-4">
                   <div className="flex items-center justify-between p-3 bg-primary-50 rounded-lg border border-primary-200">
                     <div>
-                      <div className="font-medium text-secondary-900">{selectedCareer.title}</div>
+                      <a
+                        href={`/careers/${selectedCareer.slug}`}
+                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline"
+                      >
+                        {selectedCareer.title}
+                      </a>
                       <div className={`text-xs inline-block px-2 py-0.5 rounded-full mt-1 ${getCategoryColor(selectedCareer.category)}`}>
                         {selectedCareer.category}
                       </div>
@@ -159,6 +178,12 @@ export default function CalculatorPage() {
                       &times;
                     </button>
                   </div>
+                  <a
+                    href={`/compare?career=${selectedCareer.slug}`}
+                    className="inline-flex items-center gap-1 mt-2 text-sm text-primary-600 hover:text-primary-700 hover:underline"
+                  >
+                    Compare with other careers →
+                  </a>
                 </div>
               ) : (
                 <div className="relative">
@@ -531,5 +556,28 @@ export default function CalculatorPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CalculatorPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-secondary-50">
+          <div className="max-w-6xl mx-auto px-4 py-12">
+            <div className="animate-pulse">
+              <div className="h-8 bg-secondary-200 rounded w-1/3 mb-4" />
+              <div className="h-4 bg-secondary-200 rounded w-2/3 mb-8" />
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="h-96 bg-secondary-200 rounded" />
+                <div className="lg:col-span-2 h-96 bg-secondary-200 rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <CalculatorContent />
+    </Suspense>
   );
 }

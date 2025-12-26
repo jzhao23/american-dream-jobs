@@ -14,65 +14,31 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Find Careers That Build America
+              Find your American Dream Job
             </h1>
             <p className="text-xl text-primary-100 mb-8">
               Discover high-paying, AI-resilient careers that matter.
               Real wages, honest training requirements, and what the job is actually like.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="#careers"
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-white text-primary-700 rounded-lg hover:bg-primary-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-white text-primary-700 rounded-lg hover:bg-primary-50 transition-colors shadow-lg shadow-primary-900/20"
               >
                 Explore Careers
               </a>
               <a
-                href="/contribute"
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-primary-500 text-white rounded-lg hover:bg-primary-400 transition-colors border border-primary-400"
+                href="/compare"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-white text-primary-700 rounded-lg hover:bg-primary-50 transition-colors shadow-lg shadow-primary-900/20"
               >
-                Share Your Experience
+                Compare Careers
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-white border-b border-secondary-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">
-                {careers.length.toLocaleString()}
-              </div>
-              <div className="text-sm text-secondary-600">
-                Careers Profiled
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">
-                {careers.filter(c => c.ai_risk <= 4).length}
-              </div>
-              <div className="text-sm text-secondary-600">
-                AI-Resilient Careers
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">
-                {careers.filter(c => c.importance >= 7).length}
-              </div>
-              <div className="text-sm text-secondary-600">
-                Critical to America
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">
-                {new Set(careers.map(c => c.category)).size}
-              </div>
-              <div className="text-sm text-secondary-600">
-                Career Categories
-              </div>
+              <a
+                href="/calculator"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-white text-primary-700 rounded-lg hover:bg-primary-50 transition-colors shadow-lg shadow-primary-900/20"
+              >
+                Calculate Earnings
+              </a>
             </div>
           </div>
         </div>
