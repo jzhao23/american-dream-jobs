@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
+import { BottomNav } from "@/components/BottomNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -39,7 +40,8 @@ export default function RootLayout({
       <body className="min-h-screen">
         <Analytics />
         <Header />
-        <main>{children}</main>
+        <main className="pb-16 md:pb-0">{children}</main>
+        <BottomNav />
         <Footer />
       </body>
     </html>

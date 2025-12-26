@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import careers from "../../../../data/careers.generated.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
+import { NextSteps } from "@/components/NextSteps";
+import { CareerActionsWrapper } from "@/components/CareerActionsWrapper";
+import { TopEmployers } from "@/components/TopEmployers";
 import {
   formatPay,
   formatPayRange,
@@ -236,6 +239,9 @@ export default async function CareerPage({ params }: PageProps) {
               )}
             </Section>
           )}
+
+          {/* Top Employers */}
+          <TopEmployers careerSlug={career.slug} careerTitle={career.title} />
 
           {/* Education & Training */}
           {career.education && (
@@ -513,6 +519,8 @@ export default async function CareerPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+
+      <NextSteps currentPage="career" careerSlug={career.slug} />
     </div>
   );
 }

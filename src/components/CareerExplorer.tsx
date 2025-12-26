@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import type { CareerIndex, TrainingTime } from "@/types/career";
 import {
   formatPay,
@@ -11,10 +12,13 @@ import {
   getCategoryColor,
   getCategoryLabel,
 } from "@/types/career";
+import { CareerActions } from "./CareerActions";
+import { addToRecentlyViewed } from "@/lib/storage";
 
 interface CareerExplorerProps {
   careers: CareerIndex[];
   hideCategoryFilter?: boolean;
+  initialSort?: "median_pay" | "ai_risk" | "importance" | "title";
 }
 
 type SortField = "median_pay" | "ai_risk" | "importance" | "title";
@@ -22,22 +26,55 @@ type SortDirection = "asc" | "desc";
 
 const TRAINING_TIME_ORDER: TrainingTime[] = ["<6mo", "6-24mo", "2-4yr", "4+yr"];
 
-export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerExplorerProps) {
+export function CareerExplorer({ careers, hideCategoryFilter = false, initialSort }: CareerExplorerProps) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Initialize from URL params
+  const getInitialValue = (key: string, defaultValue: any) => {
+    const param = searchParams.get(key);
+    if (!param) return defaultValue;
+    if (key === "selectedCategories" || key === "selectedTrainingTimes") {
+      return param.split(",").filter(Boolean);
+    }
+    if (key === "minPay" || key === "maxAIRisk" || key === "minImportance" || key === "currentPage") {
+      return Number(param) || defaultValue;
+    }
+    return param || defaultValue;
+  };
+
   // Filter states
-  const [searchQuery, setSearchQuery] = useState("");
-  const [minPay, setMinPay] = useState(0);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>([]);
-  const [maxAIRisk, setMaxAIRisk] = useState(10);
-  const [minImportance, setMinImportance] = useState(1);
+  const [searchQuery, setSearchQuery] = useState(() => getInitialValue("search", ""));
+  const [minPay, setMinPay] = useState(() => getInitialValue("minPay", 0));
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(() => getInitialValue("selectedCategories", []));
+  const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>(() => getInitialValue("selectedTrainingTimes", []));
+  const [maxAIRisk, setMaxAIRisk] = useState(() => getInitialValue("maxAIRisk", 10));
+  const [minImportance, setMinImportance] = useState(() => getInitialValue("minImportance", 1));
 
   // Sort state
-  const [sortField, setSortField] = useState<SortField>("importance");
-  const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
+  const [sortField, setSortField] = useState<SortField>(() => (initialSort || getInitialValue("sortField", "importance")) as SortField);
+  const [sortDirection, setSortDirection] = useState<SortDirection>(() => getInitialValue("sortDirection", "desc") as SortDirection);
 
   // Pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => getInitialValue("currentPage", 1));
   const pageSize = 50;
+
+  // Update URL params when filters change
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (searchQuery) params.set("search", searchQuery);
+    if (minPay > 0) params.set("minPay", minPay.toString());
+    if (selectedCategories.length > 0) params.set("selectedCategories", selectedCategories.join(","));
+    if (selectedTrainingTimes.length > 0) params.set("selectedTrainingTimes", selectedTrainingTimes.join(","));
+    if (maxAIRisk < 10) params.set("maxAIRisk", maxAIRisk.toString());
+    if (minImportance > 1) params.set("minImportance", minImportance.toString());
+    if (sortField !== "importance") params.set("sortField", sortField);
+    if (sortDirection !== "desc") params.set("sortDirection", sortDirection);
+    if (currentPage > 1) params.set("currentPage", currentPage.toString());
+
+    const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
+    router.replace(newUrl, { scroll: false });
+  }, [searchQuery, minPay, selectedCategories, selectedTrainingTimes, maxAIRisk, minImportance, sortField, sortDirection, currentPage, router]);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -358,48 +395,62 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
                 Importance
               </th>
+              <th className="text-right px-4 py-3 text-sm font-semibold text-secondary-900">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-secondary-100">
-            {paginatedCareers.map((career) => (
-              <tr key={career.slug} className="hover:bg-secondary-50 transition-colors">
-                <td className="px-4 py-3">
-                  <a
-                    href={`/careers/${career.slug}`}
-                    className="text-primary-600 hover:text-primary-700 font-medium hover:underline"
-                  >
-                    {career.title}
-                  </a>
-                </td>
-                <td className="px-4 py-3">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(career.category)}`}>
-                    {getCategoryLabel(career.category)}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-right font-medium text-secondary-900">
-                  {formatPay(career.median_pay)}
-                </td>
-                <td className="px-4 py-3 text-center">
-                  <span className="text-sm text-secondary-600">
-                    {career.training_time === "4+yr" && career.training_years
-                      ? (career.training_years.min === career.training_years.max
-                          ? `${career.training_years.min} years`
-                          : `${career.training_years.min}-${career.training_years.max} years`)
-                      : career.training_time}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                    {career.ai_risk}/10
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                    {career.importance}/10
-                  </span>
-                </td>
-              </tr>
-            ))}
+            {paginatedCareers.map((career) => {
+              const handleRowClick = () => {
+                addToRecentlyViewed(career.slug);
+              };
+              return (
+                <tr key={career.slug} className="hover:bg-secondary-50 transition-colors">
+                  <td className="px-4 py-3">
+                    <a
+                      href={`/careers/${career.slug}`}
+                      onClick={handleRowClick}
+                      className="text-primary-600 hover:text-primary-700 font-medium hover:underline"
+                    >
+                      {career.title}
+                    </a>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(career.category)}`}>
+                      {getCategoryLabel(career.category)}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-right font-medium text-secondary-900">
+                    {formatPay(career.median_pay)}
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <span className="text-sm text-secondary-600">
+                      {career.training_time === "4+yr" && career.training_years
+                        ? (career.training_years.min === career.training_years.max
+                            ? `${career.training_years.min} years`
+                            : `${career.training_years.min}-${career.training_years.max} years`)
+                        : career.training_time}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
+                      {career.ai_risk}/10
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
+                      {career.importance}/10
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="flex justify-end">
+                      <CareerActions career={career} variant="card" />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
 
@@ -412,40 +463,57 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
       {/* Mobile Card View */}
       <div className="lg:hidden space-y-4">
-        {paginatedCareers.map((career) => (
-          <a
-            key={career.slug}
-            href={`/careers/${career.slug}`}
-            className="card p-4 block hover:shadow-md transition-shadow"
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="font-semibold text-secondary-900">
-                  {career.title}
-                </h3>
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 ${getCategoryColor(career.category)}`}>
-                  {getCategoryLabel(career.category)}
-                </span>
-              </div>
-              <span className="text-lg font-bold text-primary-600">
-                {formatPay(career.median_pay)}
-              </span>
+        {paginatedCareers.map((career) => {
+          const handleCardClick = () => {
+            addToRecentlyViewed(career.slug);
+          };
+          return (
+            <div
+              key={career.slug}
+              className="card p-4 hover:shadow-md transition-shadow"
+            >
+              <a
+                href={`/careers/${career.slug}`}
+                onClick={handleCardClick}
+                className="block"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-secondary-900">
+                      {career.title}
+                    </h3>
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 ${getCategoryColor(career.category)}`}>
+                      {getCategoryLabel(career.category)}
+                    </span>
+                  </div>
+                  <div className="text-right ml-2">
+                    <div className="text-lg font-bold text-primary-600">
+                      {formatPay(career.median_pay)}
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-3">
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-secondary-500">AI Risk:</span>
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
+                      {career.ai_risk}/10
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-secondary-500">Importance:</span>
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
+                      {career.importance}/10
+                    </span>
+                  </div>
+                </div>
+                <div className="text-xs text-secondary-500 mt-2">
+                  {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
+                </div>
+              </a>
+              <CareerActions career={career} variant="card" />
             </div>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <span className="text-sm text-secondary-600">
-                {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
-              </span>
-              <span className="text-secondary-300">•</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                AI Risk: {career.ai_risk}/10
-              </span>
-              <span className="text-secondary-300">•</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                Importance: {career.importance}/10
-              </span>
-            </div>
-          </a>
-        ))}
+          );
+        })}
 
         {paginatedCareers.length === 0 && (
           <div className="card p-8 text-center text-secondary-500">

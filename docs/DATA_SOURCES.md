@@ -11,6 +11,7 @@ This document describes all data sources used in American Dream Jobs and how the
 | Frey & Osborne (2013) | AI/automation risk probabilities | Static (2013 study) |
 | Levels.fyi | Tech salary progressions | Quarterly |
 | Reddit | Real worker experiences | On-demand |
+| TheOrg.com | Company org charts, departments, career ladders | On-demand / Manual |
 
 ---
 
@@ -122,6 +123,53 @@ Reddit API → scripts/fetch-reddit-reviews.ts → data/reviews/sources/
 
 ---
 
+## TheOrg.com - Company Organizational Data
+
+**Source**: https://theorg.com
+**Access**: Web scraping via Firecrawl
+**Coverage**: 20 major companies across tech, finance, healthcare, retail, and aerospace
+
+### What We Use
+- **Company information**: Name, industry, employee count, headquarters, description
+- **Organizational structure**: Departments and roles within each company
+- **Career ladders**: Role progression paths with level codes (e.g., L3 → L4 → L5 for tech)
+- **Career mapping**: Links company roles to O*NET occupations via `career_slug`
+
+### Processing Pipeline
+```
+TheOrg.com → scripts/scrape-theorg.ts → data/companies.json
+```
+
+### Target Companies (20 total)
+- **Tech (8)**: Google, Amazon, Meta, Apple, Microsoft, Netflix, Salesforce, Stripe
+- **Finance (4)**: JPMorgan Chase, Goldman Sachs, Morgan Stanley, Bank of America
+- **Healthcare (3)**: UnitedHealth Group, Johnson & Johnson, Pfizer
+- **Retail/Consumer (3)**: Walmart, Nike, Disney
+- **Other (2)**: Boeing, SpaceX
+
+### Data Structure
+Each company entry includes:
+- Basic info (slug, name, industry, employee count, headquarters)
+- Departments with associated roles
+- Career ladders with progression levels and experience ranges
+- Links to careers via `career_slug` field
+- `data_source` field indicating "manual" for curated entries or "scraped" for automated
+
+### Career Ladder Templates
+Industry-specific templates define progression paths:
+- **Tech**: Software Engineering (L3-L7), Product Management (APM → Dir), Data Science (L3-L6)
+- **Finance**: Investment Banking (Analyst → MD), Technology roles
+- **Healthcare**: Clinical roles, Research & Development
+- **Retail**: Store Operations, Supply Chain, Corporate roles
+
+### Manual Curation
+Some entries are marked `"data_source": "manual"` indicating:
+- Manual verification of scraped data
+- Custom career ladder definitions
+- Industry-specific role mappings
+
+---
+
 ## Data Refresh Schedule
 
 | Data | Command | When to Run |
@@ -130,6 +178,7 @@ Reddit API → scripts/fetch-reddit-reviews.ts → data/reviews/sources/
 | BLS Wages | `npm run fetch-wages` | After May OES release |
 | AI Risk | `npx tsx scripts/map-oxford-ai-risk.ts` | Only if mapping logic changes |
 | Reddit Reviews | `npm run fetch-reviews` | Monthly or on-demand |
+| Companies | `npx tsx scripts/scrape-theorg.ts` | On-demand or when adding new companies |
 | Full Regenerate | `npx tsx scripts/generate-final.ts` | After any source update |
 
 ---
@@ -157,5 +206,6 @@ data/processed/
 ```
 data/
 ├── careers-index.json      # Lightweight index for explorer
-└── careers.generated.json  # Full data for detail pages
+├── careers.generated.json  # Full data for detail pages
+└── companies.json          # Company organizational data and career ladders
 ```

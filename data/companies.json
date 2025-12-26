@@ -1,0 +1,4177 @@
+{
+  "generated_at": "2025-12-26T04:49:41.679Z",
+  "total_companies": 20,
+  "companies": [
+    {
+      "slug": "google",
+      "name": "Google",
+      "industry": [
+        "technology"
+      ],
+      "employee_count": "180,000+",
+      "headquarters": "Mountain View, CA",
+      "description": "Google is a multinational technology company specializing in internet services, cloud computing, AI, and consumer electronics.",
+      "theorg_url": "https://theorg.com/org/google",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.677Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "industry": [
+        "technology",
+        "retail"
+      ],
+      "employee_count": "1,500,000+",
+      "headquarters": "Seattle, WA",
+      "description": "Amazon is a global e-commerce and cloud computing company, known for AWS, retail marketplace, and consumer technology.",
+      "theorg_url": "https://theorg.com/org/amazon",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Store Manager"
+          ]
+        },
+        {
+          "onet_code": "13-1161.00",
+          "slug": "market-research-analysts-and-marketing-specialists",
+          "department": "Marketing",
+          "typical_titles": [
+            "Market Research Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3071.00",
+          "slug": "transportation-storage-and-distribution-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Logistics Manager",
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3071.04",
+          "slug": "supply-chain-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "meta",
+      "name": "Meta",
+      "industry": [
+        "technology"
+      ],
+      "employee_count": "70,000+",
+      "headquarters": "Menlo Park, CA",
+      "description": "Meta (formerly Facebook) is a social technology company building products for connecting people and the metaverse.",
+      "theorg_url": "https://theorg.com/org/meta",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "industry": [
+        "technology"
+      ],
+      "employee_count": "160,000+",
+      "headquarters": "Cupertino, CA",
+      "description": "Apple designs and manufactures consumer electronics, software, and services including iPhone, Mac, and iOS.",
+      "theorg_url": "https://theorg.com/org/apple",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "industry": [
+        "technology"
+      ],
+      "employee_count": "220,000+",
+      "headquarters": "Redmond, WA",
+      "description": "Microsoft develops software, cloud services, and hardware including Windows, Azure, and Xbox.",
+      "theorg_url": "https://theorg.com/org/microsoft",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "netflix",
+      "name": "Netflix",
+      "industry": [
+        "technology",
+        "entertainment"
+      ],
+      "employee_count": "13,000+",
+      "headquarters": "Los Gatos, CA",
+      "description": "Netflix is a streaming entertainment service offering movies, TV series, and original content worldwide.",
+      "theorg_url": "https://theorg.com/org/netflix",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "industry": [
+        "technology"
+      ],
+      "employee_count": "70,000+",
+      "headquarters": "San Francisco, CA",
+      "description": "Salesforce is a cloud-based CRM platform helping businesses manage customer relationships and sales.",
+      "theorg_url": "https://theorg.com/org/salesforce",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe",
+      "industry": [
+        "technology",
+        "finance"
+      ],
+      "employee_count": "8,000+",
+      "headquarters": "San Francisco, CA",
+      "description": "Stripe provides payment processing infrastructure for internet businesses worldwide.",
+      "theorg_url": "https://theorg.com/org/stripe",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "13-2051.00",
+          "slug": "financial-and-investment-analysts",
+          "department": "Finance",
+          "typical_titles": [
+            "Financial Analyst",
+            "Investment Analyst"
+          ]
+        },
+        {
+          "onet_code": "13-2052.00",
+          "slug": "personal-financial-advisors",
+          "department": "Wealth Management",
+          "typical_titles": [
+            "Financial Advisor",
+            "Wealth Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3031.00",
+          "slug": "financial-managers",
+          "department": "Finance",
+          "typical_titles": [
+            "Finance Manager",
+            "Controller"
+          ]
+        },
+        {
+          "onet_code": "13-2011.00",
+          "slug": "accountants-and-auditors",
+          "department": "Finance",
+          "typical_titles": [
+            "Accountant",
+            "CPA"
+          ]
+        },
+        {
+          "onet_code": "13-2041.00",
+          "slug": "credit-analysts",
+          "department": "Risk",
+          "typical_titles": [
+            "Credit Analyst",
+            "Risk Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "jpmorgan-chase",
+      "name": "JPMorgan Chase",
+      "industry": [
+        "finance"
+      ],
+      "employee_count": "290,000+",
+      "headquarters": "New York, NY",
+      "description": "JPMorgan Chase is a global financial services firm offering banking, investment, and asset management.",
+      "theorg_url": "https://theorg.com/org/jpmorgan-chase",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Investment Banking",
+          "career_slug": "financial-and-investment-analysts",
+          "levels": [
+            {
+              "title": "Analyst",
+              "level_code": "AN",
+              "years_experience": {
+                "min": 0,
+                "max": 3
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "D",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 25
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Technology",
+          "career_slug": "computer-and-information-systems-managers",
+          "levels": [
+            {
+              "title": "Technology Analyst",
+              "level_code": "TA",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Executive Director",
+              "level_code": "ED",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "13-2051.00",
+          "slug": "financial-and-investment-analysts",
+          "department": "Finance",
+          "typical_titles": [
+            "Financial Analyst",
+            "Investment Analyst"
+          ]
+        },
+        {
+          "onet_code": "13-2052.00",
+          "slug": "personal-financial-advisors",
+          "department": "Wealth Management",
+          "typical_titles": [
+            "Financial Advisor",
+            "Wealth Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3031.00",
+          "slug": "financial-managers",
+          "department": "Finance",
+          "typical_titles": [
+            "Finance Manager",
+            "Controller"
+          ]
+        },
+        {
+          "onet_code": "13-2011.00",
+          "slug": "accountants-and-auditors",
+          "department": "Finance",
+          "typical_titles": [
+            "Accountant",
+            "CPA"
+          ]
+        },
+        {
+          "onet_code": "13-2041.00",
+          "slug": "credit-analysts",
+          "department": "Risk",
+          "typical_titles": [
+            "Credit Analyst",
+            "Risk Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "goldman-sachs",
+      "name": "Goldman Sachs",
+      "industry": [
+        "finance"
+      ],
+      "employee_count": "45,000+",
+      "headquarters": "New York, NY",
+      "description": "Goldman Sachs is a leading global investment banking and financial services company.",
+      "theorg_url": "https://theorg.com/org/goldman-sachs",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Investment Banking",
+          "career_slug": "financial-and-investment-analysts",
+          "levels": [
+            {
+              "title": "Analyst",
+              "level_code": "AN",
+              "years_experience": {
+                "min": 0,
+                "max": 3
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "D",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 25
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Technology",
+          "career_slug": "computer-and-information-systems-managers",
+          "levels": [
+            {
+              "title": "Technology Analyst",
+              "level_code": "TA",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Executive Director",
+              "level_code": "ED",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "13-2051.00",
+          "slug": "financial-and-investment-analysts",
+          "department": "Finance",
+          "typical_titles": [
+            "Financial Analyst",
+            "Investment Analyst"
+          ]
+        },
+        {
+          "onet_code": "13-2052.00",
+          "slug": "personal-financial-advisors",
+          "department": "Wealth Management",
+          "typical_titles": [
+            "Financial Advisor",
+            "Wealth Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3031.00",
+          "slug": "financial-managers",
+          "department": "Finance",
+          "typical_titles": [
+            "Finance Manager",
+            "Controller"
+          ]
+        },
+        {
+          "onet_code": "13-2011.00",
+          "slug": "accountants-and-auditors",
+          "department": "Finance",
+          "typical_titles": [
+            "Accountant",
+            "CPA"
+          ]
+        },
+        {
+          "onet_code": "13-2041.00",
+          "slug": "credit-analysts",
+          "department": "Risk",
+          "typical_titles": [
+            "Credit Analyst",
+            "Risk Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "morgan-stanley",
+      "name": "Morgan Stanley",
+      "industry": [
+        "finance"
+      ],
+      "employee_count": "80,000+",
+      "headquarters": "New York, NY",
+      "description": "Morgan Stanley provides investment banking, securities, and wealth management services.",
+      "theorg_url": "https://theorg.com/org/morgan-stanley",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Investment Banking",
+          "career_slug": "financial-and-investment-analysts",
+          "levels": [
+            {
+              "title": "Analyst",
+              "level_code": "AN",
+              "years_experience": {
+                "min": 0,
+                "max": 3
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "D",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 25
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Technology",
+          "career_slug": "computer-and-information-systems-managers",
+          "levels": [
+            {
+              "title": "Technology Analyst",
+              "level_code": "TA",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Executive Director",
+              "level_code": "ED",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "13-2051.00",
+          "slug": "financial-and-investment-analysts",
+          "department": "Finance",
+          "typical_titles": [
+            "Financial Analyst",
+            "Investment Analyst"
+          ]
+        },
+        {
+          "onet_code": "13-2052.00",
+          "slug": "personal-financial-advisors",
+          "department": "Wealth Management",
+          "typical_titles": [
+            "Financial Advisor",
+            "Wealth Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3031.00",
+          "slug": "financial-managers",
+          "department": "Finance",
+          "typical_titles": [
+            "Finance Manager",
+            "Controller"
+          ]
+        },
+        {
+          "onet_code": "13-2011.00",
+          "slug": "accountants-and-auditors",
+          "department": "Finance",
+          "typical_titles": [
+            "Accountant",
+            "CPA"
+          ]
+        },
+        {
+          "onet_code": "13-2041.00",
+          "slug": "credit-analysts",
+          "department": "Risk",
+          "typical_titles": [
+            "Credit Analyst",
+            "Risk Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "bank-of-america",
+      "name": "Bank of America",
+      "industry": [
+        "finance"
+      ],
+      "employee_count": "210,000+",
+      "headquarters": "Charlotte, NC",
+      "description": "Bank of America is a major financial institution serving consumers, businesses, and institutions.",
+      "theorg_url": "https://theorg.com/org/bank-of-america",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Investment Banking",
+          "career_slug": "financial-and-investment-analysts",
+          "levels": [
+            {
+              "title": "Analyst",
+              "level_code": "AN",
+              "years_experience": {
+                "min": 0,
+                "max": 3
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "D",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 25
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Technology",
+          "career_slug": "computer-and-information-systems-managers",
+          "levels": [
+            {
+              "title": "Technology Analyst",
+              "level_code": "TA",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Associate",
+              "level_code": "AS",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Vice President",
+              "level_code": "VP",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Executive Director",
+              "level_code": "ED",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Managing Director",
+              "level_code": "MD",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "13-2051.00",
+          "slug": "financial-and-investment-analysts",
+          "department": "Finance",
+          "typical_titles": [
+            "Financial Analyst",
+            "Investment Analyst"
+          ]
+        },
+        {
+          "onet_code": "13-2052.00",
+          "slug": "personal-financial-advisors",
+          "department": "Wealth Management",
+          "typical_titles": [
+            "Financial Advisor",
+            "Wealth Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3031.00",
+          "slug": "financial-managers",
+          "department": "Finance",
+          "typical_titles": [
+            "Finance Manager",
+            "Controller"
+          ]
+        },
+        {
+          "onet_code": "13-2011.00",
+          "slug": "accountants-and-auditors",
+          "department": "Finance",
+          "typical_titles": [
+            "Accountant",
+            "CPA"
+          ]
+        },
+        {
+          "onet_code": "13-2041.00",
+          "slug": "credit-analysts",
+          "department": "Risk",
+          "typical_titles": [
+            "Credit Analyst",
+            "Risk Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "unitedhealth-group",
+      "name": "UnitedHealth Group",
+      "industry": [
+        "healthcare"
+      ],
+      "employee_count": "400,000+",
+      "headquarters": "Minnetonka, MN",
+      "description": "UnitedHealth Group is a healthcare company offering insurance and health services.",
+      "theorg_url": "https://theorg.com/org/unitedhealth-group",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "29-1141.00",
+          "slug": "registered-nurses",
+          "department": "Clinical",
+          "typical_titles": [
+            "Registered Nurse",
+            "RN"
+          ]
+        },
+        {
+          "onet_code": "11-9111.00",
+          "slug": "medical-and-health-services-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Healthcare Administrator"
+          ]
+        },
+        {
+          "onet_code": "29-1071.00",
+          "slug": "nurse-practitioners",
+          "department": "Clinical",
+          "typical_titles": [
+            "Nurse Practitioner",
+            "NP"
+          ]
+        },
+        {
+          "onet_code": "19-1042.00",
+          "slug": "clinical-research-coordinators",
+          "department": "Research",
+          "typical_titles": [
+            "Research Coordinator",
+            "Clinical Researcher"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "johnson-johnson",
+      "name": "Johnson & Johnson",
+      "industry": [
+        "healthcare"
+      ],
+      "employee_count": "130,000+",
+      "headquarters": "New Brunswick, NJ",
+      "description": "Johnson & Johnson develops medical devices, pharmaceuticals, and consumer health products.",
+      "theorg_url": "https://theorg.com/org/johnson-johnson",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "29-1141.00",
+          "slug": "registered-nurses",
+          "department": "Clinical",
+          "typical_titles": [
+            "Registered Nurse",
+            "RN"
+          ]
+        },
+        {
+          "onet_code": "11-9111.00",
+          "slug": "medical-and-health-services-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Healthcare Administrator"
+          ]
+        },
+        {
+          "onet_code": "29-1071.00",
+          "slug": "nurse-practitioners",
+          "department": "Clinical",
+          "typical_titles": [
+            "Nurse Practitioner",
+            "NP"
+          ]
+        },
+        {
+          "onet_code": "19-1042.00",
+          "slug": "clinical-research-coordinators",
+          "department": "Research",
+          "typical_titles": [
+            "Research Coordinator",
+            "Clinical Researcher"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "pfizer",
+      "name": "Pfizer",
+      "industry": [
+        "healthcare"
+      ],
+      "employee_count": "80,000+",
+      "headquarters": "New York, NY",
+      "description": "Pfizer is a global pharmaceutical company developing medicines and vaccines.",
+      "theorg_url": "https://theorg.com/org/pfizer",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "29-1141.00",
+          "slug": "registered-nurses",
+          "department": "Clinical",
+          "typical_titles": [
+            "Registered Nurse",
+            "RN"
+          ]
+        },
+        {
+          "onet_code": "11-9111.00",
+          "slug": "medical-and-health-services-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Healthcare Administrator"
+          ]
+        },
+        {
+          "onet_code": "29-1071.00",
+          "slug": "nurse-practitioners",
+          "department": "Clinical",
+          "typical_titles": [
+            "Nurse Practitioner",
+            "NP"
+          ]
+        },
+        {
+          "onet_code": "19-1042.00",
+          "slug": "clinical-research-coordinators",
+          "department": "Research",
+          "typical_titles": [
+            "Research Coordinator",
+            "Clinical Researcher"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "walmart",
+      "name": "Walmart",
+      "industry": [
+        "retail"
+      ],
+      "employee_count": "2,100,000+",
+      "headquarters": "Bentonville, AR",
+      "description": "Walmart is the world's largest retailer, operating stores and e-commerce globally.",
+      "theorg_url": "https://theorg.com/org/walmart",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Store Manager"
+          ]
+        },
+        {
+          "onet_code": "13-1161.00",
+          "slug": "market-research-analysts-and-marketing-specialists",
+          "department": "Marketing",
+          "typical_titles": [
+            "Market Research Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3071.00",
+          "slug": "transportation-storage-and-distribution-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Logistics Manager",
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3071.04",
+          "slug": "supply-chain-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "nike",
+      "name": "Nike",
+      "industry": [
+        "retail"
+      ],
+      "employee_count": "80,000+",
+      "headquarters": "Beaverton, OR",
+      "description": "Nike designs and manufactures athletic footwear, apparel, and equipment.",
+      "theorg_url": "https://theorg.com/org/nike",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Store Manager"
+          ]
+        },
+        {
+          "onet_code": "13-1161.00",
+          "slug": "market-research-analysts-and-marketing-specialists",
+          "department": "Marketing",
+          "typical_titles": [
+            "Market Research Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3071.00",
+          "slug": "transportation-storage-and-distribution-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Logistics Manager",
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3071.04",
+          "slug": "supply-chain-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Supply Chain Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "the-walt-disney-company",
+      "name": "Disney",
+      "industry": [
+        "entertainment"
+      ],
+      "employee_count": "220,000+",
+      "headquarters": "Burbank, CA",
+      "description": "Disney is a global entertainment company with theme parks, media networks, and streaming.",
+      "theorg_url": "https://theorg.com/org/the-walt-disney-company",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.678Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "boeing",
+      "name": "Boeing",
+      "industry": [
+        "aerospace",
+        "manufacturing"
+      ],
+      "employee_count": "140,000+",
+      "headquarters": "Arlington, VA",
+      "description": "Boeing is an aerospace company manufacturing commercial jets, defense systems, and space vehicles.",
+      "theorg_url": "https://theorg.com/org/boeing",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "General",
+          "career_slug": "general-and-operations-managers",
+          "levels": [
+            {
+              "title": "Associate",
+              "level_code": "L1",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Specialist",
+              "level_code": "L2",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Specialist",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Manager",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 6,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "17-2011.00",
+          "slug": "aerospace-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Aerospace Engineer"
+          ]
+        },
+        {
+          "onet_code": "17-2141.00",
+          "slug": "mechanical-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Mechanical Engineer"
+          ]
+        },
+        {
+          "onet_code": "17-2071.00",
+          "slug": "electrical-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Electrical Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-3051.00",
+          "slug": "industrial-production-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Production Manager",
+            "Manufacturing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.679Z",
+      "data_source": "manual"
+    },
+    {
+      "slug": "spacex",
+      "name": "SpaceX",
+      "industry": [
+        "aerospace",
+        "technology"
+      ],
+      "employee_count": "13,000+",
+      "headquarters": "Hawthorne, CA",
+      "description": "SpaceX designs and manufactures rockets and spacecraft for space exploration and satellite deployment.",
+      "theorg_url": "https://theorg.com/org/spacex",
+      "departments": [
+        {
+          "name": "Engineering",
+          "employee_count": 0,
+          "roles": [
+            "Software Engineer",
+            "Data Engineer"
+          ]
+        },
+        {
+          "name": "Product",
+          "employee_count": 0,
+          "roles": [
+            "Product Manager"
+          ]
+        },
+        {
+          "name": "Sales",
+          "employee_count": 0,
+          "roles": [
+            "Account Executive"
+          ]
+        }
+      ],
+      "career_ladders": [
+        {
+          "role_family": "Software Engineering",
+          "career_slug": "software-developers",
+          "levels": [
+            {
+              "title": "Software Engineer I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Software Engineer II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Software Engineer",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Software Engineer",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Principal Engineer",
+              "level_code": "L7",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Product Management",
+          "career_slug": "project-management-specialists",
+          "levels": [
+            {
+              "title": "Associate Product Manager",
+              "level_code": "APM",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Product Manager",
+              "level_code": "PM",
+              "years_experience": {
+                "min": 2,
+                "max": 5
+              }
+            },
+            {
+              "title": "Senior Product Manager",
+              "level_code": "SPM",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Group Product Manager",
+              "level_code": "GPM",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            },
+            {
+              "title": "Director of Product",
+              "level_code": "Dir",
+              "years_experience": {
+                "min": 10,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "role_family": "Data Science",
+          "career_slug": "data-scientists",
+          "levels": [
+            {
+              "title": "Data Scientist I",
+              "level_code": "L3",
+              "years_experience": {
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "title": "Data Scientist II",
+              "level_code": "L4",
+              "years_experience": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "title": "Senior Data Scientist",
+              "level_code": "L5",
+              "years_experience": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "title": "Staff Data Scientist",
+              "level_code": "L6",
+              "years_experience": {
+                "min": 7,
+                "max": 12
+              }
+            }
+          ]
+        }
+      ],
+      "occupation_mappings": [
+        {
+          "onet_code": "15-1252.00",
+          "slug": "software-developers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Software Engineer",
+            "SWE",
+            "Developer"
+          ]
+        },
+        {
+          "onet_code": "15-2051.00",
+          "slug": "data-scientists",
+          "department": "Data",
+          "typical_titles": [
+            "Data Scientist",
+            "ML Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-2021.00",
+          "slug": "marketing-managers",
+          "department": "Marketing",
+          "typical_titles": [
+            "Marketing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-2022.00",
+          "slug": "sales-managers",
+          "department": "Sales",
+          "typical_titles": [
+            "Sales Manager",
+            "Account Executive"
+          ]
+        },
+        {
+          "onet_code": "15-1211.00",
+          "slug": "computer-systems-analysts",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Analyst",
+            "Technical Analyst"
+          ]
+        },
+        {
+          "onet_code": "15-1299.08",
+          "slug": "computer-systems-engineers-architects",
+          "department": "Engineering",
+          "typical_titles": [
+            "Systems Engineer",
+            "Platform Engineer"
+          ]
+        },
+        {
+          "onet_code": "15-1212.00",
+          "slug": "information-security-analysts",
+          "department": "Security",
+          "typical_titles": [
+            "Security Engineer",
+            "InfoSec Analyst"
+          ]
+        },
+        {
+          "onet_code": "11-3021.00",
+          "slug": "computer-and-information-systems-managers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Engineering Manager",
+            "IT Manager"
+          ]
+        },
+        {
+          "onet_code": "17-2011.00",
+          "slug": "aerospace-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Aerospace Engineer"
+          ]
+        },
+        {
+          "onet_code": "17-2141.00",
+          "slug": "mechanical-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Mechanical Engineer"
+          ]
+        },
+        {
+          "onet_code": "17-2071.00",
+          "slug": "electrical-engineers",
+          "department": "Engineering",
+          "typical_titles": [
+            "Electrical Engineer"
+          ]
+        },
+        {
+          "onet_code": "11-3051.00",
+          "slug": "industrial-production-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Production Manager",
+            "Manufacturing Manager"
+          ]
+        },
+        {
+          "onet_code": "11-3121.00",
+          "slug": "human-resources-managers",
+          "department": "HR",
+          "typical_titles": [
+            "HR Manager",
+            "People Ops"
+          ]
+        },
+        {
+          "onet_code": "11-1021.00",
+          "slug": "general-and-operations-managers",
+          "department": "Operations",
+          "typical_titles": [
+            "Operations Manager"
+          ]
+        }
+      ],
+      "last_updated": "2025-12-26T04:49:41.679Z",
+      "data_source": "manual"
+    }
+  ]
+}

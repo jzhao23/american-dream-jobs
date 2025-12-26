@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import careersIndex from "../../../data/careers-index.json";
 import careersData from "../../../data/careers.generated.json";
 import type { CareerIndex, Career } from "@/types/career";
 import { formatPay, getCategoryColor } from "@/types/career";
+import { NextSteps } from "@/components/NextSteps";
 
 const careers = careersIndex as CareerIndex[];
 const fullCareers = careersData as Career[];
@@ -21,6 +23,7 @@ interface YearlyProjection {
 }
 
 export default function CalculatorPage() {
+  const searchParams = useSearchParams();
   const [selectedSlug, setSelectedSlug] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -30,6 +33,14 @@ export default function CalculatorPage() {
   const [investmentReturn, setInvestmentReturn] = useState(7);
   const [retirementAge, setRetirementAge] = useState(65);
   const [educationCostIncluded, setEducationCostIncluded] = useState(true);
+
+  // Load career from URL param
+  useEffect(() => {
+    const careerParam = searchParams.get("career");
+    if (careerParam) {
+      setSelectedSlug(careerParam);
+    }
+  }, [searchParams]);
 
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
@@ -529,6 +540,8 @@ export default function CalculatorPage() {
           </div>
         </div>
       </div>
+
+      <NextSteps currentPage="calculator" />
     </div>
   );
 }

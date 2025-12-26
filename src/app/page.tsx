@@ -1,11 +1,32 @@
+"use client";
+
+import { useState } from "react";
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
 import { EmailCapture } from "@/components/EmailCapture";
+import { OnboardingPrompt } from "@/components/OnboardingPrompt";
+import { NextSteps } from "@/components/NextSteps";
 import careersIndex from "../../data/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
 export default function HomePage() {
   const careers = careersIndex as CareerIndex[];
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+
+  const handleGoalSelect = (goal: string | null) => {
+    setSelectedGoal(goal);
+    if (goal === "high-paying") {
+      // Scroll to careers section with high-paying filter
+      setTimeout(() => {
+        const element = document.getElementById("careers");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else if (goal === "compare") {
+      window.location.href = "/compare";
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -88,8 +109,17 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-secondary-900">
               Explore Careers
             </h2>
+            {selectedGoal === "high-paying" && (
+              <p className="text-secondary-600 mt-2">
+                Showing careers sorted by highest pay
+              </p>
+            )}
           </div>
-          <CareerExplorer careers={careers} hideCategoryFilter />
+          <CareerExplorer 
+            careers={careers} 
+            hideCategoryFilter 
+            initialSort={selectedGoal === "high-paying" ? "median_pay" : undefined}
+          />
         </div>
       </section>
 
@@ -155,6 +185,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <NextSteps currentPage="home" />
+
+      <OnboardingPrompt onSelectGoal={handleGoalSelect} />
     </div>
   );
 }

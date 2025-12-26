@@ -1,9 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getSavedCareers, getCompareList } from "@/lib/storage";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [savedCount, setSavedCount] = useState(0);
+  const [compareCount, setCompareCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const updateCounts = () => {
+      setSavedCount(getSavedCareers().length);
+      setCompareCount(getCompareList().length);
+    };
+    updateCounts();
+    // Update counts periodically (for cross-tab sync)
+    const interval = setInterval(updateCounts, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-secondary-200">
@@ -25,10 +41,21 @@ export function Header() {
               Explore Careers
             </a>
             <a
-              href="/compare"
+              href="/companies"
               className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
             >
+              Companies
+            </a>
+            <a
+              href="/compare"
+              className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors relative"
+            >
               Compare
+              {mounted && compareCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {compareCount}
+                </span>
+              )}
             </a>
             <a
               href="/calculator"
@@ -36,6 +63,17 @@ export function Header() {
             >
               Calculator
             </a>
+            {mounted && savedCount > 0 && (
+              <a
+                href="/my-careers"
+                className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors relative"
+              >
+                My Careers
+                <span className="ml-1 bg-primary-100 text-primary-700 text-xs px-2 py-0.5 rounded-full">
+                  {savedCount}
+                </span>
+              </a>
+            )}
             <a
               href="/contribute"
               className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
@@ -95,11 +133,23 @@ export function Header() {
               Explore Careers
             </a>
             <a
+              href="/companies"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+            >
+              Companies
+            </a>
+            <a
               href="/compare"
               onClick={() => setMobileMenuOpen(false)}
               className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
             >
               Compare Careers
+              {mounted && compareCount > 0 && (
+                <span className="ml-2 bg-primary-600 text-white text-xs px-2 py-0.5 rounded-full">
+                  {compareCount}
+                </span>
+              )}
             </a>
             <a
               href="/calculator"
@@ -108,6 +158,18 @@ export function Header() {
             >
               Net Worth Calculator
             </a>
+            {mounted && savedCount > 0 && (
+              <a
+                href="/my-careers"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+              >
+                My Careers
+                <span className="ml-2 bg-primary-100 text-primary-700 text-xs px-2 py-0.5 rounded-full">
+                  {savedCount}
+                </span>
+              </a>
+            )}
             <a
               href="/contribute"
               onClick={() => setMobileMenuOpen(false)}

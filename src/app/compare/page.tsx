@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import careersIndex from "../../../data/careers-index.json";
 import careersData from "../../../data/careers.generated.json";
 import type { CareerIndex, Career } from "@/types/career";
@@ -12,6 +12,8 @@ import {
   getImportanceColor,
   getImportanceLabel,
 } from "@/types/career";
+import { getCompareList, clearCompare } from "@/lib/storage";
+import { NextSteps } from "@/components/NextSteps";
 
 const careers = careersIndex as CareerIndex[];
 const fullCareers = careersData as Career[];
@@ -32,6 +34,14 @@ export default function ComparePage() {
   const [showSearch, setShowSearch] = useState(false);
   const [startAge] = useState(18); // Age when starting education/training
   const [retirementAge] = useState(65);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const saved = getCompareList();
+    if (saved.length > 0) {
+      setSelectedSlugs(saved.slice(0, 3));
+    }
+  }, []);
 
   const selectedCareers = useMemo(() => {
     return selectedSlugs.map(slug => fullCareers.find(c => c.slug === slug)).filter(Boolean) as Career[];
@@ -124,14 +134,24 @@ export default function ComparePage() {
 
   const addCareer = (slug: string) => {
     if (selectedSlugs.length < 3 && !selectedSlugs.includes(slug)) {
-      setSelectedSlugs([...selectedSlugs, slug]);
+      const updated = [...selectedSlugs, slug];
+      setSelectedSlugs(updated);
+      // Sync to localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("ad_jobs_compare_list", JSON.stringify(updated));
+      }
     }
     setSearchQuery("");
     setShowSearch(false);
   };
 
   const removeCareer = (slug: string) => {
-    setSelectedSlugs(selectedSlugs.filter(s => s !== slug));
+    const updated = selectedSlugs.filter(s => s !== slug);
+    setSelectedSlugs(updated);
+    // Sync to localStorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem("ad_jobs_compare_list", JSON.stringify(updated));
+    }
   };
 
   const colors = ['blue', 'green', 'purple'] as const;
@@ -581,6 +601,8 @@ export default function ComparePage() {
           </div>
         )}
       </div>
+
+      <NextSteps currentPage="compare" />
     </div>
   );
 }
