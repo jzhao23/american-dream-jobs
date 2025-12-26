@@ -192,7 +192,7 @@ function ContributeFormContent() {
               setFormData((prev) => ({ ...prev, careerSlug: e.target.value }))
             }
             placeholder="e.g., welder, electrician, registered-nurse"
-            className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+            className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
           />
         </div>
 
@@ -225,7 +225,7 @@ function ContributeFormContent() {
                 ? "Describe what the video covers and why it's helpful..."
                 : "Tell us about your day-to-day work, how you got into this career, what you wish you knew before starting..."
             }
-            className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none resize-y"
+            className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none resize-y"
           />
         </div>
 
@@ -249,7 +249,7 @@ function ContributeFormContent() {
                 setFormData((prev) => ({ ...prev, link: e.target.value }))
               }
               placeholder="https://youtube.com/watch?v=..."
-              className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
             />
           </div>
         )}
@@ -276,7 +276,7 @@ function ContributeFormContent() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, name: e.target.value }))
                 }
-                className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
               />
             </div>
             <div>
@@ -294,7 +294,7 @@ function ContributeFormContent() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, email: e.target.value }))
                 }
-                className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
               />
             </div>
           </div>

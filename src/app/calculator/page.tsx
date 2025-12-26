@@ -153,7 +153,8 @@ export default function CalculatorPage() {
                     </div>
                     <button
                       onClick={() => setSelectedSlug("")}
-                      className="text-secondary-400 hover:text-secondary-600"
+                      className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl -mr-2"
+                      aria-label="Remove career"
                     >
                       &times;
                     </button>
@@ -163,7 +164,7 @@ export default function CalculatorPage() {
                 <div className="relative">
                   <button
                     onClick={() => setShowSearch(true)}
-                    className="w-full px-4 py-3 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 transition-colors text-left"
+                    className="w-full px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors text-left"
                   >
                     Search for a career...
                   </button>
@@ -175,7 +176,7 @@ export default function CalculatorPage() {
                         placeholder="Search careers..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full px-4 py-3 border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                        className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
                         autoFocus
                       />
                       <div className="max-h-60 overflow-y-auto">
@@ -183,7 +184,7 @@ export default function CalculatorPage() {
                           <button
                             key={career.slug}
                             onClick={() => selectCareer(career.slug)}
-                            className="w-full px-4 py-2 text-left hover:bg-secondary-50"
+                            className="w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100"
                           >
                             <div className="font-medium text-secondary-900">{career.title}</div>
                             <div className="text-sm text-secondary-500">{career.category} - {formatPay(career.median_pay)}</div>
@@ -192,7 +193,7 @@ export default function CalculatorPage() {
                       </div>
                       <button
                         onClick={() => setShowSearch(false)}
-                        className="w-full px-4 py-2 text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50"
+                        className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
                       >
                         Cancel
                       </button>
@@ -359,7 +360,7 @@ export default function CalculatorPage() {
                 {/* Net Worth Chart */}
                 <div className="card p-6">
                   <h2 className="text-lg font-bold text-secondary-900 mb-4">Net Worth Projection</h2>
-                  <div className="h-64 relative">
+                  <div className="h-48 md:h-64 relative">
                     {/* Y-axis labels */}
                     <div className="absolute left-0 top-0 bottom-8 w-16 flex flex-col justify-between text-xs text-secondary-500 text-right pr-2">
                       <span>{formatPay(maxNetWorth)}</span>

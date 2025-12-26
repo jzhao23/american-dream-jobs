@@ -18,23 +18,31 @@ export function CategoryStrip() {
         <h2 className="text-3xl font-bold text-secondary-900 mb-4 text-center">
           Explore by Category
         </h2>
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-          {categories.map((category) => (
+        {/* Scroll container with fade indicators */}
+        <div className="relative">
+          {/* Left fade indicator */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-secondary-50/90 to-transparent pointer-events-none z-10 md:hidden" />
+          {/* Right fade indicator */}
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-secondary-50/90 to-transparent pointer-events-none z-10 md:hidden" />
+
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide px-1">
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                href={`/categories/${category.id}`}
+                className="inline-flex items-center gap-2 px-4 py-2 min-h-[44px] text-base rounded-full whitespace-nowrap transition-all hover:shadow-sm flex-shrink-0 bg-white border border-secondary-200 text-secondary-700 hover:border-secondary-300 hover:text-secondary-900 active:bg-secondary-100"
+              >
+                <span>{getCategoryIcon(category.id)}</span>
+                <span>{category.shortName}</span>
+              </Link>
+            ))}
             <Link
-              key={category.id}
-              href={`/categories/${category.id}`}
-              className="inline-flex items-center gap-2 px-4 py-2 text-base rounded-full whitespace-nowrap transition-all hover:shadow-sm flex-shrink-0 bg-white border border-secondary-200 text-secondary-700 hover:border-secondary-300 hover:text-secondary-900"
+              href="/categories"
+              className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-base rounded-full whitespace-nowrap transition-all flex-shrink-0 text-primary-600 hover:text-primary-700 hover:underline"
             >
-              <span>{getCategoryIcon(category.id)}</span>
-              <span>{category.shortName}</span>
+              View All →
             </Link>
-          ))}
-          <Link
-            href="/categories"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-base rounded-full whitespace-nowrap transition-all flex-shrink-0 text-primary-600 hover:text-primary-700 hover:underline"
-          >
-            View All →
-          </Link>
+          </div>
         </div>
       </div>
     </div>

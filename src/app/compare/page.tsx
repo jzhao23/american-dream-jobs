@@ -283,7 +283,8 @@ export default function ComparePage() {
                 <span className="font-medium">{career.title}</span>
                 <button
                   onClick={() => removeCareer(career.slug)}
-                  className="text-secondary-400 hover:text-secondary-600 text-xl leading-none"
+                  className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl leading-none -mr-2"
+                  aria-label={`Remove ${career.title}`}
                 >
                   &times;
                 </button>
@@ -294,19 +295,19 @@ export default function ComparePage() {
               <div className="relative">
                 <button
                   onClick={() => setShowSearch(true)}
-                  className="px-4 py-2 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 transition-colors"
+                  className="px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors"
                 >
                   + Add Career ({3 - selectedSlugs.length} remaining)
                 </button>
 
                 {showSearch && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
+                  <div className="absolute top-full left-0 right-0 md:right-auto mt-2 w-full md:w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
                     <input
                       type="text"
                       placeholder="Search careers..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full px-4 py-3 border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                      className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
                       autoFocus
                     />
                     <div className="max-h-60 overflow-y-auto">
@@ -315,7 +316,7 @@ export default function ComparePage() {
                           key={career.slug}
                           onClick={() => addCareer(career.slug)}
                           disabled={selectedSlugs.includes(career.slug)}
-                          className={`w-full px-4 py-2 text-left hover:bg-secondary-50 ${
+                          className={`w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100 ${
                             selectedSlugs.includes(career.slug) ? 'opacity-50 cursor-not-allowed' : ''
                           }`}
                         >
@@ -326,7 +327,7 @@ export default function ComparePage() {
                     </div>
                     <button
                       onClick={() => setShowSearch(false)}
-                      className="w-full px-4 py-2 text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50"
+                      className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
                     >
                       Cancel
                     </button>
@@ -418,9 +419,9 @@ export default function ComparePage() {
               </h2>
               <p className="text-sm text-secondary-600 mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
 
-              <div className="flex gap-4 overflow-x-auto pb-4">
+              <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
                 {careerPaths.map((path, pathIndex) => (
-                  <div key={path.career.slug} className="flex-1 min-w-[280px]">
+                  <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
                     {/* Career header */}
                     <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border}`}>
                       <div className="font-bold text-secondary-900 text-sm">{path.career.title}</div>
@@ -507,7 +508,19 @@ export default function ComparePage() {
 
             {/* Summary Comparison Table */}
             <div className="card overflow-hidden mb-8">
-              <div className="overflow-x-auto">
+              {/* Mobile scroll hint */}
+              <div className="md:hidden px-4 py-2 bg-secondary-100 text-xs text-secondary-600 flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+                Swipe to see all columns
+              </div>
+              <div className="relative">
+                {/* Left fade */}
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent pointer-events-none z-10 md:hidden" />
+                {/* Right fade */}
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 md:hidden" />
+                <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-secondary-50">
                     <tr>
@@ -674,6 +687,7 @@ export default function ComparePage() {
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
 

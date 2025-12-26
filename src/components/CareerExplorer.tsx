@@ -35,6 +35,9 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
   const [sortField, setSortField] = useState<SortField>("importance");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
 
+  // Mobile filter toggle
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
+
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 50;
@@ -165,11 +168,168 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     maxAIRisk < 10 ||
     minImportance > 1;
 
+  // Count active filters (excluding search) for mobile display
+  const activeFilterCount =
+    (minPay > 0 ? 1 : 0) +
+    selectedCategories.length +
+    selectedTrainingTimes.length +
+    (maxAIRisk < 10 ? 1 : 0) +
+    (minImportance > 1 ? 1 : 0);
+
   return (
     <div>
       {/* Compact Filter Bar */}
       <div className="card p-3 mb-6">
-        <div className="flex flex-wrap items-center gap-3">
+        {/* Mobile: Search + Filters toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="Search careers..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="w-full px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+            />
+          </div>
+          <button
+            onClick={() => setFiltersExpanded(!filtersExpanded)}
+            className={`flex items-center gap-1 px-3 py-2 min-h-[44px] text-sm font-medium rounded-lg border transition-colors ${
+              activeFilterCount > 0
+                ? "bg-primary-100 text-primary-700 border-primary-300"
+                : "bg-white text-secondary-700 border-secondary-300"
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            Filters{activeFilterCount > 0 && ` (${activeFilterCount})`}
+            <svg className={`w-4 h-4 transition-transform ${filtersExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile: Expandable filter panel */}
+        {filtersExpanded && (
+          <div className="mt-3 pt-3 border-t border-secondary-200 space-y-3 md:hidden">
+            {/* Min Pay */}
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-secondary-700">Min Pay</label>
+              <select
+                value={minPay}
+                onChange={(e) => {
+                  setMinPay(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
+              >
+                <option value={0}>Any</option>
+                <option value={30000}>$30k+</option>
+                <option value={50000}>$50k+</option>
+                <option value={75000}>$75k+</option>
+                <option value={100000}>$100k+</option>
+                <option value={150000}>$150k+</option>
+              </select>
+            </div>
+
+            {/* Max AI Risk */}
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-secondary-700">Max AI Risk</label>
+              <select
+                value={maxAIRisk}
+                onChange={(e) => {
+                  setMaxAIRisk(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
+              >
+                <option value={10}>Any</option>
+                <option value={3}>Low (≤3)</option>
+                <option value={5}>Medium (≤5)</option>
+                <option value={7}>High (≤7)</option>
+              </select>
+            </div>
+
+            {/* Min Importance */}
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-secondary-700">Min Importance</label>
+              <select
+                value={minImportance}
+                onChange={(e) => {
+                  setMinImportance(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
+              >
+                <option value={1}>Any</option>
+                <option value={5}>5+</option>
+                <option value={7}>7+</option>
+                <option value={9}>9+</option>
+              </select>
+            </div>
+
+            {/* Training Time */}
+            <div>
+              <label className="text-sm font-medium text-secondary-700 block mb-2">Training Time</label>
+              <div className="flex flex-wrap gap-2">
+                {TRAINING_TIME_ORDER.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => toggleTrainingTime(time)}
+                    className={`px-4 py-2 min-h-[44px] text-sm rounded-lg border transition-colors ${
+                      selectedTrainingTimes.includes(time)
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                    }`}
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Category Filter on mobile */}
+            {!hideCategoryFilter && (
+              <div>
+                <label className="text-sm font-medium text-secondary-700 block mb-2">Category</label>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => toggleCategory(category)}
+                      className={`px-3 py-2 min-h-[44px] text-sm rounded-full border transition-colors ${
+                        selectedCategories.includes(category)
+                          ? "bg-primary-600 text-white border-primary-600"
+                          : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                      }`}
+                    >
+                      {getCategoryLabel(category)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Clear Filters */}
+            {hasActiveFilters && (
+              <button
+                onClick={() => {
+                  clearFilters();
+                  setFiltersExpanded(false);
+                }}
+                className="w-full py-2 min-h-[44px] text-sm font-medium text-primary-600 border border-primary-300 rounded-lg active:bg-primary-50"
+              >
+                Clear All Filters
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Desktop: Inline filters (hidden on mobile) */}
+        <div className="hidden md:flex md:flex-wrap md:items-center md:gap-3">
           {/* Search */}
           <div className="flex-1 min-w-[200px]">
             <input
@@ -274,9 +434,9 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
           )}
         </div>
 
-        {/* Category Filter - shown on second row when not hidden */}
+        {/* Category Filter - shown on second row for desktop when not hidden */}
         {!hideCategoryFilter && (
-          <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-secondary-200">
+          <div className="hidden md:flex md:flex-wrap md:items-center md:gap-2 md:mt-3 md:pt-3 md:border-t md:border-secondary-200">
             <span className="text-xs font-medium text-secondary-600">Category:</span>
             {categories.map((category) => (
               <button

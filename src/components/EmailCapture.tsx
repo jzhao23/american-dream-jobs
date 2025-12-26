@@ -74,7 +74,7 @@ export function EmailCapture() {
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+          className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
         />
       </div>
 
@@ -87,7 +87,7 @@ export function EmailCapture() {
           name="persona"
           value={persona}
           onChange={(e) => setPersona(e.target.value as Persona)}
-          className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors text-secondary-900 bg-white"
+          className="w-full px-4 py-3 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors text-secondary-900 bg-white"
         >
           <option value="">I am a... (optional)</option>
           {PERSONAS.map((p) => (

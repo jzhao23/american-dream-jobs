@@ -541,7 +541,7 @@ export default async function CareerPage({ params }: PageProps) {
                   {allReviews.length} testimonial{allReviews.length !== 1 ? 's' : ''} from Reddit
                 </p>
 
-                <div className="max-h-[600px] overflow-y-auto space-y-4 pr-2">
+                <div className="max-h-[400px] md:max-h-[600px] overflow-y-auto space-y-4 pr-2">
                   {allReviews.map((review) => (
                     <a
                       key={review.id}
