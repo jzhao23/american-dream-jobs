@@ -93,6 +93,23 @@ const EDUCATION_CATEGORIES: Record<string, string> = {
   '12': 'Post-doctoral training',
 };
 
+// Education duration mapping (ground truth - standard degree durations)
+// This maps typical_entry_education text to actual education duration in years
+const EDUCATION_DURATION_MAP: Record<string, { min: number; typical: number; max: number }> = {
+  'Less than high school': { min: 0, typical: 0, max: 0 },
+  'High school diploma or equivalent': { min: 0, typical: 0, max: 0 },
+  'Post-secondary certificate': { min: 0.5, typical: 1, max: 2 },
+  'Some college, no degree': { min: 1, typical: 1, max: 2 },
+  "Associate's degree": { min: 2, typical: 2, max: 3 },
+  "Bachelor's degree": { min: 4, typical: 4, max: 5 },
+  'Post-baccalaureate certificate': { min: 4, typical: 4.5, max: 5 },
+  "Master's degree": { min: 5, typical: 6, max: 7 },
+  "Post-master's certificate": { min: 6, typical: 7, max: 8 },
+  'First professional degree': { min: 7, typical: 7, max: 8 },
+  'Doctoral degree': { min: 8, typical: 9, max: 12 },
+  'Post-doctoral training': { min: 10, typical: 11, max: 14 },
+};
+
 // Job zone descriptions
 const JOB_ZONE_DESCRIPTIONS: Record<number, { education: string, experience: string, training: string }> = {
   1: { education: 'Some high school', experience: 'Little or no experience', training: 'Short demonstration' },
@@ -155,6 +172,8 @@ function generateSlug(title: string): string {
 }
 
 // Estimate time to job ready (years after high school)
+// NOTE: This uses Job Zone which conflates education with work experience.
+// For education-only duration, use getEducationDuration() instead.
 function estimateTimeToJobReady(jobZone: number, education: string): { min: number; typical: number; max: number; earningWhileLearning: boolean } {
   // Based on job zone and typical education
   const estimates: Record<number, { min: number; typical: number; max: number }> = {
@@ -175,6 +194,57 @@ function estimateTimeToJobReady(jobZone: number, education: string): { min: numb
     ...base,
     earningWhileLearning: isApprentice || jobZone <= 2
   };
+}
+
+// Get education duration from typical_entry_education text (ground truth mapping)
+// This returns the actual years of formal education required, NOT including work experience
+function getEducationDuration(typicalEducation: string): { min: number; typical: number; max: number } {
+  // Try exact match first
+  const exactMatch = EDUCATION_DURATION_MAP[typicalEducation];
+  if (exactMatch) return exactMatch;
+
+  // Fuzzy match for variations
+  const normalized = typicalEducation.toLowerCase();
+
+  if (normalized.includes('post-doctoral') || normalized.includes('postdoctoral')) {
+    return { min: 10, typical: 11, max: 14 };
+  }
+  if (normalized.includes('doctoral') || normalized.includes('doctorate')) {
+    return { min: 8, typical: 9, max: 12 };
+  }
+  if (normalized.includes('professional') || normalized.includes('first professional')) {
+    return { min: 7, typical: 7, max: 8 };
+  }
+  if (normalized.includes('post-master')) {
+    return { min: 6, typical: 7, max: 8 };
+  }
+  if (normalized.includes('master')) {
+    return { min: 5, typical: 6, max: 7 };
+  }
+  if (normalized.includes('post-baccalaureate')) {
+    return { min: 4, typical: 4.5, max: 5 };
+  }
+  if (normalized.includes('bachelor')) {
+    return { min: 4, typical: 4, max: 5 };
+  }
+  if (normalized.includes('associate')) {
+    return { min: 2, typical: 2, max: 3 };
+  }
+  if (normalized.includes('some college')) {
+    return { min: 1, typical: 1, max: 2 };
+  }
+  if (normalized.includes('certificate') || normalized.includes('postsecondary') || normalized.includes('post-secondary')) {
+    return { min: 0.5, typical: 1, max: 2 };
+  }
+  if (normalized.includes('high school') || normalized.includes('ged') || normalized.includes('equivalent')) {
+    return { min: 0, typical: 0, max: 0 };
+  }
+  if (normalized.includes('less than high school') || normalized.includes('no formal')) {
+    return { min: 0, typical: 0, max: 0 };
+  }
+
+  // Default fallback (high school equivalent)
+  return { min: 0, typical: 0, max: 0 };
 }
 
 // Estimate education costs
@@ -372,6 +442,7 @@ async function main() {
     const jobZone = jobZoneMap.get(code) || 3;
     const typicalEducation = educationMap.get(code)?.typicalEducation || "Bachelor's degree";
     const timeToReady = estimateTimeToJobReady(jobZone, typicalEducation);
+    const educationDuration = getEducationDuration(typicalEducation);
     const costEstimate = estimateEducationCost(jobZone, typicalEducation);
     const jobZoneInfo = JOB_ZONE_DESCRIPTIONS[jobZone] || JOB_ZONE_DESCRIPTIONS[3];
 
@@ -415,13 +486,22 @@ async function main() {
         work_experience_required: jobZoneInfo.experience,
         on_the_job_training: jobZoneInfo.training,
 
-        // Time estimates
+        // Time estimates (Job Zone based - includes work experience, NOT just education)
         time_to_job_ready: {
           min_years: timeToReady.min,
           typical_years: timeToReady.typical,
           max_years: timeToReady.max,
           earning_while_learning: timeToReady.earningWhileLearning,
-          notes: `Based on Job Zone ${jobZone} and typical entry education: ${typicalEducation}`
+          notes: `Based on Job Zone ${jobZone}. For formal education duration only, see education_duration.`
+        },
+
+        // Education duration (ground truth from typical_entry_education)
+        education_duration: {
+          min_years: educationDuration.min,
+          typical_years: educationDuration.typical,
+          max_years: educationDuration.max,
+          source: 'typical_entry_education' as const,
+          education_level: typicalEducation,
         },
 
         // Cost estimates

@@ -142,6 +142,33 @@ The crosswalk should map ~800+ SOC codes. If significantly fewer:
 2. Verify the "SOC-CIP" sheet exists
 3. Check for format changes in column headers
 
+## Career Progression Data
+
+After updating BLS wages, regenerate career progression data:
+
+```bash
+npx tsx scripts/create-progression-mappings.ts
+```
+
+### Important: BLS High-Earner Data
+
+BLS does not report exact wages above ~$208,000. The script automatically estimates missing 75th and 90th percentiles for affected careers (56-77 occupations including physicians, executives, lawyers).
+
+See [CAREER_PROGRESSION_METHODOLOGY.md](./CAREER_PROGRESSION_METHODOLOGY.md) for details.
+
+### Validation
+
+The generate-final.ts script validates that no careers have $0 in their timeline:
+
+```bash
+npx tsx scripts/generate-final.ts
+# Look for: "✓ All career progressions have valid (non-zero) compensation data"
+```
+
+If you see warnings about $0 values, the estimation logic may need updating.
+
+---
+
 ## Future Enhancements
 
 When College Scorecard API access is available:

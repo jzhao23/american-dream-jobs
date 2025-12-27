@@ -185,6 +185,29 @@ async function main() {
   console.log(`Complete occupations: ${validCount}`);
   console.log(`Incomplete occupations: ${incompleteCount}`);
 
+  // Validate: Check for zeros in career progression timeline (indicates BLS null handling bug)
+  const careersWithZeros = occupations.filter((o: {
+    title: string;
+    career_progression?: { timeline?: { expected_compensation: number }[] };
+  }) =>
+    o.career_progression?.timeline?.some(t => t.expected_compensation === 0)
+  );
+
+  if (careersWithZeros.length > 0) {
+    console.error(`\n⚠️  WARNING: Found ${careersWithZeros.length} careers with $0 in timeline:`);
+    careersWithZeros.slice(0, 10).forEach((c: { title: string }) => {
+      console.error(`    - ${c.title}`);
+    });
+    if (careersWithZeros.length > 10) {
+      console.error(`    ... and ${careersWithZeros.length - 10} more`);
+    }
+    console.error(`\n   This usually means BLS percentile data has nulls that weren't estimated.`);
+    console.error(`   Run 'npx tsx scripts/create-progression-mappings.ts' to fix.\n`);
+    // Don't fail the build, but warn loudly
+  } else {
+    console.log('✓ All career progressions have valid (non-zero) compensation data');
+  }
+
   // Generate final dataset
   const finalOutput = {
     metadata: {
@@ -258,32 +281,41 @@ async function main() {
     category: string;
     subcategory: string;
     wages: { annual: { median: number } };
-    education: { time_to_job_ready: { min_years: number; typical_years: number; max_years: number }; typical_entry_education: string };
+    education: {
+      education_duration?: { min_years: number; typical_years: number; max_years: number };
+      time_to_job_ready: { min_years: number; typical_years: number; max_years: number };
+      typical_entry_education: string;
+    };
     ai_risk: { score: number; label: string };
     // ARCHIVED: national_importance removed from UI - see data/archived/importance-scores-backup.json
     // national_importance: { score: number; label: string; flag_count: number };
     description: string;
-  }) => ({
-    title: occ.title,
-    slug: occ.slug,
-    category: occ.category,
-    subcategory: occ.subcategory,
-    median_pay: occ.wages?.annual?.median || 0,
-    training_time: getTrainingTimeCategory(occ.education?.time_to_job_ready?.typical_years ?? 2),
-    training_years: occ.education?.time_to_job_ready ? {
-      min: occ.education.time_to_job_ready.min_years,
-      typical: occ.education.time_to_job_ready.typical_years,
-      max: occ.education.time_to_job_ready.max_years,
-    } : null,
-    typical_education: occ.education?.typical_entry_education || 'High school diploma',
-    ai_risk: occ.ai_risk?.score || 5,
-    ai_risk_label: occ.ai_risk?.label || 'medium',
-    // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
-    // importance: occ.national_importance?.score || 5,
-    // importance_label: occ.national_importance?.label || 'important',
-    // flag_count: occ.national_importance?.flag_count || 2,
-    description: occ.description?.substring(0, 200) || '',
-  }));
+  }) => {
+    // Use education_duration (ground truth) if available, fall back to time_to_job_ready
+    const eduDuration = occ.education?.education_duration || occ.education?.time_to_job_ready;
+
+    return {
+      title: occ.title,
+      slug: occ.slug,
+      category: occ.category,
+      subcategory: occ.subcategory,
+      median_pay: occ.wages?.annual?.median || 0,
+      training_time: getTrainingTimeCategory(eduDuration?.typical_years ?? 2),
+      training_years: eduDuration ? {
+        min: eduDuration.min_years,
+        typical: eduDuration.typical_years,
+        max: eduDuration.max_years,
+      } : null,
+      typical_education: occ.education?.typical_entry_education || 'High school diploma',
+      ai_risk: occ.ai_risk?.score || 5,
+      ai_risk_label: occ.ai_risk?.label || 'medium',
+      // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
+      // importance: occ.national_importance?.score || 5,
+      // importance_label: occ.national_importance?.label || 'important',
+      // flag_count: occ.national_importance?.flag_count || 2,
+      description: occ.description?.substring(0, 200) || '',
+    };
+  });
 
   fs.writeFileSync(
     path.join(DATA_DIR, 'careers-index.json'),

@@ -80,7 +80,7 @@ See [AI_RISK_METHODOLOGY.md](./AI_RISK_METHODOLOGY.md) for complete mapping docu
 
 **Source**: https://www.levels.fyi
 **Access**: Public salary data
-**Coverage**: Primarily tech industry
+**Coverage**: Primarily tech industry (41 occupations mapped)
 
 ### What We Use
 - **Salary by level**: Entry → Senior → Staff → Principal progressions
@@ -95,7 +95,18 @@ Levels.fyi data → scripts/create-progression-mappings.ts → data/processed/ca
 - **Exact match**: Occupation title matches Levels.fyi title
 - **Close match**: Similar role (e.g., "Software Developer" → "Software Engineer")
 - **Approximate**: Same job family
-- **Fallback**: Use BLS percentiles for progression estimates
+- **Fallback**: Use BLS percentiles for progression estimates (975 occupations)
+
+### BLS Percentile Estimation
+For occupations without Levels.fyi data, we use BLS wage percentiles (10th, 25th, 50th, 75th, 90th) to estimate career progression. However, BLS does not report exact wages for high earners (~$208,000+ threshold), returning `null` instead.
+
+For these high-earning careers (56-77 occupations including physicians, executives, lawyers), we **estimate** the missing 75th and 90th percentiles using the BLS `mean` and ratio extrapolation.
+
+### Detailed Methodology
+See [CAREER_PROGRESSION_METHODOLOGY.md](./CAREER_PROGRESSION_METHODOLOGY.md) for complete documentation including:
+- Estimation algorithm for missing percentiles
+- Validation approach
+- Limitations and uncertainty
 
 ---
 

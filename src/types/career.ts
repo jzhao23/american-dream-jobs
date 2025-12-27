@@ -126,6 +126,14 @@ export const EducationSchema = z.object({
     earning_while_learning: z.boolean(),
     notes: z.string(),
   }),
+  // Education duration derived from typical_entry_education (ground truth)
+  education_duration: z.object({
+    min_years: z.number(),
+    typical_years: z.number(),
+    max_years: z.number(),
+    source: z.literal('typical_entry_education'),
+    education_level: z.string(),
+  }).optional(),
   estimated_cost: z.object({
     min_cost: z.number(),
     max_cost: z.number(),

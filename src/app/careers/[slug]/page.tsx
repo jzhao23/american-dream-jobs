@@ -92,7 +92,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const medianPay = career.wages?.annual?.median || 0;
-  const trainingTime = getTrainingTimeFromYears(career.education?.time_to_job_ready?.typical_years || 2);
+  // Use education_duration (ground truth) if available
+  const trainingTime = getTrainingTimeFromYears(career.education?.education_duration?.typical_years ?? career.education?.time_to_job_ready?.typical_years ?? 2);
 
   return {
     title: `${career.title} | American Dream Jobs`,
@@ -112,8 +113,10 @@ export default async function CareerPage({ params }: PageProps) {
   const payRange = career.wages?.annual
     ? { min: career.wages.annual.pct_10 || 0, max: career.wages.annual.pct_90 || 0 }
     : null;
-  const trainingTime = getTrainingTimeFromYears(career.education?.time_to_job_ready?.typical_years || 2);
-  const trainingYears = career.education?.time_to_job_ready;
+  // Use education_duration (ground truth) if available
+  const educationDuration = career.education?.education_duration || career.education?.time_to_job_ready;
+  const trainingTime = getTrainingTimeFromYears(educationDuration?.typical_years ?? 2);
+  const trainingYears = educationDuration;
   const aiRiskScore = career.ai_risk?.score || 5;
   // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
   // const importanceScore = career.national_importance?.score || 5;
@@ -355,10 +358,10 @@ export default async function CareerPage({ params }: PageProps) {
                   <h4 className="font-semibold text-secondary-900 mb-3">Time & Cost</h4>
                   <div className="bg-secondary-50 rounded-lg p-4">
                     <div className="mb-3">
-                      <div className="text-sm text-secondary-600">Time to Job Ready</div>
+                      <div className="text-sm text-secondary-600">Education Duration</div>
                       <div className="font-semibold">
-                        {career.education.time_to_job_ready.min_years}-{career.education.time_to_job_ready.max_years} years
-                        <span className="text-secondary-500 font-normal"> (typically {career.education.time_to_job_ready.typical_years})</span>
+                        {trainingYears ? `${trainingYears.min_years}-${trainingYears.max_years} years` : 'Varies'}
+                        {trainingYears && <span className="text-secondary-500 font-normal"> (typically {trainingYears.typical_years})</span>}
                       </div>
                     </div>
                     <div>
@@ -366,7 +369,7 @@ export default async function CareerPage({ params }: PageProps) {
                       <div className="font-semibold">
                         {formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}
                       </div>
-                      {career.education.time_to_job_ready.earning_while_learning && (
+                      {career.education.time_to_job_ready?.earning_while_learning && (
                         <div className="text-sm text-green-600 mt-1">
                           Can earn while learning
                         </div>

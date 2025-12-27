@@ -172,7 +172,10 @@ function CompareContent() {
   const careerPaths = useMemo(() => {
     return selectedCareers.map(career => {
       const stages: CareerPathStage[] = [];
-      const educationYears = career.education?.time_to_job_ready?.typical_years || 2;
+      // Use education_duration (ground truth) if available, fall back to time_to_job_ready
+      const educationYears = career.education?.education_duration?.typical_years
+        ?? career.education?.time_to_job_ready?.typical_years
+        ?? 2;
       const timeline = career.career_progression?.timeline || [];
       const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
       const costByType = career.education?.cost_by_institution_type;
@@ -598,9 +601,10 @@ function CompareContent() {
 
                     {/* Education Duration */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">Training Time</td>
+                      <td className="px-4 py-4 font-medium text-secondary-900">Education Time</td>
                       {selectedCareers.map((career, index) => {
-                        const years = career.education?.time_to_job_ready;
+                        // Use education_duration (ground truth) if available
+                        const years = career.education?.education_duration || career.education?.time_to_job_ready;
                         return (
                           <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
                             <div className="font-semibold">
