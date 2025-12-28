@@ -16,6 +16,48 @@ Or refresh all data including wages, AI risk scores, etc.:
 npm run data:refresh
 ```
 
+---
+
+## ⚠️ CRITICAL: Data Pipeline Order
+
+**NEVER run individual data scripts out of order.** The scripts have dependencies:
+
+| Script | What It Does | Dependencies |
+|--------|--------------|--------------|
+| `process-onet.ts` | Parses O*NET data, **RESETS wages to null** | None |
+| `fetch-bls-wages.ts` | Fetches BLS wage data | Must run AFTER process-onet |
+| `fetch-education-costs.ts` | Calculates education costs | Requires occupations_complete.json |
+| `create-progression-mappings.ts` | Creates career timelines | Requires wage data |
+| `generate-final.ts` | Produces final JSON | Requires all above |
+
+### Safe Commands
+
+```bash
+# ✅ SAFE: Use the combined refresh script
+npm run data:refresh
+
+# ✅ SAFE: Run individual scripts that don't reset data
+npx tsx scripts/fetch-bls-wages.ts
+npx tsx scripts/fetch-education-costs.ts
+npx tsx scripts/create-progression-mappings.ts
+npx tsx scripts/generate-final.ts
+```
+
+### Dangerous Commands
+
+```bash
+# ⚠️ DANGER: Running process-onet alone will break wages!
+npx tsx scripts/process-onet.ts  # DON'T run alone!
+
+# If you accidentally ran it, immediately run:
+npx tsx scripts/fetch-bls-wages.ts
+npx tsx scripts/create-progression-mappings.ts
+npx tsx scripts/generate-final.ts
+npm run build
+```
+
+---
+
 ## Annual Update Procedure
 
 ### 1. Update College Board Tuition Data (October each year)

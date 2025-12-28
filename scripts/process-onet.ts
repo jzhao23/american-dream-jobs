@@ -3,6 +3,21 @@
  *
  * Parses the O*NET database files and generates structured JSON outputs.
  * Run: npx tsx scripts/process-onet.ts
+ *
+ * ⚠️  CRITICAL WARNING ⚠️
+ * This script RESETS all wage data to null. You MUST run the full data pipeline
+ * after this script, or all careers will show $0 wages.
+ *
+ * NEVER run this script alone. Always use:
+ *   npm run data:refresh
+ *
+ * Or run the full pipeline manually:
+ *   npx tsx scripts/process-onet.ts
+ *   npx tsx scripts/fetch-bls-wages.ts      ← REQUIRED to restore wages
+ *   npx tsx scripts/fetch-education-costs.ts
+ *   npx tsx scripts/create-progression-mappings.ts
+ *   npx tsx scripts/generate-final.ts
+ *   npm run build
  */
 
 import * as fs from 'fs';
@@ -338,6 +353,13 @@ function estimateEducationCost(jobZone: number, typicalEducation: string): { min
 
 async function main() {
   console.log('\n=== Processing O*NET Database ===\n');
+  console.log('⚠️  WARNING: This script RESETS all wage data to null.');
+  console.log('   You MUST run the full pipeline after this:');
+  console.log('   npx tsx scripts/fetch-bls-wages.ts');
+  console.log('   npx tsx scripts/create-progression-mappings.ts');
+  console.log('   npx tsx scripts/generate-final.ts');
+  console.log('   npm run build\n');
+  console.log('   Or simply run: npm run data:refresh\n');
 
   // Load all data files
   console.log('Loading O*NET files...');

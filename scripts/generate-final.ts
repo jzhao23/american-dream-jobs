@@ -63,7 +63,10 @@ async function main() {
   }
 
   // Load curated technology skills (if available)
-  const curatedTechSkillsFile = path.join(PROCESSED_DIR, 'curated-tech-skills.json');
+  // First check the docs location (generated from markdown), then fall back to processed dir
+  const curatedDocsFile = path.join(process.cwd(), 'docs', 'curated-tech-skills', '_combined.json');
+  const curatedProcessedFile = path.join(PROCESSED_DIR, 'curated-tech-skills.json');
+  const curatedTechSkillsFile = fs.existsSync(curatedDocsFile) ? curatedDocsFile : curatedProcessedFile;
   let techSkillOverrides = 0;
   if (fs.existsSync(curatedTechSkillsFile)) {
     const curatedData = JSON.parse(fs.readFileSync(curatedTechSkillsFile, 'utf-8'));
