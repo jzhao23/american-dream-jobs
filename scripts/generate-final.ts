@@ -62,6 +62,23 @@ async function main() {
     console.log(`Applied ${categoryOverrides} category override(s)`);
   }
 
+  // Load curated technology skills (if available)
+  const curatedTechSkillsFile = path.join(PROCESSED_DIR, 'curated-tech-skills.json');
+  let techSkillOverrides = 0;
+  if (fs.existsSync(curatedTechSkillsFile)) {
+    const curatedData = JSON.parse(fs.readFileSync(curatedTechSkillsFile, 'utf-8'));
+    const curatedSkills = curatedData.skills as Record<string, string[]>;
+    console.log(`Loading curated tech skills for ${Object.keys(curatedSkills).length} careers...`);
+
+    for (const occ of occupations) {
+      if (curatedSkills[occ.onet_code]) {
+        occ.technology_skills = curatedSkills[occ.onet_code];
+        techSkillOverrides++;
+      }
+    }
+    console.log(`Applied ${techSkillOverrides} curated technology skill sets`);
+  }
+
   // Load Oxford AI risk mapping
   console.log('Loading Oxford AI risk mapping...');
   const oxfordData = JSON.parse(fs.readFileSync(OXFORD_MAPPING_FILE, 'utf-8'));

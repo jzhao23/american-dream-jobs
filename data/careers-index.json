@@ -7079,11 +7079,11 @@
     "median_pay": 227690,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "All dentists not listed separately."
@@ -7572,11 +7572,11 @@
     "median_pay": 423250,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "Diagnose, treat, manage, and prevent diseases or conditions of the cardiovascular system. May further subspecialize in interventional procedures (e.g., balloon angioplasty and stent placement), echoca"
@@ -7759,11 +7759,11 @@
     "median_pay": 236000,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "All physicians not listed separately."
@@ -7895,11 +7895,11 @@
     "median_pay": 378250,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "Diagnose and perform surgery to treat and prevent rheumatic and other diseases in the musculoskeletal system."
@@ -7912,11 +7912,11 @@
     "median_pay": 449320,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "Diagnose and perform surgery to treat fetal abnormalities and birth defects, diseases, and injuries in fetuses, premature and newborn infants, children, and adolescents. Includes all pediatric surgica"
@@ -7929,11 +7929,11 @@
     "median_pay": 343990,
     "training_time": "4+yr",
     "training_years": {
-      "min": 4,
-      "typical": 4,
-      "max": 5
+      "min": 10,
+      "typical": 11,
+      "max": 14
     },
-    "typical_education": "Bachelor's degree",
+    "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
     "description": "All surgeons not listed separately."

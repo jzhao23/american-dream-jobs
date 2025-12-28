@@ -118,6 +118,59 @@ Expected ranges:
 npm run build
 ```
 
+## O*NET Education Data Overrides
+
+O*NET sometimes has incorrect `typical_entry_education` values. For example, some surgeons are marked as "Bachelor's degree" when they actually require medical school + residency.
+
+### Current Overrides
+
+Located in `scripts/process-onet.ts`:
+
+```typescript
+const EDUCATION_OVERRIDES: Record<string, string> = {
+  '29-1029.00': 'Post-doctoral training',  // Dentists, All Other Specialists
+  '29-1212.00': 'Post-doctoral training',  // Cardiologists
+  '29-1229.00': 'Post-doctoral training',  // Physicians, All Other
+  '29-1242.00': 'Post-doctoral training',  // Orthopedic Surgeons
+  '29-1243.00': 'Post-doctoral training',  // Pediatric Surgeons
+  '29-1249.00': 'Post-doctoral training',  // Surgeons, All Other
+};
+```
+
+### Adding New Overrides
+
+If you discover careers with incorrect education data:
+
+1. **Find the O*NET code** for the career (e.g., `29-1243.00`)
+2. **Add to EDUCATION_OVERRIDES** in `scripts/process-onet.ts`
+3. **Add SOC code to professional_programs.json** if needed (for proper cost calculation)
+4. **Regenerate data**:
+   ```bash
+   npx tsx scripts/process-onet.ts
+   npx tsx scripts/fetch-education-costs.ts
+   npx tsx scripts/create-progression-mappings.ts
+   npx tsx scripts/generate-final.ts
+   npm run build
+   ```
+
+### Verification
+
+Check that the override is working:
+
+```bash
+cat data/careers.generated.json | jq '.[] | select(.onet_code == "29-1243.00") | {
+  title,
+  typical_entry_education: .education.typical_entry_education,
+  cost_breakdown: [.education.estimated_cost.cost_breakdown[].item]
+}'
+```
+
+Should show:
+- `typical_entry_education`: "Post-doctoral training" (not "Bachelor's degree")
+- `cost_breakdown`: ["Bachelor's degree", "Doctor of Medicine (MD)"]
+
+---
+
 ## Troubleshooting
 
 ### "CIP-SOC crosswalk not found"

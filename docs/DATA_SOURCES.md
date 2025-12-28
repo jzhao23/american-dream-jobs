@@ -32,6 +32,21 @@ This document describes all data sources used in American Dream Jobs and how the
 data/sources/onet/ → scripts/process-onet.ts → data/processed/onet_occupations_list.json
 ```
 
+### O*NET Data Corrections
+
+Some O*NET records have incorrect `typical_entry_education` values. We maintain manual overrides in `scripts/process-onet.ts`:
+
+| O*NET Code | Career | O*NET Says | We Override To |
+|------------|--------|------------|----------------|
+| 29-1029.00 | Dentists, All Other Specialists | Bachelor's | Post-doctoral training |
+| 29-1212.00 | Cardiologists | Bachelor's | Post-doctoral training |
+| 29-1229.00 | Physicians, All Other | Bachelor's | Post-doctoral training |
+| 29-1242.00 | Orthopedic Surgeons | Bachelor's | Post-doctoral training |
+| 29-1243.00 | Pediatric Surgeons | Bachelor's | Post-doctoral training |
+| 29-1249.00 | Surgeons, All Other | Bachelor's | Post-doctoral training |
+
+See [data-update-guide.md](./data-update-guide.md#onet-education-data-overrides) for details.
+
 ---
 
 ## BLS Occupational Employment and Wage Statistics (OES)

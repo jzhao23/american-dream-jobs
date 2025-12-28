@@ -1,10 +1,10 @@
 {
   "metadata": {
     "source": "CareerOneStop",
-    "generated_at": "2025-12-26T07:50:02.468Z",
-    "total_videos": 436,
+    "generated_at": "2025-12-27T18:02:54.419Z",
+    "total_videos": 563,
     "total_careers": 1016,
-    "coverage": "42.9%"
+    "coverage": "55.4%"
   },
   "videos": {
     "11-1011": {
@@ -3058,6 +3058,895 @@
       "title": "Tire Builders",
       "thumbnailUrl": "https://img.youtube.com/vi/euk9ShxaaFo/hqdefault.jpg",
       "lastVerified": "2025-12-26"
+    },
+    "15-2051-01": {
+      "source": "careeronestop",
+      "youtubeId": "w0Un_0Dqbu8",
+      "title": "Business Intelligence Analysts",
+      "thumbnailUrl": "https://img.youtube.com/vi/w0Un_0Dqbu8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "15-2051-02": {
+      "source": "careeronestop",
+      "youtubeId": "hBgseqeDmJE",
+      "title": "Clinical Data Managers",
+      "thumbnailUrl": "https://img.youtube.com/vi/hBgseqeDmJE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "15-2099": {
+      "source": "careeronestop",
+      "youtubeId": "SWZy_WSiMKo",
+      "title": "Mathematical Science Occupations, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/SWZy_WSiMKo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "15-2099-01": {
+      "source": "careeronestop",
+      "youtubeId": "QEr_X2rDM-0",
+      "title": "Bioinformatics Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/QEr_X2rDM-0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-1011": {
+      "source": "careeronestop",
+      "youtubeId": "xJYux9d4zH8",
+      "title": "Architects, Except Landscape and Naval",
+      "thumbnailUrl": "https://img.youtube.com/vi/xJYux9d4zH8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-1012": {
+      "source": "careeronestop",
+      "youtubeId": "bRsp6BF1NIc",
+      "title": "Landscape Architects",
+      "thumbnailUrl": "https://img.youtube.com/vi/bRsp6BF1NIc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-1021": {
+      "source": "careeronestop",
+      "youtubeId": "5Oj7a2LmVtU",
+      "title": "Cartographers and Photogrammetrists",
+      "thumbnailUrl": "https://img.youtube.com/vi/5Oj7a2LmVtU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-1022": {
+      "source": "careeronestop",
+      "youtubeId": "xHYyQka2Z7Y",
+      "title": "Surveyors",
+      "thumbnailUrl": "https://img.youtube.com/vi/xHYyQka2Z7Y/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-1022-01": {
+      "source": "careeronestop",
+      "youtubeId": "xHYyQka2Z7Y",
+      "title": "Geodetic Surveyors",
+      "thumbnailUrl": "https://img.youtube.com/vi/xHYyQka2Z7Y/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3013": {
+      "source": "careeronestop",
+      "youtubeId": "EvrsyDdvX5c",
+      "title": "Mechanical Drafters",
+      "thumbnailUrl": "https://img.youtube.com/vi/EvrsyDdvX5c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3019": {
+      "source": "careeronestop",
+      "youtubeId": "y8WjCE-YfeE",
+      "title": "Drafters, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/y8WjCE-YfeE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3021": {
+      "source": "careeronestop",
+      "youtubeId": "1eOnm-61cDE",
+      "title": "Aerospace Engineering and Operations Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/1eOnm-61cDE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3022": {
+      "source": "careeronestop",
+      "youtubeId": "a4vYNrfZ6Wo",
+      "title": "Civil Engineering Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/a4vYNrfZ6Wo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3023": {
+      "source": "careeronestop",
+      "youtubeId": "E_Iy34hFITE",
+      "title": "Electrical and Electronic Engineering Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/E_Iy34hFITE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3024": {
+      "source": "careeronestop",
+      "youtubeId": "-3GjrJG6Ds8",
+      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/-3GjrJG6Ds8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3024-01": {
+      "source": "careeronestop",
+      "youtubeId": "-3GjrJG6Ds8",
+      "title": "Robotics Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/-3GjrJG6Ds8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3025": {
+      "source": "careeronestop",
+      "youtubeId": "gBIUUlrJKjU",
+      "title": "Environmental Engineering Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/gBIUUlrJKjU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3026": {
+      "source": "careeronestop",
+      "youtubeId": "GhVZTN1pZys",
+      "title": "Industrial Engineering Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/GhVZTN1pZys/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3026-01": {
+      "source": "careeronestop",
+      "youtubeId": "OTexBdX9lZ8",
+      "title": "Nanotechnology Engineering Technologists and Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/OTexBdX9lZ8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "17-3029-01": {
+      "source": "careeronestop",
+      "youtubeId": "B-7wulqdosA",
+      "title": "Non-Destructive Testing Specialists",
+      "thumbnailUrl": "https://img.youtube.com/vi/B-7wulqdosA/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1011": {
+      "source": "careeronestop",
+      "youtubeId": "cWbaZEIe7GQ",
+      "title": "Animal Scientists",
+      "thumbnailUrl": "https://img.youtube.com/vi/cWbaZEIe7GQ/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1012": {
+      "source": "careeronestop",
+      "youtubeId": "e6rmNP1gmhM",
+      "title": "Food Scientists and Technologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/e6rmNP1gmhM/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1021": {
+      "source": "careeronestop",
+      "youtubeId": "c2b7a89VSw8",
+      "title": "Biochemists and Biophysicists",
+      "thumbnailUrl": "https://img.youtube.com/vi/c2b7a89VSw8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1022": {
+      "source": "careeronestop",
+      "youtubeId": "PXrJ8TK0UzQ",
+      "title": "Microbiologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/PXrJ8TK0UzQ/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1029": {
+      "source": "careeronestop",
+      "youtubeId": "JcAUqJoUgBI",
+      "title": "Biological Scientists, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/JcAUqJoUgBI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1029-01": {
+      "source": "careeronestop",
+      "youtubeId": "JcAUqJoUgBI",
+      "title": "Bioinformatics Scientists",
+      "thumbnailUrl": "https://img.youtube.com/vi/JcAUqJoUgBI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1029-03": {
+      "source": "careeronestop",
+      "youtubeId": "KQLNbjF9kD8",
+      "title": "Geneticists",
+      "thumbnailUrl": "https://img.youtube.com/vi/KQLNbjF9kD8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1029-04": {
+      "source": "careeronestop",
+      "youtubeId": "JcAUqJoUgBI",
+      "title": "Biologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/JcAUqJoUgBI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1031": {
+      "source": "careeronestop",
+      "youtubeId": "PCAudFo7Eo4",
+      "title": "Conservation Scientists",
+      "thumbnailUrl": "https://img.youtube.com/vi/PCAudFo7Eo4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1031-03": {
+      "source": "careeronestop",
+      "youtubeId": "zBGnuQurqOU",
+      "title": "Park Naturalists",
+      "thumbnailUrl": "https://img.youtube.com/vi/zBGnuQurqOU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1032": {
+      "source": "careeronestop",
+      "youtubeId": "8aOy6HpXuLk",
+      "title": "Foresters",
+      "thumbnailUrl": "https://img.youtube.com/vi/8aOy6HpXuLk/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-1099": {
+      "source": "careeronestop",
+      "youtubeId": "JcAUqJoUgBI",
+      "title": "Life Scientists, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/JcAUqJoUgBI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2012": {
+      "source": "careeronestop",
+      "youtubeId": "9lVTE_bq3lw",
+      "title": "Physicists",
+      "thumbnailUrl": "https://img.youtube.com/vi/9lVTE_bq3lw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2031": {
+      "source": "careeronestop",
+      "youtubeId": "F1Dd4TxyuFI",
+      "title": "Chemists",
+      "thumbnailUrl": "https://img.youtube.com/vi/F1Dd4TxyuFI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2032": {
+      "source": "careeronestop",
+      "youtubeId": "61wd30JO7fk",
+      "title": "Materials Scientists",
+      "thumbnailUrl": "https://img.youtube.com/vi/61wd30JO7fk/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2041": {
+      "source": "careeronestop",
+      "youtubeId": "447oFgVvKno",
+      "title": "Environmental Scientists and Specialists, Including Health",
+      "thumbnailUrl": "https://img.youtube.com/vi/447oFgVvKno/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2041-01": {
+      "source": "careeronestop",
+      "youtubeId": "kIF9P1M7t7Q",
+      "title": "Climate Change Policy Analysts",
+      "thumbnailUrl": "https://img.youtube.com/vi/kIF9P1M7t7Q/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2041-02": {
+      "source": "careeronestop",
+      "youtubeId": "447oFgVvKno",
+      "title": "Environmental Restoration Planners",
+      "thumbnailUrl": "https://img.youtube.com/vi/447oFgVvKno/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2042": {
+      "source": "careeronestop",
+      "youtubeId": "tNCUbLoD5Io",
+      "title": "Geoscientists, Except Hydrologists and Geographers",
+      "thumbnailUrl": "https://img.youtube.com/vi/tNCUbLoD5Io/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-2043": {
+      "source": "careeronestop",
+      "youtubeId": "yd3MvZEdQi4",
+      "title": "Hydrologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/yd3MvZEdQi4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3051": {
+      "source": "careeronestop",
+      "youtubeId": "sdrsY1vz1SU",
+      "title": "Urban and Regional Planners",
+      "thumbnailUrl": "https://img.youtube.com/vi/sdrsY1vz1SU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3091": {
+      "source": "careeronestop",
+      "youtubeId": "ypxwqsWshJ0",
+      "title": "Anthropologists and Archeologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/ypxwqsWshJ0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3092": {
+      "source": "careeronestop",
+      "youtubeId": "RWZxnXzhet0",
+      "title": "Geographers",
+      "thumbnailUrl": "https://img.youtube.com/vi/RWZxnXzhet0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3093": {
+      "source": "careeronestop",
+      "youtubeId": "ko_OMynE3Bo",
+      "title": "Historians",
+      "thumbnailUrl": "https://img.youtube.com/vi/ko_OMynE3Bo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3094": {
+      "source": "careeronestop",
+      "youtubeId": "ko_OMynE3Bo",
+      "title": "Political Scientists",
+      "thumbnailUrl": "https://img.youtube.com/vi/ko_OMynE3Bo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-3099": {
+      "source": "careeronestop",
+      "youtubeId": "NFvy_Jll8eY",
+      "title": "Social Scientists and Related Workers, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/NFvy_Jll8eY/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-4012": {
+      "source": "careeronestop",
+      "youtubeId": "FQ2WMg6rs2s",
+      "title": "Agricultural Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/FQ2WMg6rs2s/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-4013": {
+      "source": "careeronestop",
+      "youtubeId": "FQ2WMg6rs2s",
+      "title": "Food Science Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/FQ2WMg6rs2s/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-4021": {
+      "source": "careeronestop",
+      "youtubeId": "LPotaNHcX3U",
+      "title": "Biological Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/LPotaNHcX3U/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "19-4031": {
+      "source": "careeronestop",
+      "youtubeId": "tLwKn5W7Bjo",
+      "title": "Chemical Technicians",
+      "thumbnailUrl": "https://img.youtube.com/vi/tLwKn5W7Bjo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1022": {
+      "source": "careeronestop",
+      "youtubeId": "ISmxPVS5O2c",
+      "title": "Mathematical Science Teachers, Postsecondary",
+      "thumbnailUrl": "https://img.youtube.com/vi/ISmxPVS5O2c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1081": {
+      "source": "careeronestop",
+      "youtubeId": "zegviypvpmw",
+      "title": "Education Teachers, Postsecondary",
+      "thumbnailUrl": "https://img.youtube.com/vi/zegviypvpmw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1082": {
+      "source": "careeronestop",
+      "youtubeId": "ISmxPVS5O2c",
+      "title": "Library Science Teachers, Postsecondary",
+      "thumbnailUrl": "https://img.youtube.com/vi/ISmxPVS5O2c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1111": {
+      "source": "careeronestop",
+      "youtubeId": "ISmxPVS5O2c",
+      "title": "Criminal Justice and Law Enforcement Teachers, Postsecondary",
+      "thumbnailUrl": "https://img.youtube.com/vi/ISmxPVS5O2c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1112": {
+      "source": "careeronestop",
+      "youtubeId": "ISmxPVS5O2c",
+      "title": "Law Teachers, Postsecondary",
+      "thumbnailUrl": "https://img.youtube.com/vi/ISmxPVS5O2c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-1199": {
+      "source": "careeronestop",
+      "youtubeId": "ISmxPVS5O2c",
+      "title": "Postsecondary Teachers, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/ISmxPVS5O2c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-3011": {
+      "source": "careeronestop",
+      "youtubeId": "fxgWjQrwBls",
+      "title": "Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",
+      "thumbnailUrl": "https://img.youtube.com/vi/fxgWjQrwBls/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-3021": {
+      "source": "careeronestop",
+      "youtubeId": "O0lPaCJtSkg",
+      "title": "Self-Enrichment Teachers",
+      "thumbnailUrl": "https://img.youtube.com/vi/O0lPaCJtSkg/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-3031": {
+      "source": "careeronestop",
+      "youtubeId": "YQASfNDK5Zw",
+      "title": "Substitute Teachers, Short-Term",
+      "thumbnailUrl": "https://img.youtube.com/vi/YQASfNDK5Zw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "25-3041": {
+      "source": "careeronestop",
+      "youtubeId": "CfL199nD-Ow",
+      "title": "Tutors",
+      "thumbnailUrl": "https://img.youtube.com/vi/CfL199nD-Ow/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-2012-03": {
+      "source": "careeronestop",
+      "youtubeId": "lFyGWnWtXdw",
+      "title": "Media Programming Directors",
+      "thumbnailUrl": "https://img.youtube.com/vi/lFyGWnWtXdw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-2012-04": {
+      "source": "careeronestop",
+      "youtubeId": "lFyGWnWtXdw",
+      "title": "Talent Directors",
+      "thumbnailUrl": "https://img.youtube.com/vi/lFyGWnWtXdw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-2012-05": {
+      "source": "careeronestop",
+      "youtubeId": "lFyGWnWtXdw",
+      "title": "Media Technical Directors/Managers",
+      "thumbnailUrl": "https://img.youtube.com/vi/lFyGWnWtXdw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-2021": {
+      "source": "careeronestop",
+      "youtubeId": "RODqcfjGEyY",
+      "title": "Athletes and Sports Competitors",
+      "thumbnailUrl": "https://img.youtube.com/vi/RODqcfjGEyY/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-3043": {
+      "source": "careeronestop",
+      "youtubeId": "y-5cvUiXW7I",
+      "title": "Writers and Authors",
+      "thumbnailUrl": "https://img.youtube.com/vi/y-5cvUiXW7I/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-4021": {
+      "source": "careeronestop",
+      "youtubeId": "dmS_aX8obCo",
+      "title": "Photographers",
+      "thumbnailUrl": "https://img.youtube.com/vi/dmS_aX8obCo/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-4031": {
+      "source": "careeronestop",
+      "youtubeId": "2rteMoNNixs",
+      "title": "Camera Operators, Television, Video, and Film",
+      "thumbnailUrl": "https://img.youtube.com/vi/2rteMoNNixs/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-4032": {
+      "source": "careeronestop",
+      "youtubeId": "a3TG2BhntlY",
+      "title": "Film and Video Editors",
+      "thumbnailUrl": "https://img.youtube.com/vi/a3TG2BhntlY/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "27-4099": {
+      "source": "careeronestop",
+      "youtubeId": "RrrnUDgW-gU",
+      "title": "Media and Communication Equipment Workers, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/RrrnUDgW-gU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "29-9093": {
+      "source": "careeronestop",
+      "youtubeId": "i3n0UqojVA0",
+      "title": "Surgical Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/i3n0UqojVA0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "29-9099": {
+      "source": "careeronestop",
+      "youtubeId": "21KlZc0m8nE",
+      "title": "Healthcare Practitioners and Technical Workers, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/21KlZc0m8nE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "29-9099-01": {
+      "source": "careeronestop",
+      "youtubeId": "3sqGOq8_3k0",
+      "title": "Midwives",
+      "thumbnailUrl": "https://img.youtube.com/vi/3sqGOq8_3k0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-1121": {
+      "source": "careeronestop",
+      "youtubeId": "y_AyWpdXW5o",
+      "title": "Home Health Aides",
+      "thumbnailUrl": "https://img.youtube.com/vi/y_AyWpdXW5o/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-2012": {
+      "source": "careeronestop",
+      "youtubeId": "YqG5tRleeow",
+      "title": "Occupational Therapy Aides",
+      "thumbnailUrl": "https://img.youtube.com/vi/YqG5tRleeow/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-2021": {
+      "source": "careeronestop",
+      "youtubeId": "fbpS0uBh7b0",
+      "title": "Physical Therapist Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/fbpS0uBh7b0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-2022": {
+      "source": "careeronestop",
+      "youtubeId": "fbpS0uBh7b0",
+      "title": "Physical Therapist Aides",
+      "thumbnailUrl": "https://img.youtube.com/vi/fbpS0uBh7b0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-9011": {
+      "source": "careeronestop",
+      "youtubeId": "kxOxF36y1D0",
+      "title": "Massage Therapists",
+      "thumbnailUrl": "https://img.youtube.com/vi/kxOxF36y1D0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-9091": {
+      "source": "careeronestop",
+      "youtubeId": "9a4UKMs15WI",
+      "title": "Dental Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/9a4UKMs15WI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-9092": {
+      "source": "careeronestop",
+      "youtubeId": "ZsgeduDiK_w",
+      "title": "Medical Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZsgeduDiK_w/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-9093": {
+      "source": "careeronestop",
+      "youtubeId": "bP_emrO746w",
+      "title": "Medical Equipment Preparers",
+      "thumbnailUrl": "https://img.youtube.com/vi/bP_emrO746w/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "31-9094": {
+      "source": "careeronestop",
+      "youtubeId": "PO3cnRsMDuI",
+      "title": "Medical Transcriptionists",
+      "thumbnailUrl": "https://img.youtube.com/vi/PO3cnRsMDuI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-4012": {
+      "source": "careeronestop",
+      "youtubeId": "c-IcbRa6Bqc",
+      "title": "Crematory Operators",
+      "thumbnailUrl": "https://img.youtube.com/vi/c-IcbRa6Bqc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-4021": {
+      "source": "careeronestop",
+      "youtubeId": "c-IcbRa6Bqc",
+      "title": "Funeral Attendants",
+      "thumbnailUrl": "https://img.youtube.com/vi/c-IcbRa6Bqc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-4031": {
+      "source": "careeronestop",
+      "youtubeId": "c-IcbRa6Bqc",
+      "title": "Morticians, Undertakers, and Funeral Arrangers",
+      "thumbnailUrl": "https://img.youtube.com/vi/c-IcbRa6Bqc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5011": {
+      "source": "careeronestop",
+      "youtubeId": "wqgol3sEFvI",
+      "title": "Barbers",
+      "thumbnailUrl": "https://img.youtube.com/vi/wqgol3sEFvI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5012": {
+      "source": "careeronestop",
+      "youtubeId": "wqgol3sEFvI",
+      "title": "Hairdressers, Hairstylists, and Cosmetologists",
+      "thumbnailUrl": "https://img.youtube.com/vi/wqgol3sEFvI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5091": {
+      "source": "careeronestop",
+      "youtubeId": "GZb4UI2-l9M",
+      "title": "Makeup Artists, Theatrical and Performance",
+      "thumbnailUrl": "https://img.youtube.com/vi/GZb4UI2-l9M/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5092": {
+      "source": "careeronestop",
+      "youtubeId": "3hBz4pu6Mwc",
+      "title": "Manicurists and Pedicurists",
+      "thumbnailUrl": "https://img.youtube.com/vi/3hBz4pu6Mwc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5093": {
+      "source": "careeronestop",
+      "youtubeId": "wqgol3sEFvI",
+      "title": "Shampooers",
+      "thumbnailUrl": "https://img.youtube.com/vi/wqgol3sEFvI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-5094": {
+      "source": "careeronestop",
+      "youtubeId": "mFQ5Q7slO1M",
+      "title": "Skincare Specialists",
+      "thumbnailUrl": "https://img.youtube.com/vi/mFQ5Q7slO1M/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-9011-01": {
+      "source": "careeronestop",
+      "youtubeId": "FuGsrFCeikg",
+      "title": "Nannies",
+      "thumbnailUrl": "https://img.youtube.com/vi/FuGsrFCeikg/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-9031": {
+      "source": "careeronestop",
+      "youtubeId": "QmB0OvKpwR8",
+      "title": "Exercise Trainers and Group Fitness Instructors",
+      "thumbnailUrl": "https://img.youtube.com/vi/QmB0OvKpwR8/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-9032": {
+      "source": "careeronestop",
+      "youtubeId": "PGHkZcUmptk",
+      "title": "Recreation Workers",
+      "thumbnailUrl": "https://img.youtube.com/vi/PGHkZcUmptk/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "39-9041": {
+      "source": "careeronestop",
+      "youtubeId": "OviGKeqQ3Ic",
+      "title": "Residential Advisors",
+      "thumbnailUrl": "https://img.youtube.com/vi/OviGKeqQ3Ic/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "41-3021": {
+      "source": "careeronestop",
+      "youtubeId": "MNCpob3fZHk",
+      "title": "Insurance Sales Agents",
+      "thumbnailUrl": "https://img.youtube.com/vi/MNCpob3fZHk/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "41-3031": {
+      "source": "careeronestop",
+      "youtubeId": "HtCKxDEvR4w",
+      "title": "Securities, Commodities, and Financial Services Sales Agents",
+      "thumbnailUrl": "https://img.youtube.com/vi/HtCKxDEvR4w/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "41-3041": {
+      "source": "careeronestop",
+      "youtubeId": "2GEPp0P4Yto",
+      "title": "Travel Agents",
+      "thumbnailUrl": "https://img.youtube.com/vi/2GEPp0P4Yto/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "41-3091": {
+      "source": "careeronestop",
+      "youtubeId": "F08mVO5NCzc",
+      "title": "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",
+      "thumbnailUrl": "https://img.youtube.com/vi/F08mVO5NCzc/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4071": {
+      "source": "careeronestop",
+      "youtubeId": "jrJPzRAEtHE",
+      "title": "File Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/jrJPzRAEtHE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4081": {
+      "source": "careeronestop",
+      "youtubeId": "VOOnJekyY54",
+      "title": "Hotel, Motel, and Resort Desk Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/VOOnJekyY54/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4111": {
+      "source": "careeronestop",
+      "youtubeId": "0WbyQoehJKE",
+      "title": "Interviewers, Except Eligibility and Loan",
+      "thumbnailUrl": "https://img.youtube.com/vi/0WbyQoehJKE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4121": {
+      "source": "careeronestop",
+      "youtubeId": "7eEDOipf_6s",
+      "title": "Library Assistants, Clerical",
+      "thumbnailUrl": "https://img.youtube.com/vi/7eEDOipf_6s/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4131": {
+      "source": "careeronestop",
+      "youtubeId": "sECH_Pv3sHE",
+      "title": "Loan Interviewers and Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/sECH_Pv3sHE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4141": {
+      "source": "careeronestop",
+      "youtubeId": "EsOkxSjUEI0",
+      "title": "New Accounts Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/EsOkxSjUEI0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4151": {
+      "source": "careeronestop",
+      "youtubeId": "dyFPVWx8aT4",
+      "title": "Order Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/dyFPVWx8aT4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4161": {
+      "source": "careeronestop",
+      "youtubeId": "x6NTfg_3Wh0",
+      "title": "Human Resources Assistants, Except Payroll and Timekeeping",
+      "thumbnailUrl": "https://img.youtube.com/vi/x6NTfg_3Wh0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-4171": {
+      "source": "careeronestop",
+      "youtubeId": "pvH8lSAU6Sw",
+      "title": "Receptionists and Information Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/pvH8lSAU6Sw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-5052": {
+      "source": "careeronestop",
+      "youtubeId": "3ZeiILHrG2o",
+      "title": "Postal Service Mail Carriers",
+      "thumbnailUrl": "https://img.youtube.com/vi/3ZeiILHrG2o/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-5053": {
+      "source": "careeronestop",
+      "youtubeId": "EheoUXSAUc0",
+      "title": "Postal Service Mail Sorters, Processors, and Processing Machine Operators",
+      "thumbnailUrl": "https://img.youtube.com/vi/EheoUXSAUc0/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-5061": {
+      "source": "careeronestop",
+      "youtubeId": "K4LVLd8-FOU",
+      "title": "Production, Planning, and Expediting Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/K4LVLd8-FOU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-5071": {
+      "source": "careeronestop",
+      "youtubeId": "EvqriUvNeiY",
+      "title": "Shipping, Receiving, and Inventory Clerks",
+      "thumbnailUrl": "https://img.youtube.com/vi/EvqriUvNeiY/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-5111": {
+      "source": "careeronestop",
+      "youtubeId": "EvqriUvNeiY",
+      "title": "Weighers, Measurers, Checkers, and Samplers, Recordkeeping",
+      "thumbnailUrl": "https://img.youtube.com/vi/EvqriUvNeiY/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-6011": {
+      "source": "careeronestop",
+      "youtubeId": "zDqK9DaCDg4",
+      "title": "Executive Secretaries and Executive Administrative Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/zDqK9DaCDg4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-6012": {
+      "source": "careeronestop",
+      "youtubeId": "zDqK9DaCDg4",
+      "title": "Legal Secretaries and Administrative Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/zDqK9DaCDg4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-6013": {
+      "source": "careeronestop",
+      "youtubeId": "zDqK9DaCDg4",
+      "title": "Medical Secretaries and Administrative Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/zDqK9DaCDg4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-6014": {
+      "source": "careeronestop",
+      "youtubeId": "zDqK9DaCDg4",
+      "title": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
+      "thumbnailUrl": "https://img.youtube.com/vi/zDqK9DaCDg4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-9081": {
+      "source": "careeronestop",
+      "youtubeId": "YflJEqyEdB4",
+      "title": "Proofreaders and Copy Markers",
+      "thumbnailUrl": "https://img.youtube.com/vi/YflJEqyEdB4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-9111": {
+      "source": "careeronestop",
+      "youtubeId": "hBgseqeDmJE",
+      "title": "Statistical Assistants",
+      "thumbnailUrl": "https://img.youtube.com/vi/hBgseqeDmJE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "43-9199": {
+      "source": "careeronestop",
+      "youtubeId": "H0T3URGur9c",
+      "title": "Office and Administrative Support Workers, All Other",
+      "thumbnailUrl": "https://img.youtube.com/vi/H0T3URGur9c/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "45-1011": {
+      "source": "careeronestop",
+      "youtubeId": "3T2JdZSl-h4",
+      "title": "First-Line Supervisors of Farming, Fishing, and Forestry Workers",
+      "thumbnailUrl": "https://img.youtube.com/vi/3T2JdZSl-h4/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-2171": {
+      "source": "careeronestop",
+      "youtubeId": "t_127YEnNZw",
+      "title": "Reinforcing Iron and Rebar Workers",
+      "thumbnailUrl": "https://img.youtube.com/vi/t_127YEnNZw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-2181": {
+      "source": "careeronestop",
+      "youtubeId": "VMCdHzpmy1I",
+      "title": "Roofers",
+      "thumbnailUrl": "https://img.youtube.com/vi/VMCdHzpmy1I/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-2211": {
+      "source": "careeronestop",
+      "youtubeId": "t3cAgVHqHlw",
+      "title": "Sheet Metal Workers",
+      "thumbnailUrl": "https://img.youtube.com/vi/t3cAgVHqHlw/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-2221": {
+      "source": "careeronestop",
+      "youtubeId": "1rZxdMBAVVI",
+      "title": "Structural Iron and Steel Workers",
+      "thumbnailUrl": "https://img.youtube.com/vi/1rZxdMBAVVI/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-2231": {
+      "source": "careeronestop",
+      "youtubeId": "k46_I9_vCOU",
+      "title": "Solar Photovoltaic Installers",
+      "thumbnailUrl": "https://img.youtube.com/vi/k46_I9_vCOU/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-3011": {
+      "source": "careeronestop",
+      "youtubeId": "LYmv7ncobIE",
+      "title": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+      "thumbnailUrl": "https://img.youtube.com/vi/LYmv7ncobIE/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
+    },
+    "47-3012": {
+      "source": "careeronestop",
+      "youtubeId": "i-tiC2Y-038",
+      "title": "Helpers--Carpenters",
+      "thumbnailUrl": "https://img.youtube.com/vi/i-tiC2Y-038/hqdefault.jpg",
+      "lastVerified": "2025-12-27"
     }
   }
 }
