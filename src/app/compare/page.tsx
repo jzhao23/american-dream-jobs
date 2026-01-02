@@ -8,11 +8,9 @@ import type { CareerIndex, Career } from "@/types/career";
 import {
   formatPay,
   getCategoryColor,
-  getAIRiskColor,
-  getAIRiskLabel,
-  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
-  // getImportanceColor,
-  // getImportanceLabel,
+  getAIResilienceColor,
+  getAIResilienceEmoji,
+  type AIResilienceClassification,
 } from "@/types/career";
 
 const careers = careersIndex as CareerIndex[];
@@ -687,23 +685,21 @@ function CompareContent() {
                       ))}
                     </tr>
 
-                    {/* AI Risk */}
+                    {/* AI Resilience */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">AI Risk</td>
+                      <td className="px-4 py-4 font-medium text-secondary-900">AI Resilience</td>
                       {selectedCareers.map((career, index) => {
-                        const score = career.ai_risk?.score || 5;
+                        const classification = career.ai_resilience as AIResilienceClassification | undefined;
                         return (
                           <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                            <div className={`text-2xl font-bold ${
-                              score <= 3 ? 'text-green-600' :
-                              score <= 6 ? 'text-yellow-600' :
-                              'text-red-600'
-                            }`}>
-                              {score}/10
-                            </div>
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(score)}`}>
-                              {getAIRiskLabel(score)}
-                            </span>
+                            {classification ? (
+                              <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${getAIResilienceColor(classification)}`}>
+                                <span>{getAIResilienceEmoji(classification)}</span>
+                                <span>{classification}</span>
+                              </span>
+                            ) : (
+                              <span className="text-secondary-400 text-sm">Assessment pending</span>
+                            )}
                           </td>
                         );
                       })}
@@ -753,15 +749,24 @@ function CompareContent() {
                   </div>
                 </div>
 
-                {/* Lowest AI Risk */}
+                {/* Most AI-Resilient */}
                 <div className="bg-blue-50 rounded-lg p-4">
-                  <div className="text-sm text-blue-700 mb-1">Lowest AI Risk</div>
+                  <div className="text-sm text-blue-700 mb-1">Most AI-Resilient</div>
                   {(() => {
-                    const best = selectedCareers.reduce((b, c) => (c.ai_risk?.score || 10) < (b.ai_risk?.score || 10) ? c : b);
+                    // Lower tier = more resilient (1=Resilient, 4=High Risk)
+                    const best = selectedCareers.reduce((b, c) => (c.ai_resilience_tier || 4) < (b.ai_resilience_tier || 4) ? c : b);
+                    const classification = best.ai_resilience as AIResilienceClassification | undefined;
                     return (
-                      <a href={`/careers/${best.slug}`} className="font-bold text-blue-800 hover:underline block">
-                        {best.title}
-                      </a>
+                      <>
+                        <a href={`/careers/${best.slug}`} className="font-bold text-blue-800 hover:underline block">
+                          {best.title}
+                        </a>
+                        {classification && (
+                          <span className="text-xs text-blue-600">
+                            {getAIResilienceEmoji(classification)} {classification}
+                          </span>
+                        )}
+                      </>
                     );
                   })()}
                 </div>

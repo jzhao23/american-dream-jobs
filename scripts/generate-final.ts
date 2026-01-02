@@ -10,10 +10,27 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { getCategory } from '../src/lib/categories';
+import {
+  classifyCareer,
+  getJobGrowthCategory,
+  getHumanAdvantageFromEPOCH,
+  getAIResilienceTier,
+  type TaskExposure,
+  type AutomationPotential,
+  type EPOCHScores,
+  type CareerAIAssessment,
+  type AIResilienceClassification,
+} from '../src/lib/ai-resilience';
 
 const PROCESSED_DIR = path.join(process.cwd(), 'data/processed');
 const DATA_DIR = path.join(process.cwd(), 'data');
+const SOURCES_DIR = path.join(DATA_DIR, 'sources');
 const OXFORD_MAPPING_FILE = path.join(PROCESSED_DIR, 'oxford_ai_risk_mapping.json');
+
+// AI Resilience data source files
+const AI_EXPOSURE_FILE = path.join(SOURCES_DIR, 'ai-exposure.json');
+const BLS_PROJECTIONS_FILE = path.join(SOURCES_DIR, 'bls-projections.json');
+const EPOCH_SCORES_FILE = path.join(SOURCES_DIR, 'epoch-scores.json');
 
 // Type for Oxford mapping
 interface OxfordMapping {
@@ -37,6 +54,34 @@ interface CareerVideo {
 interface InsideCareer {
   content: string;
   generated_at: string;
+}
+
+// Types for AI Resilience data sources
+interface AIExposureEntry {
+  onet_code: string;
+  title: string;
+  aioe_score: number;
+  exposure_level: TaskExposure;
+  percentile: number;
+}
+
+interface BLSProjectionEntry {
+  onet_code: string;
+  title: string;
+  soc_code: string;
+  employment_2024: number;
+  employment_2034: number;
+  percent_change: number;
+  job_growth_category: string;
+}
+
+interface EPOCHScoreEntry {
+  onet_code: string;
+  title: string;
+  epochScores: EPOCHScores;
+  sum: number;
+  category: string;
+  rationale: string;
 }
 
 async function main() {
@@ -121,6 +166,72 @@ async function main() {
     console.log('No inside career file found (data/inside-career/inside-career.json)');
   }
 
+  // ============================================================================
+  // Load AI Resilience Data Sources
+  // ============================================================================
+
+  // Load AI Exposure data (AIOE dataset)
+  const aiExposureMap = new Map<string, AIExposureEntry>();
+  if (fs.existsSync(AI_EXPOSURE_FILE)) {
+    const aiExposureData = JSON.parse(fs.readFileSync(AI_EXPOSURE_FILE, 'utf-8'));
+    // File is a dictionary with onet_code as keys
+    for (const [onetCode, entry] of Object.entries(aiExposureData)) {
+      const typedEntry = entry as { onet_code: string; title: string; aioe_score: number; task_exposure: string; percentile: number };
+      aiExposureMap.set(onetCode, {
+        onet_code: typedEntry.onet_code,
+        title: typedEntry.title,
+        aioe_score: typedEntry.aioe_score,
+        exposure_level: typedEntry.task_exposure as TaskExposure,
+        percentile: typedEntry.percentile,
+      });
+    }
+    console.log(`Loaded ${aiExposureMap.size} AI exposure entries (AIOE dataset)`);
+  } else {
+    console.log('⚠️  No AI exposure file found - run: npx tsx scripts/fetch-ai-exposure.ts');
+  }
+
+  // Load BLS Employment Projections
+  const blsProjectionsMap = new Map<string, BLSProjectionEntry>();
+  if (fs.existsSync(BLS_PROJECTIONS_FILE)) {
+    const blsData = JSON.parse(fs.readFileSync(BLS_PROJECTIONS_FILE, 'utf-8'));
+    // File is a dictionary with onet_code as keys
+    for (const [onetCode, entry] of Object.entries(blsData)) {
+      const typedEntry = entry as {
+        onet_code: string;
+        soc_code: string;
+        title: string;
+        percent_change: number;
+        job_growth_category: string;
+        estimated_employment_2024?: number;
+        projected_employment_2034?: number;
+      };
+      blsProjectionsMap.set(onetCode, {
+        onet_code: typedEntry.onet_code,
+        title: typedEntry.title,
+        soc_code: typedEntry.soc_code,
+        employment_2024: typedEntry.estimated_employment_2024 || 0,
+        employment_2034: typedEntry.projected_employment_2034 || 0,
+        percent_change: typedEntry.percent_change,
+        job_growth_category: typedEntry.job_growth_category,
+      });
+    }
+    console.log(`Loaded ${blsProjectionsMap.size} BLS projection entries`);
+  } else {
+    console.log('⚠️  No BLS projections file found - run: npx tsx scripts/fetch-bls-projections.ts');
+  }
+
+  // Load EPOCH scores (Human Advantage)
+  const epochScoresMap = new Map<string, EPOCHScoreEntry>();
+  if (fs.existsSync(EPOCH_SCORES_FILE)) {
+    const epochData = JSON.parse(fs.readFileSync(EPOCH_SCORES_FILE, 'utf-8'));
+    for (const [onetCode, entry] of Object.entries(epochData.scores)) {
+      epochScoresMap.set(onetCode, entry as EPOCHScoreEntry);
+    }
+    console.log(`Loaded ${epochScoresMap.size} EPOCH score entries`);
+  } else {
+    console.log('⚠️  No EPOCH scores file found - needs manual curation');
+  }
+
   // Apply Oxford AI risk scores to occupations
   let oxfordApplied = 0;
   for (const occ of occupations) {
@@ -173,6 +284,129 @@ async function main() {
   console.log(`Applied Oxford AI risk to ${oxfordApplied} occupations`);
   console.log(`Applied videos to ${videosMap.size} occupations`);
   console.log(`Applied inside career content to ${insideCareerMap.size} occupations`);
+
+  // ============================================================================
+  // Apply AI Resilience Classifications
+  // ============================================================================
+
+  let aiResilienceApplied = 0;
+  let aiResilienceSkipped = 0;
+  const classificationCounts: Record<string, number> = {
+    'AI-Resilient': 0,
+    'AI-Augmented': 0,
+    'In Transition': 0,
+    'High Disruption Risk': 0,
+  };
+
+  for (const occ of occupations) {
+    const aiExposure = aiExposureMap.get(occ.onet_code);
+    const blsProjection = blsProjectionsMap.get(occ.onet_code);
+    const epochScore = epochScoresMap.get(occ.onet_code);
+
+    // All three data sources are required for classification
+    if (aiExposure && blsProjection && epochScore) {
+      const taskExposure = aiExposure.exposure_level;
+      const automationPotential: AutomationPotential = taskExposure; // Use same level for now
+      const jobGrowthCategory = getJobGrowthCategory(blsProjection.percent_change);
+      const humanAdvantage = getHumanAdvantageFromEPOCH(epochScore.epochScores);
+
+      const { classification, rationale } = classifyCareer(
+        taskExposure,
+        automationPotential,
+        jobGrowthCategory,
+        humanAdvantage
+      );
+
+      // Add ai_assessment to occupation
+      occ.ai_assessment = {
+        taskExposure,
+        automationPotential,
+        jobGrowth: {
+          category: jobGrowthCategory,
+          percentChange: blsProjection.percent_change,
+          source: 'BLS Employment Projections 2024-2034',
+        },
+        humanAdvantage: {
+          category: humanAdvantage,
+          epochScores: epochScore.epochScores,
+        },
+        classification,
+        classificationRationale: rationale,
+        lastUpdated: new Date().toISOString().split('T')[0],
+        methodology: 'v1.0 - AIOE/BLS/EPOCH',
+      } as CareerAIAssessment;
+
+      // Add convenience fields for indexing
+      occ.ai_resilience = classification;
+      occ.ai_resilience_tier = getAIResilienceTier(classification);
+
+      classificationCounts[classification]++;
+      aiResilienceApplied++;
+    } else if (epochScore) {
+      // FALLBACK: Use EPOCH scores + legacy AI Risk score to estimate classification
+      // This covers the 344 careers missing AIOE or BLS data
+      const humanAdvantage = getHumanAdvantageFromEPOCH(epochScore.epochScores);
+      const legacyAIRisk = occ.ai_risk?.score || 5;
+
+      let classification: string;
+      let rationale: string;
+
+      // Fallback classification rules based on EPOCH + legacy AI Risk
+      if (humanAdvantage === 'Strong' && legacyAIRisk <= 3) {
+        classification = 'AI-Resilient';
+        rationale = 'Strong human advantage combined with low historical automation risk';
+      } else if (humanAdvantage === 'Strong' && legacyAIRisk <= 6) {
+        classification = 'AI-Augmented';
+        rationale = 'Strong human advantage provides protection; AI likely to assist rather than replace';
+      } else if (humanAdvantage === 'Moderate' && legacyAIRisk <= 6) {
+        classification = 'AI-Augmented';
+        rationale = 'Moderate human advantage with manageable automation risk';
+      } else if (humanAdvantage === 'Moderate' && legacyAIRisk > 6) {
+        classification = 'In Transition';
+        rationale = 'Moderate human advantage but elevated automation risk suggests ongoing transformation';
+      } else if (humanAdvantage === 'Weak' && legacyAIRisk > 6) {
+        classification = 'High Disruption Risk';
+        rationale = 'Limited human advantage combined with high historical automation probability';
+      } else {
+        classification = 'AI-Augmented';
+        rationale = 'Default assessment based on available data';
+      }
+
+      // Add simplified ai_assessment for fallback careers
+      occ.ai_assessment = {
+        taskExposure: 'Medium' as TaskExposure, // Estimated
+        automationPotential: 'Medium' as AutomationPotential, // Estimated
+        jobGrowth: {
+          category: 'Stable' as const,
+          percentChange: 0,
+          source: 'Estimated - BLS data unavailable',
+        },
+        humanAdvantage: {
+          category: humanAdvantage,
+          epochScores: epochScore.epochScores,
+        },
+        classification: classification as AIResilienceClassification,
+        classificationRationale: rationale,
+        lastUpdated: new Date().toISOString().split('T')[0],
+        methodology: 'v1.0-fallback - EPOCH/Legacy',
+      } as CareerAIAssessment;
+
+      // Add convenience fields for indexing
+      occ.ai_resilience = classification;
+      occ.ai_resilience_tier = getAIResilienceTier(classification as AIResilienceClassification);
+
+      classificationCounts[classification]++;
+      aiResilienceApplied++;
+    } else {
+      aiResilienceSkipped++;
+    }
+  }
+
+  console.log(`Applied AI Resilience to ${aiResilienceApplied} occupations`);
+  console.log('  Classification breakdown:');
+  for (const [classification, count] of Object.entries(classificationCounts)) {
+    console.log(`    ${classification}: ${count}`);
+  }
 
   // Validate all occupations have required fields
   let validCount = 0;
@@ -240,15 +474,20 @@ async function main() {
         { name: 'Levels.fyi (mapped)', url: 'https://www.levels.fyi' },
         { name: 'Frey & Osborne (2013) - AI Risk', url: 'https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment' },
         { name: 'CareerOneStop Videos', url: 'https://www.careeronestop.org/Videos/' },
+        { name: 'AIOE Dataset (Felten, Raj, Seamans 2021) - AI Exposure', url: 'https://github.com/AIOE-Data/AIOE' },
+        { name: 'BLS Employment Projections 2024-2034', url: 'https://www.bls.gov/emp/' },
+        { name: 'EPOCH Framework - Human Advantage', url: 'Manual curation' },
       ],
       completeness: {
         wages: occupations.filter((o: { wages: unknown }) => o.wages).length,
         ai_risk: occupations.filter((o: { ai_risk: unknown }) => o.ai_risk).length,
+        ai_resilience: occupations.filter((o: { ai_resilience: unknown }) => o.ai_resilience).length,
         national_importance: occupations.filter((o: { national_importance: unknown }) => o.national_importance).length,
         career_progression: occupations.filter((o: { career_progression: unknown }) => o.career_progression).length,
         videos: occupations.filter((o: { video: unknown }) => o.video).length,
         inside_look: occupations.filter((o: { inside_look: unknown }) => o.inside_look).length,
       },
+      ai_resilience_breakdown: classificationCounts,
     },
     occupations,
   };
@@ -307,6 +546,9 @@ async function main() {
       typical_entry_education: string;
     };
     ai_risk: { score: number; label: string };
+    // NEW: AI Resilience fields
+    ai_resilience?: string;
+    ai_resilience_tier?: number;
     // ARCHIVED: national_importance removed from UI - see data/archived/importance-scores-backup.json
     // national_importance: { score: number; label: string; flag_count: number };
     description: string;
@@ -327,8 +569,12 @@ async function main() {
         max: eduDuration.max_years,
       } : null,
       typical_education: occ.education?.typical_entry_education || 'High school diploma',
+      // LEGACY: AI Risk fields kept for backwards compatibility
       ai_risk: occ.ai_risk?.score || 5,
       ai_risk_label: occ.ai_risk?.label || 'medium',
+      // NEW: AI Resilience classification (4-tier system)
+      ai_resilience: occ.ai_resilience || undefined,
+      ai_resilience_tier: occ.ai_resilience_tier || undefined,
       // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
       // importance: occ.national_importance?.score || 5,
       // importance_label: occ.national_importance?.label || 'important',

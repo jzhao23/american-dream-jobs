@@ -3,18 +3,32 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getAIRiskColor } from "@/types/career";
+import {
+  getAIResilienceColor,
+  getAIResilienceEmoji,
+  type AIResilienceClassification,
+} from "@/types/career";
 
 // Hardcoded placeholder results
-const PLACEHOLDER_RESULTS = [
+const PLACEHOLDER_RESULTS: Array<{
+  slug: string;
+  title: string;
+  category: string;
+  matchScore: number;
+  medianPay: number;
+  aiResilience: AIResilienceClassification;
+  reasoning: string;
+  skillsGap: string[];
+  transitionTimeline: string;
+  education: string;
+}> = [
   {
     slug: "registered-nurses",
     title: "Registered Nurses",
     category: "healthcare",
     matchScore: 92,
     medianPay: 81220,
-    aiRisk: 0.9,
-    aiRiskLabel: "Very Low Risk",
+    aiResilience: "AI-Resilient",
     reasoning:
       "Your healthcare interest and desire to help people align perfectly with nursing. Strong job security with excellent growth prospects. Your communication skills and attention to detail are crucial in this field.",
     skillsGap: ["Clinical certifications", "Medical terminology", "Patient care protocols"],
@@ -27,8 +41,7 @@ const PLACEHOLDER_RESULTS = [
     category: "technology",
     matchScore: 88,
     medianPay: 127260,
-    aiRisk: 3.2,
-    aiRiskLabel: "Low Risk",
+    aiResilience: "AI-Augmented",
     reasoning:
       "Your analytical mindset and problem-solving abilities are ideal for software development. High earning potential with remote work flexibility matches your work environment preferences.",
     skillsGap: ["Programming languages", "Software architecture", "Version control"],
@@ -41,8 +54,7 @@ const PLACEHOLDER_RESULTS = [
     category: "trades",
     matchScore: 85,
     medianPay: 60240,
-    aiRisk: 1.5,
-    aiRiskLabel: "Very Low Risk",
+    aiResilience: "AI-Resilient",
     reasoning:
       "Hands-on work with strong earning potential. Apprenticeship model allows you to earn while learning. Your technical aptitude and attention to detail are perfect for this trade.",
     skillsGap: ["Electrical code knowledge", "Blueprint reading", "Safety protocols"],
@@ -55,8 +67,7 @@ const PLACEHOLDER_RESULTS = [
     category: "technology",
     matchScore: 83,
     medianPay: 103500,
-    aiRisk: 2.8,
-    aiRiskLabel: "Low Risk",
+    aiResilience: "AI-Augmented",
     reasoning:
       "Your analytical skills and interest in technology align well. Growing field with diverse applications across industries. Matches your preference for problem-solving work.",
     skillsGap: ["Statistics", "Machine learning", "Data visualization"],
@@ -69,8 +80,7 @@ const PLACEHOLDER_RESULTS = [
     category: "healthcare",
     matchScore: 81,
     medianPay: 81400,
-    aiRisk: 0.7,
-    aiRiskLabel: "Very Low Risk",
+    aiResilience: "AI-Resilient",
     reasoning:
       "Healthcare career with excellent work-life balance. Shorter training period than other health professions. Your interest in helping people and attention to detail are key strengths.",
     skillsGap: ["Dental procedures", "Radiology", "Patient education"],
@@ -83,8 +93,7 @@ const PLACEHOLDER_RESULTS = [
     category: "business-finance",
     matchScore: 79,
     medianPay: 98420,
-    aiRisk: 1.8,
-    aiRiskLabel: "Very Low Risk",
+    aiResilience: "AI-Augmented",
     reasoning:
       "Your organizational skills and leadership goals make this a natural fit. Transferable across industries, allowing career flexibility. Matches your collaborative work environment preference.",
     skillsGap: ["Project management certification", "Stakeholder management", "Agile methodology"],
@@ -97,8 +106,7 @@ const PLACEHOLDER_RESULTS = [
     category: "trades",
     matchScore: 76,
     medianPay: 57300,
-    aiRisk: 1.1,
-    aiRiskLabel: "Very Low Risk",
+    aiResilience: "AI-Resilient",
     reasoning:
       "Stable career with consistent demand. Technical skills with hands-on application. Good earning potential with opportunities for business ownership.",
     skillsGap: ["HVAC certification", "Refrigeration systems", "EPA certification"],
@@ -238,9 +246,10 @@ export default function CompassResultsPage() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-600 mb-1">AI Risk</p>
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.aiRisk)}`}>
-                    {career.aiRiskLabel}
+                  <p className="text-xs text-secondary-600 mb-1">AI Resilience</p>
+                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience)}`}>
+                    <span>{getAIResilienceEmoji(career.aiResilience)}</span>
+                    <span>{career.aiResilience}</span>
                   </span>
                 </div>
               </div>

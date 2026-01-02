@@ -1,16 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { CareerIndex, TrainingTime } from "@/types/career";
+import type { CareerIndex, TrainingTime, AIResilienceClassification } from "@/types/career";
 import {
   formatPay,
   getTrainingTimeLabel,
-  getAIRiskColor,
-  getAIRiskLabel,
-  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
-  // getImportanceColor,
   getCategoryColor,
   getCategoryLabel,
+  getAIResilienceEmoji,
+  getAIResilienceColor,
 } from "@/types/career";
 
 interface CareerExplorerProps {
@@ -18,9 +16,16 @@ interface CareerExplorerProps {
   hideCategoryFilter?: boolean;
 }
 
-// ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
-type SortField = "median_pay" | "ai_risk" | "title";
+type SortField = "median_pay" | "ai_resilience" | "title";
 type SortDirection = "asc" | "desc";
+
+// AI Resilience tiers in order from most to least resilient
+const AI_RESILIENCE_TIERS: AIResilienceClassification[] = [
+  "AI-Resilient",
+  "AI-Augmented",
+  "In Transition",
+  "High Disruption Risk",
+];
 
 const TRAINING_TIME_ORDER: TrainingTime[] = ["<6mo", "6-24mo", "2-4yr", "4+yr"];
 
@@ -30,7 +35,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
   const [minPay, setMinPay] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>([]);
-  const [maxAIRisk, setMaxAIRisk] = useState(10);
+  const [selectedAIResilience, setSelectedAIResilience] = useState<AIResilienceClassification[]>([]);
   // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
   // const [minImportance, setMinImportance] = useState(1);
 
@@ -75,8 +80,12 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         return false;
       }
 
-      // AI risk filter
-      if (career.ai_risk > maxAIRisk) return false;
+      // AI Resilience filter
+      if (selectedAIResilience.length > 0) {
+        if (!career.ai_resilience || !selectedAIResilience.includes(career.ai_resilience as AIResilienceClassification)) {
+          return false;
+        }
+      }
 
       // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
       // if (career.importance < minImportance) return false;
@@ -92,8 +101,11 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         case "median_pay":
           comparison = a.median_pay - b.median_pay;
           break;
-        case "ai_risk":
-          comparison = a.ai_risk - b.ai_risk;
+        case "ai_resilience":
+          // Sort by tier (1=resilient, 4=high risk), nulls at end
+          const tierA = a.ai_resilience_tier ?? 99;
+          const tierB = b.ai_resilience_tier ?? 99;
+          comparison = tierA - tierB;
           break;
         // ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
         // case "importance":
@@ -114,8 +126,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     minPay,
     selectedCategories,
     selectedTrainingTimes,
-    maxAIRisk,
-    // ARCHIVED: minImportance removed
+    selectedAIResilience,
     sortField,
     sortDirection,
   ]);
@@ -145,12 +156,20 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     setCurrentPage(1);
   };
 
+  const toggleAIResilience = (tier: AIResilienceClassification) => {
+    setSelectedAIResilience((prev) =>
+      prev.includes(tier) ? prev.filter((t) => t !== tier) : [...prev, tier]
+    );
+    setCurrentPage(1);
+  };
+
   const handleSort = (field: SortField) => {
     if (sortField === field) {
       setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
     } else {
       setSortField(field);
-      setSortDirection(field === "ai_risk" ? "asc" : "desc");
+      // For AI resilience, lower tier is better (asc), for pay higher is better (desc)
+      setSortDirection(field === "ai_resilience" ? "asc" : "desc");
     }
   };
 
@@ -159,8 +178,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     setMinPay(0);
     setSelectedCategories([]);
     setSelectedTrainingTimes([]);
-    setMaxAIRisk(10);
-    // ARCHIVED: setMinImportance(1);
+    setSelectedAIResilience([]);
     setCurrentPage(1);
   };
 
@@ -169,16 +187,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     minPay > 0 ||
     selectedCategories.length > 0 ||
     selectedTrainingTimes.length > 0 ||
-    maxAIRisk < 10;
-    // ARCHIVED: || minImportance > 1;
+    selectedAIResilience.length > 0;
 
   // Count active filters (excluding search) for mobile display
   const activeFilterCount =
     (minPay > 0 ? 1 : 0) +
     selectedCategories.length +
     selectedTrainingTimes.length +
-    (maxAIRisk < 10 ? 1 : 0);
-    // ARCHIVED: + (minImportance > 1 ? 1 : 0);
+    selectedAIResilience.length;
 
   return (
     <div>
@@ -239,25 +255,26 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               </select>
             </div>
 
-            {/* Max AI Risk */}
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-secondary-700">Max AI Risk</label>
-              <select
-                value={maxAIRisk}
-                onChange={(e) => {
-                  setMaxAIRisk(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
-              >
-                <option value={10}>Any</option>
-                <option value={3}>Low (≤3)</option>
-                <option value={5}>Medium (≤5)</option>
-                <option value={7}>High (≤7)</option>
-              </select>
+            {/* AI Resilience Filter */}
+            <div>
+              <label className="text-sm font-medium text-secondary-700 block mb-2">AI Resilience</label>
+              <div className="flex flex-wrap gap-2">
+                {AI_RESILIENCE_TIERS.map((tier) => (
+                  <button
+                    key={tier}
+                    onClick={() => toggleAIResilience(tier)}
+                    className={`px-3 py-2 min-h-[44px] text-sm rounded-lg border transition-colors flex items-center gap-1 ${
+                      selectedAIResilience.includes(tier)
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                    }`}
+                  >
+                    <span>{getAIResilienceEmoji(tier)}</span>
+                    <span className="hidden sm:inline">{tier}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-
-            {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
 
             {/* Training Time */}
             <div>
@@ -354,24 +371,23 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
             </select>
           </div>
 
-          {/* Max AI Risk */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-medium text-secondary-600 whitespace-nowrap">
-              AI Risk ≤
-            </label>
-            <select
-              value={maxAIRisk}
-              onChange={(e) => {
-                setMaxAIRisk(Number(e.target.value));
-                setCurrentPage(1);
-              }}
-              className="px-2 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
-            >
-              <option value={10}>Any</option>
-              <option value={3}>Low (≤3)</option>
-              <option value={5}>Med (≤5)</option>
-              <option value={7}>High (≤7)</option>
-            </select>
+          {/* AI Resilience Filter */}
+          <div className="flex items-center gap-1">
+            <span className="text-xs font-medium text-secondary-600 mr-1">AI:</span>
+            {AI_RESILIENCE_TIERS.map((tier) => (
+              <button
+                key={tier}
+                onClick={() => toggleAIResilience(tier)}
+                title={tier}
+                className={`px-1.5 py-1 text-sm rounded border transition-colors ${
+                  selectedAIResilience.includes(tier)
+                    ? "bg-primary-600 border-primary-600"
+                    : "bg-white border-secondary-300 hover:border-primary-300"
+                }`}
+              >
+                {getAIResilienceEmoji(tier)}
+              </button>
+            ))}
           </div>
 
           {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
@@ -437,7 +453,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
             {[
               // ARCHIVED: { field: "importance" as const, label: "Importance" },
               { field: "median_pay" as const, label: "Pay" },
-              { field: "ai_risk" as const, label: "AI Risk" },
+              { field: "ai_resilience" as const, label: "AI Resilience" },
               { field: "title" as const, label: "A-Z" },
             ].map(({ field, label }) => (
               <button
@@ -477,7 +493,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 Training
               </th>
               <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
-                AI Risk
+                AI Resilience
               </th>
               {/* ARCHIVED: Importance column removed - see data/archived/importance-scores-backup.json */}
             </tr>
@@ -514,9 +530,15 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   </span>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                    {career.ai_risk}/10
-                  </span>
+                  {career.ai_resilience && (
+                    <span
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.ai_resilience as AIResilienceClassification)}`}
+                      title={career.ai_resilience}
+                    >
+                      <span>{getAIResilienceEmoji(career.ai_resilience as AIResilienceClassification)}</span>
+                      <span className="hidden xl:inline">{career.ai_resilience}</span>
+                    </span>
+                  )}
                 </td>
                 {/* ARCHIVED: Importance cell removed - see data/archived/importance-scores-backup.json */}
               </tr>
@@ -570,10 +592,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
               </span>
               <span className="text-secondary-300">•</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                AI Risk: {career.ai_risk}/10
-              </span>
-              {/* ARCHIVED: Importance badge removed - see data/archived/importance-scores-backup.json */}
+              {career.ai_resilience && (
+                <span
+                  className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.ai_resilience as AIResilienceClassification)}`}
+                >
+                  <span>{getAIResilienceEmoji(career.ai_resilience as AIResilienceClassification)}</span>
+                  <span>{career.ai_resilience}</span>
+                </span>
+              )}
             </a>
           </div>
         ))}

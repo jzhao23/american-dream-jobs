@@ -11,12 +11,11 @@ import {
   formatPayRange,
   getTrainingTimeLabel,
   getCategoryColor,
-  getAIRiskColor,
-  getAIRiskLabel,
-  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
-  // getImportanceColor,
-  // getImportanceLabel,
+  getAIResilienceColor,
+  getAIResilienceEmoji,
+  type AIResilienceClassification,
 } from "@/types/career";
+import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
@@ -117,9 +116,8 @@ export default async function CareerPage({ params }: PageProps) {
   const educationDuration = career.education?.education_duration || career.education?.time_to_job_ready;
   const trainingTime = getTrainingTimeFromYears(educationDuration?.typical_years ?? 2);
   const trainingYears = educationDuration;
-  const aiRiskScore = career.ai_risk?.score || 5;
-  // ARCHIVED: importance removed - see data/archived/importance-scores-backup.json
-  // const importanceScore = career.national_importance?.score || 5;
+  const aiResilience = career.ai_resilience as AIResilienceClassification | undefined;
+  const aiAssessment = career.ai_assessment;
 
   // Find reviews for this career (match by slug or SOC code)
   const careerReviewsSummary = (reviewsIndex as RawCareerReviewsSummary[]).find(
@@ -194,12 +192,17 @@ export default async function CareerPage({ params }: PageProps) {
             </div>
             <div className="bg-secondary-50 rounded-lg p-4">
               <div className="text-sm text-secondary-600 mb-1">
-                AI Risk
+                AI Resilience
               </div>
               <div className="flex items-center gap-2">
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(aiRiskScore)}`}>
-                  {aiRiskScore}/10 - {getAIRiskLabel(aiRiskScore)}
-                </span>
+                {aiResilience ? (
+                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(aiResilience)}`}>
+                    <span>{getAIResilienceEmoji(aiResilience)}</span>
+                    <span>{aiResilience}</span>
+                  </span>
+                ) : (
+                  <span className="text-secondary-500 text-sm">Assessment pending</span>
+                )}
               </div>
             </div>
             {/* ARCHIVED: National Importance removed - see data/archived/importance-scores-backup.json */}
@@ -430,52 +433,10 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
-          {/* AI Risk Assessment */}
-          {career.ai_risk && (
-            <Section title="AI Automation Risk" icon="robot">
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`text-4xl font-bold ${aiRiskScore <= 3 ? 'text-green-600' : aiRiskScore <= 6 ? 'text-yellow-600' : 'text-red-600'}`}>
-                  {career.ai_risk.score}/10
-                </div>
-                <div>
-                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getAIRiskColor(aiRiskScore)}`}>
-                    {getAIRiskLabel(aiRiskScore)}
-                  </span>
-                  <div className="text-sm text-secondary-500 mt-1">
-                    Confidence: {career.ai_risk.confidence}
-                  </div>
-                </div>
-              </div>
-              <p className="text-secondary-700 mb-4">{career.ai_risk.rationale.summary}</p>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                {career.ai_risk.rationale.factors_decreasing_risk.length > 0 && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-green-800 mb-2">Lower Risk Factors</h4>
-                    <ul className="space-y-1 text-sm text-green-700">
-                      {career.ai_risk.rationale.factors_decreasing_risk.map((factor, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span>+</span>
-                          <span>{factor}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {career.ai_risk.rationale.factors_increasing_risk.length > 0 && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-red-800 mb-2">Higher Risk Factors</h4>
-                    <ul className="space-y-1 text-sm text-red-700">
-                      {career.ai_risk.rationale.factors_increasing_risk.map((factor, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span>-</span>
-                          <span>{factor}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+          {/* AI Resilience Assessment */}
+          {aiAssessment && (
+            <Section title="AI Resilience Assessment" icon="robot">
+              <AIAssessmentDetail assessment={aiAssessment} />
             </Section>
           )}
 

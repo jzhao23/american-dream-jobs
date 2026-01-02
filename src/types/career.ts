@@ -10,6 +10,15 @@ export const AIRiskLabelEnum = z.enum(["very_low", "low", "medium", "high", "ver
 // Importance labels
 export const ImportanceLabelEnum = z.enum(["standard", "important", "critical"]);
 
+// AI Resilience Classification (4-tier) - defined early for CareerIndexSchema
+export const AIResilienceClassificationEnum = z.enum([
+  "AI-Resilient",         // 🟢 Low exposure + Strong human advantage OR Growing market
+  "AI-Augmented",         // 🟡 Medium exposure, AI assists but doesn't replace
+  "In Transition",        // 🟠 High exposure + Moderate human advantage
+  "High Disruption Risk"  // 🔴 High exposure + Weak human advantage + Declining market
+]);
+export type AIResilienceClassification = z.infer<typeof AIResilienceClassificationEnum>;
+
 // Career Index schema (for explorer - lightweight)
 export const CareerIndexSchema = z.object({
   title: z.string(),
@@ -24,8 +33,12 @@ export const CareerIndexSchema = z.object({
     max: z.number(),
   }).nullable().optional(),
   typical_education: z.string().optional(),
+  // LEGACY: ai_risk fields kept for backwards compatibility during migration
   ai_risk: z.number(),
   ai_risk_label: AIRiskLabelEnum,
+  // NEW: AI Resilience classification (4-tier system)
+  ai_resilience: AIResilienceClassificationEnum.optional(),
+  ai_resilience_tier: z.number().min(1).max(4).optional(), // 1=Resilient, 4=High Risk (for sorting)
   // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
   // importance: z.number(),
   // importance_label: ImportanceLabelEnum,
@@ -69,7 +82,7 @@ export const CareerProgressionSchema = z.object({
   })),
 });
 
-// AI Risk Assessment
+// AI Risk Assessment (LEGACY - being replaced by AI Resilience)
 export const AIRiskSchema = z.object({
   score: z.number(),
   label: AIRiskLabelEnum,
@@ -82,6 +95,64 @@ export const AIRiskSchema = z.object({
   last_assessed: z.string(),
   assessor: z.enum(["claude", "human_override"]),
 });
+
+// ============================================================================
+// AI RESILIENCE CLASSIFICATION (New 4-tier system)
+// ============================================================================
+
+// Task Exposure Level (from AIOE dataset)
+export const TaskExposureEnum = z.enum(["Low", "Medium", "High"]);
+export type TaskExposure = z.infer<typeof TaskExposureEnum>;
+
+// Automation Potential
+export const AutomationPotentialEnum = z.enum(["Low", "Medium", "High"]);
+export type AutomationPotential = z.infer<typeof AutomationPotentialEnum>;
+
+// Job Growth Category (from BLS 2024-2034 projections)
+export const JobGrowthCategoryEnum = z.enum([
+  "Declining Quickly",  // < -10%
+  "Declining Slowly",   // -10% to 0%
+  "Stable",             // 0% to 5%
+  "Growing Slowly",     // 5% to 15%
+  "Growing Quickly"     // > 15%
+]);
+export type JobGrowthCategory = z.infer<typeof JobGrowthCategoryEnum>;
+
+// Human Advantage Category (based on EPOCH sum)
+export const HumanAdvantageCategoryEnum = z.enum(["Weak", "Moderate", "Strong"]);
+export type HumanAdvantageCategory = z.infer<typeof HumanAdvantageCategoryEnum>;
+
+// NOTE: AIResilienceClassificationEnum is defined at top of file for CareerIndexSchema
+
+// EPOCH Scores (Human Advantage Framework)
+export const EPOCHScoresSchema = z.object({
+  empathy: z.number().min(1).max(5),    // Emotional intelligence, patient/customer care
+  presence: z.number().min(1).max(5),   // Physical presence requirements
+  opinion: z.number().min(1).max(5),    // Judgment, decision-making, critical thinking
+  creativity: z.number().min(1).max(5), // Innovation, problem-solving
+  hope: z.number().min(1).max(5),       // Mentorship, motivation, counseling
+});
+export type EPOCHScores = z.infer<typeof EPOCHScoresSchema>;
+
+// Full AI Assessment Schema
+export const CareerAIAssessmentSchema = z.object({
+  taskExposure: TaskExposureEnum,
+  automationPotential: AutomationPotentialEnum,
+  jobGrowth: z.object({
+    category: JobGrowthCategoryEnum,
+    percentChange: z.number(),
+    source: z.string(),
+  }),
+  humanAdvantage: z.object({
+    category: HumanAdvantageCategoryEnum,
+    epochScores: EPOCHScoresSchema,
+  }),
+  classification: AIResilienceClassificationEnum,
+  classificationRationale: z.string(),
+  lastUpdated: z.string(),
+  methodology: z.string(),
+});
+export type CareerAIAssessment = z.infer<typeof CareerAIAssessmentSchema>;
 
 // National Importance Assessment
 export const NationalImportanceSchema = z.object({
@@ -238,6 +309,10 @@ export const CareerSchema = z.object({
   }),
   ai_risk: AIRiskSchema.nullable(),
   national_importance: NationalImportanceSchema.nullable(),
+  // NEW: AI Resilience classification (4-tier system)
+  ai_resilience: AIResilienceClassificationEnum.optional(),
+  ai_resilience_tier: z.number().min(1).max(4).optional(),
+  ai_assessment: CareerAIAssessmentSchema.optional(),
   career_progression: CareerProgressionSchema.nullable(),
   video: z.object({
     source: z.enum(["careeronestop", "practitioner"]),
@@ -328,6 +403,62 @@ export function getAIRiskLabel(score: number): string {
   if (score <= 6) return "Medium Risk";
   if (score <= 8) return "High Risk";
   return "Very High Risk";
+}
+
+// ============================================================================
+// AI RESILIENCE HELPER FUNCTIONS
+// ============================================================================
+
+/**
+ * Get the Tailwind color classes for an AI Resilience classification
+ */
+export function getAIResilienceColor(classification: AIResilienceClassification): string {
+  const colors: Record<AIResilienceClassification, string> = {
+    "AI-Resilient": "text-green-600 bg-green-100",
+    "AI-Augmented": "text-yellow-600 bg-yellow-100",
+    "In Transition": "text-orange-600 bg-orange-100",
+    "High Disruption Risk": "text-red-600 bg-red-100",
+  };
+  return colors[classification];
+}
+
+/**
+ * Get the numeric tier for sorting (1 = most resilient, 4 = highest risk)
+ */
+export function getAIResilienceTier(classification: AIResilienceClassification): number {
+  const tiers: Record<AIResilienceClassification, number> = {
+    "AI-Resilient": 1,
+    "AI-Augmented": 2,
+    "In Transition": 3,
+    "High Disruption Risk": 4,
+  };
+  return tiers[classification];
+}
+
+/**
+ * Get the emoji indicator for a classification
+ */
+export function getAIResilienceEmoji(classification: AIResilienceClassification): string {
+  const emojis: Record<AIResilienceClassification, string> = {
+    "AI-Resilient": "🟢",
+    "AI-Augmented": "🟡",
+    "In Transition": "🟠",
+    "High Disruption Risk": "🔴",
+  };
+  return emojis[classification];
+}
+
+/**
+ * Get a short description for a classification
+ */
+export function getAIResilienceDescription(classification: AIResilienceClassification): string {
+  const descriptions: Record<AIResilienceClassification, string> = {
+    "AI-Resilient": "Strong human advantage or growing demand protects this career",
+    "AI-Augmented": "AI assists this work but human skills remain essential",
+    "In Transition": "This career is being transformed by AI; adaptation needed",
+    "High Disruption Risk": "High AI exposure with declining demand creates risk",
+  };
+  return descriptions[classification];
 }
 
 // ARCHIVED: Importance functions - kept for potential restoration

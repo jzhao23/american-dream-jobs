@@ -136,21 +136,49 @@ american-dream-jobs/
 5. Add environment variables
 6. Deploy
 
-## Data Sources
+## Methodology & Data Sources
 
-### Occupational Data
-- [O*NET OnLine](https://www.onetonline.org/) - Occupational database (education requirements, job zones)
+This project uses data from multiple authoritative sources. All methodologies are documented in detail.
+
+### Career Data
+- [O*NET 30.1](https://www.onetcenter.org/) - Occupation definitions, tasks, skills, education requirements (1,016 occupations)
 - [Bureau of Labor Statistics](https://www.bls.gov/) - Wage and employment data
-- [CareerOneStop](https://www.careeronestop.org/) - U.S. Department of Labor
+- [CareerOneStop](https://www.careeronestop.org/) - U.S. Department of Labor career resources
+
+### AI Resilience Classification
+
+We use a 4-tier AI Resilience system to assess career viability in an AI-augmented economy:
+
+| Tier | Description |
+|------|-------------|
+| **AI-Resilient** | Strong human advantage or growing demand protects this career |
+| **AI-Augmented** | AI assists this work but human skills remain essential |
+| **In Transition** | Career is being transformed by AI; adaptation needed |
+| **High Disruption Risk** | High AI exposure with declining demand creates significant risk |
+
+**Data sources for AI Resilience:**
+- [AIOE Dataset](https://github.com/AIOE-Data/AIOE) (Felten, Raj, Seamans 2021) - AI occupational exposure scores
+- [BLS Employment Projections 2024-2034](https://www.bls.gov/emp/) - Job growth trends
+- EPOCH Framework - Human advantage assessment (Empathy, Presence, Opinion, Creativity, Hope)
+
+See **[AI Resilience Methodology](docs/AI_RESILIENCE_METHODOLOGY.md)** for complete documentation including the classification algorithm and academic citations.
 
 ### Education Cost Data
-- [College Board Trends in College Pricing](https://research.collegeboard.org/trends/college-pricing) - National average tuition by institution type
-- [NCES CIP-SOC Crosswalk](https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56) - Maps occupations to educational programs
-- [AAMC](https://www.aamc.org/) - Medical school costs
-- [ABA/LSAC](https://www.lsac.org/) - Law school costs
-- Professional association data for specialized programs
+- [College Board Trends in College Pricing](https://research.collegeboard.org/trends/college-pricing) - National average tuition
+- [NCES CIP-SOC Crosswalk](https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56) - Maps occupations to programs
+- Professional association data (AAMC, ABA/LSAC) for specialized programs
 
-See [docs/education-cost-methodology.md](docs/education-cost-methodology.md) for detailed methodology.
+See [Education Cost Methodology](docs/education-cost-methodology.md) for details.
+
+### All Documentation
+
+| Document | Description |
+|----------|-------------|
+| [AI Resilience Methodology](docs/AI_RESILIENCE_METHODOLOGY.md) | 4-tier classification system, EPOCH framework, algorithm |
+| [Data Sources](docs/DATA_SOURCES.md) | Complete data source reference with processing pipelines |
+| [Education Cost Methodology](docs/education-cost-methodology.md) | Tuition estimation by institution type |
+| [Career Progression Methodology](docs/CAREER_PROGRESSION_METHODOLOGY.md) | Salary trajectory calculations |
+| [Category System](docs/CATEGORY_SYSTEM.md) | Career categorization approach |
 
 ## Adding New Careers
 

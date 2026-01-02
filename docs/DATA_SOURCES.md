@@ -8,7 +8,10 @@ This document describes all data sources used in American Dream Jobs and how the
 |--------|------------------|------------------|
 | O*NET 30.1 | Occupation definitions, tasks, skills, education | Annual |
 | BLS OES | Wage data (median, percentiles) | Annual (May) |
-| Frey & Osborne (2013) | AI/automation risk probabilities | Static (2013 study) |
+| **AIOE Dataset** | AI occupational exposure scores | Static (2021 study) |
+| **BLS Employment Projections** | Job growth forecasts 2024-2034 | Biennial |
+| **EPOCH Scores** | Human advantage assessment | Maintained manually |
+| Frey & Osborne (2013) | Legacy AI risk probabilities | Static (2013) - **LEGACY** |
 | Levels.fyi | Tech salary progressions | Quarterly |
 | Reddit | Real worker experiences | On-demand |
 
@@ -66,7 +69,104 @@ BLS API → scripts/fetch-bls-wages.ts → Merged into occupations_complete.json
 
 ---
 
-## Frey & Osborne - AI Risk Probabilities
+## AI Resilience Data Sources
+
+The AI Resilience classification uses three data sources combined into a 4-tier system. See [AI_RESILIENCE_METHODOLOGY.md](./AI_RESILIENCE_METHODOLOGY.md) for the complete algorithm.
+
+---
+
+### AIOE Dataset - AI Occupational Exposure
+
+**Source**: AI Occupational Exposure (AIOE) Dataset
+**Paper**: "Occupational, Industry, and Geographic Exposure to Artificial Intelligence: A Novel Dataset and Its Potential Uses"
+**Authors**: Felten, E. W., Raj, M., & Seamans, R.
+**Year**: 2021
+**DOI**: 10.1002/smj.3286
+**Data**: https://github.com/AIOE-Data/AIOE
+
+#### What We Use
+- **AI exposure scores**: Measures how exposed each occupation is to AI capabilities
+- **Coverage**: 774 occupations with SOC codes
+
+#### Methodology
+The AIOE index measures AI exposure by:
+1. Identifying 10 AI applications from patents and academic literature
+2. Surveying relatedness between AI applications and 52 occupational abilities (from O*NET)
+3. Weighting by ability importance
+4. Aggregating across applications to produce occupation-level scores
+
+#### Processing Pipeline
+```
+data/sources/ai-exposure.json
+    → scripts/generate-final.ts
+    → Categorized as Low/Medium/High (33rd percentile thresholds)
+```
+
+---
+
+### BLS Employment Projections
+
+**Source**: Bureau of Labor Statistics Employment Projections
+**Data**: 2024-2034 projections (fetched via CareerOneStop API)
+**URL**: https://www.bls.gov/emp/
+
+#### What We Use
+- **Projected employment change**: Percent change 2024-2034
+- **Coverage**: 832 occupations
+
+#### Categories
+| Category | Percent Change |
+|----------|----------------|
+| Declining Quickly | < -10% |
+| Declining Slowly | -10% to 0% |
+| Stable | 0% to 5% |
+| Growing Slowly | 5% to 15% |
+| Growing Quickly | > 15% |
+
+#### Processing Pipeline
+```
+CareerOneStop API
+    → scripts/fetch-bls-projections.ts
+    → data/sources/bls-projections.json
+    → Applied in scripts/generate-final.ts
+```
+
+---
+
+### EPOCH Scores - Human Advantage Framework
+
+**Framework**: Proprietary assessment of human advantages that are difficult for AI to replicate
+
+#### The EPOCH Dimensions
+
+| Letter | Dimension | Description | Examples |
+|--------|-----------|-------------|----------|
+| **E** | Empathy | Emotional intelligence, patient/customer care | Nurses, therapists |
+| **P** | Presence | Physical presence, hands-on work | Surgeons, electricians |
+| **O** | Opinion | Judgment, decision-making, expertise | Managers, lawyers |
+| **C** | Creativity | Innovation, artistic expression | Designers, researchers |
+| **H** | Hope | Mentorship, motivation, counseling | Teachers, coaches |
+
+#### Scoring
+- Each dimension scored 1-5 per occupation
+- **Strong** (sum ≥ 20): AI has limited ability to replace
+- **Moderate** (sum 12-19): AI augments but doesn't replace
+- **Weak** (sum < 12): Higher risk of AI disruption
+
+#### Processing Pipeline
+```
+data/sources/epoch-scores.json (manually curated, 1,016 occupations)
+    → scripts/generate-epoch-scores.ts (for bulk generation)
+    → Applied in scripts/generate-final.ts
+```
+
+---
+
+## Frey & Osborne - AI Risk Probabilities (LEGACY)
+
+> **Note**: This data source has been superseded by the AI Resilience classification system above.
+> It remains in the codebase for fallback classification of careers missing AIOE or BLS data.
+> See [AI_RESILIENCE_METHODOLOGY.md](./AI_RESILIENCE_METHODOLOGY.md) for the current methodology.
 
 **Source**: Oxford Martin School
 **Paper**: "The Future of Employment: How Susceptible Are Jobs to Computerisation?"
@@ -83,11 +183,11 @@ BLS API → scripts/fetch-bls-wages.ts → Merged into occupations_complete.json
 data/sources/oxford/frey-osborne-2013.json
     → scripts/map-oxford-ai-risk.ts
     → data/processed/oxford_ai_risk_mapping.json
-    → Applied in scripts/generate-final.ts
+    → Used as fallback in scripts/generate-final.ts
 ```
 
-### Detailed Methodology
-See [AI_RISK_METHODOLOGY.md](./AI_RISK_METHODOLOGY.md) for complete mapping documentation.
+### Legacy Documentation
+See [AI_RISK_METHODOLOGY.md](./AI_RISK_METHODOLOGY.md) for the original mapping documentation.
 
 ---
 
@@ -152,30 +252,37 @@ Reddit API → scripts/fetch-reddit-reviews.ts → data/reviews/sources/
 
 | Data | Command | When to Run |
 |------|---------|-------------|
-| O*NET | `npm run fetch-careers` | When new O*NET version releases |
-| BLS Wages | `npm run fetch-wages` | After May OES release |
-| AI Risk | `npx tsx scripts/map-oxford-ai-risk.ts` | Only if mapping logic changes |
+| O*NET | `npm run data:process-onet` | When new O*NET version releases |
+| BLS Wages | `npm run data:fetch-wages` | After May OES release |
+| BLS Projections | `npx tsx scripts/fetch-bls-projections.ts` | When new projection cycle releases (~2 years) |
+| AIOE Dataset | Download from GitHub | If new version published |
+| EPOCH Scores | `npx tsx scripts/generate-epoch-scores.ts` | When new occupations added |
 | Reddit Reviews | `npm run fetch-reviews` | Monthly or on-demand |
-| Full Regenerate | `npx tsx scripts/generate-final.ts` | After any source update |
+| Full Regenerate | `npm run data:generate-final` | After any source update |
 
 ---
 
 ## File Locations
 
-### Source Data (gitignored, can be regenerated)
+### Source Data
 ```
 data/sources/
-├── onet/              # Raw O*NET database files
-├── oxford/            # Frey-Osborne AI risk data (TRACKED - small)
-└── bls/               # BLS wage data
+├── onet/                      # Raw O*NET database files
+├── oxford/                    # Frey-Osborne AI risk data (LEGACY)
+├── bls/                       # BLS wage data
+├── ai-exposure.json           # AIOE dataset (774 occupations)
+├── ai-exposure-metadata.json  # AIOE source citation
+├── bls-projections.json       # BLS 2024-2034 projections (832 occupations)
+├── bls-projections-metadata.json
+└── epoch-scores.json          # EPOCH scores for all 1,016 occupations
 ```
 
-### Processed Data (gitignored, can be regenerated)
+### Processed Data
 ```
 data/processed/
 ├── onet_occupations_list.json      # Parsed O*NET occupations
 ├── occupations_complete.json       # Full enriched data
-├── oxford_ai_risk_mapping.json     # AI risk mappings
+├── oxford_ai_risk_mapping.json     # Legacy AI risk mappings
 └── career_progression_mappings.json # Salary progressions
 ```
 
@@ -183,5 +290,5 @@ data/processed/
 ```
 data/
 ├── careers-index.json      # Lightweight index for explorer
-└── careers.generated.json  # Full data for detail pages
+└── careers.generated.json  # Full data with AI Resilience classifications
 ```
