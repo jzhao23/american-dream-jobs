@@ -11,7 +11,7 @@ export interface CategoryStats {
   totalCareers: number;
   medianPay: number;
   avgAIRisk: number;
-  avgImportance: number;
+  // ARCHIVED: avgImportance removed - see data/archived/importance-scores-backup.json
   trainingDistribution: Record<TrainingTime, number>;
   topCareers: CareerIndex[];
 }
@@ -30,7 +30,7 @@ export function computeCategoryStats(
       totalCareers: 0,
       medianPay: 0,
       avgAIRisk: 0,
-      avgImportance: 0,
+      // ARCHIVED: avgImportance: 0,
       trainingDistribution: {
         '<6mo': 0,
         '6-24mo': 0,
@@ -54,8 +54,9 @@ export function computeCategoryStats(
   // Calculate averages
   const avgAIRisk =
     categoryCarers.reduce((sum, c) => sum + c.ai_risk, 0) / categoryCarers.length;
-  const avgImportance =
-    categoryCarers.reduce((sum, c) => sum + c.importance, 0) / categoryCarers.length;
+  // ARCHIVED: avgImportance calculation removed - see data/archived/importance-scores-backup.json
+  // const avgImportance =
+  //   categoryCarers.reduce((sum, c) => sum + c.importance, 0) / categoryCarers.length;
 
   // Training distribution
   const trainingDistribution: Record<TrainingTime, number> = {
@@ -68,16 +69,16 @@ export function computeCategoryStats(
     trainingDistribution[c.training_time]++;
   });
 
-  // Top careers by importance
+  // Top careers by median pay (ARCHIVED: previously sorted by importance)
   const topCareers = [...categoryCarers]
-    .sort((a, b) => b.importance - a.importance)
+    .sort((a, b) => b.median_pay - a.median_pay)
     .slice(0, 5);
 
   return {
     totalCareers: categoryCarers.length,
     medianPay: Math.round(medianPay),
     avgAIRisk: Math.round(avgAIRisk * 10) / 10,
-    avgImportance: Math.round(avgImportance * 10) / 10,
+    // ARCHIVED: avgImportance: Math.round(avgImportance * 10) / 10,
     trainingDistribution,
     topCareers,
   };

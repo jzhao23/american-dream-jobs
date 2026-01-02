@@ -74,6 +74,22 @@ BLS groups all managers in SOC 11-xxxx. We redistribute domain-specific managers
 
 See `src/lib/categories/manager-redistribution.ts` for the complete mapping.
 
+### 3. Career-Specific Overrides
+
+Some non-manager occupations are miscategorized by their SOC major group. We override these individually.
+
+| Career | SOC Code | Default Category | Override To | Rationale |
+|--------|----------|------------------|-------------|-----------|
+| Models | 41-9012 | Sales | Arts & Media | Creative/performance work, not transactional sales |
+
+**To add a new override:**
+1. Find the career's O*NET-SOC code (e.g., "41-9012.00")
+2. Add an entry to `CAREER_OVERRIDES` in `src/lib/categories/career-overrides.ts`
+3. Update this documentation
+4. Run `npm run data:generate-final` to regenerate data
+
+See `src/lib/categories/career-overrides.ts` for the complete mapping.
+
 ---
 
 ## Implementation Files
@@ -82,6 +98,7 @@ See `src/lib/categories/manager-redistribution.ts` for the complete mapping.
 |------|---------|
 | `src/lib/categories/onet-category-mapping.ts` | SOC → Category mapping logic |
 | `src/lib/categories/manager-redistribution.ts` | Manager reassignment rules |
+| `src/lib/categories/career-overrides.ts` | Non-manager career overrides |
 | `src/lib/categories/category-metadata.ts` | Names, icons, colors, descriptions |
 | `src/lib/categories/category-content.ts` | Extended content for category pages |
 | `src/lib/categories/category-stats.ts` | Statistics computation |

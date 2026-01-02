@@ -25,6 +25,12 @@ export {
   PURE_MANAGEMENT_CODES,
 } from './manager-redistribution';
 
+// Career-specific overrides (for non-manager careers miscategorized by SOC)
+export {
+  CAREER_OVERRIDES,
+  getCareerOverride,
+} from './career-overrides';
+
 // Extended category content for landing pages
 export {
   type CategoryContent,

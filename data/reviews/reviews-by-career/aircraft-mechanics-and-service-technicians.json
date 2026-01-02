@@ -1,0 +1,340 @@
+[
+  {
+    "id": "reddit-1lyt816",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Fuel cut off switch",
+    "text": "According to the preliminary report, moments after takeoff, both engine fuel cutoff switches were moved from RUN to CUTOFF within just one second, causing both engines to lose power. The cockpit voice recorder captured one pilot asking, \"Did you cut it off?\", to which the other replied, \"No.\" This sequence of events is now a key focus of the investigation, as such a rapid and simultaneous cutoff is considered highly unusual and potentially deliberate or mechanical in nature.\nhttps://www.reuters.com/business/aerospace-defense/what-are-fuel-switches-centre-air-india-crash-probe-2025-07-11/?utm_source=chatgpt.com\n",
+    "score": 26669,
+    "url": "https://reddit.com/r/aviation/comments/1lyt816/fuel_cut_off_switch/",
+    "created_at": "2025-07-13T13:46:38.000Z",
+    "num_comments": 1678
+  },
+  {
+    "id": "reddit-1kvrfmr",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "“We don’t have any passengers on board, so we decided to have a little fun” - The Missouri Crash, Оctober 2004",
+    "text": "Today’s story is a textbook example of the saying “boldness and stupidity.” Two young pilots decided to show off for no good reason, trying to prove something to someone.\n\nOn October 14, 2004, a Bombardier CRJ200 operated by Pinnacle Airlines was conducting a repositioning (ferry) flight from Little Rock to Minneapolis. There were two pilots in the cockpit. The captain, 31-year-old Jesse Rhodes, had a total of 6,900 flight hours, around 900 of which were on the CRJ200. The first officer, 23-year-old Peter Cesars, had logged 761 total hours, including 222 on the CRJ200.\n\nSo - a night ferry flight, two young pilots, cruising at 10,000 meters (FL330). What could go wrong?\n\nAbout 15 minutes after departure, the crew requested clearance from ATC to climb to 12,497 meters (FL410). This is just below the aircraft’s maximum certified service ceiling of 12,500 meters. The controller was puzzled. When asked about the reason for the requested altitude change, the captain cheerfully replied:\n\n&gt;*“We don’t have any passengers on board, so we decided to have a little fun and come up here.”*\n\nIt’s worth noting here that among CRJ200 pilots, there exists an unofficial “410 Club”. This refers to pilots who have taken the CRJ to its maximum certified cruising altitude - flight level FL410 (41,000 feet or 12,497 meters). These pilots, taking advantage of the empty aircraft, decided to push the jet to its limits in an attempt to join “410 Club”.\n\nATC granted the clearance. The crew programmed the autopilot to climb at a vertical speed of 150 meters per minute to FL410 - a climb rate exceeding the manufacturer’s recommendations for altitudes above FL380 (11,500 meters). As a result, the angle of attack became too great for the aircraft to maintain airspeed in the thin atmosphere. Still, the jet managed to reach FL410, and the pilots celebrated their induction into “410 Club”.\n\nHowever, their celebration was short-lived. The aircraft was flying at only 280 km/h - barely above stall speed - with both engines at maximum thrust. The stick shaker and stall protection systems activated multiple times, attempting to lower the nose to gain airspeed and restore lift. But the pilots kept overriding the systems.\n\nSuddenly, both engines flamed out. The aircraft lost all thrust and entered an aerodynamic stall. The pilots managed to recover from the stall at approximately 11,500 meters (FL380).\n\nThe engines, however, remained inoperative. The aircraft was now gliding. The pilots donned oxygen masks as the cabin began to depressurize due to the loss of engine bleed air.\n\n&gt;When both engines fail, the compressors that provide pressurization to the cabin stop functioning. As a result, cabin pressure drops, causing depressurization. Without a functioning pressurization system, the aircraft can no longer maintain a breathable atmosphere or safe pressure levels for crew and passengers. This can lead to hypoxia and requires immediate descent to a safe altitude with sufficient ambient oxygen pressure.\n\nThe pilots initiated an emergency descent in an attempt to reach 560 km/h - the speed required to perform an in-flight engine restart using the windmilling effect of the turbines. However, the captain failed to properly monitor the first officer and did not confirm whether the required speed was achieved. The engine restart attempt was unsuccessful.\n\nWhen the aircraft eventually reaches a speed of approximately 430 km/h, the pilots terminate the high-rate descent. They are still too high to start the Auxiliary Power Unit (APU). However, the CRJ200 is equipped with a Ram Air Turbine (RAT) - a small propeller-driven turbine with an electrical generator designed to provide emergency power. The pilots deploy the RAT, but its output proves insufficient to restart the engines.\n\nThe crew continues descending to 4,000 meters (approximately 13,000 feet), where they are able to activate the APU. Over the next 14 minutes, they make several attempts to restart the engines - four in total, two for each engine. All attempts fail. Meanwhile, the aircraft continues to descend in glide.\n\nThe pilots declare an emergency to ATC, reporting a dual engine failure. They request vectors to the nearest suitable airport for an emergency landing. ATC directs them toward Jefferson City Memorial Airport in Missouri. Five minutes later, the crew realizes they will not be able to reach the airport. They begin searching for a road or highway suitable for a forced landing.\n\nApproximately one minute later, the aircraft crashes into the ground near Jefferson City. The wreckage strikes a house. Both pilots are killed. No casualties occur on the ground.\n\nThe accident investigation report concluded that the primary cause of the crash was unprofessional behavior on the part of the flight crew, who deviated from standard operating procedures. The report also cited inadequate airmanship. For example, instead of preparing for an emergency landing, the pilots focused on repeatedly - and unsuccessfully - attempting to restart the engines without understanding the underlying reason for their failure.\n\nThe engines could not be restarted due to a condition known as core lock. When an engine shuts down in flight, certain components cool at different rates. Due to differences in thermal expansion coefficients among materials, this can lead to deformation. Core lock occurs when components shrink or distort to the point that internal parts seize, restricting or completely preventing the engine from rotating. Because of this, instead of concentrating on engine restart procedures, the pilots should have prioritized navigation to the nearest suitable airfield for an emergency landing.",
+    "score": 9563,
+    "url": "https://reddit.com/r/aviation/comments/1kvrfmr/we_dont_have_any_passengers_on_board_so_we/",
+    "created_at": "2025-05-26T10:52:45.000Z",
+    "num_comments": 597
+  },
+  {
+    "id": "reddit-1m71j6b",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "The X-59 has started ground testing.",
+    "text": "The X-59 QueSST is an experimental supersonic aircraft developed by NASA and Lockheed Martin’s Skunk Works to explore quiet supersonic flight. Rolled out in January 2024, it features a long, narrow design, a camera-based cockpit system, and an engine mounted on top to reduce sonic boom impact. It's currently undergoing ground tests and is expected to take its first flight in 2025.\n\n🎯 Purpose and Role in Future Supersonic Travel\n\nThe X-59’s main goal is to demonstrate low-boom supersonic flight — replacing the loud sonic boom with a soft “thump.” It will fly over U.S. communities to collect noise perception data, helping FAA and ICAO develop new regulations. This data will pave the way for quiet commercial supersonic aircraft, allowing overland flights that are both fast and community-friendly, reviving the dream of supersonic air travel.",
+    "score": 6902,
+    "url": "https://reddit.com/r/aviation/comments/1m71j6b/the_x59_has_started_ground_testing/",
+    "created_at": "2025-07-23T06:05:36.000Z",
+    "num_comments": 319
+  },
+  {
+    "id": "reddit-1pfnryg",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "My Grandfather’s “Highly Rated” Commercial Pilot’s License",
+    "text": "I thought this might be of some interest to some of you history buffs out there.\n\nThis is a photo of the last issuance of my grandfather’s commercial pilot’s license, before his retirement from a 37 year career as a Captain for American Airlines in 1973.\n\nHe began flying commercial aircraft in 1936, starting with the Ford Tri-Motor and the DC-3, and when he retired from commercial aviation in 1973, he had a career total of over 37,000 hours of flight time logged on a record setting 16 different types of aircraft. For anyone interested in the math, that’s equivalent to 4.22 _YEARS_ of his life spent in the air! Which also includes the birth of my mother. He received the news of her birth via radio message during a flight home to Cleveland in 1947.   He missed it by about two hours!",
+    "score": 2119,
+    "url": "https://reddit.com/r/aviation/comments/1pfnryg/my_grandfathers_highly_rated_commercial_pilots/",
+    "created_at": "2025-12-06T12:06:29.000Z",
+    "num_comments": 200
+  },
+  {
+    "id": "reddit-1oq9zwh",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "The MD11 is not a “death coffin”",
+    "text": "In light of the recent crash that took place, I find many people in comment sections saying things like “death coffin strikes again” or “typical md11” and stuff along those lines. What pisses me off is that most of the crashes involving the MD11 weren’t because of the aircraft itself entirely. Granted, accidents like FedEx 14/80 and Swissair 111 were because of faults, but keep in mind there are only 3-4 fatal crashes involving the design itself out of the 11 hull losses in its ~35 years of operation. Also, people keep mixing up the MD11 with its predecessor the DC10, which also has a good record history besides the two crashes that happened at the very start of its career. Even the infamous AA191 wasn’t the aircraft itself but rather lazy maintenance issues. So basically the two aircraft are reliable as any other aircraft; it just developed a bad rap (and bad luck…)\n\nDownvote me all you want. I stand by my opinion. \n\nEdit: I want to clarify this, if you dislike the MD11, I’m perfectly fine with that, but basing your hate on the bandwagon that is “death coffin” is what I have an issue with.\n\nEdit 2: if you’re confused about what “death coffin” means in this context, it’s a nickname online given to DC/MD trijets, hence D(eath)C(offin)10",
+    "score": 2054,
+    "url": "https://reddit.com/r/aviation/comments/1oq9zwh/the_md11_is_not_a_death_coffin/",
+    "created_at": "2025-11-06T20:29:47.000Z",
+    "num_comments": 468
+  },
+  {
+    "id": "reddit-1mlr4yr",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Is the first officer the one who's landing the plane?",
+    "text": "I've been watching this channel and I'm really curious if it's the first officer (assuming that he is, because he's sitting on the right side) is the one landing the plane? \n\nI'm fond of aviation topics but still new to it &amp; my career is far from this field.\n\nBe kind and please educate me. Thank you\n",
+    "score": 1523,
+    "url": "https://reddit.com/r/aviation/comments/1mlr4yr/is_the_first_officer_the_one_whos_landing_the/",
+    "created_at": "2025-08-09T14:44:22.000Z",
+    "num_comments": 194
+  },
+  {
+    "id": "reddit-1moukri",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Does anybody know or has had experience as a Flight Engineer? This is a question to know how jobs change with technology.",
+    "text": "Hello everyone,\n\nThis is a bit of a casual subject that I just thought from my job as a designer. From time to time it gets mentioned to us to use an AI to do a task, sometimes it helps, other times it seems to be a fad or something that younger generations use, but it is obvious when it gets used.\n\nAnyhow, I know little about this, but the profession of Flight Engineer was a very important and a valuable part of flying and it was highly specialized. In current times there seems to be very few (according to wikipedia theres still two) airplanes that still use Engineers.\n\nNow, this job was literally replaced with technology; computers, sensors, algorithms, automation, and so on.\n\nPeople who worked in this profession, what was this transition like? did they help to create the new systems or just changed unceremoniously? Do they miss flying in the cabin?\n\nI think any story about this career is a good reference on how jobs change and how the topic of jobs are being \"threaten\" by IA and will no longer require humans, at least thats the idea thats sold. So, what are some ways to take on the future even when one has a career and degree? If a Flight Engineer is used as reference.\n\nOne more note, notice how the engineers were substituted by tech but there are still human pilots? Is the human factor still important? Does flying have much more variables that a computer cant process or take into account? ",
+    "score": 1466,
+    "url": "https://reddit.com/r/aviation/comments/1moukri/does_anybody_know_or_has_had_experience_as_a/",
+    "created_at": "2025-08-13T04:12:39.000Z",
+    "num_comments": 159
+  },
+  {
+    "id": "reddit-1o96v14",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "We're Martin-Baker - the worlds leading manufacturer of Ejection Seats that have saved\nover 7,800 aircrew to date. Ask us anything!",
+    "text": "Hi r/aviation,\n\nOver the years we've seen great discussion on this sub about Ejection Seats! Most recently on a post about **Martin-Baker surpassing 7,800 lives saved since 1949** \\- and perhaps more commonly about 'Goose' from Top Gun!\n\nWe'll be here on **Tuesday 21st October** to answer your questions about all things Ejection Seats: • How do modern Ejection Seats differ to older ones? • How do you test an Ejection Seat and do you use real humans!? • What does testing look like a Zero/Zero versus near-Mach speeds? • How can we accommodate a wide range of aircrew for safe ejection? • Was there a form of Aircrew Escape before the Ejection Seat?\n\nWe'll do our best to answer all of your questions throughout the day. There are a few boundaries: we can't discuss classified programmes or details of specific aircraft accidents - but we're happy to talk about the science, testing and history behind what we do!\n\nProof: [https://martin-baker.com/news/redditAMA](https://martin-baker.com/news/redditAMA)\n\n[Mk18 \\(US18E\\) High Speed Ejection Test from an F-16 forebody](https://preview.redd.it/98bq5x2u8pvf1.jpg?width=2560&amp;format=pjpg&amp;auto=webp&amp;s=eeb55892ec5467cb372020c1263c13e4437384d9)\n\nFor those unfamiliar with Martin-Baker, for **80** years we've designed, developed and manufactured aircrew escape systems for military aircraft around the world. Currently, our seats are installed in **63** aircraft types across **84** countries and **106** operators. We are a **British, family-run business** with facilities across the globe supporting Ejection Seats, Crashworthy Seating, Training and Aircrew Safety Equipment.\n\n*We will not be discussing recruitment or avenues to a career with Martin-Baker in this AMA but for more information please head over to our Careers site or LinkedIn:* [*https://martin-baker.com/careers*](https://martin-baker.com/careers)",
+    "score": 795,
+    "url": "https://reddit.com/r/aviation/comments/1o96v14/were_martinbaker_the_worlds_leading_manufacturer/",
+    "created_at": "2025-10-17T17:00:51.000Z",
+    "num_comments": 268
+  },
+  {
+    "id": "reddit-1i1m2xn",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "This homebuilt 2/3 scale P38 has to be one of the most unique planes out there and has an incredible story",
+    "text": "And here is the incredible story\n\n\nN38PJ\nLast Flight\nby William Presler\nIt seems Jimmy has slipped the surly bonds of earth one last time.\n\n \n\nI always called him Uncle Jim, but in my mind he was either Jimmy, because my Grandmother called him that, or Jim &amp; Mitzi (with an ampersand not a full “and”) because where there was one of them, the other wouldn’t be far behind.\n\n \n\nThat “slipping the surly bonds” thing isn’t some poetic turn of phrase that I came up with. It comes from a famous poem about aviation called “High Flight.” Every aviator knows it, many by heart.\n\n \n\nIt touches me and my soul, this poem, because I too am a pilot. Mostly because of Jimmy I suppose. When I was a kid, he regaled me with stories of what it was like to fly. To learn to fly. To take off. To be able to navigate across these United States with a map and a compass and a good bit of derring-do and, perhaps, a bit of intelligence. Everyone knew Jimmy was smart. I was just a kid in KY who just sort of got through high school classes, sometimes barely. But he always encouraged me.\n\n \n\nI learned a few other things from Jim &amp; Mitzi. Just being around them was so interesting and exotic. Dark dark dark coffee with something called chicory in it, made like a chemist would make it. Later the introduction to the nicer side of New Orleans. Mitzi gave me my first kiwi. The fruit, not a person from Down Under. But it was all so interesting and far more cultured than my whereabouts at that time.\n\n \n\nWhen I was in my twenties, perhaps still in college or maybe just out of it, he offered again to give me some books on learning to fly. I accepted gladly and then sat down to soak them all in. The symbologies and terminologies and equations galore… and I said to myself, “wow…this looks hard.”\n\n \n\nLater, the gentle tick tock sound of my own mortality started to become more audible to my ears and I realized that if I was going to learn to fly, I would have to get started, and so I did and never stopped and I’m still learning. I’m on a flight now as I write this, to Denver where tomorrow I will begin training on a new type of plane. I’ve flown lots of different types of planes, in different places and countries and I’ve gotten to do some cool things. I own an aviation business or two and get to do all sorts of fun stuff. Like build a plane.  Then fly a plane that I had built. But that’s not the same. What I did was hard. But what he did was impossible.\n\n \n\nHe built his first P-38 when he was 14, of balsa wood. He always loved that plane. Always. He always wanted to fly. Always. He joined the military to fly. But he was color blind, and he could not be a military aviator, at all. He thought this meant he could never be a pilot. But Jimmy was in love with how flight could work. He loved the art of it. Like a master musician loves the way math and music fall in line once you reach a certain understanding. He had that understanding. I don’t. As he believed he couldn’t be a pilot, he pursued a career in aviation, at a level of understanding that is hard to even comprehend, for me at least.\n\n \n\nAt 65, or thereabouts, retired from a long tenure as Professor of Aeronautical Engineering, he finally learned to fly. Somehow he was talking to someone about how he had always wanted to be a pilot but couldn’t do it because he was color blind. They informed him, that though it may be true that you can’t be a military aviator without color vision, it really didn’t matter at all for civilian or general aviation when it’s “not for commercial purposes.”\n\n \n\nSo he learned to fly. In his 60’s. That’s hard at any age. Then he got his instrument rating. Which is many times more difficult. He said that one hour of instrument instruction was for him like digging a ditch for eight hours straight. Or so it felt. I’m not sure if he had experienced digging ditches for 8 hours. I didn’t think to ask…\n\n \n\nIn the midst of all this, he decided he wanted to build a plane. He wanted to build a replica of a P-38, this famed and celebrated “War Bird” that he loved so much. His friends of the aviator ilk…and he had so many…(Jim &amp; Mitzi were loved by people in the world of flying and especially in the “Meyers Aircraft Owner’s Association” literally all over the country)…they tried to talk him out of it. To build something from a kit (like I did) is what they said he should do. He wanted none of it.\n\n \n\nAnyway, the great minds at Lockheed, later to be called Lockheed Martin, said that it couldn’t be done by an individual. It was not possible. That’s what they said about it. The builders of the “Lockheed P-38 Lightning” said it could not be done. So I don’t need to say a lot more I suppose about how what he did, literally, was thought to be impossible. Jimmy, apparently, didn’t care. So he built a plane that wasn’t possible to build. Two Thirds scale. The world's only TTP38.\n\n \n\nHe made a few modifications, like creating a little seat behind his seat where Mitz could sit. The original plane only sported a pilot, no passengers. But if Jim went somewhere, there would be an “&amp; Mitzi.” Adorable.\n\n \n\nAnyway, as one pilot to another, much later I asked him about it. He had just finished some major modifications. I asked him about building it of course, but really, how do you fly something so complicated when there is no “Pilot Operating Handbook” or POH, no “Operating Limits” clearly placarded. No Checklists nor Procedures. No nothing. Except his clear and penetrating insight into the very nature of flight itself.  I don’t know what else to say…somehow…he could just see it. All of it. Laid out in front of him, like a Master Chess Player sees the board as it is and dozens of moves out with permutations and complications. Or the way a great baseball hitter can see the seams on the ball as it barrels towards him at 90 miles per hour. I don’t know how to tell you this, but he could just see it. I know this. I saw it in his eyes.\n\n \n\nAbout the building of it, he said that he just worked on it and kept working on it. He said that he had decided he would keep at it until he came to an equation or problem that he couldn’t figure out. Apparently that never happened. For 25 plus years, he worked on it. Calculations, building…things that teams of engineers and technicians and assemblers would have done. He did it. It isn’t really possible to describe it. At least I don’t know how. I’ve looked over some of the drawings, the photos, the work itself. The rigging he built. His first drafts in wood that he would later cut in metal. It’s too much. How one person did this, even with Mitzi’s ever patient help, I do not know.\n\n \n\nHe said he would dedicate 25 years to building it, and if he was lucky, he would live long enough to fly it.\n\n \n\nSo he flew it…his dream…his opus, master work, or whatever you want to say. Not everyone gets to fly, few have a passion for airplanes and flight and flying and the underlying symmetry of mathematics and physics and the sheer beauty of it all…not the way that Jimmy did. Only a handful of people accomplish that which the world says is not possible. And he did it without fanfare or interest in fame. Literally every magazine in the world of aviation would have given anything to have that story. The Experimental Aircraft Association would have his story enshrined in the halls of Oshkosh, by gosh. But Jimmy just wanted to build his plane. That’s all. Because he loved it.\n\n \n\nI’m glad for him, and for me, for the passion he had and shared and fostered. And that Jim &amp; Mitzi got to have such an amazing adventure together.\n\n \n\nAnd so he has slipped the surly bonds one last time. I suspect Mitzi won’t be too far behind. She never was. They were always so lovely together.\n\n \n\nAnd if they do one last thing together, I would like to think it will be to put out their hands and touch the face of God, in High Flight. Forever, or just one last time.\n\n \n\nBlue skies, Uncle Jim. Blue skies.",
+    "score": 633,
+    "url": "https://reddit.com/r/aviation/comments/1i1m2xn/this_homebuilt_23_scale_p38_has_to_be_one_of_the/",
+    "created_at": "2025-01-15T01:22:47.000Z",
+    "num_comments": 26
+  },
+  {
+    "id": "reddit-1j6iozk",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Aviation Summer Camp",
+    "text": "Hello /aviation!\n\nJust wanted to let anyone that’s in high school and is thinking about a career in aviation or just loves airplanes, you should check out Minnesota ACE Camp!\n\nWe are offering two, week long camps this June. From flying airplanes, gliders, helicopters and even an airline simulator, along with many behind the scenes tours in and around the MSP Airport, it’s aviation overload all week long! \n\nMeeting aviation professionals all week long can help and guide your future decisions on what schools and path is best for you. \n\nCost of camp is $1650. Everything is included, there’s no hidden fees. There is financial aid to help you cover some or all of the tuition. \n\nShoot me a message or find me on Instagram if you have questions about camp! IG: goaround29",
+    "score": 451,
+    "url": "https://reddit.com/r/aviation/comments/1j6iozk/aviation_summer_camp/",
+    "created_at": "2025-03-08T14:48:43.000Z",
+    "num_comments": 21
+  },
+  {
+    "id": "reddit-1iqm2lt",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Is anyone is available to take a photo/video of UA114 landing at SFO at 0636a tomorrow?",
+    "text": "Hi all,\n\nHopefully this doesn’t break any of the subs rules, but my dad is retiring from flying commercial as he turns 65 in a few weeks. If anyone plane spots at SFO or knows of anyone who does or knows any ground crew/ops etc. that could take a video or photograph my dad’s final landing in SFO tomorrow that would be incredible. \n\nIt’s UA114 from PPT to SFO scheduled to land 0636a as of now.\n\nHe’s been flying for 40 years military and civilian and this is the culmination of an amazing career for him. He even received United’s prestigious Al Hayne’s award for Airmanship earlier this year for his handling of an un-contained engine failure over the Pacific last year. Really proud of him and it would be so cool to have some shots of him coming in to land for one last time. \n\nApparently they don’t allow water canon salutes at California domiciles due to the drought so that’s an incredible bummer but even just seeing the landing would be so special. Even if we could get a bunch of people tracking it on FR and make it the most tracked flight or something and a screenshot would be pretty cool. \n\nThanks!",
+    "score": 340,
+    "url": "https://reddit.com/r/aviation/comments/1iqm2lt/is_anyone_is_available_to_take_a_photovideo_of/",
+    "created_at": "2025-02-16T06:24:22.000Z",
+    "num_comments": 13
+  },
+  {
+    "id": "reddit-1k0vn7w",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "My interest in planes might have reduced and I might have no interest in photography but these photos by Alfred Buckham (1920) are still some of my most favourite photos. I would highly recommend looking him up.",
+    "text": "Buckham was born in London in 1879. He began his career in photography in 1905 and joined the Royal Naval Air Service as a reconnaissance photographer in 1917. Buckham was involved in nine crashes, eight of which saw him relatively unscathed. After the ninth, however, he had to have a tracheotomy and breathed through a small pipe in his neck for the rest of his life. Despite this, he carried on his aerial photography career, often in very perilous conditions. He felt the best shots were made standing up, writing \"If one's right leg is tied to the seat with a scarf or a piece of rope, it is possible to work in perfect security\".[citation needed] He was discharged at the end of 1918 as one hundred per cent disabled and was described as being 'unable to speak'.",
+    "score": 303,
+    "url": "https://reddit.com/r/aviation/comments/1k0vn7w/my_interest_in_planes_might_have_reduced_and_i/",
+    "created_at": "2025-04-16T21:13:44.000Z",
+    "num_comments": 12
+  },
+  {
+    "id": "reddit-1oqwj1s",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "MN Pilot has his Stinson seized by Red Lake Tribe after an emergency landing",
+    "text": "Initially posted in r/flying, but the moderators removed it because \"[r/flying](https://www.reddit.com/r/flying/) is intended to be a place to discuss things like pilot training, regulations, procedures, techniques, aircraft ownership and maintenance, piloting as a career, and similar topics.\" Feels to me like this is related to regulations, but whatever, I'll post it here now.\n\nI don't post a lot (hardly ever here), but I feel like outside some local folks in Minnesota, this story hasn't really gotten very much attention. The short version, basically, is that back in the 70's the FAA was going to designate some MTRs in northern MN that would have had military aircraft flying over the Red Lake reservation. Tribal interests obviously and somewhat understandably didn't want that, so they wrote up a resolution \"prohibiting\" any airplanes from overflying the reservation at altitudes below 20,000 feet (AGL vs. MSL is not specified).\n\nA few weeks ago, a man flew his Stinson out of Roseau, MN with a destination of Bemidji, MN, a direct route which flies over the reservation lands. He experienced and engine failure, landed on a road, and subsequently had his plane seized by tribal authorities who cited the tribe's 1978 resolution. His 1946 plane is now being stored outside in the weather while he waits for a court date, which was supposed to be November 3, but has been postponed.\n\nI heard about this through the MN Pilot's Association Facebook page in this [post](https://www.facebook.com/story.php?story_fbid=1264706829032708&amp;id=100064802075821).\n\nHere's an [article](https://www.ainonline.com/aviation-news/general-aviation/2025-10-30/tribal-trial-solve-confiscated-stinson-108-situation?fbclid=IwY2xjawN6035leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA80MDk5NjI2MjMwODU2MDkAAR4hmGHq4K3zv2XKfHja9tjqqqMvQ7YMrqeoXk_DUmtP-c0bJohDob_q1LJUGw_aem__jQUvPxTZb4Lc5DQZ06M8g) from AIN with some more details.\n\nAnd here is a Facebook [post](https://www.facebook.com/story.php?story_fbid=845582301380784&amp;id=100077870662208) from the Red Lake tribe doubling down, claiming his plane was unairworthy and that he knew it was in an unsafe condition to fly. Comments section on this one is quite a trip.\n\nI'm very curious to see how this plays out and see what legal precedents are used in the resolution of this, and what legal precedent the resolution of this dispute might create.\n\nEdit to add: Pictures of the tribe's resolution are attached to both linked Facebook posts, if you're curious to read the whole thing.",
+    "score": 288,
+    "url": "https://reddit.com/r/aviation/comments/1oqwj1s/mn_pilot_has_his_stinson_seized_by_red_lake_tribe/",
+    "created_at": "2025-11-07T14:55:42.000Z",
+    "num_comments": 130
+  },
+  {
+    "id": "reddit-1onxwjn",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Is it too late to become a commercial pilot at 38?",
+    "text": "Hello fellow aviators and aviation enthusiasts!  \n  \nTitle pretty much sums it up. I'm currently a system administrator for a medical facility. I have been in IT for almost 15 years now, and needless to say, I'm getting pretty burnt out in it. I love technology, and messing around with computers in general, but I'd like to move away from it as a career.  \n  \nI've always dreamt of being a pilot, but bad/stupid life decisions prevented me from doing so. I feel I've moved past that type of crap in my life, and like to know if it's even a possible to consider a career as a pilot at this stage in my life? I mean, I'll probably be well in to my 40s by the time I actually got a commercial license. I understand there would be many hurdles in this endeavor, mostly financial and actually finding a job if I make it that far, but I'm willing to put in the work if it's a realistic goal.",
+    "score": 101,
+    "url": "https://reddit.com/r/aviation/comments/1onxwjn/is_it_too_late_to_become_a_commercial_pilot_at_38/",
+    "created_at": "2025-11-04T04:14:24.000Z",
+    "num_comments": 58
+  },
+  {
+    "id": "reddit-1ir7lwb",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Kevin Lacey (of Airplane Repo) has died",
+    "text": "Reported by Mike Kennedy a couple hours ago  \n[https://www.facebook.com/permalink.php?story\\_fbid=pfbid02yECU3kub2wd7RgDLNgjNp2PLJuC8nasQzcSy7jXMh42KpnpiDUZMu49jBycee6s2l&amp;id=100044317485437](https://www.facebook.com/permalink.php?story_fbid=pfbid02yECU3kub2wd7RgDLNgjNp2PLJuC8nasQzcSy7jXMh42KpnpiDUZMu49jBycee6s2l&amp;id=100044317485437)\n\nAnd by Ken Cage  \n[https://www.facebook.com/KenCageRepo/posts/pfbid0bA9XfWZM3Vxs5xXGJzZt4ABtAUjscTvUEHFfXcd37XyxGYRgPiALZ51JKuGGE1Kql](https://www.facebook.com/KenCageRepo/posts/pfbid0bA9XfWZM3Vxs5xXGJzZt4ABtAUjscTvUEHFfXcd37XyxGYRgPiALZ51JKuGGE1Kql)\n\nKevin's Facebook page:  \n[https://www.facebook.com/kevin.lacey.7777](https://www.facebook.com/kevin.lacey.7777)\n\nKevin founded the Tango Thirty One Aero Clube, which is \"an after school program for local high school students who seek to explore career opportunities in aviation\".  \n[https://www.t31aeroclube.com/](https://www.t31aeroclube.com/)  \n[https://www.facebook.com/t31aeroclube](https://www.facebook.com/t31aeroclube)\n\n[https://www.texasairfleet.com/about-us](https://www.texasairfleet.com/about-us)  \n[https://www.facebook.com/TexasAirFleet/](https://www.facebook.com/TexasAirFleet/)",
+    "score": 79,
+    "url": "https://reddit.com/r/aviation/comments/1ir7lwb/kevin_lacey_of_airplane_repo_has_died/",
+    "created_at": "2025-02-17T00:56:03.000Z",
+    "num_comments": 18
+  },
+  {
+    "id": "reddit-1lrfrln",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "I found these in my late Grandfathers items",
+    "text": "I think this is a cool find! He worked in aviation his whole life and spent time in Northern Canada working on planes assisting to build the Trans Canada Pipeline. My Dad has also worked in aviation throughout his career and my son is obsessed with airplanes so maybe it’s genetic.",
+    "score": 65,
+    "url": "https://reddit.com/r/aviation/comments/1lrfrln/i_found_these_in_my_late_grandfathers_items/",
+    "created_at": "2025-07-04T10:49:27.000Z",
+    "num_comments": 3
+  },
+  {
+    "id": "reddit-1pdq940",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Commercial Aircraft Photog",
+    "text": "So I ahve been a photographer for years... TV news, Real estate, architecture and commercial.\n\nI love planes, and started shooting them professionally a decade ago... and started focusing on them as my main niche a few years ago\n\nSome of my fiends (and a LOT of people I dont know!) asked me about how to do this.... so I wrote a couple blog posts\n\nIf you’re interested in professional aircraft photography, heres my step one to how I got started. Here’s the link: [https://aviationaircraftphoto.com/professional-aviation-photographer/](https://aviationaircraftphoto.com/professional-aviation-photographer/?utm_source=chatgpt.com)\n\nPart two goes further into depth, and Ill release that next week.\n\nI’m curious what the community thinks: how many of you have just fallen into their career rather than planning for it from day 1",
+    "score": 63,
+    "url": "https://reddit.com/r/aviation/comments/1pdq940/commercial_aircraft_photog/",
+    "created_at": "2025-12-04T04:09:19.000Z",
+    "num_comments": 3
+  },
+  {
+    "id": "reddit-1o4t9v0",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Vietnam War Combat-Worn Flight Helmet \"Flight of the Intruder\"",
+    "text": "19667-68 worn APH-6C flight helmet that was worn by Warrant Officer 1 Arthur \"Art\" Critser. He was serving as Bombadier-Navigator on the A-6 Intruder; flying missions aboard the USS Kitty Hawk. The Squadron flew missions primarily over North Vietnam and were very busy during Tet Offensice dropping warheads on foreheads to help besieged fire bases. \n\nThe A-6 Intruder is an all-weather attack aircraft with a formidable payload known for its toughness. Made forever famous by Steven Coont's 1986 book \"Flight of the Intruder\" and its 1991 movie adaptation starring Brad Johnson, William DaFoe, and William Glover. DaFoe portrayed Bombadier-Navigator LCDR Virgil Cole  had so much swagger behind it, it makes the movie a great watch! Makes this helmet cooler to me as I'd like to think Critser had the same swagger knowing he was more experinced than Cole and served in the same role. \n\nArt Critser had a 30 plus year career in the Navy starting as in 1951 flying aboard PB4Y-2 Privateer during the Korean War and allegedly surviving multiple water landings. While with VA-75 \"Sunday Boxer's\" he was a Warrant Officer which is a very rare rank in the Navy, espcially for fliers. He is credited with 1,888 arrested landings on a flight deck with 12,000  flight hours logged over 28 years! He was still serving in the active duty US Navy in 1981 as a Maintaince Officer with VA-75 with the rank of Lieutenant Commander! Rarely do service members do more than 20 years active. Its crazy knowing he really did serve almost every rank from Seaman to Lieutenant Commander with time as a Warrant! That's three seperate moves where you go from a senior member to being the bottom of another totem pole. Though with a career like his, alot of legends spread making it hard to know what was true or made up. ",
+    "score": 51,
+    "url": "https://reddit.com/r/aviation/comments/1o4t9v0/vietnam_war_combatworn_flight_helmet_flight_of/",
+    "created_at": "2025-10-12T16:17:51.000Z",
+    "num_comments": 11
+  },
+  {
+    "id": "reddit-1o3smm7",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Alfred Buckham exhibition",
+    "text": "Alfred Buckham was a true pioneer in aviation photography. Starting his career in 1905, Buckham made pictures using a fragile plate camera whilst standing up in open aircraft. To achieve his photographs, he would often tie the seatbelt around his leg and dangle himself and his camera out of the cockpit, exposing himself to intense cold and often being coated in hot engine oil. This month, The National Galleries of Scotland will be celebrating his work in their exhibition “Alfred Buckham: Daredevil Photographer” running from 18th October 2025 - 19th April 2026",
+    "score": 51,
+    "url": "https://reddit.com/r/aviation/comments/1o3smm7/alfred_buckham_exhibition/",
+    "created_at": "2025-10-11T10:54:54.000Z",
+    "num_comments": 4
+  },
+  {
+    "id": "reddit-1jxy8gg",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "What a perfect day for an air show in Beaufort!",
+    "text": "I took the family to the [Beaufort air show](https://www.beaufortairshow.com/) today, and it was an absolute blast.  My son hadn't seen the Blue Angels yet, and his new girlfriend seemed even more excited about it than he was (keeper). \n\nI sort of had an aversion to flying at the end of my flying career (post-9/11 poorhouse instructor stories), so I kept away for years out of frustration and stupidity.  As such, I haven't been to an air show in years.  Today reminded my dumb ass why I got into this in the first place.  Incidentally, I was totally not aware that Fat Albert hasn't used the JATO bottles in years.  I kind of hyped that aspect up, and when he ended up just doing a \"super-duper-soft field\" and running a couple of laps around the pattern, it was a bit anticlimactic.  Can we get a YouTube influencer out there to crowdsource new JATO development so as to properly tickle my nostalgia?\n\nI spent my 20's in the clouds, so I've been to and worked at numerous air shows over the years; and I have to say this weather was just as good as it gets.  We had a perfect lowcountry spring day (don't ask me about July), and some amazing aircraft came out to frolic in the sunshine.\n\n",
+    "score": 43,
+    "url": "https://reddit.com/r/aviation/comments/1jxy8gg/what_a_perfect_day_for_an_air_show_in_beaufort/",
+    "created_at": "2025-04-13T03:05:49.000Z",
+    "num_comments": 4
+  },
+  {
+    "id": "reddit-1hwtzoy",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Where do I start to become a pilot?",
+    "text": "I apologize if im asking this question at the wrong sub. \n\nIm currently at college studying cybersecurity and I hate it. I dont find it interesting at all and Ive really tried to enjoy it. Piloting and aviation caught my attention after my friend recommended it, it sounds a lot more exciting than what I’m studying and is something I could genuinely see myself doing long-term, unlike my current major. \n\nI want to learn to fly and hopefully one day for an airline. I just dont know where to start at all, I don’t personally know any airline pilots or anyone that does. Theres an ATP flight school 30 minutes from me but its super expensive and apparently big corporate flight schools have a really bad rep. My buddy’s grandpa has a plane and said he’d take me up sometime but he doesn’t have any commercial or airline experience. It’s definitely helpful but I need to know how I can make this a career. \n\nIt doesn’t look like I need a specific degree or any degree according to what I’ve read. Finances aren’t my biggest concern, I know I can find a way to pay for something I have a passion for. \n\nWhere do I start?",
+    "score": 41,
+    "url": "https://reddit.com/r/aviation/comments/1hwtzoy/where_do_i_start_to_become_a_pilot/",
+    "created_at": "2025-01-08T20:26:19.000Z",
+    "num_comments": 40
+  },
+  {
+    "id": "reddit-1mt1vcy",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Some cool vintage / historic planes in Virginia",
+    "text": "Over the years I've worked with several private aviation companies.  One of them, Dynamic Aviation, has several vintage aircraft that they maintain -- and one historic aircraft that they're refurbishing, the Constellation \"*Columbine II*\" that was the first aircraft to use the callsign \"Air Force One\".  During one of our visits to their facilities, they were kind enough to give me and my coworkers a guided tour of their private hangar.  I thought y'all might enjoy the photos I took.  Some other beautiful aircraft are included as a bonus.",
+    "score": 40,
+    "url": "https://reddit.com/r/aviation/comments/1mt1vcy/some_cool_vintage_historic_planes_in_virginia/",
+    "created_at": "2025-08-17T20:36:13.000Z",
+    "num_comments": 3
+  },
+  {
+    "id": "reddit-1lcp90n",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "PC12 Own vs Charter",
+    "text": "Looking to get some feedback/opinions before I go and sit down with some brokers and management companies, I don't like going in to anything blind. \n\nWe're a business headquartered in the southeast with operations in 6 different states. Where we're headquartered doesn't have a lot of direct commercial flights. Currently travel is being handled with a mix of commercial, charter and driving. 90% of flights would be 1-6 passengers, within a 600 mile radius. \n\nFor charter we're currently just doing on demand, dealing with two local operators and a broker. We're not in a big charter market, and often are needing planes on short notice so we run into avaiblility issues and often end up paying to reposition out of town aircraft. On average, all in we're paying about $8k/hr to fly turbprops and light jets. \n\nIt seems like the best bang for our buck would be the PC12 and I wanted to throw these numbers out and hopefully find some people on here with relevant experience. \n\n**Pilatus PC-12 – 1-Year Ownership Cost Breakdown ($5M purchase, 275 hrs)**\n\n| Category                                | Estimated Cost (USD) |\n|-----------------------------------------|-----------------------|\n| Crew Salaries &amp; Benefits                | $180,000              |\n| Insurance                               | $35,000               |\n| Hangar                                  | $50,000               |\n| Training                                | $25,000               |\n| Maintenance Programs &amp; Subscriptions    | $60,000               |\n| Management Fees                         | $120,000              |\n| Loan Payment (Annual @ 6%)              | $543,472              |\n| Fuel                                    | $137,500              |\n| Maintenance (Parts &amp; Labor)             | $55,000               |\n| Engine Program (Hourly Reserve)         | $30,000               |\n| Misc. Operating Costs (Oil, Landing, etc.) | $25,000            |\n\nTotal Annual Outlay: $1,260,972\nCost per Flight Hour (275 hrs): ~$4,586/hr\n\nAssuming we would fly 200 occupied hours and 75 hours for repositioning. Plane financed for 10 years, $1m down on a $5m plane. For what were currently averaging in cost, I'm calculating about 155-160 hours to break even own vs charter. Do these numbers seem realistic? \n\nIs it worth springing for a 2018+ for $5-6m instead of an older one in the $4m range? \n\nShould we look at any other planes? \n\nIs it worth the headache to put an owned plane in a part 135 program to offset some of the cost? \n\n",
+    "score": 13,
+    "url": "https://reddit.com/r/aviation/comments/1lcp90n/pc12_own_vs_charter/",
+    "created_at": "2025-06-16T10:24:19.000Z",
+    "num_comments": 16
+  },
+  {
+    "id": "reddit-1p8nhjr",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Advice Requested re: Lateral Career Move into Aviation",
+    "text": "Hi all, so my wife and I are considering a possible relocation from Western NC back to middle TN to be able to be a bit closer to aging parents (and my in-laws, whom I love dearly).\n\nMy wife's profession is readily portable, in that she can find a job in her field nearly anywhere as it involves practicing a rather homogenized, licensed skill set that can be applied readily in nearly any location.\n\nI, on the other hand, have been climbing in duties and importance of role (as well as salary) and status at a large not for profit corporation for the last 11 years.  I have been passionately serving its mission while gaining incredible experience, as I built and now enjoyed my own created role/position here, over time, with an almost unmatchable quality of life and flexibility inherent to my role.  Critically, I also used this as a path to discharge of my former substantial [now discharged, incredibly] grad school debt.  I enjoy my job, so the prospect of moving is not a decision being made hastily or under any real duress.\n\nBut at the same time, I've also come to realize and accept that I've perhaps outgrown my current role (I'm the Director of HR &amp; Risk Management here, along with many other horizontal duties I've inherited via attrition over the years). There is no real vertical growth left for me here; I'm topped out as far as pay and position. Well, the only vertical organizational step left would be to become CEO, and we're not at a point in life where I'd be ready for those responsibilities while also being a highly engaged and involved father to our one son, who is a thriving second grader right now.  As he was a \"one and done\" for us (I'm 44, wifey is 41), I only get to be a dad once, and no job that takes full commitment like that is worth the trade-off of my first priority, focus and time; it's family, friends, career -- in that order.\n\nNow, I'm a lifelong AV geek, and spend nearly all of my free time immersing myself in that industry, as an outsider.  It's a little late in the game for a total career change altogether, and I don't think I would want to start working my way up as a new A&amp;P or take on additional education debt, and though I've wanted to be a pilot since my first commercial flight when I was my son's age, I don't see that difficult and time consuming, expensive pursuit to be in the cards for me, and I'm ok with that.  I don't have to be the guy sitting in the pointy end of an aircraft for a living to be around airplanes, or working somehow in the industry that has for so long captivated my imagination and fueled my passion for all things winged.\n\nMy question is, moving to middle TN (between Knoxville and Nashville), are there any career paths available either locally, or potentially hybrid/remote roles, that would make sense for an experienced mid-career-level ops guy, analyst, manager/director/leader/exec like me to jump into?\n\nI've worked in several different fields, enjoying good succes in all of them, but ironically, never the one that I'm most interested in.  \n\nThanks for reading and in advance for your thoughts and constructive, helpful advice and ideas to a guy who just wants to be a part of something he's loved since childhood -- but never had the right opportunity to jump into.  Again, I don't have to be a pilot or even part of the flight crew, I just wanna breathe the same air, so to speak!\n\nOh, one last thing: salary requirements are fairly flexible; as I've been working in a mission-based field at a nonprofit for so long, I think that (sadly), I could probably be almost anything and replace my current income, haha.  But from my own early benchmarking research, I'd probably be pretty marketable at somewhere around $120-$155k, I believe.  So there's a data point to consider...\n\nAgain, TIA!",
+    "score": 9,
+    "url": "https://reddit.com/r/aviation/comments/1p8nhjr/advice_requested_re_lateral_career_move_into/",
+    "created_at": "2025-11-28T06:07:10.000Z",
+    "num_comments": 5
+  },
+  {
+    "id": "reddit-1m1yn2u",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Aircraft Quality inspection salaries",
+    "text": "Just curious if anybody is willing to share.  I work in Quality control/inspection at a large company that does military and commercial heavy maintenance/modification and am trying to build a case to prove we are underpaid to our management. By the time you add adder/incentive pays, our average senior techs are making $8k to $15k more than the QC guys who are inspecting their work.  Meanwhile, to even be QC, there is the expectation that you have the knowledge/experience of a senior level tech.  Just curious what you guys are making and where you work?  I dont mean to discount the guys working GA, small companies, etc, but im talking to the guys working big places, Lockheed, Raytheon, Boeing, any airliner.  Not including overtime, what is your base pay at 40 hrs/wk.  Tired of getting stiffed by senior leadership who really has no clue what we do. My immediate leadership is fighting for us but gets shut down anytime these concerns get more than one level above them.",
+    "score": 8,
+    "url": "https://reddit.com/r/aviation/comments/1m1yn2u/aircraft_quality_inspection_salaries/",
+    "created_at": "2025-07-17T04:54:13.000Z",
+    "num_comments": 1
+  },
+  {
+    "id": "reddit-1mfs21z",
+    "subreddit": "aviation",
+    "soc_codes": [
+      "49-3011"
+    ],
+    "title": "Pilot career in australia",
+    "text": "Hello, I have been thinking about migrating to Australia to pursue a career in aviation and become a pilot. \n\nI looked around a bit and was wondering how the situation is in australia for pilots, is there active hiring with big demand (Australia has a shortage) or like some reddit posts were claiming pilots leave australia for other countries as the hiring requirements are tough requiring pilots to work for many years in regional/remote areas for low salaries and high competition to get the required flight experience.\n\nMy fear is that I will be stuck unemployed in Australia after obtaining my CPL. Thank you for your time.",
+    "score": 5,
+    "url": "https://reddit.com/r/aviation/comments/1mfs21z/pilot_career_in_australia/",
+    "created_at": "2025-08-02T14:35:43.000Z",
+    "num_comments": 18
+  }
+]

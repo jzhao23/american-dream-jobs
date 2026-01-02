@@ -2,15 +2,14 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import type { CareerIndex, TrainingTime } from "@/types/career";
+import type { CareerIndex, TrainingTime, AIResilienceClassification } from "@/types/career";
 import {
   formatPay,
   getTrainingTimeLabel,
-  getAIRiskColor,
-  getAIRiskLabel,
-  getImportanceColor,
   getCategoryColor,
   getCategoryLabel,
+  getAIResilienceEmoji,
+  getAIResilienceColor,
 } from "@/types/career";
 import { CareerActions } from "./CareerActions";
 import { addToRecentlyViewed } from "@/lib/storage";
@@ -18,11 +17,19 @@ import { addToRecentlyViewed } from "@/lib/storage";
 interface CareerExplorerProps {
   careers: CareerIndex[];
   hideCategoryFilter?: boolean;
-  initialSort?: "median_pay" | "ai_risk" | "importance" | "title";
+  initialSort?: "median_pay" | "ai_resilience" | "title";
 }
 
-type SortField = "median_pay" | "ai_risk" | "importance" | "title";
+type SortField = "median_pay" | "ai_resilience" | "title";
 type SortDirection = "asc" | "desc";
+
+// AI Resilience tiers in order from most to least resilient
+const AI_RESILIENCE_TIERS: AIResilienceClassification[] = [
+  "AI-Resilient",
+  "AI-Augmented",
+  "In Transition",
+  "High Disruption Risk",
+];
 
 const TRAINING_TIME_ORDER: TrainingTime[] = ["<6mo", "6-24mo", "2-4yr", "4+yr"];
 
@@ -34,10 +41,10 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
   const getInitialValue = (key: string, defaultValue: any) => {
     const param = searchParams.get(key);
     if (!param) return defaultValue;
-    if (key === "selectedCategories" || key === "selectedTrainingTimes") {
+    if (key === "selectedCategories" || key === "selectedTrainingTimes" || key === "selectedAIResilience") {
       return param.split(",").filter(Boolean);
     }
-    if (key === "minPay" || key === "maxAIRisk" || key === "minImportance" || key === "currentPage") {
+    if (key === "minPay" || key === "currentPage") {
       return Number(param) || defaultValue;
     }
     return param || defaultValue;
@@ -48,12 +55,18 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
   const [minPay, setMinPay] = useState(() => getInitialValue("minPay", 0));
   const [selectedCategories, setSelectedCategories] = useState<string[]>(() => getInitialValue("selectedCategories", []));
   const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>(() => getInitialValue("selectedTrainingTimes", []));
-  const [maxAIRisk, setMaxAIRisk] = useState(() => getInitialValue("maxAIRisk", 10));
-  const [minImportance, setMinImportance] = useState(() => getInitialValue("minImportance", 1));
+  const [selectedAIResilience, setSelectedAIResilience] = useState<AIResilienceClassification[]>(() => getInitialValue("selectedAIResilience", []));
 
   // Sort state
-  const [sortField, setSortField] = useState<SortField>(() => (initialSort || getInitialValue("sortField", "importance")) as SortField);
-  const [sortDirection, setSortDirection] = useState<SortDirection>(() => getInitialValue("sortDirection", "desc") as SortDirection);
+  const [sortField, setSortField] = useState<SortField>(
+    () => (initialSort || getInitialValue("sortField", "median_pay")) as SortField
+  );
+  const [sortDirection, setSortDirection] = useState<SortDirection>(
+    () => getInitialValue("sortDirection", "desc") as SortDirection
+  );
+
+  // Mobile filter toggle
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(() => getInitialValue("currentPage", 1));
@@ -66,15 +79,24 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
     if (minPay > 0) params.set("minPay", minPay.toString());
     if (selectedCategories.length > 0) params.set("selectedCategories", selectedCategories.join(","));
     if (selectedTrainingTimes.length > 0) params.set("selectedTrainingTimes", selectedTrainingTimes.join(","));
-    if (maxAIRisk < 10) params.set("maxAIRisk", maxAIRisk.toString());
-    if (minImportance > 1) params.set("minImportance", minImportance.toString());
-    if (sortField !== "importance") params.set("sortField", sortField);
+    if (selectedAIResilience.length > 0) params.set("selectedAIResilience", selectedAIResilience.join(","));
+    if (sortField !== "median_pay") params.set("sortField", sortField);
     if (sortDirection !== "desc") params.set("sortDirection", sortDirection);
     if (currentPage > 1) params.set("currentPage", currentPage.toString());
 
     const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
     router.replace(newUrl, { scroll: false });
-  }, [searchQuery, minPay, selectedCategories, selectedTrainingTimes, maxAIRisk, minImportance, sortField, sortDirection, currentPage, router]);
+  }, [
+    searchQuery,
+    minPay,
+    selectedCategories,
+    selectedTrainingTimes,
+    selectedAIResilience,
+    sortField,
+    sortDirection,
+    currentPage,
+    router,
+  ]);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -106,11 +128,15 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
         return false;
       }
 
-      // AI risk filter
-      if (career.ai_risk > maxAIRisk) return false;
+      // AI Resilience filter
+      if (selectedAIResilience.length > 0) {
+        if (!career.ai_resilience || !selectedAIResilience.includes(career.ai_resilience as AIResilienceClassification)) {
+          return false;
+        }
+      }
 
-      // Importance filter
-      if (career.importance < minImportance) return false;
+      // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
+      // if (career.importance < minImportance) return false;
 
       return true;
     });
@@ -123,12 +149,16 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
         case "median_pay":
           comparison = a.median_pay - b.median_pay;
           break;
-        case "ai_risk":
-          comparison = a.ai_risk - b.ai_risk;
+        case "ai_resilience":
+          // Sort by tier (1=resilient, 4=high risk), nulls at end
+          const tierA = a.ai_resilience_tier ?? 99;
+          const tierB = b.ai_resilience_tier ?? 99;
+          comparison = tierA - tierB;
           break;
-        case "importance":
-          comparison = a.importance - b.importance;
-          break;
+        // ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
+        // case "importance":
+        //   comparison = a.importance - b.importance;
+        //   break;
         case "title":
           comparison = a.title.localeCompare(b.title);
           break;
@@ -144,8 +174,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
     minPay,
     selectedCategories,
     selectedTrainingTimes,
-    maxAIRisk,
-    minImportance,
+    selectedAIResilience,
     sortField,
     sortDirection,
   ]);
@@ -175,12 +204,20 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
     setCurrentPage(1);
   };
 
+  const toggleAIResilience = (tier: AIResilienceClassification) => {
+    setSelectedAIResilience((prev) =>
+      prev.includes(tier) ? prev.filter((t) => t !== tier) : [...prev, tier]
+    );
+    setCurrentPage(1);
+  };
+
   const handleSort = (field: SortField) => {
     if (sortField === field) {
       setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
     } else {
       setSortField(field);
-      setSortDirection(field === "ai_risk" ? "asc" : "desc");
+      // For AI resilience, lower tier is better (asc), for pay higher is better (desc)
+      setSortDirection(field === "ai_resilience" ? "asc" : "desc");
     }
   };
 
@@ -189,8 +226,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
     setMinPay(0);
     setSelectedCategories([]);
     setSelectedTrainingTimes([]);
-    setMaxAIRisk(10);
-    setMinImportance(1);
+    setSelectedAIResilience([]);
     setCurrentPage(1);
   };
 
@@ -199,143 +235,258 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
     minPay > 0 ||
     selectedCategories.length > 0 ||
     selectedTrainingTimes.length > 0 ||
-    maxAIRisk < 10 ||
-    minImportance > 1;
+    selectedAIResilience.length > 0;
+
+  // Count active filters (excluding search) for mobile display
+  const activeFilterCount =
+    (minPay > 0 ? 1 : 0) +
+    selectedCategories.length +
+    selectedTrainingTimes.length +
+    selectedAIResilience.length;
 
   return (
     <div>
-      {/* Search */}
-      <div className="mb-6">
-        <input
-          type="text"
-          placeholder="Search careers..."
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            setCurrentPage(1);
-          }}
-          className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
-        />
-      </div>
-
-      {/* Filters */}
-      <div className="card p-6 mb-6">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <h3 className="font-semibold text-secondary-900">Filters</h3>
-          {hasActiveFilters && (
-            <button
-              onClick={clearFilters}
-              className="text-sm text-primary-600 hover:text-primary-700"
-            >
-              Clear all
-            </button>
-          )}
+      {/* Compact Filter Bar */}
+      <div className="card p-3 mb-6">
+        {/* Mobile: Search + Filters toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="Search careers..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="w-full px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+            />
+          </div>
+          <button
+            onClick={() => setFiltersExpanded(!filtersExpanded)}
+            className={`flex items-center gap-1 px-3 py-2 min-h-[44px] text-sm font-medium rounded-lg border transition-colors ${
+              activeFilterCount > 0
+                ? "bg-primary-100 text-primary-700 border-primary-300"
+                : "bg-white text-secondary-700 border-secondary-300"
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            Filters{activeFilterCount > 0 && ` (${activeFilterCount})`}
+            <svg className={`w-4 h-4 transition-transform ${filtersExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Min Pay Slider */}
-          <div>
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-              Minimum Pay: {formatPay(minPay)}
-            </label>
+        {/* Mobile: Expandable filter panel */}
+        {filtersExpanded && (
+          <div className="mt-3 pt-3 border-t border-secondary-200 space-y-3 md:hidden">
+            {/* Min Pay */}
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-secondary-700">Min Pay</label>
+              <select
+                value={minPay}
+                onChange={(e) => {
+                  setMinPay(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
+              >
+                <option value={0}>Any</option>
+                <option value={30000}>$30k+</option>
+                <option value={50000}>$50k+</option>
+                <option value={75000}>$75k+</option>
+                <option value={100000}>$100k+</option>
+                <option value={150000}>$150k+</option>
+              </select>
+            </div>
+
+            {/* AI Resilience Filter */}
+            <div>
+              <label className="text-sm font-medium text-secondary-700 block mb-2">AI Resilience</label>
+              <div className="flex flex-wrap gap-2">
+                {AI_RESILIENCE_TIERS.map((tier) => (
+                  <button
+                    key={tier}
+                    onClick={() => toggleAIResilience(tier)}
+                    className={`px-3 py-2 min-h-[44px] text-sm rounded-lg border transition-colors flex items-center gap-1 ${
+                      selectedAIResilience.includes(tier)
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                    }`}
+                  >
+                    <span>{getAIResilienceEmoji(tier)}</span>
+                    <span className="hidden sm:inline">{tier}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Training Time */}
+            <div>
+              <label className="text-sm font-medium text-secondary-700 block mb-2">Training Time</label>
+              <div className="flex flex-wrap gap-2">
+                {TRAINING_TIME_ORDER.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => toggleTrainingTime(time)}
+                    className={`px-4 py-2 min-h-[44px] text-sm rounded-lg border transition-colors ${
+                      selectedTrainingTimes.includes(time)
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                    }`}
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Category Filter on mobile */}
+            {!hideCategoryFilter && (
+              <div>
+                <label className="text-sm font-medium text-secondary-700 block mb-2">Category</label>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => toggleCategory(category)}
+                      className={`px-3 py-2 min-h-[44px] text-sm rounded-full border transition-colors whitespace-nowrap ${
+                        selectedCategories.includes(category)
+                          ? "bg-primary-600 text-white border-primary-600"
+                          : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                      }`}
+                    >
+                      {getCategoryLabel(category)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Clear Filters */}
+            {hasActiveFilters && (
+              <button
+                onClick={() => {
+                  clearFilters();
+                  setFiltersExpanded(false);
+                }}
+                className="w-full py-2 min-h-[44px] text-sm font-medium text-primary-600 border border-primary-300 rounded-lg active:bg-primary-50"
+              >
+                Clear All Filters
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Desktop: Inline filters (hidden on mobile) */}
+        <div className="hidden md:flex md:flex-wrap md:items-center md:gap-3">
+          {/* Search */}
+          <div className="flex-1 min-w-[200px]">
             <input
-              type="range"
-              min={0}
-              max={150000}
-              step={10000}
+              type="text"
+              placeholder="Search careers..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="w-full px-3 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+            />
+          </div>
+
+          {/* Min Pay */}
+          <div className="flex items-center gap-2">
+            <label className="text-xs font-medium text-secondary-600 whitespace-nowrap">
+              Pay ≥
+            </label>
+            <select
               value={minPay}
               onChange={(e) => {
                 setMinPay(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
-            />
+              className="px-2 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
+            >
+              <option value={0}>Any</option>
+              <option value={30000}>$30k</option>
+              <option value={50000}>$50k</option>
+              <option value={75000}>$75k</option>
+              <option value={100000}>$100k</option>
+              <option value={150000}>$150k</option>
+            </select>
           </div>
 
-          {/* Max AI Risk Slider */}
-          <div>
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-              Max AI Risk: {maxAIRisk}/10
-            </label>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              step={1}
-              value={maxAIRisk}
-              onChange={(e) => {
-                setMaxAIRisk(Number(e.target.value));
-                setCurrentPage(1);
-              }}
-              className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
-            />
+          {/* AI Resilience Filter */}
+          <div className="flex items-center gap-1">
+            <span className="text-xs font-medium text-secondary-600 mr-1">AI:</span>
+            {AI_RESILIENCE_TIERS.map((tier) => (
+              <button
+                key={tier}
+                onClick={() => toggleAIResilience(tier)}
+                title={tier}
+                className={`px-1.5 py-1 text-sm rounded border transition-colors ${
+                  selectedAIResilience.includes(tier)
+                    ? "bg-primary-600 border-primary-600"
+                    : "bg-white border-secondary-300 hover:border-primary-300"
+                }`}
+              >
+                {getAIResilienceEmoji(tier)}
+              </button>
+            ))}
           </div>
 
-          {/* Min Importance Slider */}
-          <div>
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-              Min Importance: {minImportance}/10
-            </label>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              step={1}
-              value={minImportance}
-              onChange={(e) => {
-                setMinImportance(Number(e.target.value));
-                setCurrentPage(1);
-              }}
-              className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
-            />
+          {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
+
+          {/* Training Time */}
+          <div className="flex items-center gap-1">
+            {TRAINING_TIME_ORDER.map((time) => (
+              <button
+                key={time}
+                onClick={() => toggleTrainingTime(time)}
+                className={`px-2 py-1 text-xs rounded border transition-colors ${
+                  selectedTrainingTimes.includes(time)
+                    ? "bg-primary-600 text-white border-primary-600"
+                    : "bg-white text-secondary-600 border-secondary-300 hover:border-primary-300"
+                }`}
+              >
+                {time}
+              </button>
+            ))}
           </div>
 
-          {/* Training Time Filter */}
-          <div>
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-              Training Time
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {TRAINING_TIME_ORDER.map((time) => (
-                <button
-                  key={time}
-                  onClick={() => toggleTrainingTime(time)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                    selectedTrainingTimes.includes(time)
-                      ? "bg-primary-600 text-white border-primary-600"
-                      : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
-                  }`}
-                >
-                  {time}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Category Filter - Hidden when showing single category */}
-          {!hideCategoryFilter && (
-            <div className="lg:col-span-2">
-              <label className="block text-sm font-medium text-secondary-700 mb-2">
-                Category ({categories.length} total)
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => toggleCategory(category)}
-                    className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                      selectedCategories.includes(category)
-                        ? "bg-primary-600 text-white border-primary-600"
-                        : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
-                    }`}
-                  >
-                    {getCategoryLabel(category)}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Clear Filters */}
+          {hasActiveFilters && (
+            <button
+              onClick={clearFilters}
+              className="text-xs text-primary-600 hover:text-primary-700 whitespace-nowrap"
+            >
+              Clear
+            </button>
           )}
         </div>
+
+        {/* Category Filter - shown on second row for desktop when not hidden */}
+        {!hideCategoryFilter && (
+          <div className="hidden md:flex md:flex-wrap md:items-center md:gap-2 md:mt-3 md:pt-3 md:border-t md:border-secondary-200">
+            <span className="text-xs font-medium text-secondary-600">Category:</span>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => toggleCategory(category)}
+                className={`px-2 py-0.5 text-xs rounded-full border transition-colors whitespace-nowrap ${
+                  selectedCategories.includes(category)
+                    ? "bg-primary-600 text-white border-primary-600"
+                    : "bg-white text-secondary-600 border-secondary-300 hover:border-primary-300"
+                }`}
+              >
+                {getCategoryLabel(category)}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Results count and sort */}
@@ -348,9 +499,9 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
           <span className="text-sm text-secondary-600">Sort by:</span>
           <div className="flex gap-1">
             {[
-              { field: "importance" as const, label: "Importance" },
+              // ARCHIVED: { field: "importance" as const, label: "Importance" },
               { field: "median_pay" as const, label: "Pay" },
-              { field: "ai_risk" as const, label: "AI Risk" },
+              { field: "ai_resilience" as const, label: "AI Resilience" },
               { field: "title" as const, label: "A-Z" },
             ].map(({ field, label }) => (
               <button
@@ -390,10 +541,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
                 Training
               </th>
               <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
-                AI Risk
-              </th>
-              <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
-                Importance
+                AI Resilience
               </th>
               <th className="text-right px-4 py-3 text-sm font-semibold text-secondary-900">
                 Actions
@@ -417,31 +565,31 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
                     </a>
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(career.category)}`}>
+                    <a
+                      href={`/categories/${career.category}`}
+                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium hover:opacity-80 transition-opacity ${getCategoryColor(career.category)}`}
+                    >
                       {getCategoryLabel(career.category)}
-                    </span>
+                    </a>
                   </td>
                   <td className="px-4 py-3 text-right font-medium text-secondary-900">
                     {formatPay(career.median_pay)}
                   </td>
                   <td className="px-4 py-3 text-center">
                     <span className="text-sm text-secondary-600">
-                      {career.training_time === "4+yr" && career.training_years
-                        ? (career.training_years.min === career.training_years.max
-                            ? `${career.training_years.min} years`
-                            : `${career.training_years.min}-${career.training_years.max} years`)
-                        : career.training_time}
+                      {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-center">
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                      {career.ai_risk}/10
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                      {career.importance}/10
-                    </span>
+                    {career.ai_resilience && (
+                      <span
+                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.ai_resilience as AIResilienceClassification)}`}
+                        title={career.ai_resilience}
+                      >
+                        <span>{getAIResilienceEmoji(career.ai_resilience as AIResilienceClassification)}</span>
+                        <span className="hidden xl:inline">{career.ai_resilience}</span>
+                      </span>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end">
@@ -470,45 +618,51 @@ export function CareerExplorer({ careers, hideCategoryFilter = false, initialSor
           return (
             <div
               key={career.slug}
-              className="card p-4 hover:shadow-md transition-shadow"
+              className="card p-4 block hover:shadow-md transition-shadow"
             >
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3 className="font-semibold text-secondary-900">
+                    <a
+                      href={`/careers/${career.slug}`}
+                      onClick={handleCardClick}
+                      className="text-primary-600 hover:text-primary-700 hover:underline"
+                    >
+                      {career.title}
+                    </a>
+                  </h3>
+                  <a
+                    href={`/categories/${career.category}`}
+                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 hover:opacity-80 transition-opacity ${getCategoryColor(career.category)}`}
+                  >
+                    {getCategoryLabel(career.category)}
+                  </a>
+                </div>
+                <a
+                  href={`/careers/${career.slug}`}
+                  onClick={handleCardClick}
+                  className="text-lg font-bold text-primary-600 hover:text-primary-700"
+                >
+                  {formatPay(career.median_pay)}
+                </a>
+              </div>
               <a
                 href={`/careers/${career.slug}`}
                 onClick={handleCardClick}
-                className="block"
+                className="flex flex-wrap gap-2 mt-3"
               >
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-secondary-900">
-                      {career.title}
-                    </h3>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mt-1 ${getCategoryColor(career.category)}`}>
-                      {getCategoryLabel(career.category)}
-                    </span>
-                  </div>
-                  <div className="text-right ml-2">
-                    <div className="text-lg font-bold text-primary-600">
-                      {formatPay(career.median_pay)}
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-2 mt-3">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-secondary-500">AI Risk:</span>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
-                      {career.ai_risk}/10
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-secondary-500">Importance:</span>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                      {career.importance}/10
-                    </span>
-                  </div>
-                </div>
-                <div className="text-xs text-secondary-500 mt-2">
+                <span className="text-sm text-secondary-600">
                   {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
-                </div>
+                </span>
+                <span className="text-secondary-300">•</span>
+                {career.ai_resilience && (
+                  <span
+                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.ai_resilience as AIResilienceClassification)}`}
+                  >
+                    <span>{getAIResilienceEmoji(career.ai_resilience as AIResilienceClassification)}</span>
+                    <span>{career.ai_resilience}</span>
+                  </span>
+                )}
               </a>
               <CareerActions career={career} variant="card" />
             </div>

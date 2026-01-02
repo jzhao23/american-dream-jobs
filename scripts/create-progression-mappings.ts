@@ -193,10 +193,64 @@ function generateProgressionFromLevelsFyi(
   };
 }
 
+/**
+ * Estimates missing wage percentiles when BLS caps high earner data.
+ * BLS reports null for wages exceeding ~$208,000/year.
+ * This function estimates 75th and 90th percentiles using available data.
+ */
+function estimateMissingPercentiles(wages: {
+  pct_10: number | null;
+  pct_25: number | null;
+  median: number | null;
+  pct_75: number | null;
+  pct_90: number | null;
+  mean?: number | null;
+}): { pct_10: number; pct_25: number; median: number; pct_75: number; pct_90: number } {
+  // Use fallback defaults if lower percentiles are missing
+  const pct_10 = wages.pct_10 ?? 30000;
+  const pct_25 = wages.pct_25 ?? pct_10 * 1.2;
+  const median = wages.median ?? pct_25 * 1.25;
+
+  let pct_75 = wages.pct_75;
+  let pct_90 = wages.pct_90;
+
+  // If pct_75 is null, estimate from available data
+  if (pct_75 === null || pct_75 === 0) {
+    if (wages.mean && wages.mean > median) {
+      // Use mean as indicator - if mean > median, distribution is right-skewed
+      // Estimate pct_75 between median and mean, closer to mean
+      pct_75 = Math.round(median + (wages.mean - median) * 0.8);
+    } else if (pct_25 > 0) {
+      // Use ratio between 25th and median to project 75th
+      const ratio = median / pct_25;
+      pct_75 = Math.round(median * Math.min(ratio, 1.5)); // Cap at 1.5x to avoid extreme values
+    } else {
+      // Fallback: 25% above median
+      pct_75 = Math.round(median * 1.25);
+    }
+  }
+
+  // If pct_90 is null, estimate from pct_75
+  if (pct_90 === null || pct_90 === 0) {
+    if (wages.mean && wages.mean > pct_75) {
+      // If mean still exceeds 75th, use it as floor for 90th
+      pct_90 = Math.round(wages.mean * 1.15);
+    } else {
+      // Use ratio between median and 75th to project 90th
+      const ratio = pct_75 / median;
+      pct_90 = Math.round(pct_75 * Math.min(ratio, 1.4)); // Cap at 1.4x to avoid extreme values
+    }
+  }
+
+  return { pct_10, pct_25, median, pct_75, pct_90 };
+}
+
 function generateProgressionFromBLS(
-  occ: { wages: { annual: { pct_10: number; pct_25: number; median: number; pct_75: number; pct_90: number } } }
+  occ: { wages: { annual: { pct_10: number | null; pct_25: number | null; median: number | null; pct_75: number | null; pct_90: number | null; mean?: number | null } } }
 ): CareerProgression {
-  const wages = occ.wages?.annual || { pct_10: 30000, pct_25: 40000, median: 50000, pct_75: 65000, pct_90: 85000 };
+  // Use estimated wages to handle null values from BLS capping
+  const rawWages = occ.wages?.annual || { pct_10: 30000, pct_25: 40000, median: 50000, pct_75: 65000, pct_90: 85000 };
+  const wages = estimateMissingPercentiles(rawWages);
 
   const levels = [
     { level_name: 'Entry (10th %ile)', level_number: 1, years_experience: { min: 0, typical: 1, max: 2 }, value: wages.pct_10 },

@@ -1,6 +1,17 @@
 # AI Risk Methodology
 
-This document explains how AI risk scores are calculated for each occupation in American Dream Jobs.
+> **LEGACY DOCUMENTATION**
+>
+> This methodology has been superseded by the **[AI Resilience Classification](AI_RESILIENCE_METHODOLOGY.md)**, which provides a more nuanced 4-tier assessment incorporating:
+> - AI task exposure (AIOE dataset, 2021)
+> - Job growth trends (BLS 2024-2034 projections)
+> - Human advantage factors (EPOCH framework)
+>
+> The Frey & Osborne data below is retained for fallback classification of careers missing newer data sources.
+
+---
+
+This document explains how the legacy AI risk scores were calculated for each occupation in American Dream Jobs.
 
 ## Source Study
 

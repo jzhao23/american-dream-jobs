@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import * as fs from "fs";
+import * as path from "path";
 import careers from "../../../../data/careers.generated.json";
+import careersIndex from "../../../../data/careers-index.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
 import { NextSteps } from "@/components/NextSteps";
@@ -11,11 +14,12 @@ import {
   formatPayRange,
   getTrainingTimeLabel,
   getCategoryColor,
-  getAIRiskColor,
-  getAIRiskLabel,
-  getImportanceColor,
-  getImportanceLabel,
+  getAIResilienceColor,
+  getAIResilienceEmoji,
+  type AIResilienceClassification,
 } from "@/types/career";
+import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
+import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -30,6 +34,33 @@ interface RawCareerReviewsSummary {
     url: string;
   }[];
   last_updated: string;
+}
+
+// Full review from per-career file
+interface FullReview {
+  id: string;
+  subreddit: string;
+  soc_codes: string[];
+  title: string;
+  text: string;
+  score: number;
+  url: string;
+  created_at: string;
+  num_comments: number;
+}
+
+// Helper to load all reviews for a career
+function loadCareerReviews(slug: string): FullReview[] {
+  try {
+    const reviewsPath = path.join(process.cwd(), `data/reviews/reviews-by-career/${slug}.json`);
+    if (fs.existsSync(reviewsPath)) {
+      const data = fs.readFileSync(reviewsPath, 'utf-8');
+      return JSON.parse(data) as FullReview[];
+    }
+  } catch {
+    // Fall back to empty array if file doesn't exist
+  }
+  return [];
 }
 
 interface PageProps {
@@ -63,11 +94,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const medianPay = career.wages?.annual?.median || 0;
-  const trainingTime = getTrainingTimeFromYears(career.education?.time_to_job_ready?.typical_years || 2);
+  // Use education_duration (ground truth) if available
+  const trainingTime = getTrainingTimeFromYears(career.education?.education_duration?.typical_years ?? career.education?.time_to_job_ready?.typical_years ?? 2);
 
   return {
     title: `${career.title} | American Dream Jobs`,
-    description: `Learn about becoming a ${career.title}. Median pay: ${formatPay(medianPay)}. Training: ${getTrainingTimeLabel(trainingTime)}. Real career info with AI resilience and national importance scores.`,
+    description: `Learn about becoming a ${career.title}. Median pay: ${formatPay(medianPay)}. Training: ${getTrainingTimeLabel(trainingTime)}. Real career info with AI resilience scores.`,
   };
 }
 
@@ -83,15 +115,20 @@ export default async function CareerPage({ params }: PageProps) {
   const payRange = career.wages?.annual
     ? { min: career.wages.annual.pct_10 || 0, max: career.wages.annual.pct_90 || 0 }
     : null;
-  const trainingTime = getTrainingTimeFromYears(career.education?.time_to_job_ready?.typical_years || 2);
-  const trainingYears = career.education?.time_to_job_ready;
-  const aiRiskScore = career.ai_risk?.score || 5;
-  const importanceScore = career.national_importance?.score || 5;
+  // Use education_duration (ground truth) if available
+  const educationDuration = career.education?.education_duration || career.education?.time_to_job_ready;
+  const trainingTime = getTrainingTimeFromYears(educationDuration?.typical_years ?? 2);
+  const trainingYears = educationDuration;
+  const aiResilience = career.ai_resilience as AIResilienceClassification | undefined;
+  const aiAssessment = career.ai_assessment;
 
   // Find reviews for this career (match by slug or SOC code)
-  const careerReviews = (reviewsIndex as RawCareerReviewsSummary[]).find(
+  const careerReviewsSummary = (reviewsIndex as RawCareerReviewsSummary[]).find(
     (r) => r.slug === career.slug || r.soc_code === career.soc_code
   );
+
+  // Load all reviews for this career (for scrollable display)
+  const allReviews = loadCareerReviews(career.slug);
 
   return (
     <div className="min-h-screen bg-secondary-50">
@@ -158,25 +195,20 @@ export default async function CareerPage({ params }: PageProps) {
             </div>
             <div className="bg-secondary-50 rounded-lg p-4">
               <div className="text-sm text-secondary-600 mb-1">
-                AI Risk
+                AI Resilience
               </div>
               <div className="flex items-center gap-2">
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(aiRiskScore)}`}>
-                  {aiRiskScore}/10 - {getAIRiskLabel(aiRiskScore)}
-                </span>
+                {aiResilience ? (
+                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(aiResilience)}`}>
+                    <span>{getAIResilienceEmoji(aiResilience)}</span>
+                    <span>{aiResilience}</span>
+                  </span>
+                ) : (
+                  <span className="text-secondary-500 text-sm">Assessment pending</span>
+                )}
               </div>
             </div>
-            <div className="bg-secondary-50 rounded-lg p-4">
-              <div className="text-sm text-secondary-600 mb-1">
-                National Importance
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-secondary-900">{importanceScore}/10</span>
-                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(importanceScore)}`}>
-                  {getImportanceLabel(importanceScore)}
-                </span>
-              </div>
-            </div>
+            {/* ARCHIVED: National Importance removed - see data/archived/importance-scores-backup.json */}
             <div className="bg-secondary-50 rounded-lg p-4">
               <div className="text-sm text-secondary-600 mb-1">
                 Education
@@ -186,12 +218,60 @@ export default async function CareerPage({ params }: PageProps) {
               </div>
             </div>
           </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap gap-3 mt-6">
+            <a
+              href={`/compare?career=${career.slug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Compare with other careers
+            </a>
+            <a
+              href={`/calculator?career=${career.slug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              Calculate lifetime earnings
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8">
+          {/* Career Video */}
+          {career.video && (
+            <Section title="Career Video" icon="video">
+              <div className="space-y-4">
+                <CareerVideoPlayer video={career.video} careerTitle={career.title} />
+                <a
+                  href="https://www.careeronestop.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-emerald-600">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                  <span className="text-sm font-medium text-secondary-700">
+                    CareerOneStop
+                  </span>
+                  <span className="text-xs text-secondary-500">
+                    U.S. Department of Labor
+                  </span>
+                </a>
+              </div>
+            </Section>
+          )}
+
           {/* Key Tasks */}
           {career.tasks && career.tasks.length > 0 && (
             <Section title="Key Responsibilities" icon="clipboard">
@@ -203,6 +283,19 @@ export default async function CareerPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+            </Section>
+          )}
+
+          {/* Inside This Career */}
+          {career.inside_look && (
+            <Section title="Inside This Career" icon="insight">
+              <div className="prose prose-secondary max-w-none">
+                {career.inside_look.content.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className="text-secondary-700 leading-relaxed mb-4 last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </Section>
           )}
 
@@ -274,20 +367,69 @@ export default async function CareerPage({ params }: PageProps) {
                   <h4 className="font-semibold text-secondary-900 mb-3">Time & Cost</h4>
                   <div className="bg-secondary-50 rounded-lg p-4">
                     <div className="mb-3">
-                      <div className="text-sm text-secondary-600">Time to Job Ready</div>
+                      <div className="text-sm text-secondary-600">Education Duration</div>
                       <div className="font-semibold">
-                        {career.education.time_to_job_ready.min_years}-{career.education.time_to_job_ready.max_years} years
-                        <span className="text-secondary-500 font-normal"> (typically {career.education.time_to_job_ready.typical_years})</span>
+                        {trainingYears ? `${trainingYears.min_years}-${trainingYears.max_years} years` : 'Varies'}
+                        {trainingYears && <span className="text-secondary-500 font-normal"> (typically {trainingYears.typical_years})</span>}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-secondary-600">Estimated Cost</div>
+                      <div className="text-sm text-secondary-600">Estimated Education Cost</div>
                       <div className="font-semibold">
                         {formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}
                       </div>
-                      {career.education.time_to_job_ready.earning_while_learning && (
+                      {career.education.time_to_job_ready?.earning_while_learning && (
                         <div className="text-sm text-green-600 mt-1">
                           Can earn while learning
+                        </div>
+                      )}
+                      {/* Institution type breakdown */}
+                      {career.education.cost_by_institution_type && (
+                        <div className="mt-3 pt-3 border-t border-secondary-200 space-y-1 text-sm">
+                          {career.education.cost_by_institution_type.public_in_state && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Public (in-state):</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_in_state.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.public_out_of_state && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Public (out-of-state):</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_out_of_state.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.private_nonprofit && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Private nonprofit:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.private_nonprofit.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.community_college && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Community college:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.community_college.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.trade_school && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Trade school:</span>
+                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.trade_school.total)}</span>
+                            </div>
+                          )}
+                          {career.education.cost_by_institution_type.apprenticeship && (
+                            <div className="flex justify-between">
+                              <span className="text-secondary-600">Apprenticeship:</span>
+                              <span className="font-medium text-green-600">
+                                {career.education.cost_by_institution_type.apprenticeship.cost === 0 ? '$0 (paid training)' : formatPay(career.education.cost_by_institution_type.apprenticeship.cost)}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {/* Data source */}
+                      {career.education.cost_data_source && (
+                        <div className="mt-2 text-xs text-secondary-400">
+                          Source: {career.education.cost_data_source.primary.replace(/_/g, ' ')} ({career.education.cost_data_source.year})
                         </div>
                       )}
                     </div>
@@ -297,94 +439,14 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
-          {/* AI Risk Assessment */}
-          {career.ai_risk && (
-            <Section title="AI Automation Risk" icon="robot">
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`text-4xl font-bold ${aiRiskScore <= 3 ? 'text-green-600' : aiRiskScore <= 6 ? 'text-yellow-600' : 'text-red-600'}`}>
-                  {career.ai_risk.score}/10
-                </div>
-                <div>
-                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getAIRiskColor(aiRiskScore)}`}>
-                    {getAIRiskLabel(aiRiskScore)}
-                  </span>
-                  <div className="text-sm text-secondary-500 mt-1">
-                    Confidence: {career.ai_risk.confidence}
-                  </div>
-                </div>
-              </div>
-              <p className="text-secondary-700 mb-4">{career.ai_risk.rationale.summary}</p>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                {career.ai_risk.rationale.factors_decreasing_risk.length > 0 && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-green-800 mb-2">Lower Risk Factors</h4>
-                    <ul className="space-y-1 text-sm text-green-700">
-                      {career.ai_risk.rationale.factors_decreasing_risk.map((factor, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span>+</span>
-                          <span>{factor}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {career.ai_risk.rationale.factors_increasing_risk.length > 0 && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-red-800 mb-2">Higher Risk Factors</h4>
-                    <ul className="space-y-1 text-sm text-red-700">
-                      {career.ai_risk.rationale.factors_increasing_risk.map((factor, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span>-</span>
-                          <span>{factor}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+          {/* AI Resilience Assessment */}
+          {aiAssessment && (
+            <Section title="AI Resilience Assessment" icon="robot">
+              <AIAssessmentDetail assessment={aiAssessment} />
             </Section>
           )}
 
-          {/* National Importance */}
-          {career.national_importance && (
-            <Section title="Why This Job Matters" icon="flag">
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`text-4xl font-bold ${getImportanceColor(importanceScore)} px-4 py-2 rounded-lg`}>
-                  {importanceScore}/10
-                </div>
-                <div>
-                  <div className="font-bold text-xl text-secondary-900">
-                    {getImportanceLabel(importanceScore)}
-                  </div>
-                  {career.national_importance.rationale.critical_infrastructure_sector && (
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mt-1">
-                      {career.national_importance.rationale.critical_infrastructure_sector} Sector
-                    </span>
-                  )}
-                </div>
-              </div>
-              <p className="text-secondary-700 mb-4">{career.national_importance.rationale.summary}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {career.national_importance.rationale.defense_related && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-indigo-100 text-indigo-800">
-                    Defense Related
-                  </span>
-                )}
-                {career.national_importance.rationale.shortage_occupation && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-amber-100 text-amber-800">
-                    Shortage Occupation
-                  </span>
-                )}
-                {career.national_importance.rationale.cannot_offshore && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
-                    Cannot Offshore
-                  </span>
-                )}
-              </div>
-            </Section>
-          )}
+          {/* ARCHIVED: National Importance section removed - see data/archived/importance-scores-backup.json */}
 
           {/* Technology Skills */}
           {career.technology_skills && career.technology_skills.length > 0 && (
@@ -431,40 +493,86 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
+          {/* Related Careers */}
+          {(() => {
+            // Get related careers in the same category (sorted by median pay)
+            // ARCHIVED: was sorted by national_importance_score - see data/archived/importance-scores-backup.json
+            const relatedCareers = (careersIndex as { slug: string; title: string; category: string; median_pay: number }[])
+              .filter(c => c.category === career.category && c.slug !== career.slug)
+              .sort((a, b) => (b.median_pay || 0) - (a.median_pay || 0))
+              .slice(0, 5);
+
+            if (relatedCareers.length === 0) return null;
+
+            return (
+              <Section title="Related Careers" icon="link">
+                <p className="text-sm text-secondary-600 mb-4">
+                  Other careers in {career.category}
+                </p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {relatedCareers.map((related) => (
+                    <div key={related.slug} className="bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors">
+                      <a
+                        href={`/careers/${related.slug}`}
+                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline block mb-1"
+                      >
+                        {related.title}
+                      </a>
+                      <div className="text-sm text-secondary-600 mb-3">
+                        {formatPay(related.median_pay)}/yr
+                      </div>
+                      <a
+                        href={`/compare?careers=${career.slug},${related.slug}`}
+                        className="inline-flex items-center gap-1 text-xs text-secondary-500 hover:text-primary-600"
+                      >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        Compare
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            );
+          })()}
+
           {/* What Workers Say */}
-          {careerReviews && careerReviews.total_reviews > 0 && (
+          {allReviews.length > 0 && (
             <Section title="What Workers Say" icon="chat">
               <div className="space-y-4">
                 <p className="text-sm text-secondary-600">
-                  Based on {careerReviews.total_reviews} testimonial{careerReviews.total_reviews !== 1 ? 's' : ''} from Reddit
+                  {allReviews.length} testimonial{allReviews.length !== 1 ? 's' : ''} from Reddit
                 </p>
 
-                {careerReviews.featured_reviews.map((review, i) => (
-                  <a
-                    key={review.id}
-                    href={review.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-medium text-primary-600">
-                        r/{review.subreddit}
-                      </span>
-                      <span className="text-xs text-secondary-500">
-                        {review.score} upvotes
-                      </span>
-                    </div>
-                    <h4 className="font-medium text-secondary-900 mb-2 text-sm">
-                      {review.title}
-                    </h4>
-                    {review.text && (
-                      <p className="text-secondary-700 text-sm line-clamp-3">
-                        {review.text}
-                      </p>
-                    )}
-                  </a>
-                ))}
+                <div className="max-h-[400px] md:max-h-[600px] overflow-y-auto space-y-4 pr-2">
+                  {allReviews.map((review) => (
+                    <a
+                      key={review.id}
+                      href={review.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-primary-600">
+                          r/{review.subreddit}
+                        </span>
+                        <span className="text-xs text-secondary-500">
+                          {review.score} upvotes
+                        </span>
+                      </div>
+                      <h4 className="font-medium text-secondary-900 mb-2 text-sm">
+                        {review.title}
+                      </h4>
+                      {review.text && (
+                        <p className="text-secondary-700 text-sm line-clamp-3">
+                          {review.text}
+                        </p>
+                      )}
+                    </a>
+                  ))}
+                </div>
               </div>
             </Section>
           )}
@@ -516,6 +624,20 @@ export default async function CareerPage({ params }: PageProps) {
                 Report an Error
               </a>
             </div>
+            <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-primary-400/30">
+              <a
+                href={`/compare?career=${career.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+              >
+                Compare Careers
+              </a>
+              <a
+                href={`/calculator?career=${career.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+              >
+                Calculate Earnings
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -536,6 +658,8 @@ const icons: Record<string, string> = {
   tag: "🏷️",
   link: "🔗",
   chat: "💬",
+  video: "🎬",
+  insight: "💡",
 };
 
 function Section({

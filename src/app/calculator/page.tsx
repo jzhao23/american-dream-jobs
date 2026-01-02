@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import careersIndex from "../../../data/careers-index.json";
 import careersData from "../../../data/careers.generated.json";
@@ -22,7 +22,7 @@ interface YearlyProjection {
   careerLevel: string;
 }
 
-export default function CalculatorPage() {
+function CalculatorContent() {
   const searchParams = useSearchParams();
   const [selectedSlug, setSelectedSlug] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +45,18 @@ export default function CalculatorPage() {
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
   }, [selectedSlug]);
+
+  // Parse URL params for pre-selecting career
+  useEffect(() => {
+    const careerParam = searchParams.get("career");
+    if (careerParam && !selectedSlug) {
+      // Validate the career exists
+      const careerExists = fullCareers.some(c => c.slug === careerParam);
+      if (careerExists) {
+        setSelectedSlug(careerParam);
+      }
+    }
+  }, [searchParams, selectedSlug]);
 
   const filteredCareers = useMemo(() => {
     if (!searchQuery) return careers.slice(0, 50);
@@ -157,24 +169,36 @@ export default function CalculatorPage() {
                 <div className="mb-4">
                   <div className="flex items-center justify-between p-3 bg-primary-50 rounded-lg border border-primary-200">
                     <div>
-                      <div className="font-medium text-secondary-900">{selectedCareer.title}</div>
+                      <a
+                        href={`/careers/${selectedCareer.slug}`}
+                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline"
+                      >
+                        {selectedCareer.title}
+                      </a>
                       <div className={`text-xs inline-block px-2 py-0.5 rounded-full mt-1 ${getCategoryColor(selectedCareer.category)}`}>
                         {selectedCareer.category}
                       </div>
                     </div>
                     <button
                       onClick={() => setSelectedSlug("")}
-                      className="text-secondary-400 hover:text-secondary-600"
+                      className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl -mr-2"
+                      aria-label="Remove career"
                     >
                       &times;
                     </button>
                   </div>
+                  <a
+                    href={`/compare?career=${selectedCareer.slug}`}
+                    className="inline-flex items-center gap-1 mt-2 text-sm text-primary-600 hover:text-primary-700 hover:underline"
+                  >
+                    Compare with other careers →
+                  </a>
                 </div>
               ) : (
                 <div className="relative">
                   <button
                     onClick={() => setShowSearch(true)}
-                    className="w-full px-4 py-3 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 transition-colors text-left"
+                    className="w-full px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors text-left"
                   >
                     Search for a career...
                   </button>
@@ -186,7 +210,7 @@ export default function CalculatorPage() {
                         placeholder="Search careers..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full px-4 py-3 border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                        className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
                         autoFocus
                       />
                       <div className="max-h-60 overflow-y-auto">
@@ -194,7 +218,7 @@ export default function CalculatorPage() {
                           <button
                             key={career.slug}
                             onClick={() => selectCareer(career.slug)}
-                            className="w-full px-4 py-2 text-left hover:bg-secondary-50"
+                            className="w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100"
                           >
                             <div className="font-medium text-secondary-900">{career.title}</div>
                             <div className="text-sm text-secondary-500">{career.category} - {formatPay(career.median_pay)}</div>
@@ -203,7 +227,7 @@ export default function CalculatorPage() {
                       </div>
                       <button
                         onClick={() => setShowSearch(false)}
-                        className="w-full px-4 py-2 text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50"
+                        className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
                       >
                         Cancel
                       </button>
@@ -370,7 +394,7 @@ export default function CalculatorPage() {
                 {/* Net Worth Chart */}
                 <div className="card p-6">
                   <h2 className="text-lg font-bold text-secondary-900 mb-4">Net Worth Projection</h2>
-                  <div className="h-64 relative">
+                  <div className="h-48 md:h-64 relative">
                     {/* Y-axis labels */}
                     <div className="absolute left-0 top-0 bottom-8 w-16 flex flex-col justify-between text-xs text-secondary-500 text-right pr-2">
                       <span>{formatPay(maxNetWorth)}</span>
@@ -543,5 +567,28 @@ export default function CalculatorPage() {
 
       <NextSteps currentPage="calculator" />
     </div>
+  );
+}
+
+export default function CalculatorPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-secondary-50">
+          <div className="max-w-6xl mx-auto px-4 py-12">
+            <div className="animate-pulse">
+              <div className="h-8 bg-secondary-200 rounded w-1/3 mb-4" />
+              <div className="h-4 bg-secondary-200 rounded w-2/3 mb-8" />
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="h-96 bg-secondary-200 rounded" />
+                <div className="lg:col-span-2 h-96 bg-secondary-200 rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <CalculatorContent />
+    </Suspense>
   );
 }

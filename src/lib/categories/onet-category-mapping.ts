@@ -4,17 +4,19 @@
  * Maps O*NET-SOC occupation codes to user-friendly career categories.
  * Based on BLS Standard Occupational Classification (SOC) 2018.
  *
- * ## Manager Redistribution
+ * ## Override Priority
  *
- * Management occupations (11-XXXX) are redistributed to domain-specific
- * categories based on the "genealogical principle" - where a manager
- * typically got promoted from. See `manager-redistribution.ts` for details.
+ * 1. Career-specific overrides (career-overrides.ts) - e.g., Models → arts-media
+ * 2. Manager redistribution (manager-redistribution.ts) - genealogical principle
+ * 3. Healthcare split logic - clinical vs technical
+ * 4. Default SOC major group mapping
  *
  * @see https://www.bls.gov/soc/2018/major_groups.htm
  * @see https://www.onetcenter.org/taxonomy.html
  */
 
 import { MANAGER_TO_CATEGORY } from './manager-redistribution';
+import { getCareerOverride } from './career-overrides';
 
 // ============================================================================
 // Types
@@ -162,6 +164,7 @@ export function isValidOnetSocCode(code: string): boolean {
  * getCategory("47-2111.00") // "construction" (Electricians)
  * getCategory("11-2022.00") // "sales" (Sales Managers - genealogical redistribution)
  * getCategory("11-1011.00") // "management" (Chief Executives - stays in management)
+ * getCategory("41-9012.00") // "arts-media" (Models - career override)
  */
 export function getCategory(onetSocCode: string): CategoryId {
   if (!isValidOnetSocCode(onetSocCode)) {
@@ -170,10 +173,16 @@ export function getCategory(onetSocCode: string): CategoryId {
     );
   }
 
+  // 1. Check career-specific overrides first (e.g., Models → arts-media)
+  const careerOverride = getCareerOverride(onetSocCode);
+  if (careerOverride) {
+    return careerOverride;
+  }
+
   const majorGroup = onetSocCode.substring(0, 2);
   const minorGroup = onetSocCode.substring(0, 4);
 
-  // Manager redistribution: check if this management role maps to a domain category
+  // 2. Manager redistribution: check if this management role maps to a domain category
   // Based on "genealogical principle" - where did this manager get promoted from?
   if (majorGroup === '11') {
     const redistributedCategory = MANAGER_TO_CATEGORY[onetSocCode];

@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import careersIndex from "../../../data/careers-index.json";
 import careersData from "../../../data/careers.generated.json";
 import type { CareerIndex, Career } from "@/types/career";
 import {
   formatPay,
   getCategoryColor,
-  getAIRiskColor,
-  getAIRiskLabel,
-  getImportanceColor,
-  getImportanceLabel,
+  getAIResilienceColor,
+  getAIResilienceEmoji,
+  type AIResilienceClassification,
 } from "@/types/career";
 import { getCompareList, clearCompare } from "@/lib/storage";
 import { NextSteps } from "@/components/NextSteps";
@@ -28,12 +28,133 @@ interface CareerPathStage {
   levelName?: string;
 }
 
-export default function ComparePage() {
+interface InstitutionOption {
+  value: string;
+  label: string;
+  cost: number;
+}
+
+// Helper function to get available institution types for each education stage
+function getAvailableInstitutionTypes(
+  stageItem: string,
+  costByType: Career['education']['cost_by_institution_type'],
+  stageCost: { min: number; max: number; typical?: number }
+): InstitutionOption[] {
+  const item = stageItem.toLowerCase();
+  const options: InstitutionOption[] = [
+    { value: 'average', label: 'Average', cost: stageCost.typical || Math.round((stageCost.min + stageCost.max) / 2) }
+  ];
+
+  if (!costByType) return options;
+
+  if (item.includes('bachelor')) {
+    // Bachelor's degree options
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public (in-state)', cost: costByType.public_in_state.total });
+    }
+    if (costByType.public_out_of_state) {
+      options.push({ value: 'public_out_of_state', label: 'Public (out-of-state)', cost: costByType.public_out_of_state.total });
+    }
+    if (costByType.private_nonprofit) {
+      options.push({ value: 'private_nonprofit', label: 'Private', cost: costByType.private_nonprofit.total });
+    }
+    // Add transfer options (2 years CC + 2 years 4-year)
+    if (costByType.community_college) {
+      const ccCost = costByType.community_college.per_year * 2;
+      if (costByType.public_in_state) {
+        const transferCost = ccCost + costByType.public_in_state.per_year * 2;
+        options.push({ value: 'cc_transfer_public', label: 'CC → Public (transfer)', cost: transferCost });
+      }
+      if (costByType.private_nonprofit) {
+        const transferCost = ccCost + costByType.private_nonprofit.per_year * 2;
+        options.push({ value: 'cc_transfer_private', label: 'CC → Private (transfer)', cost: transferCost });
+      }
+    }
+  } else if (item.includes('master') || item.includes('graduate') || item.includes('mba')) {
+    // Master's/Graduate degree - use proportional costs
+    const typicalCost = stageCost.typical || Math.round((stageCost.min + stageCost.max) / 2);
+    const totalTypicalCost = costByType.public_in_state?.total || costByType.public_out_of_state?.total || typicalCost;
+    const proportion = typicalCost / (totalTypicalCost || 1);
+
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public (in-state)', cost: Math.round(stageCost.min) });
+    }
+    if (costByType.public_out_of_state) {
+      options.push({ value: 'public_out_of_state', label: 'Public (out-of-state)', cost: Math.round((stageCost.min + stageCost.max) / 2) });
+    }
+    if (costByType.private_nonprofit) {
+      options.push({ value: 'private_nonprofit', label: 'Private', cost: Math.round(stageCost.max) });
+    }
+  } else if (item.includes('associate')) {
+    if (costByType.community_college) {
+      options.push({ value: 'community_college', label: 'Community College', cost: costByType.community_college.total });
+    }
+    if (costByType.public_in_state) {
+      options.push({ value: 'public_in_state', label: 'Public 4-year', cost: Math.round(costByType.public_in_state.per_year * 2) });
+    }
+  } else if (item.includes('apprentice')) {
+    // Apprenticeship - just show the one option
+    if (costByType.apprenticeship) {
+      options.length = 0; // Clear the average option
+      options.push({ value: 'apprenticeship', label: 'Apprenticeship (paid)', cost: 0 });
+    }
+  } else if (item.includes('certificate') || item.includes('trade') || item.includes('vocational')) {
+    if (costByType.trade_school) {
+      options.push({ value: 'trade_school', label: 'Trade School', cost: costByType.trade_school.total });
+    }
+    if (costByType.community_college) {
+      options.push({ value: 'community_college', label: 'Community College', cost: costByType.community_college.total });
+    }
+  } else if (item.includes('doctor') || item.includes('md') || item.includes('medical') ||
+             item.includes('law') || item.includes('jd') || item.includes('professional')) {
+    // Professional degrees - use min/max from stage
+    options.push({ value: 'public_in_state', label: 'Public', cost: stageCost.min });
+    options.push({ value: 'private_nonprofit', label: 'Private', cost: stageCost.max });
+  }
+
+  return options;
+}
+
+function CompareContent() {
+  const searchParams = useSearchParams();
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [startAge] = useState(18); // Age when starting education/training
   const [retirementAge] = useState(65);
+  // Track institution type selections: { [careerSlug]: { [stageIndex]: institutionType } }
+  const [institutionTypes, setInstitutionTypes] = useState<Record<string, Record<number, string>>>({});
+
+  // Parse URL params for pre-selecting careers
+  useEffect(() => {
+    const careerParam = searchParams.get("career");
+    const careersParam = searchParams.get("careers");
+
+    if (careerParam && selectedSlugs.length === 0) {
+      // Single career param
+      const careerExists = fullCareers.some(c => c.slug === careerParam);
+      if (careerExists) {
+        setSelectedSlugs([careerParam]);
+      }
+    } else if (careersParam && selectedSlugs.length === 0) {
+      // Multiple careers (comma-separated)
+      const slugs = careersParam.split(",").slice(0, 3);
+      const validSlugs = slugs.filter(slug => fullCareers.some(c => c.slug === slug));
+      if (validSlugs.length > 0) {
+        setSelectedSlugs(validSlugs);
+      }
+    }
+  }, [searchParams, selectedSlugs.length]);
+
+  const updateInstitutionType = (careerSlug: string, stageIndex: number, value: string) => {
+    setInstitutionTypes(prev => ({
+      ...prev,
+      [careerSlug]: {
+        ...(prev[careerSlug] || {}),
+        [stageIndex]: value,
+      },
+    }));
+  };
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -59,9 +180,27 @@ export default function ComparePage() {
   const careerPaths = useMemo(() => {
     return selectedCareers.map(career => {
       const stages: CareerPathStage[] = [];
-      const educationYears = career.education?.time_to_job_ready?.typical_years || 2;
-      const educationCost = career.education?.estimated_cost?.typical_cost || 0;
+      // Use education_duration (ground truth) if available, fall back to time_to_job_ready
+      const educationYears = career.education?.education_duration?.typical_years
+        ?? career.education?.time_to_job_ready?.typical_years
+        ?? 2;
       const timeline = career.career_progression?.timeline || [];
+      const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
+      const costByType = career.education?.cost_by_institution_type;
+
+      // Calculate total education cost based on institution type selections
+      let educationCost = 0;
+      if (costBreakdown.length > 0) {
+        costBreakdown.forEach((stage, idx) => {
+          const selectedType = institutionTypes[career.slug]?.[idx] || 'average';
+          const options = getAvailableInstitutionTypes(stage.item, costByType, stage);
+          const selectedOption = options.find(o => o.value === selectedType) || options[0];
+          educationCost += selectedOption.cost;
+        });
+      } else {
+        // Fallback to typical cost if no breakdown
+        educationCost = career.education?.estimated_cost?.typical_cost || 0;
+      }
 
       let cumulative = 0;
 
@@ -130,7 +269,7 @@ export default function ComparePage() {
         educationCost,
       };
     });
-  }, [selectedCareers, startAge, retirementAge]);
+  }, [selectedCareers, startAge, retirementAge, institutionTypes]);
 
   const addCareer = (slug: string) => {
     if (selectedSlugs.length < 3 && !selectedSlugs.includes(slug)) {
@@ -186,10 +325,23 @@ export default function ComparePage() {
                 key={career.slug}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 ${colorClasses[colors[index]].border} ${colorClasses[colors[index]].bgLight}`}
               >
-                <span className="font-medium">{career.title}</span>
+                <a
+                  href={`/careers/${career.slug}`}
+                  className="font-medium text-primary-600 hover:text-primary-700 hover:underline"
+                >
+                  {career.title}
+                </a>
+                <a
+                  href={`/calculator?career=${career.slug}`}
+                  className="text-xs text-secondary-500 hover:text-primary-600"
+                  title="Calculate earnings"
+                >
+                  📊
+                </a>
                 <button
                   onClick={() => removeCareer(career.slug)}
-                  className="text-secondary-400 hover:text-secondary-600 text-xl leading-none"
+                  className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl leading-none -mr-2"
+                  aria-label={`Remove ${career.title}`}
                 >
                   &times;
                 </button>
@@ -200,19 +352,19 @@ export default function ComparePage() {
               <div className="relative">
                 <button
                   onClick={() => setShowSearch(true)}
-                  className="px-4 py-2 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 transition-colors"
+                  className="px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors"
                 >
                   + Add Career ({3 - selectedSlugs.length} remaining)
                 </button>
 
                 {showSearch && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
+                  <div className="absolute top-full left-0 right-0 md:right-auto mt-2 w-full md:w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
                     <input
                       type="text"
                       placeholder="Search careers..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full px-4 py-3 border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                      className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
                       autoFocus
                     />
                     <div className="max-h-60 overflow-y-auto">
@@ -221,7 +373,7 @@ export default function ComparePage() {
                           key={career.slug}
                           onClick={() => addCareer(career.slug)}
                           disabled={selectedSlugs.includes(career.slug)}
-                          className={`w-full px-4 py-2 text-left hover:bg-secondary-50 ${
+                          className={`w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100 ${
                             selectedSlugs.includes(career.slug) ? 'opacity-50 cursor-not-allowed' : ''
                           }`}
                         >
@@ -232,7 +384,7 @@ export default function ComparePage() {
                     </div>
                     <button
                       onClick={() => setShowSearch(false)}
-                      className="w-full px-4 py-2 text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50"
+                      className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
                     >
                       Cancel
                     </button>
@@ -243,6 +395,78 @@ export default function ComparePage() {
           </div>
         </div>
 
+        {/* Education Cost Settings */}
+        {selectedCareers.length > 0 && (
+          <div className="card p-6 mb-8">
+            <h2 className="text-lg font-bold text-secondary-900 mb-2">Education Cost Settings</h2>
+            <p className="text-sm text-secondary-500 mb-4">
+              Default uses average of public and private school costs.
+              Select specific institution types for more accurate estimates.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {selectedCareers.map((career, idx) => {
+                const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
+                const costByType = career.education?.cost_by_institution_type;
+                const hasBreakdown = costBreakdown.length > 0;
+
+                return (
+                  <div key={career.slug} className={`p-4 rounded-lg ${colorClasses[colors[idx]].bgLight} border ${colorClasses[colors[idx]].border}`}>
+                    <div className={`font-semibold mb-3 ${colorClasses[colors[idx]].text}`}>
+                      {career.title}
+                    </div>
+
+                    {hasBreakdown ? (
+                      <div className="space-y-3">
+                        {costBreakdown.map((stage, stageIdx) => {
+                          const options = getAvailableInstitutionTypes(stage.item, costByType, stage);
+                          const selectedValue = institutionTypes[career.slug]?.[stageIdx] || 'average';
+                          const selectedOption = options.find(o => o.value === selectedValue) || options[0];
+                          const isLocked = options.length === 1;
+
+                          return (
+                            <div key={stageIdx}>
+                              <div className="text-xs text-secondary-600 mb-1">{stage.item}</div>
+                              {isLocked ? (
+                                <div className="text-sm font-medium text-green-600 bg-white rounded px-2 py-1">
+                                  {selectedOption.label} - {selectedOption.cost === 0 ? '$0 (paid training)' : formatPay(selectedOption.cost)}
+                                </div>
+                              ) : (
+                                <select
+                                  value={selectedValue}
+                                  onChange={(e) => updateInstitutionType(career.slug, stageIdx, e.target.value)}
+                                  className="w-full text-sm border border-secondary-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                >
+                                  {options.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                      {option.label} - {formatPay(option.cost)}
+                                    </option>
+                                  ))}
+                                </select>
+                              )}
+                            </div>
+                          );
+                        })}
+                        <div className="pt-2 border-t border-secondary-200">
+                          <div className="text-xs text-secondary-500">Total Education Cost</div>
+                          <div className="font-bold text-secondary-900">
+                            {formatPay(careerPaths.find(p => p.career.slug === career.slug)?.educationCost || 0)}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-sm text-secondary-600">
+                        <div className="font-medium">{formatPay(career.education?.estimated_cost?.typical_cost || 0)}</div>
+                        <div className="text-xs text-secondary-500 mt-1">No breakdown available</div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {selectedCareers.length >= 1 && (
           <>
             {/* Career Path Timeline */}
@@ -252,12 +476,17 @@ export default function ComparePage() {
               </h2>
               <p className="text-sm text-secondary-600 mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
 
-              <div className="flex gap-4 overflow-x-auto pb-4">
+              <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
                 {careerPaths.map((path, pathIndex) => (
-                  <div key={path.career.slug} className="flex-1 min-w-[280px]">
+                  <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
                     {/* Career header */}
                     <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border}`}>
-                      <div className="font-bold text-secondary-900 text-sm">{path.career.title}</div>
+                      <a
+                        href={`/careers/${path.career.slug}`}
+                        className="font-bold text-primary-600 hover:text-primary-700 hover:underline text-sm"
+                      >
+                        {path.career.title}
+                      </a>
                       <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
                         {path.career.category}
                       </div>
@@ -341,7 +570,19 @@ export default function ComparePage() {
 
             {/* Summary Comparison Table */}
             <div className="card overflow-hidden mb-8">
-              <div className="overflow-x-auto">
+              {/* Mobile scroll hint */}
+              <div className="md:hidden px-4 py-2 bg-secondary-100 text-xs text-secondary-600 flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+                Swipe to see all columns
+              </div>
+              <div className="relative">
+                {/* Left fade */}
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent pointer-events-none z-10 md:hidden" />
+                {/* Right fade */}
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 md:hidden" />
+                <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-secondary-50">
                     <tr>
@@ -378,9 +619,10 @@ export default function ComparePage() {
 
                     {/* Education Duration */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">Training Time</td>
+                      <td className="px-4 py-4 font-medium text-secondary-900">Education Time</td>
                       {selectedCareers.map((career, index) => {
-                        const years = career.education?.time_to_job_ready;
+                        // Use education_duration (ground truth) if available
+                        const years = career.education?.education_duration || career.education?.time_to_job_ready;
                         return (
                           <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
                             <div className="font-semibold">
@@ -463,51 +705,30 @@ export default function ComparePage() {
                       ))}
                     </tr>
 
-                    {/* AI Risk */}
+                    {/* AI Resilience */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">AI Risk</td>
+                      <td className="px-4 py-4 font-medium text-secondary-900">AI Resilience</td>
                       {selectedCareers.map((career, index) => {
-                        const score = career.ai_risk?.score || 5;
+                        const classification = career.ai_resilience as AIResilienceClassification | undefined;
                         return (
                           <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                            <div className={`text-2xl font-bold ${
-                              score <= 3 ? 'text-green-600' :
-                              score <= 6 ? 'text-yellow-600' :
-                              'text-red-600'
-                            }`}>
-                              {score}/10
-                            </div>
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(score)}`}>
-                              {getAIRiskLabel(score)}
-                            </span>
+                            {classification ? (
+                              <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${getAIResilienceColor(classification)}`}>
+                                <span>{getAIResilienceEmoji(classification)}</span>
+                                <span>{classification}</span>
+                              </span>
+                            ) : (
+                              <span className="text-secondary-400 text-sm">Assessment pending</span>
+                            )}
                           </td>
                         );
                       })}
                     </tr>
 
-                    {/* National Importance */}
-                    <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">National Importance</td>
-                      {selectedCareers.map((career, index) => {
-                        const score = career.national_importance?.score || 5;
-                        return (
-                          <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                            <div className={`text-2xl font-bold ${
-                              score >= 7 ? 'text-blue-600' :
-                              score >= 4 ? 'text-indigo-600' :
-                              'text-gray-600'
-                            }`}>
-                              {score}/10
-                            </div>
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(score)}`}>
-                              {getImportanceLabel(score)}
-                            </span>
-                          </td>
-                        );
-                      })}
-                    </tr>
+                    {/* ARCHIVED: National Importance row removed - see data/archived/importance-scores-backup.json */}
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
 
@@ -519,9 +740,14 @@ export default function ComparePage() {
                 {/* Highest Lifetime Earnings */}
                 <div className="bg-green-50 rounded-lg p-4">
                   <div className="text-sm text-green-700 mb-1">Highest Lifetime Net</div>
-                  <div className="font-bold text-green-800">
-                    {careerPaths.reduce((best, p) => p.totalEarnings > best.totalEarnings ? p : best).career.title}
-                  </div>
+                  {(() => {
+                    const best = careerPaths.reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b);
+                    return (
+                      <a href={`/careers/${best.career.slug}`} className="font-bold text-green-800 hover:underline block">
+                        {best.career.title}
+                      </a>
+                    );
+                  })()}
                   <div className="text-sm text-green-600">
                     {formatPay(Math.max(...careerPaths.map(p => p.totalEarnings)))}
                   </div>
@@ -530,58 +756,73 @@ export default function ComparePage() {
                 {/* Lowest Education Cost */}
                 <div className="bg-amber-50 rounded-lg p-4">
                   <div className="text-sm text-amber-700 mb-1">Lowest Education Cost</div>
-                  <div className="font-bold text-amber-800">
-                    {careerPaths.reduce((best, p) => p.educationCost < best.educationCost ? p : best).career.title}
-                  </div>
+                  {(() => {
+                    const best = careerPaths.reduce((b, p) => p.educationCost < b.educationCost ? p : b);
+                    return (
+                      <a href={`/careers/${best.career.slug}`} className="font-bold text-amber-800 hover:underline block">
+                        {best.career.title}
+                      </a>
+                    );
+                  })()}
                   <div className="text-sm text-amber-600">
                     {formatPay(Math.min(...careerPaths.map(p => p.educationCost)))}
                   </div>
                 </div>
 
-                {/* Lowest AI Risk */}
+                {/* Most AI-Resilient */}
                 <div className="bg-blue-50 rounded-lg p-4">
-                  <div className="text-sm text-blue-700 mb-1">Lowest AI Risk</div>
-                  <div className="font-bold text-blue-800">
-                    {selectedCareers.reduce((best, c) =>
-                      (c.ai_risk?.score || 10) < (best.ai_risk?.score || 10) ? c : best
-                    ).title}
-                  </div>
+                  <div className="text-sm text-blue-700 mb-1">Most AI-Resilient</div>
+                  {(() => {
+                    // Lower tier = more resilient (1=Resilient, 4=High Risk)
+                    const best = selectedCareers.reduce((b, c) => (c.ai_resilience_tier || 4) < (b.ai_resilience_tier || 4) ? c : b);
+                    const classification = best.ai_resilience as AIResilienceClassification | undefined;
+                    return (
+                      <>
+                        <a href={`/careers/${best.slug}`} className="font-bold text-blue-800 hover:underline block">
+                          {best.title}
+                        </a>
+                        {classification && (
+                          <span className="text-xs text-blue-600">
+                            {getAIResilienceEmoji(classification)} {classification}
+                          </span>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
 
                 {/* Fastest to Start */}
                 <div className="bg-purple-50 rounded-lg p-4">
                   <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
-                  <div className="font-bold text-purple-800">
-                    {selectedCareers.reduce((best, c) =>
-                      (c.education?.time_to_job_ready?.typical_years || 10) < (best.education?.time_to_job_ready?.typical_years || 10) ? c : best
-                    ).title}
-                  </div>
+                  {(() => {
+                    const best = selectedCareers.reduce((b, c) => (c.education?.time_to_job_ready?.typical_years || 10) < (b.education?.time_to_job_ready?.typical_years || 10) ? c : b);
+                    return (
+                      <a href={`/careers/${best.slug}`} className="font-bold text-purple-800 hover:underline block">
+                        {best.title}
+                      </a>
+                    );
+                  })()}
                 </div>
 
-                {/* Highest Importance */}
-                <div className="bg-indigo-50 rounded-lg p-4">
-                  <div className="text-sm text-indigo-700 mb-1">Highest National Importance</div>
-                  <div className="font-bold text-indigo-800">
-                    {selectedCareers.reduce((best, c) =>
-                      (c.national_importance?.score || 0) > (best.national_importance?.score || 0) ? c : best
-                    ).title}
-                  </div>
-                </div>
+                {/* ARCHIVED: Highest National Importance card removed - see data/archived/importance-scores-backup.json */}
 
                 {/* Best ROI */}
                 <div className="bg-emerald-50 rounded-lg p-4">
                   <div className="text-sm text-emerald-700 mb-1">Best 10-Year ROI</div>
-                  <div className="font-bold text-emerald-800">
-                    {(() => {
-                      const withROI = careerPaths.map(p => {
-                        const timeline = p.career.career_progression?.timeline || [];
-                        const earnings = timeline.filter(t => t.year < 10).reduce((sum, t) => sum + t.expected_compensation, 0);
-                        const cost = p.educationCost || 1;
-                        return { path: p, roi: (earnings - cost) / Math.max(cost, 1) };
-                      });
-                      return withROI.reduce((best, curr) => curr.roi > best.roi ? curr : best).path.career.title;
-                    })()}
-                  </div>
+                  {(() => {
+                    const withROI = careerPaths.map(p => {
+                      const timeline = p.career.career_progression?.timeline || [];
+                      const earnings = timeline.filter(t => t.year < 10).reduce((sum, t) => sum + t.expected_compensation, 0);
+                      const cost = p.educationCost || 1;
+                      return { path: p, roi: (earnings - cost) / Math.max(cost, 1) };
+                    });
+                    const best = withROI.reduce((b, curr) => curr.roi > b.roi ? curr : b);
+                    return (
+                      <a href={`/careers/${best.path.career.slug}`} className="font-bold text-emerald-800 hover:underline block">
+                        {best.path.career.title}
+                      </a>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
@@ -604,5 +845,26 @@ export default function ComparePage() {
 
       <NextSteps currentPage="compare" />
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-secondary-50">
+          <div className="max-w-7xl mx-auto px-4 py-12">
+            <div className="animate-pulse">
+              <div className="h-10 bg-secondary-200 rounded w-1/3 mb-4" />
+              <div className="h-4 bg-secondary-200 rounded w-2/3 mb-8" />
+              <div className="h-64 bg-secondary-200 rounded mb-8" />
+              <div className="h-96 bg-secondary-200 rounded" />
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <CompareContent />
+    </Suspense>
   );
 }

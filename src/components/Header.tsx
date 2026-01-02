@@ -58,6 +58,12 @@ export function Header() {
               )}
             </a>
             <a
+              href="/compass"
+              className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
+            >
+              Career Compass
+            </a>
+            <a
               href="/calculator"
               className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
             >
@@ -85,7 +91,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-secondary-600 hover:text-secondary-900"
+            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-600 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -124,11 +130,11 @@ export function Header() {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-secondary-200 bg-white">
-          <nav className="px-4 py-4 space-y-3">
+          <nav className="px-4 py-2 space-y-1">
             <a
               href="/#careers"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             >
               Explore Careers
             </a>
@@ -142,7 +148,7 @@ export function Header() {
             <a
               href="/compare"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             >
               Compare Careers
               {mounted && compareCount > 0 && (
@@ -152,9 +158,16 @@ export function Header() {
               )}
             </a>
             <a
+              href="/compass"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
+            >
+              Career Compass
+            </a>
+            <a
               href="/calculator"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             >
               Net Worth Calculator
             </a>
@@ -173,7 +186,7 @@ export function Header() {
             <a
               href="/contribute"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-secondary-700 hover:text-secondary-900"
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             >
               Contribute
             </a>

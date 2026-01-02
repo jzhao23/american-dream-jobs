@@ -3,6 +3,21 @@
  *
  * Parses the O*NET database files and generates structured JSON outputs.
  * Run: npx tsx scripts/process-onet.ts
+ *
+ * ⚠️  CRITICAL WARNING ⚠️
+ * This script RESETS all wage data to null. You MUST run the full data pipeline
+ * after this script, or all careers will show $0 wages.
+ *
+ * NEVER run this script alone. Always use:
+ *   npm run data:refresh
+ *
+ * Or run the full pipeline manually:
+ *   npx tsx scripts/process-onet.ts
+ *   npx tsx scripts/fetch-bls-wages.ts      ← REQUIRED to restore wages
+ *   npx tsx scripts/fetch-education-costs.ts
+ *   npx tsx scripts/create-progression-mappings.ts
+ *   npx tsx scripts/generate-final.ts
+ *   npm run build
  */
 
 import * as fs from 'fs';
@@ -93,6 +108,39 @@ const EDUCATION_CATEGORIES: Record<string, string> = {
   '12': 'Post-doctoral training',
 };
 
+// Education duration mapping (ground truth - standard degree durations)
+// This maps typical_entry_education text to actual education duration in years
+const EDUCATION_DURATION_MAP: Record<string, { min: number; typical: number; max: number }> = {
+  'Less than high school': { min: 0, typical: 0, max: 0 },
+  'High school diploma or equivalent': { min: 0, typical: 0, max: 0 },
+  'Post-secondary certificate': { min: 0.5, typical: 1, max: 2 },
+  'Some college, no degree': { min: 1, typical: 1, max: 2 },
+  "Associate's degree": { min: 2, typical: 2, max: 3 },
+  "Bachelor's degree": { min: 4, typical: 4, max: 5 },
+  'Post-baccalaureate certificate': { min: 4, typical: 4.5, max: 5 },
+  "Master's degree": { min: 5, typical: 6, max: 7 },
+  "Post-master's certificate": { min: 6, typical: 7, max: 8 },
+  'First professional degree': { min: 7, typical: 7, max: 8 },
+  'Doctoral degree': { min: 8, typical: 9, max: 12 },
+  'Post-doctoral training': { min: 10, typical: 11, max: 14 },
+};
+
+/**
+ * O*NET education data overrides
+ * These careers have incorrect typical_entry_education in O*NET data
+ * (e.g., surgeons marked as "Bachelor's degree" when they require medical school + residency)
+ * We override them with the correct education level
+ */
+const EDUCATION_OVERRIDES: Record<string, string> = {
+  // Surgeons and Physicians incorrectly marked as "Bachelor's degree" in O*NET
+  '29-1029.00': 'Post-doctoral training',  // Dentists, All Other Specialists
+  '29-1212.00': 'Post-doctoral training',  // Cardiologists
+  '29-1229.00': 'Post-doctoral training',  // Physicians, All Other
+  '29-1242.00': 'Post-doctoral training',  // Orthopedic Surgeons, Except Pediatric
+  '29-1243.00': 'Post-doctoral training',  // Pediatric Surgeons
+  '29-1249.00': 'Post-doctoral training',  // Surgeons, All Other
+};
+
 // Job zone descriptions
 const JOB_ZONE_DESCRIPTIONS: Record<number, { education: string, experience: string, training: string }> = {
   1: { education: 'Some high school', experience: 'Little or no experience', training: 'Short demonstration' },
@@ -155,6 +203,8 @@ function generateSlug(title: string): string {
 }
 
 // Estimate time to job ready (years after high school)
+// NOTE: This uses Job Zone which conflates education with work experience.
+// For education-only duration, use getEducationDuration() instead.
 function estimateTimeToJobReady(jobZone: number, education: string): { min: number; typical: number; max: number; earningWhileLearning: boolean } {
   // Based on job zone and typical education
   const estimates: Record<number, { min: number; typical: number; max: number }> = {
@@ -175,6 +225,75 @@ function estimateTimeToJobReady(jobZone: number, education: string): { min: numb
     ...base,
     earningWhileLearning: isApprentice || jobZone <= 2
   };
+}
+
+// Get education duration from typical_entry_education text (ground truth mapping)
+// This returns the actual years of formal education required, NOT including work experience
+// Checks for O*NET data overrides first (for careers with incorrect typical_entry_education)
+function getEducationDuration(onetCode: string, typicalEducation: string): {
+  min: number;
+  typical: number;
+  max: number;
+  source: string;
+  education_level: string;
+} {
+  // Check for override first (corrects O*NET data errors)
+  const overriddenEducation = EDUCATION_OVERRIDES[onetCode] ?? typicalEducation;
+  const isOverridden = EDUCATION_OVERRIDES[onetCode] !== undefined;
+
+  // Try exact match first
+  const exactMatch = EDUCATION_DURATION_MAP[overriddenEducation];
+  if (exactMatch) {
+    return {
+      ...exactMatch,
+      source: isOverridden ? 'manual_override' : 'typical_entry_education',
+      education_level: overriddenEducation,
+    };
+  }
+
+  // Fuzzy match for variations
+  const normalized = overriddenEducation.toLowerCase();
+  const source = isOverridden ? 'manual_override' : 'typical_entry_education';
+
+  if (normalized.includes('post-doctoral') || normalized.includes('postdoctoral')) {
+    return { min: 10, typical: 11, max: 14, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('doctoral') || normalized.includes('doctorate')) {
+    return { min: 8, typical: 9, max: 12, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('professional') || normalized.includes('first professional')) {
+    return { min: 7, typical: 7, max: 8, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('post-master')) {
+    return { min: 6, typical: 7, max: 8, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('master')) {
+    return { min: 5, typical: 6, max: 7, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('post-baccalaureate')) {
+    return { min: 4, typical: 4.5, max: 5, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('bachelor')) {
+    return { min: 4, typical: 4, max: 5, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('associate')) {
+    return { min: 2, typical: 2, max: 3, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('some college')) {
+    return { min: 1, typical: 1, max: 2, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('certificate') || normalized.includes('postsecondary') || normalized.includes('post-secondary')) {
+    return { min: 0.5, typical: 1, max: 2, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('high school') || normalized.includes('ged') || normalized.includes('equivalent')) {
+    return { min: 0, typical: 0, max: 0, source, education_level: overriddenEducation };
+  }
+  if (normalized.includes('less than high school') || normalized.includes('no formal')) {
+    return { min: 0, typical: 0, max: 0, source, education_level: overriddenEducation };
+  }
+
+  // Default fallback (high school equivalent)
+  return { min: 0, typical: 0, max: 0, source, education_level: overriddenEducation };
 }
 
 // Estimate education costs
@@ -234,6 +353,13 @@ function estimateEducationCost(jobZone: number, typicalEducation: string): { min
 
 async function main() {
   console.log('\n=== Processing O*NET Database ===\n');
+  console.log('⚠️  WARNING: This script RESETS all wage data to null.');
+  console.log('   You MUST run the full pipeline after this:');
+  console.log('   npx tsx scripts/fetch-bls-wages.ts');
+  console.log('   npx tsx scripts/create-progression-mappings.ts');
+  console.log('   npx tsx scripts/generate-final.ts');
+  console.log('   npm run build\n');
+  console.log('   Or simply run: npm run data:refresh\n');
 
   // Load all data files
   console.log('Loading O*NET files...');
@@ -370,9 +496,14 @@ async function main() {
     const code = occ['O*NET-SOC Code'];
     const { category, subcategory } = getCategory(code);
     const jobZone = jobZoneMap.get(code) || 3;
-    const typicalEducation = educationMap.get(code)?.typicalEducation || "Bachelor's degree";
+    const rawTypicalEducation = educationMap.get(code)?.typicalEducation || "Bachelor's degree";
+    // Apply education override if exists (for careers with incorrect O*NET classification)
+    const typicalEducation = EDUCATION_OVERRIDES[code] ?? rawTypicalEducation;
     const timeToReady = estimateTimeToJobReady(jobZone, typicalEducation);
-    const costEstimate = estimateEducationCost(jobZone, typicalEducation);
+    const educationDuration = getEducationDuration(code, typicalEducation);
+    // Use overridden education level for cost estimates if applicable
+    const effectiveEducation = educationDuration.education_level;
+    const costEstimate = estimateEducationCost(jobZone, effectiveEducation);
     const jobZoneInfo = JOB_ZONE_DESCRIPTIONS[jobZone] || JOB_ZONE_DESCRIPTIONS[3];
 
     // Determine boolean education requirements based on typical education
@@ -415,13 +546,22 @@ async function main() {
         work_experience_required: jobZoneInfo.experience,
         on_the_job_training: jobZoneInfo.training,
 
-        // Time estimates
+        // Time estimates (Job Zone based - includes work experience, NOT just education)
         time_to_job_ready: {
           min_years: timeToReady.min,
           typical_years: timeToReady.typical,
           max_years: timeToReady.max,
           earning_while_learning: timeToReady.earningWhileLearning,
-          notes: `Based on Job Zone ${jobZone} and typical entry education: ${typicalEducation}`
+          notes: `Based on Job Zone ${jobZone}. For formal education duration only, see education_duration.`
+        },
+
+        // Education duration (ground truth from typical_entry_education, with overrides for O*NET errors)
+        education_duration: {
+          min_years: educationDuration.min,
+          typical_years: educationDuration.typical,
+          max_years: educationDuration.max,
+          source: educationDuration.source as 'typical_entry_education' | 'manual_override',
+          education_level: educationDuration.education_level,
         },
 
         // Cost estimates
