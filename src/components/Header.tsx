@@ -31,6 +31,12 @@ export function Header() {
               Compare
             </a>
             <a
+              href="/compass"
+              className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
+            >
+              Career Compass
+            </a>
+            <a
               href="/calculator"
               className="text-sm font-medium text-secondary-600 hover:text-secondary-900 transition-colors"
             >
@@ -100,6 +106,13 @@ export function Header() {
               className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
             >
               Compare Careers
+            </a>
+            <a
+              href="/compass"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-2 min-h-[44px] text-base font-medium text-secondary-700 hover:text-secondary-900 active:bg-secondary-100 rounded-lg"
+            >
+              Career Compass
             </a>
             <a
               href="/calculator"
