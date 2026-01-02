@@ -82,6 +82,11 @@ function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/methodology" className="hover:text-secondary-900">
+                  Our Methodology
+                </a>
+              </li>
+              <li>
                 <a href="/contribute" className="hover:text-secondary-900">
                   Contribute
                 </a>
