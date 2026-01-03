@@ -9,7 +9,6 @@ import {
   getCategoryColor,
   getCategoryLabel,
   getAIRiskColor,
-  getImportanceColor,
 } from "@/types/career";
 import { CareerActions } from "@/components/CareerActions";
 import { NextSteps } from "@/components/NextSteps";
@@ -83,9 +82,6 @@ export default function MyCareersPage() {
                       AI Risk
                     </th>
                     <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
-                      Importance
-                    </th>
-                    <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
                       Actions
                     </th>
                   </tr>
@@ -112,11 +108,6 @@ export default function MyCareersPage() {
                       <td className="px-4 py-3 text-center">
                         <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
                           {career.ai_risk}/10
-                        </span>
-                      </td>
-                      <td className="px-4 py-3 text-center">
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                          {career.importance}/10
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center">
@@ -153,9 +144,6 @@ export default function MyCareersPage() {
                   <div className="flex flex-wrap gap-2 mt-3 mb-3">
                     <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getAIRiskColor(career.ai_risk)}`}>
                       AI Risk: {career.ai_risk}/10
-                    </span>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getImportanceColor(career.importance)}`}>
-                      Importance: {career.importance}/10
                     </span>
                   </div>
                   <CareerActions career={career} variant="card" />

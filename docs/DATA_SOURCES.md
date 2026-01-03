@@ -296,6 +296,53 @@ Some entries are marked `"data_source": "manual"` indicating:
 
 ---
 
+## Career Compass - AI-Powered Recommendations
+
+**Feature**: Personalized career matching using RAG (Retrieval-Augmented Generation)
+**Implementation**: 2026-01-02
+
+### What It Does
+Analyzes user resumes and questionnaire responses to recommend careers from the database of 1,016 occupations. Returns top 7 matches with personalized reasoning, skills gaps, and transition timelines.
+
+### Data Sources Used
+- **Career Data**: All fields from `careers.generated.json` (tasks, inside_look, skills, abilities)
+- **AI Resilience**: Classification, EPOCH scores, job growth from AI Resilience methodology
+- **Salary Data**: Median pay, percentiles for financial viability checking
+- **Education**: Requirements and costs for transition timeline estimation
+
+### Processing Pipeline
+```
+User Resume + 5 Questions
+    ↓
+1. PDF Parsing (pdf-parse + GPT-4o-mini)
+    ↓
+2. Generate Embeddings (OpenAI text-embedding-3-small)
+    ↓
+3. Vector Search (in-memory cosine similarity)
+    ↓
+4. LLM Ranking (GPT-4o-mini evaluates top 50)
+    ↓
+Return Top 7 Matches
+```
+
+### Pre-Generated Data
+```
+data/embeddings/
+└── career-embeddings.json    # 3 embeddings per career (task, narrative, skills)
+                              # Generated once via: npx tsx scripts/generate-career-embeddings.ts
+                              # Size: ~19MB
+                              # Cost: $0.03 one-time
+```
+
+### Runtime Cost
+- **Per recommendation**: ~$0.035 (3.5 cents)
+- **Breakdown**: Resume parsing ($0.0003) + Query embeddings ($0.000006) + Ranking ($0.034)
+
+### Documentation
+See [CAREER_COMPASS_METHODOLOGY.md](./CAREER_COMPASS_METHODOLOGY.md) for complete technical details.
+
+---
+
 ## Data Refresh Schedule
 
 | Data | Command | When to Run |
@@ -307,6 +354,7 @@ Some entries are marked `"data_source": "manual"` indicating:
 | EPOCH Scores | `npx tsx scripts/generate-epoch-scores.ts` | When new occupations added |
 | Reddit Reviews | `npm run fetch-reviews` | Monthly or on-demand |
 | Companies | `npx tsx scripts/scrape-theorg.ts` | On-demand or when adding new companies |
+| **Career Compass Embeddings** | `npx tsx scripts/generate-career-embeddings.ts` | **Once after initial setup, or when career data changes significantly** |
 | Full Regenerate | `npm run data:generate-final` | After any source update |
 
 ---
@@ -340,5 +388,7 @@ data/processed/
 data/
 ├── careers-index.json      # Lightweight index for explorer
 ├── careers.generated.json  # Full data with AI Resilience classifications
-└── companies.json          # Company organizational data and career ladders
+├── companies.json          # Company organizational data and career ladders
+└── embeddings/
+    └── career-embeddings.json  # Pre-built vectors for Career Compass (~19MB)
 ```

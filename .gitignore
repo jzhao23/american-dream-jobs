@@ -50,3 +50,4 @@ data/sources/*
 
 # Review source data (raw Reddit data, can be re-fetched)
 data/reviews/sources/
+data/embeddings/career-embeddings.json

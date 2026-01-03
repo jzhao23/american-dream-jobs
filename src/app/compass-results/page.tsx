@@ -9,111 +9,18 @@ import {
   type AIResilienceClassification,
 } from "@/types/career";
 
-// Hardcoded placeholder results
-const PLACEHOLDER_RESULTS: Array<{
+interface RankedCareer {
   slug: string;
   title: string;
   category: string;
   matchScore: number;
   medianPay: number;
-  aiResilience: AIResilienceClassification;
+  aiResilience: string;
   reasoning: string;
   skillsGap: string[];
   transitionTimeline: string;
   education: string;
-}> = [
-  {
-    slug: "registered-nurses",
-    title: "Registered Nurses",
-    category: "healthcare",
-    matchScore: 92,
-    medianPay: 81220,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Your healthcare interest and desire to help people align perfectly with nursing. Strong job security with excellent growth prospects. Your communication skills and attention to detail are crucial in this field.",
-    skillsGap: ["Clinical certifications", "Medical terminology", "Patient care protocols"],
-    transitionTimeline: "2-4 years",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "software-developers",
-    title: "Software Developers",
-    category: "technology",
-    matchScore: 88,
-    medianPay: 127260,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your analytical mindset and problem-solving abilities are ideal for software development. High earning potential with remote work flexibility matches your work environment preferences.",
-    skillsGap: ["Programming languages", "Software architecture", "Version control"],
-    transitionTimeline: "6-12 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "electricians",
-    title: "Electricians",
-    category: "trades",
-    matchScore: 85,
-    medianPay: 60240,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Hands-on work with strong earning potential. Apprenticeship model allows you to earn while learning. Your technical aptitude and attention to detail are perfect for this trade.",
-    skillsGap: ["Electrical code knowledge", "Blueprint reading", "Safety protocols"],
-    transitionTimeline: "4-5 years (apprenticeship)",
-    education: "High school diploma or equivalent",
-  },
-  {
-    slug: "data-scientists",
-    title: "Data Scientists",
-    category: "technology",
-    matchScore: 83,
-    medianPay: 103500,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your analytical skills and interest in technology align well. Growing field with diverse applications across industries. Matches your preference for problem-solving work.",
-    skillsGap: ["Statistics", "Machine learning", "Data visualization"],
-    transitionTimeline: "8-12 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "dental-hygienists",
-    title: "Dental Hygienists",
-    category: "healthcare",
-    matchScore: 81,
-    medianPay: 81400,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Healthcare career with excellent work-life balance. Shorter training period than other health professions. Your interest in helping people and attention to detail are key strengths.",
-    skillsGap: ["Dental procedures", "Radiology", "Patient education"],
-    transitionTimeline: "2-3 years",
-    education: "Associate degree",
-  },
-  {
-    slug: "project-management-specialists",
-    title: "Project Management Specialists",
-    category: "business-finance",
-    matchScore: 79,
-    medianPay: 98420,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your organizational skills and leadership goals make this a natural fit. Transferable across industries, allowing career flexibility. Matches your collaborative work environment preference.",
-    skillsGap: ["Project management certification", "Stakeholder management", "Agile methodology"],
-    transitionTimeline: "3-6 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "heating-air-conditioning-and-refrigeration-mechanics-and-ins",
-    title: "HVAC Technicians",
-    category: "trades",
-    matchScore: 76,
-    medianPay: 57300,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Stable career with consistent demand. Technical skills with hands-on application. Good earning potential with opportunities for business ownership.",
-    skillsGap: ["HVAC certification", "Refrigeration systems", "EPA certification"],
-    transitionTimeline: "6-24 months",
-    education: "Postsecondary non-degree award",
-  },
-];
+}
 
 export default function CompassResultsPage() {
   const router = useRouter();
@@ -122,12 +29,16 @@ export default function CompassResultsPage() {
     answers: Record<string, string>;
     timestamp: string;
   } | null>(null);
+  const [results, setResults] = useState<RankedCareer[]>([]);
 
   useEffect(() => {
     // Retrieve submission data from sessionStorage
-    const data = sessionStorage.getItem("compass-submission");
-    if (data) {
-      setSubmissionData(JSON.parse(data));
+    const submissionStr = sessionStorage.getItem("compass-submission");
+    const resultsStr = sessionStorage.getItem("compass-results");
+
+    if (submissionStr && resultsStr) {
+      setSubmissionData(JSON.parse(submissionStr));
+      setResults(JSON.parse(resultsStr));
     } else {
       // If no data, redirect back to compass
       router.push("/compass");
@@ -195,10 +106,10 @@ export default function CompassResultsPage() {
         {/* Career Matches */}
         <div className="space-y-6">
           <h2 className="text-xl font-bold text-secondary-900">
-            Top {PLACEHOLDER_RESULTS.length} Career Matches
+            Top {results.length} Career Matches
           </h2>
 
-          {PLACEHOLDER_RESULTS.map((career, index) => (
+          {results.map((career, index) => (
             <div key={career.slug} className="card p-6 hover:shadow-md transition-shadow">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -247,8 +158,8 @@ export default function CompassResultsPage() {
                 </div>
                 <div>
                   <p className="text-xs text-secondary-600 mb-1">AI Resilience</p>
-                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience)}`}>
-                    <span>{getAIResilienceEmoji(career.aiResilience)}</span>
+                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience as AIResilienceClassification)}`}>
+                    <span>{getAIResilienceEmoji(career.aiResilience as AIResilienceClassification)}</span>
                     <span>{career.aiResilience}</span>
                   </span>
                 </div>

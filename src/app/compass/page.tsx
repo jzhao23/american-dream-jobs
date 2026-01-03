@@ -6,7 +6,7 @@ import { Toast } from "@/components/Toast";
 
 export default function CompassPage() {
   const router = useRouter();
-  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [resumeText, setResumeText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState<{
     message: string;
@@ -20,12 +20,6 @@ export default function CompassPage() {
     question5: "",
   });
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setResumeFile(e.target.files[0]);
-    }
-  };
-
   const handleAnswerChange = (questionKey: string, value: string) => {
     setAnswers(prev => ({
       ...prev,
@@ -38,25 +32,62 @@ export default function CompassPage() {
     setIsLoading(true);
 
     try {
-      // TODO: Replace with actual API call
-      // Simulate API call for now
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Validate resume text
+      if (!resumeText.trim() || resumeText.trim().length < 50) {
+        setToast({
+          message: 'Please paste your resume text (at least 50 characters)',
+          type: 'error'
+        });
+        setIsLoading(false);
+        return;
+      }
 
-      // Store form data in sessionStorage for results page
+      // Call API with resume text (note: trailing slash required)
+      const response = await fetch('/api/compass/match/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ resumeText: resumeText.trim(), answers })
+      });
+
+      // Get response text first to handle both JSON and HTML error pages
+      const responseText = await response.text();
+
+      // Check if response is HTML (server error page)
+      if (responseText.startsWith('<!DOCTYPE') || responseText.startsWith('<html')) {
+        console.error('Server returned HTML error page:', responseText.substring(0, 500));
+        throw new Error('Server error occurred. Please check the server logs.');
+      }
+
+      // Parse as JSON
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse response:', responseText.substring(0, 500));
+        throw new Error('Invalid response from server');
+      }
+
+      if (!response.ok) {
+        throw new Error(data.message || data.error || 'Failed to get recommendations');
+      }
+
+      // Store results and metadata
+      sessionStorage.setItem('compass-results', JSON.stringify(data.matches));
       sessionStorage.setItem(
-        "compass-submission",
+        'compass-submission',
         JSON.stringify({
-          resumeFileName: resumeFile?.name || "No resume uploaded",
+          resumeFileName: 'Resume text',
           answers,
           timestamp: new Date().toISOString(),
         })
       );
 
-      // Navigate to results page
-      router.push("/compass-results");
+      // Navigate to results
+      router.push('/compass-results');
     } catch (error) {
+      console.error('Career Compass error:', error);
       setToast({
-        message: "Failed to get career recommendations. Please try again.",
+        message: error instanceof Error ? error.message : "Failed to get career recommendations. Please try again.",
         type: "error",
       });
     } finally {
@@ -80,70 +111,38 @@ export default function CompassPage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <form onSubmit={handleSubmit} className="card p-6 md:p-8">
-          {/* Resume Upload Section */}
+          {/* Resume Text Section */}
           <div className="mb-8">
-            <label className="block text-lg font-semibold text-secondary-900 mb-3">
-              Resume Upload
+            <label className="block text-lg font-semibold text-secondary-900 mb-2">
+              Your Resume
             </label>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <label className="flex-1 w-full">
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={handleFileChange}
-                  className="hidden"
-                  id="resume-upload"
-                />
-                <div className="flex items-center justify-center px-6 py-4 border-2 border-dashed border-secondary-300 rounded-lg cursor-pointer hover:border-primary-400 hover:bg-secondary-50 transition-colors">
-                  <div className="text-center">
-                    <svg
-                      className="mx-auto h-12 w-12 text-secondary-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <p className="mt-2 text-sm text-secondary-600">
-                      <span className="font-medium text-primary-600 hover:text-primary-700">
-                        Click to upload
-                      </span>{" "}
-                      or drag and drop
-                    </p>
-                    <p className="text-xs text-secondary-500">PDF, DOC, or DOCX</p>
-                  </div>
-                </div>
-              </label>
-            </div>
-            {resumeFile && (
-              <div className="mt-3 flex items-center gap-2 text-sm text-secondary-700">
-                <svg
-                  className="h-5 w-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="font-medium">{resumeFile.name}</span>
-                <button
-                  type="button"
-                  onClick={() => setResumeFile(null)}
-                  className="ml-auto text-red-600 hover:text-red-800 text-xs"
-                >
-                  Remove
-                </button>
-              </div>
-            )}
+            <p className="text-sm text-secondary-600 mb-3">
+              Paste your resume text below. Include your work experience, skills, education, and any relevant certifications.
+            </p>
+            <textarea
+              value={resumeText}
+              onChange={(e) => setResumeText(e.target.value)}
+              placeholder="Example:
+
+John Smith
+Software Engineer with 5 years of experience
+
+EXPERIENCE
+Senior Software Engineer at TechCorp (2021-Present)
+- Led development of microservices architecture
+- Managed team of 4 developers
+
+SKILLS
+JavaScript, TypeScript, React, Node.js, Python, AWS
+
+EDUCATION
+B.S. Computer Science, State University, 2018"
+              rows={10}
+              className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+            <p className="mt-2 text-xs text-secondary-500">
+              Tip: Copy and paste directly from your resume document or LinkedIn profile
+            </p>
           </div>
 
           {/* Questions Section */}
