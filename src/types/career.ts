@@ -97,28 +97,29 @@ export const AIRiskSchema = z.object({
 });
 
 // ============================================================================
-// AI RESILIENCE CLASSIFICATION (New 4-tier system)
+// AI RESILIENCE CLASSIFICATION v2.0 (Additive Scoring System)
 // ============================================================================
 
-// Task Exposure Level (from AIOE dataset)
-export const TaskExposureEnum = z.enum(["Low", "Medium", "High"]);
-export type TaskExposure = z.infer<typeof TaskExposureEnum>;
+// AI Exposure Label (based on GPTs are GPTs β score)
+// Thresholds: Low (<0.25), Medium (0.25-0.50), High (>0.50)
+export const AIExposureLabelEnum = z.enum(["Low", "Medium", "High"]);
+export type AIExposureLabel = z.infer<typeof AIExposureLabelEnum>;
 
-// Automation Potential
-export const AutomationPotentialEnum = z.enum(["Low", "Medium", "High"]);
-export type AutomationPotential = z.infer<typeof AutomationPotentialEnum>;
+// AI Exposure Schema (replaces taskExposure + automationPotential)
+export const AIExposureSchema = z.object({
+  score: z.number().min(0).max(1),           // 0-1 β score from GPTs paper
+  label: AIExposureLabelEnum,                 // Low/Medium/High for display
+  source: z.enum(["gpts", "aioe"]),           // Data source used
+});
+export type AIExposure = z.infer<typeof AIExposureSchema>;
 
-// Job Growth Category (from BLS 2024-2034 projections)
-export const JobGrowthCategoryEnum = z.enum([
-  "Declining Quickly",  // < -10%
-  "Declining Slowly",   // -10% to 0%
-  "Stable",             // 0% to 5%
-  "Growing Slowly",     // 5% to 15%
-  "Growing Quickly"     // > 15%
-]);
-export type JobGrowthCategory = z.infer<typeof JobGrowthCategoryEnum>;
+// Job Growth Label (simplified 3-category version for v2.0)
+// Thresholds: Declining (<0%), Stable (0-5%), Growing (>5%)
+export const JobGrowthLabelEnum = z.enum(["Declining", "Stable", "Growing"]);
+export type JobGrowthLabel = z.infer<typeof JobGrowthLabelEnum>;
 
 // Human Advantage Category (based on EPOCH sum)
+// Thresholds: Weak (<12), Moderate (12-19), Strong (>=20)
 export const HumanAdvantageCategoryEnum = z.enum(["Weak", "Moderate", "Strong"]);
 export type HumanAdvantageCategory = z.infer<typeof HumanAdvantageCategoryEnum>;
 
@@ -134,25 +135,70 @@ export const EPOCHScoresSchema = z.object({
 });
 export type EPOCHScores = z.infer<typeof EPOCHScoresSchema>;
 
-// Full AI Assessment Schema
+// Scoring breakdown for AI Resilience calculation
+export const AIResilienceScoringSchema = z.object({
+  exposurePoints: z.number().min(0).max(2),       // 0-2 points
+  growthPoints: z.number().min(0).max(2),         // 0-2 points
+  humanAdvantagePoints: z.number().min(0).max(2), // 0-2 points
+  totalScore: z.number().min(0).max(6),           // 0-6 total
+});
+export type AIResilienceScoring = z.infer<typeof AIResilienceScoringSchema>;
+
+// Full AI Assessment Schema v2.0
 export const CareerAIAssessmentSchema = z.object({
-  taskExposure: TaskExposureEnum,
-  automationPotential: AutomationPotentialEnum,
+  // Single AI Exposure metric (replaces taskExposure + automationPotential)
+  aiExposure: AIExposureSchema,
+
+  // Job Growth
   jobGrowth: z.object({
-    category: JobGrowthCategoryEnum,
+    label: JobGrowthLabelEnum,
     percentChange: z.number(),
     source: z.string(),
   }),
+
+  // Human Advantage (EPOCH)
   humanAdvantage: z.object({
     category: HumanAdvantageCategoryEnum,
     epochScores: EPOCHScoresSchema,
   }),
+
+  // Scoring breakdown (new in v2.0)
+  scoring: AIResilienceScoringSchema,
+
+  // Final classification
   classification: AIResilienceClassificationEnum,
   classificationRationale: z.string(),
+
+  // Metadata
   lastUpdated: z.string(),
   methodology: z.string(),
 });
 export type CareerAIAssessment = z.infer<typeof CareerAIAssessmentSchema>;
+
+// ============================================================================
+// DEPRECATED: Legacy types kept for backwards compatibility during migration
+// ============================================================================
+
+/** @deprecated Use AIExposureLabelEnum instead */
+export const TaskExposureEnum = z.enum(["Low", "Medium", "High"]);
+/** @deprecated Use AIExposureLabel instead */
+export type TaskExposure = z.infer<typeof TaskExposureEnum>;
+
+/** @deprecated No longer used in v2.0 - automationPotential removed */
+export const AutomationPotentialEnum = z.enum(["Low", "Medium", "High"]);
+/** @deprecated No longer used in v2.0 */
+export type AutomationPotential = z.infer<typeof AutomationPotentialEnum>;
+
+/** @deprecated Use JobGrowthLabelEnum instead (simplified 3-category) */
+export const JobGrowthCategoryEnum = z.enum([
+  "Declining Quickly",  // < -10%
+  "Declining Slowly",   // -10% to 0%
+  "Stable",             // 0% to 5%
+  "Growing Slowly",     // 5% to 15%
+  "Growing Quickly"     // > 15%
+]);
+/** @deprecated Use JobGrowthLabel instead */
+export type JobGrowthCategory = z.infer<typeof JobGrowthCategoryEnum>;
 
 // National Importance Assessment
 export const NationalImportanceSchema = z.object({

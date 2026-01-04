@@ -59,11 +59,11 @@ export default function MethodologyPage() {
       <section className="bg-white border-b border-secondary-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
-            How We Assess AI Impact on Careers
+            AI Resilience Classification Methodology
           </h1>
           <p className="text-lg text-secondary-600">
-            Transparent methodology for our AI Resilience ratings, including data sources,
-            calculation methods, and honest limitations.
+            How we assess careers for AI resilience using a transparent, additive scoring system
+            based on three key dimensions.
           </p>
         </div>
       </section>
@@ -73,10 +73,10 @@ export default function MethodologyPage() {
         <div className="card p-4 mb-8 lg:hidden">
           <h2 className="font-semibold text-secondary-900 mb-2">On This Page</h2>
           <div className="space-y-1">
-            <TOCItem href="#why">Why We Built This</TOCItem>
-            <TOCItem href="#framework">Our 4-Dimensional Framework</TOCItem>
-            <TOCItem href="#classifications">How We Classify Careers</TOCItem>
-            <TOCItem href="#limitations">What We Don't Know</TOCItem>
+            <TOCItem href="#tiers">The Four Tiers</TOCItem>
+            <TOCItem href="#scoring">Scoring System</TOCItem>
+            <TOCItem href="#dimensions">Three Dimensions</TOCItem>
+            <TOCItem href="#limitations">Limitations</TOCItem>
             <TOCItem href="#sources">Data Sources</TOCItem>
           </div>
         </div>
@@ -89,9 +89,9 @@ export default function MethodologyPage() {
                 On This Page
               </h2>
               <nav className="space-y-1">
-                <TOCItem href="#why">Why We Built This</TOCItem>
-                <TOCItem href="#framework">4-Dimensional Framework</TOCItem>
-                <TOCItem href="#classifications">Classifications</TOCItem>
+                <TOCItem href="#tiers">The Four Tiers</TOCItem>
+                <TOCItem href="#scoring">Scoring System</TOCItem>
+                <TOCItem href="#dimensions">Three Dimensions</TOCItem>
                 <TOCItem href="#limitations">Limitations</TOCItem>
                 <TOCItem href="#sources">Data Sources</TOCItem>
               </nav>
@@ -100,358 +100,394 @@ export default function MethodologyPage() {
 
           {/* Main content */}
           <main className="flex-1 space-y-12">
-            {/* Why We Built This */}
-            <section id="why">
-              <h2 className="text-2xl font-bold text-secondary-900 mb-4">Why We Built This</h2>
-              <div className="prose prose-secondary max-w-none">
-                <p className="text-secondary-700 mb-4">
-                  Most AI impact predictions rely on outdated single-source data, like the widely-cited
-                  2013 Oxford study that predicted 47% of jobs were at high risk of automation. While
-                  groundbreaking at the time, that research is now over a decade old and didn't anticipate
-                  developments like large language models.
-                </p>
-                <p className="text-secondary-700 mb-4">
-                  We built this system to provide <strong>transparent, multi-source assessments</strong> that
-                  acknowledge uncertainty. Rather than giving a false sense of precision with a single
-                  "automation probability" number, we evaluate careers across four dimensions and combine
-                  them into categorical ratings.
-                </p>
-                <p className="text-secondary-700">
-                  <strong>Our commitment:</strong> We update our assessments as new research emerges
-                  and are transparent about our methodology's limitations. If you work in an occupation
-                  and believe our assessment is wrong, <Link href="/contribute" className="text-primary-600 hover:underline">we want to hear from you</Link>.
-                </p>
+            {/* The Four Tiers */}
+            <section id="tiers">
+              <h2 className="text-2xl font-bold text-secondary-900 mb-4">The Four Tiers</h2>
+              <p className="text-secondary-600 mb-6">
+                Every career receives one of four classifications based on their total score.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-secondary-200">
+                      <th className="text-left py-3 pr-4 font-semibold text-secondary-900">Tier</th>
+                      <th className="text-left py-3 font-semibold text-secondary-900">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-secondary-700">
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
+                        <span className="text-green-600 font-semibold">AI-Resilient</span>
+                      </td>
+                      <td className="py-3">Strong human advantage or growing demand protects this career from AI displacement</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
+                        <span className="text-yellow-600 font-semibold">AI-Augmented</span>
+                      </td>
+                      <td className="py-3">AI assists this work but human skills remain essential</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
+                        <span className="text-orange-600 font-semibold">In Transition</span>
+                      </td>
+                      <td className="py-3">This career is being transformed by AI; adaptation and skill evolution needed</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-4">
+                        <span className="text-red-600 font-semibold">High Disruption Risk</span>
+                      </td>
+                      <td className="py-3">High AI exposure combined with declining demand creates significant risk</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </section>
 
-            {/* 4-Dimensional Framework */}
-            <section id="framework">
-              <h2 className="text-2xl font-bold text-secondary-900 mb-4">Our 4-Dimensional Framework</h2>
+            {/* Scoring System */}
+            <section id="scoring">
+              <h2 className="text-2xl font-bold text-secondary-900 mb-4">How We Calculate It</h2>
               <p className="text-secondary-600 mb-6">
-                We assess AI impact across four dimensions, then combine them into an overall classification.
+                We use a simple additive scoring system. Each of three dimensions earns 0-2 points,
+                for a maximum total of 6 points. The total determines the classification.
               </p>
 
-              {/* Dimension 1: Task Exposure */}
-              <CollapsibleSection title="1. Task Exposure" defaultOpen={true}>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-secondary-900 mb-1">What it measures</h4>
-                    <p className="text-secondary-700">
-                      How much of this job's daily work involves tasks that AI can currently perform or assist with.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-secondary-900 mb-1">How we calculate it</h4>
-                    <p className="text-secondary-700 mb-2">
-                      We use the AIOE (AI Occupational Exposure) dataset from Felten, Raj, and Seamans (2021),
-                      which measures exposure by analyzing how AI capabilities map to occupational abilities
-                      defined in O*NET.
-                    </p>
-                    <ul className="list-disc list-inside text-secondary-700 space-y-1 ml-2">
-                      <li><strong>Low:</strong> Bottom 33% of exposure scores</li>
-                      <li><strong>Medium:</strong> Middle 34% of exposure scores</li>
-                      <li><strong>High:</strong> Top 33% of exposure scores</li>
-                    </ul>
-                  </div>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                    <h4 className="font-semibold text-amber-800 mb-1">Limitations</h4>
-                    <ul className="text-sm text-amber-700 space-y-1">
-                      <li>Based on task descriptions, not actual workplace AI adoption</li>
-                      <li>Doesn't distinguish between "AI can do this" and "employers are using AI for this"</li>
-                      <li>O*NET task descriptions may lag behind how jobs are actually performed</li>
-                    </ul>
-                  </div>
+              <div className="bg-secondary-100 rounded-lg p-4 mb-6">
+                <h3 className="font-semibold text-secondary-900 mb-3">Scoring Breakdown</h3>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-secondary-300">
+                        <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Dimension</th>
+                        <th className="text-left py-2 pr-4 font-semibold text-secondary-900">What We Measure</th>
+                        <th className="text-left py-2 font-semibold text-secondary-900">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-secondary-700">
+                      <tr className="border-b border-secondary-200">
+                        <td className="py-2 pr-4 font-medium">AI Exposure</td>
+                        <td className="py-2 pr-4">% of tasks AI can accelerate by 50%</td>
+                        <td className="py-2">0-2</td>
+                      </tr>
+                      <tr className="border-b border-secondary-200">
+                        <td className="py-2 pr-4 font-medium">Job Growth</td>
+                        <td className="py-2 pr-4">BLS 2024-2034 employment projections</td>
+                        <td className="py-2">0-2</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4 font-medium">Human Advantage</td>
+                        <td className="py-2 pr-4">EPOCH framework score (1-25)</td>
+                        <td className="py-2">0-2</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </CollapsibleSection>
+              </div>
 
-              {/* Dimension 2: Automation Risk */}
-              <CollapsibleSection title="2. Automation Risk">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-secondary-900 mb-1">What it measures</h4>
-                    <p className="text-secondary-700">
-                      The likelihood that AI will fully replace workers in this role, rather than augment their productivity.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-secondary-900 mb-1">How we calculate it</h4>
-                    <p className="text-secondary-700 mb-2">
-                      We assess what percentage of core tasks are "routine" (repetitive, rule-based) versus
-                      non-routine. High automation risk indicates jobs where most tasks can be fully automated,
-                      not just assisted.
-                    </p>
-                    <ul className="list-disc list-inside text-secondary-700 space-y-1 ml-2">
-                      <li><strong>Low:</strong> Mostly non-routine tasks requiring judgment, creativity, or physical presence</li>
-                      <li><strong>Medium:</strong> Mix of routine and non-routine tasks</li>
-                      <li><strong>High:</strong> Predominantly routine, rule-based tasks</li>
-                    </ul>
-                  </div>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                    <h4 className="font-semibold text-amber-800 mb-1">Limitations</h4>
-                    <ul className="text-sm text-amber-700 space-y-1">
-                      <li>"Automatable" doesn't mean "will be automated" — cost, regulations, and organizational inertia matter</li>
-                      <li>We can't predict breakthrough AI capabilities</li>
-                      <li>Automation often happens gradually, changing roles rather than eliminating them overnight</li>
-                    </ul>
-                  </div>
+              <div className="bg-white border border-secondary-200 rounded-lg p-4">
+                <h3 className="font-semibold text-secondary-900 mb-3">Total Score → Classification</h3>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-secondary-200">
+                        <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Score</th>
+                        <th className="text-left py-2 font-semibold text-secondary-900">Classification</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-secondary-700">
+                      <tr className="border-b border-secondary-100">
+                        <td className="py-2 pr-4">5-6</td>
+                        <td className="py-2"><span className="text-green-600 font-medium">AI-Resilient</span></td>
+                      </tr>
+                      <tr className="border-b border-secondary-100">
+                        <td className="py-2 pr-4">3-4</td>
+                        <td className="py-2"><span className="text-yellow-600 font-medium">AI-Augmented</span></td>
+                      </tr>
+                      <tr className="border-b border-secondary-100">
+                        <td className="py-2 pr-4">2</td>
+                        <td className="py-2"><span className="text-orange-600 font-medium">In Transition</span></td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">0-1</td>
+                        <td className="py-2"><span className="text-red-600 font-medium">High Disruption Risk</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </CollapsibleSection>
+              </div>
+            </section>
 
-              {/* Dimension 3: Job Growth */}
-              <CollapsibleSection title="3. Job Growth">
+            {/* Three Dimensions */}
+            <section id="dimensions">
+              <h2 className="text-2xl font-bold text-secondary-900 mb-4">The Three Dimensions Explained</h2>
+              <p className="text-secondary-600 mb-6">
+                Each dimension is scored independently based on objective data sources.
+              </p>
+
+              {/* Dimension 1: AI Exposure */}
+              <CollapsibleSection title="1. AI Exposure" defaultOpen={true}>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-secondary-900 mb-1">What it measures</h4>
                     <p className="text-secondary-700">
-                      Whether employment in this occupation is projected to increase or decrease over the next decade.
+                      The percentage of an occupation's tasks where AI tools (specifically Large Language Models
+                      like ChatGPT) could reduce completion time by at least 50% while maintaining quality.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-secondary-900 mb-1">How we calculate it</h4>
                     <p className="text-secondary-700 mb-2">
-                      We use official Bureau of Labor Statistics (BLS) employment projections for 2024-2034.
-                      BLS economists factor in technology, demographics, and economic trends.
+                      We use the "GPTs are GPTs" research (Eloundou et al., 2023) from OpenAI and
+                      University of Pennsylvania, which analyzed task-level LLM exposure.
                     </p>
                     <div className="overflow-x-auto">
                       <table className="min-w-full text-sm">
                         <thead>
                           <tr className="border-b border-secondary-200">
-                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Category</th>
-                            <th className="text-left py-2 font-semibold text-secondary-900">10-Year Projection</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">AI Exposure</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Meaning</th>
+                            <th className="text-left py-2 font-semibold text-secondary-900">Points</th>
                           </tr>
                         </thead>
                         <tbody className="text-secondary-700">
                           <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4">Declining Quickly</td>
-                            <td className="py-2">More than 10% decline</td>
+                            <td className="py-2 pr-4"><span className="text-green-600 font-medium">Low</span></td>
+                            <td className="py-2 pr-4">&lt;25% of tasks exposed</td>
+                            <td className="py-2">+2</td>
                           </tr>
                           <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4">Declining Slowly</td>
-                            <td className="py-2">0% to 10% decline</td>
-                          </tr>
-                          <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4">Stable</td>
-                            <td className="py-2">0% to 5% growth</td>
-                          </tr>
-                          <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4">Growing Slowly</td>
-                            <td className="py-2">5% to 15% growth</td>
+                            <td className="py-2 pr-4"><span className="text-yellow-600 font-medium">Medium</span></td>
+                            <td className="py-2 pr-4">25-50% of tasks exposed</td>
+                            <td className="py-2">+1</td>
                           </tr>
                           <tr>
-                            <td className="py-2 pr-4">Growing Quickly</td>
-                            <td className="py-2">More than 15% growth</td>
+                            <td className="py-2 pr-4"><span className="text-red-600 font-medium">High</span></td>
+                            <td className="py-2 pr-4">&gt;50% of tasks exposed</td>
+                            <td className="py-2">+0</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                    <h4 className="font-semibold text-amber-800 mb-1">Limitations</h4>
-                    <ul className="text-sm text-amber-700 space-y-1">
-                      <li>BLS projections are 10-year averages; actual year-to-year changes vary</li>
-                      <li>Projections assume no major economic disruptions</li>
-                      <li>BLS has historically underestimated technology-driven changes</li>
-                      <li>Projections are updated every 2 years; may not reflect very recent developments</li>
-                    </ul>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <h4 className="font-semibold text-blue-800 mb-1">Why lower exposure = more points</h4>
+                    <p className="text-sm text-blue-700">
+                      Careers with fewer AI-exposed tasks are more protected from disruption. A low AI exposure
+                      score means most of what you do in this job cannot be easily done or accelerated by AI.
+                    </p>
                   </div>
                 </div>
               </CollapsibleSection>
 
-              {/* Dimension 4: Human Advantage */}
-              <CollapsibleSection title="4. Human Advantage (EPOCH Framework)">
+              {/* Dimension 2: Job Growth */}
+              <CollapsibleSection title="2. Job Growth">
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-secondary-900 mb-1">What it measures</h4>
                     <p className="text-secondary-700">
-                      How much this job relies on distinctly human capabilities that AI cannot replicate.
+                      Projected employment change from 2024 to 2034.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-secondary-900 mb-1">How we calculate it</h4>
                     <p className="text-secondary-700 mb-2">
-                      We use the EPOCH framework, rating each occupation 1-5 on five human capabilities:
+                      We use official Bureau of Labor Statistics (BLS) employment projections.
                     </p>
                     <div className="overflow-x-auto">
                       <table className="min-w-full text-sm">
                         <thead>
                           <tr className="border-b border-secondary-200">
-                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Dimension</th>
-                            <th className="text-left py-2 font-semibold text-secondary-900">What it means</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Job Growth</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Meaning</th>
+                            <th className="text-left py-2 font-semibold text-secondary-900">Points</th>
                           </tr>
                         </thead>
                         <tbody className="text-secondary-700">
                           <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4 font-medium">E - Empathy</td>
-                            <td className="py-2">Emotional intelligence, building trust, understanding unspoken needs</td>
+                            <td className="py-2 pr-4"><span className="text-green-600 font-medium">Growing</span></td>
+                            <td className="py-2 pr-4">&gt;5% growth projected</td>
+                            <td className="py-2">+2</td>
                           </tr>
                           <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4 font-medium">P - Presence</td>
-                            <td className="py-2">Physical presence required — hands-on work, face-to-face interaction</td>
-                          </tr>
-                          <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4 font-medium">O - Opinion</td>
-                            <td className="py-2">Judgment calls, ethical decisions, exercising authority</td>
-                          </tr>
-                          <tr className="border-b border-secondary-100">
-                            <td className="py-2 pr-4 font-medium">C - Creativity</td>
-                            <td className="py-2">Novel problem-solving, artistic expression, innovation</td>
+                            <td className="py-2 pr-4"><span className="text-yellow-600 font-medium">Stable</span></td>
+                            <td className="py-2 pr-4">0% to 5% growth projected</td>
+                            <td className="py-2">+1</td>
                           </tr>
                           <tr>
-                            <td className="py-2 pr-4 font-medium">H - Hope</td>
-                            <td className="py-2">Leadership, inspiring others, providing vision and motivation</td>
+                            <td className="py-2 pr-4"><span className="text-red-600 font-medium">Declining</span></td>
+                            <td className="py-2 pr-4">Negative growth projected</td>
+                            <td className="py-2">+0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <h4 className="font-semibold text-blue-800 mb-1">Why this matters</h4>
+                    <p className="text-sm text-blue-700">
+                      Growing demand can absorb technological disruption. Even if some tasks become automated,
+                      expanding industries create new roles and responsibilities. Declining demand compounds
+                      AI risk—fewer jobs plus AI automation is a difficult combination.
+                    </p>
+                  </div>
+                </div>
+              </CollapsibleSection>
+
+              {/* Dimension 3: Human Advantage (EPOCH) */}
+              <CollapsibleSection title="3. Human Advantage (EPOCH Framework)">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-secondary-900 mb-1">What it measures</h4>
+                    <p className="text-secondary-700">
+                      How much the job relies on five dimensions of uniquely human capability
+                      that AI struggles to replicate.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-secondary-900 mb-1">The EPOCH Framework</h4>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-secondary-200">
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Letter</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Dimension</th>
+                            <th className="text-left py-2 font-semibold text-secondary-900">Examples</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-secondary-700">
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4 font-medium">E</td>
+                            <td className="py-2 pr-4">Empathy</td>
+                            <td className="py-2">Emotional intelligence, patient care, reading social cues</td>
+                          </tr>
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4 font-medium">P</td>
+                            <td className="py-2 pr-4">Presence</td>
+                            <td className="py-2">Physical presence, hands-on work, being there matters</td>
+                          </tr>
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4 font-medium">O</td>
+                            <td className="py-2 pr-4">Opinion</td>
+                            <td className="py-2">Professional judgment, decision-making under uncertainty</td>
+                          </tr>
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4 font-medium">C</td>
+                            <td className="py-2 pr-4">Creativity</td>
+                            <td className="py-2">Innovation, artistic expression, novel problem-solving</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4 font-medium">H</td>
+                            <td className="py-2 pr-4">Hope</td>
+                            <td className="py-2">Mentorship, motivation, inspiring others</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                     <p className="text-secondary-700 mt-3">
-                      Scores are summed (max 25) and categorized:
+                      Each dimension is scored 1-5 based on how central it is to the occupation,
+                      for a maximum of 25 points.
                     </p>
-                    <ul className="list-disc list-inside text-secondary-700 space-y-1 ml-2 mt-2">
-                      <li><strong>Strong</strong> (20+): AI has limited ability to replace this work</li>
-                      <li><strong>Moderate</strong> (12-19): AI augments but doesn't replace</li>
-                      <li><strong>Weak</strong> (&lt;12): Higher risk of AI disruption</li>
-                    </ul>
                   </div>
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                    <h4 className="font-semibold text-amber-800 mb-1">Limitations</h4>
-                    <ul className="text-sm text-amber-700 space-y-1">
-                      <li>EPOCH scores involve judgment calls; reasonable people might disagree</li>
-                      <li>AI capabilities in empathy and creativity are evolving rapidly</li>
-                      <li>Scores reflect job descriptions, not how individual workers actually perform</li>
-                    </ul>
+                  <div>
+                    <h4 className="font-semibold text-secondary-900 mb-1">Scoring</h4>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-secondary-200">
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Human Advantage</th>
+                            <th className="text-left py-2 pr-4 font-semibold text-secondary-900">EPOCH Sum</th>
+                            <th className="text-left py-2 font-semibold text-secondary-900">Points</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-secondary-700">
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4"><span className="text-green-600 font-medium">Strong</span></td>
+                            <td className="py-2 pr-4">20 or higher</td>
+                            <td className="py-2">+2</td>
+                          </tr>
+                          <tr className="border-b border-secondary-100">
+                            <td className="py-2 pr-4"><span className="text-yellow-600 font-medium">Moderate</span></td>
+                            <td className="py-2 pr-4">12-19</td>
+                            <td className="py-2">+1</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4"><span className="text-red-600 font-medium">Weak</span></td>
+                            <td className="py-2 pr-4">Below 12</td>
+                            <td className="py-2">+0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <h4 className="font-semibold text-blue-800 mb-1">Why this matters</h4>
+                    <p className="text-sm text-blue-700">
+                      Jobs requiring deep empathy, physical presence, high-stakes judgment, genuine creativity,
+                      or the ability to inspire others have structural protection from AI. These are capabilities
+                      that AI cannot fully replicate—and in many cases, people specifically want a human doing
+                      these things even if AI could approximate them.
+                    </p>
                   </div>
                 </div>
               </CollapsibleSection>
             </section>
 
-            {/* Classifications */}
-            <section id="classifications">
-              <h2 className="text-2xl font-bold text-secondary-900 mb-4">How We Classify Careers</h2>
-              <p className="text-secondary-600 mb-6">
-                We don't use a simple formula. Instead, we apply a decision tree that weighs different signals
-                based on research about what actually drives job displacement.
-              </p>
-
-              <div className="space-y-4">
-                {/* AI-Resilient */}
-                <div className="border-l-4 border-green-500 pl-4 py-2">
-                  <h3 className="font-bold text-secondary-900 flex items-center gap-2">
-                    <span className="text-green-600">AI-Resilient</span>
-                  </h3>
-                  <p className="text-secondary-700 text-sm mt-1">
-                    <strong>Meaning:</strong> This career has strong protection against AI disruption.
-                  </p>
-                  <p className="text-secondary-600 text-sm">
-                    <strong>Typical profile:</strong> Low task exposure, moderate-to-strong human advantage,
-                    stable or growing demand
-                  </p>
-                  <p className="text-secondary-500 text-sm">
-                    <strong>Examples:</strong> Electricians, Plumbers, Nurses, HVAC Technicians
-                  </p>
-                </div>
-
-                {/* AI-Augmented */}
-                <div className="border-l-4 border-yellow-500 pl-4 py-2">
-                  <h3 className="font-bold text-secondary-900 flex items-center gap-2">
-                    <span className="text-yellow-600">AI-Augmented</span>
-                  </h3>
-                  <p className="text-secondary-700 text-sm mt-1">
-                    <strong>Meaning:</strong> AI will significantly change how this work is done, but demand
-                    for workers remains strong.
-                  </p>
-                  <p className="text-secondary-600 text-sm">
-                    <strong>Typical profile:</strong> High task exposure, but strong growth or strong human advantage
-                  </p>
-                  <p className="text-secondary-500 text-sm">
-                    <strong>Examples:</strong> Software Developers, Graphic Designers, Financial Analysts
-                  </p>
-                </div>
-
-                {/* In Transition */}
-                <div className="border-l-4 border-orange-500 pl-4 py-2">
-                  <h3 className="font-bold text-secondary-900 flex items-center gap-2">
-                    <span className="text-orange-600">In Transition</span>
-                  </h3>
-                  <p className="text-secondary-700 text-sm mt-1">
-                    <strong>Meaning:</strong> This role is actively evolving — some tasks are being automated
-                    while new responsibilities emerge.
-                  </p>
-                  <p className="text-secondary-600 text-sm">
-                    <strong>Typical profile:</strong> High exposure + high automation risk + stable or slow growth
-                  </p>
-                  <p className="text-secondary-500 text-sm">
-                    <strong>Examples:</strong> Customer Service Reps, Paralegals, Medical Coders
-                  </p>
-                </div>
-
-                {/* High Disruption Risk */}
-                <div className="border-l-4 border-red-500 pl-4 py-2">
-                  <h3 className="font-bold text-secondary-900 flex items-center gap-2">
-                    <span className="text-red-600">High Disruption Risk</span>
-                  </h3>
-                  <p className="text-secondary-700 text-sm mt-1">
-                    <strong>Meaning:</strong> This occupation faces significant decline due to automation.
-                  </p>
-                  <p className="text-secondary-600 text-sm">
-                    <strong>Typical profile:</strong> High automation risk + declining demand + weak human advantage
-                  </p>
-                  <p className="text-secondary-500 text-sm">
-                    <strong>Examples:</strong> Data Entry Clerks, Telemarketers, Word Processors
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6 bg-secondary-100 rounded-lg p-4">
-                <h4 className="font-semibold text-secondary-900 mb-2">Key Decision Rules</h4>
-                <ul className="text-sm text-secondary-700 space-y-2">
-                  <li><strong>1. Job growth is our strongest signal.</strong> Rapidly declining occupations with
-                    high automation risk are classified as High Disruption Risk.</li>
-                  <li><strong>2. Strong human advantage provides protection.</strong> Even high-exposure jobs
-                    can be AI-Resilient if they require irreplaceable human skills.</li>
-                  <li><strong>3. We err toward caution.</strong> When signals conflict, we assign the more
-                    conservative rating.</li>
-                </ul>
+            {/* Example Calculation */}
+            <section className="bg-white border border-secondary-200 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-secondary-900 mb-4">Example: Electrician</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-secondary-200">
+                      <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Dimension</th>
+                      <th className="text-left py-2 pr-4 font-semibold text-secondary-900">Assessment</th>
+                      <th className="text-left py-2 font-semibold text-secondary-900">Points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-secondary-700">
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-2 pr-4 font-medium">AI Exposure</td>
+                      <td className="py-2 pr-4">Low — Only ~4% of tasks can be accelerated by AI. The work is physical.</td>
+                      <td className="py-2">+2</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-2 pr-4 font-medium">Job Growth</td>
+                      <td className="py-2 pr-4">Growing — 6% projected growth. Infrastructure investment drives demand.</td>
+                      <td className="py-2">+2</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-2 pr-4 font-medium">Human Advantage</td>
+                      <td className="py-2 pr-4">Strong — High presence, high judgment, skilled hands-on work.</td>
+                      <td className="py-2">+2</td>
+                    </tr>
+                    <tr className="bg-green-50">
+                      <td className="py-2 pr-4 font-bold">Total</td>
+                      <td className="py-2 pr-4"></td>
+                      <td className="py-2 font-bold">6 → AI-Resilient</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </section>
 
             {/* Limitations */}
             <section id="limitations">
-              <h2 className="text-2xl font-bold text-secondary-900 mb-4">What We Don't Know</h2>
-              <p className="text-secondary-600 mb-6">
-                We believe in epistemic humility. Here's what our methodology cannot capture:
-              </p>
-
+              <h2 className="text-2xl font-bold text-secondary-900 mb-4">Limitations & Disclaimers</h2>
               <div className="space-y-4">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-red-800 mb-2">Inherent Uncertainty</h4>
-                  <ul className="text-sm text-red-700 space-y-1">
-                    <li><strong>AI capabilities are changing rapidly.</strong> A job rated "AI-Resilient" today
-                      could face disruption from a breakthrough we can't predict.</li>
-                    <li><strong>Predictions ≠ reality.</strong> All models are wrong; some are useful. Our
-                      ratings are educated estimates, not guarantees.</li>
-                  </ul>
-                </div>
-
-                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-orange-800 mb-2">Data Gaps</h4>
-                  <ul className="text-sm text-orange-700 space-y-1">
-                    <li><strong>Small occupations have noisy data.</strong> BLS projections for occupations
-                      with fewer than 50,000 workers are less reliable.</li>
-                    <li><strong>New occupations aren't captured.</strong> Jobs created in the last few years
-                      lack historical data.</li>
-                    <li><strong>Geographic variation.</strong> AI adoption differs by region; our national-level
-                      scores may not match your local market.</li>
-                  </ul>
-                </div>
-
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-yellow-800 mb-2">What We Can't Measure</h4>
-                  <ul className="text-sm text-yellow-700 space-y-1">
-                    <li><strong>Your specific employer.</strong> A tech-forward company and a traditional
-                      firm may automate very differently.</li>
-                    <li><strong>Policy changes.</strong> Regulations could accelerate or slow AI adoption.</li>
-                    <li><strong>Economic shocks.</strong> Recessions, pandemics, and other disruptions
-                      aren't in our model.</li>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <ul className="text-sm text-amber-700 space-y-2">
+                    <li><strong>1. AI capabilities are evolving rapidly.</strong> The AI exposure data is based
+                      on 2023 research. New AI capabilities could change exposure levels for some occupations.</li>
+                    <li><strong>2. Individual jobs vary significantly.</strong> This classification represents
+                      aggregate trends for occupation categories. Your specific job depends on employer,
+                      location, specialization, and how you adapt.</li>
+                    <li><strong>3. Projections are estimates, not guarantees.</strong> BLS projections may not
+                      account for major economic shifts, policy changes, or breakthroughs.</li>
+                    <li><strong>4. EPOCH scores involve judgment.</strong> While grounded in O*NET data,
+                      EPOCH scoring requires qualitative assessment.</li>
+                    <li><strong>5. This is not career advice.</strong> This tool informs your thinking but
+                      should not make decisions for you.</li>
                   </ul>
                 </div>
               </div>
@@ -466,10 +502,28 @@ export default function MethodologyPage() {
                     <tr className="border-b border-secondary-200">
                       <th className="text-left py-3 pr-4 font-semibold text-secondary-900">Source</th>
                       <th className="text-left py-3 pr-4 font-semibold text-secondary-900">What we use it for</th>
-                      <th className="text-left py-3 font-semibold text-secondary-900">Last updated</th>
+                      <th className="text-left py-3 font-semibold text-secondary-900">Year</th>
                     </tr>
                   </thead>
                   <tbody className="text-secondary-700">
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
+                        <a href="https://arxiv.org/abs/2303.10130" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                          GPTs are GPTs (OpenAI/UPenn)
+                        </a>
+                      </td>
+                      <td className="py-3 pr-4">AI Exposure (primary)</td>
+                      <td className="py-3">2023</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
+                        <a href="https://github.com/AIOE-Data/AIOE" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                          AIOE Dataset (Felten et al.)
+                        </a>
+                      </td>
+                      <td className="py-3 pr-4">AI Exposure (fallback)</td>
+                      <td className="py-3">2021</td>
+                    </tr>
                     <tr className="border-b border-secondary-100">
                       <td className="py-3 pr-4">
                         <a href="https://www.bls.gov/emp/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
@@ -477,16 +531,7 @@ export default function MethodologyPage() {
                         </a>
                       </td>
                       <td className="py-3 pr-4">Job growth outlook</td>
-                      <td className="py-3">2024-2034 projections</td>
-                    </tr>
-                    <tr className="border-b border-secondary-100">
-                      <td className="py-3 pr-4">
-                        <a href="https://www.bls.gov/oes/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-                          BLS Occupational Employment Statistics
-                        </a>
-                      </td>
-                      <td className="py-3 pr-4">Wage data</td>
-                      <td className="py-3">May 2024</td>
+                      <td className="py-3">2024-2034</td>
                     </tr>
                     <tr className="border-b border-secondary-100">
                       <td className="py-3 pr-4">
@@ -497,21 +542,8 @@ export default function MethodologyPage() {
                       <td className="py-3 pr-4">Task descriptions, work activities</td>
                       <td className="py-3">2024</td>
                     </tr>
-                    <tr className="border-b border-secondary-100">
-                      <td className="py-3 pr-4">
-                        <a href="https://github.com/AIOE-Data/AIOE" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-                          AIOE Dataset (Felten et al.)
-                        </a>
-                      </td>
-                      <td className="py-3 pr-4">AI occupational exposure scores</td>
-                      <td className="py-3">2021</td>
-                    </tr>
                     <tr>
-                      <td className="py-3 pr-4">
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5028371" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-                          EPOCH Framework (Loaiza & Rigobon)
-                        </a>
-                      </td>
+                      <td className="py-3 pr-4">EPOCH Framework</td>
                       <td className="py-3 pr-4">Human advantage scoring</td>
                       <td className="py-3">2024</td>
                     </tr>
@@ -522,10 +554,11 @@ export default function MethodologyPage() {
 
             {/* Feedback CTA */}
             <section className="bg-primary-50 border border-primary-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-secondary-900 mb-2">Questions or Corrections?</h2>
+              <h2 className="text-xl font-bold text-secondary-900 mb-2">Questions or Feedback?</h2>
               <p className="text-secondary-700 mb-4">
-                If you have questions about our methodology or believe an occupation is misclassified,
-                we want to hear from you.
+                We're committed to making this methodology as accurate and useful as possible.
+                If you have expertise in a career we've classified and think we got it wrong,
+                please let us know.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -534,19 +567,13 @@ export default function MethodologyPage() {
                 >
                   Submit Feedback
                 </Link>
-                <Link
-                  href="/contribute?type=correction"
-                  className="btn-secondary"
-                >
-                  Report an Error
-                </Link>
               </div>
             </section>
 
             {/* Footer */}
             <footer className="text-sm text-secondary-500 border-t border-secondary-200 pt-6">
               <p>Last updated: January 2026</p>
-              <p>Methodology version: 1.0</p>
+              <p>Methodology version: 2.0 (Additive Scoring)</p>
             </footer>
           </main>
         </div>

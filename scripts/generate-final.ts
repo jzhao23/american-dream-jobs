@@ -11,15 +11,16 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { getCategory } from '../src/lib/categories';
 import {
-  classifyCareer,
-  getJobGrowthCategory,
-  getHumanAdvantageFromEPOCH,
+  calculateAIResilience,
+  calculateEPOCHSum,
   getAIResilienceTier,
-  type TaskExposure,
-  type AutomationPotential,
+  getAIExposureLabel,
+  getJobGrowthLabel,
   type EPOCHScores,
   type CareerAIAssessment,
   type AIResilienceClassification,
+  type AIExposureLabel,
+  type JobGrowthLabel,
 } from '../src/lib/ai-resilience';
 
 const PROCESSED_DIR = path.join(process.cwd(), 'data/processed');
@@ -27,8 +28,9 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const SOURCES_DIR = path.join(DATA_DIR, 'sources');
 const OXFORD_MAPPING_FILE = path.join(PROCESSED_DIR, 'oxford_ai_risk_mapping.json');
 
-// AI Resilience data source files
-const AI_EXPOSURE_FILE = path.join(SOURCES_DIR, 'ai-exposure.json');
+// AI Resilience data source files (v2.0)
+const GPTS_EXPOSURE_FILE = path.join(SOURCES_DIR, 'gpts-are-gpts.json');     // Primary: GPTs are GPTs β scores
+const AIOE_EXPOSURE_FILE = path.join(SOURCES_DIR, 'ai-exposure.json');       // Fallback: AIOE dataset
 const BLS_PROJECTIONS_FILE = path.join(SOURCES_DIR, 'bls-projections.json');
 const EPOCH_SCORES_FILE = path.join(SOURCES_DIR, 'epoch-scores.json');
 
@@ -56,12 +58,22 @@ interface InsideCareer {
   generated_at: string;
 }
 
-// Types for AI Resilience data sources
-interface AIExposureEntry {
+// Types for AI Resilience data sources (v2.0)
+interface GPTsExposureEntry {
+  onet_code: string;
+  title: string;
+  gpt4_beta: number;           // The β score (0-1) from GPTs are GPTs paper
+  llm_exposure_score: number;  // Same as gpt4_beta
+  task_exposure: string;       // Low/Medium/High label
+  percentile: number;
+  source: string;
+}
+
+interface AIOEExposureEntry {
   onet_code: string;
   title: string;
   aioe_score: number;
-  exposure_level: TaskExposure;
+  task_exposure: string;
   percentile: number;
 }
 
@@ -167,27 +179,31 @@ async function main() {
   }
 
   // ============================================================================
-  // Load AI Resilience Data Sources
+  // Load AI Resilience Data Sources (v2.0)
   // ============================================================================
 
-  // Load AI Exposure data (AIOE dataset)
-  const aiExposureMap = new Map<string, AIExposureEntry>();
-  if (fs.existsSync(AI_EXPOSURE_FILE)) {
-    const aiExposureData = JSON.parse(fs.readFileSync(AI_EXPOSURE_FILE, 'utf-8'));
-    // File is a dictionary with onet_code as keys
-    for (const [onetCode, entry] of Object.entries(aiExposureData)) {
-      const typedEntry = entry as { onet_code: string; title: string; aioe_score: number; task_exposure: string; percentile: number };
-      aiExposureMap.set(onetCode, {
-        onet_code: typedEntry.onet_code,
-        title: typedEntry.title,
-        aioe_score: typedEntry.aioe_score,
-        exposure_level: typedEntry.task_exposure as TaskExposure,
-        percentile: typedEntry.percentile,
-      });
+  // Load GPTs are GPTs exposure data (PRIMARY source)
+  const gptsExposureMap = new Map<string, GPTsExposureEntry>();
+  if (fs.existsSync(GPTS_EXPOSURE_FILE)) {
+    const gptsData = JSON.parse(fs.readFileSync(GPTS_EXPOSURE_FILE, 'utf-8'));
+    for (const [onetCode, entry] of Object.entries(gptsData)) {
+      gptsExposureMap.set(onetCode, entry as GPTsExposureEntry);
     }
-    console.log(`Loaded ${aiExposureMap.size} AI exposure entries (AIOE dataset)`);
+    console.log(`Loaded ${gptsExposureMap.size} GPTs are GPTs exposure entries (PRIMARY)`);
   } else {
-    console.log('⚠️  No AI exposure file found - run: npx tsx scripts/fetch-ai-exposure.ts');
+    console.log('⚠️  No GPTs data found - run: npx tsx scripts/fetch-gpts-exposure.ts');
+  }
+
+  // Load AIOE exposure data (FALLBACK source)
+  const aioeExposureMap = new Map<string, AIOEExposureEntry>();
+  if (fs.existsSync(AIOE_EXPOSURE_FILE)) {
+    const aioeData = JSON.parse(fs.readFileSync(AIOE_EXPOSURE_FILE, 'utf-8'));
+    for (const [onetCode, entry] of Object.entries(aioeData)) {
+      aioeExposureMap.set(onetCode, entry as AIOEExposureEntry);
+    }
+    console.log(`Loaded ${aioeExposureMap.size} AIOE exposure entries (FALLBACK)`);
+  } else {
+    console.log('⚠️  No AIOE data found - will use GPTs data only');
   }
 
   // Load BLS Employment Projections
@@ -286,11 +302,13 @@ async function main() {
   console.log(`Applied inside career content to ${insideCareerMap.size} occupations`);
 
   // ============================================================================
-  // Apply AI Resilience Classifications
+  // Apply AI Resilience Classifications (v2.0 - Additive Scoring)
   // ============================================================================
 
   let aiResilienceApplied = 0;
   let aiResilienceSkipped = 0;
+  let gptsUsed = 0;
+  let aioeFallbackUsed = 0;
   const classificationCounts: Record<string, number> = {
     'AI-Resilient': 0,
     'AI-Augmented': 0,
@@ -299,103 +317,125 @@ async function main() {
   };
 
   for (const occ of occupations) {
-    const aiExposure = aiExposureMap.get(occ.onet_code);
+    // Get data from all sources
+    const gptsExposure = gptsExposureMap.get(occ.onet_code);
+    const aioeExposure = aioeExposureMap.get(occ.onet_code);
     const blsProjection = blsProjectionsMap.get(occ.onet_code);
     const epochScore = epochScoresMap.get(occ.onet_code);
 
-    // All three data sources are required for classification
-    if (aiExposure && blsProjection && epochScore) {
-      const taskExposure = aiExposure.exposure_level;
-      const automationPotential: AutomationPotential = taskExposure; // Use same level for now
-      const jobGrowthCategory = getJobGrowthCategory(blsProjection.percent_change);
-      const humanAdvantage = getHumanAdvantageFromEPOCH(epochScore.epochScores);
+    // Determine AI Exposure value (GPTs primary, AIOE fallback)
+    let exposureBeta: number | null = null;
+    let exposureSource: 'gpts' | 'aioe' = 'gpts';
 
-      const { classification, rationale } = classifyCareer(
-        taskExposure,
-        automationPotential,
-        jobGrowthCategory,
-        humanAdvantage
-      );
+    if (gptsExposure) {
+      exposureBeta = gptsExposure.gpt4_beta;
+      exposureSource = 'gpts';
+      gptsUsed++;
+    } else if (aioeExposure) {
+      // Convert AIOE score to 0-1 range (AIOE scores are typically 0-2+)
+      // Normalize: assume AIOE max is around 2.5, map to 0-1
+      exposureBeta = Math.min(aioeExposure.aioe_score / 2.5, 1);
+      exposureSource = 'aioe';
+      aioeFallbackUsed++;
+    }
 
-      // Add ai_assessment to occupation
+    // Classification requires at least exposure data, BLS projections, and EPOCH scores
+    if (exposureBeta !== null && blsProjection && epochScore) {
+      const epochSum = calculateEPOCHSum(epochScore.epochScores);
+
+      // Use new additive scoring algorithm
+      const result = calculateAIResilience({
+        gptsExposureBeta: exposureSource === 'gpts' ? exposureBeta : null,
+        aioeExposure: exposureSource === 'aioe' ? exposureBeta : null,
+        blsGrowthPercent: blsProjection.percent_change,
+        epochSum,
+      });
+
+      // Create new v2.0 ai_assessment structure
       occ.ai_assessment = {
-        taskExposure,
-        automationPotential,
+        aiExposure: {
+          score: exposureBeta,
+          label: result.exposureLabel,
+          source: exposureSource,
+        },
         jobGrowth: {
-          category: jobGrowthCategory,
+          label: result.growthLabel,
           percentChange: blsProjection.percent_change,
           source: 'BLS Employment Projections 2024-2034',
         },
         humanAdvantage: {
-          category: humanAdvantage,
+          category: result.humanAdvantageLabel,
           epochScores: epochScore.epochScores,
         },
-        classification,
-        classificationRationale: rationale,
+        scoring: {
+          exposurePoints: result.exposurePoints,
+          growthPoints: result.growthPoints,
+          humanAdvantagePoints: result.humanAdvantagePoints,
+          totalScore: result.totalScore,
+        },
+        classification: result.classification,
+        classificationRationale: result.rationale,
         lastUpdated: new Date().toISOString().split('T')[0],
-        methodology: 'v1.0 - AIOE/BLS/EPOCH',
+        methodology: 'v2.0 - GPTs/BLS/EPOCH Additive',
       } as CareerAIAssessment;
 
       // Add convenience fields for indexing
-      occ.ai_resilience = classification;
-      occ.ai_resilience_tier = getAIResilienceTier(classification);
+      occ.ai_resilience = result.classification;
+      occ.ai_resilience_tier = getAIResilienceTier(result.classification);
 
-      classificationCounts[classification]++;
+      classificationCounts[result.classification]++;
       aiResilienceApplied++;
     } else if (epochScore) {
-      // FALLBACK: Use EPOCH scores + legacy AI Risk score to estimate classification
-      // This covers the 344 careers missing AIOE or BLS data
-      const humanAdvantage = getHumanAdvantageFromEPOCH(epochScore.epochScores);
+      // FALLBACK: Use EPOCH scores + legacy AI Risk to estimate
+      // When we don't have exposure or BLS data
+      const epochSum = calculateEPOCHSum(epochScore.epochScores);
       const legacyAIRisk = occ.ai_risk?.score || 5;
 
-      let classification: string;
-      let rationale: string;
+      // Estimate exposure from legacy AI risk (higher risk = higher exposure)
+      const estimatedBeta = legacyAIRisk / 10; // Convert 0-10 to 0-1
+      // Estimate growth as stable if we don't have BLS data
+      const estimatedGrowth = 2; // Stable = 0-5%
 
-      // Fallback classification rules based on EPOCH + legacy AI Risk
-      if (humanAdvantage === 'Strong' && legacyAIRisk <= 3) {
-        classification = 'AI-Resilient';
-        rationale = 'Strong human advantage combined with low historical automation risk';
-      } else if (humanAdvantage === 'Strong' && legacyAIRisk <= 6) {
-        classification = 'AI-Augmented';
-        rationale = 'Strong human advantage provides protection; AI likely to assist rather than replace';
-      } else if (humanAdvantage === 'Moderate' && legacyAIRisk <= 6) {
-        classification = 'AI-Augmented';
-        rationale = 'Moderate human advantage with manageable automation risk';
-      } else if (humanAdvantage === 'Moderate' && legacyAIRisk > 6) {
-        classification = 'In Transition';
-        rationale = 'Moderate human advantage but elevated automation risk suggests ongoing transformation';
-      } else if (humanAdvantage === 'Weak' && legacyAIRisk > 6) {
-        classification = 'High Disruption Risk';
-        rationale = 'Limited human advantage combined with high historical automation probability';
-      } else {
-        classification = 'AI-Augmented';
-        rationale = 'Default assessment based on available data';
-      }
+      const result = calculateAIResilience({
+        gptsExposureBeta: null,
+        aioeExposure: estimatedBeta,
+        blsGrowthPercent: estimatedGrowth,
+        epochSum,
+      });
 
-      // Add simplified ai_assessment for fallback careers
+      // Create fallback ai_assessment
       occ.ai_assessment = {
-        taskExposure: 'Medium' as TaskExposure, // Estimated
-        automationPotential: 'Medium' as AutomationPotential, // Estimated
+        aiExposure: {
+          score: estimatedBeta,
+          label: result.exposureLabel,
+          source: 'aioe', // Mark as fallback
+        },
         jobGrowth: {
-          category: 'Stable' as const,
+          label: 'Stable' as JobGrowthLabel,
           percentChange: 0,
           source: 'Estimated - BLS data unavailable',
         },
         humanAdvantage: {
-          category: humanAdvantage,
+          category: result.humanAdvantageLabel,
           epochScores: epochScore.epochScores,
         },
-        classification: classification as AIResilienceClassification,
-        classificationRationale: rationale,
+        scoring: {
+          exposurePoints: result.exposurePoints,
+          growthPoints: 1, // Stable = 1 point
+          humanAdvantagePoints: result.humanAdvantagePoints,
+          totalScore: result.totalScore,
+        },
+        classification: result.classification,
+        classificationRationale: `${result.rationale} (estimated from legacy data)`,
         lastUpdated: new Date().toISOString().split('T')[0],
-        methodology: 'v1.0-fallback - EPOCH/Legacy',
+        methodology: 'v2.0-fallback - EPOCH/Legacy',
       } as CareerAIAssessment;
 
       // Add convenience fields for indexing
-      occ.ai_resilience = classification;
-      occ.ai_resilience_tier = getAIResilienceTier(classification as AIResilienceClassification);
+      occ.ai_resilience = result.classification;
+      occ.ai_resilience_tier = getAIResilienceTier(result.classification);
 
-      classificationCounts[classification]++;
+      classificationCounts[result.classification]++;
       aiResilienceApplied++;
     } else {
       aiResilienceSkipped++;
@@ -403,6 +443,7 @@ async function main() {
   }
 
   console.log(`Applied AI Resilience to ${aiResilienceApplied} occupations`);
+  console.log(`  Data sources: ${gptsUsed} GPTs (primary), ${aioeFallbackUsed} AIOE (fallback)`);
   console.log('  Classification breakdown:');
   for (const [classification, count] of Object.entries(classificationCounts)) {
     console.log(`    ${classification}: ${count}`);
@@ -474,7 +515,8 @@ async function main() {
         { name: 'Levels.fyi (mapped)', url: 'https://www.levels.fyi' },
         { name: 'Frey & Osborne (2013) - AI Risk', url: 'https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment' },
         { name: 'CareerOneStop Videos', url: 'https://www.careeronestop.org/Videos/' },
-        { name: 'AIOE Dataset (Felten, Raj, Seamans 2021) - AI Exposure', url: 'https://github.com/AIOE-Data/AIOE' },
+        { name: 'GPTs are GPTs (Eloundou et al. 2023) - AI Exposure', url: 'https://arxiv.org/abs/2303.10130' },
+        { name: 'AIOE Dataset (Felten et al. 2021) - AI Exposure Fallback', url: 'https://github.com/AIOE-Data/AIOE' },
         { name: 'BLS Employment Projections 2024-2034', url: 'https://www.bls.gov/emp/' },
         { name: 'EPOCH Framework - Human Advantage', url: 'Manual curation' },
       ],

@@ -1,18 +1,18 @@
 /**
- * AI Assessment Detail Component
+ * AI Assessment Detail Component v2.0
  *
- * Displays the full 4-dimension breakdown of an AI Resilience assessment:
- * - Task Exposure (from AIOE dataset)
- * - Automation Potential
+ * Displays the 3-dimension breakdown of an AI Resilience assessment with additive scoring:
+ * - AI Exposure (from GPTs are GPTs / AIOE fallback)
  * - Job Growth (from BLS projections)
  * - Human Advantage (EPOCH framework)
  *
- * Each dimension includes:
- * - One-line description
- * - Level badge
+ * Each dimension shows:
+ * - Label (Low/Medium/High, Growing/Stable/Declining, Strong/Moderate/Weak)
+ * - Points earned (0-2)
+ * - Visual bar
  * - Expandable detail section
  *
- * Also shows the classification rationale, methodology link, and sources.
+ * Also shows the total score (0-6), classification, and methodology link.
  */
 
 'use client';
@@ -22,7 +22,7 @@ import Link from 'next/link';
 import { AIResilienceBadge } from './AIResilienceBadge';
 import type { CareerAIAssessment } from '@/lib/ai-resilience';
 
-// Simple SVG icons to avoid external dependency
+// Simple SVG icons
 function ChevronDown({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,38 +49,49 @@ function InfoIcon({ className }: { className?: string }) {
 
 interface AIAssessmentDetailProps {
   assessment: CareerAIAssessment;
+  careerTitle?: string;
   className?: string;
 }
 
-// Color mapping for levels
-const LEVEL_COLORS = {
+// Color mapping for labels
+const LABEL_COLORS: Record<string, string> = {
+  // AI Exposure (inverted - Low is good)
   Low: 'text-green-600 bg-green-100',
   Medium: 'text-yellow-600 bg-yellow-100',
   High: 'text-red-600 bg-red-100',
+  // Job Growth
+  Declining: 'text-red-600 bg-red-100',
+  Stable: 'text-yellow-600 bg-yellow-100',
+  Growing: 'text-green-600 bg-green-100',
+  // Human Advantage
   Weak: 'text-red-600 bg-red-100',
   Moderate: 'text-yellow-600 bg-yellow-100',
   Strong: 'text-green-600 bg-green-100',
-  'Declining Quickly': 'text-red-600 bg-red-100',
-  'Declining Slowly': 'text-orange-600 bg-orange-100',
-  'Stable': 'text-yellow-600 bg-yellow-100',
-  'Growing Slowly': 'text-emerald-600 bg-emerald-100',
-  'Growing Quickly': 'text-green-600 bg-green-100',
 };
 
-// One-line descriptions for each dimension
-const DIMENSION_DESCRIPTIONS = {
-  taskExposure: 'How much of this job involves tasks AI can currently perform',
-  automationRisk: 'Likelihood that AI replaces workers vs. assists them',
-  jobGrowth: 'Projected change in employment over 10 years',
-  humanAdvantage: 'How much this role relies on distinctly human capabilities',
-};
-
-function LevelBadge({ level }: { level: string }) {
-  const colorClass = LEVEL_COLORS[level as keyof typeof LEVEL_COLORS] || 'text-gray-600 bg-gray-100';
+function LevelBadge({ level, points }: { level: string; points: number }) {
+  const colorClass = LABEL_COLORS[level] || 'text-gray-600 bg-gray-100';
   return (
-    <span className={`inline-block px-2 py-0.5 rounded text-sm font-medium ${colorClass}`}>
-      {level}
-    </span>
+    <div className="flex items-center gap-2">
+      <span className={`inline-block px-2 py-0.5 rounded text-sm font-medium ${colorClass}`}>
+        {level}
+      </span>
+      <span className="text-sm text-gray-500">+{points}</span>
+    </div>
+  );
+}
+
+function PointsBar({ points, maxPoints = 2 }: { points: number; maxPoints?: number }) {
+  const percentage = (points / maxPoints) * 100;
+  const barColor = points === 2 ? 'bg-green-500' : points === 1 ? 'bg-yellow-500' : 'bg-gray-300';
+
+  return (
+    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+      <div
+        className={`h-full ${barColor} rounded-full transition-all`}
+        style={{ width: `${percentage}%` }}
+      />
+    </div>
   );
 }
 
@@ -139,7 +150,7 @@ function ExpandableSection({
   );
 }
 
-export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentDetailProps) {
+export function AIAssessmentDetail({ assessment, careerTitle, className = '' }: AIAssessmentDetailProps) {
   const epochDescriptions = {
     empathy: 'Emotional intelligence, patient/customer care',
     presence: 'Physical presence requirements, hands-on work',
@@ -156,12 +167,16 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
     assessment.humanAdvantage.epochScores.creativity +
     assessment.humanAdvantage.epochScores.hope;
 
-  // Determine job growth comparison to average
-  const growthComparison = assessment.jobGrowth.percentChange > 4
-    ? 'above average'
-    : assessment.jobGrowth.percentChange < 0
-    ? 'below average'
-    : 'near average';
+  // Get scoring from assessment
+  const scoring = assessment.scoring || {
+    exposurePoints: 1,
+    growthPoints: 1,
+    humanAdvantagePoints: 1,
+    totalScore: 3,
+  };
+
+  // Format exposure percentage for display
+  const exposurePercent = Math.round((assessment.aiExposure?.score || 0) * 100);
 
   return (
     <div className={`border rounded-lg overflow-hidden ${className}`}>
@@ -169,109 +184,115 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
       <div className="p-4 bg-gray-50 border-b">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">AI Resilience Assessment</h3>
+            <h3 className="text-lg font-semibold text-gray-900">AI Resilience Score</h3>
             <p className="text-sm text-gray-600 mt-1">{assessment.classificationRationale}</p>
           </div>
           <AIResilienceBadge classification={assessment.classification} size="lg" />
         </div>
       </div>
 
-      {/* Summary Grid with descriptions */}
-      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Task Exposure */}
-        <div>
-          <div className="text-xs text-gray-500 uppercase tracking-wide">Task Exposure</div>
-          <div className="mt-1">
-            <LevelBadge level={assessment.taskExposure} />
+      {/* Score Breakdown - 3 dimensions */}
+      <div className="p-4">
+        <p className="text-sm text-gray-600 mb-4">How we calculated this:</p>
+
+        <div className="space-y-4">
+          {/* AI Exposure */}
+          <div className="bg-white border rounded-lg p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-gray-900">AI Exposure</span>
+                <LevelBadge level={assessment.aiExposure?.label || 'Medium'} points={scoring.exposurePoints} />
+              </div>
+            </div>
+            <PointsBar points={scoring.exposurePoints} />
+            <p className="text-xs text-gray-500 mt-2">
+              {exposurePercent}% of tasks can be accelerated by AI
+            </p>
           </div>
-          <p className="text-xs text-gray-500 mt-1">{DIMENSION_DESCRIPTIONS.taskExposure}</p>
+
+          {/* Job Growth */}
+          <div className="bg-white border rounded-lg p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-gray-900">Job Growth</span>
+                <LevelBadge level={assessment.jobGrowth.label} points={scoring.growthPoints} />
+              </div>
+            </div>
+            <PointsBar points={scoring.growthPoints} />
+            <p className="text-xs text-gray-500 mt-2">
+              {assessment.jobGrowth.percentChange > 0 ? '+' : ''}{assessment.jobGrowth.percentChange}% projected (2024-2034)
+            </p>
+          </div>
+
+          {/* Human Advantage */}
+          <div className="bg-white border rounded-lg p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-gray-900">Human Advantage</span>
+                <LevelBadge level={assessment.humanAdvantage.category} points={scoring.humanAdvantagePoints} />
+              </div>
+            </div>
+            <PointsBar points={scoring.humanAdvantagePoints} />
+            <p className="text-xs text-gray-500 mt-2">
+              EPOCH score: {totalEpochScore}/25
+            </p>
+          </div>
         </div>
 
-        {/* Automation Risk */}
-        <div>
-          <div className="text-xs text-gray-500 uppercase tracking-wide">Automation Risk</div>
-          <div className="mt-1">
-            <LevelBadge level={assessment.automationPotential} />
+        {/* Total Score */}
+        <div className="mt-4 pt-4 border-t">
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-gray-900">Total Score</span>
+            <span className="text-lg font-bold text-gray-900">{scoring.totalScore}/6</span>
           </div>
-          <p className="text-xs text-gray-500 mt-1">{DIMENSION_DESCRIPTIONS.automationRisk}</p>
-        </div>
-
-        {/* Job Growth */}
-        <div>
-          <div className="text-xs text-gray-500 uppercase tracking-wide">Job Growth</div>
-          <div className="mt-1">
-            <LevelBadge level={assessment.jobGrowth.category} />
+          <div className="mt-2 h-3 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all ${
+                scoring.totalScore >= 5 ? 'bg-green-500' :
+                scoring.totalScore >= 3 ? 'bg-yellow-500' :
+                scoring.totalScore >= 2 ? 'bg-orange-500' : 'bg-red-500'
+              }`}
+              style={{ width: `${(scoring.totalScore / 6) * 100}%` }}
+            />
           </div>
-          <div className="text-xs text-gray-500 mt-1">
-            {assessment.jobGrowth.percentChange > 0 ? '+' : ''}{assessment.jobGrowth.percentChange}% over 10 years
-          </div>
-          <p className="text-xs text-gray-400">(BLS 2024-2034)</p>
-        </div>
-
-        {/* Human Advantage */}
-        <div>
-          <div className="text-xs text-gray-500 uppercase tracking-wide">Human Advantage</div>
-          <div className="mt-1">
-            <LevelBadge level={assessment.humanAdvantage.category} />
-          </div>
-          <p className="text-xs text-gray-500 mt-1">{DIMENSION_DESCRIPTIONS.humanAdvantage}</p>
         </div>
       </div>
 
       {/* Expandable sections for each dimension */}
 
-      {/* Task Exposure Details */}
-      <ExpandableSection title="Task Exposure Details">
+      {/* AI Exposure Details */}
+      <ExpandableSection title="Learn more: AI Exposure">
         <div className="space-y-3 text-sm">
           <p className="text-gray-700">
-            Task exposure measures how much of this occupation's work involves activities that
-            current AI systems can perform or significantly assist with.
+            {careerTitle ? (
+              <>
+                About <strong>{exposurePercent}%</strong> of {careerTitle.toLowerCase()} tasks can be
+                significantly accelerated by AI tools like ChatGPT.
+              </>
+            ) : (
+              <>
+                AI Exposure measures what percentage of this occupation's tasks can be
+                completed <strong>50% faster</strong> using AI tools while maintaining quality.
+              </>
+            )}
           </p>
           <div className="bg-white rounded border p-3">
-            <h4 className="font-semibold text-gray-900 mb-2">What the levels mean:</h4>
+            <h4 className="font-semibold text-gray-900 mb-2">Scoring:</h4>
             <ul className="space-y-1 text-gray-600">
-              <li><span className="font-medium text-green-600">Low:</span> Most tasks require physical presence, hands-on work, or complex human interaction</li>
-              <li><span className="font-medium text-yellow-600">Medium:</span> Mix of AI-exposed and protected tasks</li>
-              <li><span className="font-medium text-red-600">High:</span> Many tasks involve data processing, analysis, or content generation that AI handles well</li>
+              <li><span className="font-medium text-green-600">Low (&lt;25%):</span> +2 points - Most tasks protected from AI</li>
+              <li><span className="font-medium text-yellow-600">Medium (25-50%):</span> +1 point - Mixed exposure</li>
+              <li><span className="font-medium text-red-600">High (&gt;50%):</span> +0 points - Majority of tasks AI-exposed</li>
             </ul>
           </div>
           <p className="text-xs text-gray-500">
-            Source: AIOE Dataset (Felten, Raj, Seamans 2021) — measures AI capability overlap with O*NET work activities
-          </p>
-        </div>
-      </ExpandableSection>
-
-      {/* Automation Risk Details */}
-      <ExpandableSection title="Automation Risk Details">
-        <div className="space-y-3 text-sm">
-          <p className="text-gray-700">
-            Automation risk assesses whether AI is likely to <em>replace</em> workers entirely
-            versus <em>augment</em> their productivity. High exposure doesn't always mean high
-            automation risk.
-          </p>
-          <div className="bg-white rounded border p-3">
-            <h4 className="font-semibold text-gray-900 mb-2">Key distinction:</h4>
-            <ul className="space-y-1 text-gray-600">
-              <li><strong>Exposure</strong> = Can AI do parts of this job?</li>
-              <li><strong>Automation Risk</strong> = Will AI replace workers or help them?</li>
-            </ul>
-          </div>
-          <div className="bg-white rounded border p-3">
-            <h4 className="font-semibold text-gray-900 mb-2">What the levels mean:</h4>
-            <ul className="space-y-1 text-gray-600">
-              <li><span className="font-medium text-green-600">Low:</span> Most tasks require judgment, creativity, or physical presence — AI augments rather than replaces</li>
-              <li><span className="font-medium text-yellow-600">Medium:</span> Some routine tasks can be automated, but core responsibilities remain human</li>
-              <li><span className="font-medium text-red-600">High:</span> Predominantly routine, rule-based tasks that AI can perform end-to-end</li>
-            </ul>
-          </div>
-          <p className="text-xs text-gray-500">
-            Note: "Automatable" doesn't mean "will be automated" — cost, regulations, and organizational factors matter.
+            Source: "GPTs are GPTs" (Eloundou et al., 2023) - task-level LLM exposure analysis
+            {assessment.aiExposure?.source === 'aioe' && ' | Fallback: AIOE Dataset (Felten et al., 2021)'}
           </p>
         </div>
       </ExpandableSection>
 
       {/* Job Growth Details */}
-      <ExpandableSection title="Job Growth Details">
+      <ExpandableSection title="Learn more: Job Growth">
         <div className="space-y-3 text-sm">
           <p className="text-gray-700">
             Job growth projections come from the Bureau of Labor Statistics (BLS), which forecasts
@@ -285,29 +306,23 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
               </span>
               <span className="text-gray-600">projected change (2024-2034)</span>
             </div>
-            <p className="text-gray-500 mt-1">
-              This is {growthComparison} for all occupations (economy average: ~4%)
-            </p>
           </div>
           <div className="bg-white rounded border p-3">
-            <h4 className="font-semibold text-gray-900 mb-2">Growth categories:</h4>
+            <h4 className="font-semibold text-gray-900 mb-2">Scoring:</h4>
             <ul className="space-y-1 text-gray-600">
-              <li><span className="font-medium text-red-600">Declining Quickly:</span> More than 10% decline</li>
-              <li><span className="font-medium text-orange-600">Declining Slowly:</span> 0% to 10% decline</li>
-              <li><span className="font-medium text-yellow-600">Stable:</span> 0% to 5% growth</li>
-              <li><span className="font-medium text-emerald-600">Growing Slowly:</span> 5% to 15% growth</li>
-              <li><span className="font-medium text-green-600">Growing Quickly:</span> More than 15% growth</li>
+              <li><span className="font-medium text-green-600">Growing (&gt;5%):</span> +2 points</li>
+              <li><span className="font-medium text-yellow-600">Stable (0-5%):</span> +1 point</li>
+              <li><span className="font-medium text-red-600">Declining (&lt;0%):</span> +0 points</li>
             </ul>
           </div>
           <p className="text-xs text-gray-500">
-            Source: BLS Employment Projections 2024-2034. Note: Projections assume no major economic disruptions
-            and are updated every 2 years.
+            Source: BLS Employment Projections 2024-2034
           </p>
         </div>
       </ExpandableSection>
 
       {/* EPOCH Human Advantage Details */}
-      <ExpandableSection title="Human Advantage (EPOCH) Breakdown">
+      <ExpandableSection title="Learn more: Human Advantage (EPOCH)">
         <div className="space-y-3">
           <p className="text-sm text-gray-700 mb-4">
             EPOCH measures five distinctly human capabilities that AI cannot easily replicate.
@@ -347,9 +362,15 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
                 {totalEpochScore}/25 ({assessment.humanAdvantage.category})
               </span>
             </div>
-            <div className="text-xs text-gray-500 mt-1">
-              Strong (20+) | Moderate (12-19) | Weak (&lt;12)
-            </div>
+          </div>
+
+          <div className="bg-white rounded border p-3 mt-3">
+            <h4 className="font-semibold text-gray-900 mb-2 text-sm">Scoring:</h4>
+            <ul className="space-y-1 text-gray-600 text-sm">
+              <li><span className="font-medium text-green-600">Strong (20+):</span> +2 points</li>
+              <li><span className="font-medium text-yellow-600">Moderate (12-19):</span> +1 point</li>
+              <li><span className="font-medium text-red-600">Weak (&lt;12):</span> +0 points</li>
+            </ul>
           </div>
         </div>
       </ExpandableSection>
@@ -358,7 +379,7 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
       <div className="p-3 bg-gray-50 border-t text-xs text-gray-500">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <span>
-            Sources: AIOE Dataset (Felten et al. 2021), BLS Projections 2024-2034, EPOCH Framework
+            Methodology: v2.0 - GPTs are GPTs / BLS / EPOCH Additive Scoring
           </span>
           <span>Updated: {assessment.lastUpdated}</span>
         </div>
@@ -367,7 +388,7 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
             href="/methodology"
             className="text-primary-600 hover:text-primary-700 hover:underline font-medium"
           >
-            How we calculate these ratings &rarr;
+            View full methodology &rarr;
           </Link>
         </div>
       </div>
@@ -379,17 +400,23 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
  * Compact version for comparison views
  */
 export function AIAssessmentCompact({ assessment }: { assessment: CareerAIAssessment }) {
+  const scoring = assessment.scoring || { totalScore: 3 };
+
   return (
     <div className="space-y-2">
       <AIResilienceBadge classification={assessment.classification} size="sm" />
-      <div className="grid grid-cols-2 gap-2 text-xs">
+      <div className="grid grid-cols-3 gap-2 text-xs">
         <div>
           <span className="text-gray-500">Exposure:</span>{' '}
-          <span className="font-medium">{assessment.taskExposure}</span>
+          <span className="font-medium">{assessment.aiExposure?.label || 'Medium'}</span>
         </div>
         <div>
           <span className="text-gray-500">Growth:</span>{' '}
           <span className="font-medium">{assessment.jobGrowth.percentChange > 0 ? '+' : ''}{assessment.jobGrowth.percentChange}%</span>
+        </div>
+        <div>
+          <span className="text-gray-500">Score:</span>{' '}
+          <span className="font-medium">{scoring.totalScore}/6</span>
         </div>
       </div>
     </div>

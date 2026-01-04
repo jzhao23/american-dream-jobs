@@ -1,24 +1,23 @@
 /**
- * AI Resilience Classification Algorithm
+ * AI Resilience Classification Algorithm v2.0
  *
- * This module implements the 4-tier AI Resilience classification system that replaces
- * the legacy 1-10 numeric AI Risk score. It uses four input dimensions to classify
- * careers into one of four resilience tiers.
+ * This module implements the 4-tier AI Resilience classification system using
+ * an additive scoring algorithm. It evaluates three dimensions and sums their
+ * points to determine the final classification.
  *
  * ## Four Classification Tiers
- * 1. AI-Resilient (🟢): Low exposure + Strong human advantage OR Growing market
- * 2. AI-Augmented (🟡): Medium exposure, AI assists but doesn't replace
- * 3. In Transition (🟠): High exposure + Moderate human advantage
- * 4. High Disruption Risk (🔴): High exposure + Weak human advantage + Declining market
+ * - AI-Resilient (🟢): Score 5-6 - Strong protection from AI displacement
+ * - AI-Augmented (🟡): Score 3-4 - AI assists but humans remain essential
+ * - In Transition (🟠): Score 2 - Career being transformed by AI
+ * - High Disruption Risk (🔴): Score 0-1 - Significant risk from AI
  *
- * ## Four Input Dimensions
- * 1. Task Exposure: How much of the job's tasks can AI potentially perform (Low/Medium/High)
- * 2. Automation Potential: Likelihood of full automation (Low/Medium/High)
- * 3. Job Growth: BLS employment projections 2024-2034 (5 categories)
- * 4. Human Advantage: EPOCH framework score (Weak/Moderate/Strong)
+ * ## Three Scoring Dimensions (0-2 points each, max 6)
+ * 1. AI Exposure: Based on GPTs are GPTs β score (Eloundou et al., 2023)
+ * 2. Job Growth: BLS employment projections 2024-2034
+ * 3. Human Advantage: EPOCH framework score
  *
  * ## EPOCH Framework
- * Human Advantage is measured using the EPOCH framework:
+ * Human Advantage is measured using five dimensions:
  * - Empathy: Emotional intelligence, patient/customer care
  * - Presence: Physical presence requirements, hands-on work
  * - Opinion: Judgment, decision-making, critical thinking
@@ -26,14 +25,14 @@
  * - Hope: Mentorship, motivation, counseling
  *
  * Each dimension scored 1-5, sum determines category:
- * - Strong: sum >= 20
- * - Moderate: sum >= 12
- * - Weak: sum < 12
+ * - Strong: sum >= 20 → +2 points
+ * - Moderate: sum 12-19 → +1 point
+ * - Weak: sum < 12 → +0 points
  *
  * ## Data Sources
- * - Task Exposure: AIOE Dataset (Felten, Raj, Seamans 2021)
- * - Job Growth: BLS Employment Projections 2024-2034 via CareerOneStop
- * - Human Advantage: Manually curated EPOCH scores
+ * - AI Exposure: "GPTs are GPTs" (Eloundou et al., 2023) - task-level LLM analysis
+ * - Job Growth: BLS Employment Projections 2024-2034
+ * - Human Advantage: EPOCH framework scores
  *
  * @see /docs/AI_RESILIENCE_METHODOLOGY.md for full methodology documentation
  */
@@ -43,31 +42,31 @@
 // ============================================================================
 
 /**
- * AI task exposure level based on AIOE scores
- * Low = bottom tercile, Medium = middle tercile, High = top tercile
- */
-export type TaskExposure = 'Low' | 'Medium' | 'High';
-
-/**
- * Automation potential (derived from task exposure for now)
- */
-export type AutomationPotential = 'Low' | 'Medium' | 'High';
-
-/**
- * Job growth category based on BLS 2024-2034 projections
+ * AI Exposure label based on GPTs β score
  * Thresholds:
- *   - Declining Quickly: < -10%
- *   - Declining Slowly: -10% to 0%
- *   - Stable: 0% to 5%
- *   - Growing Slowly: 5% to 15%
- *   - Growing Quickly: > 15%
+ *   - Low: β < 0.25 (less than 25% of tasks accelerated by AI)
+ *   - Medium: β 0.25-0.50 (25-50% of tasks accelerated)
+ *   - High: β > 0.50 (more than 50% of tasks accelerated)
  */
-export type JobGrowthCategory =
-  | 'Declining Quickly'
-  | 'Declining Slowly'
-  | 'Stable'
-  | 'Growing Slowly'
-  | 'Growing Quickly';
+export type AIExposureLabel = 'Low' | 'Medium' | 'High';
+
+/**
+ * AI Exposure data structure
+ */
+export interface AIExposure {
+  score: number;           // 0-1 β score from GPTs paper
+  label: AIExposureLabel;  // Low/Medium/High for display
+  source: 'gpts' | 'aioe'; // Data source used
+}
+
+/**
+ * Job growth label based on BLS 2024-2034 projections
+ * Simplified to 3 categories for scoring:
+ *   - Declining: < 0%
+ *   - Stable: 0% to 5%
+ *   - Growing: > 5%
+ */
+export type JobGrowthLabel = 'Declining' | 'Stable' | 'Growing';
 
 /**
  * Human advantage category based on EPOCH score sum
@@ -99,24 +98,227 @@ export interface EPOCHScores {
 }
 
 /**
- * Complete AI assessment for a career
+ * Complete AI assessment for a career (v2.0)
  */
 export interface CareerAIAssessment {
-  taskExposure: TaskExposure;
-  automationPotential: AutomationPotential;
+  // Single AI Exposure metric (replaces taskExposure + automationPotential)
+  aiExposure: AIExposure;
+
+  // Job Growth
   jobGrowth: {
-    category: JobGrowthCategory;
+    label: JobGrowthLabel;
     percentChange: number;
     source: string;
   };
+
+  // Human Advantage (EPOCH)
   humanAdvantage: {
     category: HumanAdvantageCategory;
     epochScores: EPOCHScores;
   };
+
+  // Scoring breakdown
+  scoring: {
+    exposurePoints: number;
+    growthPoints: number;
+    humanAdvantagePoints: number;
+    totalScore: number;
+  };
+
+  // Final classification
   classification: AIResilienceClassification;
   classificationRationale: string;
+
+  // Metadata
   lastUpdated: string;
   methodology: string;
+}
+
+/**
+ * Result from the AI Resilience calculation
+ */
+export interface AIResilienceResult {
+  // Point scores for each dimension (0, 1, or 2)
+  exposurePoints: number;
+  growthPoints: number;
+  humanAdvantagePoints: number;
+  totalScore: number;
+
+  // User-facing labels
+  exposureLabel: AIExposureLabel;
+  growthLabel: JobGrowthLabel;
+  humanAdvantageLabel: HumanAdvantageCategory;
+
+  // Final classification
+  classification: AIResilienceClassification;
+  emoji: '🟢' | '🟡' | '🟠' | '🔴';
+  rationale: string;
+}
+
+// ============================================================================
+// Scoring Functions
+// ============================================================================
+
+/**
+ * Score AI Exposure based on GPTs β score
+ *
+ * @param beta - The β score from GPTs are GPTs (0-1 range)
+ * @returns Points (0-2) and label
+ */
+export function scoreExposure(beta: number): { points: 0 | 1 | 2; label: AIExposureLabel } {
+  if (beta < 0.25) return { points: 2, label: 'Low' };
+  if (beta <= 0.50) return { points: 1, label: 'Medium' };
+  return { points: 0, label: 'High' };
+}
+
+/**
+ * Score Job Growth based on BLS projections
+ *
+ * @param percentChange - Projected employment change 2024-2034
+ * @returns Points (0-2) and label
+ */
+export function scoreGrowth(percentChange: number): { points: 0 | 1 | 2; label: JobGrowthLabel } {
+  if (percentChange > 5) return { points: 2, label: 'Growing' };
+  if (percentChange >= 0) return { points: 1, label: 'Stable' };
+  return { points: 0, label: 'Declining' };
+}
+
+/**
+ * Score Human Advantage based on EPOCH sum
+ *
+ * @param epochSum - Sum of EPOCH scores (5-25)
+ * @returns Points (0-2) and label
+ */
+export function scoreEpoch(epochSum: number): { points: 0 | 1 | 2; label: HumanAdvantageCategory } {
+  if (epochSum >= 20) return { points: 2, label: 'Strong' };
+  if (epochSum >= 12) return { points: 1, label: 'Moderate' };
+  return { points: 0, label: 'Weak' };
+}
+
+/**
+ * Get classification from total score
+ *
+ * @param score - Total score (0-6)
+ * @returns Classification and emoji
+ */
+export function getClassificationFromScore(score: number): {
+  classification: AIResilienceClassification;
+  emoji: '🟢' | '🟡' | '🟠' | '🔴';
+} {
+  if (score >= 5) return { classification: 'AI-Resilient', emoji: '🟢' };
+  if (score >= 3) return { classification: 'AI-Augmented', emoji: '🟡' };
+  if (score >= 2) return { classification: 'In Transition', emoji: '🟠' };
+  return { classification: 'High Disruption Risk', emoji: '🔴' };
+}
+
+// ============================================================================
+// Main Classification Function
+// ============================================================================
+
+/**
+ * Input for AI Resilience calculation
+ */
+export interface AIResilienceInput {
+  // AI Exposure (GPTs primary, AIOE fallback)
+  gptsExposureBeta: number | null;  // 0-1, from GPTs paper
+  aioeExposure: number | null;      // 0-1, fallback if GPTs unavailable
+  exposureSource?: 'gpts' | 'aioe';
+
+  // Job Growth
+  blsGrowthPercent: number;         // e.g., 6 for +6%
+
+  // Human Advantage
+  epochSum: number;                 // 5-25
+}
+
+/**
+ * Calculate AI Resilience classification using additive scoring
+ *
+ * This is the main entry point for the v2.0 classification algorithm.
+ * It scores three dimensions (0-2 points each) and sums them for a total
+ * score of 0-6, which determines the final classification.
+ *
+ * @param input - The input data for classification
+ * @returns Complete result with scores, labels, and classification
+ */
+export function calculateAIResilience(input: AIResilienceInput): AIResilienceResult {
+  // Determine AI Exposure value (GPTs primary, AIOE fallback)
+  const exposureValue = input.gptsExposureBeta ?? input.aioeExposure ?? 0.5;
+
+  // Score each dimension
+  const { points: exposurePoints, label: exposureLabel } = scoreExposure(exposureValue);
+  const { points: growthPoints, label: growthLabel } = scoreGrowth(input.blsGrowthPercent);
+  const { points: humanAdvantagePoints, label: humanAdvantageLabel } = scoreEpoch(input.epochSum);
+
+  // Calculate total and get classification
+  const totalScore = exposurePoints + growthPoints + humanAdvantagePoints;
+  const { classification, emoji } = getClassificationFromScore(totalScore);
+
+  // Generate rationale
+  const rationale = generateRationale(
+    exposureLabel,
+    growthLabel,
+    humanAdvantageLabel,
+    totalScore,
+    classification
+  );
+
+  return {
+    exposurePoints,
+    growthPoints,
+    humanAdvantagePoints,
+    totalScore,
+    exposureLabel,
+    growthLabel,
+    humanAdvantageLabel,
+    classification,
+    emoji,
+    rationale,
+  };
+}
+
+/**
+ * Generate a human-readable rationale for the classification
+ */
+function generateRationale(
+  exposure: AIExposureLabel,
+  growth: JobGrowthLabel,
+  humanAdvantage: HumanAdvantageCategory,
+  score: number,
+  classification: AIResilienceClassification
+): string {
+  const parts: string[] = [];
+
+  if (exposure === 'Low') {
+    parts.push('low AI task exposure');
+  } else if (exposure === 'High') {
+    parts.push('high AI task exposure');
+  }
+
+  if (growth === 'Growing') {
+    parts.push('growing job demand');
+  } else if (growth === 'Declining') {
+    parts.push('declining job demand');
+  }
+
+  if (humanAdvantage === 'Strong') {
+    parts.push('strong human advantage');
+  } else if (humanAdvantage === 'Weak') {
+    parts.push('limited human advantage');
+  }
+
+  const summary = parts.length > 0 ? parts.join(', ') : 'balanced factors';
+
+  switch (classification) {
+    case 'AI-Resilient':
+      return `Score ${score}/6: ${summary} provides strong protection from AI displacement`;
+    case 'AI-Augmented':
+      return `Score ${score}/6: ${summary} means AI will assist but humans remain essential`;
+    case 'In Transition':
+      return `Score ${score}/6: ${summary} indicates this career is being transformed by AI`;
+    case 'High Disruption Risk':
+      return `Score ${score}/6: ${summary} creates significant risk from AI disruption`;
+  }
 }
 
 // ============================================================================
@@ -147,195 +349,27 @@ export function calculateEPOCHSum(scores: EPOCHScores): number {
 }
 
 /**
- * Get job growth category from percent change
+ * Get job growth label from percent change (simplified 3-category version)
  *
  * @param percentChange - Projected employment change 2024-2034
- * @returns Job growth category
+ * @returns Job growth label
  */
-export function getJobGrowthCategory(percentChange: number): JobGrowthCategory {
-  if (percentChange < -10) return 'Declining Quickly';
-  if (percentChange < 0) return 'Declining Slowly';
-  if (percentChange <= 5) return 'Stable';
-  if (percentChange <= 15) return 'Growing Slowly';
-  return 'Growing Quickly';
+export function getJobGrowthLabel(percentChange: number): JobGrowthLabel {
+  if (percentChange > 5) return 'Growing';
+  if (percentChange >= 0) return 'Stable';
+  return 'Declining';
 }
 
-// ============================================================================
-// Classification Algorithm
-// ============================================================================
-
 /**
- * Classify a career into one of four AI Resilience tiers
+ * Get AI exposure label from β score
  *
- * This function implements a priority-ordered rule system. Earlier rules take
- * precedence over later ones. The algorithm considers job growth prospects,
- * AI task exposure, and human advantage (EPOCH) scores.
- *
- * IMPORTANT: Rule order matters! The first matching rule determines the classification.
- *
- * @param taskExposure - How much of the job's tasks can AI perform (Low/Medium/High)
- * @param automationPotential - Likelihood of full automation (Low/Medium/High)
- * @param jobGrowth - BLS employment projections category
- * @param humanAdvantage - EPOCH framework category
- * @returns Object with classification and rationale
+ * @param beta - GPTs β score (0-1)
+ * @returns AI exposure label
  */
-export function classifyCareer(
-  taskExposure: TaskExposure,
-  automationPotential: AutomationPotential,
-  jobGrowth: JobGrowthCategory,
-  humanAdvantage: HumanAdvantageCategory
-): { classification: AIResilienceClassification; rationale: string } {
-
-  // ========== AI-RESILIENT RULES ==========
-
-  // RULE 1: Fast-growing careers with LOW/MEDIUM exposure are resilient
-  // Rationale: Strong demand + limited AI applicability = safe
-  // Note: High exposure + growing = still augmented (AI transforms but doesn't eliminate)
-  // Example: Nurse Practitioners (growing + medium exposure = resilient)
-  if (jobGrowth === 'Growing Quickly' && taskExposure !== 'High') {
-    return {
-      classification: 'AI-Resilient',
-      rationale: 'Growing Quickly + Limited Exposure: Strong employment growth combined with limited AI applicability'
-    };
-  }
-
-  // RULE 2: Strong human advantage protects against moderate exposure
-  // Rationale: High EPOCH scores mean AI augments rather than replaces
-  // Example: Registered Nurses (high empathy/presence = AI can't replace bedside care)
-  if (humanAdvantage === 'Strong' && taskExposure !== 'High') {
-    return {
-      classification: 'AI-Resilient',
-      rationale: 'Strong Human Advantage: High EPOCH scores with low/medium AI exposure means human skills remain essential'
-    };
-  }
-
-  // RULE 3: Growing slowly + low exposure = safe
-  // Rationale: Demand is increasing for jobs AI can't easily do
-  // Example: Electricians (5-15% growth, hands-on physical work)
-  if (jobGrowth === 'Growing Slowly' && taskExposure === 'Low') {
-    return {
-      classification: 'AI-Resilient',
-      rationale: 'Growing + Low Exposure: Steady demand growth for work that AI cannot easily automate'
-    };
-  }
-
-  // ========== AI-AUGMENTED RULES ==========
-
-  // RULE 4: Low exposure + not declining quickly = augmented
-  // Rationale: AI has limited applicability, job is stable
-  // Example: Plumbers (low AI exposure, stable demand)
-  if (taskExposure === 'Low' && jobGrowth !== 'Declining Quickly') {
-    return {
-      classification: 'AI-Augmented',
-      rationale: 'Low Exposure: AI has limited applicability to this work; stable employment prospects'
-    };
-  }
-
-  // RULE 5: Medium exposure + moderate/strong human advantage = augmented
-  // Rationale: AI assists but human judgment remains central
-  // Example: Accountants (AI helps with calculations, humans do judgment calls)
-  if (taskExposure === 'Medium' && (humanAdvantage === 'Moderate' || humanAdvantage === 'Strong')) {
-    return {
-      classification: 'AI-Augmented',
-      rationale: 'Medium Exposure + Human Skills: AI augments this work but human judgment remains essential'
-    };
-  }
-
-  // RULE 5b: High exposure + growing quickly = augmented (not resilient)
-  // Rationale: Even with high growth, high AI exposure means transformation is happening
-  // Example: Software Developers (growing fast but AI is changing how they work)
-  if (taskExposure === 'High' && jobGrowth === 'Growing Quickly') {
-    return {
-      classification: 'AI-Augmented',
-      rationale: 'High Exposure + Growing: Strong demand but AI is significantly augmenting this work'
-    };
-  }
-
-  // ========== IN TRANSITION RULES ==========
-  // These rules need to be checked BEFORE the stable + moderate rule
-  // to ensure high exposure jobs are properly classified
-
-  // RULE 6: High exposure + stable = transitioning
-  // Rationale: AI impact is being absorbed but transformation is underway
-  // Example: Radiologists (AI can read scans, role is evolving)
-  // MUST BE CHECKED BEFORE STABLE + MODERATE RULE
-  if (taskExposure === 'High' && jobGrowth === 'Stable') {
-    return {
-      classification: 'In Transition',
-      rationale: 'High Exposure + Stable: AI is transforming this work; role is evolving rather than disappearing'
-    };
-  }
-
-  // RULE 7: High exposure + declining slowly + moderate human advantage
-  // Rationale: Significant AI impact but human skills provide some protection
-  // Example: Paralegals (AI can research, but judgment still needed)
-  if (taskExposure === 'High' && jobGrowth === 'Declining Slowly' && humanAdvantage === 'Moderate') {
-    return {
-      classification: 'In Transition',
-      rationale: 'High Exposure + Moderate Decline: AI is significantly impacting this field, but human skills provide partial protection'
-    };
-  }
-
-  // ========== AI-AUGMENTED (continued) ==========
-
-  // RULE 8: Stable growth + moderate human advantage = augmented
-  // Rationale: Balanced outlook with AI as a tool
-  // Example: Graphic Designers (AI assists creative work, human taste still matters)
-  // NOTE: This rule only applies when NOT high exposure (checked above)
-  if (jobGrowth === 'Stable' && humanAdvantage === 'Moderate') {
-    return {
-      classification: 'AI-Augmented',
-      rationale: 'Stable + Moderate Human Skills: Balanced outlook where AI serves as a tool rather than replacement'
-    };
-  }
-
-  // RULE 9: Medium exposure + declining slowly + weak human advantage
-  // Rationale: Some AI pressure + declining demand + limited human differentiation
-  // Example: Some clerical roles with declining demand
-  if (taskExposure === 'Medium' && jobGrowth === 'Declining Slowly' && humanAdvantage === 'Weak') {
-    return {
-      classification: 'In Transition',
-      rationale: 'Medium Exposure + Weak Human Advantage + Decline: Facing pressure from both AI capabilities and market shifts'
-    };
-  }
-
-  // ========== HIGH DISRUPTION RISK RULES ==========
-
-  // RULE 10: High exposure + declining quickly + weak human advantage
-  // Rationale: Maximum risk factors aligned
-  // Example: Data Entry Keyers (AI can do the work, demand dropping fast)
-  if (taskExposure === 'High' && jobGrowth === 'Declining Quickly' && humanAdvantage === 'Weak') {
-    return {
-      classification: 'High Disruption Risk',
-      rationale: 'Maximum Risk: High AI exposure, rapidly declining demand, and limited human differentiation'
-    };
-  }
-
-  // RULE 11: High exposure + any decline + weak human advantage
-  // Rationale: High-risk combination even with slower decline
-  // Example: Telemarketers (AI can call, declining demand, little human advantage)
-  if (taskExposure === 'High' && (jobGrowth === 'Declining Quickly' || jobGrowth === 'Declining Slowly') && humanAdvantage === 'Weak') {
-    return {
-      classification: 'High Disruption Risk',
-      rationale: 'High Risk: High AI exposure combined with declining employment and limited human differentiation'
-    };
-  }
-
-  // ========== DEFAULT FALLBACK ==========
-
-  // RULE 12: Default to In Transition for ambiguous cases
-  // Rationale: Uncertainty = prudent caution
-  if (taskExposure === 'High') {
-    return {
-      classification: 'In Transition',
-      rationale: 'High AI Exposure: Significant AI applicability suggests ongoing transformation'
-    };
-  }
-
-  return {
-    classification: 'AI-Augmented',
-    rationale: 'Default: Moderate AI impact with balanced human-AI collaboration expected'
-  };
+export function getAIExposureLabel(beta: number): AIExposureLabel {
+  if (beta < 0.25) return 'Low';
+  if (beta <= 0.50) return 'Medium';
+  return 'High';
 }
 
 // ============================================================================
@@ -394,6 +428,27 @@ export function getAIResilienceDescription(classification: AIResilienceClassific
   return descriptions[classification];
 }
 
+/**
+ * Get color for an exposure/growth/advantage label
+ */
+export function getLabelColor(label: AIExposureLabel | JobGrowthLabel | HumanAdvantageCategory): string {
+  const colors: Record<string, string> = {
+    // AI Exposure (inverted - Low is good)
+    'Low': 'text-green-600 bg-green-100',
+    'Medium': 'text-yellow-600 bg-yellow-100',
+    'High': 'text-red-600 bg-red-100',
+    // Job Growth
+    'Declining': 'text-red-600 bg-red-100',
+    'Stable': 'text-yellow-600 bg-yellow-100',
+    'Growing': 'text-green-600 bg-green-100',
+    // Human Advantage
+    'Weak': 'text-red-600 bg-red-100',
+    'Moderate': 'text-yellow-600 bg-yellow-100',
+    'Strong': 'text-green-600 bg-green-100',
+  };
+  return colors[label] || 'text-gray-600 bg-gray-100';
+}
+
 // ============================================================================
 // Legacy Compatibility
 // ============================================================================
@@ -423,4 +478,71 @@ export function classificationToLegacyLabel(classification: AIResilienceClassifi
     'High Disruption Risk': 'high',
   };
   return labels[classification];
+}
+
+// ============================================================================
+// DEPRECATED: Legacy types and functions kept for migration
+// These will be removed in a future version
+// ============================================================================
+
+/**
+ * @deprecated Use AIExposureLabel instead
+ */
+export type TaskExposure = 'Low' | 'Medium' | 'High';
+
+/**
+ * @deprecated No longer used - removed in v2.0
+ */
+export type AutomationPotential = 'Low' | 'Medium' | 'High';
+
+/**
+ * @deprecated Use JobGrowthLabel instead. Legacy 5-category version.
+ */
+export type JobGrowthCategory =
+  | 'Declining Quickly'
+  | 'Declining Slowly'
+  | 'Stable'
+  | 'Growing Slowly'
+  | 'Growing Quickly';
+
+/**
+ * @deprecated Use getJobGrowthLabel instead. Legacy 5-category version.
+ */
+export function getJobGrowthCategory(percentChange: number): JobGrowthCategory {
+  if (percentChange < -10) return 'Declining Quickly';
+  if (percentChange < 0) return 'Declining Slowly';
+  if (percentChange <= 5) return 'Stable';
+  if (percentChange <= 15) return 'Growing Slowly';
+  return 'Growing Quickly';
+}
+
+/**
+ * @deprecated Use calculateAIResilience instead
+ */
+export function classifyCareer(
+  taskExposure: TaskExposure,
+  _automationPotential: AutomationPotential,
+  jobGrowth: JobGrowthCategory,
+  humanAdvantage: HumanAdvantageCategory
+): { classification: AIResilienceClassification; rationale: string } {
+  // Convert legacy inputs to new format
+  const exposureBeta = taskExposure === 'Low' ? 0.15 : taskExposure === 'Medium' ? 0.35 : 0.65;
+  const growthPercent =
+    jobGrowth === 'Declining Quickly' ? -15 :
+    jobGrowth === 'Declining Slowly' ? -5 :
+    jobGrowth === 'Stable' ? 2 :
+    jobGrowth === 'Growing Slowly' ? 10 : 20;
+  const epochSum = humanAdvantage === 'Strong' ? 22 : humanAdvantage === 'Moderate' ? 15 : 8;
+
+  const result = calculateAIResilience({
+    gptsExposureBeta: exposureBeta,
+    aioeExposure: null,
+    blsGrowthPercent: growthPercent,
+    epochSum,
+  });
+
+  return {
+    classification: result.classification,
+    rationale: result.rationale,
+  };
 }
