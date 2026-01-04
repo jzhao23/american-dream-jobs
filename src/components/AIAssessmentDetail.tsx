@@ -2,7 +2,7 @@
  * AI Assessment Detail Component
  *
  * Displays the full 4-dimension breakdown of an AI Resilience assessment:
- * - Task Exposure (from AIOE dataset)
+ * - Task Exposure (from GPTs are GPTs dataset, with AIOE fallback)
  * - Automation Potential
  * - Job Growth (from BLS projections)
  * - Human Advantage (EPOCH framework)
@@ -236,7 +236,7 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
             </ul>
           </div>
           <p className="text-xs text-gray-500">
-            Source: AIOE Dataset (Felten, Raj, Seamans 2021) — measures AI capability overlap with O*NET work activities
+            Source: GPTs are GPTs (Eloundou et al. 2023); AIOE Dataset (Felten et al. 2021) for fallback
           </p>
         </div>
       </ExpandableSection>
@@ -358,7 +358,7 @@ export function AIAssessmentDetail({ assessment, className = '' }: AIAssessmentD
       <div className="p-3 bg-gray-50 border-t text-xs text-gray-500">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <span>
-            Sources: AIOE Dataset (Felten et al. 2021), BLS Projections 2024-2034, EPOCH Framework
+            Sources: GPTs are GPTs (2023), AIOE (2021, fallback), BLS Projections 2024-2034, EPOCH Framework
           </span>
           <span>Updated: {assessment.lastUpdated}</span>
         </div>

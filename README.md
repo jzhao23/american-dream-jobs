@@ -157,7 +157,8 @@ We use a 4-tier AI Resilience system to assess career viability in an AI-augment
 | **High Disruption Risk** | High AI exposure with declining demand creates significant risk |
 
 **Data sources for AI Resilience:**
-- [AIOE Dataset](https://github.com/AIOE-Data/AIOE) (Felten, Raj, Seamans 2021) - AI occupational exposure scores
+- [GPTs are GPTs](https://github.com/openai/GPTs-are-GPTs) (Eloundou et al. 2023) - LLM task exposure scores (PRIMARY)
+- [AIOE Dataset](https://github.com/AIOE-Data/AIOE) (Felten et al. 2021) - AI exposure scores (FALLBACK)
 - [BLS Employment Projections 2024-2034](https://www.bls.gov/emp/) - Job growth trends
 - EPOCH Framework - Human advantage assessment (Empathy, Presence, Opinion, Creativity, Hope)
 

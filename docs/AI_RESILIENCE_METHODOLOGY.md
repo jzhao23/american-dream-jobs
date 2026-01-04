@@ -17,24 +17,50 @@ The AI Resilience Classification is a 4-tier system that assesses how likely a c
 
 The classification is computed from four input dimensions:
 
-### 1. Task Exposure (from AIOE Dataset)
+### 1. Task Exposure
 
-**Source**: AI Occupational Exposure (AIOE) Dataset - Felten, Raj, Seamans (2021)
+Task exposure measures how much of an occupation's work involves tasks that AI/LLMs can perform or assist with. We use a priority-based fallback system:
 
-**Paper**: "Occupational, Industry, and Geographic Exposure to Artificial Intelligence: A Novel Dataset and Its Potential Uses" (DOI: 10.1002/smj.3286)
+#### Primary Source: GPTs are GPTs (Eloundou et al. 2023)
 
+**Paper**: "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models"
+**Authors**: Tyna Eloundou, Sam Manning, Pamela Mishkin, Daniel Rock
+**Published**: Science, Vol. 384, Issue 6702 (2024)
+**DOI**: 10.1126/science.adj0998
+**Data**: https://github.com/openai/GPTs-are-GPTs
+
+**Methodology**: The GPTs are GPTs dataset measures LLM-specific exposure by:
+1. Defining exposure rubrics for individual work tasks
+2. Using both human annotators and GPT-4 to classify tasks
+3. Computing task-level scores for 50% speedup potential (α, β, γ metrics)
+4. Aggregating to occupation-level statistics
+
+We use the **β (beta)** metric as the primary score, which measures tasks that can be completed 50% faster using LLMs with access to external tools (code execution, web browsing, etc.).
+
+**Coverage**: 923 occupations
+
+#### Fallback Source: AIOE Dataset (Felten et al. 2021)
+
+For occupations not covered by GPTs are GPTs, we fall back to the AIOE (AI Occupational Exposure) dataset.
+
+**Paper**: "Occupational, Industry, and Geographic Exposure to Artificial Intelligence: A Novel Dataset and Its Potential Uses"
+**DOI**: 10.1002/smj.3286
 **Data**: https://github.com/AIOE-Data/AIOE
 
-**Methodology**: The AIOE index measures the degree to which occupations are exposed to artificial intelligence by:
+**Methodology**: The AIOE index measures general AI exposure by:
 1. Identifying 10 AI applications from patents and academic literature
-2. Surveying relatedness between AI applications and 52 occupational abilities (from O*NET)
-3. Weighting by ability importance
-4. Aggregating across applications to produce occupation-level scores
+2. Surveying relatedness between AI applications and 52 occupational abilities
+3. Weighting by ability importance (from O*NET)
+4. Aggregating to occupation-level scores
 
-**Categories**:
-- **Low**: Bottom 33% of AIOE scores (less cognitive/analytical work)
-- **Medium**: Middle 34% of AIOE scores
-- **High**: Top 33% of AIOE scores (more cognitive/analytical work)
+**Coverage**: 774 occupations
+
+#### Categories (Tercile Split)
+
+Both datasets use the same categorization approach:
+- **Low**: Bottom 33% of exposure scores (less text/cognitive work)
+- **Medium**: Middle 34% of exposure scores
+- **High**: Top 33% of exposure scores (more text/cognitive work)
 
 ### 2. Automation Potential
 
@@ -110,7 +136,9 @@ All source data is stored in the repository for full reproducibility:
 
 ```
 data/sources/
-  ai-exposure.json              # AIOE dataset (774 occupations)
+  gpts-are-gpts.json            # GPTs are GPTs LLM exposure (923 occupations) - PRIMARY
+  gpts-are-gpts-metadata.json   # Source citation and methodology
+  ai-exposure.json              # AIOE dataset (774 occupations) - FALLBACK
   ai-exposure-metadata.json     # Source citation and methodology
   bls-projections.json          # BLS 2024-2034 projections (832 occupations)
   bls-projections-metadata.json # Source citation
@@ -119,27 +147,32 @@ data/sources/
 
 ## Recreating the Data
 
-1. **Fetch BLS Projections** (requires CareerOneStop API key):
+1. **Fetch GPTs are GPTs Data** (PRIMARY - LLM-specific exposure):
    ```bash
-   npx tsx scripts/fetch-bls-projections.ts
+   npx tsx scripts/fetch-gpts-are-gpts.ts
    ```
 
-2. **Process AIOE Dataset** (download from GitHub first):
+2. **Process AIOE Dataset** (FALLBACK - download from GitHub first):
    ```bash
    npx tsx scripts/fetch-ai-exposure.ts
    ```
 
-3. **Generate/Update EPOCH Scores**:
+3. **Fetch BLS Projections** (requires CareerOneStop API key):
+   ```bash
+   npx tsx scripts/fetch-bls-projections.ts
+   ```
+
+4. **Generate/Update EPOCH Scores**:
    ```bash
    npx tsx scripts/generate-epoch-scores.ts
    ```
 
-4. **Regenerate Career Data**:
+5. **Regenerate Career Data**:
    ```bash
    npm run data:generate-final
    ```
 
-5. **Validate Classifications** (14 required test cases):
+6. **Validate Classifications** (14 required test cases):
    ```bash
    npx tsx scripts/validate-classifications.ts
    ```
@@ -150,7 +183,7 @@ data/sources/
 
 2. **Individual careers vary**: The classification represents aggregate trends for occupation categories. Individual job security depends on many factors including employer, location, skill level, and specialization.
 
-3. **AI capabilities are evolving**: The AI exposure data is based on research from 2021. AI capabilities continue to advance, potentially affecting exposure levels.
+3. **AI capabilities are evolving**: The primary AI exposure data (GPTs are GPTs) is based on 2023 research; the fallback (AIOE) is from 2021. AI capabilities continue to advance, potentially affecting exposure levels.
 
 4. **EPOCH scores are subjective**: While based on job requirements from O*NET, the scoring involves subjective assessment of human advantage dimensions.
 
@@ -158,13 +191,17 @@ data/sources/
 
 ## Data Refresh Schedule
 
+- **GPTs are GPTs**: Static from 2023 research; may be updated if new versions are published (primary exposure source)
+- **AIOE Dataset**: Static from 2021 research; kept as fallback for coverage
 - **BLS Projections**: Updated when new BLS projection cycles are released (approximately every 2 years)
-- **AIOE Dataset**: Static from 2021 research; may be updated if new versions are published
 - **EPOCH Scores**: Maintained manually; updated when new occupations are added or job characteristics change significantly
 
 ## Academic Citations
 
-### AIOE Dataset
+### GPTs are GPTs (Primary Task Exposure Source)
+Eloundou, T., Manning, S., Mishkin, P., & Rock, D. (2023). GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models. Science, Vol. 384, Issue 6702. DOI: 10.1126/science.adj0998. arXiv: 2303.10130
+
+### AIOE Dataset (Fallback Task Exposure Source)
 Felten, E. W., Raj, M., & Seamans, R. (2021). Occupational, Industry, and Geographic Exposure to Artificial Intelligence: A Novel Dataset and Its Potential Uses. Strategic Management Journal. DOI: 10.1002/smj.3286
 
 ### Employment Projections

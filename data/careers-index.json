@@ -14,8 +14,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Determine and formulate policies and provide overall direction of companies or private and public sector organizations within guidelines set up by a board of directors or similar governing body. Plan,"
   },
   {
@@ -52,8 +52,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 2.4,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Plan, direct, or coordinate the operations of public or private sector organizations, overseeing multiple departments or locations. Duties and responsibilities include formulating policies, managing d"
   },
   {
@@ -128,8 +128,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Plan, direct, or coordinate the actual distribution or movement of a product or service to the customer. Coordinate sales distribution by establishing sales territories, quotas, and goals and establis"
   },
   {
@@ -147,8 +147,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Plan, direct, or coordinate activities designed to create or maintain a favorable public image or raise issue awareness for their organization or client."
   },
   {
@@ -166,8 +166,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 3.1,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Plan, direct, or coordinate activities to solicit and maintain funds for special projects or nonprofit organizations."
   },
   {
@@ -318,8 +318,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Plan, direct, or coordinate the work activities and resources necessary for manufacturing products in accordance with cost, quality, and quantity specifications."
   },
   {
@@ -565,8 +565,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.6,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Plan, direct, or coordinate, usually through subordinate supervisory personnel, activities concerned with the construction and maintenance of structures, facilities, and systems. Participate in the co"
   },
   {
@@ -584,8 +584,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate academic or nonacademic activities of preschools or childcare centers and programs, including before- and after-school care."
   },
   {
@@ -603,8 +603,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate the academic, administrative, or auxiliary activities of kindergarten, elementary, or secondary schools."
   },
   {
@@ -622,8 +622,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate student instruction, administration, and services, as well as other research and educational activities, at postsecondary institutions, including universities, colleges, an"
   },
   {
@@ -774,8 +774,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate medical and health services in hospitals, clinics, managed care organizations, public health agencies, or similar organizations."
   },
   {
@@ -869,8 +869,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 8.3,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate the selling, buying, leasing, or governance activities of commercial, industrial, or residential real estate properties. Includes managers of homeowner and condominium asso"
   },
   {
@@ -888,8 +888,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan, direct, or coordinate the activities of a social service program or community outreach organization. Oversee the program or organization's budget and policies regarding participant involvement, "
   },
   {
@@ -907,8 +907,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Plan and direct disaster response or crisis management activities, provide disaster preparedness training, and prepare emergency plans and procedures for natural (e.g., hurricanes, floods, earthquakes"
   },
   {
@@ -1230,8 +1230,8 @@
     "typical_education": "Some college, no degree",
     "ai_risk": 9.8,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Appraise automobile or other vehicle damage to determine repair costs for insurance claim settlement. Prepare insurance forms to indicate repair cost or cost estimates and recommendations. May seek ag"
   },
   {
@@ -1249,8 +1249,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.7,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Examine, evaluate, and investigate eligibility for or conformity with laws and regulations governing contract compliance of licenses and permits, and perform other compliance and enforcement inspectio"
   },
   {
@@ -1420,8 +1420,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 9.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Recruit and hire seasonal or temporary agricultural laborers. May transport, house, and provide meals for workers."
   },
   {
@@ -1515,8 +1515,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 3.1,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Analyze and coordinate the schedule, timeline, procurement, staffing, and budget of a product or service on a per project basis. Lead and guide the work of technical staff. May serve as a point of con"
   },
   {
@@ -1534,8 +1534,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Conduct organizational studies and evaluations, design systems and procedures, conduct work simplification and measurement studies, and prepare operations and procedures manuals to assist management i"
   },
   {
@@ -1553,8 +1553,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Coordinate activities of staff, convention personnel, or clients to make arrangements for group meetings, events, or conventions."
   },
   {
@@ -1857,8 +1857,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 3.1,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Conduct quantitative analyses of information involving investment programs or financial data of public or private institutions, including valuation of businesses."
   },
   {
@@ -1914,8 +1914,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 3.1,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Analyze and measure exposure to credit and market risk threatening the assets, earning capacity, or economic state of an organization. May make recommendations to limit risk."
   },
   {
@@ -2085,8 +2085,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Analyze science, engineering, business, and other data processing problems to develop and implement solutions to complex applications problems, system administration issues, or network concerns. Perfo"
   },
   {
@@ -2161,8 +2161,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Analyze, test, troubleshoot, and evaluate existing network systems, such as local area networks (LAN), wide area networks (WAN), cloud networks, servers, and other data communications networks. Perfor"
   },
   {
@@ -2180,8 +2180,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Provide technical assistance to computer users. Answer questions or resolve computer problems for clients in person, via telephone, or electronically. May provide assistance concerning the use of comp"
   },
   {
@@ -2199,8 +2199,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Design and implement computer and information networks, such as local area networks (LAN), wide area networks (WAN), intranets, extranets, and other data communications networks. Perform network model"
   },
   {
@@ -2237,8 +2237,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Administer, test, and implement computer databases, applying knowledge of database management systems. Coordinate changes to computer databases. Identify, investigate, and resolve database performance"
   },
   {
@@ -2256,8 +2256,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Design strategies for enterprise databases, data warehouse systems, and multidimensional networks. Set standards for database operations, programming, query processes, and security. Model, design, and"
   },
   {
@@ -2294,8 +2294,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Install, configure, and maintain an organization's local area network (LAN), wide area network (WAN), data communications network, operating systems, and physical and virtual servers. Perform system m"
   },
   {
@@ -2313,8 +2313,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Create, modify, and test the code and scripts that allow computer applications to run. Work from specifications drawn up by software and web developers or other individuals. May develop and write comp"
   },
   {
@@ -2351,8 +2351,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Develop and execute software tests to identify software problems and their causes. Test system modifications to prepare for implementation. Document software and application defects using a bug tracki"
   },
   {
@@ -2370,8 +2370,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Develop and implement websites, web applications, application databases, and interactive web interfaces. Evaluate code to ensure that it is properly structured, meets industry standards, and is compat"
   },
   {
@@ -2389,8 +2389,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Design digital user interfaces or websites. Develop and test layouts, interfaces, functionality, and navigation menus to ensure compatibility and usability across browsers or devices. May use web fram"
   },
   {
@@ -2826,8 +2826,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Plan and design land areas for projects such as parks and other recreational facilities, airports, highways, hospitals, schools, land subdivisions, and commercial, industrial, and residential sites."
   },
   {
@@ -2864,8 +2864,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 4.4,
     "ai_risk_label": "medium",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Make exact measurements and determine property boundaries. Provide data relevant to the shape, contour, gravitation, location, elevation, or dimension of land or land features on or near the earth's s"
   },
   {
@@ -2921,8 +2921,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 5.4,
     "ai_risk_label": "medium",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Apply knowledge of engineering technology and biological science to agricultural problems concerned with power and machinery, electrification, structures, soil and water conservation, and processing o"
   },
   {
@@ -2959,8 +2959,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Design chemical plant equipment and devise processes for manufacturing chemicals and products, such as gasoline, synthetic rubber, plastics, detergents, cement, paper, and pulp, by applying principles"
   },
   {
@@ -2978,8 +2978,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Perform engineering duties in planning, designing, and overseeing construction and maintenance of building structures and facilities, such as roads, railroads, airports, bridges, harbors, channels, da"
   },
   {
@@ -3073,8 +3073,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Research, design, develop, or test electronic components and systems for commercial, industrial, military, or scientific use employing knowledge of electronic theory and materials properties. Design e"
   },
   {
@@ -3282,8 +3282,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Perform engineering duties in planning and designing tools, engines, machines, and other mechanically functioning equipment. Oversee installation, operation, maintenance, and repair of equipment such "
   },
   {
@@ -3795,8 +3795,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 4.4,
     "ai_risk_label": "medium",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Apply theory and principles of mechanical engineering to modify, develop, test, or adjust machinery and equipment under direction of engineering staff or physical scientists."
   },
   {
@@ -3909,8 +3909,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 9.6,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Perform surveying and mapping duties, usually under the direction of an engineer, surveyor, cartographer, or photogrammetrist, to obtain data used for construction, mapmaking, boundary location, minin"
   },
   {
@@ -3947,8 +3947,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.7,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Use chemistry, microbiology, engineering, and other sciences to study the principles underlying the processing and deterioration of foods; analyze food content to determine levels of vitamins, fat, su"
   },
   {
@@ -3966,8 +3966,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Conduct research in breeding, physiology, production, yield, and management of crops and agricultural plants or trees, shrubs, and nursery stock, their growth in soils, and control of pests; or study "
   },
   {
@@ -3985,8 +3985,8 @@
     "typical_education": "Post-doctoral training",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Study the chemical composition or physical principles of living cells and organisms, their electrical and mechanical energy, and related phenomena. May conduct research to further understanding of the"
   },
   {
@@ -4213,8 +4213,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 2.8,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Investigate and describe the determinants and distribution of disease, disability, or health outcomes. May develop the means for prevention and control."
   },
   {
@@ -4270,8 +4270,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Observe, research, and interpret astronomical phenomena to increase basic knowledge or apply such information to practical problems."
   },
   {
@@ -4441,8 +4441,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 6.7,
     "ai_risk_label": "high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Study the composition, structure, and other physical aspects of the Earth. May use geological, physics, and mathematics knowledge in exploration for oil, gas, minerals, or underground water; or in was"
   },
   {
@@ -4460,8 +4460,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Research the distribution, circulation, and physical properties of underground and surface waters; and study the form and intensity of precipitation and its rate of infiltration into the soil, movemen"
   },
   {
@@ -4973,8 +4973,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Collect and organize data concerning the distribution and circulation of ground and surface water, and data on its physical, chemical, and biological properties. Measure and report on flow rates and g"
   },
   {
@@ -5201,8 +5201,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Advise and assist students and provide educational and vocational guidance services."
   },
   {
@@ -5220,8 +5220,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Diagnose and treat mental and emotional disorders, whether cognitive, affective, or behavioral, within the context of marriage and family systems. Apply psychotherapeutic and family systems theories a"
   },
   {
@@ -5296,8 +5296,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Provide social services and assistance to improve the social and psychological functioning of children and their families and to maximize the family well-being and the academic functioning of children"
   },
   {
@@ -5315,8 +5315,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Provide individuals, families, and groups with the psychosocial support needed to cope with chronic, acute, or terminal illnesses. Services include advising family caregivers. Provide patients with in"
   },
   {
@@ -5334,8 +5334,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Assess and treat individuals with mental, emotional, or substance abuse problems, including abuse of alcohol, tobacco, and/or other drugs. Activities may include individual and group therapy, crisis i"
   },
   {
@@ -5372,8 +5372,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Provide and manage health education programs that help individuals, families, and their communities maximize and maintain healthy lifestyles. Use data to identify community needs prior to planning, im"
   },
   {
@@ -5467,8 +5467,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Conduct religious worship and perform other spiritual functions associated with beliefs and practices of religious faith or denomination. Provide spiritual and moral guidance and assistance to members"
   },
   {
@@ -5486,8 +5486,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Coordinate or design programs and conduct outreach to promote the religious education or activities of a denominational group. May provide counseling, guidance, and leadership relative to marital, hea"
   },
   {
@@ -5524,8 +5524,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Represent clients in criminal and civil litigation and other legal proceedings, draw up legal documents, or manage or advise clients on legal transactions. May specialize in a single area or may pract"
   },
   {
@@ -5600,8 +5600,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 4.6,
     "ai_risk_label": "medium",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Arbitrate, advise, adjudicate, or administer justice in a court of law. May sentence defendant in criminal cases according to government statutes or sentencing guidelines. May determine liability of d"
   },
   {
@@ -5847,8 +5847,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses pertaining to the chemical and physical properties and compositional changes of substances. Work may include providing instruction in the methods of qualitative and quantitative chemical"
   },
   {
@@ -5885,8 +5885,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses pertaining to the laws of matter and energy. Includes both teachers primarily engaged in teaching and those who do a combination of teaching and research."
   },
   {
@@ -6018,8 +6018,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses in sociology. Includes both teachers primarily engaged in teaching and those who do a combination of teaching and research."
   },
   {
@@ -6151,8 +6151,8 @@
     "typical_education": "First professional degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses in law. Includes both teachers primarily engaged in teaching and those who do a combination of teaching and research."
   },
   {
@@ -6170,8 +6170,8 @@
     "typical_education": "Doctoral degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses in social work. Includes both teachers primarily engaged in teaching and those who do a combination of teaching and research."
   },
   {
@@ -6189,8 +6189,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses in drama, music, and the arts including fine and applied art, such as painting and sculpture, or design and crafts. Includes both teachers primarily engaged in teaching and those who do "
   },
   {
@@ -6208,8 +6208,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach courses in communications, such as organizational communications, public relations, radio/television broadcasting, and journalism. Includes both teachers primarily engaged in teaching and those "
   },
   {
@@ -6341,8 +6341,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Teach vocational courses intended to provide occupational training below the baccalaureate level in subjects such as construction, mechanics/repair, manufacturing, transportation, or cosmetology, prim"
   },
   {
@@ -6417,8 +6417,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach academic and social skills to students at the elementary school level."
   },
   {
@@ -6436,8 +6436,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.5,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach one or more subjects to students at the middle, intermediate, or junior high school level."
   },
   {
@@ -6474,8 +6474,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach one or more subjects to students at the secondary school level."
   },
   {
@@ -6645,8 +6645,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 2.7,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Teach or instruct out-of-school youths and adults in basic education, literacy, or English as a Second Language classes, or in classes for earning a high school equivalency credential."
   },
   {
@@ -6702,8 +6702,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Instruct individual students or small groups of students in academic subjects to support formal class instruction or to prepare students for standardized or admissions tests."
   },
   {
@@ -6740,8 +6740,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 7.8,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Appraise, edit, and direct safekeeping of permanent records and historically valuable documents. Participate in research activities based on archival materials."
   },
   {
@@ -6797,8 +6797,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Administer and maintain libraries or collections of information, for public or private access through reference or borrowing. Work in a variety of settings, such as educational institutions, museums, "
   },
   {
@@ -6816,8 +6816,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 9.9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Assist librarians by helping readers in the use of library catalogs, databases, and indexes to locate books and other materials; and by answering questions that require only brief consultation of stan"
   },
   {
@@ -6835,8 +6835,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Instruct and advise individuals and families engaged in agriculture, agricultural-related processes, or home management activities. Demonstrate procedures and apply research findings to advance agricu"
   },
   {
@@ -6911,8 +6911,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Assist faculty or other instructional staff in postsecondary institutions by performing instructional support activities, such as developing teaching materials, leading discussion groups, preparing an"
   },
   {
@@ -7025,8 +7025,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Create special effects or animations using film, video, computers, or other electronic tools and media for use in products, such as computer games, movies, music videos, and commercials."
   },
   {
@@ -7063,8 +7063,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Design and develop manufactured products, such as cars, home appliances, and children's toys. Combine artistic talent with research on product use, marketing, and materials to create the most function"
   },
   {
@@ -7234,8 +7234,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Produce or direct stage, television, radio, video, or film productions for entertainment, information, or instruction. Responsible for creative decisions, such as interpretation of script, choice of a"
   },
   {
@@ -7386,8 +7386,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Create new dance routines. Rehearse performance of routines. May direct and stage presentations."
   },
   {
@@ -7443,8 +7443,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Play prerecorded music for live audiences at venues or events such as clubs, parties, or wedding receptions. May use techniques such as mixing, cutting, or sampling to manipulate recordings. May also "
   },
   {
@@ -7500,8 +7500,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Narrate or write news stories, reviews, or commentary for print, broadcast, or other communications media such as newspapers, magazines, radio, or television. May collect and analyze information throu"
   },
   {
@@ -7633,8 +7633,8 @@
     "typical_education": "Post-secondary certificate",
     "ai_risk": 1.4,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Use verbatim methods and equipment to capture, store, retrieve, and transcribe pretrial and trial proceedings or other information. Includes stenocaptioners who operate computerized stenographic capti"
   },
   {
@@ -7690,8 +7690,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 7.7,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Set up, operate, and maintain the electronic equipment used to acquire, edit, and transmit audio and video for radio or television programs. Control and adjust incoming and outgoing broadcast signals "
   },
   {
@@ -8165,8 +8165,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Assess and treat persons with speech, language, voice, and fluency disorders. May select alternative communication systems and teach their use. May perform research related to speech and language prob"
   },
   {
@@ -8412,8 +8412,8 @@
     "typical_education": "Master's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Diagnose and treat acute, episodic, or chronic illness, independently or as part of a healthcare team. May focus on health promotion and disease prevention. May order, perform, or interpret diagnostic"
   },
   {
@@ -8602,8 +8602,8 @@
     "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Diagnose, treat, and help prevent diseases and injuries in children. May refer patients to specialists for further diagnosis or treatment, as needed."
   },
   {
@@ -8621,8 +8621,8 @@
     "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Diagnose diseases and conduct lab tests using organs, body tissues, and fluids. Includes medical examiners."
   },
   {
@@ -8640,8 +8640,8 @@
     "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Diagnose, treat, and help prevent mental disorders."
   },
   {
@@ -8659,8 +8659,8 @@
     "typical_education": "Post-doctoral training",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Diagnose and treat diseases and injuries using medical imaging techniques, such as x rays, magnetic resonance imaging (MRI), nuclear medicine, and ultrasounds. May perform minimally invasive medical p"
   },
   {
@@ -9248,8 +9248,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 2.2,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Assist in the provision of food service and nutritional programs, under the supervision of a dietitian. May plan and produce meals based on established guidelines, teach principles of food and nutriti"
   },
   {
@@ -9324,8 +9324,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 1.3,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Perform medical tests in a laboratory environment for use in the treatment and diagnosis of diseases in animals. Prepare vaccines and serums for prevention of diseases. Prepare tissue samples, take bl"
   },
   {
@@ -9381,8 +9381,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 5.2,
     "ai_risk_label": "medium",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Compile, process, and maintain medical records of hospital and clinic patients in a manner consistent with medical, administrative, ethical, legal, and regulatory requirements of the healthcare system"
   },
   {
@@ -9533,8 +9533,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 1.1,
     "ai_risk_label": "very_low",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Apply knowledge of healthcare and information systems to assist in the design, development, and continued modification and analysis of computerized healthcare systems. Abstract, collect, and analyze t"
   },
   {
@@ -9932,8 +9932,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Feed, water, and examine pets and other nonfarm animals for signs of illness, disease, or injury in laboratories and animal hospitals and clinics. Clean and disinfect cages and work areas, and sterili"
   },
   {
@@ -9951,8 +9951,8 @@
     "typical_education": "Post-secondary certificate",
     "ai_risk": 5.2,
     "ai_risk_label": "medium",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Draw blood for tests, transfusions, donations, or research. May explain the procedure to patients and assist in the recovery of patients with adverse reactions."
   },
   {
@@ -10388,8 +10388,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 3.8,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Gather, analyze, compile, and report information regarding individuals or organizations to clients, or detect occurrences of unlawful acts or infractions of rules in private establishment."
   },
   {
@@ -10407,8 +10407,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Observe gambling operation for irregular activities such as cheating or theft by either employees or patrons. Investigate potential threats to gambling assets such as money, chips, and gambling equipm"
   },
   {
@@ -10464,8 +10464,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 7,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Monitor recreational areas, such as pools, beaches, or ski slopes, to provide assistance and protection to participants."
   },
   {
@@ -10578,8 +10578,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 6.7,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Directly supervise and coordinate activities of workers engaged in preparing and serving food."
   },
   {
@@ -10730,8 +10730,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.9,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Mix and serve drinks to patrons, directly or through waitstaff."
   },
   {
@@ -10749,8 +10749,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Perform duties such as taking orders and serving food and beverages. Serve customers at counter or from a steam table. May take payment. May prepare food and beverages."
   },
   {
@@ -11167,8 +11167,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.4,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Feed, water, groom, bathe, exercise, or otherwise provide care to promote and maintain the well-being of pets and other animals that are not raised for consumption, such as dogs, cats, race horses, or"
   },
   {
@@ -11319,8 +11319,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 4.9,
     "ai_risk_label": "medium",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Provide personal items to patrons or customers in locker rooms, dressing rooms, or coatrooms."
   },
   {
@@ -11490,8 +11490,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Clean and shape customers' fingernails and toenails. May polish or decorate nails."
   },
   {
@@ -11528,8 +11528,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 3.6,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Provide skincare treatments to face and body to enhance an individual's appearance. Includes electrologists and laser hair removal specialists."
   },
   {
@@ -11566,8 +11566,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 2.9,
     "ai_risk_label": "low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Assist patrons at hotel, apartment, or office building with personal services. May take messages; arrange or give advice on transportation, business services, or entertainment; or monitor guest reques"
   },
   {
@@ -11737,8 +11737,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 3.5,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Directly supervise and coordinate activities of retail sales workers in an establishment or department. Duties may include management functions, such as purchasing, budgeting, accounting, and personne"
   },
   {
@@ -11813,8 +11813,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Receive orders, generally in person, for repairs, rentals, and services. May describe available options, compute cost, and accept payment."
   },
   {
@@ -12079,8 +12079,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Rent, buy, or sell property for clients. Perform duties such as study property listings, interview prospective clients, accompany clients to property site, discuss conditions of sale, and draw up real"
   },
   {
@@ -12136,8 +12136,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Sell goods or services door-to-door or on the street."
   },
   {
@@ -12364,8 +12364,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.8,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Receive and pay out money. Keep records of money and negotiable instruments involved in a financial institution's various transactions."
   },
   {
@@ -12516,8 +12516,8 @@
     "typical_education": "Associate's degree",
     "ai_risk": 9.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "File correspondence, cards, invoices, receipts, and other records in alphabetical or numerical order or according to the filing system used. Locate and remove material from file when requested."
   },
   {
@@ -12535,8 +12535,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Accommodate hotel, motel, and resort patrons by registering and assigning rooms to guests, issuing room keys or cards, transmitting and receiving messages, keeping records of occupied rooms and guests"
   },
   {
@@ -12573,8 +12573,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Compile records, and sort, shelve, issue, and receive library materials such as books, electronic media, pictures, cards, slides and microfilm. Locate library materials for loan and replace material i"
   },
   {
@@ -12763,8 +12763,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Pick up and deliver messages, documents, packages, and other items between offices or departments within an establishment or directly to other business concerns, traveling by foot, bicycle, motorcycle"
   },
   {
@@ -12858,8 +12858,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.1,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Sort and deliver mail for the United States Postal Service (USPS). Deliver mail on established route by vehicle or on foot. Includes postal service mail carriers employed by USPS contractors."
   },
   {
@@ -12896,8 +12896,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Coordinate and expedite the flow of work and materials within or between departments of an establishment according to production schedule. Duties include reviewing and distributing production, work, a"
   },
   {
@@ -12915,8 +12915,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.8,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Verify and maintain records on incoming and outgoing shipments involving inventory. Duties include verifying and recording incoming merchandise or material and arranging for the transportation of prod"
   },
   {
@@ -13029,8 +13029,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Operate data entry device, such as keyboard or photo composing perforator. Duties may include verifying data and preparing materials for printing."
   },
   {
@@ -13048,8 +13048,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.3,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Use word processor, computer, or typewriter to type letters, reports, forms, or other material from rough draft, corrected copy, or voice recording. May perform other clerical duties as assigned."
   },
   {
@@ -13067,8 +13067,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 2.4,
     "ai_risk_label": "low",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "High Disruption Risk",
+    "ai_resilience_tier": 4,
     "description": "Format typescript and graphic elements using computer software to produce publication-ready material."
   },
   {
@@ -13371,8 +13371,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 8.1,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Hunt, trap, catch, or gather wild animals or aquatic animals and plants. May use nets, traps, or other equipment. May haul catch onto ship or other vessel."
   },
   {
@@ -13447,8 +13447,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Grade logs or estimate the marketable content or value of logs or pulpwood in sorting yards, millpond, log deck, or similar locations. Inspect logs for defects or measure logs to determine volume."
   },
   {
@@ -14511,8 +14511,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate or tend machinery at surface mining site, equipped with scoops, shovels, or buckets to excavate and load loose materials."
   },
   {
@@ -14530,8 +14530,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate a variety of drills such as rotary, churn, and pneumatic to tap subsurface water and salt deposits, to remove core samples during mineral exploration or soil testing, and to facilitate the use"
   },
   {
@@ -14549,8 +14549,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Place and detonate explosives to demolish structures or to loosen, remove, or displace earth, rock, or other materials. May perform specialized handling, storage, and accounting procedures."
   },
   {
@@ -14587,8 +14587,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate machinery to install roof support bolts in underground mine."
   },
   {
@@ -14606,8 +14606,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate underground loading or moving machine to load or move coal, ore, or rock using shuttle or mine car or conveyors. Equipment may include power shovels, hoisting engines equipped with cable-drawn"
   },
   {
@@ -14758,8 +14758,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.4,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Repair, install, or maintain mobile or stationary radio transmitting, broadcasting, and receiving equipment, and two-way radio communications systems used in cellular telecommunications, mobile broadb"
   },
   {
@@ -14834,8 +14834,8 @@
     "typical_education": "Post-secondary certificate",
     "ai_risk": 9.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Install, adjust, or maintain mobile electronics communication equipment, including sound, sonar, security, navigation, and surveillance systems on trains, watercraft, or other mobile equipment."
   },
   {
@@ -15746,8 +15746,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.6,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Wind wire coils used in electrical components, such as resistors and transformers, and in electrical equipment and instruments, such as field cores, bobbins, armature cores, electrical motors, generat"
   },
   {
@@ -15841,8 +15841,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Laminate layers of fiberglass on molds to form boat decks and hulls, bodies for golf carts, automobiles, or other products."
   },
   {
@@ -15860,8 +15860,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Perform precision assembling or adjusting, within narrow tolerances, of timing devices such as digital clocks or timing devices with electrical or electronic components."
   },
   {
@@ -16012,8 +16012,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.3,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Set up and operate equipment that mixes or blends ingredients used in the manufacturing of food products. Includes candy makers and cheese makers."
   },
   {
@@ -16544,8 +16544,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Set up and operate digital, letterpress, lithographic, flexographic, gravure, or other printing machines. Includes short-run offset printing presses."
   },
   {
@@ -16677,8 +16677,8 @@
     "typical_education": "Less than high school",
     "ai_risk": 9.9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Sew, join, reinforce, or finish, usually with needle and thread, a variety of manufactured items. Includes weavers and stitchers."
   },
   {
@@ -16696,8 +16696,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.6,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Design, make, alter, repair, or fit garments."
   },
   {
@@ -16924,8 +16924,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Plan, lay out, and construct wooden unit or sectional patterns used in forming sand molds for castings."
   },
   {
@@ -17000,8 +17000,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate or control nuclear reactors. Move control rods, start and stop equipment, monitor and adjust controls, and record data in logs. Implement emergency procedures when needed. May respond to abnor"
   },
   {
@@ -17114,8 +17114,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 6.5,
     "ai_risk_label": "high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate or control an entire process or system of machines, often through the use of control boards, to transfer or treat water or wastewater."
   },
   {
@@ -17133,8 +17133,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.6,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Control or operate entire chemical processes or system of machines."
   },
   {
@@ -17152,8 +17152,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8,
     "ai_risk_label": "high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Distribute or process gas for utility companies and others by controlling compressors to maintain specified pressures on main pipelines."
   },
   {
@@ -17171,8 +17171,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.4,
     "ai_risk_label": "high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate or control petroleum refining or processing units. May specialize in controlling manifold and pumping systems, gauging or testing oil in storage tanks, or regulating the flow of oil into pipel"
   },
   {
@@ -17418,8 +17418,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Design, fabricate, adjust, repair, or appraise jewelry, gold, silver, other precious metals, or gems."
   },
   {
@@ -17456,8 +17456,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.7,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Construct and repair full or partial dentures or dental appliances."
   },
   {
@@ -17551,8 +17551,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Set up, operate, or tend spraying or rolling machines to coat or paint any of a wide variety of products, including glassware, cloth, ceramics, metal, plastic, paper, or wood, with lacquer, silver, co"
   },
   {
@@ -17608,8 +17608,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate computer-controlled tools, machines, or robots to machine or process parts, tools, or other work pieces made of metal, plastic, wood, stone, or other materials. May also set up and maintain eq"
   },
   {
@@ -17627,8 +17627,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Develop programs to control machining or processing of materials by automatic machine tools, equipment, or systems. May also set up, operate, or maintain equipment."
   },
   {
@@ -17703,8 +17703,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.8,
     "ai_risk_label": "very_high",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Engrave or etch metal, wood, rubber, or other materials. Includes such workers as etcher-circuit processors, pantograph engravers, and silk screen etchers."
   },
   {
@@ -17874,8 +17874,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Supervise and coordinate the activities of ground crew in the loading, unloading, securing, and staging of aircraft cargo or baggage. May determine the quantity and orientation of cargo and compute ai"
   },
   {
@@ -18026,8 +18026,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 2,
     "ai_risk_label": "very_low",
-    "ai_resilience": "In Transition",
-    "ai_resilience_tier": 3,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Control air traffic on and within vicinity of airport, and movement of air traffic between altitude sectors and control centers, according to established procedures and policies. Authorize, regulate, "
   },
   {
@@ -18102,8 +18102,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.8,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive truck or other vehicle over established routes or within an established territory and sell or deliver goods, such as food products, including restaurant take-out items, or pick up or deliver ite"
   },
   {
@@ -18140,8 +18140,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 7.2,
     "ai_risk_label": "high",
-    "ai_resilience": "AI-Resilient",
-    "ai_resilience_tier": 1,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive a light vehicle, such as a truck or van, with a capacity of less than 26,001 pounds Gross Vehicle Weight (GVW), primarily to pick up merchandise or packages from a distribution center and delive"
   },
   {
@@ -18159,8 +18159,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive a school bus to transport students. Ensure adherence to safety rules. May assist students in boarding or exiting."
   },
   {
@@ -18178,8 +18178,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive bus or motor coach, including regular route operations, charters, and private carriage. May assist passengers with baggage. May collect fares or tickets."
   },
   {
@@ -18197,8 +18197,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive a motor vehicle to transport passengers on a planned or scheduled basis. May collect a fare. Includes nonemergency medical transporters and hearse drivers."
   },
   {
@@ -18216,8 +18216,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Drive a motor vehicle to transport passengers on an unplanned basis and charge a fare, usually based on a meter."
   },
   {
@@ -18292,8 +18292,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Operate or monitor railroad track switches or locomotive instruments. May couple or uncouple rolling stock to make up or break up trains. Watch for and relay traffic signals. May inspect couplings, ai"
   },
   {
@@ -18501,8 +18501,8 @@
     "typical_education": "Bachelor's degree",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Augmented",
+    "ai_resilience_tier": 2,
     "description": "Service aircraft with fuel. May de-ice aircraft, refill water and cooling agents, empty sewage tanks, service air and oxygen systems, or clean and polish exterior."
   },
   {
@@ -18824,8 +18824,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 8.5,
     "ai_risk_label": "very_high",
-    "ai_resilience": "High Disruption Risk",
-    "ai_resilience_tier": 4,
+    "ai_resilience": "AI-Resilient",
+    "ai_resilience_tier": 1,
     "description": "Receive, store, and issue merchandise, materials, equipment, and other items from stockroom, warehouse, or storage yard to fill shelves, racks, tables, or customers' orders. May operate power equipmen"
   },
   {
@@ -18843,8 +18843,8 @@
     "typical_education": "High school diploma or equivalent",
     "ai_risk": 9.2,
     "ai_risk_label": "very_high",
-    "ai_resilience": "AI-Augmented",
-    "ai_resilience_tier": 2,
+    "ai_resilience": "In Transition",
+    "ai_resilience_tier": 3,
     "description": "Operate steam-, gas-, electric motor-, or internal combustion-engine driven compressors. Transmit, compress, or recover gases, such as butane, nitrogen, hydrogen, and natural gas."
   },
   {

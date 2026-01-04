@@ -28,7 +28,8 @@ const SOURCES_DIR = path.join(DATA_DIR, 'sources');
 const OXFORD_MAPPING_FILE = path.join(PROCESSED_DIR, 'oxford_ai_risk_mapping.json');
 
 // AI Resilience data source files
-const AI_EXPOSURE_FILE = path.join(SOURCES_DIR, 'ai-exposure.json');
+const GPTS_ARE_GPTS_FILE = path.join(SOURCES_DIR, 'gpts-are-gpts.json'); // Primary LLM exposure
+const AI_EXPOSURE_FILE = path.join(SOURCES_DIR, 'ai-exposure.json'); // Fallback (AIOE)
 const BLS_PROJECTIONS_FILE = path.join(SOURCES_DIR, 'bls-projections.json');
 const EPOCH_SCORES_FILE = path.join(SOURCES_DIR, 'epoch-scores.json');
 
@@ -57,6 +58,18 @@ interface InsideCareer {
 }
 
 // Types for AI Resilience data sources
+
+// GPTs are GPTs (Primary - LLM-specific exposure)
+interface GptsAreGptsEntry {
+  onet_code: string;
+  title: string;
+  llm_exposure_score: number;
+  task_exposure: TaskExposure;
+  percentile: number;
+  source: 'GPTs are GPTs';
+}
+
+// AIOE Dataset (Fallback - General AI exposure)
 interface AIExposureEntry {
   onet_code: string;
   title: string;
@@ -170,11 +183,23 @@ async function main() {
   // Load AI Resilience Data Sources
   // ============================================================================
 
-  // Load AI Exposure data (AIOE dataset)
+  // Load GPTs are GPTs data (PRIMARY - LLM-specific exposure)
+  const gptsAreGptsMap = new Map<string, GptsAreGptsEntry>();
+  if (fs.existsSync(GPTS_ARE_GPTS_FILE)) {
+    const gptsData = JSON.parse(fs.readFileSync(GPTS_ARE_GPTS_FILE, 'utf-8'));
+    for (const [onetCode, entry] of Object.entries(gptsData)) {
+      const typedEntry = entry as GptsAreGptsEntry;
+      gptsAreGptsMap.set(onetCode, typedEntry);
+    }
+    console.log(`Loaded ${gptsAreGptsMap.size} GPTs are GPTs entries (PRIMARY)`);
+  } else {
+    console.log('⚠️  No GPTs are GPTs file found - run: npx tsx scripts/fetch-gpts-are-gpts.ts');
+  }
+
+  // Load AIOE data (FALLBACK - General AI exposure)
   const aiExposureMap = new Map<string, AIExposureEntry>();
   if (fs.existsSync(AI_EXPOSURE_FILE)) {
     const aiExposureData = JSON.parse(fs.readFileSync(AI_EXPOSURE_FILE, 'utf-8'));
-    // File is a dictionary with onet_code as keys
     for (const [onetCode, entry] of Object.entries(aiExposureData)) {
       const typedEntry = entry as { onet_code: string; title: string; aioe_score: number; task_exposure: string; percentile: number };
       aiExposureMap.set(onetCode, {
@@ -185,9 +210,9 @@ async function main() {
         percentile: typedEntry.percentile,
       });
     }
-    console.log(`Loaded ${aiExposureMap.size} AI exposure entries (AIOE dataset)`);
+    console.log(`Loaded ${aiExposureMap.size} AIOE entries (FALLBACK)`);
   } else {
-    console.log('⚠️  No AI exposure file found - run: npx tsx scripts/fetch-ai-exposure.ts');
+    console.log('⚠️  No AIOE file found - run: npx tsx scripts/fetch-ai-exposure.ts');
   }
 
   // Load BLS Employment Projections
@@ -299,13 +324,23 @@ async function main() {
   };
 
   for (const occ of occupations) {
-    const aiExposure = aiExposureMap.get(occ.onet_code);
+    // Priority lookup for exposure: GPTs are GPTs (primary) → AIOE (fallback)
+    const gptsExposure = gptsAreGptsMap.get(occ.onet_code);
+    const aioeExposure = aiExposureMap.get(occ.onet_code);
     const blsProjection = blsProjectionsMap.get(occ.onet_code);
     const epochScore = epochScoresMap.get(occ.onet_code);
 
-    // All three data sources are required for classification
-    if (aiExposure && blsProjection && epochScore) {
-      const taskExposure = aiExposure.exposure_level;
+    // Get exposure from primary or fallback source
+    const hasExposure = gptsExposure || aioeExposure;
+    const taskExposure: TaskExposure | null = gptsExposure?.task_exposure
+      ?? aioeExposure?.exposure_level
+      ?? null;
+    const exposureSource = gptsExposure ? 'GPTs are GPTs (2023)'
+      : aioeExposure ? 'AIOE fallback (2021)'
+      : null;
+
+    // All three data sources (exposure + BLS + EPOCH) are required for classification
+    if (taskExposure && blsProjection && epochScore) {
       const automationPotential: AutomationPotential = taskExposure; // Use same level for now
       const jobGrowthCategory = getJobGrowthCategory(blsProjection.percent_change);
       const humanAdvantage = getHumanAdvantageFromEPOCH(epochScore.epochScores);
@@ -333,7 +368,7 @@ async function main() {
         classification,
         classificationRationale: rationale,
         lastUpdated: new Date().toISOString().split('T')[0],
-        methodology: 'v1.0 - AIOE/BLS/EPOCH',
+        methodology: `v2.0 - ${exposureSource}/BLS/EPOCH`,
       } as CareerAIAssessment;
 
       // Add convenience fields for indexing
@@ -474,9 +509,10 @@ async function main() {
         { name: 'Levels.fyi (mapped)', url: 'https://www.levels.fyi' },
         { name: 'Frey & Osborne (2013) - AI Risk', url: 'https://www.oxfordmartin.ox.ac.uk/publications/the-future-of-employment' },
         { name: 'CareerOneStop Videos', url: 'https://www.careeronestop.org/Videos/' },
-        { name: 'AIOE Dataset (Felten, Raj, Seamans 2021) - AI Exposure', url: 'https://github.com/AIOE-Data/AIOE' },
+        { name: 'GPTs are GPTs (Eloundou et al. 2023) - LLM Exposure (Primary)', url: 'https://github.com/openai/GPTs-are-GPTs' },
+        { name: 'AIOE Dataset (Felten et al. 2021) - AI Exposure (Fallback)', url: 'https://github.com/AIOE-Data/AIOE' },
         { name: 'BLS Employment Projections 2024-2034', url: 'https://www.bls.gov/emp/' },
-        { name: 'EPOCH Framework - Human Advantage', url: 'Manual curation' },
+        { name: 'EPOCH Framework (Loaiza & Rigobon) - Human Advantage', url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5028371' },
       ],
       completeness: {
         wages: occupations.filter((o: { wages: unknown }) => o.wages).length,

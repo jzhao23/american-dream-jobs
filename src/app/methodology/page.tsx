@@ -143,9 +143,10 @@ export default function MethodologyPage() {
                   <div>
                     <h4 className="font-semibold text-secondary-900 mb-1">How we calculate it</h4>
                     <p className="text-secondary-700 mb-2">
-                      We use the AIOE (AI Occupational Exposure) dataset from Felten, Raj, and Seamans (2021),
-                      which measures exposure by analyzing how AI capabilities map to occupational abilities
-                      defined in O*NET.
+                      We use the <strong>GPTs are GPTs</strong> dataset (Eloundou et al. 2023), which measures
+                      LLM-specific exposure by assessing what percentage of tasks can be completed 50% faster
+                      using large language models with access to external tools. For occupations not covered,
+                      we fall back to the AIOE dataset (Felten et al. 2021).
                     </p>
                     <ul className="list-disc list-inside text-secondary-700 space-y-1 ml-2">
                       <li><strong>Low:</strong> Bottom 33% of exposure scores</li>
@@ -499,11 +500,20 @@ export default function MethodologyPage() {
                     </tr>
                     <tr className="border-b border-secondary-100">
                       <td className="py-3 pr-4">
+                        <a href="https://github.com/openai/GPTs-are-GPTs" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                          GPTs are GPTs (Eloundou et al.)
+                        </a>
+                      </td>
+                      <td className="py-3 pr-4">LLM task exposure scores (PRIMARY)</td>
+                      <td className="py-3">2023</td>
+                    </tr>
+                    <tr className="border-b border-secondary-100">
+                      <td className="py-3 pr-4">
                         <a href="https://github.com/AIOE-Data/AIOE" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
                           AIOE Dataset (Felten et al.)
                         </a>
                       </td>
-                      <td className="py-3 pr-4">AI occupational exposure scores</td>
+                      <td className="py-3 pr-4">AI exposure scores (FALLBACK)</td>
                       <td className="py-3">2021</td>
                     </tr>
                     <tr>
@@ -546,7 +556,7 @@ export default function MethodologyPage() {
             {/* Footer */}
             <footer className="text-sm text-secondary-500 border-t border-secondary-200 pt-6">
               <p>Last updated: January 2026</p>
-              <p>Methodology version: 1.0</p>
+              <p>Methodology version: 2.0</p>
             </footer>
           </main>
         </div>
