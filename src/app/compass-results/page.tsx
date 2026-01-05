@@ -9,132 +9,77 @@ import {
   type AIResilienceClassification,
 } from "@/types/career";
 
-// Hardcoded placeholder results
-const PLACEHOLDER_RESULTS: Array<{
+// Types from the API
+interface CareerMatch {
   slug: string;
   title: string;
   category: string;
   matchScore: number;
   medianPay: number;
-  aiResilience: AIResilienceClassification;
+  aiResilience: string;
   reasoning: string;
-  skillsGap: string[];
+  skillsGap: [string, string, string];
   transitionTimeline: string;
   education: string;
-}> = [
-  {
-    slug: "registered-nurses",
-    title: "Registered Nurses",
-    category: "healthcare",
-    matchScore: 92,
-    medianPay: 81220,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Your healthcare interest and desire to help people align perfectly with nursing. Strong job security with excellent growth prospects. Your communication skills and attention to detail are crucial in this field.",
-    skillsGap: ["Clinical certifications", "Medical terminology", "Patient care protocols"],
-    transitionTimeline: "2-4 years",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "software-developers",
-    title: "Software Developers",
-    category: "technology",
-    matchScore: 88,
-    medianPay: 127260,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your analytical mindset and problem-solving abilities are ideal for software development. High earning potential with remote work flexibility matches your work environment preferences.",
-    skillsGap: ["Programming languages", "Software architecture", "Version control"],
-    transitionTimeline: "6-12 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "electricians",
-    title: "Electricians",
-    category: "trades",
-    matchScore: 85,
-    medianPay: 60240,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Hands-on work with strong earning potential. Apprenticeship model allows you to earn while learning. Your technical aptitude and attention to detail are perfect for this trade.",
-    skillsGap: ["Electrical code knowledge", "Blueprint reading", "Safety protocols"],
-    transitionTimeline: "4-5 years (apprenticeship)",
-    education: "High school diploma or equivalent",
-  },
-  {
-    slug: "data-scientists",
-    title: "Data Scientists",
-    category: "technology",
-    matchScore: 83,
-    medianPay: 103500,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your analytical skills and interest in technology align well. Growing field with diverse applications across industries. Matches your preference for problem-solving work.",
-    skillsGap: ["Statistics", "Machine learning", "Data visualization"],
-    transitionTimeline: "8-12 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "dental-hygienists",
-    title: "Dental Hygienists",
-    category: "healthcare",
-    matchScore: 81,
-    medianPay: 81400,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Healthcare career with excellent work-life balance. Shorter training period than other health professions. Your interest in helping people and attention to detail are key strengths.",
-    skillsGap: ["Dental procedures", "Radiology", "Patient education"],
-    transitionTimeline: "2-3 years",
-    education: "Associate degree",
-  },
-  {
-    slug: "project-management-specialists",
-    title: "Project Management Specialists",
-    category: "business-finance",
-    matchScore: 79,
-    medianPay: 98420,
-    aiResilience: "AI-Augmented",
-    reasoning:
-      "Your organizational skills and leadership goals make this a natural fit. Transferable across industries, allowing career flexibility. Matches your collaborative work environment preference.",
-    skillsGap: ["Project management certification", "Stakeholder management", "Agile methodology"],
-    transitionTimeline: "3-6 months",
-    education: "Bachelor's degree",
-  },
-  {
-    slug: "heating-air-conditioning-and-refrigeration-mechanics-and-ins",
-    title: "HVAC Technicians",
-    category: "trades",
-    matchScore: 76,
-    medianPay: 57300,
-    aiResilience: "AI-Resilient",
-    reasoning:
-      "Stable career with consistent demand. Technical skills with hands-on application. Good earning potential with opportunities for business ownership.",
-    skillsGap: ["HVAC certification", "Refrigeration systems", "EPA certification"],
-    transitionTimeline: "6-24 months",
-    education: "Postsecondary non-degree award",
-  },
-];
+}
+
+interface ResultsMetadata {
+  stage1Candidates: number;
+  stage2Candidates: number;
+  finalMatches: number;
+  processingTimeMs: number;
+  costUsd: number;
+}
+
+interface ParsedProfile {
+  skills: string[];
+  jobTitles: string[];
+  education: {
+    level: string;
+    fields: string[];
+  };
+  industries: string[];
+  experienceYears: number;
+  confidence: number;
+}
 
 export default function CompassResultsPage() {
   const router = useRouter();
+  const [recommendations, setRecommendations] = useState<CareerMatch[]>([]);
+  const [metadata, setMetadata] = useState<ResultsMetadata | null>(null);
+  const [profile, setProfile] = useState<ParsedProfile | null>(null);
   const [submissionData, setSubmissionData] = useState<{
-    resumeFileName: string;
+    resumeLength: number;
     answers: Record<string, string>;
     timestamp: string;
   } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Retrieve submission data from sessionStorage
-    const data = sessionStorage.getItem("compass-submission");
-    if (data) {
-      setSubmissionData(JSON.parse(data));
+    // Retrieve all data from sessionStorage
+    const resultsData = sessionStorage.getItem("compass-results");
+    const metadataData = sessionStorage.getItem("compass-metadata");
+    const profileData = sessionStorage.getItem("compass-profile");
+    const submissionDataStr = sessionStorage.getItem("compass-submission");
+
+    if (resultsData && submissionDataStr) {
+      setRecommendations(JSON.parse(resultsData));
+      setSubmissionData(JSON.parse(submissionDataStr));
+
+      if (metadataData) {
+        setMetadata(JSON.parse(metadataData));
+      }
+      if (profileData) {
+        setProfile(JSON.parse(profileData));
+      }
+      setIsLoading(false);
     } else {
       // If no data, redirect back to compass
       router.push("/compass");
     }
   }, [router]);
 
-  if (!submissionData) {
+  if (isLoading || !submissionData || recommendations.length === 0) {
     return (
       <div className="min-h-screen bg-secondary-50 flex items-center justify-center">
         <div className="text-center">
@@ -144,6 +89,19 @@ export default function CompassResultsPage() {
       </div>
     );
   }
+
+  const formatEducationLevel = (level: string): string => {
+    const labels: Record<string, string> = {
+      high_school: "High School",
+      some_college: "Some College",
+      associates: "Associate's Degree",
+      bachelors: "Bachelor's Degree",
+      masters: "Master's Degree",
+      doctorate: "Doctorate",
+      professional_degree: "Professional Degree",
+    };
+    return labels[level] || level;
+  };
 
   return (
     <div className="min-h-screen bg-secondary-50">
@@ -176,29 +134,90 @@ export default function CompassResultsPage() {
           <h2 className="text-lg font-semibold text-secondary-900 mb-4">
             Analysis Summary
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <span className="font-medium text-secondary-700">Resume:</span>
-              <span className="ml-2 text-secondary-600">
-                {submissionData.resumeFileName}
-              </span>
+
+          {/* Profile Summary */}
+          {profile && (
+            <div className="mb-6 p-4 bg-secondary-50 rounded-lg">
+              <h3 className="text-sm font-semibold text-secondary-700 mb-3">
+                Your Profile
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <p className="text-xs text-secondary-500 mb-1">Experience</p>
+                  <p className="font-medium text-secondary-900">
+                    {profile.experienceYears} years
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-secondary-500 mb-1">Education</p>
+                  <p className="font-medium text-secondary-900">
+                    {formatEducationLevel(profile.education.level)}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-secondary-500 mb-1">Skills Identified</p>
+                  <p className="font-medium text-secondary-900">
+                    {profile.skills.length} skills
+                  </p>
+                </div>
+              </div>
+              {profile.skills.length > 0 && (
+                <div className="mt-3">
+                  <p className="text-xs text-secondary-500 mb-2">Top Skills</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {profile.skills.slice(0, 8).map((skill, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 text-xs bg-primary-100 text-primary-700 rounded"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                    {profile.skills.length > 8 && (
+                      <span className="px-2 py-0.5 text-xs text-secondary-500">
+                        +{profile.skills.length - 8} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
+          )}
+
+          {/* Metadata */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div>
               <span className="font-medium text-secondary-700">Analyzed:</span>
               <span className="ml-2 text-secondary-600">
                 {new Date(submissionData.timestamp).toLocaleDateString()}
               </span>
             </div>
+            {metadata && (
+              <>
+                <div>
+                  <span className="font-medium text-secondary-700">Careers Evaluated:</span>
+                  <span className="ml-2 text-secondary-600">
+                    {metadata.stage1Candidates} candidates
+                  </span>
+                </div>
+                <div>
+                  <span className="font-medium text-secondary-700">Processing Time:</span>
+                  <span className="ml-2 text-secondary-600">
+                    {(metadata.processingTimeMs / 1000).toFixed(1)}s
+                  </span>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
         {/* Career Matches */}
         <div className="space-y-6">
           <h2 className="text-xl font-bold text-secondary-900">
-            Top {PLACEHOLDER_RESULTS.length} Career Matches
+            Top {recommendations.length} Career Matches
           </h2>
 
-          {PLACEHOLDER_RESULTS.map((career, index) => (
+          {recommendations.map((career, index) => (
             <div key={career.slug} className="card p-6 hover:shadow-md transition-shadow">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -247,8 +266,8 @@ export default function CompassResultsPage() {
                 </div>
                 <div>
                   <p className="text-xs text-secondary-600 mb-1">AI Resilience</p>
-                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience)}`}>
-                    <span>{getAIResilienceEmoji(career.aiResilience)}</span>
+                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience as AIResilienceClassification)}`}>
+                    <span>{getAIResilienceEmoji(career.aiResilience as AIResilienceClassification)}</span>
                     <span>{career.aiResilience}</span>
                   </span>
                 </div>
