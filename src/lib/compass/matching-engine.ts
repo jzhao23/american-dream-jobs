@@ -295,10 +295,10 @@ function stage2StructuredMatching(
     };
   });
 
-  // Sort by structured score and return top 15
+  // Sort by structured score and return top 30
   scored.sort((a, b) => (b.structuredScore || 0) - (a.structuredScore || 0));
-  console.log(`    Re-ranked to ${Math.min(scored.length, 15)} candidates`);
-  return scored.slice(0, 15);
+  console.log(`    Re-ranked to ${Math.min(scored.length, 30)} candidates`);
+  return scored.slice(0, 30);
 }
 
 /**
@@ -360,8 +360,9 @@ async function stage3LLMReasoning(
   const prompt = buildReasoningPrompt(candidates, profile);
 
   const response = await client.messages.create({
-    model: 'claude-3-haiku-20240307',
-    max_tokens: 3000,
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 4096,
+    temperature: 0,
     messages: [
       { role: 'user', content: prompt }
     ],
@@ -385,7 +386,7 @@ async function stage3LLMReasoning(
     // Validate and enrich matches
     return matches
       .filter(m => m.matchScore >= 60)
-      .slice(0, 7)
+      .slice(0, 15)
       .map(m => ({
         ...m,
         // Ensure skillsGap is exactly 3 items
@@ -397,16 +398,24 @@ async function stage3LLMReasoning(
   }
 }
 
-const REASONING_SYSTEM_PROMPT = `You are an expert career counselor analyzing career matches for a user.
+const REASONING_SYSTEM_PROMPT = `You are a warm, supportive career counselor speaking directly to someone exploring their career options.
+
+Write as if you're having an encouraging one-on-one conversation. Always use "you" and "your" - never "the user" or "the candidate".
+
+Your tone should be:
+- Supportive and optimistic (but realistic)
+- Personal and conversational
+- Encouraging about their potential
+- Specific about how THEIR background connects to this career
 
 For each career, evaluate the fit based on:
-1. Skills transferability (40%): Do the user's skills translate to this career?
-2. Goal alignment (25%): Does this career fulfill their stated goals?
-3. Environment fit (15%): Does the work style match their preferences?
-4. Financial viability (10%): Does it meet salary expectations?
-5. Transition feasibility (10%): Is the education/time realistic?
+1. Skills transferability (40%): Do your skills translate to this career?
+2. Goal alignment (25%): Does this career fulfill your stated goals?
+3. Environment fit (15%): Does the work style match your preferences?
+4. Financial viability (10%): Does it meet your salary expectations?
+5. Transition feasibility (10%): Is the education/time realistic for you?
 
-Return a JSON array of the top 7 career matches with this structure:
+Return a JSON array of the top 15 career matches with this structure:
 [
   {
     "slug": "career-slug",
@@ -415,23 +424,29 @@ Return a JSON array of the top 7 career matches with this structure:
     "matchScore": 85,
     "medianPay": 75000,
     "aiResilience": "AI-Resilient",
-    "reasoning": "2-3 sentences explaining the match, citing specific user goals and career aspects.",
+    "reasoning": "2-3 warm, encouraging sentences speaking directly to the person. Reference their specific goals, skills, and background. Make them feel understood and optimistic about this path.",
     "skillsGap": ["Specific Skill 1", "Specific Skill 2", "Specific Skill 3"],
     "transitionTimeline": "6-12 months",
     "education": "Bachelor's degree"
   }
 ]
 
+Example good reasoning:
+"Your experience leading development teams and building scalable systems positions you beautifully for this role. I can see how your goal of moving into technical leadership aligns perfectly here – you'd be designing the architecture that entire engineering teams build upon."
+
 Rules:
-- matchScore must be 60-100 (filter out poor matches)
-- reasoning must be personalized, citing user's specific goals/skills
+- You MUST return EXACTLY 15 career matches - no more, no less
+- matchScore should range from 60-100, distributed appropriately based on fit
+- reasoning must speak directly to "you/your" - NEVER say "the user" or "the candidate"
+- reasoning should feel like a supportive career counselor, not a robot
 - skillsGap must be exactly 3 specific, learnable skills
 - transitionTimeline: "6-12 months", "1-2 years", "2-4 years", "4-6 years", or "6+ years"
-- Avoid generic phrases like "great fit" or "perfect match"
+- Avoid generic phrases like "great fit", "perfect match", or "ideal candidate"
+- Avoid robotic language - be warm and human
 - Boost AI-Resilient careers by 5-10 points
 - Penalize "High Disruption Risk" careers by 5-10 points
 
-Return ONLY the JSON array.`;
+Return ONLY the JSON array with exactly 15 matches.`;
 
 function buildReasoningPrompt(
   candidates: CareerCandidate[],
@@ -473,7 +488,7 @@ function buildReasoningPrompt(
     parts.push(`- Required Skills: ${career.technology_skills.slice(0, 5).join(', ')}\n`);
   });
 
-  parts.push('\nAnalyze these careers and return the top 7 matches as a JSON array.');
+  parts.push('\nAnalyze these careers and return the top 15 matches as a JSON array.');
 
   return parts.join('\n');
 }

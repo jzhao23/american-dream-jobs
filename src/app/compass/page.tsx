@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Toast } from "@/components/Toast";
 
@@ -18,8 +18,12 @@ interface ParsedProfile {
 
 type ProcessingStage = 'idle' | 'analyzing' | 'matching' | 'complete';
 
+const ACCEPTED_FILE_TYPES = '.pdf,.docx,.doc,.md,.txt';
+const MAX_FILE_SIZE_MB = 5;
+
 export default function CompassPage() {
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [resumeText, setResumeText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [processingStage, setProcessingStage] = useState<ProcessingStage>('idle');
@@ -35,11 +39,99 @@ export default function CompassPage() {
     question5: "",
   });
 
+  // File upload state
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [isParsingFile, setIsParsingFile] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false);
+
   const handleAnswerChange = (questionKey: string, value: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionKey]: value,
     }));
+  };
+
+  const parseFile = async (file: File) => {
+    // Validate file size
+    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      setToast({
+        message: `File too large. Maximum size is ${MAX_FILE_SIZE_MB}MB`,
+        type: 'error'
+      });
+      return;
+    }
+
+    setIsParsingFile(true);
+    setUploadedFile(file);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/compass/parse-file/', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error?.message || 'Failed to parse file');
+      }
+
+      setResumeText(data.text);
+      setToast({
+        message: `Resume extracted from ${file.name}`,
+        type: 'success'
+      });
+    } catch (error) {
+      console.error('File parse error:', error);
+      setToast({
+        message: error instanceof Error ? error.message : 'Failed to parse file',
+        type: 'error'
+      });
+      setUploadedFile(null);
+    } finally {
+      setIsParsingFile(false);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      parseFile(file);
+    }
+  };
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+  }, []);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      parseFile(file);
+    }
+  }, []);
+
+  const clearUploadedFile = () => {
+    setUploadedFile(null);
+    setResumeText("");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   const validateForm = (): string | null => {
@@ -182,21 +274,111 @@ export default function CompassPage() {
             Career Compass
           </h1>
           <p className="text-lg text-secondary-600 max-w-2xl">
-            Paste your resume and answer a few questions to discover personalized career recommendations powered by AI.
+            Upload your resume and answer a few questions to discover personalized career recommendations powered by AI.
           </p>
         </div>
       </section>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <form onSubmit={handleSubmit} className="card p-6 md:p-8">
-          {/* Resume Text Section */}
+          {/* Resume Section */}
           <div className="mb-8">
             <label className="block text-lg font-semibold text-secondary-900 mb-2">
               Your Resume
             </label>
-            <p className="text-sm text-secondary-600 mb-3">
-              Paste your resume text below. Include your work experience, skills, education, and any relevant certifications.
+            <p className="text-sm text-secondary-600 mb-4">
+              Upload a file or paste your resume text below.
             </p>
+
+            {/* File Upload Zone */}
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              className={`relative border-2 border-dashed rounded-lg p-6 mb-4 transition-colors ${
+                isDragOver
+                  ? 'border-primary-500 bg-primary-50'
+                  : uploadedFile
+                  ? 'border-green-400 bg-green-50'
+                  : 'border-secondary-300 bg-secondary-50 hover:border-secondary-400'
+              }`}
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept={ACCEPTED_FILE_TYPES}
+                onChange={handleFileSelect}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                disabled={isParsingFile || isLoading}
+              />
+
+              <div className="text-center">
+                {isParsingFile ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <svg
+                      className="animate-spin h-8 w-8 text-primary-600"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    <span className="text-sm text-secondary-600">Extracting text from {uploadedFile?.name}...</span>
+                  </div>
+                ) : uploadedFile ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <svg className="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-medium text-green-700">{uploadedFile.name}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        clearUploadedFile();
+                      }}
+                      className="text-xs text-secondary-500 hover:text-secondary-700 underline"
+                    >
+                      Remove and upload different file
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-2">
+                    <svg className="h-10 w-10 text-secondary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <div>
+                      <span className="text-sm font-medium text-primary-600">Drop your resume here</span>
+                      <span className="text-sm text-secondary-500"> or click to browse</span>
+                    </div>
+                    <span className="text-xs text-secondary-400">
+                      Supports PDF, Word (.docx), Markdown, and text files (max {MAX_FILE_SIZE_MB}MB)
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="flex items-center gap-4 mb-4">
+              <div className="flex-1 border-t border-secondary-200"></div>
+              <span className="text-sm text-secondary-400">or paste your resume text</span>
+              <div className="flex-1 border-t border-secondary-200"></div>
+            </div>
+
+            {/* Text Area */}
             <textarea
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
@@ -225,7 +407,7 @@ B.S. Computer Science, State University, 2019`}
             />
             <div className="mt-2 flex justify-between text-xs text-secondary-500">
               <span>
-                Tip: Copy and paste directly from your resume document or LinkedIn profile
+                {uploadedFile ? 'Extracted from uploaded file - you can edit the text above' : 'Tip: Copy and paste directly from your resume document or LinkedIn profile'}
               </span>
               <span className={resumeText.length < 100 ? 'text-red-500' : 'text-green-600'}>
                 {resumeText.length} characters
@@ -334,9 +516,9 @@ B.S. Computer Science, State University, 2019`}
           <div className="mt-8 flex justify-end">
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || isParsingFile}
               className={`px-6 py-3 font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                isLoading
+                isLoading || isParsingFile
                   ? "bg-gray-400 text-gray-200 cursor-not-allowed"
                   : "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800"
               }`}

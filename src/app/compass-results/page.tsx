@@ -54,6 +54,7 @@ export default function CompassResultsPage() {
     timestamp: string;
   } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     // Retrieve all data from sessionStorage
@@ -215,9 +216,14 @@ export default function CompassResultsPage() {
         <div className="space-y-6">
           <h2 className="text-xl font-bold text-secondary-900">
             Top {recommendations.length} Career Matches
+            {!showAll && recommendations.length > 10 && (
+              <span className="text-sm font-normal text-secondary-500 ml-2">
+                (showing 1-10)
+              </span>
+            )}
           </h2>
 
-          {recommendations.map((career, index) => (
+          {(showAll ? recommendations : recommendations.slice(0, 10)).map((career, index) => (
             <div key={career.slug} className="card p-6 hover:shadow-md transition-shadow">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -322,6 +328,21 @@ export default function CompassResultsPage() {
               </div>
             </div>
           ))}
+
+          {/* Show More Button */}
+          {!showAll && recommendations.length > 10 && (
+            <div className="text-center pt-4">
+              <button
+                onClick={() => setShowAll(true)}
+                className="btn-secondary inline-flex items-center gap-2"
+              >
+                <span>Show {recommendations.length - 10} More Careers</span>
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Next Steps */}
