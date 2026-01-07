@@ -45,6 +45,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Legacy primary colors (keeping for backward compatibility)
         primary: {
           50: "#eff6ff",
           100: "#dbeafe",
@@ -58,6 +59,7 @@ const config: Config = {
           900: "#1e3a8a",
           950: "#172554",
         },
+        // Legacy secondary colors (keeping for backward compatibility)
         secondary: {
           50: "#f8fafc",
           100: "#f1f5f9",
@@ -71,9 +73,65 @@ const config: Config = {
           900: "#0f172a",
           950: "#020617",
         },
+        // New design system colors
+        sage: {
+          DEFAULT: "#4A6741",
+          light: "#6B8B62",
+          muted: "#E8EDE6",
+          pale: "#F4F7F3",
+          dark: "#3A5334",
+        },
+        cream: {
+          DEFAULT: "#FAF7F2",
+        },
+        "warm-white": {
+          DEFAULT: "#FFFCF7",
+        },
+        terracotta: {
+          DEFAULT: "#C4704D",
+          bg: "#FEF3E8",
+        },
+        "ds-slate": {
+          DEFAULT: "#3D3D3D",
+          light: "#6B6B6B",
+          muted: "#9A9A9A",
+        },
+        gold: {
+          DEFAULT: "#8B7335",
+          bg: "#FEF8E8",
+        },
+        "ds-orange": {
+          DEFAULT: "#B85C2C",
+          bg: "#FEF0E8",
+        },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        body: ["Source Sans 3", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        soft: "0 4px 24px rgba(74, 103, 65, 0.08)",
+        hover: "0 8px 32px rgba(74, 103, 65, 0.14)",
+        card: "0 2px 12px rgba(74, 103, 65, 0.06)",
+      },
+      borderRadius: {
+        "2xl": "20px",
+        xl: "14px",
+      },
+      animation: {
+        fadeUp: "fadeUp 0.7s ease-out backwards",
+        fadeDown: "fadeDown 0.6s ease-out",
+      },
+      keyframes: {
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeDown: {
+          from: { opacity: "0", transform: "translateY(-10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
     },
   },
