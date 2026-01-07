@@ -21,10 +21,10 @@ const OUTPUT_FILE = path.join(OUTPUT_DIR, 'normalized.json');
 // Types
 interface VideoNormalized {
   socCode: string;
-  source: 'careeronestop' | 'practitioner' | string;
-  youtubeId: string;
+  source: 'careeronestop';
+  videoUrl: string;
+  posterUrl: string;
   title: string;
-  thumbnailUrl: string;
   lastVerified: string;
 }
 
@@ -86,10 +86,10 @@ async function main() {
 
     normalized[onetCode] = {
       socCode,
-      source: v.source || 'careeronestop',
-      youtubeId: v.youtubeId,
+      source: 'careeronestop',
+      videoUrl: v.videoUrl,
+      posterUrl: v.posterUrl,
       title: v.title,
-      thumbnailUrl: v.thumbnailUrl,
       lastVerified: v.lastVerified,
     };
   }
@@ -102,8 +102,8 @@ async function main() {
   // Write output
   const output = {
     metadata: {
-      source: 'CareerOneStop',
-      url: 'https://www.careeronestop.org/Videos/',
+      source: 'CareerOneStop CDN',
+      url: 'https://cdn.careeronestop.org/OccVids/OccupationVideos/',
       normalizedAt: new Date().toISOString(),
       totalVideos: Object.keys(normalized).length,
       originalMetadata: rawData.metadata,

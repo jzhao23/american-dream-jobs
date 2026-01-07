@@ -182,9 +182,9 @@ async function main() {
     if (video) {
       career.video = {
         source: video.source,
-        youtubeId: video.youtubeId,
+        videoUrl: video.videoUrl,
+        posterUrl: video.posterUrl,
         title: video.title,
-        thumbnailUrl: video.thumbnailUrl,
         lastVerified: video.lastVerified,
       };
     }

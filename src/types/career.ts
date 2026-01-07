@@ -361,10 +361,10 @@ export const CareerSchema = z.object({
   ai_assessment: CareerAIAssessmentSchema.optional(),
   career_progression: CareerProgressionSchema.nullable(),
   video: z.object({
-    source: z.enum(["careeronestop", "practitioner"]),
-    youtubeId: z.string(),
+    source: z.literal("careeronestop"),
+    videoUrl: z.string().url(),      // Direct MP4 URL from CDN
+    posterUrl: z.string().url(),     // Thumbnail image
     title: z.string(),
-    thumbnailUrl: z.string().url(),
     lastVerified: z.string(),
   }).nullable().optional(),
   inside_look: z.object({
@@ -375,10 +375,10 @@ export const CareerSchema = z.object({
 
 // Career Video schema (standalone for component use)
 export const CareerVideoSchema = z.object({
-  source: z.enum(["careeronestop", "practitioner"]),
-  youtubeId: z.string(),
+  source: z.literal("careeronestop"),
+  videoUrl: z.string().url(),      // Direct MP4 URL from CDN
+  posterUrl: z.string().url(),     // Thumbnail image
   title: z.string(),
-  thumbnailUrl: z.string().url(),
   lastVerified: z.string(),
 });
 

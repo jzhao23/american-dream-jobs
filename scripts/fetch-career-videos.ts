@@ -2,7 +2,10 @@
  * Fetch CareerOneStop Career Videos
  *
  * Uses CareerOneStop API to identify occupations with videos,
- * then searches YouTube to get the actual video IDs.
+ * then fetches the video page to extract the actual CDN URL.
+ *
+ * The CDN video URLs don't always match our O*NET codes, so we need
+ * to fetch the actual video page and parse the <video src="..."> tag.
  *
  * Run: npx tsx scripts/fetch-career-videos.ts
  */
@@ -24,9 +27,9 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 
 interface CareerVideo {
   source: "careeronestop";
-  youtubeId: string;
+  videoUrl: string;
+  posterUrl: string;
   title: string;
-  thumbnailUrl: string;
   lastVerified: string;
 }
 
@@ -48,75 +51,55 @@ interface VideoOutput {
   videos: Record<string, CareerVideo>;
 }
 
-// Check if occupation has a video via CareerOneStop API
-async function checkHasVideo(onetCode: string): Promise<boolean> {
-  const url = `https://api.careeronestop.org/v1/occupation/${COS_USER_ID}/${onetCode}/US`;
+// Get actual video URL by fetching the CareerOneStop video page
+async function getVideoUrl(onetCode: string): Promise<{ videoUrl: string; posterUrl: string } | null> {
+  // First get the video page URL from the API
+  const apiUrl = `https://api.careeronestop.org/v1/occupation/${COS_USER_ID}/${onetCode}/US`;
 
   try {
-    const response = await fetch(url, {
+    const apiResponse = await fetch(apiUrl, {
       headers: {
         "Authorization": `Bearer ${COS_TOKEN}`,
         "Content-Type": "application/json",
       },
     });
 
-    if (!response.ok) {
-      return false;
+    if (!apiResponse.ok) {
+      return null;
     }
 
-    const data = await response.json();
-    const details = data.OccupationDetail?.[0];
+    const data = await apiResponse.json();
+    const cosVideoUrl = data.OccupationDetail?.[0]?.COSVideoURL;
 
-    // Check if COSVideoURL exists and is not empty
-    return !!(details?.COSVideoURL && details.COSVideoURL.length > 0);
-  } catch {
-    return false;
-  }
-}
+    if (!cosVideoUrl) {
+      return null;
+    }
 
-// Search YouTube for CareerOneStop video
-async function searchYouTubeForVideo(title: string): Promise<string | null> {
-  // Clean title for search (remove parenthetical suffixes)
-  const cleanTitle = title.replace(/\s*\([^)]*\)\s*$/, "").trim();
-  const query = `${cleanTitle} CareerOneStop career video`;
-  const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-
-  try {
-    const response = await fetch(searchUrl, {
+    // Fetch the video page to get actual CDN URL
+    const pageResponse = await fetch(cosVideoUrl, {
       headers: {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
       },
     });
 
-    const html = await response.text();
-
-    // Find video IDs with their channel names
-    const pattern = /"videoId":"([a-zA-Z0-9_-]{11})".*?"ownerText":\{"runs":\[\{"text":"([^"]+)"/g;
-    const matches = [...html.matchAll(pattern)];
-
-    // Look for CareerOneStop channel
-    for (const match of matches) {
-      if (match[2] === "CareerOneStop") {
-        return match[1];
-      }
+    if (!pageResponse.ok) {
+      return null;
     }
 
-    // Alternative: look for video with matching title pattern
-    const titlePattern = /"videoId":"([a-zA-Z0-9_-]{11})".*?"title":\{"runs":\[\{"text":"([^"]+)"/g;
-    const titleMatches = [...html.matchAll(titlePattern)];
+    const html = await pageResponse.text();
 
-    for (const match of titleMatches) {
-      const videoTitle = match[2].toLowerCase();
-      const searchTitle = cleanTitle.toLowerCase();
+    // Extract video URL from <video src="...">
+    const videoMatch = html.match(/<video src="([^"]+\.mp4)"/);
+    const posterMatch = html.match(/poster="([^"]+\.jpg)"/);
 
-      // Check if video title contains the occupation name and "career video"
-      if (videoTitle.includes("career video") &&
-          (videoTitle.includes(searchTitle) || searchTitle.includes(videoTitle.replace(" career video", "")))) {
-        return match[1];
-      }
+    if (!videoMatch) {
+      return null;
     }
 
-    return null;
+    return {
+      videoUrl: videoMatch[1],
+      posterUrl: posterMatch?.[1] || videoMatch[1].replace(".mp4", ".jpg"),
+    };
   } catch {
     return null;
   }
@@ -152,7 +135,6 @@ async function main() {
   const videos: Record<string, CareerVideo> = { ...existingVideos };
   let successCount = Object.keys(existingVideos).length;
   let checkedCount = 0;
-  let apiHits = 0;
 
   // Process careers
   for (let i = 0; i < careers.length; i++) {
@@ -166,39 +148,30 @@ async function main() {
 
     checkedCount++;
 
-    // First check if occupation has video via API
-    const hasVideo = await checkHasVideo(career.onet_code);
-    apiHits++;
+    // Get video URL from API + page fetch
+    const videoData = await getVideoUrl(career.onet_code);
 
-    if (!hasVideo) {
-      console.log(`${progress} - ${career.title} (no video in API)`);
-      await sleep(100); // Small delay for API
+    if (!videoData) {
+      console.log(`${progress} - ${career.title} (no video)`);
+      await sleep(150); // Rate limiting
       continue;
     }
 
-    // Search YouTube for the video
-    await sleep(500); // Longer delay before YouTube search
-    const youtubeId = await searchYouTubeForVideo(career.title);
-
-    if (youtubeId) {
-      videos[career.soc_code] = {
-        source: "careeronestop",
-        youtubeId,
-        title: career.title,
-        thumbnailUrl: `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`,
-        lastVerified: new Date().toISOString().split("T")[0],
-      };
-      successCount++;
-      console.log(`${progress} ✓ ${career.title} (${youtubeId})`);
-    } else {
-      console.log(`${progress} ? ${career.title} (has API video but not found on YouTube)`);
-    }
+    videos[career.soc_code] = {
+      source: "careeronestop",
+      videoUrl: videoData.videoUrl,
+      posterUrl: videoData.posterUrl,
+      title: career.title,
+      lastVerified: new Date().toISOString().split("T")[0],
+    };
+    successCount++;
+    console.log(`${progress} ✓ ${career.title}`);
 
     // Save progress every 25 careers
     if (checkedCount % 25 === 0) {
       const output: VideoOutput = {
         metadata: {
-          source: "CareerOneStop",
+          source: "CareerOneStop CDN",
           generated_at: new Date().toISOString(),
           total_videos: successCount,
           total_careers: careers.length,
@@ -210,14 +183,14 @@ async function main() {
       console.log(`\n  [Saved progress: ${successCount} videos]\n`);
     }
 
-    // Rate limiting for YouTube
-    await sleep(300);
+    // Rate limiting - be nice to their servers
+    await sleep(200);
   }
 
   // Final save
   const output: VideoOutput = {
     metadata: {
-      source: "CareerOneStop",
+      source: "CareerOneStop CDN",
       generated_at: new Date().toISOString(),
       total_videos: successCount,
       total_careers: careers.length,
@@ -231,7 +204,6 @@ async function main() {
   console.log("\n=== Complete ===");
   console.log(`Videos found: ${successCount}/${careers.length}`);
   console.log(`Coverage: ${((successCount / careers.length) * 100).toFixed(1)}%`);
-  console.log(`API calls made: ${apiHits}`);
   console.log(`Output: ${outputFile}\n`);
 }
 

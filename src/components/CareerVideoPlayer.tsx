@@ -14,12 +14,13 @@ export function CareerVideoPlayer({ video, careerTitle }: CareerVideoPlayerProps
   if (isPlaying) {
     return (
       <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
-        <iframe
-          src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
-          title={`Career video: ${careerTitle}`}
+        <video
+          src={video.videoUrl}
+          poster={video.posterUrl}
+          controls
+          autoPlay
           className="absolute inset-0 w-full h-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+          title={`Career video: ${careerTitle}`}
         />
       </div>
     );
@@ -33,7 +34,7 @@ export function CareerVideoPlayer({ video, careerTitle }: CareerVideoPlayerProps
     >
       {/* Thumbnail */}
       <img
-        src={video.thumbnailUrl}
+        src={video.posterUrl}
         alt={`Video thumbnail for ${careerTitle}`}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       />
