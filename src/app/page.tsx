@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { CareerExplorer } from "@/components/CareerExplorer";
+import careersIndex from "../../data/output/careers-index.json";
+import type { CareerIndex } from "@/types/career";
+
+const careers = careersIndex as CareerIndex[];
 
 const timeOptions = [
   { id: "asap", icon: "⚡", title: "ASAP", desc: "Under 6 months" },
@@ -327,6 +332,18 @@ export default function HomePage() {
               </p>
             </a>
           ))}
+        </div>
+      </section>
+
+      {/* Full Career Explorer Section */}
+      <section id="careers" className="bg-warm-white py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="section-eyebrow">All Careers</p>
+            <h2 className="section-title">Explore 1,000+ Careers</h2>
+            <p className="section-subtitle">Filter by pay, training time, category, and AI resilience</p>
+          </div>
+          <CareerExplorer careers={careers} hideCategoryFilter />
         </div>
       </section>
     </div>
