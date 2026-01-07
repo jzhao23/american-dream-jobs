@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CareerExplorer } from "@/components/CareerExplorer";
+import { CategoryStrip } from "@/components/CategoryStrip";
 import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
@@ -25,7 +26,7 @@ const curatedPaths = [
     aiLabel: "🟢 AI-Resilient",
     desc: "Hands-on patient care and technical roles in the fastest-growing sector. High demand everywhere.",
     roles: "Medical Assistant · Phlebotomist · Surgical Tech · Dental Hygienist",
-    href: "/categories/healthcare-technical",
+    href: "/paths/healthcare-nonclinical",
   },
   {
     id: "trades",
@@ -37,31 +38,31 @@ const curatedPaths = [
     aiLabel: "🟢 AI-Resilient",
     desc: "Earn while you learn through apprenticeships. Strong unions, excellent benefits, can't be outsourced.",
     roles: "Electrician · HVAC Tech · Plumber · Welder · Wind Turbine Tech",
-    href: "/categories/construction",
+    href: "/paths/skilled-trades",
   },
   {
     id: "tech",
     icon: "💻",
     title: "Tech (No Degree Required)",
-    pay: "$55k–$120k",
-    time: "6–18 mo",
+    pay: "$55k–$130k",
+    time: "6–24 mo",
     aiStatus: "augmented",
     aiLabel: "🟡 AI-Augmented",
-    desc: "Cybersecurity, cloud, and IT support roles hire on skills and certifications, not degrees.",
-    roles: "IT Support · Cybersecurity Analyst · Cloud Admin · Network Tech",
-    href: "/categories/technology",
+    desc: "Systems analysis, networking, and engineering technician roles. Certifications over degrees.",
+    roles: "Systems Analyst · Robotics Tech · Civil Eng Tech · Mechatronics",
+    href: "/paths/tech-no-degree",
   },
   {
     id: "transport",
     icon: "🚛",
     title: "Transportation & Logistics",
-    pay: "$45k–$80k",
+    pay: "$35k–$80k",
     time: "<6 mo",
     aiStatus: "transition",
     aiLabel: "🟠 In Transition",
-    desc: "The fastest path to decent income. CDL training is quick. Know the AI landscape before you commit.",
+    desc: "The fastest path to income. CDL training is quick. Know the AI landscape before you commit.",
     roles: "Heavy Truck Driver · Logistics Coordinator · Delivery Driver",
-    href: "/categories/transportation",
+    href: "/paths/transportation-logistics",
   },
 ];
 
@@ -206,6 +207,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Category Strip */}
+      <CategoryStrip />
 
       {/* Featured Careers Table Section */}
       <section className="bg-warm-white py-16 md:py-20">

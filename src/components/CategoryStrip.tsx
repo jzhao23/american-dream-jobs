@@ -54,10 +54,10 @@ export function CategoryStrip() {
   }, [isHovered, scrollDirection]);
 
   return (
-    <div className="border-y border-secondary-200 bg-secondary-50/50">
+    <div className="border-y border-sage-muted bg-warm-white">
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <h2 className="text-3xl font-bold text-secondary-900 mb-4 text-center">
-          Explore by Category
+        <h2 className="font-display text-xl font-semibold text-ds-slate mb-4 text-center">
+          Browse by Category
         </h2>
         {/* Scroll container with fade indicators */}
         <div
@@ -66,9 +66,9 @@ export function CategoryStrip() {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Left fade indicator */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-secondary-50/90 to-transparent pointer-events-none z-10 md:hidden" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-warm-white to-transparent pointer-events-none z-10 md:hidden" />
           {/* Right fade indicator */}
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-secondary-50/90 to-transparent pointer-events-none z-10 md:hidden" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-warm-white to-transparent pointer-events-none z-10 md:hidden" />
 
           <div
             ref={scrollRef}
@@ -78,7 +78,7 @@ export function CategoryStrip() {
               <Link
                 key={category.id}
                 href={`/categories/${category.id}`}
-                className="inline-flex items-center gap-2 px-4 py-2 min-h-[44px] text-base rounded-full whitespace-nowrap transition-all hover:shadow-sm flex-shrink-0 bg-white border border-secondary-200 text-secondary-700 hover:border-secondary-300 hover:text-secondary-900 active:bg-secondary-100"
+                className="inline-flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm rounded-full whitespace-nowrap transition-all hover:shadow-sm flex-shrink-0 bg-cream border border-sage-muted text-ds-slate-light hover:border-sage hover:text-sage active:bg-sage-muted"
               >
                 <span>{getCategoryIcon(category.id)}</span>
                 <span>{category.shortName}</span>
@@ -86,7 +86,7 @@ export function CategoryStrip() {
             ))}
             <Link
               href="/categories"
-              className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-base rounded-full whitespace-nowrap transition-all flex-shrink-0 text-primary-600 hover:text-primary-700 hover:underline"
+              className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-sm rounded-full whitespace-nowrap transition-all flex-shrink-0 text-sage hover:text-sage-light font-medium"
             >
               View All →
             </Link>
