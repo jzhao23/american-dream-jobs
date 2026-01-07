@@ -100,9 +100,9 @@ let careerDWAs: Record<string, string[]> | null = null;
 function loadCareersData(): CareerData[] {
   if (careersData) return careersData;
 
-  const careersPath = path.join(process.cwd(), 'data/careers.generated.json');
+  const careersPath = path.join(process.cwd(), 'data/output/careers.json');
   if (!fs.existsSync(careersPath)) {
-    throw new Error('careers.generated.json not found');
+    throw new Error('careers.json not found');
   }
 
   careersData = JSON.parse(fs.readFileSync(careersPath, 'utf-8'));

@@ -1,7 +1,7 @@
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
 import { EmailCapture } from "@/components/EmailCapture";
-import careersIndex from "../../data/careers-index.json";
+import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
 export default function HomePage() {

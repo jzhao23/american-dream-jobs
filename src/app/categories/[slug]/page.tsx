@@ -13,7 +13,7 @@ import {
   getAIRiskLevel,
 } from "@/lib/categories";
 import { formatPay } from "@/types/career";
-import careersIndex from "../../../../data/careers-index.json";
+import careersIndex from "../../../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
 // Generate static params for all categories

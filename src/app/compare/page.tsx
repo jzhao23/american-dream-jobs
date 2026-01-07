@@ -2,8 +2,8 @@
 
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import careersIndex from "../../../data/careers-index.json";
-import careersData from "../../../data/careers.generated.json";
+import careersIndex from "../../../data/output/careers-index.json";
+import careersData from "../../../data/output/careers.json";
 import type { CareerIndex, Career } from "@/types/career";
 import {
   formatPay,

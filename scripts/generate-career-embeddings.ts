@@ -189,9 +189,9 @@ async function main() {
 
   // Load careers data
   console.log('📂 Loading careers data...');
-  const careersPath = path.join(process.cwd(), 'data/careers.generated.json');
+  const careersPath = path.join(process.cwd(), 'data/output/careers.json');
   if (!fs.existsSync(careersPath)) {
-    console.error('❌ careers.generated.json not found. Run npm run data:generate-final first.');
+    console.error('❌ careers.json not found. Run npm run data:generate first.');
     process.exit(1);
   }
   const careers: Career[] = JSON.parse(fs.readFileSync(careersPath, 'utf-8'));

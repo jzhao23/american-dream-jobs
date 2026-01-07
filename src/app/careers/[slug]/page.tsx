@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import * as fs from "fs";
 import * as path from "path";
-import careers from "../../../../data/careers.generated.json";
-import careersIndex from "../../../../data/careers-index.json";
+import careers from "../../../../data/output/careers.json";
+import careersIndex from "../../../../data/output/careers-index.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
 import {
