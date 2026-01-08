@@ -1,19 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
+import { CareerCompassWizard } from "@/components/CareerCompassWizard";
 import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
 const careers = careersIndex as CareerIndex[];
-
-const timeOptions = [
-  { id: "asap", icon: "⚡", title: "ASAP", desc: "Under 6 months" },
-  { id: "6-24", icon: "📅", title: "6–24 months", desc: "Certifications & programs" },
-  { id: "2-4", icon: "🎯", title: "2–4 years", desc: "Degrees & apprenticeships" },
-  { id: "longer", icon: "🎓", title: "I can invest longer", desc: "Explore all paths" },
-];
 
 const curatedPaths = [
   {
@@ -115,8 +108,6 @@ const tools = [
 ];
 
 export default function HomePage() {
-  const [selectedTime, setSelectedTime] = useState("6-24");
-
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
@@ -133,30 +124,9 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Time Filter Section */}
+      {/* Career Compass Wizard - Inline step-by-step flow */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 md:pb-16 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
-        <div className="bg-warm-white rounded-2xl p-6 md:p-8 shadow-soft">
-          <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate text-center mb-6">
-            How soon do you need to start earning?
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {timeOptions.map((option) => (
-              <button
-                key={option.id}
-                onClick={() => setSelectedTime(option.id)}
-                className={`time-option ${selectedTime === option.id ? "selected" : ""}`}
-              >
-                <div className="text-2xl md:text-3xl mb-2">{option.icon}</div>
-                <div className="font-display font-semibold text-ds-slate text-sm md:text-base mb-1">
-                  {option.title}
-                </div>
-                <div className="text-xs md:text-sm text-ds-slate-light">
-                  {option.desc}
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
+        <CareerCompassWizard />
       </section>
 
       {/* Curated Paths Section */}
@@ -275,36 +245,6 @@ export default function HomePage() {
               <span className="text-sm text-ds-slate-light leading-relaxed">{item.desc}</span>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Career Compass CTA Section */}
-      <section className="relative bg-gradient-to-br from-sage to-sage-dark text-white py-16 md:py-20 overflow-hidden">
-        {/* Background pattern */}
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-        <div className="max-w-xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <div className="text-5xl mb-4">🧭</div>
-          <h2 className="font-display text-2xl md:text-3xl font-medium mb-4">
-            Not sure where to start?
-          </h2>
-          <p className="text-lg opacity-90 mb-8 leading-relaxed">
-            Upload your resume and answer a few questions. We'll match you with careers that fit your goals, skills, and timeline.
-          </p>
-          <a
-            href="/compass"
-            className="btn-white"
-          >
-            Take the Career Compass
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-          <p className="text-sm opacity-70 mt-5">No account needed. Resume optional.</p>
         </div>
       </section>
 
