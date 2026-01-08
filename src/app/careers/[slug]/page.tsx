@@ -128,20 +128,20 @@ export default async function CareerPage({ params }: PageProps) {
   const allReviews = loadCareerReviews(career.slug);
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-secondary-600 mb-4">
-            <a href="/" className="hover:text-primary-600">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-ds-slate-light mb-4">
+            <a href="/" className="hover:text-sage">
               Home
             </a>
             <span>/</span>
-            <a href="/#careers" className="hover:text-primary-600">
+            <a href="/#careers" className="hover:text-sage">
               Careers
             </a>
             <span>/</span>
-            <span className="text-secondary-900">{career.title}</span>
+            <span className="text-ds-slate">{career.title}</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
@@ -149,26 +149,26 @@ export default async function CareerPage({ params }: PageProps) {
               <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(career.category)} mb-3`}>
                 {career.category}
               </span>
-              <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-2">
+              <h1 className="font-display text-3xl md:text-4xl font-semibold text-ds-slate mb-2">
                 {career.title}
               </h1>
               {career.description && (
-                <p className="text-lg text-secondary-600 max-w-2xl">
+                <p className="text-lg text-ds-slate-light max-w-2xl">
                   {career.description}
                 </p>
               )}
             </div>
 
-            <div className="bg-secondary-50 rounded-xl p-6 min-w-[200px]">
+            <div className="bg-cream rounded-xl p-6 min-w-[200px]">
               <div className="text-center">
-                <div className="text-sm text-secondary-600 mb-1">
+                <div className="text-sm text-ds-slate-light mb-1">
                   Median Annual Pay
                 </div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">
+                <div className="text-3xl font-bold text-sage mb-2">
                   {formatPay(medianPay)}
                 </div>
                 {payRange && payRange.min > 0 && payRange.max > 0 && (
-                  <div className="text-sm text-secondary-500">
+                  <div className="text-sm text-ds-slate-muted">
                     Range: {formatPayRange(payRange.min, payRange.max)}
                   </div>
                 )}
@@ -178,11 +178,11 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            <div className="bg-secondary-50 rounded-lg p-4">
-              <div className="text-sm text-secondary-600 mb-1">
+            <div className="bg-cream rounded-lg p-4">
+              <div className="text-sm text-ds-slate-light mb-1">
                 Training Time
               </div>
-              <div className="font-semibold text-secondary-900">
+              <div className="font-semibold text-ds-slate">
                 {getTrainingTimeLabel(trainingTime, trainingYears ? {
                   min: trainingYears.min_years,
                   max: trainingYears.max_years,
@@ -190,8 +190,8 @@ export default async function CareerPage({ params }: PageProps) {
                 } : undefined)}
               </div>
             </div>
-            <div className="bg-secondary-50 rounded-lg p-4">
-              <div className="text-sm text-secondary-600 mb-1">
+            <div className="bg-cream rounded-lg p-4">
+              <div className="text-sm text-ds-slate-light mb-1">
                 AI Resilience
               </div>
               <div className="flex items-center gap-2">
@@ -201,16 +201,15 @@ export default async function CareerPage({ params }: PageProps) {
                     <span>{aiResilience}</span>
                   </span>
                 ) : (
-                  <span className="text-secondary-500 text-sm">Assessment pending</span>
+                  <span className="text-ds-slate-muted text-sm">Assessment pending</span>
                 )}
               </div>
             </div>
-            {/* ARCHIVED: National Importance removed - see data/archived/importance-scores-backup.json */}
-            <div className="bg-secondary-50 rounded-lg p-4">
-              <div className="text-sm text-secondary-600 mb-1">
+            <div className="bg-cream rounded-lg p-4">
+              <div className="text-sm text-ds-slate-light mb-1">
                 Education
               </div>
-              <div className="font-semibold text-secondary-900 text-sm">
+              <div className="font-semibold text-ds-slate text-sm">
                 {career.education?.typical_entry_education || "Varies"}
               </div>
             </div>
@@ -220,7 +219,7 @@ export default async function CareerPage({ params }: PageProps) {
           <div className="flex flex-wrap gap-3 mt-6">
             <a
               href={`/compare?career=${career.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -229,7 +228,7 @@ export default async function CareerPage({ params }: PageProps) {
             </a>
             <a
               href={`/calculator?career=${career.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-secondary-300 rounded-lg text-secondary-700 hover:border-primary-400 hover:text-primary-600 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -252,16 +251,16 @@ export default async function CareerPage({ params }: PageProps) {
                   href="https://www.careeronestop.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-cream rounded-md hover:bg-sage-muted transition-colors"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-emerald-600">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-sage">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
                     <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
-                  <span className="text-sm font-medium text-secondary-700">
+                  <span className="text-sm font-medium text-ds-slate-light">
                     CareerOneStop
                   </span>
-                  <span className="text-xs text-secondary-500">
+                  <span className="text-xs text-ds-slate-muted">
                     U.S. Department of Labor
                   </span>
                 </a>
@@ -275,8 +274,8 @@ export default async function CareerPage({ params }: PageProps) {
               <ul className="space-y-3">
                 {career.tasks.slice(0, 8).map((task, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-primary-500 mt-1">•</span>
-                    <span className="text-secondary-700">{task}</span>
+                    <span className="text-sage mt-1">•</span>
+                    <span className="text-ds-slate-light">{task}</span>
                   </li>
                 ))}
               </ul>
@@ -286,9 +285,9 @@ export default async function CareerPage({ params }: PageProps) {
           {/* Inside This Career */}
           {career.inside_look && (
             <Section title="Inside This Career" icon="insight">
-              <div className="prose prose-secondary max-w-none">
+              <div className="prose max-w-none">
                 {career.inside_look.content.split('\n\n').map((paragraph, i) => (
-                  <p key={i} className="text-secondary-700 leading-relaxed mb-4 last:mb-0">
+                  <p key={i} className="text-ds-slate-light leading-relaxed mb-4 last:mb-0">
                     {paragraph}
                   </p>
                 ))}
@@ -301,21 +300,21 @@ export default async function CareerPage({ params }: PageProps) {
             <Section title="Career Progression" icon="chart">
               <div className="space-y-4">
                 {career.career_progression.levels.map((level, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-secondary-50 rounded-lg p-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center font-bold">
+                  <div key={i} className="flex items-center gap-4 bg-cream rounded-lg p-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sage-muted text-sage flex items-center justify-center font-bold">
                       {level.level_number}
                     </div>
                     <div className="flex-grow">
-                      <div className="font-semibold text-secondary-900">{level.level_name}</div>
-                      <div className="text-sm text-secondary-600">
+                      <div className="font-semibold text-ds-slate">{level.level_name}</div>
+                      <div className="text-sm text-ds-slate-light">
                         {level.years_experience.min}-{level.years_experience.max} years experience
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold text-primary-600">
+                      <div className="font-bold text-sage">
                         {formatPay(level.compensation.total.median)}
                       </div>
-                      <div className="text-xs text-secondary-500">
+                      <div className="text-xs text-ds-slate-muted">
                         {formatPay(level.compensation.total.min)} - {formatPay(level.compensation.total.max)}
                       </div>
                     </div>
@@ -323,7 +322,7 @@ export default async function CareerPage({ params }: PageProps) {
                 ))}
               </div>
               {career.career_progression.source === "levels_fyi" && (
-                <div className="mt-4 text-sm text-secondary-500">
+                <div className="mt-4 text-sm text-ds-slate-muted">
                   Data source: Levels.fyi ({career.career_progression.match_confidence} match)
                 </div>
               )}
@@ -335,18 +334,18 @@ export default async function CareerPage({ params }: PageProps) {
             <Section title="Education & Training" icon="book">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-secondary-900 mb-3">Requirements</h4>
-                  <ul className="space-y-2 text-secondary-700">
+                  <h4 className="font-semibold text-ds-slate mb-3">Requirements</h4>
+                  <ul className="space-y-2 text-ds-slate-light">
                     <li className="flex items-center gap-2">
-                      <span className="text-primary-500">•</span>
+                      <span className="text-sage">•</span>
                       <span>Entry Education: {career.education.typical_entry_education}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary-500">•</span>
+                      <span className="text-sage">•</span>
                       <span>Experience: {career.education.work_experience_required}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-primary-500">•</span>
+                      <span className="text-sage">•</span>
                       <span>On-the-job Training: {career.education.on_the_job_training}</span>
                     </li>
                     {career.education.requires_license_or_cert && (
@@ -358,18 +357,18 @@ export default async function CareerPage({ params }: PageProps) {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-secondary-900 mb-3">Time & Cost</h4>
-                  <div className="bg-secondary-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-ds-slate mb-3">Time & Cost</h4>
+                  <div className="bg-cream rounded-lg p-4">
                     <div className="mb-3">
-                      <div className="text-sm text-secondary-600">Education Duration</div>
-                      <div className="font-semibold">
+                      <div className="text-sm text-ds-slate-light">Education Duration</div>
+                      <div className="font-semibold text-ds-slate">
                         {trainingYears ? `${trainingYears.min_years}-${trainingYears.max_years} years` : 'Varies'}
-                        {trainingYears && <span className="text-secondary-500 font-normal"> (typically {trainingYears.typical_years})</span>}
+                        {trainingYears && <span className="text-ds-slate-muted font-normal"> (typically {trainingYears.typical_years})</span>}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-secondary-600">Estimated Education Cost</div>
-                      <div className="font-semibold">
+                      <div className="text-sm text-ds-slate-light">Estimated Education Cost</div>
+                      <div className="font-semibold text-ds-slate">
                         {formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}
                       </div>
                       {career.education.time_to_job_ready?.earning_while_learning && (
@@ -379,40 +378,40 @@ export default async function CareerPage({ params }: PageProps) {
                       )}
                       {/* Institution type breakdown */}
                       {career.education.cost_by_institution_type && (
-                        <div className="mt-3 pt-3 border-t border-secondary-200 space-y-1 text-sm">
+                        <div className="mt-3 pt-3 border-t border-sage-muted space-y-1 text-sm">
                           {career.education.cost_by_institution_type.public_in_state && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Public (in-state):</span>
-                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_in_state.total)}</span>
+                              <span className="text-ds-slate-light">Public (in-state):</span>
+                              <span className="font-medium text-ds-slate">{formatPay(career.education.cost_by_institution_type.public_in_state.total)}</span>
                             </div>
                           )}
                           {career.education.cost_by_institution_type.public_out_of_state && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Public (out-of-state):</span>
-                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.public_out_of_state.total)}</span>
+                              <span className="text-ds-slate-light">Public (out-of-state):</span>
+                              <span className="font-medium text-ds-slate">{formatPay(career.education.cost_by_institution_type.public_out_of_state.total)}</span>
                             </div>
                           )}
                           {career.education.cost_by_institution_type.private_nonprofit && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Private nonprofit:</span>
-                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.private_nonprofit.total)}</span>
+                              <span className="text-ds-slate-light">Private nonprofit:</span>
+                              <span className="font-medium text-ds-slate">{formatPay(career.education.cost_by_institution_type.private_nonprofit.total)}</span>
                             </div>
                           )}
                           {career.education.cost_by_institution_type.community_college && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Community college:</span>
-                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.community_college.total)}</span>
+                              <span className="text-ds-slate-light">Community college:</span>
+                              <span className="font-medium text-ds-slate">{formatPay(career.education.cost_by_institution_type.community_college.total)}</span>
                             </div>
                           )}
                           {career.education.cost_by_institution_type.trade_school && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Trade school:</span>
-                              <span className="font-medium">{formatPay(career.education.cost_by_institution_type.trade_school.total)}</span>
+                              <span className="text-ds-slate-light">Trade school:</span>
+                              <span className="font-medium text-ds-slate">{formatPay(career.education.cost_by_institution_type.trade_school.total)}</span>
                             </div>
                           )}
                           {career.education.cost_by_institution_type.apprenticeship && (
                             <div className="flex justify-between">
-                              <span className="text-secondary-600">Apprenticeship:</span>
+                              <span className="text-ds-slate-light">Apprenticeship:</span>
                               <span className="font-medium text-green-600">
                                 {career.education.cost_by_institution_type.apprenticeship.cost === 0 ? '$0 (paid training)' : formatPay(career.education.cost_by_institution_type.apprenticeship.cost)}
                               </span>
@@ -422,7 +421,7 @@ export default async function CareerPage({ params }: PageProps) {
                       )}
                       {/* Data source */}
                       {career.education.cost_data_source && (
-                        <div className="mt-2 text-xs text-secondary-400">
+                        <div className="mt-2 text-xs text-ds-slate-muted">
                           Source: {career.education.cost_data_source.primary.replace(/_/g, ' ')} ({career.education.cost_data_source.year})
                         </div>
                       )}
@@ -440,14 +439,12 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
-          {/* ARCHIVED: National Importance section removed - see data/archived/importance-scores-backup.json */}
-
           {/* Technology Skills */}
           {career.technology_skills && career.technology_skills.length > 0 && (
             <Section title="Technology Skills" icon="computer">
               <div className="flex flex-wrap gap-2">
                 {career.technology_skills.slice(0, 15).map((skill, i) => (
-                  <span key={i} className="px-3 py-1 bg-secondary-100 text-secondary-700 rounded-full text-sm">
+                  <span key={i} className="px-3 py-1 bg-sage-muted text-ds-slate-light rounded-full text-sm">
                     {skill}
                   </span>
                 ))}
@@ -460,8 +457,8 @@ export default async function CareerPage({ params }: PageProps) {
             <Section title="Key Abilities" icon="star">
               <div className="grid md:grid-cols-2 gap-2">
                 {career.abilities.slice(0, 10).map((ability, i) => (
-                  <div key={i} className="flex items-center gap-2 text-secondary-700">
-                    <span className="text-primary-500">•</span>
+                  <div key={i} className="flex items-center gap-2 text-ds-slate-light">
+                    <span className="text-sage">•</span>
                     <span>{ability}</span>
                   </div>
                 ))}
@@ -474,12 +471,12 @@ export default async function CareerPage({ params }: PageProps) {
             <Section title="Also Known As" icon="tag">
               <div className="flex flex-wrap gap-2">
                 {career.alternate_titles.slice(0, 10).map((title, i) => (
-                  <span key={i} className="px-3 py-1 bg-secondary-100 text-secondary-700 rounded-full text-sm">
+                  <span key={i} className="px-3 py-1 bg-sage-muted text-ds-slate-light rounded-full text-sm">
                     {title}
                   </span>
                 ))}
                 {career.alternate_titles.length > 10 && (
-                  <span className="px-3 py-1 text-secondary-500 text-sm">
+                  <span className="px-3 py-1 text-ds-slate-muted text-sm">
                     +{career.alternate_titles.length - 10} more
                   </span>
                 )}
@@ -489,8 +486,6 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Related Careers */}
           {(() => {
-            // Get related careers in the same category (sorted by median pay)
-            // ARCHIVED: was sorted by national_importance_score - see data/archived/importance-scores-backup.json
             const relatedCareers = (careersIndex as { slug: string; title: string; category: string; median_pay: number }[])
               .filter(c => c.category === career.category && c.slug !== career.slug)
               .sort((a, b) => (b.median_pay || 0) - (a.median_pay || 0))
@@ -500,24 +495,24 @@ export default async function CareerPage({ params }: PageProps) {
 
             return (
               <Section title="Related Careers" icon="link">
-                <p className="text-sm text-secondary-600 mb-4">
+                <p className="text-sm text-ds-slate-light mb-4">
                   Other careers in {career.category}
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {relatedCareers.map((related) => (
-                    <div key={related.slug} className="bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors">
+                    <div key={related.slug} className="bg-cream rounded-lg p-4 hover:bg-sage-muted transition-colors">
                       <a
                         href={`/careers/${related.slug}`}
-                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline block mb-1"
+                        className="font-medium text-sage hover:text-sage-dark hover:underline block mb-1"
                       >
                         {related.title}
                       </a>
-                      <div className="text-sm text-secondary-600 mb-3">
+                      <div className="text-sm text-ds-slate-light mb-3">
                         {formatPay(related.median_pay)}/yr
                       </div>
                       <a
                         href={`/compare?careers=${career.slug},${related.slug}`}
-                        className="inline-flex items-center gap-1 text-xs text-secondary-500 hover:text-primary-600"
+                        className="inline-flex items-center gap-1 text-xs text-ds-slate-muted hover:text-sage"
                       >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -535,7 +530,7 @@ export default async function CareerPage({ params }: PageProps) {
           {allReviews.length > 0 && (
             <Section title="What Workers Say" icon="chat">
               <div className="space-y-4">
-                <p className="text-sm text-secondary-600">
+                <p className="text-sm text-ds-slate-light">
                   {allReviews.length} testimonial{allReviews.length !== 1 ? 's' : ''} from Reddit
                 </p>
 
@@ -546,21 +541,21 @@ export default async function CareerPage({ params }: PageProps) {
                       href={review.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block bg-secondary-50 rounded-lg p-4 hover:bg-secondary-100 transition-colors"
+                      className="block bg-cream rounded-lg p-4 hover:bg-sage-muted transition-colors"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-medium text-primary-600">
+                        <span className="text-xs font-medium text-sage">
                           r/{review.subreddit}
                         </span>
-                        <span className="text-xs text-secondary-500">
+                        <span className="text-xs text-ds-slate-muted">
                           {review.score} upvotes
                         </span>
                       </div>
-                      <h4 className="font-medium text-secondary-900 mb-2 text-sm">
+                      <h4 className="font-medium text-ds-slate mb-2 text-sm">
                         {review.title}
                       </h4>
                       {review.text && (
-                        <p className="text-secondary-700 text-sm line-clamp-3">
+                        <p className="text-ds-slate-light text-sm line-clamp-3">
                           {review.text}
                         </p>
                       )}
@@ -573,9 +568,9 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Sources */}
           <Section title="Data Sources" icon="link">
-            <div className="text-sm text-secondary-600 mb-4">
+            <div className="text-sm text-ds-slate-light mb-4">
               Last updated: {career.last_updated}
-              <span className="ml-4 px-2 py-0.5 bg-secondary-100 text-secondary-600 rounded text-xs">
+              <span className="ml-4 px-2 py-0.5 bg-sage-muted text-ds-slate-light rounded text-xs">
                 O*NET Code: {career.onet_code}
               </span>
             </div>
@@ -586,7 +581,7 @@ export default async function CareerPage({ params }: PageProps) {
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-600 hover:text-primary-700 hover:underline"
+                    className="text-sage hover:text-sage-dark hover:underline"
                   >
                     {source.source} ↗
                   </a>
@@ -596,38 +591,38 @@ export default async function CareerPage({ params }: PageProps) {
           </Section>
 
           {/* Contribution CTA */}
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-8 text-white">
-            <h2 className="text-2xl font-bold mb-3">
+          <div className="bg-gradient-to-r from-sage to-sage-dark rounded-xl p-8 text-white">
+            <h2 className="font-display text-2xl font-semibold mb-3">
               Work as a {career.title.split(",")[0]}?
             </h2>
-            <p className="text-primary-100 mb-6">
+            <p className="text-white/80 mb-6">
               Help us make this page better. Share your real-world experience,
               correct any errors, or add context that helps others.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href={`/contribute?career=${career.slug}`}
-                className="inline-flex items-center px-5 py-2.5 bg-white text-primary-700 rounded-lg font-semibold hover:bg-primary-50 transition-colors"
+                className="inline-flex items-center px-5 py-2.5 bg-white text-sage rounded-lg font-semibold hover:bg-sage-pale transition-colors"
               >
                 Share Your Experience
               </a>
               <a
                 href={`/contribute?career=${career.slug}&type=correction`}
-                className="inline-flex items-center px-5 py-2.5 border border-primary-300 text-white rounded-lg font-semibold hover:bg-primary-500 transition-colors"
+                className="inline-flex items-center px-5 py-2.5 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
               >
                 Report an Error
               </a>
             </div>
-            <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-primary-400/30">
+            <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-white/20">
               <a
                 href={`/compare?career=${career.slug}`}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm"
               >
                 Compare Careers
               </a>
               <a
                 href={`/calculator?career=${career.slug}`}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-white rounded-lg hover:bg-primary-500/30 transition-colors text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm"
               >
                 Calculate Earnings
               </a>
@@ -664,8 +659,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="card p-6 md:p-8">
-      <h2 className="text-xl font-bold text-secondary-900 mb-4 flex items-center gap-2">
+    <section className="card-warm p-6 md:p-8">
+      <h2 className="font-display text-xl font-semibold text-ds-slate mb-4 flex items-center gap-2">
         <span>{icons[icon] || "📌"}</span>
         {title}
       </h2>

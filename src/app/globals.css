@@ -8,11 +8,12 @@
   }
 
   body {
-    @apply antialiased text-secondary-900 bg-white;
+    @apply antialiased text-ds-slate bg-cream font-body;
   }
 }
 
 @layer components {
+  /* Legacy buttons (keeping for backward compatibility) */
   .btn-primary {
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 border border-transparent rounded-lg shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors;
   }
@@ -21,8 +22,27 @@
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-secondary-700 bg-white border border-secondary-300 rounded-lg shadow-sm hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors;
   }
 
+  /* New design system buttons */
+  .btn-sage {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-white bg-sage border border-transparent rounded-full shadow-soft hover:bg-sage-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage transition-all hover:-translate-y-0.5;
+  }
+
+  .btn-sage-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-sage bg-white border-2 border-sage rounded-full hover:bg-sage-pale focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage transition-all;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-sage bg-white rounded-full shadow-lg hover:-translate-y-1 hover:shadow-xl focus:outline-none transition-all;
+  }
+
+  /* Legacy card */
   .card {
     @apply bg-white rounded-xl border border-secondary-200 shadow-sm;
+  }
+
+  /* New design system card */
+  .card-warm {
+    @apply bg-warm-white rounded-2xl shadow-card border border-transparent transition-all hover:-translate-y-1 hover:shadow-hover hover:border-sage-muted;
   }
 
   .badge {
@@ -39,6 +59,54 @@
 
   .badge-high {
     @apply bg-green-100 text-green-800;
+  }
+
+  /* New AI resilience badges */
+  .badge-ai-resilient {
+    @apply bg-sage-muted text-sage font-semibold;
+  }
+
+  .badge-ai-augmented {
+    @apply bg-gold-bg text-gold font-semibold;
+  }
+
+  .badge-ai-transition {
+    @apply bg-ds-orange-bg text-ds-orange font-semibold;
+  }
+
+  .badge-ai-risk {
+    @apply bg-red-100 text-red-700 font-semibold;
+  }
+
+  /* Path tags */
+  .tag-pay {
+    @apply bg-sage-muted text-sage text-xs font-semibold px-2 py-0.5 rounded-md;
+  }
+
+  .tag-time {
+    @apply bg-terracotta-bg text-terracotta text-xs font-semibold px-2 py-0.5 rounded-md;
+  }
+
+  /* Time filter options */
+  .time-option {
+    @apply bg-cream border-2 border-transparent rounded-xl p-5 cursor-pointer transition-all text-center hover:border-sage-light hover:-translate-y-1 hover:shadow-hover;
+  }
+
+  .time-option.selected {
+    @apply border-sage bg-sage-pale;
+  }
+
+  /* Section styling */
+  .section-eyebrow {
+    @apply text-xs font-bold uppercase tracking-widest text-sage mb-2;
+  }
+
+  .section-title {
+    @apply font-display text-2xl md:text-3xl font-medium text-ds-slate mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-ds-slate-light;
   }
 
   /* Hide scrollbar but keep functionality */

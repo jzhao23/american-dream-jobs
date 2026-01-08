@@ -21,6 +21,34 @@ type ProcessingStage = 'idle' | 'analyzing' | 'matching' | 'complete';
 const ACCEPTED_FILE_TYPES = '.pdf,.docx,.doc,.md,.txt';
 const MAX_FILE_SIZE_MB = 5;
 
+const questions = [
+  {
+    id: "question1",
+    label: "What are your primary career goals for the next 5 years?",
+    placeholder: "e.g., Develop leadership skills, transition to a new industry, increase earning potential...",
+  },
+  {
+    id: "question2",
+    label: "What skills or areas of expertise do you want to develop?",
+    placeholder: "e.g., Technical skills, management, creative abilities, hands-on trades...",
+  },
+  {
+    id: "question3",
+    label: "What type of work environment do you thrive in?",
+    placeholder: "e.g., Remote, office-based, hands-on fieldwork, collaborative teams, independent work...",
+  },
+  {
+    id: "question4",
+    label: "What are your salary expectations or financial goals?",
+    placeholder: "e.g., Minimum salary requirements, long-term wealth building, work-life balance over maximum earnings...",
+  },
+  {
+    id: "question5",
+    label: "What industries or career paths are you most interested in exploring?",
+    placeholder: "e.g., Healthcare, technology, skilled trades, public service, creative fields...",
+  },
+];
+
 export default function CompassPage() {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -266,28 +294,26 @@ export default function CompassPage() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
-      {/* Header */}
-      <section className="bg-white border-b border-secondary-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
-            Career Compass
-          </h1>
-          <p className="text-lg text-secondary-600 max-w-2xl">
-            Upload your resume and answer a few questions to discover personalized career recommendations powered by AI.
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-cream">
+      {/* Page Header */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12 text-center">
+        <h1 className="font-display text-3xl md:text-4xl font-medium text-ds-slate mb-3">
+          🧭 Career Compass
+        </h1>
+        <p className="text-lg text-ds-slate-light max-w-xl mx-auto">
+          Upload your resume and answer a few questions to discover personalized career recommendations.
+        </p>
+      </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <form onSubmit={handleSubmit} className="card p-6 md:p-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
+        <form onSubmit={handleSubmit} className="bg-warm-white rounded-2xl shadow-soft p-6 md:p-8">
           {/* Resume Section */}
-          <div className="mb-8">
-            <label className="block text-lg font-semibold text-secondary-900 mb-2">
-              Your Resume
-            </label>
-            <p className="text-sm text-secondary-600 mb-4">
-              Upload a file or paste your resume text below.
+          <div className="mb-8 pb-8 border-b border-sage-muted">
+            <h2 className="font-display text-lg font-semibold text-ds-slate mb-1">
+              Resume (Optional)
+            </h2>
+            <p className="text-sm text-ds-slate-light mb-4">
+              Have a resume? Upload it for more personalized recommendations based on your experience.
             </p>
 
             {/* File Upload Zone */}
@@ -295,12 +321,12 @@ export default function CompassPage() {
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
-              className={`relative border-2 border-dashed rounded-lg p-6 mb-4 transition-colors ${
+              className={`relative border-2 border-dashed rounded-xl p-6 mb-4 transition-all cursor-pointer ${
                 isDragOver
-                  ? 'border-primary-500 bg-primary-50'
+                  ? 'border-sage bg-sage-pale'
                   : uploadedFile
-                  ? 'border-green-400 bg-green-50'
-                  : 'border-secondary-300 bg-secondary-50 hover:border-secondary-400'
+                  ? 'border-sage bg-sage-pale border-solid'
+                  : 'border-sage-muted bg-cream hover:border-sage-light'
               }`}
             >
               <input
@@ -316,7 +342,7 @@ export default function CompassPage() {
                 {isParsingFile ? (
                   <div className="flex flex-col items-center gap-2">
                     <svg
-                      className="animate-spin h-8 w-8 text-primary-600"
+                      className="animate-spin h-8 w-8 text-sage"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -335,36 +361,31 @@ export default function CompassPage() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    <span className="text-sm text-secondary-600">Extracting text from {uploadedFile?.name}...</span>
+                    <span className="text-sm text-ds-slate-light">Extracting text from {uploadedFile?.name}...</span>
                   </div>
                 ) : uploadedFile ? (
                   <div className="flex flex-col items-center gap-2">
-                    <svg className="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-sm font-medium text-green-700">{uploadedFile.name}</span>
+                    <div className="text-3xl">✓</div>
+                    <span className="text-sm font-semibold text-sage">{uploadedFile.name}</span>
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         clearUploadedFile();
                       }}
-                      className="text-xs text-secondary-500 hover:text-secondary-700 underline"
+                      className="text-xs text-terracotta hover:underline"
                     >
-                      Remove and upload different file
+                      Remove
                     </button>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center gap-2">
-                    <svg className="h-10 w-10 text-secondary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <div>
-                      <span className="text-sm font-medium text-primary-600">Drop your resume here</span>
-                      <span className="text-sm text-secondary-500"> or click to browse</span>
+                    <div className="text-3xl mb-1">📄</div>
+                    <div className="text-sm">
+                      <span className="font-medium text-ds-slate">Click to upload your resume</span>
                     </div>
-                    <span className="text-xs text-secondary-400">
-                      Supports PDF, Word (.docx), Markdown, and text files (max {MAX_FILE_SIZE_MB}MB)
+                    <span className="text-xs text-ds-slate-muted">
+                      PDF, DOC, DOCX, or TXT (max {MAX_FILE_SIZE_MB}MB)
                     </span>
                   </div>
                 )}
@@ -373,9 +394,9 @@ export default function CompassPage() {
 
             {/* Divider */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="flex-1 border-t border-secondary-200"></div>
-              <span className="text-sm text-secondary-400">or paste your resume text</span>
-              <div className="flex-1 border-t border-secondary-200"></div>
+              <div className="flex-1 border-t border-sage-muted"></div>
+              <span className="text-xs text-ds-slate-muted">or paste your resume text</span>
+              <div className="flex-1 border-t border-sage-muted"></div>
             </div>
 
             {/* Text Area */}
@@ -391,140 +412,74 @@ EXPERIENCE
 Senior Software Engineer at TechCorp (2021-Present)
 - Led development of microservices architecture
 - Managed team of 4 developers
-- Improved system performance by 40%
-
-Software Engineer at StartupXYZ (2019-2021)
-- Built React Native mobile application
-- Implemented CI/CD pipelines
 
 SKILLS
-JavaScript, TypeScript, React, Node.js, Python, AWS, Docker
+JavaScript, TypeScript, React, Node.js, Python, AWS
 
 EDUCATION
 B.S. Computer Science, State University, 2019`}
-              rows={12}
-              className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent font-mono text-sm"
+              rows={10}
+              className="w-full px-4 py-3 bg-cream border border-sage-muted rounded-xl focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent font-mono text-sm transition-all"
             />
-            <div className="mt-2 flex justify-between text-xs text-secondary-500">
+            <div className="mt-2 flex justify-between text-xs text-ds-slate-muted">
               <span>
-                {uploadedFile ? 'Extracted from uploaded file - you can edit the text above' : 'Tip: Copy and paste directly from your resume document or LinkedIn profile'}
+                {uploadedFile ? 'Extracted from uploaded file — you can edit above' : 'Paste from your resume or LinkedIn profile'}
               </span>
-              <span className={resumeText.length < 100 ? 'text-red-500' : 'text-green-600'}>
+              <span className={resumeText.length < 100 ? 'text-terracotta' : 'text-sage'}>
                 {resumeText.length} characters
               </span>
             </div>
           </div>
 
           {/* Questions Section */}
-          <div className="space-y-6">
-            <h2 className="text-lg font-semibold text-secondary-900 mb-4">
-              Career Assessment Questions
-            </h2>
-
-            {/* Question 1 */}
-            <div>
-              <label
-                htmlFor="question1"
-                className="block text-sm font-medium text-secondary-700 mb-2"
-              >
-                What are your primary career goals for the next 5 years?
-              </label>
-              <textarea
-                id="question1"
-                rows={3}
-                value={answers.question1}
-                onChange={(e) => handleAnswerChange("question1", e.target.value)}
-                placeholder="e.g., Develop leadership skills, transition to a new industry, increase earning potential, find more meaningful work..."
-                className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
+          <div className="mb-8">
+            <div className="mb-6">
+              <h2 className="font-display text-lg font-semibold text-ds-slate mb-1">
+                Career Assessment Questions
+              </h2>
+              <p className="text-sm text-ds-slate-light">
+                These questions help us understand your goals and preferences—things a resume can&apos;t tell us.
+              </p>
             </div>
 
-            {/* Question 2 */}
-            <div>
-              <label
-                htmlFor="question2"
-                className="block text-sm font-medium text-secondary-700 mb-2"
-              >
-                What skills or areas of expertise do you want to develop?
-              </label>
-              <textarea
-                id="question2"
-                rows={3}
-                value={answers.question2}
-                onChange={(e) => handleAnswerChange("question2", e.target.value)}
-                placeholder="e.g., Technical skills like data analysis, management and leadership, creative abilities, hands-on trades..."
-                className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* Question 3 */}
-            <div>
-              <label
-                htmlFor="question3"
-                className="block text-sm font-medium text-secondary-700 mb-2"
-              >
-                What type of work environment do you thrive in?
-              </label>
-              <textarea
-                id="question3"
-                rows={3}
-                value={answers.question3}
-                onChange={(e) => handleAnswerChange("question3", e.target.value)}
-                placeholder="e.g., Remote work, office-based, hands-on fieldwork, collaborative teams, independent work, flexible hours..."
-                className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* Question 4 */}
-            <div>
-              <label
-                htmlFor="question4"
-                className="block text-sm font-medium text-secondary-700 mb-2"
-              >
-                What are your salary expectations or financial goals?
-              </label>
-              <textarea
-                id="question4"
-                rows={3}
-                value={answers.question4}
-                onChange={(e) => handleAnswerChange("question4", e.target.value)}
-                placeholder="e.g., Looking for $100,000+ salary, prioritize work-life balance over maximum earnings, want high growth potential..."
-                className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* Question 5 */}
-            <div>
-              <label
-                htmlFor="question5"
-                className="block text-sm font-medium text-secondary-700 mb-2"
-              >
-                What industries or career paths are you most interested in exploring?
-              </label>
-              <textarea
-                id="question5"
-                rows={3}
-                value={answers.question5}
-                onChange={(e) => handleAnswerChange("question5", e.target.value)}
-                placeholder="e.g., Healthcare, technology, skilled trades, public service, creative fields, finance, education..."
-                className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
+            <div className="space-y-6">
+              {questions.map((q, idx) => (
+                <div key={q.id}>
+                  <label
+                    htmlFor={q.id}
+                    className="flex items-start gap-3 text-sm font-medium text-ds-slate mb-2"
+                  >
+                    <span className="inline-flex items-center justify-center w-6 h-6 bg-sage-muted text-sage text-xs font-bold rounded-full flex-shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    {q.label}
+                  </label>
+                  <textarea
+                    id={q.id}
+                    rows={3}
+                    value={answers[q.id as keyof typeof answers]}
+                    onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                    placeholder={q.placeholder}
+                    className="w-full px-4 py-3 bg-cream border border-sage-muted rounded-xl focus:outline-none focus:ring-2 focus:ring-sage focus:border-transparent text-sm transition-all placeholder:text-ds-slate-muted"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="mt-8 flex justify-end">
+          {/* Submit Section */}
+          <div className="pt-6 border-t border-sage-muted">
             <button
               type="submit"
               disabled={isLoading || isParsingFile}
-              className={`px-6 py-3 font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+              className={`w-full px-6 py-4 font-semibold rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 flex items-center justify-center gap-2 ${
                 isLoading || isParsingFile
-                  ? "bg-gray-400 text-gray-200 cursor-not-allowed"
-                  : "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800"
+                  ? "bg-ds-slate-muted text-white cursor-not-allowed"
+                  : "bg-sage text-white hover:bg-sage-light hover:-translate-y-0.5 shadow-soft hover:shadow-hover"
               }`}
             >
               {isLoading ? (
-                <span className="flex items-center gap-2">
+                <>
                   <svg
                     className="animate-spin h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -546,25 +501,24 @@ B.S. Computer Science, State University, 2019`}
                     ></path>
                   </svg>
                   {getProcessingMessage()}
-                </span>
+                </>
               ) : (
                 "Get Career Recommendations"
               )}
             </button>
+            <p className="text-center text-sm text-ds-slate-muted mt-4">
+              We&apos;ll analyze your responses and match you with careers that fit your goals.
+            </p>
           </div>
 
           {/* Processing Info */}
           {isLoading && (
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+            <div className="mt-6 p-4 bg-sage-pale rounded-xl">
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="text-sm text-blue-700">
+                <div className="flex-shrink-0 text-sage text-lg">🤖</div>
+                <div className="text-sm text-ds-slate">
                   <p className="font-medium">AI-Powered Analysis</p>
-                  <p className="mt-1">
+                  <p className="mt-1 text-ds-slate-light">
                     We&apos;re using advanced AI to analyze your resume, understand your goals, and match you with careers from our database of 1,000+ occupations. This typically takes 10-15 seconds.
                   </p>
                 </div>

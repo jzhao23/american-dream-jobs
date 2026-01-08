@@ -134,14 +134,14 @@ function CalculatorContent() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          <h1 className="font-display text-3xl md:text-4xl font-semibold text-ds-slate mb-4">
             Net Worth Calculator
           </h1>
-          <p className="text-lg text-secondary-600 max-w-2xl">
+          <p className="text-lg text-ds-slate-light max-w-2xl">
             Project your lifetime earnings and net worth based on your career choice.
             See how different paths compare over time.
           </p>
@@ -153,16 +153,16 @@ function CalculatorContent() {
           {/* Input Panel */}
           <div className="lg:col-span-1 space-y-6">
             {/* Career Selection */}
-            <div className="card p-6">
-              <h2 className="text-lg font-bold text-secondary-900 mb-4">Select Career</h2>
+            <div className="card-warm p-6">
+              <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Select Career</h2>
 
               {selectedCareer ? (
                 <div className="mb-4">
-                  <div className="flex items-center justify-between p-3 bg-primary-50 rounded-lg border border-primary-200">
+                  <div className="flex items-center justify-between p-3 bg-sage-pale rounded-lg border border-sage">
                     <div>
                       <a
                         href={`/careers/${selectedCareer.slug}`}
-                        className="font-medium text-primary-600 hover:text-primary-700 hover:underline"
+                        className="font-medium text-sage hover:text-sage-dark hover:underline"
                       >
                         {selectedCareer.title}
                       </a>
@@ -172,7 +172,7 @@ function CalculatorContent() {
                     </div>
                     <button
                       onClick={() => setSelectedSlug("")}
-                      className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl -mr-2"
+                      className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-ds-slate-muted hover:text-ds-slate-light active:bg-sage-muted rounded-full text-xl -mr-2"
                       aria-label="Remove career"
                     >
                       &times;
@@ -180,7 +180,7 @@ function CalculatorContent() {
                   </div>
                   <a
                     href={`/compare?career=${selectedCareer.slug}`}
-                    className="inline-flex items-center gap-1 mt-2 text-sm text-primary-600 hover:text-primary-700 hover:underline"
+                    className="inline-flex items-center gap-1 mt-2 text-sm text-sage hover:text-sage-dark hover:underline"
                   >
                     Compare with other careers →
                   </a>
@@ -189,19 +189,19 @@ function CalculatorContent() {
                 <div className="relative">
                   <button
                     onClick={() => setShowSearch(true)}
-                    className="w-full px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors text-left"
+                    className="w-full px-4 py-3 min-h-[44px] border-2 border-dashed border-sage-muted rounded-lg text-ds-slate-muted hover:border-sage hover:text-sage active:bg-cream transition-colors text-left"
                   >
                     Search for a career...
                   </button>
 
                   {showSearch && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-warm-white rounded-lg shadow-lg border border-sage-muted z-10">
                       <input
                         type="text"
                         placeholder="Search careers..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                        className="w-full px-4 py-3 text-base border-b border-sage-muted rounded-t-lg focus:outline-none"
                         autoFocus
                       />
                       <div className="max-h-60 overflow-y-auto">
@@ -209,16 +209,16 @@ function CalculatorContent() {
                           <button
                             key={career.slug}
                             onClick={() => selectCareer(career.slug)}
-                            className="w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100"
+                            className="w-full px-4 py-3 min-h-[44px] text-left hover:bg-cream active:bg-sage-muted"
                           >
-                            <div className="font-medium text-secondary-900">{career.title}</div>
-                            <div className="text-sm text-secondary-500">{career.category} - {formatPay(career.median_pay)}</div>
+                            <div className="font-medium text-ds-slate">{career.title}</div>
+                            <div className="text-sm text-ds-slate-muted">{career.category} - {formatPay(career.median_pay)}</div>
                           </button>
                         ))}
                       </div>
                       <button
                         onClick={() => setShowSearch(false)}
-                        className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
+                        className="w-full px-4 py-3 min-h-[44px] text-sm text-ds-slate-muted border-t border-sage-muted hover:bg-cream active:bg-sage-muted"
                       >
                         Cancel
                       </button>
@@ -229,12 +229,12 @@ function CalculatorContent() {
             </div>
 
             {/* Personal Info */}
-            <div className="card p-6">
-              <h2 className="text-lg font-bold text-secondary-900 mb-4">Your Details</h2>
+            <div className="card-warm p-6">
+              <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Your Details</h2>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-1">
+                  <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Current Age: {currentAge}
                   </label>
                   <input
@@ -243,16 +243,16 @@ function CalculatorContent() {
                     max={50}
                     value={currentAge}
                     onChange={(e) => setCurrentAge(Number(e.target.value))}
-                    className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                    className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
-                  <div className="flex justify-between text-xs text-secondary-500 mt-1">
+                  <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>16</span>
                     <span>50</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-1">
+                  <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Starting Savings: {formatPay(startingSavings)}
                   </label>
                   <input
@@ -262,16 +262,16 @@ function CalculatorContent() {
                     step={5000}
                     value={startingSavings}
                     onChange={(e) => setStartingSavings(Number(e.target.value))}
-                    className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                    className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
-                  <div className="flex justify-between text-xs text-secondary-500 mt-1">
+                  <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>$0</span>
                     <span>$100K</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-1">
+                  <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Savings Rate: {savingsRate}%
                   </label>
                   <input
@@ -281,16 +281,16 @@ function CalculatorContent() {
                     step={5}
                     value={savingsRate}
                     onChange={(e) => setSavingsRate(Number(e.target.value))}
-                    className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                    className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
-                  <div className="flex justify-between text-xs text-secondary-500 mt-1">
+                  <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>5%</span>
                     <span>50%</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-1">
+                  <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Investment Return: {investmentReturn}%
                   </label>
                   <input
@@ -300,16 +300,16 @@ function CalculatorContent() {
                     step={1}
                     value={investmentReturn}
                     onChange={(e) => setInvestmentReturn(Number(e.target.value))}
-                    className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                    className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
-                  <div className="flex justify-between text-xs text-secondary-500 mt-1">
+                  <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>0%</span>
                     <span>12%</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-1">
+                  <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Retirement Age: {retirementAge}
                   </label>
                   <input
@@ -318,9 +318,9 @@ function CalculatorContent() {
                     max={70}
                     value={retirementAge}
                     onChange={(e) => setRetirementAge(Number(e.target.value))}
-                    className="w-full h-2 bg-secondary-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                    className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
-                  <div className="flex justify-between text-xs text-secondary-500 mt-1">
+                  <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>55</span>
                     <span>70</span>
                   </div>
@@ -332,12 +332,12 @@ function CalculatorContent() {
                       type="checkbox"
                       checked={educationCostIncluded}
                       onChange={(e) => setEducationCostIncluded(e.target.checked)}
-                      className="w-4 h-4 text-primary-600 rounded focus:ring-primary-500"
+                      className="w-4 h-4 text-sage rounded focus:ring-sage"
                     />
-                    <span className="text-sm text-secondary-700">Include education costs</span>
+                    <span className="text-sm text-ds-slate-light">Include education costs</span>
                   </label>
                   {selectedCareer && educationCostIncluded && (
-                    <div className="text-xs text-secondary-500 mt-1 ml-6">
+                    <div className="text-xs text-ds-slate-muted mt-1 ml-6">
                       -{formatPay(selectedCareer.education?.estimated_cost?.typical_cost || 0)} upfront
                     </div>
                   )}
@@ -352,12 +352,12 @@ function CalculatorContent() {
               <>
                 {/* Summary Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="card p-4 text-center">
-                    <div className="text-sm text-secondary-600 mb-1">Lifetime Earnings</div>
-                    <div className="text-xl font-bold text-primary-600">{formatPay(lifetimeEarnings)}</div>
+                  <div className="card-warm p-4 text-center">
+                    <div className="text-sm text-ds-slate-light mb-1">Lifetime Earnings</div>
+                    <div className="text-xl font-bold text-sage">{formatPay(lifetimeEarnings)}</div>
                   </div>
-                  <div className="card p-4 text-center">
-                    <div className="text-sm text-secondary-600 mb-1">Net Worth at {retirementAge}</div>
+                  <div className="card-warm p-4 text-center">
+                    <div className="text-sm text-ds-slate-light mb-1">Net Worth at {retirementAge}</div>
                     <div className={`text-xl font-bold ${(projections[projections.length - 1]?.netWorth || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {(() => {
                         const nw = projections[projections.length - 1]?.netWorth || 0;
@@ -365,17 +365,17 @@ function CalculatorContent() {
                       })()}
                     </div>
                   </div>
-                  <div className="card p-4 text-center">
-                    <div className="text-sm text-secondary-600 mb-1">Years to $1M</div>
-                    <div className="text-xl font-bold text-secondary-900">
+                  <div className="card-warm p-4 text-center">
+                    <div className="text-sm text-ds-slate-light mb-1">Years to $1M</div>
+                    <div className="text-xl font-bold text-ds-slate">
                       {(() => {
                         const millionYear = projections.find(p => p.netWorth >= 1000000);
                         return millionYear ? `Age ${millionYear.age}` : "N/A";
                       })()}
                     </div>
                   </div>
-                  <div className="card p-4 text-center">
-                    <div className="text-sm text-secondary-600 mb-1">Education Cost</div>
+                  <div className="card-warm p-4 text-center">
+                    <div className="text-sm text-ds-slate-light mb-1">Education Cost</div>
                     <div className="text-xl font-bold text-amber-600">
                       {formatPay(selectedCareer.education?.estimated_cost?.typical_cost || 0)}
                     </div>
@@ -383,18 +383,18 @@ function CalculatorContent() {
                 </div>
 
                 {/* Net Worth Chart */}
-                <div className="card p-6">
-                  <h2 className="text-lg font-bold text-secondary-900 mb-4">Net Worth Projection</h2>
+                <div className="card-warm p-6">
+                  <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Net Worth Projection</h2>
                   <div className="h-48 md:h-64 relative">
                     {/* Y-axis labels */}
-                    <div className="absolute left-0 top-0 bottom-8 w-16 flex flex-col justify-between text-xs text-secondary-500 text-right pr-2">
+                    <div className="absolute left-0 top-0 bottom-8 w-16 flex flex-col justify-between text-xs text-ds-slate-muted text-right pr-2">
                       <span>{formatPay(maxNetWorth)}</span>
                       <span>{formatPay((maxNetWorth + minNetWorth) / 2)}</span>
                       <span>{minNetWorth < 0 ? `-${formatPay(Math.abs(minNetWorth))}` : '$0'}</span>
                     </div>
 
                     {/* Chart area */}
-                    <div className="ml-16 h-full relative border-l border-b border-secondary-200">
+                    <div className="ml-16 h-full relative border-l border-b border-sage-muted">
                       {/* Million dollar line */}
                       {maxNetWorth >= 1000000 && (
                         <div
@@ -471,7 +471,7 @@ function CalculatorContent() {
                     </div>
 
                     {/* X-axis labels */}
-                    <div className="ml-16 flex justify-between text-xs text-secondary-500 mt-2">
+                    <div className="ml-16 flex justify-between text-xs text-ds-slate-muted mt-2">
                       <span>Age {currentAge}</span>
                       <span>Age {Math.round((currentAge + retirementAge) / 2)}</span>
                       <span>Age {retirementAge}</span>
@@ -480,13 +480,13 @@ function CalculatorContent() {
                 </div>
 
                 {/* Milestones */}
-                <div className="card p-6">
-                  <h2 className="text-lg font-bold text-secondary-900 mb-4">Milestones</h2>
+                <div className="card-warm p-6">
+                  <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Milestones</h2>
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     {milestones.map(milestone => (
-                      <div key={milestone.age} className="text-center p-3 bg-secondary-50 rounded-lg">
-                        <div className="text-sm text-secondary-600">Age {milestone.age}</div>
-                        <div className={`font-bold ${milestone.netWorth >= 1000000 ? 'text-green-600' : milestone.netWorth < 0 ? 'text-red-600' : 'text-secondary-900'}`}>
+                      <div key={milestone.age} className="text-center p-3 bg-cream rounded-lg">
+                        <div className="text-sm text-ds-slate-light">Age {milestone.age}</div>
+                        <div className={`font-bold ${milestone.netWorth >= 1000000 ? 'text-green-600' : milestone.netWorth < 0 ? 'text-red-600' : 'text-ds-slate'}`}>
                           {milestone.netWorth >= 0 ? formatPay(milestone.netWorth) : `-${formatPay(Math.abs(milestone.netWorth))}`}
                         </div>
                       </div>
@@ -495,27 +495,27 @@ function CalculatorContent() {
                 </div>
 
                 {/* Year by Year Table */}
-                <div className="card overflow-hidden">
-                  <div className="p-6 border-b border-secondary-200">
-                    <h2 className="text-lg font-bold text-secondary-900">Year-by-Year Breakdown</h2>
+                <div className="card-warm overflow-hidden">
+                  <div className="p-6 border-b border-sage-muted">
+                    <h2 className="font-display text-lg font-semibold text-ds-slate">Year-by-Year Breakdown</h2>
                   </div>
                   <div className="overflow-x-auto max-h-96">
                     <table className="w-full">
-                      <thead className="bg-secondary-50 sticky top-0">
+                      <thead className="bg-cream sticky top-0">
                         <tr>
-                          <th className="text-left px-4 py-2 text-sm font-semibold text-secondary-700">Age</th>
-                          <th className="text-left px-4 py-2 text-sm font-semibold text-secondary-700">Level</th>
-                          <th className="text-right px-4 py-2 text-sm font-semibold text-secondary-700">Income</th>
-                          <th className="text-right px-4 py-2 text-sm font-semibold text-secondary-700">Saved</th>
-                          <th className="text-right px-4 py-2 text-sm font-semibold text-secondary-700">Growth</th>
-                          <th className="text-right px-4 py-2 text-sm font-semibold text-secondary-700">Net Worth</th>
+                          <th className="text-left px-4 py-2 text-sm font-semibold text-ds-slate-light">Age</th>
+                          <th className="text-left px-4 py-2 text-sm font-semibold text-ds-slate-light">Level</th>
+                          <th className="text-right px-4 py-2 text-sm font-semibold text-ds-slate-light">Income</th>
+                          <th className="text-right px-4 py-2 text-sm font-semibold text-ds-slate-light">Saved</th>
+                          <th className="text-right px-4 py-2 text-sm font-semibold text-ds-slate-light">Growth</th>
+                          <th className="text-right px-4 py-2 text-sm font-semibold text-ds-slate-light">Net Worth</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-secondary-100">
                         {projections.filter((_, i) => i % 5 === 0 || i === projections.length - 1).map(p => (
-                          <tr key={p.age} className="hover:bg-secondary-50">
+                          <tr key={p.age} className="hover:bg-cream">
                             <td className="px-4 py-2 font-medium">{p.age}</td>
-                            <td className="px-4 py-2 text-sm text-secondary-600">{p.careerLevel}</td>
+                            <td className="px-4 py-2 text-sm text-ds-slate-light">{p.careerLevel}</td>
                             <td className="px-4 py-2 text-right">{formatPay(p.income)}</td>
                             <td className="px-4 py-2 text-right text-green-600">+{formatPay(p.savings)}</td>
                             <td className="px-4 py-2 text-right text-blue-600">+{formatPay(p.investmentGrowth)}</td>
@@ -530,7 +530,7 @@ function CalculatorContent() {
                 </div>
 
                 {/* Assumptions */}
-                <div className="card p-6 bg-amber-50 border-amber-200">
+                <div className="card-warm p-6 bg-amber-50 border-amber-200">
                   <h3 className="font-semibold text-amber-800 mb-2">Assumptions & Disclaimers</h3>
                   <ul className="text-sm text-amber-700 space-y-1">
                     <li>Career progression based on typical BLS percentile data</li>
@@ -542,12 +542,12 @@ function CalculatorContent() {
                 </div>
               </>
             ) : (
-              <div className="card p-12 text-center">
+              <div className="card-warm p-12 text-center">
                 <div className="text-6xl mb-4">Calculator</div>
-                <h3 className="text-xl font-semibold text-secondary-900 mb-2">
+                <h3 className="text-xl font-semibold text-ds-slate mb-2">
                   Select a career to get started
                 </h3>
-                <p className="text-secondary-600">
+                <p className="text-ds-slate-light">
                   Choose a career path to see projected lifetime earnings and net worth calculations.
                 </p>
               </div>
@@ -563,14 +563,14 @@ export default function CalculatorPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen bg-cream">
           <div className="max-w-6xl mx-auto px-4 py-12">
             <div className="animate-pulse">
-              <div className="h-8 bg-secondary-200 rounded w-1/3 mb-4" />
-              <div className="h-4 bg-secondary-200 rounded w-2/3 mb-8" />
+              <div className="h-8 bg-sage-muted rounded w-1/3 mb-4" />
+              <div className="h-4 bg-sage-muted rounded w-2/3 mb-8" />
               <div className="grid lg:grid-cols-3 gap-8">
-                <div className="h-96 bg-secondary-200 rounded" />
-                <div className="lg:col-span-2 h-96 bg-secondary-200 rounded" />
+                <div className="h-96 bg-sage-muted rounded" />
+                <div className="lg:col-span-2 h-96 bg-sage-muted rounded" />
               </div>
             </div>
           </div>

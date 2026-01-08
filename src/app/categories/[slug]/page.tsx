@@ -66,12 +66,12 @@ export default async function CategoryPage({
   const categoryCarers = getCareersByCategory(careers, slug);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-cream">
       {/* Header Section */}
-      <section className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
+      <section className="bg-gradient-to-br from-sage to-sage-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           {/* Breadcrumb */}
-          <nav className="text-sm text-primary-200 mb-6">
+          <nav className="text-sm text-white/70 mb-6">
             <Link href="/" className="hover:text-white">
               Home
             </Link>
@@ -86,10 +86,10 @@ export default async function CategoryPage({
           <div className="flex items-start gap-4">
             <div className="text-5xl">{getCategoryIcon(slug)}</div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
+              <h1 className="font-display text-3xl md:text-4xl font-medium mb-2">
                 {category.name}
               </h1>
-              <p className="text-xl text-primary-100 mb-4">
+              <p className="text-xl text-white/90 mb-4">
                 {category.description}
               </p>
               <div className="flex flex-wrap gap-4 text-sm">
@@ -109,21 +109,21 @@ export default async function CategoryPage({
       </section>
 
       {/* Overview Cards */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* What You'll Do */}
-            <div className="bg-secondary-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-secondary-900 mb-4 flex items-center gap-2">
+            <div className="bg-cream rounded-xl p-6">
+              <h3 className="font-display text-lg font-semibold text-ds-slate mb-4 flex items-center gap-2">
                 <span>📋</span> What You'll Do
               </h3>
               <ul className="space-y-2">
                 {content.typicalTasks.slice(0, 6).map((task, i) => (
                   <li
                     key={i}
-                    className="text-sm text-secondary-700 flex items-start gap-2"
+                    className="text-sm text-ds-slate-light flex items-start gap-2"
                   >
-                    <span className="text-primary-500 mt-0.5">•</span>
+                    <span className="text-sage mt-0.5">•</span>
                     {task}
                   </li>
                 ))}
@@ -131,32 +131,32 @@ export default async function CategoryPage({
             </div>
 
             {/* Education & Training */}
-            <div className="bg-secondary-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-secondary-900 mb-4 flex items-center gap-2">
+            <div className="bg-cream rounded-xl p-6">
+              <h3 className="font-display text-lg font-semibold text-ds-slate mb-4 flex items-center gap-2">
                 <span>🎓</span> Education & Training
               </h3>
               <div className="space-y-3">
                 <div>
-                  <div className="text-sm font-medium text-secondary-900">
+                  <div className="text-sm font-medium text-ds-slate">
                     Typical Path
                   </div>
-                  <div className="text-sm text-secondary-700">
+                  <div className="text-sm text-ds-slate-light">
                     {content.educationPaths.typical}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-secondary-900">
+                  <div className="text-sm font-medium text-ds-slate">
                     Time Investment
                   </div>
-                  <div className="text-sm text-secondary-700">
+                  <div className="text-sm text-ds-slate-light">
                     {content.educationPaths.timeRange}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-secondary-900">
+                  <div className="text-sm font-medium text-ds-slate">
                     Common Credentials
                   </div>
-                  <ul className="text-sm text-secondary-700">
+                  <ul className="text-sm text-ds-slate-light">
                     {content.educationPaths.commonCredentials
                       .slice(0, 3)
                       .map((cred, i) => (
@@ -168,38 +168,38 @@ export default async function CategoryPage({
             </div>
 
             {/* Who This Is For */}
-            <div className="bg-secondary-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-secondary-900 mb-4 flex items-center gap-2">
+            <div className="bg-cream rounded-xl p-6">
+              <h3 className="font-display text-lg font-semibold text-ds-slate mb-4 flex items-center gap-2">
                 <span>👤</span> Who This Is For
               </h3>
               <div className="space-y-4">
                 <div>
-                  <div className="text-sm font-medium text-green-700 mb-2">
+                  <div className="text-sm font-medium text-sage mb-2">
                     Good fit if you:
                   </div>
                   <ul className="space-y-1">
                     {content.whoItsFor.slice(0, 4).map((trait, i) => (
                       <li
                         key={i}
-                        className="text-sm text-secondary-700 flex items-start gap-2"
+                        className="text-sm text-ds-slate-light flex items-start gap-2"
                       >
-                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span className="text-sage mt-0.5">✓</span>
                         {trait}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-red-700 mb-2">
+                  <div className="text-sm font-medium text-terracotta mb-2">
                     Not ideal if you:
                   </div>
                   <ul className="space-y-1">
                     {content.whoItsNotFor.slice(0, 2).map((trait, i) => (
                       <li
                         key={i}
-                        className="text-sm text-secondary-700 flex items-start gap-2"
+                        className="text-sm text-ds-slate-light flex items-start gap-2"
                       >
-                        <span className="text-red-500 mt-0.5">✗</span>
+                        <span className="text-terracotta mt-0.5">✗</span>
                         {trait}
                       </li>
                     ))}
@@ -212,15 +212,15 @@ export default async function CategoryPage({
       </section>
 
       {/* About Section */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="max-w-3xl">
-            <h2 className="text-xl font-semibold text-secondary-900 mb-4">
+            <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">
               About {category.name} Careers
             </h2>
-            <div className="prose prose-secondary text-secondary-700">
+            <div className="prose text-ds-slate-light">
               {content.longDescription.split("\n\n").map((paragraph, i) => (
-                <p key={i} className="mb-4">
+                <p key={i} className="mb-4 leading-relaxed">
                   {paragraph.trim()}
                 </p>
               ))}
@@ -230,16 +230,16 @@ export default async function CategoryPage({
       </section>
 
       {/* Core Skills */}
-      <section className="bg-secondary-50 border-b border-secondary-200">
+      <section className="bg-cream border-b border-sage-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h2 className="text-xl font-semibold text-secondary-900 mb-4">
+          <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">
             Core Skills Needed
           </h2>
           <div className="flex flex-wrap gap-2">
             {content.coreSkills.map((skill, i) => (
               <span
                 key={i}
-                className="bg-white px-3 py-1.5 rounded-full text-sm text-secondary-700 border border-secondary-200"
+                className="bg-warm-white px-3 py-1.5 rounded-full text-sm text-ds-slate-light border border-sage-muted"
               >
                 {skill}
               </span>
@@ -249,13 +249,12 @@ export default async function CategoryPage({
       </section>
 
       {/* Career Explorer Section */}
-      <section className="bg-secondary-50">
+      <section className="bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-secondary-900 mb-2">
-              {category.name} Careers
-            </h2>
-            <p className="text-secondary-600">
+            <p className="section-eyebrow">Explore Careers</p>
+            <h2 className="section-title">{category.name} Careers</h2>
+            <p className="section-subtitle">
               Explore all {stats.totalCareers} careers in this category
             </p>
           </div>
@@ -264,19 +263,19 @@ export default async function CategoryPage({
       </section>
 
       {/* Back Navigation */}
-      <section className="bg-white border-t border-secondary-200">
+      <section className="bg-warm-white border-t border-sage-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/categories"
-              className="text-primary-600 hover:text-primary-700 font-medium"
+              className="text-sage hover:text-sage-dark font-medium"
             >
               ← All Categories
             </Link>
-            <span className="text-secondary-300 hidden sm:inline">|</span>
+            <span className="text-ds-slate-muted hidden sm:inline">|</span>
             <Link
               href="/"
-              className="text-primary-600 hover:text-primary-700 font-medium"
+              className="text-sage hover:text-sage-dark font-medium"
             >
               ← All Careers
             </Link>

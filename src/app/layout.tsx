@@ -32,7 +32,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -48,64 +48,62 @@ export default function RootLayout({
 
 function Footer() {
   return (
-    <footer className="bg-secondary-50 border-t border-secondary-200 mt-16">
+    <footer className="bg-warm-white border-t border-sage-muted mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="text-2xl">🇺🇸</span>
-              <span className="font-bold text-lg text-secondary-900">
+              <span className="font-display font-semibold text-lg text-sage">
                 American Dream Jobs
               </span>
             </div>
-            <p className="text-sm text-secondary-600">
+            <p className="text-sm text-ds-slate-light leading-relaxed">
               Honest career information for people who want to build real
-              skills and earn good money.
+              skills and earn good money. Built by two engineers who believe
+              everyone deserves access to quality career guidance.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold text-secondary-900 mb-4">Links</h3>
-            <ul className="space-y-2 text-sm text-secondary-600">
+            <h3 className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-4">
+              Explore
+            </h3>
+            <ul className="space-y-2 text-sm text-ds-slate-light">
               <li>
-                <a href="/#careers" className="hover:text-secondary-900">
-                  Explore Careers
+                <a href="/#careers" className="hover:text-sage transition-colors">
+                  All Careers
                 </a>
               </li>
               <li>
-                <a href="/compare" className="hover:text-secondary-900">
+                <a href="/compare" className="hover:text-sage transition-colors">
                   Compare Careers
                 </a>
               </li>
               <li>
-                <a href="/calculator" className="hover:text-secondary-900">
+                <a href="/calculator" className="hover:text-sage transition-colors">
                   Net Worth Calculator
                 </a>
               </li>
               <li>
-                <a href="/methodology" className="hover:text-secondary-900">
-                  Our Methodology
-                </a>
-              </li>
-              <li>
-                <a href="/contribute" className="hover:text-secondary-900">
-                  Contribute
+                <a href="/compass" className="hover:text-sage transition-colors">
+                  Career Compass
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-secondary-900 mb-4">
-              Data Sources
+            <h3 className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-4">
+              About
             </h3>
-            <ul className="space-y-2 text-sm text-secondary-600">
+            <ul className="space-y-2 text-sm text-ds-slate-light">
               <li>
-                <a
-                  href="https://www.careeronestop.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-secondary-900"
-                >
-                  CareerOneStop (DOL)
+                <a href="/methodology" className="hover:text-sage transition-colors">
+                  Our Methodology
+                </a>
+              </li>
+              <li>
+                <a href="/contribute" className="hover:text-sage transition-colors">
+                  Contribute
                 </a>
               </li>
               <li>
@@ -113,9 +111,9 @@ function Footer() {
                   href="https://www.bls.gov/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-secondary-900"
+                  className="hover:text-sage transition-colors"
                 >
-                  Bureau of Labor Statistics
+                  BLS Data
                 </a>
               </li>
               <li>
@@ -123,15 +121,15 @@ function Footer() {
                   href="https://www.onetonline.org/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-secondary-900"
+                  className="hover:text-sage transition-colors"
                 >
-                  O*NET OnLine
+                  O*NET
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-secondary-200 mt-8 pt-8 text-sm text-secondary-500 text-center">
+        <div className="border-t border-sage-muted mt-8 pt-8 text-sm text-ds-slate-muted text-center">
           <p>
             Data provided by U.S. Department of Labor. This site is not
             affiliated with the federal government.

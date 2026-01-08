@@ -36,8 +36,6 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTrainingTimes, setSelectedTrainingTimes] = useState<TrainingTime[]>([]);
   const [selectedAIResilience, setSelectedAIResilience] = useState<AIResilienceClassification[]>([]);
-  // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
-  // const [minImportance, setMinImportance] = useState(1);
 
   // Sort state
   const [sortField, setSortField] = useState<SortField>("median_pay");
@@ -87,9 +85,6 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         }
       }
 
-      // ARCHIVED: importance filter removed - see data/archived/importance-scores-backup.json
-      // if (career.importance < minImportance) return false;
-
       return true;
     });
 
@@ -107,10 +102,6 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
           const tierB = b.ai_resilience_tier ?? 99;
           comparison = tierA - tierB;
           break;
-        // ARCHIVED: importance sort removed - see data/archived/importance-scores-backup.json
-        // case "importance":
-        //   comparison = a.importance - b.importance;
-        //   break;
         case "title":
           comparison = a.title.localeCompare(b.title);
           break;
@@ -199,7 +190,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
   return (
     <div>
       {/* Compact Filter Bar */}
-      <div className="card p-3 mb-6">
+      <div className="card-warm p-3 mb-6">
         {/* Mobile: Search + Filters toggle */}
         <div className="flex items-center gap-2 md:hidden">
           <div className="flex-1">
@@ -211,15 +202,15 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              className="w-full px-3 py-2 text-base border border-sage-muted rounded-lg focus:ring-2 focus:ring-sage focus:border-sage outline-none bg-warm-white"
             />
           </div>
           <button
             onClick={() => setFiltersExpanded(!filtersExpanded)}
             className={`flex items-center gap-1 px-3 py-2 min-h-[44px] text-sm font-medium rounded-lg border transition-colors ${
               activeFilterCount > 0
-                ? "bg-primary-100 text-primary-700 border-primary-300"
-                : "bg-white text-secondary-700 border-secondary-300"
+                ? "bg-sage-muted text-sage border-sage"
+                : "bg-warm-white text-ds-slate-light border-sage-muted"
             }`}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,17 +225,17 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
         {/* Mobile: Expandable filter panel */}
         {filtersExpanded && (
-          <div className="mt-3 pt-3 border-t border-secondary-200 space-y-3 md:hidden">
+          <div className="mt-3 pt-3 border-t border-sage-muted space-y-3 md:hidden">
             {/* Min Pay */}
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-secondary-700">Min Pay</label>
+              <label className="text-sm font-medium text-ds-slate-light">Min Pay</label>
               <select
                 value={minPay}
                 onChange={(e) => {
                   setMinPay(Number(e.target.value));
                   setCurrentPage(1);
                 }}
-                className="px-3 py-2 text-base border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white min-h-[44px]"
+                className="px-3 py-2 text-base border border-sage-muted rounded-lg focus:ring-2 focus:ring-sage focus:border-sage outline-none bg-warm-white min-h-[44px]"
               >
                 <option value={0}>Any</option>
                 <option value={30000}>$30k+</option>
@@ -257,7 +248,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
             {/* AI Resilience Filter */}
             <div>
-              <label className="text-sm font-medium text-secondary-700 block mb-2">AI Resilience</label>
+              <label className="text-sm font-medium text-ds-slate-light block mb-2">AI Resilience</label>
               <div className="flex flex-wrap gap-2">
                 {AI_RESILIENCE_TIERS.map((tier) => (
                   <button
@@ -265,8 +256,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     onClick={() => toggleAIResilience(tier)}
                     className={`px-3 py-2 min-h-[44px] text-sm rounded-lg border transition-colors flex items-center gap-1 ${
                       selectedAIResilience.includes(tier)
-                        ? "bg-primary-600 text-white border-primary-600"
-                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                        ? "bg-sage text-white border-sage"
+                        : "bg-warm-white text-ds-slate-light border-sage-muted active:bg-sage-muted"
                     }`}
                   >
                     <span>{getAIResilienceEmoji(tier)}</span>
@@ -278,7 +269,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
             {/* Training Time */}
             <div>
-              <label className="text-sm font-medium text-secondary-700 block mb-2">Training Time</label>
+              <label className="text-sm font-medium text-ds-slate-light block mb-2">Training Time</label>
               <div className="flex flex-wrap gap-2">
                 {TRAINING_TIME_ORDER.map((time) => (
                   <button
@@ -286,8 +277,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     onClick={() => toggleTrainingTime(time)}
                     className={`px-4 py-2 min-h-[44px] text-sm rounded-lg border transition-colors ${
                       selectedTrainingTimes.includes(time)
-                        ? "bg-primary-600 text-white border-primary-600"
-                        : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                        ? "bg-sage text-white border-sage"
+                        : "bg-warm-white text-ds-slate-light border-sage-muted active:bg-sage-muted"
                     }`}
                   >
                     {time}
@@ -299,7 +290,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
             {/* Category Filter on mobile */}
             {!hideCategoryFilter && (
               <div>
-                <label className="text-sm font-medium text-secondary-700 block mb-2">Category</label>
+                <label className="text-sm font-medium text-ds-slate-light block mb-2">Category</label>
                 <div className="flex flex-wrap gap-2">
                   {categories.map((category) => (
                     <button
@@ -307,8 +298,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                       onClick={() => toggleCategory(category)}
                       className={`px-3 py-2 min-h-[44px] text-sm rounded-full border transition-colors whitespace-nowrap ${
                         selectedCategories.includes(category)
-                          ? "bg-primary-600 text-white border-primary-600"
-                          : "bg-white text-secondary-600 border-secondary-300 active:bg-secondary-100"
+                          ? "bg-sage text-white border-sage"
+                          : "bg-warm-white text-ds-slate-light border-sage-muted active:bg-sage-muted"
                       }`}
                     >
                       {getCategoryLabel(category)}
@@ -325,7 +316,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   clearFilters();
                   setFiltersExpanded(false);
                 }}
-                className="w-full py-2 min-h-[44px] text-sm font-medium text-primary-600 border border-primary-300 rounded-lg active:bg-primary-50"
+                className="w-full py-2 min-h-[44px] text-sm font-medium text-sage border border-sage rounded-lg active:bg-sage-muted"
               >
                 Clear All Filters
               </button>
@@ -345,13 +336,13 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full px-3 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              className="w-full px-3 py-1.5 text-sm border border-sage-muted rounded-lg focus:ring-2 focus:ring-sage focus:border-sage outline-none bg-warm-white"
             />
           </div>
 
           {/* Min Pay */}
           <div className="flex items-center gap-2">
-            <label className="text-xs font-medium text-secondary-600 whitespace-nowrap">
+            <label className="text-xs font-medium text-ds-slate-light whitespace-nowrap">
               Pay ≥
             </label>
             <select
@@ -360,7 +351,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 setMinPay(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="px-2 py-1.5 text-sm border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
+              className="px-2 py-1.5 text-sm border border-sage-muted rounded-lg focus:ring-2 focus:ring-sage focus:border-sage outline-none bg-warm-white"
             >
               <option value={0}>Any</option>
               <option value={30000}>$30k</option>
@@ -373,7 +364,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
           {/* AI Resilience Filter */}
           <div className="flex items-center gap-1">
-            <span className="text-xs font-medium text-secondary-600 mr-1">AI:</span>
+            <span className="text-xs font-medium text-ds-slate-light mr-1">AI:</span>
             {AI_RESILIENCE_TIERS.map((tier) => (
               <button
                 key={tier}
@@ -381,16 +372,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 title={tier}
                 className={`px-1.5 py-1 text-sm rounded border transition-colors ${
                   selectedAIResilience.includes(tier)
-                    ? "bg-primary-600 border-primary-600"
-                    : "bg-white border-secondary-300 hover:border-primary-300"
+                    ? "bg-sage border-sage"
+                    : "bg-warm-white border-sage-muted hover:border-sage"
                 }`}
               >
                 {getAIResilienceEmoji(tier)}
               </button>
             ))}
           </div>
-
-          {/* ARCHIVED: Min Importance filter removed - see data/archived/importance-scores-backup.json */}
 
           {/* Training Time */}
           <div className="flex items-center gap-1">
@@ -400,8 +389,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 onClick={() => toggleTrainingTime(time)}
                 className={`px-2 py-1 text-xs rounded border transition-colors ${
                   selectedTrainingTimes.includes(time)
-                    ? "bg-primary-600 text-white border-primary-600"
-                    : "bg-white text-secondary-600 border-secondary-300 hover:border-primary-300"
+                    ? "bg-sage text-white border-sage"
+                    : "bg-warm-white text-ds-slate-light border-sage-muted hover:border-sage"
                 }`}
               >
                 {time}
@@ -413,7 +402,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
-              className="text-xs text-primary-600 hover:text-primary-700 whitespace-nowrap"
+              className="text-xs text-sage hover:text-sage-dark whitespace-nowrap"
             >
               Clear
             </button>
@@ -422,16 +411,16 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
         {/* Category Filter - shown on second row for desktop when not hidden */}
         {!hideCategoryFilter && (
-          <div className="hidden md:flex md:flex-wrap md:items-center md:gap-2 md:mt-3 md:pt-3 md:border-t md:border-secondary-200">
-            <span className="text-xs font-medium text-secondary-600">Category:</span>
+          <div className="hidden md:flex md:flex-wrap md:items-center md:gap-2 md:mt-3 md:pt-3 md:border-t md:border-sage-muted">
+            <span className="text-xs font-medium text-ds-slate-light">Category:</span>
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => toggleCategory(category)}
                 className={`px-2 py-0.5 text-xs rounded-full border transition-colors whitespace-nowrap ${
                   selectedCategories.includes(category)
-                    ? "bg-primary-600 text-white border-primary-600"
-                    : "bg-white text-secondary-600 border-secondary-300 hover:border-primary-300"
+                    ? "bg-sage text-white border-sage"
+                    : "bg-warm-white text-ds-slate-light border-sage-muted hover:border-sage"
                 }`}
               >
                 {getCategoryLabel(category)}
@@ -443,15 +432,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
 
       {/* Results count and sort */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-        <p className="text-sm text-secondary-600">
+        <p className="text-sm text-ds-slate-light">
           Showing {paginatedCareers.length} of {filteredCareers.length} careers
           {filteredCareers.length !== careers.length && ` (${careers.length} total)`}
         </p>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-secondary-600">Sort by:</span>
+          <span className="text-sm text-ds-slate-light">Sort by:</span>
           <div className="flex gap-1">
             {[
-              // ARCHIVED: { field: "importance" as const, label: "Importance" },
               { field: "median_pay" as const, label: "Pay" },
               { field: "ai_resilience" as const, label: "AI Resilience" },
               { field: "title" as const, label: "A-Z" },
@@ -461,8 +449,8 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 onClick={() => handleSort(field)}
                 className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                   sortField === field
-                    ? "bg-primary-600 text-white border-primary-600"
-                    : "bg-white text-secondary-700 border-secondary-300 hover:border-primary-300"
+                    ? "bg-sage text-white border-sage"
+                    : "bg-warm-white text-ds-slate-light border-sage-muted hover:border-sage"
                 }`}
               >
                 {label}
@@ -476,35 +464,34 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
       </div>
 
       {/* Desktop Table View */}
-      <div className="hidden lg:block card overflow-hidden">
+      <div className="hidden lg:block card-warm overflow-hidden">
         <table className="w-full">
-          <thead className="bg-secondary-50 border-b border-secondary-200">
+          <thead className="bg-sage text-white">
             <tr>
-              <th className="text-left px-4 py-3 text-sm font-semibold text-secondary-900">
+              <th className="text-left px-4 py-3 text-sm font-semibold">
                 Career
               </th>
-              <th className="text-left px-4 py-3 text-sm font-semibold text-secondary-900">
+              <th className="text-left px-4 py-3 text-sm font-semibold">
                 Category
               </th>
-              <th className="text-right px-4 py-3 text-sm font-semibold text-secondary-900">
+              <th className="text-right px-4 py-3 text-sm font-semibold">
                 Median Pay
               </th>
-              <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
+              <th className="text-center px-4 py-3 text-sm font-semibold">
                 Training
               </th>
-              <th className="text-center px-4 py-3 text-sm font-semibold text-secondary-900">
+              <th className="text-center px-4 py-3 text-sm font-semibold">
                 AI Resilience
               </th>
-              {/* ARCHIVED: Importance column removed - see data/archived/importance-scores-backup.json */}
             </tr>
           </thead>
-          <tbody className="divide-y divide-secondary-100">
+          <tbody className="divide-y divide-sage-muted">
             {paginatedCareers.map((career) => (
-              <tr key={career.slug} className="hover:bg-secondary-50 transition-colors">
+              <tr key={career.slug} className="hover:bg-sage-pale transition-colors">
                 <td className="px-4 py-3">
                   <a
                     href={`/careers/${career.slug}`}
-                    className="text-primary-600 hover:text-primary-700 font-medium hover:underline"
+                    className="text-sage hover:text-sage-dark font-medium hover:underline"
                   >
                     {career.title}
                   </a>
@@ -517,11 +504,11 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     {getCategoryLabel(career.category)}
                   </a>
                 </td>
-                <td className="px-4 py-3 text-right font-medium text-secondary-900">
+                <td className="px-4 py-3 text-right font-medium text-ds-slate">
                   {formatPay(career.median_pay)}
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <span className="text-sm text-secondary-600">
+                  <span className="text-sm text-ds-slate-light">
                     {career.training_time === "4+yr" && career.training_years
                       ? (career.training_years.min === career.training_years.max
                           ? `${career.training_years.min} years`
@@ -540,14 +527,13 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     </span>
                   )}
                 </td>
-                {/* ARCHIVED: Importance cell removed - see data/archived/importance-scores-backup.json */}
               </tr>
             ))}
           </tbody>
         </table>
 
         {paginatedCareers.length === 0 && (
-          <div className="text-center py-12 text-secondary-500">
+          <div className="text-center py-12 text-ds-slate-muted">
             No careers match your filters. Try adjusting your criteria.
           </div>
         )}
@@ -558,14 +544,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         {paginatedCareers.map((career) => (
           <div
             key={career.slug}
-            className="card p-4 block hover:shadow-md transition-shadow"
+            className="card-warm p-4 block hover:shadow-md transition-shadow"
           >
             <div className="flex justify-between items-start mb-2">
               <div>
-                <h3 className="font-semibold text-secondary-900">
+                <h3 className="font-semibold text-ds-slate">
                   <a
                     href={`/careers/${career.slug}`}
-                    className="text-primary-600 hover:text-primary-700 hover:underline"
+                    className="text-sage hover:text-sage-dark hover:underline"
                   >
                     {career.title}
                   </a>
@@ -579,7 +565,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               </div>
               <a
                 href={`/careers/${career.slug}`}
-                className="text-lg font-bold text-primary-600 hover:text-primary-700"
+                className="text-lg font-bold text-sage hover:text-sage-dark"
               >
                 {formatPay(career.median_pay)}
               </a>
@@ -588,10 +574,10 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               href={`/careers/${career.slug}`}
               className="flex flex-wrap gap-2 mt-3"
             >
-              <span className="text-sm text-secondary-600">
+              <span className="text-sm text-ds-slate-light">
                 {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
               </span>
-              <span className="text-secondary-300">•</span>
+              <span className="text-ds-slate-muted">•</span>
               {career.ai_resilience && (
                 <span
                   className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.ai_resilience as AIResilienceClassification)}`}
@@ -605,7 +591,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
         ))}
 
         {paginatedCareers.length === 0 && (
-          <div className="card p-8 text-center text-secondary-500">
+          <div className="card-warm p-8 text-center text-ds-slate-muted">
             No careers match your filters. Try adjusting your criteria.
           </div>
         )}
@@ -617,17 +603,17 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-2 text-sm border rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-secondary-50"
+            className="px-3 py-2 text-sm border border-sage-muted rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-sage-pale"
           >
             Previous
           </button>
-          <span className="text-sm text-secondary-600">
+          <span className="text-sm text-ds-slate-light">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-2 text-sm border rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-secondary-50"
+            className="px-3 py-2 text-sm border border-sage-muted rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-sage-pale"
           >
             Next
           </button>
