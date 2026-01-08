@@ -9,8 +9,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { matchCareers, CareerMatch, UserProfile, UserPreferences, TimelineBucket, MatchingModel } from '@/lib/compass/matching-engine';
-import { ParsedResume, EducationLevel } from '@/lib/compass/resume-parser';
+import { matchCareers, CareerMatch, UserProfile, TrainingWillingness, MatchingModel } from '@/lib/compass/matching-engine';
+import { EducationLevel } from '@/lib/compass/resume-parser';
 
 // Request validation schema
 const educationLevelSchema = z.enum([
@@ -35,20 +35,20 @@ const profileSchema = z.object({
 });
 
 const preferencesSchema = z.object({
-  careerGoals: z.string().min(10, 'Career goals must be at least 10 characters'),
-  skillsToDevelop: z.string().min(10, 'Skills to develop must be at least 10 characters'),
-  workEnvironment: z.string().min(10, 'Work environment must be at least 10 characters'),
-  salaryExpectations: z.string().min(5, 'Salary expectations must be at least 5 characters'),
-  industryInterests: z.string().min(5, 'Industry interests must be at least 5 characters'),
-  // Structured selections from wizard (optional but improves matching)
-  priorityIds: z.array(z.string()).optional(),
-  environmentIds: z.array(z.string()).optional(),
-  industryIds: z.array(z.string()).optional(),
+  // New structured selections from wizard
+  trainingWillingness: z.enum(['minimal', 'short-term', 'medium', 'significant']),
+  educationLevel: z.enum(['high-school', 'some-college', 'bachelors', 'masters-plus']),
+  workBackground: z.array(z.string()),
+  salaryTarget: z.enum(['under-40k', '40-60k', '60-80k', '80-100k', '100k-plus']),
+  workStyle: z.array(z.string()),
+  // Legacy fields for backward compatibility
+  careerGoals: z.string().optional(),
+  workEnvironment: z.string().optional(),
   additionalContext: z.string().optional()
 });
 
-// Timeline bucket schema for filtering by career timeline
-const timelineBucketSchema = z.enum(['asap', '6-24-months', '2-4-years', '4-plus-years', 'flexible']);
+// Training willingness schema for filtering
+const trainingWillingnessSchema = z.enum(['minimal', 'short-term', 'medium', 'significant']);
 
 // Matching model schema for routing between full LLM and lightweight modes
 const matchingModelSchema = z.enum(['model-a', 'model-b']);
@@ -58,7 +58,7 @@ const recommendRequestSchema = z.object({
   preferences: preferencesSchema,
   options: z.object({
     useSupabase: z.boolean().optional(),
-    timelineBucket: timelineBucketSchema.optional(),
+    trainingWillingness: trainingWillingnessSchema.optional(),
     model: matchingModelSchema.optional()
   }).optional()
 });
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     // Check for minimum profile data
     // Note: Model B (no resume) only requires preferences, not skills
     const hasProfileData = profile.skills.length > 0 || profile.jobTitles.length > 0;
-    const hasPreferences = preferences.careerGoals.length > 0 || preferences.industryInterests.length > 0;
+    const hasPreferences = preferences.workBackground.length > 0 || preferences.workStyle.length > 0;
 
     if (!hasProfileData && !hasPreferences) {
       return NextResponse.json(
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
           success: false,
           error: {
             code: 'INSUFFICIENT_DATA',
-            message: 'Please provide either profile information (skills, job titles) or preferences (career goals, interests)'
+            message: 'Please provide either profile information (skills, job titles) or preferences (work background, work style)'
           }
         },
         { status: 400 }
@@ -148,12 +148,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     // Use client-specified model, fallback to model-b if not provided
     // Client determines model based on resume presence (>= 100 chars = model-a)
     const model = options?.model ?? 'model-b';
-    const timelineBucket = options?.timelineBucket || 'flexible';
+    const trainingWillingness = options?.trainingWillingness || preferences.trainingWillingness || 'open';
 
     console.log('\n🎯 Career Recommendation Request');
     console.log(`  Model (from client): ${options?.model ?? 'not specified'}`);
     console.log(`  Model (resolved): ${model}`);
-    console.log(`  Timeline: ${timelineBucket}`);
+    console.log(`  Training willingness: ${trainingWillingness}`);
     console.log(`  Skills: ${profile.skills.length}`);
     console.log(`  Experience: ${profile.experienceYears} years`);
     console.log(`  Education: ${profile.education.level}`);
@@ -172,23 +172,22 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
         confidence: 0.9 // From API, so assumed good data
       },
       preferences: {
+        trainingWillingness: preferences.trainingWillingness,
+        educationLevel: preferences.educationLevel,
+        workBackground: preferences.workBackground,
+        salaryTarget: preferences.salaryTarget,
+        workStyle: preferences.workStyle,
+        // Legacy fields for backward compatibility
         careerGoals: preferences.careerGoals,
-        skillsToDevelop: preferences.skillsToDevelop,
         workEnvironment: preferences.workEnvironment,
-        salaryExpectations: preferences.salaryExpectations,
-        industryInterests: preferences.industryInterests,
-        // Pass structured selections for improved LLM reasoning
-        priorityIds: preferences.priorityIds,
-        environmentIds: preferences.environmentIds,
-        industryIds: preferences.industryIds,
         additionalContext: preferences.additionalContext
       }
     };
 
-    // Run matching algorithm with timeline filter and model selection
+    // Run matching algorithm with training filter and model selection
     const result = await matchCareers(userProfile, {
       useSupabase: options?.useSupabase ?? true,
-      timelineBucket: timelineBucket as TimelineBucket,
+      trainingWillingness: trainingWillingness as TrainingWillingness,
       model: model as MatchingModel
     });
 
