@@ -281,14 +281,14 @@ function CompareContent() {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          <h1 className="font-display text-3xl md:text-4xl font-semibold text-ds-slate mb-4">
             Compare Career Paths
           </h1>
-          <p className="text-lg text-secondary-600 max-w-2xl">
+          <p className="text-lg text-ds-slate-light max-w-2xl">
             Visualize 1 to 3 careers to see their lifetime earnings trajectory, including education costs and career progression.
           </p>
         </div>
@@ -296,8 +296,8 @@ function CompareContent() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Career Selection */}
-        <div className="card p-6 mb-8">
-          <h2 className="text-xl font-bold text-secondary-900 mb-4">Select Careers to Compare</h2>
+        <div className="card-warm p-6 mb-8">
+          <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Select Careers to Compare</h2>
 
           <div className="flex flex-wrap gap-3 mb-4">
             {selectedCareers.map((career, index) => (
@@ -307,20 +307,20 @@ function CompareContent() {
               >
                 <a
                   href={`/careers/${career.slug}`}
-                  className="font-medium text-primary-600 hover:text-primary-700 hover:underline"
+                  className="font-medium text-sage hover:text-sage-dark hover:underline"
                 >
                   {career.title}
                 </a>
                 <a
                   href={`/calculator?career=${career.slug}`}
-                  className="text-xs text-secondary-500 hover:text-primary-600"
+                  className="text-xs text-ds-slate-muted hover:text-sage"
                   title="Calculate earnings"
                 >
                   📊
                 </a>
                 <button
                   onClick={() => removeCareer(career.slug)}
-                  className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-secondary-400 hover:text-secondary-600 active:bg-secondary-200 rounded-full text-xl leading-none -mr-2"
+                  className="w-8 h-8 min-w-[44px] min-h-[44px] flex items-center justify-center text-ds-slate-muted hover:text-ds-slate-light active:bg-sage-muted rounded-full text-xl leading-none -mr-2"
                   aria-label={`Remove ${career.title}`}
                 >
                   &times;
@@ -332,19 +332,19 @@ function CompareContent() {
               <div className="relative">
                 <button
                   onClick={() => setShowSearch(true)}
-                  className="px-4 py-3 min-h-[44px] border-2 border-dashed border-secondary-300 rounded-lg text-secondary-500 hover:border-primary-400 hover:text-primary-600 active:bg-secondary-50 transition-colors"
+                  className="px-4 py-3 min-h-[44px] border-2 border-dashed border-sage-muted rounded-lg text-ds-slate-muted hover:border-sage hover:text-sage active:bg-sage-pale transition-colors"
                 >
                   + Add Career ({3 - selectedSlugs.length} remaining)
                 </button>
 
                 {showSearch && (
-                  <div className="absolute top-full left-0 right-0 md:right-auto mt-2 w-full md:w-80 bg-white rounded-lg shadow-lg border border-secondary-200 z-10">
+                  <div className="absolute top-full left-0 right-0 md:right-auto mt-2 w-full md:w-80 bg-warm-white rounded-lg shadow-lg border border-sage-muted z-10">
                     <input
                       type="text"
                       placeholder="Search careers..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full px-4 py-3 text-base border-b border-secondary-200 rounded-t-lg focus:outline-none"
+                      className="w-full px-4 py-3 text-base border-b border-sage-muted rounded-t-lg focus:outline-none"
                       autoFocus
                     />
                     <div className="max-h-60 overflow-y-auto">
@@ -353,18 +353,18 @@ function CompareContent() {
                           key={career.slug}
                           onClick={() => addCareer(career.slug)}
                           disabled={selectedSlugs.includes(career.slug)}
-                          className={`w-full px-4 py-3 min-h-[44px] text-left hover:bg-secondary-50 active:bg-secondary-100 ${
+                          className={`w-full px-4 py-3 min-h-[44px] text-left hover:bg-sage-pale active:bg-sage-muted ${
                             selectedSlugs.includes(career.slug) ? 'opacity-50 cursor-not-allowed' : ''
                           }`}
                         >
-                          <div className="font-medium text-secondary-900">{career.title}</div>
-                          <div className="text-sm text-secondary-500">{career.category} - {formatPay(career.median_pay)}</div>
+                          <div className="font-medium text-ds-slate">{career.title}</div>
+                          <div className="text-sm text-ds-slate-muted">{career.category} - {formatPay(career.median_pay)}</div>
                         </button>
                       ))}
                     </div>
                     <button
                       onClick={() => setShowSearch(false)}
-                      className="w-full px-4 py-3 min-h-[44px] text-sm text-secondary-500 border-t border-secondary-200 hover:bg-secondary-50 active:bg-secondary-100"
+                      className="w-full px-4 py-3 min-h-[44px] text-sm text-ds-slate-muted border-t border-sage-muted hover:bg-sage-pale active:bg-sage-muted"
                     >
                       Cancel
                     </button>
@@ -377,9 +377,9 @@ function CompareContent() {
 
         {/* Education Cost Settings */}
         {selectedCareers.length > 0 && (
-          <div className="card p-6 mb-8">
-            <h2 className="text-lg font-bold text-secondary-900 mb-2">Education Cost Settings</h2>
-            <p className="text-sm text-secondary-500 mb-4">
+          <div className="card-warm p-6 mb-8">
+            <h2 className="font-display text-lg font-semibold text-ds-slate mb-2">Education Cost Settings</h2>
+            <p className="text-sm text-ds-slate-muted mb-4">
               Default uses average of public and private school costs.
               Select specific institution types for more accurate estimates.
             </p>
@@ -406,16 +406,16 @@ function CompareContent() {
 
                           return (
                             <div key={stageIdx}>
-                              <div className="text-xs text-secondary-600 mb-1">{stage.item}</div>
+                              <div className="text-xs text-ds-slate-light mb-1">{stage.item}</div>
                               {isLocked ? (
-                                <div className="text-sm font-medium text-green-600 bg-white rounded px-2 py-1">
+                                <div className="text-sm font-medium text-green-600 bg-warm-white rounded px-2 py-1">
                                   {selectedOption.label} - {selectedOption.cost === 0 ? '$0 (paid training)' : formatPay(selectedOption.cost)}
                                 </div>
                               ) : (
                                 <select
                                   value={selectedValue}
                                   onChange={(e) => updateInstitutionType(career.slug, stageIdx, e.target.value)}
-                                  className="w-full text-sm border border-secondary-300 rounded px-2 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                  className="w-full text-sm border border-sage-muted rounded px-2 py-1.5 bg-warm-white focus:outline-none focus:ring-2 focus:ring-sage"
                                 >
                                   {options.map(option => (
                                     <option key={option.value} value={option.value}>
@@ -427,17 +427,17 @@ function CompareContent() {
                             </div>
                           );
                         })}
-                        <div className="pt-2 border-t border-secondary-200">
-                          <div className="text-xs text-secondary-500">Total Education Cost</div>
-                          <div className="font-bold text-secondary-900">
+                        <div className="pt-2 border-t border-sage-muted">
+                          <div className="text-xs text-ds-slate-muted">Total Education Cost</div>
+                          <div className="font-bold text-ds-slate">
                             {formatPay(careerPaths.find(p => p.career.slug === career.slug)?.educationCost || 0)}
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="text-sm text-secondary-600">
+                      <div className="text-sm text-ds-slate-light">
                         <div className="font-medium">{formatPay(career.education?.estimated_cost?.typical_cost || 0)}</div>
-                        <div className="text-xs text-secondary-500 mt-1">No breakdown available</div>
+                        <div className="text-xs text-ds-slate-muted mt-1">No breakdown available</div>
                       </div>
                     )}
                   </div>
@@ -450,11 +450,11 @@ function CompareContent() {
         {selectedCareers.length >= 1 && (
           <>
             {/* Career Path Timeline */}
-            <div className="card p-6 mb-8">
-              <h2 className="text-xl font-bold text-secondary-900 mb-2">
+            <div className="card-warm p-6 mb-8">
+              <h2 className="font-display text-xl font-semibold text-ds-slate mb-2">
                 {selectedCareers.length === 1 ? 'Career Path Visualization' : 'Career Path Comparison'}
               </h2>
-              <p className="text-sm text-secondary-600 mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
+              <p className="text-sm text-ds-slate-light mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
 
               <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
                 {careerPaths.map((path, pathIndex) => (
@@ -463,7 +463,7 @@ function CompareContent() {
                     <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border}`}>
                       <a
                         href={`/careers/${path.career.slug}`}
-                        className="font-bold text-primary-600 hover:text-primary-700 hover:underline text-sm"
+                        className="font-bold text-sage hover:text-sage-dark hover:underline text-sm"
                       >
                         {path.career.title}
                       </a>
@@ -473,28 +473,28 @@ function CompareContent() {
                     </div>
 
                     {/* Stages */}
-                    <div className="border-x-2 border-b-2 border-secondary-200 rounded-b-lg overflow-hidden">
+                    <div className="border-x-2 border-b-2 border-sage-muted rounded-b-lg overflow-hidden">
                       {path.stages.map((stage, stageIndex) => (
                         <div
                           key={stageIndex}
-                          className={`p-3 border-b border-secondary-100 last:border-b-0 ${
+                          className={`p-3 border-b border-sage-muted last:border-b-0 ${
                             stage.type === 'education' ? 'bg-amber-50' :
-                            stage.type === 'retirement' ? 'bg-secondary-100' :
-                            stageIndex % 2 === 0 ? 'bg-white' : 'bg-secondary-50'
+                            stage.type === 'retirement' ? 'bg-sage-muted' :
+                            stageIndex % 2 === 0 ? 'bg-warm-white' : 'bg-sage-pale'
                           }`}
                         >
                           <div className="flex justify-between items-start mb-1">
                             <div>
-                              <div className="text-xs text-secondary-500">
+                              <div className="text-xs text-ds-slate-muted">
                                 {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
                               </div>
-                              <div className="font-medium text-sm text-secondary-900">
+                              <div className="font-medium text-sm text-ds-slate">
                                 {stage.type === 'education' ? stage.label :
                                  stage.type === 'retirement' ? 'Retirement' :
                                  stage.label}
                               </div>
                               {stage.levelName && stage.type === 'career' && (
-                                <div className="text-xs text-secondary-500">{stage.levelName}</div>
+                                <div className="text-xs text-ds-slate-muted">{stage.levelName}</div>
                               )}
                             </div>
                             <div className="text-right">
@@ -510,15 +510,15 @@ function CompareContent() {
                             </div>
                           </div>
                           {stage.type !== 'retirement' && (
-                            <div className="text-xs text-secondary-500 mt-1">
+                            <div className="text-xs text-ds-slate-muted mt-1">
                               Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-red-600'}>
                                 {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
                               </span>
                             </div>
                           )}
                           {stage.type === 'retirement' && (
-                            <div className="mt-2 p-2 bg-white rounded border border-secondary-200">
-                              <div className="text-xs text-secondary-600">Total Lifetime Net</div>
+                            <div className="mt-2 p-2 bg-warm-white rounded border border-sage-muted">
+                              <div className="text-xs text-ds-slate-light">Total Lifetime Net</div>
                               <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                                 {formatPay(path.totalEarnings)}
                               </div>
@@ -535,23 +535,23 @@ function CompareContent() {
               <div className="flex justify-center gap-6 mt-4 text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
-                  <span className="text-secondary-600">Education (Cost)</span>
+                  <span className="text-ds-slate-light">Education (Cost)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-white border border-secondary-200 rounded" />
-                  <span className="text-secondary-600">Career (Earnings)</span>
+                  <div className="w-4 h-4 bg-warm-white border border-sage-muted rounded" />
+                  <span className="text-ds-slate-light">Career (Earnings)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-secondary-100 border border-secondary-200 rounded" />
-                  <span className="text-secondary-600">Retirement</span>
+                  <div className="w-4 h-4 bg-sage-muted border border-sage-muted rounded" />
+                  <span className="text-ds-slate-light">Retirement</span>
                 </div>
               </div>
             </div>
 
             {/* Summary Comparison Table */}
-            <div className="card overflow-hidden mb-8">
+            <div className="card-warm overflow-hidden mb-8">
               {/* Mobile scroll hint */}
-              <div className="md:hidden px-4 py-2 bg-secondary-100 text-xs text-secondary-600 flex items-center gap-2">
+              <div className="md:hidden px-4 py-2 bg-sage-muted text-xs text-ds-slate-light flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
@@ -559,14 +559,14 @@ function CompareContent() {
               </div>
               <div className="relative">
                 {/* Left fade */}
-                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent pointer-events-none z-10 md:hidden" />
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-warm-white to-transparent pointer-events-none z-10 md:hidden" />
                 {/* Right fade */}
-                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 md:hidden" />
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-warm-white to-transparent pointer-events-none z-10 md:hidden" />
                 <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-secondary-50">
+                  <thead className="bg-sage-pale">
                     <tr>
-                      <th className="text-left px-4 py-3 text-sm font-semibold text-secondary-700 w-40">
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-ds-slate-light w-40">
                         Metric
                       </th>
                       {selectedCareers.map((career, index) => (
@@ -576,7 +576,7 @@ function CompareContent() {
                         >
                           <a
                             href={`/careers/${career.slug}`}
-                            className="text-primary-600 hover:underline font-semibold"
+                            className="text-sage hover:underline font-semibold"
                           >
                             {career.title}
                           </a>
@@ -587,7 +587,7 @@ function CompareContent() {
                   <tbody className="divide-y divide-secondary-100">
                     {/* Education Cost */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">Education Cost</td>
+                      <td className="px-4 py-4 font-medium text-ds-slate">Education Cost</td>
                       {careerPaths.map((path, index) => (
                         <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
                           <div className="text-xl font-bold text-red-600">
@@ -599,7 +599,7 @@ function CompareContent() {
 
                     {/* Education Duration */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">Education Time</td>
+                      <td className="px-4 py-4 font-medium text-ds-slate">Education Time</td>
                       {selectedCareers.map((career, index) => {
                         // Use education_duration (ground truth) if available
                         const years = career.education?.education_duration || career.education?.time_to_job_ready;
@@ -608,7 +608,7 @@ function CompareContent() {
                             <div className="font-semibold">
                               {years ? `${years.min_years}-${years.max_years} years` : 'Varies'}
                             </div>
-                            <div className="text-xs text-secondary-500">
+                            <div className="text-xs text-ds-slate-muted">
                               {career.education?.typical_entry_education}
                             </div>
                           </td>
@@ -618,10 +618,10 @@ function CompareContent() {
 
                     {/* Median Pay */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">Median Pay</td>
+                      <td className="px-4 py-4 font-medium text-ds-slate">Median Pay</td>
                       {selectedCareers.map((career, index) => (
                         <td key={career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                          <div className="text-xl font-bold text-primary-600">
+                          <div className="text-xl font-bold text-sage">
                             {formatPay(career.wages?.annual?.median || 0)}
                           </div>
                         </td>
@@ -630,9 +630,9 @@ function CompareContent() {
 
                     {/* 10-Year Net Earnings */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">
+                      <td className="px-4 py-4 font-medium text-ds-slate">
                         10-Year Net
-                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                        <div className="text-xs text-ds-slate-muted font-normal">After education costs</div>
                       </td>
                       {careerPaths.map((path, index) => {
                         const timeline = path.career.career_progression?.timeline || [];
@@ -652,9 +652,9 @@ function CompareContent() {
 
                     {/* 20-Year Net Earnings */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">
+                      <td className="px-4 py-4 font-medium text-ds-slate">
                         20-Year Net
-                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                        <div className="text-xs text-ds-slate-muted font-normal">After education costs</div>
                       </td>
                       {careerPaths.map((path, index) => {
                         const timeline = path.career.career_progression?.timeline || [];
@@ -672,9 +672,9 @@ function CompareContent() {
 
                     {/* Lifetime Net */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">
+                      <td className="px-4 py-4 font-medium text-ds-slate">
                         Lifetime Net (to 65)
-                        <div className="text-xs text-secondary-500 font-normal">After education costs</div>
+                        <div className="text-xs text-ds-slate-muted font-normal">After education costs</div>
                       </td>
                       {careerPaths.map((path, index) => (
                         <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
@@ -687,7 +687,7 @@ function CompareContent() {
 
                     {/* AI Resilience */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-secondary-900">AI Resilience</td>
+                      <td className="px-4 py-4 font-medium text-ds-slate">AI Resilience</td>
                       {selectedCareers.map((career, index) => {
                         const classification = career.ai_resilience as AIResilienceClassification | undefined;
                         return (
@@ -714,8 +714,8 @@ function CompareContent() {
 
             {/* Key Insights - only show when comparing 2+ careers */}
             {selectedCareers.length >= 2 && (
-            <div className="card p-6">
-              <h2 className="text-xl font-bold text-secondary-900 mb-4">Key Insights</h2>
+            <div className="card-warm p-6">
+              <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Key Insights</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Highest Lifetime Earnings */}
                 <div className="bg-green-50 rounded-lg p-4">
@@ -813,10 +813,10 @@ function CompareContent() {
         {selectedCareers.length < 1 && (
           <div className="card p-12 text-center">
             <div className="text-6xl mb-4">📊</div>
-            <h3 className="text-xl font-semibold text-secondary-900 mb-2">
+            <h3 className="text-xl font-semibold text-ds-slate mb-2">
               Select a career to visualize
             </h3>
-            <p className="text-secondary-600">
+            <p className="text-ds-slate-light">
               Use the search above to add 1-3 careers and see their lifetime earnings trajectory.
             </p>
           </div>
@@ -830,7 +830,7 @@ export default function ComparePage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen bg-sage-pale">
           <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="animate-pulse">
               <div className="h-10 bg-secondary-200 rounded w-1/3 mb-4" />

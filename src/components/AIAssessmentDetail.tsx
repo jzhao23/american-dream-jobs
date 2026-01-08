@@ -386,7 +386,7 @@ export function AIAssessmentDetail({ assessment, careerTitle, className = '' }: 
         <div className="mt-2">
           <Link
             href="/methodology"
-            className="text-primary-600 hover:text-primary-700 hover:underline font-medium"
+            className="text-sage hover:text-sage-dark hover:underline font-medium"
           >
             View full methodology &rarr;
           </Link>

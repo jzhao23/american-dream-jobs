@@ -29,7 +29,7 @@ export function CareerVideoPlayer({ video, careerTitle }: CareerVideoPlayerProps
   return (
     <button
       onClick={() => setIsPlaying(true)}
-      className="relative w-full aspect-video rounded-lg overflow-hidden bg-secondary-900 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+      className="relative w-full aspect-video rounded-lg overflow-hidden bg-ds-slate group cursor-pointer focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2"
       aria-label={`Play career video for ${careerTitle}`}
     >
       {/* Thumbnail */}
@@ -41,7 +41,7 @@ export function CareerVideoPlayer({ video, careerTitle }: CareerVideoPlayerProps
 
       {/* Play button overlay */}
       <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary-600 flex items-center justify-center shadow-lg group-hover:bg-primary-700 group-hover:scale-110 transition-all">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-sage flex items-center justify-center shadow-lg group-hover:bg-sage-dark group-hover:scale-110 transition-all">
           <svg
             className="w-8 h-8 md:w-10 md:h-10 text-white ml-1"
             fill="currentColor"
