@@ -82,10 +82,10 @@ export default function CompassResultsPage() {
 
   if (isLoading || !submissionData || recommendations.length === 0) {
     return (
-      <div className="min-h-screen bg-secondary-50 flex items-center justify-center">
+      <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
-          <p className="mt-4 text-secondary-600">Loading results...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage mx-auto"></div>
+          <p className="mt-4 text-ds-slate-light">Loading results...</p>
         </div>
       </div>
     );
@@ -104,23 +104,39 @@ export default function CompassResultsPage() {
     return labels[level] || level;
   };
 
+  // Get badge class for AI resilience
+  const getAIResilienceBadgeClass = (resilience: string): string => {
+    switch (resilience) {
+      case "AI-Resilient":
+        return "badge-ai-resilient";
+      case "AI-Augmented":
+        return "badge-ai-augmented";
+      case "In Transition":
+        return "badge-ai-transition";
+      case "High Disruption Risk":
+        return "badge-ai-risk";
+      default:
+        return "bg-sage-muted text-sage";
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-secondary-50">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <section className="bg-white border-b border-secondary-200">
+      <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+              <h1 className="font-display text-3xl md:text-4xl font-medium text-ds-slate mb-4">
                 Your Career Recommendations
               </h1>
-              <p className="text-lg text-secondary-600 max-w-2xl">
+              <p className="text-lg text-ds-slate-light max-w-2xl">
                 Based on your resume and responses, here are the careers that best match your profile.
               </p>
             </div>
             <Link
               href="/compass"
-              className="btn-secondary text-sm whitespace-nowrap"
+              className="btn-sage-outline text-sm whitespace-nowrap"
             >
               Start Over
             </Link>
@@ -131,51 +147,51 @@ export default function CompassResultsPage() {
       {/* Results */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Summary Card */}
-        <div className="card p-6 mb-8">
-          <h2 className="text-lg font-semibold text-secondary-900 mb-4">
+        <div className="card-warm p-6 mb-8">
+          <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">
             Analysis Summary
           </h2>
 
           {/* Profile Summary */}
           {profile && (
-            <div className="mb-6 p-4 bg-secondary-50 rounded-lg">
-              <h3 className="text-sm font-semibold text-secondary-700 mb-3">
+            <div className="mb-6 p-4 bg-sage-pale rounded-xl">
+              <h3 className="text-sm font-semibold text-ds-slate mb-3">
                 Your Profile
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <p className="text-xs text-secondary-500 mb-1">Experience</p>
-                  <p className="font-medium text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Experience</p>
+                  <p className="font-medium text-ds-slate">
                     {profile.experienceYears} years
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-500 mb-1">Education</p>
-                  <p className="font-medium text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Education</p>
+                  <p className="font-medium text-ds-slate">
                     {formatEducationLevel(profile.education.level)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-500 mb-1">Skills Identified</p>
-                  <p className="font-medium text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Skills Identified</p>
+                  <p className="font-medium text-ds-slate">
                     {profile.skills.length} skills
                   </p>
                 </div>
               </div>
               {profile.skills.length > 0 && (
                 <div className="mt-3">
-                  <p className="text-xs text-secondary-500 mb-2">Top Skills</p>
+                  <p className="text-xs text-ds-slate-muted mb-2">Top Skills</p>
                   <div className="flex flex-wrap gap-1.5">
                     {profile.skills.slice(0, 8).map((skill, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-0.5 text-xs bg-primary-100 text-primary-700 rounded"
+                        className="px-2 py-0.5 text-xs bg-sage-muted text-sage rounded-md font-medium"
                       >
                         {skill}
                       </span>
                     ))}
                     {profile.skills.length > 8 && (
-                      <span className="px-2 py-0.5 text-xs text-secondary-500">
+                      <span className="px-2 py-0.5 text-xs text-ds-slate-muted">
                         +{profile.skills.length - 8} more
                       </span>
                     )}
@@ -188,22 +204,22 @@ export default function CompassResultsPage() {
           {/* Metadata */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div>
-              <span className="font-medium text-secondary-700">Analyzed:</span>
-              <span className="ml-2 text-secondary-600">
+              <span className="font-medium text-ds-slate">Analyzed:</span>
+              <span className="ml-2 text-ds-slate-light">
                 {new Date(submissionData.timestamp).toLocaleDateString()}
               </span>
             </div>
             {metadata && (
               <>
                 <div>
-                  <span className="font-medium text-secondary-700">Careers Evaluated:</span>
-                  <span className="ml-2 text-secondary-600">
+                  <span className="font-medium text-ds-slate">Careers Evaluated:</span>
+                  <span className="ml-2 text-ds-slate-light">
                     {metadata.stage1Candidates} candidates
                   </span>
                 </div>
                 <div>
-                  <span className="font-medium text-secondary-700">Processing Time:</span>
-                  <span className="ml-2 text-secondary-600">
+                  <span className="font-medium text-ds-slate">Processing Time:</span>
+                  <span className="ml-2 text-ds-slate-light">
                     {(metadata.processingTimeMs / 1000).toFixed(1)}s
                   </span>
                 </div>
@@ -214,65 +230,65 @@ export default function CompassResultsPage() {
 
         {/* Career Matches */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold text-secondary-900">
+          <h2 className="font-display text-xl font-semibold text-ds-slate">
             Top {recommendations.length} Career Matches
             {!showAll && recommendations.length > 10 && (
-              <span className="text-sm font-normal text-secondary-500 ml-2">
+              <span className="text-sm font-normal text-ds-slate-muted ml-2">
                 (showing 1-10)
               </span>
             )}
           </h2>
 
           {(showAll ? recommendations : recommendations.slice(0, 10)).map((career, index) => (
-            <div key={career.slug} className="card p-6 hover:shadow-md transition-shadow">
+            <div key={career.slug} className="card-warm p-6">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl font-bold text-primary-600">
+                    <span className="text-2xl font-bold text-sage">
                       #{index + 1}
                     </span>
                     <div>
-                      <h3 className="text-xl font-bold text-secondary-900">
+                      <h3 className="font-display text-xl font-semibold text-ds-slate">
                         {career.title}
                       </h3>
-                      <p className="text-sm text-secondary-600 capitalize">
+                      <p className="text-sm text-ds-slate-light capitalize">
                         {career.category.replace("-", " ")}
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-sage">
                     {career.matchScore}%
                   </div>
-                  <p className="text-xs text-secondary-600">Match Score</p>
+                  <p className="text-xs text-ds-slate-muted">Match Score</p>
                 </div>
               </div>
 
               {/* Key Info */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 p-4 bg-secondary-50 rounded-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 p-4 bg-sage-pale rounded-xl">
                 <div>
-                  <p className="text-xs text-secondary-600 mb-1">Median Salary</p>
-                  <p className="font-semibold text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Median Salary</p>
+                  <p className="font-semibold text-ds-slate">
                     ${career.medianPay.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-600 mb-1">Education</p>
-                  <p className="font-semibold text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Education</p>
+                  <p className="font-semibold text-ds-slate">
                     {career.education}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-600 mb-1">Transition Timeline</p>
-                  <p className="font-semibold text-secondary-900">
+                  <p className="text-xs text-ds-slate-muted mb-1">Transition Timeline</p>
+                  <p className="font-semibold text-ds-slate">
                     {career.transitionTimeline}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs text-secondary-600 mb-1">AI Resilience</p>
-                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getAIResilienceColor(career.aiResilience as AIResilienceClassification)}`}>
+                  <p className="text-xs text-ds-slate-muted mb-1">AI Resilience</p>
+                  <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${getAIResilienceBadgeClass(career.aiResilience)}`}>
                     <span>{getAIResilienceEmoji(career.aiResilience as AIResilienceClassification)}</span>
                     <span>{career.aiResilience}</span>
                   </span>
@@ -281,9 +297,9 @@ export default function CompassResultsPage() {
 
               {/* Why It's a Good Fit */}
               <div className="mb-4">
-                <h4 className="font-semibold text-secondary-900 mb-2 flex items-center gap-2">
+                <h4 className="font-semibold text-ds-slate mb-2 flex items-center gap-2">
                   <svg
-                    className="h-5 w-5 text-green-600"
+                    className="h-5 w-5 text-sage"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -293,23 +309,23 @@ export default function CompassResultsPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Why It's a Good Fit
+                  Why It&apos;s a Good Fit
                 </h4>
-                <p className="text-secondary-700 leading-relaxed">
+                <p className="text-ds-slate-light leading-relaxed">
                   {career.reasoning}
                 </p>
               </div>
 
               {/* Skills Gap */}
               <div className="mb-4">
-                <h4 className="font-semibold text-secondary-900 mb-2">
+                <h4 className="font-semibold text-ds-slate mb-2">
                   Skills to Develop
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {career.skillsGap.map((skill) => (
                     <span
                       key={skill}
-                      className="badge bg-yellow-100 text-yellow-800"
+                      className="px-3 py-1 text-sm bg-gold-bg text-gold rounded-full font-medium"
                     >
                       {skill}
                     </span>
@@ -318,10 +334,10 @@ export default function CompassResultsPage() {
               </div>
 
               {/* Action Button */}
-              <div className="mt-4 pt-4 border-t border-secondary-200">
+              <div className="mt-4 pt-4 border-t border-sage-muted">
                 <Link
                   href={`/careers/${career.slug}`}
-                  className="btn-primary w-full text-center block"
+                  className="btn-sage w-full text-center block"
                 >
                   View Full Career Details
                 </Link>
@@ -334,7 +350,7 @@ export default function CompassResultsPage() {
             <div className="text-center pt-4">
               <button
                 onClick={() => setShowAll(true)}
-                className="btn-secondary inline-flex items-center gap-2"
+                className="btn-sage-outline inline-flex items-center gap-2"
               >
                 <span>Show {recommendations.length - 10} More Careers</span>
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -346,10 +362,10 @@ export default function CompassResultsPage() {
         </div>
 
         {/* Next Steps */}
-        <div className="card p-6 mt-8 bg-blue-50 border-blue-200">
-          <h3 className="font-bold text-secondary-900 mb-3 flex items-center gap-2">
+        <div className="card-warm p-6 mt-8 bg-sage-pale border border-sage-muted">
+          <h3 className="font-display font-semibold text-ds-slate mb-3 flex items-center gap-2">
             <svg
-              className="h-5 w-5 text-blue-600"
+              className="h-5 w-5 text-sage"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -362,21 +378,21 @@ export default function CompassResultsPage() {
             </svg>
             Next Steps
           </h3>
-          <ul className="space-y-2 text-sm text-secondary-700">
+          <ul className="space-y-2 text-sm text-ds-slate-light">
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">1.</span>
+              <span className="text-sage font-bold">1.</span>
               <span>Review each career in detail to understand day-to-day responsibilities</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">2.</span>
+              <span className="text-sage font-bold">2.</span>
               <span>Research training programs and certification requirements</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">3.</span>
+              <span className="text-sage font-bold">3.</span>
               <span>Connect with professionals in these fields for informational interviews</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-blue-600 font-bold">4.</span>
+              <span className="text-sage font-bold">4.</span>
               <span>Create a timeline for developing identified skills gaps</span>
             </li>
           </ul>
