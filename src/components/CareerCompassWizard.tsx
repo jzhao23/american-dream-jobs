@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useLocation } from "@/lib/location-context";
 
 // Helper: Fetch with timeout to prevent infinite loading
 async function fetchWithTimeout(
@@ -32,7 +33,7 @@ async function fetchWithTimeout(
 type TrainingLevel = 'minimal' | 'short-term' | 'medium' | 'significant';
 type EducationLevel = 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
 type SalaryTarget = 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
-type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'resume' | 'review';
+type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'location' | 'resume' | 'review';
 
 interface ParsedProfile {
   skills: string[];
@@ -98,6 +99,7 @@ const MAX_FILE_SIZE_MB = 5;
 export function CareerCompassWizard() {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { location, setLocation, isLoading: locationLoading } = useLocation();
 
   // Wizard state
   const [currentStep, setCurrentStep] = useState<WizardStep>('training');
@@ -113,10 +115,43 @@ export function CareerCompassWizard() {
   const [resumeText, setResumeText] = useState("");
   const [anythingElse, setAnythingElse] = useState("");
 
+  // Location search state (for wizard step)
+  const [locationQuery, setLocationQuery] = useState("");
+  const [locationResults, setLocationResults] = useState<Array<{ code: string; name: string; shortName: string; type: 'msa' | 'state'; states: string[] }>>([]);
+  const [isSearchingLocation, setIsSearchingLocation] = useState(false);
+  const [locationSkipped, setLocationSkipped] = useState(false);
+
   // Loading states
   const [isParsingFile, setIsParsingFile] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Location search effect
+  useEffect(() => {
+    if (!locationQuery || locationQuery.length < 2) {
+      setLocationResults([]);
+      return;
+    }
+
+    const searchTimeout = setTimeout(async () => {
+      setIsSearchingLocation(true);
+      try {
+        const response = await fetch(`/api/location/search?q=${encodeURIComponent(locationQuery)}`);
+        const data = await response.json();
+        if (data.success && data.results) {
+          setLocationResults(data.results.slice(0, 6));
+        }
+      } catch (err) {
+        console.error('Location search failed:', err);
+      }
+      setIsSearchingLocation(false);
+    }, 300);
+
+    return () => clearTimeout(searchTimeout);
+  }, [locationQuery]);
+
+  // Determine if we should show the location step
+  const shouldShowLocationStep = !location && !locationSkipped;
 
   // Step navigation with animation
   const goToStep = useCallback((step: WizardStep) => {
@@ -217,12 +252,19 @@ export function CareerCompassWizard() {
         profile = analyzeData.profile;
       } else {
         // Model B: Minimal profile based on questionnaire
-        const eduLevel = selectedEducation || 'high-school';
+        // Map education level from wizard format to API format
+        const eduLevelMap: Record<string, string> = {
+          'high-school': 'high_school',
+          'some-college': 'some_college',
+          'bachelors': 'bachelors',
+          'masters-plus': 'masters'  // API expects 'masters', not 'masters_plus'
+        };
+        const eduLevel = eduLevelMap[selectedEducation || 'high-school'] || 'high_school';
         profile = {
           skills: [],
           jobTitles: [],
           education: {
-            level: eduLevel.replace('-', '_'), // convert to underscore format
+            level: eduLevel,
             fields: []
           },
           industries: [],
@@ -295,6 +337,7 @@ export function CareerCompassWizard() {
         background: selectedBackground,
         salary: selectedSalary,
         workStyle: selectedWorkStyle,
+        location: location ? { code: location.code, name: location.name, shortName: location.shortName } : null,
         hasResume,
         anythingElse,
         timestamp: new Date().toISOString(),
@@ -403,7 +446,7 @@ export function CareerCompassWizard() {
           )}
 
           {/* Work Style - show after that step */}
-          {['resume', 'review'].includes(currentStep) && (
+          {['location', 'resume', 'review'].includes(currentStep) && (
             <button
               onClick={() => goToStep('workStyle')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
@@ -414,6 +457,17 @@ export function CareerCompassWizard() {
             >
               <span>⚡</span>
               <span>{selectedWorkStyle.length ? `${selectedWorkStyle.length} styles` : 'Skipped'}</span>
+            </button>
+          )}
+
+          {/* Location - show after that step (only if location step was shown) */}
+          {['resume', 'review'].includes(currentStep) && shouldShowLocationStep === false && location && (
+            <button
+              onClick={() => goToStep('location')}
+              className="flex items-center gap-1.5 bg-sage-muted text-sage font-semibold px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all"
+            >
+              <span>📍</span>
+              <span>{location.shortName}</span>
             </button>
           )}
 
@@ -705,12 +759,137 @@ export function CareerCompassWizard() {
             </div>
 
             <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
-              <button onClick={() => goToStep('resume')} className="text-sm text-ds-slate-light hover:text-ds-slate">
+              <button onClick={() => goToStep(shouldShowLocationStep ? 'location' : 'resume')} className="text-sm text-ds-slate-light hover:text-ds-slate">
                 Skip this question
               </button>
               <button
-                onClick={() => goToStep('resume')}
+                onClick={() => goToStep(shouldShowLocationStep ? 'location' : 'resume')}
                 className="btn-sage flex items-center gap-2"
+              >
+                Continue
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP: Location (conditional - only shown if no location set) */}
+        {currentStep === 'location' && (
+          <div>
+            <div className="text-center mb-6">
+              <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
+                Where are you looking for work?
+              </h2>
+              <p className="text-sm text-ds-slate-light">This helps us show you local job data and opportunities</p>
+            </div>
+
+            {/* Location search input */}
+            <div className="relative mb-4">
+              <div className="flex items-center gap-2 bg-cream border border-sage-muted rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-sage focus-within:border-transparent">
+                <svg className="w-5 h-5 text-ds-slate-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search city, metro area, or ZIP code..."
+                  value={locationQuery}
+                  onChange={(e) => setLocationQuery(e.target.value)}
+                  className="flex-1 bg-transparent outline-none text-ds-slate placeholder-ds-slate-muted"
+                />
+                {isSearchingLocation && (
+                  <svg className="animate-spin h-5 w-5 text-sage" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                )}
+              </div>
+
+              {/* Search results dropdown */}
+              {locationResults.length > 0 && (
+                <div className="absolute z-10 w-full mt-1 bg-warm-white border border-sage-muted rounded-xl shadow-lg overflow-hidden">
+                  {locationResults.map((result) => (
+                    <button
+                      key={result.code}
+                      onClick={() => {
+                        setLocation({
+                          code: result.code,
+                          name: result.name,
+                          shortName: result.shortName,
+                          type: result.type,
+                          state: result.states[0] || "",
+                        }, "manual");
+                        setLocationQuery("");
+                        setLocationResults([]);
+                        goToStep('resume');
+                      }}
+                      className="w-full px-4 py-3 text-left hover:bg-sage-pale transition-colors flex items-center gap-3"
+                    >
+                      <svg className="w-4 h-4 text-sage flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      </svg>
+                      <div>
+                        <div className="font-medium text-ds-slate">{result.shortName}</div>
+                        <div className="text-xs text-ds-slate-muted">{result.name}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Popular locations */}
+            <div className="mb-6">
+              <p className="text-xs font-medium text-ds-slate-muted mb-2">Popular areas:</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { code: '35620', name: 'New York-Newark-Jersey City, NY-NJ-PA', shortName: 'New York', state: 'NY', type: 'msa' as const },
+                  { code: '31080', name: 'Los Angeles-Long Beach-Anaheim, CA', shortName: 'Los Angeles', state: 'CA', type: 'msa' as const },
+                  { code: '16980', name: 'Chicago-Naperville-Elgin, IL-IN-WI', shortName: 'Chicago', state: 'IL', type: 'msa' as const },
+                  { code: '19100', name: 'Dallas-Fort Worth-Arlington, TX', shortName: 'Dallas', state: 'TX', type: 'msa' as const },
+                  { code: '26420', name: 'Houston-The Woodlands-Sugar Land, TX', shortName: 'Houston', state: 'TX', type: 'msa' as const },
+                ].map((loc) => (
+                  <button
+                    key={loc.code}
+                    onClick={() => {
+                      setLocation(loc, "manual");
+                      goToStep('resume');
+                    }}
+                    className="px-3 py-1.5 text-sm bg-cream border border-sage-muted rounded-full hover:border-sage hover:bg-sage-pale transition-colors text-ds-slate"
+                  >
+                    {loc.shortName}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-4">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
+            </div>
+
+            <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
+              <button
+                onClick={() => {
+                  setLocationSkipped(true);
+                  goToStep('resume');
+                }}
+                className="text-sm text-ds-slate-light hover:text-ds-slate"
+              >
+                Skip, I&apos;ll set this later
+              </button>
+              <button
+                onClick={() => goToStep('resume')}
+                disabled={!location}
+                className={`btn-sage flex items-center gap-2 ${!location ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Continue
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -870,6 +1049,15 @@ export function CareerCompassWizard() {
                     <div className="text-xs text-ds-slate-muted">Work Style</div>
                     <div className={`font-medium ${selectedWorkStyle.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {selectedWorkStyle.length ? selectedWorkStyle.map(w => workStyleOptions.find(o => o.id === w)?.label).join(', ') : 'Skipped'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span>📍</span>
+                  <div>
+                    <div className="text-xs text-ds-slate-muted">Location</div>
+                    <div className={`font-medium ${location ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {location ? location.name : 'Not set'}
                     </div>
                   </div>
                 </div>

@@ -8,6 +8,7 @@ import {
   getAIResilienceEmoji,
   type AIResilienceClassification,
 } from "@/types/career";
+import { useLocation } from "@/lib/location-context";
 
 // Types from the API
 interface CareerMatch {
@@ -101,14 +102,62 @@ const workStyleLabels: Record<string, string> = {
 
 const TOTAL_CAREERS = 1016;
 
+// Local career data type
+interface LocalCareerEntry {
+  employment: number;
+  medianWage: number;
+  locationQuotient: number;
+  growth?: string;
+  growthPercent?: number;
+}
+
 export default function CompassResultsPage() {
   const router = useRouter();
+  const { location } = useLocation();
   const [recommendations, setRecommendations] = useState<CareerMatch[]>([]);
   const [metadata, setMetadata] = useState<ResultsMetadata | null>(null);
   const [profile, setProfile] = useState<ParsedProfile | null>(null);
   const [submissionData, setSubmissionData] = useState<SubmissionData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [localCareerData, setLocalCareerData] = useState<{ [slug: string]: LocalCareerEntry } | null>(null);
+
+  // Load local career data for each recommendation when location is set
+  useEffect(() => {
+    if (!location || recommendations.length === 0) {
+      setLocalCareerData(null);
+      return;
+    }
+
+    const locationCode = location.code;
+
+    async function loadLocalData() {
+      const extracted: { [slug: string]: LocalCareerEntry } = {};
+
+      // Fetch local data for each recommendation
+      await Promise.all(
+        recommendations.map(async (career) => {
+          try {
+            const response = await fetch(
+              `/api/careers/${career.slug}/local?location=${locationCode}`
+            );
+            if (response.ok) {
+              const data = await response.json();
+              if (data.success && data.localData) {
+                extracted[career.slug] = data.localData;
+              }
+            }
+          } catch (error) {
+            // Silently ignore - not all careers will have local data
+          }
+        })
+      );
+
+      setLocalCareerData(Object.keys(extracted).length > 0 ? extracted : null);
+    }
+
+    loadLocalData();
+  }, [location, recommendations]);
 
   useEffect(() => {
     // Retrieve all data from sessionStorage
@@ -171,6 +220,24 @@ export default function CompassResultsPage() {
         return "badge-ai-risk";
       default:
         return "bg-sage-muted text-sage";
+    }
+  };
+
+  // Get growth badge info
+  const getGrowthBadge = (growth: string | undefined, growthPercent: number | undefined): { label: string; color: string } | null => {
+    if (!growth) return null;
+
+    switch (growth) {
+      case "growing-quickly":
+        return { label: `+${growthPercent?.toFixed(1) || "5+"}%`, color: "text-green-600" };
+      case "growing":
+        return { label: `+${growthPercent?.toFixed(1) || "1-5"}%`, color: "text-green-500" };
+      case "stable":
+        return { label: "Stable", color: "text-ds-slate-muted" };
+      case "declining":
+        return { label: `${growthPercent?.toFixed(1) || "-"}%`, color: "text-orange-500" };
+      default:
+        return null;
     }
   };
 
@@ -359,6 +426,37 @@ export default function CompassResultsPage() {
                   </span>
                 </div>
               </div>
+
+              {/* Local Job Market Data */}
+              {location && localCareerData && localCareerData[career.slug] && (
+                <div className="flex items-center gap-3 mb-4 p-3 bg-cream rounded-lg border border-sage-muted">
+                  <svg className="w-4 h-4 text-sage flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div className="flex-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                    <span className="font-medium text-ds-slate">
+                      {localCareerData[career.slug].employment.toLocaleString()} jobs in {location.shortName}
+                    </span>
+                    {(() => {
+                      const growthBadge = getGrowthBadge(
+                        localCareerData[career.slug].growth,
+                        localCareerData[career.slug].growthPercent
+                      );
+                      return growthBadge ? (
+                        <span className={`font-medium ${growthBadge.color}`}>
+                          {growthBadge.label} growth
+                        </span>
+                      ) : null;
+                    })()}
+                    {localCareerData[career.slug].locationQuotient > 1.2 && (
+                      <span className="text-green-600 font-medium">
+                        High demand area
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Why It's a Good Fit */}
               <div className="mb-4">
