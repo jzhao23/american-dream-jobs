@@ -29,8 +29,10 @@ async function fetchWithTimeout(
 }
 
 // Types
-type TimelineBucket = 'asap' | '6-24-months' | '2-4-years' | 'flexible';
-type WizardStep = 'timeline' | 'priorities' | 'environment' | 'industries' | 'resume' | 'review';
+type TrainingLevel = 'minimal' | 'short-term' | 'medium' | 'significant';
+type EducationLevel = 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
+type SalaryTarget = 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
+type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'resume' | 'review';
 
 interface ParsedProfile {
   skills: string[];
@@ -41,36 +43,53 @@ interface ParsedProfile {
   confidence: number;
 }
 
-// Options data
-const timelineOptions = [
-  { id: "asap" as TimelineBucket, icon: "⚡", title: "ASAP", desc: "Under 6 months" },
-  { id: "6-24-months" as TimelineBucket, icon: "📅", title: "6-24 months", desc: "Certifications & programs" },
-  { id: "2-4-years" as TimelineBucket, icon: "🎯", title: "2-4 years", desc: "Degrees & apprenticeships" },
-  { id: "flexible" as TimelineBucket, icon: "🎓", title: "I can invest longer", desc: "Explore all paths" },
+// Options data - Q1: Training Willingness (framed as "how soon do you need to earn?")
+const trainingOptions = [
+  { id: "minimal" as TrainingLevel, icon: "⚡", title: "Right away", desc: "Minimal training — a few weeks max" },
+  { id: "short-term" as TrainingLevel, icon: "📅", title: "Within 6 months", desc: "Short program — certificate or bootcamp" },
+  { id: "medium" as TrainingLevel, icon: "📚", title: "1-2 years", desc: "Moderate training — Associate's or technical program" },
+  { id: "significant" as TrainingLevel, icon: "🎓", title: "I can invest 4+ years", desc: "Significant training — Bachelor's, Master's, or beyond" },
 ];
 
-const priorityOptions = [
-  { id: "earning", label: "Higher earning potential" },
-  { id: "balance", label: "Work-life balance" },
-  { id: "stability", label: "Job stability & security" },
-  { id: "growth", label: "Career growth opportunities" },
-  { id: "meaningful", label: "Meaningful / impactful work" },
+// Q2: Education Level
+const educationOptions = [
+  { id: "high-school" as EducationLevel, label: "High school diploma or GED" },
+  { id: "some-college" as EducationLevel, label: "Some college or Associate's degree" },
+  { id: "bachelors" as EducationLevel, label: "Bachelor's degree" },
+  { id: "masters-plus" as EducationLevel, label: "Master's degree or higher" },
 ];
 
-const environmentOptions = [
-  { id: "remote", label: "Remote / Work from home" },
-  { id: "office", label: "Office-based / Indoor" },
-  { id: "fieldwork", label: "Hands-on / Fieldwork / Outdoors" },
-  { id: "mixed", label: "Mix of different settings" },
+// Q3: Work Background
+const workBackgroundOptions = [
+  { id: "none", label: "No significant work experience" },
+  { id: "service", label: "Service, Retail, or Hospitality" },
+  { id: "office", label: "Office, Administrative, or Clerical" },
+  { id: "technical", label: "Technical, IT, or Engineering" },
+  { id: "healthcare", label: "Healthcare or Medical" },
+  { id: "trades", label: "Trades, Construction, or Manufacturing" },
+  { id: "sales", label: "Sales & Marketing" },
+  { id: "finance", label: "Business & Finance" },
+  { id: "education", label: "Education or Social Services" },
+  { id: "creative", label: "Creative, Media, or Design" },
 ];
 
-const industryOptions = [
-  { id: "healthcare", label: "Healthcare" },
-  { id: "technology", label: "Technology" },
-  { id: "trades", label: "Skilled Trades" },
-  { id: "business", label: "Business / Finance" },
-  { id: "transportation", label: "Transportation / Logistics" },
-  { id: "public-service", label: "Public Service / Government" },
+// Q4: Salary Target
+const salaryOptions = [
+  { id: "under-40k" as SalaryTarget, label: "Under $40,000" },
+  { id: "40-60k" as SalaryTarget, label: "$40,000 - $60,000" },
+  { id: "60-80k" as SalaryTarget, label: "$60,000 - $80,000" },
+  { id: "80-100k" as SalaryTarget, label: "$80,000 - $100,000" },
+  { id: "100k-plus" as SalaryTarget, label: "$100,000+" },
+];
+
+// Q5: Work Style
+const workStyleOptions = [
+  { id: "hands-on", label: "Hands-on work", desc: "Building, fixing, operating equipment" },
+  { id: "people", label: "Working with people", desc: "Caring, teaching, helping, serving" },
+  { id: "analytical", label: "Analysis & problem-solving", desc: "Data, research, strategy, systems" },
+  { id: "creative", label: "Creative & design", desc: "Art, writing, media, innovation" },
+  { id: "technology", label: "Technology & digital", desc: "Coding, IT, systems, software" },
+  { id: "leadership", label: "Leadership & business", desc: "Managing, selling, organizing" },
 ];
 
 const ACCEPTED_FILE_TYPES = '.pdf,.docx,.doc,.md,.txt';
@@ -81,14 +100,15 @@ export function CareerCompassWizard() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Wizard state
-  const [currentStep, setCurrentStep] = useState<WizardStep>('timeline');
+  const [currentStep, setCurrentStep] = useState<WizardStep>('training');
   const [isAnimating, setIsAnimating] = useState(false);
 
   // Selections
-  const [selectedTimeline, setSelectedTimeline] = useState<TimelineBucket | null>(null);
-  const [selectedPriorities, setSelectedPriorities] = useState<string[]>([]);
-  const [selectedEnvironments, setSelectedEnvironments] = useState<string[]>([]);
-  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
+  const [selectedTraining, setSelectedTraining] = useState<TrainingLevel | null>(null);
+  const [selectedEducation, setSelectedEducation] = useState<EducationLevel | null>(null);
+  const [selectedBackground, setSelectedBackground] = useState<string[]>([]);
+  const [selectedSalary, setSelectedSalary] = useState<SalaryTarget | null>(null);
+  const [selectedWorkStyle, setSelectedWorkStyle] = useState<string[]>([]);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [resumeText, setResumeText] = useState("");
   const [anythingElse, setAnythingElse] = useState("");
@@ -107,18 +127,23 @@ export function CareerCompassWizard() {
     }, 150);
   }, []);
 
-  // Timeline selection
-  const handleTimelineSelect = (id: TimelineBucket) => {
-    setSelectedTimeline(id);
-    goToStep('priorities');
+  // Training selection
+  const handleTrainingSelect = (id: TrainingLevel) => {
+    setSelectedTraining(id);
+    goToStep('education');
   };
 
   // Toggle multi-select options
-  const toggleOption = (list: string[], setList: (v: string[]) => void, id: string) => {
+  const toggleOption = (list: string[], setList: (v: string[]) => void, id: string, maxSelect?: number) => {
     if (list.includes(id)) {
       setList(list.filter(x => x !== id));
     } else {
-      setList([...list, id]);
+      if (maxSelect && list.length >= maxSelect) {
+        // Replace oldest selection
+        setList([...list.slice(1), id]);
+      } else {
+        setList([...list, id]);
+      }
     }
   };
 
@@ -191,28 +216,28 @@ export function CareerCompassWizard() {
         }
         profile = analyzeData.profile;
       } else {
-        // Model B: Minimal profile
+        // Model B: Minimal profile based on questionnaire
+        const eduLevel = selectedEducation || 'high-school';
         profile = {
           skills: [],
           jobTitles: [],
-          education: { level: 'high_school', fields: [] },
-          industries: selectedIndustries,
-          experienceYears: 0,
+          education: {
+            level: eduLevel.replace('-', '_'), // convert to underscore format
+            fields: []
+          },
+          industries: [],
+          experienceYears: selectedBackground.includes('none') ? 0 : 3,
           confidence: 0.5
         };
       }
 
-      // Build preference strings from selected options (use labels, not IDs)
-      const priorityLabels = selectedPriorities
-        .map(id => priorityOptions.find(o => o.id === id)?.label)
+      // Build preference labels for display/context
+      const backgroundLabels = selectedBackground
+        .map(id => workBackgroundOptions.find(o => o.id === id)?.label)
         .filter(Boolean)
         .join(', ');
-      const environmentLabels = selectedEnvironments
-        .map(id => environmentOptions.find(o => o.id === id)?.label)
-        .filter(Boolean)
-        .join(', ');
-      const industryLabels = selectedIndustries
-        .map(id => industryOptions.find(o => o.id === id)?.label)
+      const workStyleLabels = selectedWorkStyle
+        .map(id => workStyleOptions.find(o => o.id === id)?.label)
         .filter(Boolean)
         .join(', ');
 
@@ -229,19 +254,19 @@ export function CareerCompassWizard() {
             experienceYears: profile.experienceYears
           },
           preferences: {
-            careerGoals: priorityLabels || 'Career growth, stability, and meaningful work',
-            skillsToDevelop: priorityLabels || 'Skills relevant to my career goals',
-            workEnvironment: environmentLabels || 'Flexible work environment',
-            salaryExpectations: 'Competitive salary matching my experience',
-            industryInterests: industryLabels || 'Open to various industries',
-            // Pass structured selections for better LLM reasoning
-            priorityIds: selectedPriorities,
-            environmentIds: selectedEnvironments,
-            industryIds: selectedIndustries,
+            // New structured preferences
+            trainingWillingness: selectedTraining || 'significant',
+            educationLevel: selectedEducation || 'high-school',
+            workBackground: selectedBackground,
+            salaryTarget: selectedSalary || '40-60k',
+            workStyle: selectedWorkStyle,
+            // Legacy fields for backward compatibility
+            careerGoals: workStyleLabels || 'Career growth and stability',
+            workEnvironment: backgroundLabels || 'Flexible',
             additionalContext: anythingElse.trim() || undefined
           },
           options: {
-            timelineBucket: selectedTimeline || 'flexible',
+            trainingWillingness: selectedTraining || 'significant',
             model: hasResume ? 'model-a' : 'model-b'
           }
         })
@@ -265,10 +290,11 @@ export function CareerCompassWizard() {
       sessionStorage.setItem('compass-metadata', JSON.stringify(recommendData.metadata));
       sessionStorage.setItem('compass-profile', JSON.stringify(profile));
       sessionStorage.setItem('compass-submission', JSON.stringify({
-        timeline: selectedTimeline,
-        priorities: selectedPriorities,
-        environments: selectedEnvironments,
-        industries: selectedIndustries,
+        training: selectedTraining,
+        education: selectedEducation,
+        background: selectedBackground,
+        salary: selectedSalary,
+        workStyle: selectedWorkStyle,
         hasResume,
         anythingElse,
         timestamp: new Date().toISOString(),
@@ -283,8 +309,8 @@ export function CareerCompassWizard() {
 
   // Progress indicator
   const getProgressStep = () => {
-    if (currentStep === 'timeline') return 0;
-    if (['priorities', 'environment', 'industries'].includes(currentStep)) return 1;
+    if (currentStep === 'training') return 0;
+    if (['education', 'background', 'salary', 'workStyle'].includes(currentStep)) return 1;
     if (currentStep === 'resume') return 2;
     return 3;
   };
@@ -298,8 +324,8 @@ export function CareerCompassWizard() {
 
   return (
     <div className="bg-warm-white rounded-2xl p-6 md:p-8 shadow-soft">
-      {/* Progress indicator - only show after timeline selection */}
-      {currentStep !== 'timeline' && (
+      {/* Progress indicator - only show after training selection */}
+      {currentStep !== 'training' && (
         <div className="mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
             {[1, 2, 3].map((step) => (
@@ -319,35 +345,110 @@ export function CareerCompassWizard() {
         </div>
       )}
 
-      {/* Timeline badge - show after selection */}
-      {selectedTimeline && currentStep !== 'timeline' && (
-        <div className="flex items-center justify-center gap-2 bg-sage-muted text-sage text-sm font-semibold px-4 py-2 rounded-full mb-4 mx-auto w-fit">
-          <span>{timelineOptions.find(t => t.id === selectedTimeline)?.icon}</span>
-          <span>{timelineOptions.find(t => t.id === selectedTimeline)?.title}</span>
+      {/* Response Summary - show all answered/skipped questions */}
+      {selectedTraining && currentStep !== 'training' && (
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+          {/* Training - always show after selection */}
           <button
-            onClick={() => goToStep('timeline')}
-            className="text-xs underline opacity-75 hover:opacity-100"
+            onClick={() => goToStep('training')}
+            className="flex items-center gap-1.5 bg-sage-muted text-sage font-semibold px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all"
           >
-            change
+            <span>{trainingOptions.find(t => t.id === selectedTraining)?.icon}</span>
+            <span>{trainingOptions.find(t => t.id === selectedTraining)?.title}</span>
           </button>
+
+          {/* Education - show after that step */}
+          {currentStep !== 'education' && (
+            <button
+              onClick={() => goToStep('education')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
+                selectedEducation
+                  ? 'bg-sage-muted text-sage font-semibold'
+                  : 'bg-gray-100 text-gray-400 font-medium italic'
+              }`}
+            >
+              <span>🎓</span>
+              <span>{selectedEducation ? educationOptions.find(e => e.id === selectedEducation)?.label : 'Skipped'}</span>
+            </button>
+          )}
+
+          {/* Background - show after that step */}
+          {['salary', 'workStyle', 'resume', 'review'].includes(currentStep) && (
+            <button
+              onClick={() => goToStep('background')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
+                selectedBackground.length
+                  ? 'bg-sage-muted text-sage font-semibold'
+                  : 'bg-gray-100 text-gray-400 font-medium italic'
+              }`}
+            >
+              <span>💼</span>
+              <span>{selectedBackground.length ? `${selectedBackground.length} backgrounds` : 'Skipped'}</span>
+            </button>
+          )}
+
+          {/* Salary - show after that step */}
+          {['workStyle', 'resume', 'review'].includes(currentStep) && (
+            <button
+              onClick={() => goToStep('salary')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
+                selectedSalary
+                  ? 'bg-sage-muted text-sage font-semibold'
+                  : 'bg-gray-100 text-gray-400 font-medium italic'
+              }`}
+            >
+              <span>💰</span>
+              <span>{selectedSalary ? salaryOptions.find(s => s.id === selectedSalary)?.label : 'Skipped'}</span>
+            </button>
+          )}
+
+          {/* Work Style - show after that step */}
+          {['resume', 'review'].includes(currentStep) && (
+            <button
+              onClick={() => goToStep('workStyle')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
+                selectedWorkStyle.length
+                  ? 'bg-sage-muted text-sage font-semibold'
+                  : 'bg-gray-100 text-gray-400 font-medium italic'
+              }`}
+            >
+              <span>⚡</span>
+              <span>{selectedWorkStyle.length ? `${selectedWorkStyle.length} styles` : 'Skipped'}</span>
+            </button>
+          )}
+
+          {/* Resume - show on review */}
+          {currentStep === 'review' && (
+            <button
+              onClick={() => goToStep('resume')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
+                resumeFile
+                  ? 'bg-sage-muted text-sage font-semibold'
+                  : 'bg-gray-100 text-gray-400 font-medium italic'
+              }`}
+            >
+              <span>📄</span>
+              <span>{resumeFile ? 'Uploaded' : 'Skipped'}</span>
+            </button>
+          )}
         </div>
       )}
 
       {/* Animated step container */}
       <div className={`transition-all duration-150 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
 
-        {/* STEP: Timeline Selection */}
-        {currentStep === 'timeline' && (
+        {/* STEP: Training Selection */}
+        {currentStep === 'training' && (
           <div>
             <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate text-center mb-6">
               How soon do you need to start earning?
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-              {timelineOptions.map((option) => (
+              {trainingOptions.map((option) => (
                 <button
                   key={option.id}
-                  onClick={() => handleTimelineSelect(option.id)}
-                  className={`time-option ${selectedTimeline === option.id ? "selected" : ""}`}
+                  onClick={() => handleTrainingSelect(option.id)}
+                  className={`time-option ${selectedTraining === option.id ? "selected" : ""}`}
                 >
                   <div className="text-2xl md:text-3xl mb-2">{option.icon}</div>
                   <div className="font-display font-semibold text-ds-slate text-sm md:text-base mb-1">
@@ -359,48 +460,70 @@ export function CareerCompassWizard() {
                 </button>
               ))}
             </div>
+
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mt-6">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
+            </div>
           </div>
         )}
 
-        {/* STEP: Priorities */}
-        {currentStep === 'priorities' && (
+        {/* STEP: Education Level */}
+        {currentStep === 'education' && (
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                What matters most to you?
+                What&apos;s your highest level of education?
               </h2>
-              <p className="text-sm text-ds-slate-light">Select all that apply, or skip to continue</p>
+              <p className="text-sm text-ds-slate-light">Select one, or skip to continue</p>
             </div>
 
             <div className="space-y-3 mb-6">
-              {priorityOptions.map((option) => (
+              {educationOptions.map((option) => (
                 <button
                   key={option.id}
-                  onClick={() => toggleOption(selectedPriorities, setSelectedPriorities, option.id)}
+                  onClick={() => setSelectedEducation(option.id)}
                   className={`w-full flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
-                    selectedPriorities.includes(option.id)
+                    selectedEducation === option.id
                       ? 'border-sage bg-sage-pale'
                       : 'border-transparent bg-cream hover:border-sage-light'
                   }`}
                 >
-                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                    selectedPriorities.includes(option.id)
-                      ? 'bg-sage border-sage text-white'
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                    selectedEducation === option.id
+                      ? 'bg-sage border-sage'
                       : 'border-sage-muted'
                   }`}>
-                    {selectedPriorities.includes(option.id) && <CheckIcon />}
+                    {selectedEducation === option.id && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                   <span className="font-medium text-ds-slate">{option.label}</span>
                 </button>
               ))}
             </div>
 
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-4">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
+            </div>
+
             <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
-              <button onClick={() => goToStep('environment')} className="text-sm text-ds-slate-light hover:text-ds-slate">
+              <button onClick={() => goToStep('background')} className="text-sm text-ds-slate-light hover:text-ds-slate">
                 Skip this question
               </button>
               <button
-                onClick={() => goToStep('environment')}
+                onClick={() => goToStep('background')}
                 className="btn-sage flex items-center gap-2"
               >
                 Continue
@@ -412,87 +535,173 @@ export function CareerCompassWizard() {
           </div>
         )}
 
-        {/* STEP: Environment */}
-        {currentStep === 'environment' && (
+        {/* STEP: Work Background */}
+        {currentStep === 'background' && (
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                What work environment suits you?
+                What best describes your work experience?
               </h2>
               <p className="text-sm text-ds-slate-light">Select all that apply, or skip to continue</p>
             </div>
 
-            <div className="space-y-3 mb-6">
-              {environmentOptions.map((option) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+              {workBackgroundOptions.map((option) => (
                 <button
                   key={option.id}
-                  onClick={() => toggleOption(selectedEnvironments, setSelectedEnvironments, option.id)}
-                  className={`w-full flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
-                    selectedEnvironments.includes(option.id)
-                      ? 'border-sage bg-sage-pale'
-                      : 'border-transparent bg-cream hover:border-sage-light'
-                  }`}
-                >
-                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                    selectedEnvironments.includes(option.id)
-                      ? 'bg-sage border-sage text-white'
-                      : 'border-sage-muted'
-                  }`}>
-                    {selectedEnvironments.includes(option.id) && <CheckIcon />}
-                  </div>
-                  <span className="font-medium text-ds-slate">{option.label}</span>
-                </button>
-              ))}
-            </div>
-
-            <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
-              <button onClick={() => goToStep('industries')} className="text-sm text-ds-slate-light hover:text-ds-slate">
-                Skip this question
-              </button>
-              <button
-                onClick={() => goToStep('industries')}
-                className="btn-sage flex items-center gap-2"
-              >
-                Continue
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP: Industries */}
-        {currentStep === 'industries' && (
-          <div>
-            <div className="text-center mb-6">
-              <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                Which fields interest you?
-              </h2>
-              <p className="text-sm text-ds-slate-light">Select all that apply, or skip to continue</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {industryOptions.map((option) => (
-                <button
-                  key={option.id}
-                  onClick={() => toggleOption(selectedIndustries, setSelectedIndustries, option.id)}
+                  onClick={() => toggleOption(selectedBackground, setSelectedBackground, option.id)}
                   className={`flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
-                    selectedIndustries.includes(option.id)
+                    selectedBackground.includes(option.id)
                       ? 'border-sage bg-sage-pale'
                       : 'border-transparent bg-cream hover:border-sage-light'
                   }`}
                 >
                   <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
-                    selectedIndustries.includes(option.id)
+                    selectedBackground.includes(option.id)
                       ? 'bg-sage border-sage text-white'
                       : 'border-sage-muted'
                   }`}>
-                    {selectedIndustries.includes(option.id) && <CheckIcon />}
+                    {selectedBackground.includes(option.id) && <CheckIcon />}
                   </div>
                   <span className="font-medium text-ds-slate text-sm">{option.label}</span>
                 </button>
               ))}
+            </div>
+
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-4">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
+            </div>
+
+            <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
+              <button onClick={() => goToStep('salary')} className="text-sm text-ds-slate-light hover:text-ds-slate">
+                Skip this question
+              </button>
+              <button
+                onClick={() => goToStep('salary')}
+                className="btn-sage flex items-center gap-2"
+              >
+                Continue
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP: Salary Target */}
+        {currentStep === 'salary' && (
+          <div>
+            <div className="text-center mb-6">
+              <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
+                What annual salary are you targeting?
+              </h2>
+              <p className="text-sm text-ds-slate-light">Select one, or skip to continue</p>
+            </div>
+
+            <div className="space-y-3 mb-6">
+              {salaryOptions.map((option) => (
+                <button
+                  key={option.id}
+                  onClick={() => setSelectedSalary(option.id)}
+                  className={`w-full flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
+                    selectedSalary === option.id
+                      ? 'border-sage bg-sage-pale'
+                      : 'border-transparent bg-cream hover:border-sage-light'
+                  }`}
+                >
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                    selectedSalary === option.id
+                      ? 'bg-sage border-sage'
+                      : 'border-sage-muted'
+                  }`}>
+                    {selectedSalary === option.id && <div className="w-2 h-2 bg-white rounded-full" />}
+                  </div>
+                  <span className="font-medium text-ds-slate">{option.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-4">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
+            </div>
+
+            <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
+              <button onClick={() => goToStep('workStyle')} className="text-sm text-ds-slate-light hover:text-ds-slate">
+                Skip this question
+              </button>
+              <button
+                onClick={() => goToStep('workStyle')}
+                className="btn-sage flex items-center gap-2"
+              >
+                Continue
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP: Work Style */}
+        {currentStep === 'workStyle' && (
+          <div>
+            <div className="text-center mb-6">
+              <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
+                What type of work appeals to you most?
+              </h2>
+              <p className="text-sm text-ds-slate-light">Select up to 2, or skip to continue</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+              {workStyleOptions.map((option) => (
+                <button
+                  key={option.id}
+                  onClick={() => toggleOption(selectedWorkStyle, setSelectedWorkStyle, option.id, 2)}
+                  className={`flex flex-col items-start gap-1 p-4 rounded-xl border-2 transition-all ${
+                    selectedWorkStyle.includes(option.id)
+                      ? 'border-sage bg-sage-pale'
+                      : 'border-transparent bg-cream hover:border-sage-light'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 w-full">
+                    <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
+                      selectedWorkStyle.includes(option.id)
+                        ? 'bg-sage border-sage text-white'
+                        : 'border-sage-muted'
+                    }`}>
+                      {selectedWorkStyle.includes(option.id) && <CheckIcon />}
+                    </div>
+                    <span className="font-medium text-ds-slate text-sm">{option.label}</span>
+                  </div>
+                  <span className="text-xs text-ds-slate-light pl-8">{option.desc}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Resume prompt */}
+            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-4">
+              <span>📄</span>
+              <button
+                onClick={() => goToStep('resume')}
+                className="underline hover:no-underline"
+              >
+                Upload your resume for best results
+              </button>
             </div>
 
             <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
@@ -517,9 +726,14 @@ export function CareerCompassWizard() {
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                Upload your resume (optional)
+                Upload your resume
               </h2>
-              <p className="text-sm text-ds-slate-light">Get more personalized recommendations based on your experience</p>
+              <p className="text-sm text-ds-slate-light mb-2">
+                This step is optional, but <strong className="text-sage">highly recommended</strong>
+              </p>
+              <p className="text-sm text-ds-slate-muted">
+                Resumes typically improve match accuracy by 2-3x by letting us understand your unique skills and experience
+              </p>
             </div>
 
             <label
@@ -568,7 +782,7 @@ export function CareerCompassWizard() {
 
             <div className="flex items-center justify-center gap-2 text-sm text-sage mb-6">
               <span>✨</span>
-              <span>Resume helps us match your skills to career requirements</span>
+              <span><strong>Pro tip:</strong> Users who upload resumes get significantly more relevant career matches</span>
             </div>
 
             <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
@@ -617,36 +831,45 @@ export function CareerCompassWizard() {
               <h3 className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-3">Your selections</h3>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <span>⏱️</span>
+                  <span>📚</span>
                   <div>
-                    <div className="text-xs text-ds-slate-muted">Timeline</div>
-                    <div className="font-medium text-ds-slate">{timelineOptions.find(t => t.id === selectedTimeline)?.title || 'Flexible'}</div>
+                    <div className="text-xs text-ds-slate-muted">Training</div>
+                    <div className="font-medium text-ds-slate">{trainingOptions.find(t => t.id === selectedTraining)?.title || 'Open to anything'}</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span>🎯</span>
+                  <span>🎓</span>
                   <div>
-                    <div className="text-xs text-ds-slate-muted">Priorities</div>
-                    <div className={`font-medium ${selectedPriorities.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
-                      {selectedPriorities.length ? selectedPriorities.map(p => priorityOptions.find(o => o.id === p)?.label).join(', ') : 'Skipped'}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span>🏢</span>
-                  <div>
-                    <div className="text-xs text-ds-slate-muted">Environment</div>
-                    <div className={`font-medium ${selectedEnvironments.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
-                      {selectedEnvironments.length ? selectedEnvironments.map(e => environmentOptions.find(o => o.id === e)?.label).join(', ') : 'Skipped'}
+                    <div className="text-xs text-ds-slate-muted">Education</div>
+                    <div className={`font-medium ${selectedEducation ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {selectedEducation ? educationOptions.find(e => e.id === selectedEducation)?.label : 'Skipped'}
                     </div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span>💼</span>
                   <div>
-                    <div className="text-xs text-ds-slate-muted">Industries</div>
-                    <div className={`font-medium ${selectedIndustries.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
-                      {selectedIndustries.length ? selectedIndustries.map(i => industryOptions.find(o => o.id === i)?.label).join(', ') : 'Skipped'}
+                    <div className="text-xs text-ds-slate-muted">Work Background</div>
+                    <div className={`font-medium ${selectedBackground.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {selectedBackground.length ? selectedBackground.map(b => workBackgroundOptions.find(o => o.id === b)?.label).join(', ') : 'Skipped'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span>💰</span>
+                  <div>
+                    <div className="text-xs text-ds-slate-muted">Salary Target</div>
+                    <div className={`font-medium ${selectedSalary ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {selectedSalary ? salaryOptions.find(s => s.id === selectedSalary)?.label : 'Skipped'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span>⚡</span>
+                  <div>
+                    <div className="text-xs text-ds-slate-muted">Work Style</div>
+                    <div className={`font-medium ${selectedWorkStyle.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {selectedWorkStyle.length ? selectedWorkStyle.map(w => workStyleOptions.find(o => o.id === w)?.label).join(', ') : 'Skipped'}
                     </div>
                   </div>
                 </div>

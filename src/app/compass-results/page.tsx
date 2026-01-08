@@ -43,16 +43,70 @@ interface ParsedProfile {
   confidence: number;
 }
 
+interface SubmissionData {
+  training: string;
+  education: string | null;
+  background: string[];
+  salary: string | null;
+  workStyle: string[];
+  hasResume: boolean;
+  anythingElse: string;
+  timestamp: string;
+}
+
+// Label mappings for summary display
+const trainingLabels: Record<string, string> = {
+  'minimal': 'Start earning right away',
+  'short-term': 'Within 6 months',
+  'medium': '1-2 years',
+  'significant': 'Open to any training'
+};
+
+const educationLabels: Record<string, string> = {
+  'high-school': 'High school diploma',
+  'some-college': 'Some college',
+  'bachelors': "Bachelor's degree",
+  'masters-plus': "Master's or higher"
+};
+
+const salaryLabels: Record<string, string> = {
+  'under-40k': 'Under $40k',
+  '40-60k': '$40-60k',
+  '60-80k': '$60-80k',
+  '80-100k': '$80-100k',
+  '100k-plus': '$100k+'
+};
+
+const backgroundLabels: Record<string, string> = {
+  'none': 'No work experience',
+  'service': 'Service/Retail',
+  'office': 'Office/Admin',
+  'technical': 'Technical/IT',
+  'healthcare': 'Healthcare',
+  'trades': 'Trades/Construction',
+  'sales': 'Sales & Marketing',
+  'finance': 'Business & Finance',
+  'education': 'Education',
+  'creative': 'Creative/Media'
+};
+
+const workStyleLabels: Record<string, string> = {
+  'hands-on': 'Hands-on',
+  'people': 'Working with people',
+  'analytical': 'Analytical',
+  'creative': 'Creative',
+  'technology': 'Technology',
+  'leadership': 'Leadership'
+};
+
+const TOTAL_CAREERS = 1016;
+
 export default function CompassResultsPage() {
   const router = useRouter();
   const [recommendations, setRecommendations] = useState<CareerMatch[]>([]);
   const [metadata, setMetadata] = useState<ResultsMetadata | null>(null);
   const [profile, setProfile] = useState<ParsedProfile | null>(null);
-  const [submissionData, setSubmissionData] = useState<{
-    resumeLength: number;
-    answers: Record<string, string>;
-    timestamp: string;
-  } | null>(null);
+  const [submissionData, setSubmissionData] = useState<SubmissionData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
@@ -144,90 +198,101 @@ export default function CompassResultsPage() {
         </div>
       </section>
 
-      {/* Results */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Summary Card */}
-        <div className="card-warm p-6 mb-8">
-          <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">
-            Analysis Summary
-          </h2>
+      {/* Summary Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="bg-warm-white rounded-2xl p-6 border border-sage-muted">
 
-          {/* Profile Summary */}
-          {profile && (
-            <div className="mb-6 p-4 bg-sage-pale rounded-xl">
-              <h3 className="text-sm font-semibold text-ds-slate mb-3">
-                Your Profile
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="text-xs text-ds-slate-muted mb-1">Experience</p>
-                  <p className="font-medium text-ds-slate">
-                    {profile.experienceYears} years
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs text-ds-slate-muted mb-1">Education</p>
-                  <p className="font-medium text-ds-slate">
-                    {formatEducationLevel(profile.education.level)}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs text-ds-slate-muted mb-1">Skills Identified</p>
-                  <p className="font-medium text-ds-slate">
-                    {profile.skills.length} skills
-                  </p>
-                </div>
-              </div>
-              {profile.skills.length > 0 && (
-                <div className="mt-3">
-                  <p className="text-xs text-ds-slate-muted mb-2">Top Skills</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {profile.skills.slice(0, 8).map((skill, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 text-xs bg-sage-muted text-sage rounded-md font-medium"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                    {profile.skills.length > 8 && (
-                      <span className="px-2 py-0.5 text-xs text-ds-slate-muted">
-                        +{profile.skills.length - 8} more
-                      </span>
-                    )}
-                  </div>
-                </div>
+          {/* Section 1: Based on your responses */}
+          <div className="mb-6">
+            <h3 className="text-sm font-semibold text-ds-slate mb-3 flex items-center gap-2">
+              <span className="text-lg">✨</span>
+              Based on your responses
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {submissionData?.training && (
+                <span className="inline-flex items-center gap-1.5 bg-sage-muted text-sage font-medium px-3 py-1.5 rounded-full text-sm">
+                  <span>⏱️</span>
+                  <span>{trainingLabels[submissionData.training] || submissionData.training}</span>
+                </span>
               )}
+              {submissionData?.education && (
+                <span className="inline-flex items-center gap-1.5 bg-sage-muted text-sage font-medium px-3 py-1.5 rounded-full text-sm">
+                  <span>🎓</span>
+                  <span>{educationLabels[submissionData.education] || submissionData.education}</span>
+                </span>
+              )}
+              {submissionData?.salary && (
+                <span className="inline-flex items-center gap-1.5 bg-sage-muted text-sage font-medium px-3 py-1.5 rounded-full text-sm">
+                  <span>💰</span>
+                  <span>{salaryLabels[submissionData.salary] || submissionData.salary}</span>
+                </span>
+              )}
+              {submissionData?.background && submissionData.background.length > 0 && (
+                <span className="inline-flex items-center gap-1.5 bg-sage-muted text-sage font-medium px-3 py-1.5 rounded-full text-sm">
+                  <span>💼</span>
+                  <span>{submissionData.background.map(b => backgroundLabels[b] || b).join(', ')}</span>
+                </span>
+              )}
+              {submissionData?.workStyle && submissionData.workStyle.length > 0 && (
+                <span className="inline-flex items-center gap-1.5 bg-sage-muted text-sage font-medium px-3 py-1.5 rounded-full text-sm">
+                  <span>⚡</span>
+                  <span>{submissionData.workStyle.map(w => workStyleLabels[w] || w).join(', ')}</span>
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Section 2: Skills from resume (only if they have skills) */}
+          {profile && profile.skills && profile.skills.length > 0 && (
+            <div className="mb-6 pt-6 border-t border-sage-muted">
+              <h3 className="text-sm font-semibold text-ds-slate mb-3 flex items-center gap-2">
+                <span className="text-lg">💪</span>
+                You bring valuable skills to the table
+              </h3>
+              <div className="flex flex-wrap gap-1.5">
+                {profile.skills.slice(0, 15).map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2.5 py-1 text-sm bg-sage-pale text-sage rounded-full font-medium"
+                  >
+                    {skill}
+                  </span>
+                ))}
+                {profile.skills.length > 15 && (
+                  <span className="px-2.5 py-1 text-sm bg-cream text-ds-slate-muted rounded-full">
+                    +{profile.skills.length - 15} more
+                  </span>
+                )}
+              </div>
             </div>
           )}
 
-          {/* Metadata */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <span className="font-medium text-ds-slate">Analyzed:</span>
-              <span className="ml-2 text-ds-slate-light">
-                {new Date(submissionData.timestamp).toLocaleDateString()}
-              </span>
+          {/* Section 3: Impressive stat + Save button */}
+          <div className={`pt-6 border-t border-sage-muted ${profile?.skills?.length ? '' : 'mt-0'}`}>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <p className="text-ds-slate">
+                  Out of <span className="font-bold text-sage">{TOTAL_CAREERS.toLocaleString()}</span> careers,
+                  we found your <span className="font-bold text-sage">top {recommendations.length} matches</span>
+                </p>
+              </div>
+              <button
+                onClick={() => window.print()}
+                className="print:hidden inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-sage border border-sage rounded-lg hover:bg-sage-pale transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Save as PDF
+              </button>
             </div>
-            {metadata && (
-              <>
-                <div>
-                  <span className="font-medium text-ds-slate">Careers Evaluated:</span>
-                  <span className="ml-2 text-ds-slate-light">
-                    {metadata.stage1Candidates} candidates
-                  </span>
-                </div>
-                <div>
-                  <span className="font-medium text-ds-slate">Processing Time:</span>
-                  <span className="ml-2 text-ds-slate-light">
-                    {(metadata.processingTimeMs / 1000).toFixed(1)}s
-                  </span>
-                </div>
-              </>
-            )}
           </div>
-        </div>
 
+        </div>
+      </div>
+
+      {/* Results */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Career Matches */}
         <div className="space-y-6">
           <h2 className="font-display text-xl font-semibold text-ds-slate">

@@ -20,15 +20,15 @@ import * as path from 'path';
 
 // Types
 export interface UserPreferences {
-  careerGoals: string;        // question1
-  skillsToDevelop: string;    // question2
-  workEnvironment: string;    // question3
-  salaryExpectations: string; // question4
-  industryInterests: string;  // question5
-  // Structured selections from wizard
-  priorityIds?: string[];     // e.g., ['balance', 'stability', 'growth']
-  environmentIds?: string[];  // e.g., ['remote', 'fieldwork']
-  industryIds?: string[];     // e.g., ['healthcare', 'technology']
+  // Legacy string fields (for backward compatibility)
+  careerGoals?: string;
+  workEnvironment?: string;
+  // New structured selections from wizard
+  trainingWillingness: 'minimal' | 'short-term' | 'medium' | 'significant';
+  educationLevel: 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
+  workBackground: string[];   // e.g., ['service', 'office', 'technical']
+  salaryTarget: 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
+  workStyle: string[];        // e.g., ['hands-on', 'people'] - max 2
   additionalContext?: string; // "Anything else we should know" field
 }
 
@@ -84,8 +84,8 @@ interface CareerData {
   timeline_bucket?: 'asap' | '6-24-months' | '2-4-years' | '4-plus-years';
 }
 
-// Timeline bucket type for filtering
-export type TimelineBucket = 'asap' | '6-24-months' | '2-4-years' | '4-plus-years' | 'flexible';
+// Training willingness type for filtering
+export type TrainingWillingness = 'minimal' | 'short-term' | 'medium' | 'significant';
 
 // Model type for routing between full LLM and lightweight modes
 export type MatchingModel = 'model-a' | 'model-b';
@@ -149,34 +149,62 @@ function loadCareerDWAs(): Record<string, string[]> {
 }
 
 /**
- * Filter careers by timeline bucket
- * Returns career slugs that match the timeline requirement
+ * Filter careers by training willingness, accounting for user's existing education
+ *
+ * The key insight: We calculate ADDITIONAL training needed, not total from-scratch training.
+ * A user with a Master's degree selecting "short-term training" shouldn't be filtered out
+ * of Bachelor's-required careers - they already exceed that requirement!
  */
-function filterByTimeline(
-  timelineBucket: TimelineBucket
+function filterByTrainingWillingness(
+  trainingLevel: TrainingWillingness,
+  userEducationLevel: string // 'high-school' | 'some-college' | 'bachelors' | 'masters-plus'
 ): Set<string> | null {
-  if (timelineBucket === 'flexible') {
-    return null; // No filtering - all careers allowed
-  }
-
   const careers = loadCareersData();
   const matchingSlugs = new Set<string>();
 
-  // Timeline buckets are cumulative: 2-4 years includes everything faster
-  const timelineOrder: TimelineBucket[] = ['asap', '6-24-months', '2-4-years', '4-plus-years'];
-  const selectedIndex = timelineOrder.indexOf(timelineBucket);
+  // Training willingness maps to max ADDITIONAL education time user is willing to invest
+  const maxYears: Record<TrainingWillingness, number> = {
+    'minimal': 0.5,      // < 6 months
+    'short-term': 1,     // 3-6 months to 1 year
+    'medium': 2,         // 1-2 year programs
+    'significant': 999   // No limit - includes 10+ year paths like surgeons
+  };
+
+  // User's education level in years (approximate time to achieve from high school)
+  const educationYears: Record<string, number> = {
+    'high-school': 0,
+    'some-college': 1,
+    'bachelors': 4,
+    'masters-plus': 6
+  };
+
+  // Career education requirements in years (based on timeline_bucket)
+  const careerEducationRequirements: Record<string, number> = {
+    'asap': 0,              // No formal education required
+    '6-24-months': 1,       // Certificate or short program
+    '2-4-years': 4,         // Bachelor's degree
+    '4-plus-years': 6       // Master's or professional degree
+  };
+
+  const userMaxYears = maxYears[trainingLevel];
+  const userEducationYears = educationYears[userEducationLevel] || 0;
 
   careers.forEach(career => {
-    const careerBucket = career.timeline_bucket || '4-plus-years';
-    const careerIndex = timelineOrder.indexOf(careerBucket as TimelineBucket);
+    const careerBucket = career.timeline_bucket || '2-4-years';
 
-    // Include career if it can be achieved within the user's timeline
-    if (careerIndex <= selectedIndex) {
+    // Get the career's education requirement in years
+    const careerRequiredYears = careerEducationRequirements[careerBucket] ?? 4;
+
+    // Calculate ADDITIONAL training needed (can't be negative)
+    const additionalTrainingNeeded = Math.max(0, careerRequiredYears - userEducationYears);
+
+    // Include career if additional training is within user's willingness
+    if (additionalTrainingNeeded <= userMaxYears) {
       matchingSlugs.add(career.slug);
     }
   });
 
-  console.log(`  Timeline filter (${timelineBucket}): ${matchingSlugs.size} careers match`);
+  console.log(`  Training filter (${trainingLevel}, user edu: ${userEducationLevel}): ${matchingSlugs.size} careers match`);
   return matchingSlugs;
 }
 
@@ -191,6 +219,14 @@ async function stage1EmbeddingSimilarity(
 ): Promise<CareerCandidate[]> {
   console.log('  Stage 1: Embedding similarity search...');
 
+  // Build preference strings from structured selections
+  const workStyleLabels = profile.preferences.workStyle
+    .map(id => WORK_STYLE_LABELS[id] || id)
+    .join(', ');
+  const backgroundLabels = profile.preferences.workBackground
+    .map(id => WORK_BACKGROUND_LABELS[id] || id)
+    .join(', ');
+
   // Generate query embeddings
   const queryEmbeddings = await generateQueryEmbeddings(
     {
@@ -201,11 +237,11 @@ async function stage1EmbeddingSimilarity(
       experienceYears: profile.resume.experienceYears
     },
     {
-      careerGoals: profile.preferences.careerGoals,
-      skillsToDevelop: profile.preferences.skillsToDevelop,
-      workEnvironment: profile.preferences.workEnvironment,
-      salaryExpectations: profile.preferences.salaryExpectations,
-      industryInterests: profile.preferences.industryInterests
+      careerGoals: workStyleLabels || profile.preferences.careerGoals || 'Career growth and stability',
+      skillsToDevelop: backgroundLabels || 'Skills relevant to career goals',
+      workEnvironment: profile.preferences.workEnvironment || 'Flexible environment',
+      salaryExpectations: SALARY_TARGET_LABELS[profile.preferences.salaryTarget] || '$60,000',
+      industryInterests: backgroundLabels || 'Open to various industries'
     }
   );
 
@@ -286,12 +322,16 @@ function stage2StructuredMatching(
   const careers = loadCareersData();
   const careerLookup = new Map(careers.map(c => [c.slug, c]));
 
-  // Parse salary expectations
+  // Parse salary target from new preferences
   let targetSalary: number | null = null;
-  const salaryMatch = profile.preferences.salaryExpectations.match(/\$?([\d,]+)/);
-  if (salaryMatch) {
-    targetSalary = parseInt(salaryMatch[1].replace(/,/g, ''), 10);
-  }
+  const salaryTargetMap: Record<string, number> = {
+    'under-40k': 35000,
+    '40-60k': 50000,
+    '60-80k': 70000,
+    '80-100k': 90000,
+    '100k-plus': 120000
+  };
+  targetSalary = salaryTargetMap[profile.preferences.salaryTarget] || 50000;
 
   // Score each candidate
   const scored = candidates.map(candidate => {
@@ -467,35 +507,37 @@ Your tone should be:
 
 ## CRITICAL: User Selections Are Your Priority
 
-The user has made EXPLICIT selections about what they want. These are NON-NEGOTIABLE preferences that MUST heavily influence your scoring:
+The user has made EXPLICIT selections about what they want. These MUST heavily influence your scoring:
 
-1. **PRIORITIES** (what matters most to them) - MUST be reflected in your career recommendations
-   - "Higher earning potential" → prioritize high-paying careers
-   - "Work-life balance" → prioritize careers known for flexibility, reasonable hours
-   - "Job stability & security" → prioritize careers with strong demand, low volatility
-   - "Career growth opportunities" → prioritize careers with clear advancement paths
-   - "Meaningful / impactful work" → prioritize careers with social impact
+1. **TRAINING WILLINGNESS** - How much education/training they're willing to invest
+   - Only recommend careers that fit within their training timeframe
+   - If they selected "minimal training", don't recommend careers requiring years of education
 
-2. **ENVIRONMENT** (where they want to work) - careers MUST match their environment preference
-   - "Remote / Work from home" → prioritize remote-friendly careers
-   - "Office-based / Indoor" → prioritize traditional office careers
-   - "Hands-on / Fieldwork / Outdoors" → prioritize physical, outdoor, or field-based careers
-   - "Mix of different settings" → flexible on environment
+2. **EDUCATION LEVEL** - Their current education
+   - Use this to assess realistic career transitions
+   - Factor into whether they meet minimum requirements
 
-3. **INDUSTRIES** (fields they're interested in) - strongly favor careers in their selected industries
-   - If they selected specific industries, prioritize those fields
-   - Only recommend careers outside their selections if they're exceptional fits
+3. **WORK BACKGROUND** - Their experience areas
+   - Strongly favor careers where their background transfers
+   - Look for skill and industry overlaps
 
-## Scoring Weights
+4. **SALARY TARGET** - What they want to earn
+   - Prioritize careers that meet or exceed their target
+   - Be realistic about salaries at their experience level
+
+5. **WORK STYLE** - Type of work they prefer
+   - Hands-on, people-focused, analytical, creative, technology, or leadership
+   - Match careers to their preferred work type
+
+## Scoring Weights (IMPORTANT - these weights are prioritized)
 
 For each career, evaluate fit based on:
-1. **Priority alignment (30%)**: Does this career deliver on their stated priorities?
-2. **Environment match (20%)**: Does the work setting match their preference?
-3. **Industry fit (15%)**: Is this in an industry they're interested in?
-4. **Skills transferability (20%)**: Do their skills translate to this career?
-5. **Transition feasibility (15%)**: Is the education/time realistic?
+1. **Background transferability (30%)**: Does their work experience translate to this career?
+2. **Training feasibility (30%)**: Can they complete the required training within their stated willingness?
+3. **Salary fit (25%)**: Does the career meet their salary target?
+4. **Work style alignment (15%)**: Does the day-to-day work match their preferred style?
 
-**IMPORTANT**: If a career doesn't match their environment preference OR their priorities, cap its score at 75 maximum.
+**IMPORTANT**: If a career requires training beyond their stated willingness OR doesn't match their background at all, cap its score at 70 maximum.
 
 Return a JSON array of the top 15 career matches with this structure:
 [
@@ -506,20 +548,20 @@ Return a JSON array of the top 15 career matches with this structure:
     "matchScore": 85,
     "medianPay": 75000,
     "aiResilience": "AI-Resilient",
-    "reasoning": "2-3 warm, encouraging sentences speaking directly to the person. Reference their specific priorities and how this career delivers on them. Make them feel understood.",
+    "reasoning": "2-3 warm, encouraging sentences speaking directly to the person. Reference how their background transfers and how the career fits their practical needs (salary, training time).",
     "skillsGap": ["Specific Skill 1", "Specific Skill 2", "Specific Skill 3"],
     "transitionTimeline": "6-12 months",
     "education": "Bachelor's degree"
   }
 ]
 
-Example good reasoning (for someone who selected "Work-life balance" + "Hands-on / Fieldwork"):
-"This role checks all your boxes – you'll be working outdoors with your hands, and the 40-hour weeks with minimal overtime mean you'll have real time for life outside work. Your experience with [their skill] translates directly here."
+Example good reasoning (for someone with office background targeting $60-80k with short-term training):
+"Your administrative experience gives you a real head start here – project coordination skills transfer directly. With a 3-6 month certification, you could be earning in your target range. The analytical day-to-day work matches what you're looking for."
 
 Rules:
 - Return 10-15 career matches based on fit quality. Aim for 15 if enough good matches exist.
 - matchScore should range from 60-100, distributed appropriately based on fit
-- reasoning MUST reference their specific priorities and how the career delivers on them
+- reasoning MUST reference their background and practical fit (training, salary)
 - reasoning must speak directly to "you/your" - NEVER say "the user" or "the candidate"
 - skillsGap must be exactly 3 specific, learnable skills
 - transitionTimeline: "6-12 months", "1-2 years", "2-4 years", "4-6 years", or "6+ years"
@@ -529,31 +571,54 @@ Rules:
 
 Return ONLY the JSON array with 10-15 matches.`;
 
-// Priority ID to label mapping for prompt building
-const PRIORITY_LABELS: Record<string, string> = {
-  'earning': 'Higher earning potential',
-  'balance': 'Work-life balance',
-  'stability': 'Job stability & security',
-  'growth': 'Career growth opportunities',
-  'meaningful': 'Meaningful / impactful work'
+// Training willingness labels
+const TRAINING_LABELS: Record<string, string> = {
+  'minimal': 'Minimal training (a few weeks)',
+  'short-term': 'Short-term program (3-6 months)',
+  'medium': '1-2 year program',
+  'significant': 'Significant investment (Bachelor\'s or apprenticeship)',
+  'open': 'Open to anything'
 };
 
-// Environment ID to label mapping
-const ENVIRONMENT_LABELS: Record<string, string> = {
-  'remote': 'Remote / Work from home',
-  'office': 'Office-based / Indoor',
-  'fieldwork': 'Hands-on / Fieldwork / Outdoors',
-  'mixed': 'Mix of different settings'
+// Education level labels
+const EDUCATION_LABELS: Record<string, string> = {
+  'high-school': 'High school diploma or GED',
+  'some-college': 'Some college or Associate\'s degree',
+  'bachelors': 'Bachelor\'s degree',
+  'masters-plus': 'Master\'s degree or higher'
 };
 
-// Industry ID to label mapping
-const INDUSTRY_LABELS: Record<string, string> = {
-  'healthcare': 'Healthcare',
-  'technology': 'Technology',
-  'trades': 'Skilled Trades',
-  'business': 'Business / Finance',
-  'transportation': 'Transportation / Logistics',
-  'public-service': 'Public Service / Government'
+// Work background labels
+const WORK_BACKGROUND_LABELS: Record<string, string> = {
+  'none': 'No significant work experience',
+  'service': 'Service, Retail, or Hospitality',
+  'office': 'Office, Administrative, or Clerical',
+  'technical': 'Technical, IT, or Engineering',
+  'healthcare': 'Healthcare or Medical',
+  'trades': 'Trades, Construction, or Manufacturing',
+  'sales': 'Sales & Marketing',
+  'finance': 'Business & Finance',
+  'education': 'Education or Social Services',
+  'creative': 'Creative, Media, or Design'
+};
+
+// Salary target labels
+const SALARY_TARGET_LABELS: Record<string, string> = {
+  'under-40k': 'Under $40,000',
+  '40-60k': '$40,000 - $60,000',
+  '60-80k': '$60,000 - $80,000',
+  '80-100k': '$80,000 - $100,000',
+  '100k-plus': '$100,000+'
+};
+
+// Work style labels
+const WORK_STYLE_LABELS: Record<string, string> = {
+  'hands-on': 'Hands-on work (building, fixing, operating)',
+  'people': 'Working with people (caring, teaching, helping)',
+  'analytical': 'Analysis & problem-solving (data, research, strategy)',
+  'creative': 'Creative & design (art, writing, media)',
+  'technology': 'Technology & digital (coding, IT, software)',
+  'leadership': 'Leadership & business (managing, selling, organizing)'
 };
 
 function buildReasoningPrompt(
@@ -566,34 +631,37 @@ function buildReasoningPrompt(
   // USER SELECTIONS - Most important section
   parts.push('# USER SELECTIONS (MUST PRIORITIZE THESE)\n');
 
-  // Priorities
-  if (prefs.priorityIds && prefs.priorityIds.length > 0) {
-    const priorityLabels = prefs.priorityIds.map(id => PRIORITY_LABELS[id] || id);
-    parts.push(`## What Matters Most to Them:`);
-    priorityLabels.forEach(label => parts.push(`- ✅ ${label}`));
+  // Training Willingness
+  parts.push(`## Training Willingness:`);
+  parts.push(`- ${TRAINING_LABELS[prefs.trainingWillingness] || prefs.trainingWillingness}`);
+  parts.push('');
+
+  // Education Level
+  parts.push(`## Current Education:`);
+  parts.push(`- ${EDUCATION_LABELS[prefs.educationLevel] || prefs.educationLevel}`);
+  parts.push('');
+
+  // Work Background
+  if (prefs.workBackground && prefs.workBackground.length > 0) {
+    const backgroundLabels = prefs.workBackground.map(id => WORK_BACKGROUND_LABELS[id] || id);
+    parts.push(`## Work Background:`);
+    backgroundLabels.forEach(label => parts.push(`- ✅ ${label}`));
     parts.push('');
   } else {
-    parts.push(`## Priorities: ${prefs.careerGoals}\n`);
+    parts.push(`## Work Background: No significant experience\n`);
   }
 
-  // Work Environment
-  if (prefs.environmentIds && prefs.environmentIds.length > 0) {
-    const envLabels = prefs.environmentIds.map(id => ENVIRONMENT_LABELS[id] || id);
-    parts.push(`## Preferred Work Environment:`);
-    envLabels.forEach(label => parts.push(`- ✅ ${label}`));
-    parts.push('');
-  } else {
-    parts.push(`## Work Environment: ${prefs.workEnvironment}\n`);
-  }
+  // Salary Target
+  parts.push(`## Salary Target:`);
+  parts.push(`- ${SALARY_TARGET_LABELS[prefs.salaryTarget] || prefs.salaryTarget}`);
+  parts.push('');
 
-  // Industries
-  if (prefs.industryIds && prefs.industryIds.length > 0) {
-    const industryLabels = prefs.industryIds.map(id => INDUSTRY_LABELS[id] || id);
-    parts.push(`## Industries They're Interested In:`);
-    industryLabels.forEach(label => parts.push(`- ✅ ${label}`));
+  // Work Style
+  if (prefs.workStyle && prefs.workStyle.length > 0) {
+    const workStyleLabels = prefs.workStyle.map(id => WORK_STYLE_LABELS[id] || id);
+    parts.push(`## Preferred Work Style:`);
+    workStyleLabels.forEach(label => parts.push(`- ✅ ${label}`));
     parts.push('');
-  } else {
-    parts.push(`## Industry Interests: ${prefs.industryInterests}\n`);
   }
 
   // Additional Context (the "Anything else" field)
@@ -603,8 +671,8 @@ function buildReasoningPrompt(
     parts.push('');
   }
 
-  // User Background section
-  parts.push('# USER BACKGROUND\n');
+  // User Background section (from resume if available)
+  parts.push('# USER BACKGROUND (from resume)\n');
   parts.push(`- Skills: ${profile.resume.skills.slice(0, 15).join(', ') || 'Not specified'}`);
   parts.push(`- Experience: ${profile.resume.experienceYears} years`);
   parts.push(`- Education: ${profile.resume.education.level} in ${profile.resume.education.fields.join(', ') || 'general field'}`);
@@ -629,7 +697,7 @@ function buildReasoningPrompt(
     parts.push(`- Required Skills: ${career.technology_skills.slice(0, 5).join(', ')}\n`);
   });
 
-  parts.push('\nAnalyze these careers against their EXPLICIT SELECTIONS and return the top 15 matches as a JSON array.');
+  parts.push('\nAnalyze these careers against their EXPLICIT SELECTIONS (training, background, salary, work style) and return the top 15 matches as a JSON array.');
 
   return parts.join('\n');
 }
@@ -645,11 +713,18 @@ Write brief, encouraging reasoning for each career match. Use "you" and "your" l
 ## CRITICAL: Respect User Selections
 
 The user made explicit selections about:
-1. **PRIORITIES** - What matters most (e.g., work-life balance, earning potential)
-2. **ENVIRONMENT** - Where they want to work (remote, office, fieldwork/outdoors)
-3. **INDUSTRIES** - Fields they're interested in
+1. **TRAINING WILLINGNESS** - How much education/training they'll invest
+2. **EDUCATION LEVEL** - Their current education
+3. **WORK BACKGROUND** - Their experience areas (where skills transfer)
+4. **SALARY TARGET** - What they want to earn
+5. **WORK STYLE** - Type of work they prefer
 
-These selections MUST heavily influence your scoring. Careers that don't match their environment or priorities should be scored lower.
+## Scoring Weights (IMPORTANT)
+
+1. **Background transferability (30%)**: Does their experience translate?
+2. **Training feasibility (30%)**: Can they complete required training within their stated willingness?
+3. **Salary fit (25%)**: Does the career meet their target?
+4. **Work style alignment (15%)**: Does the work match their preference?
 
 Return a JSON array with 10-15 career matches in this structure:
 [
@@ -660,7 +735,7 @@ Return a JSON array with 10-15 career matches in this structure:
     "matchScore": 85,
     "medianPay": 75000,
     "aiResilience": "AI-Resilient",
-    "reasoning": "1-2 sentences about why this career fits their specific priorities and preferences.",
+    "reasoning": "1-2 sentences about how their background transfers and if the career fits their practical needs.",
     "skillsGap": ["Skill 1", "Skill 2", "Skill 3"],
     "transitionTimeline": "6-12 months",
     "education": "Bachelor's degree"
@@ -669,8 +744,7 @@ Return a JSON array with 10-15 career matches in this structure:
 
 Rules:
 - Return 10-15 matches, scored 60-100 based on fit
-- Keep reasoning brief but reference their specific priorities
-- Careers that don't match their environment preference: cap at 75
+- Careers requiring training beyond their willingness: cap at 70
 - skillsGap must be exactly 3 items
 - transitionTimeline: "6-12 months", "1-2 years", "2-4 years", "4-6 years", or "6+ years"
 - Boost AI-Resilient careers slightly
@@ -688,34 +762,33 @@ async function stage3HaikuReasoning(
 
   // Build a lighter prompt for Haiku
   const parts: string[] = [];
-  
+
   // USER SELECTIONS - Most important
   parts.push('# USER SELECTIONS (PRIORITIZE THESE)\n');
-  
-  // Priorities
-  if (prefs.priorityIds && prefs.priorityIds.length > 0) {
-    const priorityLabels = prefs.priorityIds.map(id => PRIORITY_LABELS[id] || id);
-    parts.push(`## What Matters Most: ${priorityLabels.join(', ')}`);
+
+  // Training Willingness
+  parts.push(`## Training Willingness: ${TRAINING_LABELS[prefs.trainingWillingness] || prefs.trainingWillingness}`);
+
+  // Education
+  parts.push(`## Education: ${EDUCATION_LABELS[prefs.educationLevel] || prefs.educationLevel}`);
+
+  // Work Background
+  if (prefs.workBackground && prefs.workBackground.length > 0) {
+    const backgroundLabels = prefs.workBackground.map(id => WORK_BACKGROUND_LABELS[id] || id);
+    parts.push(`## Work Background: ${backgroundLabels.join(', ')}`);
   } else {
-    parts.push(`## Priorities: ${prefs.careerGoals}`);
+    parts.push(`## Work Background: No significant experience`);
   }
-  
-  // Environment
-  if (prefs.environmentIds && prefs.environmentIds.length > 0) {
-    const envLabels = prefs.environmentIds.map(id => ENVIRONMENT_LABELS[id] || id);
-    parts.push(`## Work Environment: ${envLabels.join(', ')}`);
-  } else {
-    parts.push(`## Environment: ${prefs.workEnvironment}`);
+
+  // Salary Target
+  parts.push(`## Salary Target: ${SALARY_TARGET_LABELS[prefs.salaryTarget] || prefs.salaryTarget}`);
+
+  // Work Style
+  if (prefs.workStyle && prefs.workStyle.length > 0) {
+    const workStyleLabels = prefs.workStyle.map(id => WORK_STYLE_LABELS[id] || id);
+    parts.push(`## Work Style: ${workStyleLabels.join(', ')}`);
   }
-  
-  // Industries
-  if (prefs.industryIds && prefs.industryIds.length > 0) {
-    const industryLabels = prefs.industryIds.map(id => INDUSTRY_LABELS[id] || id);
-    parts.push(`## Industries: ${industryLabels.join(', ')}`);
-  } else {
-    parts.push(`## Industries: ${prefs.industryInterests}`);
-  }
-  
+
   // Additional context
   if (prefs.additionalContext && prefs.additionalContext.trim()) {
     parts.push(`## Additional Context: "${prefs.additionalContext.trim()}"`);
@@ -724,7 +797,7 @@ async function stage3HaikuReasoning(
 
   // Include resume info if available (for hybrid cases)
   if (profile.resume.skills.length > 0) {
-    parts.push(`# BACKGROUND`);
+    parts.push(`# BACKGROUND (from resume)`);
     parts.push(`- Skills: ${profile.resume.skills.slice(0, 10).join(', ')}`);
     parts.push(`- Experience: ${profile.resume.experienceYears} years\n`);
   }
@@ -740,7 +813,7 @@ async function stage3HaikuReasoning(
     parts.push(`   AI Resilience: ${career.ai_resilience || 'Unknown'}, Education: ${career.education?.typical_entry_education || 'Bachelor\'s'}`);
   });
 
-  parts.push('\nReturn the top 10-15 matches as JSON, prioritizing careers that match their selections.');
+  parts.push('\nReturn the top 10-15 matches as JSON, prioritizing careers that match their training willingness, background, and salary target.');
 
   const response = await client.messages.create({
     model: 'claude-3-5-haiku-20241022',
@@ -789,7 +862,7 @@ export async function matchCareers(
   profile: UserProfile,
   options: {
     useSupabase?: boolean;
-    timelineBucket?: TimelineBucket;
+    trainingWillingness?: TrainingWillingness;
     model?: MatchingModel;
   } = {}
 ): Promise<MatchingResult> {
@@ -797,19 +870,20 @@ export async function matchCareers(
   let costUsd = 0;
 
   const model = options.model || 'model-a';
-  const timelineBucket = options.timelineBucket || 'flexible';
+  const trainingWillingness = options.trainingWillingness || profile.preferences.trainingWillingness || 'significant';
 
-  console.log(`\n🎯 Starting career matching (${model}, timeline: ${timelineBucket})...`);
+  console.log(`\n🎯 Starting career matching (${model}, training: ${trainingWillingness})...`);
 
-  // Apply timeline filter if specified
-  const timelineFilter = filterByTimeline(timelineBucket);
+  // Apply training filter if specified, accounting for user's existing education
+  const userEducation = profile.preferences.educationLevel || 'high-school';
+  const trainingFilter = filterByTrainingWillingness(trainingWillingness, userEducation);
 
   // Stage 1: Embedding similarity
   const stage1Start = Date.now();
   const stage1Candidates = await stage1EmbeddingSimilarity(
     profile,
     options.useSupabase ?? true,
-    timelineFilter
+    trainingFilter
   );
   console.log(`    Stage 1 time: ${Date.now() - stage1Start}ms`);
   costUsd += 0.0004; // Embedding cost
