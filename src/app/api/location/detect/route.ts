@@ -8,30 +8,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import * as fs from 'fs';
-import * as path from 'path';
-
-// Type definitions
-interface MSAMetadata {
-  name: string;
-  shortName: string;
-  states: string[];
-  lat?: number | null;
-  lng?: number | null;
-}
-
-interface StateMetadata {
-  name: string;
-  lat?: number | null;
-  lng?: number | null;
-}
-
-interface GeocodingData {
-  msaMetadata: { [code: string]: MSAMetadata };
-  stateMetadata: { [code: string]: StateMetadata };
-  zipToMsa: { [zip: string]: string };
-  zipToState: { [zip: string]: string };
-}
+import { geocodingData, GeocodingData } from '@/lib/geocoding-data';
 
 interface DetectSuccessResponse {
   success: true;
@@ -61,26 +38,6 @@ interface DetectErrorResponse {
 }
 
 type DetectResponse = DetectSuccessResponse | DetectErrorResponse;
-
-// Cache geocoding data
-let geocodingCache: GeocodingData | null = null;
-
-function loadGeocodingData(): GeocodingData | null {
-  if (geocodingCache) return geocodingCache;
-
-  try {
-    const dataPath = path.join(process.cwd(), 'data/processed/msa-geocoding.json');
-    if (!fs.existsSync(dataPath)) {
-      console.log('Geocoding data not found at', dataPath);
-      return null;
-    }
-    geocodingCache = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    return geocodingCache;
-  } catch (error) {
-    console.error('Failed to load geocoding data:', error);
-    return null;
-  }
-}
 
 /**
  * Calculate distance between two coordinates using Haversine formula.
@@ -171,28 +128,16 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
       });
     }
 
-    // Load geocoding data
-    const geocoding = loadGeocodingData();
-    if (!geocoding) {
-      return NextResponse.json({
-        success: true,
-        detected: false,
-        locationType: null,
-        location: null,
-        raw,
-      });
-    }
-
     // Try to find MSA from coordinates
     if (latitude && longitude) {
       const lat = parseFloat(latitude);
       const lng = parseFloat(longitude);
 
       if (!isNaN(lat) && !isNaN(lng)) {
-        const nearestMSA = findNearestMSA(lat, lng, geocoding);
+        const nearestMSA = findNearestMSA(lat, lng, geocodingData);
 
         if (nearestMSA) {
-          const msa = geocoding.msaMetadata[nearestMSA.code];
+          const msa = geocodingData.msaMetadata[nearestMSA.code];
           return NextResponse.json({
             success: true,
             detected: true,
@@ -208,15 +153,15 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
         }
 
         // Fall back to state
-        const state = findStateFromCoords(lat, lng, geocoding) || region;
-        if (state && geocoding.stateMetadata[state]) {
+        const state = findStateFromCoords(lat, lng, geocodingData) || region;
+        if (state && geocodingData.stateMetadata[state]) {
           return NextResponse.json({
             success: true,
             detected: true,
             locationType: 'state',
             location: {
               code: state,
-              name: geocoding.stateMetadata[state].name,
+              name: geocodingData.stateMetadata[state].name,
               shortName: state,
               state,
             },
@@ -227,14 +172,14 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
     }
 
     // Fall back to region (state) from headers
-    if (region && geocoding.stateMetadata[region]) {
+    if (region && geocodingData.stateMetadata[region]) {
       return NextResponse.json({
         success: true,
         detected: true,
         locationType: 'state',
         location: {
           code: region,
-          name: geocoding.stateMetadata[region].name,
+          name: geocodingData.stateMetadata[region].name,
           shortName: region,
           state: region,
         },

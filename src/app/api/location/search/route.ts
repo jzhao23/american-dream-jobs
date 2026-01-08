@@ -7,27 +7,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import * as fs from 'fs';
-import * as path from 'path';
+import { geocodingData, GeocodingData } from '@/lib/geocoding-data';
 
 // Type definitions
-interface MSAMetadata {
-  name: string;
-  shortName: string;
-  states: string[];
-}
-
-interface StateMetadata {
-  name: string;
-}
-
-interface GeocodingData {
-  msaMetadata: { [code: string]: MSAMetadata };
-  stateMetadata: { [code: string]: StateMetadata };
-  zipToMsa: { [zip: string]: string };
-  searchIndex: { [term: string]: string[] };
-}
-
 interface LocationResult {
   type: 'msa' | 'state';
   code: string;
@@ -51,26 +33,6 @@ interface SearchErrorResponse {
 }
 
 type SearchResponse = SearchSuccessResponse | SearchErrorResponse;
-
-// Cache geocoding data
-let geocodingCache: GeocodingData | null = null;
-
-function loadGeocodingData(): GeocodingData | null {
-  if (geocodingCache) return geocodingCache;
-
-  try {
-    const dataPath = path.join(process.cwd(), 'data/processed/msa-geocoding.json');
-    if (!fs.existsSync(dataPath)) {
-      console.log('Geocoding data not found');
-      return null;
-    }
-    geocodingCache = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    return geocodingCache;
-  } catch (error) {
-    console.error('Failed to load geocoding data:', error);
-    return null;
-  }
-}
 
 /**
  * Search for locations matching the query.
@@ -214,21 +176,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<SearchResp
       });
     }
 
-    const geocoding = loadGeocodingData();
-    if (!geocoding) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: {
-            code: 'DATA_NOT_AVAILABLE',
-            message: 'Location data not available',
-          },
-        },
-        { status: 503 }
-      );
-    }
-
-    const results = searchLocations(query, geocoding);
+    const results = searchLocations(query, geocodingData);
 
     return NextResponse.json({
       success: true,
