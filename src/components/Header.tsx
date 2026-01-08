@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LocationSelector } from "./LocationSelector";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,6 +32,12 @@ export function Header() {
               Calculator
             </a>
             <a
+              href="/local-jobs"
+              className="text-sm font-medium text-ds-slate-light hover:text-sage hover:bg-sage-muted px-3 py-2 rounded-lg transition-all"
+            >
+              Local Jobs
+            </a>
+            <a
               href="/methodology"
               className="text-sm font-medium text-ds-slate-light hover:text-sage hover:bg-sage-muted px-3 py-2 rounded-lg transition-all"
             >
@@ -42,6 +49,9 @@ export function Header() {
             >
               Career Compass
             </a>
+            <div className="ml-3 border-l border-sage-muted pl-3">
+              <LocationSelector variant="header" />
+            </div>
           </nav>
 
           {/* Mobile menu button */}
@@ -87,6 +97,10 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-sage-muted bg-warm-white">
           <nav className="px-4 py-2 space-y-1">
+            {/* Location selector for mobile */}
+            <div className="py-3 px-3 border-b border-sage-muted mb-2">
+              <LocationSelector variant="full" />
+            </div>
             <a
               href="/#careers"
               onClick={() => setMobileMenuOpen(false)}
@@ -107,6 +121,13 @@ export function Header() {
               className="block py-3 px-3 min-h-[44px] text-base font-medium text-ds-slate-light hover:text-sage active:bg-sage-muted rounded-lg transition-colors"
             >
               Net Worth Calculator
+            </a>
+            <a
+              href="/local-jobs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-3 min-h-[44px] text-base font-medium text-ds-slate-light hover:text-sage active:bg-sage-muted rounded-lg transition-colors"
+            >
+              Local Jobs
             </a>
             <a
               href="/methodology"

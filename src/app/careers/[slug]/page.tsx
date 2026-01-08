@@ -17,6 +17,7 @@ import {
 } from "@/types/career";
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
+import { LocalJobMarket } from "@/components/LocalJobMarket";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -438,6 +439,13 @@ export default async function CareerPage({ params }: PageProps) {
               <AIAssessmentDetail assessment={aiAssessment} />
             </Section>
           )}
+
+          {/* Local Job Market */}
+          <LocalJobMarket
+            careerSlug={career.slug}
+            careerTitle={career.title}
+            nationalMedianWage={medianPay}
+          />
 
           {/* Technology Skills */}
           {career.technology_skills && career.technology_skills.length > 0 && (

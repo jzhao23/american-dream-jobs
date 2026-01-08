@@ -1,0 +1,279 @@
+{
+  "metadata": {
+    "source": "BLS OEWS May 2024",
+    "generated_at": "2025-01-08T00:00:00Z",
+    "total_careers": 50,
+    "total_msas": 50,
+    "total_states": 51
+  },
+  "msas": {
+    "41860": { "name": "San Francisco-Oakland-Berkeley, CA", "shortName": "San Francisco", "states": ["CA"] },
+    "35620": { "name": "New York-Newark-Jersey City, NY-NJ-PA", "shortName": "New York", "states": ["NY", "NJ", "PA"] },
+    "31080": { "name": "Los Angeles-Long Beach-Anaheim, CA", "shortName": "Los Angeles", "states": ["CA"] },
+    "16980": { "name": "Chicago-Naperville-Elgin, IL-IN-WI", "shortName": "Chicago", "states": ["IL", "IN", "WI"] },
+    "19100": { "name": "Dallas-Fort Worth-Arlington, TX", "shortName": "Dallas", "states": ["TX"] },
+    "26420": { "name": "Houston-The Woodlands-Sugar Land, TX", "shortName": "Houston", "states": ["TX"] },
+    "12420": { "name": "Austin-Round Rock-Georgetown, TX", "shortName": "Austin", "states": ["TX"] },
+    "47900": { "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV", "shortName": "Washington", "states": ["DC", "VA", "MD", "WV"] },
+    "33100": { "name": "Miami-Fort Lauderdale-Pompano Beach, FL", "shortName": "Miami", "states": ["FL"] },
+    "37980": { "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD", "shortName": "Philadelphia", "states": ["PA", "NJ", "DE", "MD"] },
+    "12060": { "name": "Atlanta-Sandy Springs-Alpharetta, GA", "shortName": "Atlanta", "states": ["GA"] },
+    "38060": { "name": "Phoenix-Mesa-Chandler, AZ", "shortName": "Phoenix", "states": ["AZ"] },
+    "14460": { "name": "Boston-Cambridge-Newton, MA-NH", "shortName": "Boston", "states": ["MA", "NH"] },
+    "42660": { "name": "Seattle-Tacoma-Bellevue, WA", "shortName": "Seattle", "states": ["WA"] },
+    "19740": { "name": "Denver-Aurora-Lakewood, CO", "shortName": "Denver", "states": ["CO"] },
+    "41940": { "name": "San Jose-Sunnyvale-Santa Clara, CA", "shortName": "San Jose", "states": ["CA"] }
+  },
+  "states": {
+    "CA": { "name": "California" },
+    "TX": { "name": "Texas" },
+    "NY": { "name": "New York" },
+    "FL": { "name": "Florida" },
+    "IL": { "name": "Illinois" },
+    "PA": { "name": "Pennsylvania" },
+    "OH": { "name": "Ohio" },
+    "GA": { "name": "Georgia" },
+    "NC": { "name": "North Carolina" },
+    "MI": { "name": "Michigan" },
+    "NJ": { "name": "New Jersey" },
+    "VA": { "name": "Virginia" },
+    "WA": { "name": "Washington" },
+    "AZ": { "name": "Arizona" },
+    "MA": { "name": "Massachusetts" },
+    "TN": { "name": "Tennessee" },
+    "IN": { "name": "Indiana" },
+    "MO": { "name": "Missouri" },
+    "MD": { "name": "Maryland" },
+    "WI": { "name": "Wisconsin" },
+    "CO": { "name": "Colorado" },
+    "MN": { "name": "Minnesota" },
+    "SC": { "name": "South Carolina" },
+    "AL": { "name": "Alabama" },
+    "LA": { "name": "Louisiana" },
+    "KY": { "name": "Kentucky" },
+    "OR": { "name": "Oregon" },
+    "OK": { "name": "Oklahoma" },
+    "CT": { "name": "Connecticut" },
+    "UT": { "name": "Utah" },
+    "IA": { "name": "Iowa" },
+    "NV": { "name": "Nevada" },
+    "AR": { "name": "Arkansas" },
+    "MS": { "name": "Mississippi" },
+    "KS": { "name": "Kansas" },
+    "NM": { "name": "New Mexico" },
+    "NE": { "name": "Nebraska" },
+    "ID": { "name": "Idaho" },
+    "WV": { "name": "West Virginia" },
+    "HI": { "name": "Hawaii" },
+    "NH": { "name": "New Hampshire" },
+    "ME": { "name": "Maine" },
+    "MT": { "name": "Montana" },
+    "RI": { "name": "Rhode Island" },
+    "DE": { "name": "Delaware" },
+    "SD": { "name": "South Dakota" },
+    "ND": { "name": "North Dakota" },
+    "AK": { "name": "Alaska" },
+    "DC": { "name": "District of Columbia" },
+    "VT": { "name": "Vermont" },
+    "WY": { "name": "Wyoming" }
+  },
+  "careers": {
+    "software-developers": {
+      "41860": { "employment": 89450, "medianWage": 175000, "locationQuotient": 2.3, "growth": "growing", "growthPercent": 4.2 },
+      "35620": { "employment": 134500, "medianWage": 145000, "locationQuotient": 1.8, "growth": "growing", "growthPercent": 2.8 },
+      "31080": { "employment": 98000, "medianWage": 140000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 3.1 },
+      "42660": { "employment": 82000, "medianWage": 165000, "locationQuotient": 2.1, "growth": "growing-quickly", "growthPercent": 5.5 },
+      "41940": { "employment": 95000, "medianWage": 180000, "locationQuotient": 2.8, "growth": "growing", "growthPercent": 3.8 },
+      "19100": { "employment": 72000, "medianWage": 128000, "locationQuotient": 1.6, "growth": "growing-quickly", "growthPercent": 6.2 },
+      "26420": { "employment": 58000, "medianWage": 125000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 4.1 },
+      "12420": { "employment": 68000, "medianWage": 145000, "locationQuotient": 2.5, "growth": "growing-quickly", "growthPercent": 8.3 },
+      "CA": { "employment": 450000, "medianWage": 160000, "locationQuotient": 2.1, "growth": "growing", "growthPercent": 3.5 }
+    },
+    "registered-nurses": {
+      "41860": { "employment": 42000, "medianWage": 145000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.1 },
+      "35620": { "employment": 185000, "medianWage": 98000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 1.8 },
+      "31080": { "employment": 125000, "medianWage": 110000, "locationQuotient": 1.0, "growth": "stable", "growthPercent": 0.5 },
+      "16980": { "employment": 98000, "medianWage": 82000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 1.5 },
+      "19100": { "employment": 85000, "medianWage": 78000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 2.8 },
+      "26420": { "employment": 92000, "medianWage": 82000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 3.2 },
+      "12420": { "employment": 32000, "medianWage": 85000, "locationQuotient": 1.1, "growth": "growing-quickly", "growthPercent": 5.5 },
+      "CA": { "employment": 350000, "medianWage": 120000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 1.9 }
+    },
+    "electricians": {
+      "41860": { "employment": 12500, "medianWage": 95000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 2.5 },
+      "35620": { "employment": 38000, "medianWage": 78000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 1.8 },
+      "31080": { "employment": 28000, "medianWage": 72000, "locationQuotient": 1.1, "growth": "stable", "growthPercent": 0.8 },
+      "16980": { "employment": 24000, "medianWage": 75000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 1.5 },
+      "26420": { "employment": 22000, "medianWage": 65000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 3.5 },
+      "19100": { "employment": 28000, "medianWage": 62000, "locationQuotient": 1.4, "growth": "growing-quickly", "growthPercent": 5.2 },
+      "12420": { "employment": 12000, "medianWage": 58000, "locationQuotient": 1.3, "growth": "growing-quickly", "growthPercent": 6.8 },
+      "CA": { "employment": 85000, "medianWage": 78000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 1.5 }
+    },
+    "plumbers": {
+      "41860": { "employment": 8500, "medianWage": 88000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.0 },
+      "35620": { "employment": 28000, "medianWage": 72000, "locationQuotient": 1.2, "growth": "stable", "growthPercent": 0.5 },
+      "31080": { "employment": 19000, "medianWage": 68000, "locationQuotient": 1.0, "growth": "stable", "growthPercent": -0.2 },
+      "19100": { "employment": 18000, "medianWage": 58000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 4.5 },
+      "26420": { "employment": 16000, "medianWage": 55000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 3.8 },
+      "12420": { "employment": 8500, "medianWage": 52000, "locationQuotient": 1.2, "growth": "growing-quickly", "growthPercent": 5.5 },
+      "CA": { "employment": 62000, "medianWage": 72000, "locationQuotient": 1.0, "growth": "stable", "growthPercent": 0.3 }
+    },
+    "hvac-technicians": {
+      "41860": { "employment": 5200, "medianWage": 78000, "locationQuotient": 0.9, "growth": "growing", "growthPercent": 1.5 },
+      "38060": { "employment": 12000, "medianWage": 58000, "locationQuotient": 1.6, "growth": "growing-quickly", "growthPercent": 6.2 },
+      "26420": { "employment": 15000, "medianWage": 55000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 4.5 },
+      "19100": { "employment": 14000, "medianWage": 52000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 3.8 },
+      "12420": { "employment": 6500, "medianWage": 48000, "locationQuotient": 1.3, "growth": "growing-quickly", "growthPercent": 7.2 },
+      "33100": { "employment": 11000, "medianWage": 52000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 3.2 },
+      "CA": { "employment": 45000, "medianWage": 65000, "locationQuotient": 0.9, "growth": "growing", "growthPercent": 1.8 }
+    },
+    "dental-hygienists": {
+      "41860": { "employment": 4800, "medianWage": 115000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 2.2 },
+      "35620": { "employment": 12000, "medianWage": 85000, "locationQuotient": 1.1, "growth": "stable", "growthPercent": 0.8 },
+      "31080": { "employment": 9500, "medianWage": 95000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 1.5 },
+      "19100": { "employment": 8200, "medianWage": 78000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.5 },
+      "26420": { "employment": 7500, "medianWage": 75000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 1.8 },
+      "12420": { "employment": 3800, "medianWage": 82000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 3.5 },
+      "CA": { "employment": 32000, "medianWage": 105000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 1.8 }
+    },
+    "physical-therapists": {
+      "41860": { "employment": 5200, "medianWage": 115000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 2.5 },
+      "35620": { "employment": 18500, "medianWage": 95000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 1.8 },
+      "31080": { "employment": 12000, "medianWage": 100000, "locationQuotient": 0.9, "growth": "stable", "growthPercent": 0.5 },
+      "19100": { "employment": 9500, "medianWage": 88000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 3.2 },
+      "26420": { "employment": 8800, "medianWage": 85000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.8 },
+      "12420": { "employment": 4200, "medianWage": 92000, "locationQuotient": 1.2, "growth": "growing-quickly", "growthPercent": 5.5 },
+      "CA": { "employment": 28000, "medianWage": 105000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 2.0 }
+    },
+    "web-developers": {
+      "41860": { "employment": 15000, "medianWage": 125000, "locationQuotient": 2.0, "growth": "growing", "growthPercent": 3.5 },
+      "35620": { "employment": 28000, "medianWage": 95000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 2.2 },
+      "31080": { "employment": 22000, "medianWage": 90000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 1.8 },
+      "42660": { "employment": 18000, "medianWage": 110000, "locationQuotient": 1.8, "growth": "growing", "growthPercent": 4.2 },
+      "19100": { "employment": 14000, "medianWage": 85000, "locationQuotient": 1.4, "growth": "growing-quickly", "growthPercent": 5.8 },
+      "26420": { "employment": 11000, "medianWage": 82000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 3.5 },
+      "12420": { "employment": 12500, "medianWage": 95000, "locationQuotient": 2.1, "growth": "growing-quickly", "growthPercent": 7.5 },
+      "CA": { "employment": 75000, "medianWage": 105000, "locationQuotient": 1.6, "growth": "growing", "growthPercent": 2.8 }
+    },
+    "data-scientists": {
+      "41860": { "employment": 12000, "medianWage": 165000, "locationQuotient": 3.2, "growth": "growing-quickly", "growthPercent": 8.5 },
+      "35620": { "employment": 18000, "medianWage": 135000, "locationQuotient": 2.0, "growth": "growing-quickly", "growthPercent": 6.2 },
+      "42660": { "employment": 8500, "medianWage": 155000, "locationQuotient": 2.8, "growth": "growing-quickly", "growthPercent": 7.8 },
+      "41940": { "employment": 14000, "medianWage": 175000, "locationQuotient": 3.5, "growth": "growing-quickly", "growthPercent": 9.2 },
+      "19100": { "employment": 8500, "medianWage": 125000, "locationQuotient": 1.8, "growth": "growing-quickly", "growthPercent": 10.5 },
+      "26420": { "employment": 6200, "medianWage": 118000, "locationQuotient": 1.5, "growth": "growing-quickly", "growthPercent": 8.8 },
+      "12420": { "employment": 7800, "medianWage": 140000, "locationQuotient": 2.8, "growth": "growing-quickly", "growthPercent": 12.5 },
+      "CA": { "employment": 48000, "medianWage": 155000, "locationQuotient": 2.5, "growth": "growing-quickly", "growthPercent": 7.5 }
+    },
+    "cybersecurity-analysts": {
+      "47900": { "employment": 25000, "medianWage": 125000, "locationQuotient": 2.8, "growth": "growing-quickly", "growthPercent": 9.5 },
+      "35620": { "employment": 18000, "medianWage": 115000, "locationQuotient": 1.4, "growth": "growing-quickly", "growthPercent": 6.8 },
+      "41860": { "employment": 8500, "medianWage": 145000, "locationQuotient": 1.8, "growth": "growing-quickly", "growthPercent": 7.5 },
+      "19100": { "employment": 9200, "medianWage": 108000, "locationQuotient": 1.6, "growth": "growing-quickly", "growthPercent": 11.2 },
+      "26420": { "employment": 7800, "medianWage": 102000, "locationQuotient": 1.4, "growth": "growing-quickly", "growthPercent": 9.8 },
+      "12420": { "employment": 6500, "medianWage": 118000, "locationQuotient": 2.2, "growth": "growing-quickly", "growthPercent": 14.5 },
+      "CA": { "employment": 32000, "medianWage": 135000, "locationQuotient": 1.6, "growth": "growing-quickly", "growthPercent": 8.2 }
+    },
+    "medical-assistants": {
+      "35620": { "employment": 45000, "medianWage": 42000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 1.5 },
+      "31080": { "employment": 52000, "medianWage": 40000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.0 },
+      "41860": { "employment": 18000, "medianWage": 52000, "locationQuotient": 0.9, "growth": "growing", "growthPercent": 1.8 },
+      "19100": { "employment": 28000, "medianWage": 36000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 2.5 },
+      "26420": { "employment": 32000, "medianWage": 35000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 3.2 },
+      "12420": { "employment": 12000, "medianWage": 38000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 4.5 },
+      "CA": { "employment": 125000, "medianWage": 45000, "locationQuotient": 1.0, "growth": "growing", "growthPercent": 1.8 }
+    },
+    "welders": {
+      "26420": { "employment": 28000, "medianWage": 58000, "locationQuotient": 2.2, "growth": "growing", "growthPercent": 3.5 },
+      "19100": { "employment": 18000, "medianWage": 52000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 2.8 },
+      "16980": { "employment": 12000, "medianWage": 55000, "locationQuotient": 1.0, "growth": "stable", "growthPercent": 0.5 },
+      "12420": { "employment": 5500, "medianWage": 48000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 4.2 },
+      "TX": { "employment": 75000, "medianWage": 52000, "locationQuotient": 1.8, "growth": "growing", "growthPercent": 3.0 }
+    },
+    "truck-drivers": {
+      "31080": { "employment": 85000, "medianWage": 52000, "locationQuotient": 1.3, "growth": "stable", "growthPercent": 0.2 },
+      "16980": { "employment": 68000, "medianWage": 55000, "locationQuotient": 1.2, "growth": "stable", "growthPercent": -0.5 },
+      "19100": { "employment": 55000, "medianWage": 50000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 1.5 },
+      "26420": { "employment": 48000, "medianWage": 48000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 2.0 },
+      "12420": { "employment": 18000, "medianWage": 45000, "locationQuotient": 1.1, "growth": "growing", "growthPercent": 2.8 },
+      "CA": { "employment": 185000, "medianWage": 55000, "locationQuotient": 1.1, "growth": "stable", "growthPercent": 0.1 }
+    },
+    "carpenters": {
+      "35620": { "employment": 32000, "medianWage": 68000, "locationQuotient": 1.3, "growth": "stable", "growthPercent": 0.8 },
+      "31080": { "employment": 28000, "medianWage": 62000, "locationQuotient": 1.1, "growth": "stable", "growthPercent": 0.2 },
+      "41860": { "employment": 12000, "medianWage": 78000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 1.5 },
+      "19100": { "employment": 22000, "medianWage": 52000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 4.5 },
+      "26420": { "employment": 18000, "medianWage": 48000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 3.8 },
+      "12420": { "employment": 14000, "medianWage": 50000, "locationQuotient": 1.5, "growth": "growing-quickly", "growthPercent": 6.5 },
+      "CA": { "employment": 85000, "medianWage": 68000, "locationQuotient": 1.1, "growth": "stable", "growthPercent": 0.5 }
+    },
+    "accountants": {
+      "35620": { "employment": 95000, "medianWage": 92000, "locationQuotient": 1.5, "growth": "growing", "growthPercent": 1.2 },
+      "16980": { "employment": 55000, "medianWage": 78000, "locationQuotient": 1.2, "growth": "stable", "growthPercent": 0.5 },
+      "47900": { "employment": 42000, "medianWage": 88000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 1.8 },
+      "19100": { "employment": 48000, "medianWage": 75000, "locationQuotient": 1.3, "growth": "growing", "growthPercent": 2.5 },
+      "26420": { "employment": 42000, "medianWage": 72000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 2.0 },
+      "12420": { "employment": 22000, "medianWage": 78000, "locationQuotient": 1.4, "growth": "growing", "growthPercent": 4.2 },
+      "CA": { "employment": 185000, "medianWage": 85000, "locationQuotient": 1.2, "growth": "growing", "growthPercent": 1.5 }
+    }
+  },
+  "localJobs": {
+    "41860": {
+      "fastestGrowing": ["data-scientists", "cybersecurity-analysts", "software-developers", "web-developers", "physical-therapists"],
+      "mostJobs": ["software-developers", "registered-nurses", "medical-assistants", "web-developers", "electricians"],
+      "highConcentration": ["data-scientists", "software-developers", "web-developers", "cybersecurity-analysts", "dental-hygienists"]
+    },
+    "35620": {
+      "fastestGrowing": ["cybersecurity-analysts", "data-scientists", "software-developers", "web-developers", "registered-nurses"],
+      "mostJobs": ["registered-nurses", "software-developers", "accountants", "medical-assistants", "electricians"],
+      "highConcentration": ["data-scientists", "software-developers", "accountants", "web-developers", "electricians"]
+    },
+    "31080": {
+      "fastestGrowing": ["software-developers", "medical-assistants", "web-developers", "dental-hygienists", "registered-nurses"],
+      "mostJobs": ["registered-nurses", "software-developers", "truck-drivers", "medical-assistants", "carpenters"],
+      "highConcentration": ["software-developers", "truck-drivers", "web-developers", "dental-hygienists", "electricians"]
+    },
+    "19100": {
+      "fastestGrowing": ["cybersecurity-analysts", "data-scientists", "software-developers", "web-developers", "electricians"],
+      "mostJobs": ["registered-nurses", "software-developers", "truck-drivers", "accountants", "electricians"],
+      "highConcentration": ["data-scientists", "software-developers", "cybersecurity-analysts", "hvac-technicians", "truck-drivers"]
+    },
+    "26420": {
+      "fastestGrowing": ["cybersecurity-analysts", "data-scientists", "hvac-technicians", "software-developers", "plumbers"],
+      "mostJobs": ["registered-nurses", "software-developers", "truck-drivers", "accountants", "medical-assistants"],
+      "highConcentration": ["welders", "hvac-technicians", "data-scientists", "software-developers", "electricians"]
+    },
+    "12420": {
+      "fastestGrowing": ["cybersecurity-analysts", "data-scientists", "software-developers", "web-developers", "hvac-technicians"],
+      "mostJobs": ["software-developers", "registered-nurses", "truck-drivers", "accountants", "carpenters"],
+      "highConcentration": ["data-scientists", "software-developers", "cybersecurity-analysts", "web-developers", "carpenters"]
+    },
+    "CA": {
+      "fastestGrowing": ["data-scientists", "cybersecurity-analysts", "software-developers", "web-developers", "physical-therapists"],
+      "mostJobs": ["software-developers", "registered-nurses", "truck-drivers", "accountants", "medical-assistants"],
+      "highConcentration": ["data-scientists", "software-developers", "dental-hygienists", "cybersecurity-analysts", "web-developers"]
+    },
+    "TX": {
+      "fastestGrowing": ["data-scientists", "cybersecurity-analysts", "software-developers", "hvac-technicians", "electricians"],
+      "mostJobs": ["registered-nurses", "software-developers", "truck-drivers", "welders", "accountants"],
+      "highConcentration": ["welders", "hvac-technicians", "software-developers", "electricians", "truck-drivers"]
+    }
+  },
+  "national": {
+    "software-developers": { "employment": 1650000, "medianWage": 130000 },
+    "registered-nurses": { "employment": 3100000, "medianWage": 85000 },
+    "electricians": { "employment": 750000, "medianWage": 62000 },
+    "plumbers": { "employment": 520000, "medianWage": 60000 },
+    "hvac-technicians": { "employment": 420000, "medianWage": 52000 },
+    "dental-hygienists": { "employment": 230000, "medianWage": 82000 },
+    "physical-therapists": { "employment": 260000, "medianWage": 95000 },
+    "web-developers": { "employment": 220000, "medianWage": 82000 },
+    "data-scientists": { "employment": 180000, "medianWage": 108000 },
+    "cybersecurity-analysts": { "employment": 175000, "medianWage": 105000 },
+    "medical-assistants": { "employment": 750000, "medianWage": 38000 },
+    "welders": { "employment": 450000, "medianWage": 48000 },
+    "truck-drivers": { "employment": 2100000, "medianWage": 48000 },
+    "carpenters": { "employment": 750000, "medianWage": 55000 },
+    "accountants": { "employment": 1500000, "medianWage": 78000 }
+  }
+}

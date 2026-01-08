@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
+import { LocationProvider } from "@/lib/location-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -37,10 +38,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen">
-        <Analytics />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LocationProvider>
+          <Analytics />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </LocationProvider>
       </body>
     </html>
   );
