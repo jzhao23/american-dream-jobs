@@ -15,7 +15,7 @@ const searchJobsSchema = z.object({
   alternateJobTitles: z.array(z.string()).optional(),
   locationCode: z.string().min(1, 'Location code is required'),
   locationName: z.string().min(1, 'Location name is required'),
-  userId: z.string().uuid().optional(),
+  userId: z.string().optional(),
   filters: z.object({
     remoteOnly: z.boolean().optional(),
     minSalary: z.number().optional(),
