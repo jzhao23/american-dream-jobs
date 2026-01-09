@@ -23,6 +23,25 @@ export type AIResilienceClassification = z.infer<typeof AIResilienceClassificati
 export const DataSourceEnum = z.enum(['onet', 'manual']);
 export type DataSource = z.infer<typeof DataSourceEnum>;
 
+// ============================================================================
+// CAREER CONSOLIDATION (v2.2)
+// ============================================================================
+
+// Display strategy for career detail page
+export const DisplayStrategyEnum = z.enum(['career-only', 'show-specializations']);
+export type DisplayStrategy = z.infer<typeof DisplayStrategyEnum>;
+
+// Grouping strategy used for consolidation
+export const GroupingStrategyEnum = z.enum(['soc-based', 'functional', 'singleton', 'catchall']);
+export type GroupingStrategy = z.infer<typeof GroupingStrategyEnum>;
+
+// Pay range for consolidated careers (aggregated from specializations)
+export const PayRangeSchema = z.object({
+  min: z.number(),  // Min 10th percentile across all specializations
+  max: z.number(),  // Max 90th percentile across all specializations
+});
+export type PayRange = z.infer<typeof PayRangeSchema>;
+
 // Career Index schema (for explorer - lightweight)
 export const CareerIndexSchema = z.object({
   title: z.string(),
@@ -50,6 +69,18 @@ export const CareerIndexSchema = z.object({
   // importance_label: ImportanceLabelEnum,
   // flag_count: z.number(),
   description: z.string().optional(),
+
+  // CONSOLIDATION FIELDS (v2.2)
+  // Number of specializations under this career (for consolidated careers)
+  specialization_count: z.number().optional(),
+  // Display strategy: 'career-only' or 'show-specializations'
+  display_strategy: DisplayStrategyEnum.optional(),
+  // Pay range (min 10th pct, max 90th pct) across specializations
+  pay_range: PayRangeSchema.optional(),
+  // Parent career slug (for specialization records only)
+  parent_career_slug: z.string().optional(),
+  // Is this a consolidated career (true) or an individual specialization (false)
+  is_consolidated: z.boolean().optional(),
 });
 
 // Career Progression Level
@@ -375,6 +406,26 @@ export const CareerSchema = z.object({
 
   // Data source discriminator (v2.1) - defaults to 'onet' if not specified
   data_source: DataSourceEnum.optional(),
+
+  // CONSOLIDATION FIELDS (v2.2)
+  // Number of specializations under this career (for consolidated careers)
+  specialization_count: z.number().optional(),
+  // Slugs of specializations under this career
+  specialization_slugs: z.array(z.string()).optional(),
+  // Parent career slug (for specialization records only)
+  parent_career_slug: z.string().optional(),
+  // Display strategy: 'career-only' or 'show-specializations'
+  display_strategy: DisplayStrategyEnum.optional(),
+  // Grouping strategy used for consolidation
+  grouping_strategy: GroupingStrategyEnum.optional(),
+  // Custom label for specializations section (e.g., "Medical Specialties", "Nursing Roles")
+  specialization_label: z.string().optional(),
+  // Pay range (min 10th pct, max 90th pct) across specializations
+  pay_range: PayRangeSchema.optional(),
+  // Is this a consolidated career (true) or an individual specialization (false)
+  is_consolidated: z.boolean().optional(),
+  // Primary O*NET code for this consolidated career (for data lookups)
+  primary_onet_code: z.string().optional(),
 
   // Source citations for manual careers (v2.1)
   source_citations: SourceCitationsSchema.optional(),

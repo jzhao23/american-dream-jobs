@@ -57,6 +57,10 @@ interface Career {
   wages?: { annual?: { median?: number } };
   ai_resilience?: string;
   data_source?: 'onet' | 'manual';  // Data source discriminator
+  // Consolidation fields
+  is_consolidated?: boolean;
+  specialization_count?: number;
+  parent_career_slug?: string;   // For specializations, links to consolidated career
 }
 
 interface CareerDWAMapping {
@@ -82,6 +86,10 @@ interface EmbeddingData {
   ai_resilience: string | null;
   job_zone: number | null;      // Null for manual careers
   data_source: 'onet' | 'manual';
+  // Consolidation fields for filtering in Career Compass
+  is_consolidated: boolean;
+  specialization_count: number | null;
+  parent_career_slug: string | null;  // For specializations, links to consolidated career
   embedding_input: {
     task_text: string;
     narrative_text: string;
@@ -296,6 +304,10 @@ async function main() {
           ai_resilience: career.ai_resilience || null,
           job_zone: career.job_zone ?? null,
           data_source: career.data_source || 'onet',
+          // Consolidation fields for Career Compass filtering
+          is_consolidated: career.is_consolidated || false,
+          specialization_count: career.specialization_count ?? null,
+          parent_career_slug: career.parent_career_slug ?? null,
           embedding_input: {
             task_text: buildTaskText(career, dwaTexts).slice(0, 1000),
             narrative_text: buildNarrativeText(career).slice(0, 1000),
@@ -341,19 +353,32 @@ async function main() {
         console.warn(`⚠ Warning: Could not clear existing embeddings: ${deleteError.message}`);
       }
 
-      // Insert in batches
+      // Upsert in batches with retry logic
       const UPLOAD_BATCH_SIZE = 50;
+      const MAX_RETRIES = 3;
+
       for (let i = 0; i < allEmbeddings.length; i += UPLOAD_BATCH_SIZE) {
         const batch = allEmbeddings.slice(i, i + UPLOAD_BATCH_SIZE);
-        const { error } = await supabase
-          .from('career_embeddings')
-          .insert(batch);
+        let success = false;
 
-        if (error) {
-          console.error(`❌ Error uploading batch: ${error.message}`);
-        } else {
-          console.log(`  ✓ Uploaded ${i + batch.length}/${allEmbeddings.length} embeddings`);
+        for (let attempt = 1; attempt <= MAX_RETRIES && !success; attempt++) {
+          const { error } = await supabase
+            .from('career_embeddings')
+            .upsert(batch, { onConflict: 'career_slug' });
+
+          if (error) {
+            console.error(`❌ Error uploading batch (attempt ${attempt}/${MAX_RETRIES}): ${error.message}`);
+            if (attempt < MAX_RETRIES) {
+              await sleep(1000 * attempt); // Wait longer each retry
+            }
+          } else {
+            console.log(`  ✓ Uploaded ${i + batch.length}/${allEmbeddings.length} embeddings`);
+            success = true;
+          }
         }
+
+        // Small delay between batches to avoid rate limiting
+        await sleep(100);
       }
 
       console.log('✅ Supabase upload complete!');

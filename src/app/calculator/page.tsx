@@ -6,6 +6,11 @@ import careersIndex from "../../../data/output/careers-index.json";
 import careersData from "../../../data/output/careers.json";
 import type { CareerIndex, Career } from "@/types/career";
 import { formatPay, getCategoryColor } from "@/types/career";
+import {
+  getSpecializationsForCareer,
+  getSpecializationBySlug,
+  hasEducationVariance,
+} from "@/lib/specializations";
 
 const careers = careersIndex as CareerIndex[];
 const fullCareers = careersData as Career[];
@@ -32,9 +37,38 @@ function CalculatorContent() {
   const [investmentReturn, setInvestmentReturn] = useState(7);
   const [retirementAge, setRetirementAge] = useState(65);
   const [educationCostIncluded, setEducationCostIncluded] = useState(true);
+  const [selectedSpecialization, setSelectedSpecialization] = useState<string | null>(null);
 
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
+  }, [selectedSlug]);
+
+  // Get effective education (from specialization if selected)
+  const getEffectiveEducation = (): Career['education'] | undefined => {
+    if (selectedSpecialization) {
+      const spec = getSpecializationBySlug(selectedSpecialization);
+      if (spec?.education) {
+        return spec.education;
+      }
+    }
+    return selectedCareer?.education;
+  };
+
+  // Get specialization options for the selected career
+  const specializationOptions = useMemo(() => {
+    if (!selectedCareer?.specialization_slugs) return [];
+    return getSpecializationsForCareer(selectedCareer.specialization_slugs);
+  }, [selectedCareer]);
+
+  // Check if specialization selector should be shown
+  const showSpecializationSelector = useMemo(() => {
+    return specializationOptions.length > 1 &&
+      hasEducationVariance(selectedCareer?.specialization_slugs || []);
+  }, [specializationOptions, selectedCareer]);
+
+  // Reset specialization when career changes
+  useEffect(() => {
+    setSelectedSpecialization(null);
   }, [selectedSlug]);
 
   // Parse URL params for pre-selecting career
@@ -60,8 +94,9 @@ function CalculatorContent() {
   const projections = useMemo((): YearlyProjection[] => {
     if (!selectedCareer) return [];
 
+    const education = getEffectiveEducation();
     const timeline = selectedCareer.career_progression?.timeline || [];
-    const educationCost = educationCostIncluded ? (selectedCareer.education?.estimated_cost?.typical_cost || 0) : 0;
+    const educationCost = educationCostIncluded ? (education?.estimated_cost?.typical_cost || 0) : 0;
 
     const results: YearlyProjection[] = [];
 
@@ -100,7 +135,7 @@ function CalculatorContent() {
     }
 
     return results;
-  }, [selectedCareer, currentAge, startingSavings, savingsRate, investmentReturn, retirementAge, educationCostIncluded]);
+  }, [selectedCareer, currentAge, startingSavings, savingsRate, investmentReturn, retirementAge, educationCostIncluded, selectedSpecialization]);
 
   // Calculate milestone values
   const milestones = useMemo(() => {
@@ -338,10 +373,31 @@ function CalculatorContent() {
                   </label>
                   {selectedCareer && educationCostIncluded && (
                     <div className="text-xs text-ds-slate-muted mt-1 ml-6">
-                      -{formatPay(selectedCareer.education?.estimated_cost?.typical_cost || 0)} upfront
+                      -{formatPay(getEffectiveEducation()?.estimated_cost?.typical_cost || 0)} upfront
                     </div>
                   )}
                 </div>
+
+                {/* Specialization selector for careers with education variance */}
+                {showSpecializationSelector && educationCostIncluded && (
+                  <div className="pt-3 mt-3 border-t border-sage-muted">
+                    <label className="block text-sm font-medium text-ds-slate-light mb-2">
+                      Specialization (affects education cost)
+                    </label>
+                    <select
+                      value={selectedSpecialization || ''}
+                      onChange={(e) => setSelectedSpecialization(e.target.value || null)}
+                      className="w-full text-sm border border-sage-muted rounded px-3 py-2 bg-warm-white focus:outline-none focus:ring-2 focus:ring-sage"
+                    >
+                      <option value="">All specializations (default)</option>
+                      {specializationOptions.map(spec => (
+                        <option key={spec.slug} value={spec.slug}>
+                          {spec.title} ({spec.education_duration?.typical_years || '?'} years, {formatPay(spec.estimated_cost?.typical_cost || 0)})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -377,7 +433,7 @@ function CalculatorContent() {
                   <div className="card-warm p-4 text-center">
                     <div className="text-sm text-ds-slate-light mb-1">Education Cost</div>
                     <div className="text-xl font-bold text-amber-600">
-                      {formatPay(selectedCareer.education?.estimated_cost?.typical_cost || 0)}
+                      {formatPay(getEffectiveEducation()?.estimated_cost?.typical_cost || 0)}
                     </div>
                   </div>
                 </div>

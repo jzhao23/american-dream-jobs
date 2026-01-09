@@ -28,6 +28,7 @@ import {
   type CareerAIAssessment,
 } from '../src/lib/ai-resilience';
 import { loadManualCareers } from './load-manual-careers';
+import { consolidateCareers, loadCareerDefinitions } from './consolidate-careers';
 
 // Paths
 const SOURCES_DIR = path.join(process.cwd(), 'data/sources');
@@ -47,6 +48,9 @@ const INSIDE_CAREER_FILE = path.join(process.cwd(), 'data/inside-career/inside-c
 // Output files
 const CAREERS_OUTPUT = path.join(OUTPUT_DIR, 'careers.json');
 const INDEX_OUTPUT = path.join(OUTPUT_DIR, 'careers-index.json');
+const SPECIALIZATIONS_OUTPUT = path.join(OUTPUT_DIR, 'specializations.json');
+const CAREER_TO_SPEC_MAP_OUTPUT = path.join(OUTPUT_DIR, 'career-to-spec-map.json');
+const CONSOLIDATION_DEFS_PATH = path.join(process.cwd(), 'data/consolidation/career-definitions.json');
 
 /**
  * Load JSON file safely
@@ -352,16 +356,67 @@ async function main() {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   }
 
-  // Write full careers.json
+  // ============================================================================
+  // CAREER CONSOLIDATION (v2.2)
+  // ============================================================================
+
+  // Check if consolidation definitions exist
+  let finalCareers = aggregated;
+  let specializations: typeof aggregated = [];
+  let careerToSpecMap: Record<string, string[]> = {};
+
+  if (fs.existsSync(CONSOLIDATION_DEFS_PATH)) {
+    console.log('\n--- Career Consolidation ---');
+    try {
+      const definitions = loadCareerDefinitions();
+      console.log(`  Loading definitions from: ${CONSOLIDATION_DEFS_PATH}`);
+      console.log(`  Categories to consolidate: ${definitions.categories.join(', ')}`);
+
+      const result = consolidateCareers(aggregated, definitions);
+
+      console.log(`  Consolidated careers: ${result.stats.totalConsolidated}`);
+      console.log(`  Specializations linked: ${result.stats.totalSpecializations}`);
+      console.log(`  Pass-through careers: ${result.stats.passThrough}`);
+      console.log(`  Total output careers: ${result.consolidatedCareers.length}`);
+
+      finalCareers = result.consolidatedCareers;
+      specializations = result.specializations;
+      careerToSpecMap = result.careerToSpecMap;
+    } catch (error) {
+      console.warn(`  Warning: Consolidation failed, using raw aggregated data`);
+      console.warn(`  Error: ${error}`);
+    }
+  } else {
+    console.log('\n  Skipping consolidation (no career-definitions.json found)');
+  }
+
+  // Sort by title for consistent ordering
+  finalCareers.sort((a, b) => a.title.localeCompare(b.title));
+
+  // Write full careers.json (consolidated if available)
   console.log('\nWriting output files...');
-  fs.writeFileSync(CAREERS_OUTPUT, JSON.stringify(aggregated, null, 2));
+  fs.writeFileSync(CAREERS_OUTPUT, JSON.stringify(finalCareers, null, 2));
   console.log(`  Written: ${CAREERS_OUTPUT}`);
   console.log(`    Size: ${(fs.statSync(CAREERS_OUTPUT).size / 1024 / 1024).toFixed(2)} MB`);
+  console.log(`    Careers: ${finalCareers.length}`);
+
+  // Write specializations.json if consolidation was run
+  if (specializations.length > 0) {
+    specializations.sort((a, b) => a.title.localeCompare(b.title));
+    fs.writeFileSync(SPECIALIZATIONS_OUTPUT, JSON.stringify(specializations, null, 2));
+    console.log(`  Written: ${SPECIALIZATIONS_OUTPUT}`);
+    console.log(`    Size: ${(fs.statSync(SPECIALIZATIONS_OUTPUT).size / 1024 / 1024).toFixed(2)} MB`);
+    console.log(`    Specializations: ${specializations.length}`);
+
+    // Write career-to-spec mapping
+    fs.writeFileSync(CAREER_TO_SPEC_MAP_OUTPUT, JSON.stringify(careerToSpecMap, null, 2));
+    console.log(`  Written: ${CAREER_TO_SPEC_MAP_OUTPUT}`);
+  }
 
   // Generate lightweight index for explorer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const careerIndex = aggregated.map((occ: any) => {
-    const eduDuration = occ.education?.education_duration || occ.education?.time_to_job_ready;
+  const careerIndex = finalCareers.map((occ: any) => {
+    const eduDuration = occ.education?.education_duration || occ.education?.time_to_job_ready || occ.training_years;
 
     return {
       title: occ.title,
@@ -369,11 +424,11 @@ async function main() {
       category: occ.category,
       subcategory: occ.subcategory,
       median_pay: occ.wages?.annual?.median || 0,
-      training_time: getTrainingTimeCategory(eduDuration?.typical_years ?? 2),
+      training_time: occ.training_time || getTrainingTimeCategory(eduDuration?.typical_years ?? 2),
       training_years: eduDuration ? {
-        min: eduDuration.min_years,
-        typical: eduDuration.typical_years,
-        max: eduDuration.max_years,
+        min: eduDuration.min_years || eduDuration.min,
+        typical: eduDuration.typical_years || eduDuration.typical,
+        max: eduDuration.max_years || eduDuration.max,
       } : null,
       typical_education: occ.education?.typical_entry_education || 'High school diploma',
       // Legacy AI Risk fields
@@ -385,6 +440,11 @@ async function main() {
       // Data source discriminator (v2.1)
       data_source: occ.data_source || 'onet',
       description: occ.description?.substring(0, 200) || '',
+      // Consolidation fields (v2.2)
+      specialization_count: occ.specialization_count || undefined,
+      display_strategy: occ.display_strategy || undefined,
+      pay_range: occ.pay_range || undefined,
+      is_consolidated: occ.is_consolidated || undefined,
     };
   });
 
@@ -394,7 +454,7 @@ async function main() {
 
   // Print category breakdown
   const categoryStats: Record<string, { count: number; avgPay: number }> = {};
-  for (const career of aggregated) {
+  for (const career of finalCareers) {
     if (!categoryStats[career.category]) {
       categoryStats[career.category] = { count: 0, avgPay: 0 };
     }

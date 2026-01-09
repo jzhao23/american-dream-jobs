@@ -286,6 +286,12 @@ async function stage1EmbeddingSimilarity(
   const candidates: CareerCandidate[] = [];
 
   for (const career of embeddingsData.embeddings) {
+    // Skip individual specializations - show consolidated careers instead
+    // (same filtering as Supabase RPC with prefer_consolidated=true)
+    if (career.parent_career_slug) {
+      continue;
+    }
+
     // Apply timeline filter if provided
     if (timelineFilter && !timelineFilter.has(career.career_slug)) {
       continue;
@@ -307,6 +313,8 @@ async function stage1EmbeddingSimilarity(
       category: career.category,
       median_salary: career.median_salary,
       ai_resilience: career.ai_resilience,
+      is_consolidated: career.is_consolidated || false,
+      specialization_count: career.specialization_count || null,
       similarity
     });
   }
