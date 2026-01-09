@@ -128,6 +128,8 @@ export async function searchJobs(params: AggregatedSearchParams): Promise<Aggreg
 
   // No API configured or all failed
   console.error('[Aggregator] No job search APIs available or all failed');
+  console.log('[Aggregator] SerpApi configured:', isSerpApiConfigured());
+  console.log('[Aggregator] JSearch configured:', isJSearchConfigured());
 
   // Record the failed attempt
   try {
@@ -145,19 +147,9 @@ export async function searchJobs(params: AggregatedSearchParams): Promise<Aggreg
     console.warn('[Aggregator] Failed to record history:', e);
   }
 
-  // Return mock data when no APIs configured (allows testing/demo without API keys)
-  if (!isSerpApiConfigured() && !isJSearchConfigured()) {
-    console.log('[Aggregator] Returning mock data (no APIs configured)');
-    return getMockJobResults(careerTitle, locationName, limit);
-  }
-
-  return {
-    jobs: [],
-    totalResults: 0,
-    source: 'none',
-    searchId: `failed_${Date.now()}`,
-    cached: false
-  };
+  // Return mock data as fallback (allows demo when APIs fail or aren't configured)
+  console.log('[Aggregator] Returning mock data as fallback');
+  return getMockJobResults(careerTitle, locationName, limit);
 }
 
 /**

@@ -50,11 +50,17 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
   }
 
   console.log(`[SerpApi] Searching for: "${params.query}" in "${params.location}"`);
+  console.log(`[SerpApi] API Key present: ${!!apiKey}, length: ${apiKey?.length || 0}`);
 
   try {
     const response = await fetch(`${SERPAPI_BASE_URL}?${searchParams.toString()}`);
 
+    console.log(`[SerpApi] Response status: ${response.status}`);
+
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`[SerpApi] Error response: ${errorText}`);
+
       if (response.status === 429) {
         throw {
           code: 'RATE_LIMITED',
@@ -62,12 +68,13 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
           retryAfter: 60
         };
       }
-      throw new Error(`SerpApi request failed: ${response.status}`);
+      throw new Error(`SerpApi request failed: ${response.status} - ${errorText}`);
     }
 
     const data: SerpApiJobsResponse = await response.json();
 
     if (data.error) {
+      console.error(`[SerpApi] API returned error: ${data.error}`);
       throw new Error(`SerpApi error: ${data.error}`);
     }
 
@@ -76,7 +83,7 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
       .map(job => transformSerpApiJob(job))
       .filter(job => passesFilters(job, params.filters));
 
-    console.log(`[SerpApi] Found ${jobs.length} jobs`);
+    console.log(`[SerpApi] Found ${jobs.length} jobs (raw results: ${data.jobs_results?.length || 0})`);
 
     return {
       jobs,
