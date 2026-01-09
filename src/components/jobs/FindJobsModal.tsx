@@ -7,6 +7,9 @@ import { JobListing } from "@/lib/jobs/types";
 // Modal step types
 type ModalStep = 'location' | 'email' | 'resume' | 'searching' | 'results' | 'error';
 
+// localStorage key for persisting user session
+const USER_SESSION_KEY = 'adjn_user_session';
+
 interface FindJobsModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -22,6 +25,43 @@ interface UserState {
   resumeUploaded: boolean;
 }
 
+// Helper to load user session from localStorage
+function loadUserSession(): UserState | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const saved = localStorage.getItem(USER_SESSION_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Validate the structure
+      if (parsed.email && parsed.userId) {
+        return {
+          email: parsed.email,
+          userId: parsed.userId,
+          hasResume: parsed.hasResume || false,
+          resumeUploaded: false
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load user session:', e);
+  }
+  return null;
+}
+
+// Helper to save user session to localStorage
+function saveUserSession(state: UserState): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(USER_SESSION_KEY, JSON.stringify({
+      email: state.email,
+      userId: state.userId,
+      hasResume: state.hasResume
+    }));
+  } catch (e) {
+    console.warn('Failed to save user session:', e);
+  }
+}
+
 export function FindJobsModal({
   isOpen,
   onClose,
@@ -35,6 +75,7 @@ export function FindJobsModal({
   // Modal state
   const [step, setStep] = useState<ModalStep>('location');
   const [error, setError] = useState<string | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // User state
   const [userState, setUserState] = useState<UserState>({
@@ -72,16 +113,33 @@ export function FindJobsModal({
   const [sortBy, setSortBy] = useState<'relevance' | 'salary' | 'date' | 'company'>('relevance');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
+  // Load saved user session on mount
+  useEffect(() => {
+    const savedSession = loadUserSession();
+    if (savedSession) {
+      setUserState(savedSession);
+      setEmailInput(savedSession.email);
+      setTcAccepted(true); // They already accepted
+    }
+    setIsInitialized(true);
+  }, []);
+
   // Determine initial step when modal opens
   useEffect(() => {
-    if (isOpen) {
-      if (!location) {
+    if (isOpen && isInitialized) {
+      // If we have a saved user with userId, skip straight to search
+      if (userState.userId && location) {
+        startJobSearch(userState.userId);
+      } else if (!location) {
+        setStep('location');
+      } else if (userState.userId) {
+        // Have user but no location
         setStep('location');
       } else {
         setStep('email');
       }
     }
-  }, [isOpen, location]);
+  }, [isOpen, isInitialized, location, userState.userId]);
 
   // Location search effect
   useEffect(() => {
@@ -135,12 +193,14 @@ export function FindJobsModal({
 
       if (checkData.success && checkData.data.exists) {
         // Existing user
-        setUserState({
+        const newState = {
           email: emailInput,
           userId: checkData.data.userId,
           hasResume: checkData.data.hasResume,
           resumeUploaded: false
-        });
+        };
+        setUserState(newState);
+        saveUserSession(newState);
 
         if (checkData.data.hasResume) {
           // Skip resume step
@@ -164,12 +224,14 @@ export function FindJobsModal({
         const createData = await createResponse.json();
 
         if (createData.success) {
-          setUserState({
+          const newState = {
             email: emailInput,
             userId: createData.data.userId,
             hasResume: false,
             resumeUploaded: false
-          });
+          };
+          setUserState(newState);
+          saveUserSession(newState);
           setStep('resume');
         } else {
           setError(createData.error?.message || 'Failed to create account');
@@ -202,7 +264,9 @@ export function FindJobsModal({
       const data = await response.json();
 
       if (data.success) {
-        setUserState(prev => ({ ...prev, hasResume: true, resumeUploaded: true }));
+        const updatedState = { ...userState, hasResume: true, resumeUploaded: true };
+        setUserState(updatedState);
+        saveUserSession(updatedState);
         await startJobSearch(userState.userId);
       } else {
         setError(data.error?.message || 'Failed to upload resume');
