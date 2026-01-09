@@ -1,0 +1,210 @@
+# AI/ML Engineers
+# ===============
+# LinkedIn #1 Jobs on the Rise 2026
+# High-demand role not well represented in O*NET
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+# - AI Assessment: Editorial EPOCH framework analysis
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: ai-ml-engineers
+name: AI/ML Engineers
+slug: ai-ml-engineers
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  AI/ML Engineers design, develop, and deploy machine learning models and artificial intelligence systems. They work at the intersection of software engineering and data science, building the algorithms and infrastructure that power intelligent applications from recommendation systems to autonomous vehicles.
+
+  These professionals work across nearly every industry, with particularly high demand in technology, finance, healthcare, and e-commerce. Most work in office or hybrid settings at tech companies, startups, research labs, or as part of digital transformation teams at traditional enterprises. The work involves significant coding, experimentation, and collaboration with data scientists and product teams.
+
+  This career offers exceptional compensation, strong job security, and the opportunity to work on cutting-edge technology that shapes the future. AI/ML Engineers often advance to Staff/Principal roles, move into AI research, or transition to technical leadership positions. The field requires continuous learning as techniques evolve rapidly.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 115000
+    pct_25: 140000
+    median: 175000
+    pct_75: 225000
+    pct_90: 300000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "1-2 years"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 5
+    max_years: 7
+    earning_while_learning: false
+    notes: "Bachelor's in CS, Math, or related field plus 1-2 years relevant experience. Master's increasingly common but not required."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Self-taught with strong portfolio of ML projects"
+    - "Bootcamp plus personal projects demonstrating ML expertise"
+    - "Transition from software engineering with ML coursework"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.35
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 35
+    source: "LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "Moderate"
+    epochScores:
+      empathy: 2
+      presence: 1
+      opinion: 5
+      creativity: 5
+      hope: 2
+  scoring:
+    exposurePoints: 1
+    growthPoints: 2
+    humanAdvantagePoints: 1
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    AI/ML Engineers have moderate exposure to AI automation because while AI tools can assist with code generation, data preprocessing, and model prototyping, the core work of designing novel architectures, understanding domain problems, and making strategic technical decisions requires deep human judgment. The field is experiencing 35%+ growth driven by AI adoption across industries. Human advantages include high creativity in developing new approaches and strong judgment in balancing model performance, interpretability, and ethical considerations. AI tools augment rather than replace these professionals.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Design and implement machine learning models for specific business problems"
+  - "Train, evaluate, and optimize models for performance and efficiency"
+  - "Build and maintain ML pipelines for data processing and model deployment"
+  - "Collaborate with data scientists and product teams to translate requirements into ML solutions"
+  - "Deploy and monitor models in production environments"
+  - "Research and evaluate new ML techniques and frameworks"
+  - "Optimize inference performance and reduce computational costs"
+  - "Ensure models meet fairness, privacy, and security requirements"
+
+technology_skills:
+  - "Python"
+  - "PyTorch"
+  - "TensorFlow"
+  - "Scikit-learn"
+  - "SQL"
+  - "Docker"
+  - "Kubernetes"
+  - "AWS/GCP/Azure ML services"
+  - "Git"
+  - "MLflow/Weights & Biases"
+  - "Spark/Ray"
+  - "Linux"
+
+abilities:
+  - "Mathematical reasoning"
+  - "Algorithmic thinking"
+  - "Problem decomposition"
+  - "Experimental design"
+  - "Technical communication"
+  - "Systems thinking"
+  - "Pattern recognition"
+
+alternate_titles:
+  - "Machine Learning Engineer"
+  - "ML Engineer"
+  - "Deep Learning Engineer"
+  - "Applied ML Engineer"
+  - "AI Engineer"
+  - "MLOps Engineer"
+
+keywords:
+  - "machine learning"
+  - "artificial intelligence"
+  - "deep learning"
+  - "neural networks"
+  - "AI engineer"
+  - "ML engineer"
+  - "pytorch"
+  - "tensorflow"
+  - "LLM"
+  - "NLP"
+  - "computer vision"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services and Consulting"
+    - "Financial Services"
+    - "Healthcare Technology"
+  locations:
+    - "San Francisco Bay Area"
+    - "Seattle"
+    - "New York City"
+    - "Boston"
+    - "Austin"
+  remote_availability: "55% remote/hybrid"
+  median_experience_years: 3.5
+  top_transitions_from:
+    - "Software Engineer"
+    - "Data Scientist"
+    - "Research Scientist"
+    - "Data Engineer"
+  gender_distribution:
+    female: 22
+    male: 78

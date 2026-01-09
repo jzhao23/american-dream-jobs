@@ -1,0 +1,205 @@
+# Solutions Architects
+# ====================
+# Technical leaders bridging business and technology
+# Key role in enterprise and cloud sales
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: solutions-architects
+name: Solutions Architects
+slug: solutions-architects
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Solutions Architects design comprehensive technical solutions that address complex business challenges. They work at the intersection of technology and business, translating requirements into system architectures, evaluating technologies, and guiding implementation teams to ensure successful delivery.
+
+  These professionals work at technology vendors (AWS, Microsoft, Google), consulting firms, and enterprises. They often support sales teams by demonstrating technical feasibility, designing proof-of-concepts, and building trust with technical stakeholders. The work involves significant client interaction, presentations, and staying current with rapidly evolving technology landscapes.
+
+  Solutions Architecture offers excellent compensation, variety in projects, and the opportunity to influence major technology decisions. The role requires both deep technical expertise and strong communication skills. Career paths lead to principal architect roles, CTO positions, or senior consulting roles. Cloud vendor certifications (AWS SA, Azure Solutions Architect) are highly valued.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 120000
+    pct_25: 150000
+    median: 180000
+    pct_75: 220000
+    pct_90: 280000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "5+ years"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 8
+    typical_years: 10
+    max_years: 15
+    earning_while_learning: false
+    notes: "Bachelor's in CS or related field plus 5+ years as developer/engineer. Requires breadth of technical experience."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Software engineering background plus client-facing experience"
+    - "Technical consulting background"
+    - "Senior engineering role plus AWS/Azure certifications"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Resilient"
+ai_resilience_tier: 1
+
+ai_assessment:
+  aiExposure:
+    score: 0.20
+    label: "Low"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 25
+    source: "LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 4
+      presence: 4
+      opinion: 5
+      creativity: 4
+      hope: 3
+  scoring:
+    exposurePoints: 2
+    growthPoints: 2
+    humanAdvantagePoints: 2
+    totalScore: 6
+  classification: "AI-Resilient"
+  classificationRationale: |
+    Solutions Architects have low AI exposure because the role fundamentally requires understanding unique business contexts, building relationships with stakeholders, and making judgment calls about complex tradeoffs. AI cannot replicate the trust-building, presentation skills, and creative problem-solving needed to design solutions for novel business challenges. Growth of 25%+ reflects cloud adoption and digital transformation.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Design end-to-end technical solutions for complex business requirements"
+  - "Create architecture diagrams and technical documentation"
+  - "Evaluate and recommend technologies and vendors"
+  - "Build proof-of-concepts and technical demonstrations"
+  - "Present solutions to technical and executive stakeholders"
+  - "Guide development teams through implementation"
+  - "Ensure solutions meet security and compliance requirements"
+  - "Stay current with emerging technologies and industry trends"
+
+technology_skills:
+  - "AWS/Azure/GCP architecture"
+  - "Enterprise integration patterns"
+  - "API design"
+  - "Microservices architecture"
+  - "Database design"
+  - "Security architecture"
+  - "DevOps/CI-CD"
+  - "Kubernetes"
+  - "Architecture frameworks (TOGAF)"
+  - "Diagramming tools (Lucidchart, draw.io)"
+
+abilities:
+  - "Systems thinking"
+  - "Communication and presentation"
+  - "Problem solving"
+  - "Stakeholder management"
+  - "Technical writing"
+  - "Business acumen"
+  - "Relationship building"
+
+alternate_titles:
+  - "Cloud Solutions Architect"
+  - "Enterprise Architect"
+  - "Technical Architect"
+  - "AWS Solutions Architect"
+  - "Azure Solutions Architect"
+  - "Pre-Sales Architect"
+
+keywords:
+  - "solutions architect"
+  - "cloud architecture"
+  - "enterprise architecture"
+  - "AWS"
+  - "Azure"
+  - "technical architecture"
+  - "system design"
+  - "pre-sales"
+  - "consulting"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services and Consulting"
+    - "Cloud Computing"
+    - "Financial Services"
+  locations:
+    - "San Francisco Bay Area"
+    - "Seattle"
+    - "New York City"
+    - "Atlanta"
+    - "Dallas"
+  remote_availability: "60% remote/hybrid"
+  median_experience_years: 8
+  top_transitions_from:
+    - "Senior Software Engineer"
+    - "Technical Lead"
+    - "Cloud Engineer"
+    - "DevOps Engineer"
+  gender_distribution:
+    female: 18
+    male: 82

@@ -19,6 +19,10 @@ export const AIResilienceClassificationEnum = z.enum([
 ]);
 export type AIResilienceClassification = z.infer<typeof AIResilienceClassificationEnum>;
 
+// Data source discriminator - defined early for CareerIndexSchema
+export const DataSourceEnum = z.enum(['onet', 'manual']);
+export type DataSource = z.infer<typeof DataSourceEnum>;
+
 // Career Index schema (for explorer - lightweight)
 export const CareerIndexSchema = z.object({
   title: z.string(),
@@ -39,6 +43,8 @@ export const CareerIndexSchema = z.object({
   // NEW: AI Resilience classification (4-tier system)
   ai_resilience: AIResilienceClassificationEnum.optional(),
   ai_resilience_tier: z.number().min(1).max(4).optional(), // 1=Resilient, 4=High Risk (for sorting)
+  // Data source discriminator (v2.1) - 'onet' or 'manual'
+  data_source: DataSourceEnum.optional(),
   // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
   // importance: z.number(),
   // importance_label: ImportanceLabelEnum,
@@ -109,7 +115,7 @@ export type AIExposureLabel = z.infer<typeof AIExposureLabelEnum>;
 export const AIExposureSchema = z.object({
   score: z.number().min(0).max(1),           // 0-1 β score from GPTs paper
   label: AIExposureLabelEnum,                 // Low/Medium/High for display
-  source: z.enum(["gpts", "aioe"]),           // Data source used
+  source: z.enum(["gpts", "aioe", "editorial"]), // Data source used (editorial for manual careers)
 });
 export type AIExposure = z.infer<typeof AIExposureSchema>;
 
@@ -174,6 +180,35 @@ export const CareerAIAssessmentSchema = z.object({
   methodology: z.string(),
 });
 export type CareerAIAssessment = z.infer<typeof CareerAIAssessmentSchema>;
+
+// ============================================================================
+// MANUAL CAREER SUPPORT (v2.1)
+// ============================================================================
+
+// NOTE: DataSourceEnum is defined at top of file for CareerIndexSchema
+
+// Source citations for manually-sourced careers (transparency requirement)
+export const SourceCitationsSchema = z.object({
+  wages: z.string(),           // e.g., "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: z.string(),          // e.g., "LinkedIn job postings analysis"
+  outlook: z.string(),         // e.g., "LinkedIn Jobs on the Rise 2026"
+  ai_assessment: z.string(),   // e.g., "Editorial assessment based on task analysis"
+});
+export type SourceCitations = z.infer<typeof SourceCitationsSchema>;
+
+// LinkedIn market data for manually-sourced careers
+export const LinkedInDataSchema = z.object({
+  industries: z.array(z.string()),           // Top industries hiring this role
+  locations: z.array(z.string()),            // Top locations
+  remote_availability: z.string(),           // e.g., "53% remote/hybrid"
+  median_experience_years: z.number(),       // Typical experience level
+  top_transitions_from: z.array(z.string()), // Common prior roles
+  gender_distribution: z.object({
+    female: z.number(),
+    male: z.number(),
+  }).optional(),
+});
+export type LinkedInData = z.infer<typeof LinkedInDataSchema>;
 
 // ============================================================================
 // DEPRECATED: Legacy types kept for backwards compatibility during migration
@@ -324,22 +359,44 @@ export const WagesSchema = z.object({
 
 // Full Career schema
 export const CareerSchema = z.object({
-  onet_code: z.string(),
-  soc_code: z.string(),
+  // O*NET-specific fields - OPTIONAL for manual careers
+  onet_code: z.string().optional(),    // Required for O*NET careers, undefined for manual
+  soc_code: z.string().optional(),     // Required for O*NET careers, undefined for manual
+  job_zone: z.number().optional(),     // O*NET job zone (1-5), undefined for manual
+  job_family: z.string().optional(),   // O*NET job family, undefined for manual
+
+  // Core identity fields - REQUIRED for all careers
   title: z.string(),
   slug: z.string(),
   alternate_titles: z.array(z.string()),
   description: z.string(),
   category: z.string(),
   subcategory: z.string(),
-  job_zone: z.number(),
-  job_family: z.string(),
+
+  // Data source discriminator (v2.1) - defaults to 'onet' if not specified
+  data_source: DataSourceEnum.optional(),
+
+  // Source citations for manual careers (v2.1)
+  source_citations: SourceCitationsSchema.optional(),
+
+  // LinkedIn market data for manual careers (v2.1)
+  linkedin_data: LinkedInDataSchema.optional(),
+
+  // Compensation
   wages: WagesSchema.nullable(),
+
+  // Education & training
   education: EducationSchema,
+
+  // Employment outlook
   outlook: z.any().nullable(),
+
+  // Job content
   tasks: z.array(z.string()),
   technology_skills: z.array(z.string()),
   abilities: z.array(z.string()),
+
+  // Data provenance
   data_sources: z.array(z.object({
     source: z.string(),
     url: z.string(),
@@ -353,16 +410,22 @@ export const CareerSchema = z.object({
     has_tasks: z.boolean(),
     completeness_score: z.number(),
   }),
+
+  // AI risk & resilience
   ai_risk: AIRiskSchema.nullable(),
   national_importance: NationalImportanceSchema.nullable(),
-  // NEW: AI Resilience classification (4-tier system)
+  // AI Resilience classification (4-tier system)
   ai_resilience: AIResilienceClassificationEnum.optional(),
   ai_resilience_tier: z.number().min(1).max(4).optional(),
   ai_assessment: CareerAIAssessmentSchema.optional(),
+
+  // Career progression
   career_progression: CareerProgressionSchema.nullable(),
+
+  // Media & content
   video: z.object({
-    source: z.literal("careeronestop"),
-    videoUrl: z.string().url(),      // Direct MP4 URL from CDN
+    source: z.enum(["careeronestop", "youtube"]),  // Extended for manual careers
+    videoUrl: z.string().url(),      // Direct MP4 URL from CDN (or YouTube embed URL)
     posterUrl: z.string().url(),     // Thumbnail image
     title: z.string(),
     lastVerified: z.string(),
@@ -375,8 +438,8 @@ export const CareerSchema = z.object({
 
 // Career Video schema (standalone for component use)
 export const CareerVideoSchema = z.object({
-  source: z.literal("careeronestop"),
-  videoUrl: z.string().url(),      // Direct MP4 URL from CDN
+  source: z.enum(["careeronestop", "youtube"]),  // Extended for manual careers
+  videoUrl: z.string().url(),      // Direct MP4 URL from CDN (or YouTube embed URL)
   posterUrl: z.string().url(),     // Thumbnail image
   title: z.string(),
   lastVerified: z.string(),

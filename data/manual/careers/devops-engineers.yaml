@@ -1,0 +1,216 @@
+# DevOps Engineers
+# ================
+# Major tech infrastructure role not well represented in O*NET
+# Critical for modern software delivery
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Economic Graph 2026
+# - AI Assessment: Editorial EPOCH framework analysis
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: devops-engineers
+name: DevOps Engineers
+slug: devops-engineers
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  DevOps Engineers bridge software development and IT operations, building and maintaining the infrastructure, tools, and processes that enable teams to deploy software quickly and reliably. They design CI/CD pipelines, manage cloud infrastructure, implement monitoring systems, and automate operational tasks to improve developer productivity and system reliability.
+
+  These professionals work in technology companies, financial services, healthcare, and any organization with significant software development. The role requires both strong coding skills and deep understanding of systems, networking, and security. DevOps Engineers collaborate closely with development teams, SREs, and security teams to create efficient and secure software delivery processes.
+
+  This career offers excellent compensation, high demand, and diverse opportunities across industries. DevOps Engineers can advance to Staff/Principal roles, move into Site Reliability Engineering (SRE), become Platform Engineers, or transition to infrastructure architecture and engineering leadership positions.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 100000
+    pct_25: 125000
+    median: 155000
+    pct_75: 190000
+    pct_90: 240000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "1-2 years"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 5
+    max_years: 6
+    earning_while_learning: false
+    notes: "Bachelor's in CS or IT plus 1-2 years in software development or systems administration. Certifications (AWS, Kubernetes) highly valued."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Systems administrator transitioning to DevOps"
+    - "Software developer moving into infrastructure"
+    - "Bootcamp plus cloud certifications"
+    - "Self-taught with homelab and cloud portfolio"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.40
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 20
+    source: "LinkedIn Economic Graph 2026"
+  humanAdvantage:
+    category: "Moderate"
+    epochScores:
+      empathy: 2
+      presence: 2
+      opinion: 4
+      creativity: 4
+      hope: 2
+  scoring:
+    exposurePoints: 1
+    growthPoints: 2
+    humanAdvantagePoints: 1
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    DevOps Engineers have medium AI exposure because AI tools can assist with writing infrastructure code, generating configurations, and troubleshooting issues. However, the role requires significant judgment in designing reliable systems, understanding security implications, balancing cost and performance, and responding to novel incidents. AI tools augment DevOps work by accelerating routine tasks while humans handle architecture decisions, complex debugging, and organizational processes. Strong job growth continues as organizations invest in cloud infrastructure and automation.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Design and maintain CI/CD pipelines for automated software delivery"
+  - "Provision and manage cloud infrastructure using Infrastructure as Code"
+  - "Implement monitoring, alerting, and observability systems"
+  - "Automate operational tasks and reduce manual toil"
+  - "Manage container orchestration platforms (Kubernetes)"
+  - "Respond to incidents and participate in on-call rotations"
+  - "Implement security best practices and compliance requirements"
+  - "Optimize cloud costs and resource utilization"
+  - "Collaborate with development teams to improve deployment practices"
+
+technology_skills:
+  - "Kubernetes"
+  - "Docker"
+  - "Terraform/Pulumi"
+  - "AWS/GCP/Azure"
+  - "Python/Go/Bash"
+  - "GitHub Actions/GitLab CI/Jenkins"
+  - "Prometheus/Grafana"
+  - "Linux"
+  - "Ansible/Chef/Puppet"
+  - "ArgoCD/Flux"
+  - "Datadog/New Relic"
+  - "Git"
+
+abilities:
+  - "Systems thinking"
+  - "Problem solving"
+  - "Automation mindset"
+  - "Security awareness"
+  - "Incident response"
+  - "Technical communication"
+  - "Continuous learning"
+  - "Attention to detail"
+
+alternate_titles:
+  - "DevOps Engineer"
+  - "Site Reliability Engineer"
+  - "SRE"
+  - "Platform Engineer"
+  - "Infrastructure Engineer"
+  - "Cloud Engineer"
+  - "Build and Release Engineer"
+  - "Systems Engineer"
+
+keywords:
+  - "devops"
+  - "site reliability"
+  - "SRE"
+  - "kubernetes"
+  - "docker"
+  - "CI/CD"
+  - "infrastructure"
+  - "cloud"
+  - "AWS"
+  - "terraform"
+  - "automation"
+  - "platform engineering"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Economic Graph 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services and Consulting"
+    - "Financial Services"
+    - "Healthcare Technology"
+  locations:
+    - "San Francisco Bay Area"
+    - "Seattle"
+    - "New York City"
+    - "Austin"
+    - "Denver"
+  remote_availability: "60% remote/hybrid"
+  median_experience_years: 4.2
+  top_transitions_from:
+    - "Software Engineer"
+    - "Systems Administrator"
+    - "Cloud Engineer"
+    - "Network Engineer"
+  gender_distribution:
+    female: 18
+    male: 82

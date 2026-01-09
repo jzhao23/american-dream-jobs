@@ -44,18 +44,19 @@ if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_KEY) {
 
 // Types
 interface Career {
-  onet_code: string;
+  onet_code?: string;          // Optional for manual careers
   title: string;
   slug: string;
   description: string;
   category: string;
-  job_zone: number;
+  job_zone?: number;           // Optional for manual careers
   tasks: string[];
   technology_skills: string[];
   abilities: string[];
   inside_look?: { content: string };
   wages?: { annual?: { median?: number } };
   ai_resilience?: string;
+  data_source?: 'onet' | 'manual';  // Data source discriminator
 }
 
 interface CareerDWAMapping {
@@ -70,7 +71,7 @@ interface DWA {
 
 interface EmbeddingData {
   career_slug: string;
-  onet_code: string;
+  onet_code: string | null;     // Null for manual careers
   title: string;
   category: string;
   task_embedding: number[];
@@ -79,7 +80,8 @@ interface EmbeddingData {
   combined_embedding: number[];
   median_salary: number | null;
   ai_resilience: string | null;
-  job_zone: number;
+  job_zone: number | null;      // Null for manual careers
+  data_source: 'onet' | 'manual';
   embedding_input: {
     task_text: string;
     narrative_text: string;
@@ -246,7 +248,8 @@ async function main() {
     const careerTextMap: { career: Career; textIndices: number[] }[] = [];
 
     for (const career of batch) {
-      const dwaIds = careerDWAs[career.onet_code] || [];
+      // DWA enrichment only for O*NET careers
+      const dwaIds = career.onet_code ? (careerDWAs[career.onet_code] || []) : [];
       const dwaTexts = dwaIds.map(id => dwaLookup[id]).filter(Boolean);
 
       const taskText = buildTaskText(career, dwaTexts);
@@ -276,12 +279,13 @@ async function main() {
 
       // Map embeddings back to careers
       for (const { career, textIndices } of careerTextMap) {
-        const dwaIds = careerDWAs[career.onet_code] || [];
+        // DWA enrichment only for O*NET careers
+        const dwaIds = career.onet_code ? (careerDWAs[career.onet_code] || []) : [];
         const dwaTexts = dwaIds.map(id => dwaLookup[id]).filter(Boolean);
 
         allEmbeddings.push({
           career_slug: career.slug,
-          onet_code: career.onet_code,
+          onet_code: career.onet_code || null,
           title: career.title,
           category: career.category,
           task_embedding: embeddings[textIndices[0]],
@@ -290,7 +294,8 @@ async function main() {
           combined_embedding: embeddings[textIndices[3]],
           median_salary: career.wages?.annual?.median || null,
           ai_resilience: career.ai_resilience || null,
-          job_zone: career.job_zone,
+          job_zone: career.job_zone ?? null,
+          data_source: career.data_source || 'onet',
           embedding_input: {
             task_text: buildTaskText(career, dwaTexts).slice(0, 1000),
             narrative_text: buildNarrativeText(career).slice(0, 1000),

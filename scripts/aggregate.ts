@@ -27,6 +27,7 @@ import {
   type EPOCHScores,
   type CareerAIAssessment,
 } from '../src/lib/ai-resilience';
+import { loadManualCareers } from './load-manual-careers';
 
 // Paths
 const SOURCES_DIR = path.join(process.cwd(), 'data/sources');
@@ -313,6 +314,27 @@ async function main() {
     aggregated.push(career);
   }
 
+  // Load and merge manual careers (v2.1)
+  console.log('\nLoading manual careers...');
+  const { careers: manualCareers, errors: manualErrors } = loadManualCareers();
+  if (manualErrors.length > 0) {
+    console.log('  Warning - Manual career errors:');
+    manualErrors.forEach(e => console.log(`    ${e}`));
+  }
+
+  // Add manual careers to aggregated array
+  // Manual careers already have all their data (AI resilience, etc.) from YAML
+  for (const manualCareer of manualCareers) {
+    aggregated.push(manualCareer);
+    // Count manual careers in AI resilience breakdown
+    if (manualCareer.ai_resilience) {
+      classificationCounts[manualCareer.ai_resilience]++;
+      aiResilienceApplied++;
+    }
+  }
+  console.log(`  Loaded ${manualCareers.length} manual careers`);
+  console.log(`  Total careers: ${aggregated.length} (${onetCodes.length} O*NET + ${manualCareers.length} manual)`);
+
   // Sort by title for consistent ordering
   aggregated.sort((a, b) => a.title.localeCompare(b.title));
 
@@ -360,6 +382,8 @@ async function main() {
       // New AI Resilience fields
       ai_resilience: occ.ai_resilience || undefined,
       ai_resilience_tier: occ.ai_resilience_tier || undefined,
+      // Data source discriminator (v2.1)
+      data_source: occ.data_source || 'onet',
       description: occ.description?.substring(0, 200) || '',
     };
   });

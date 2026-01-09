@@ -1,0 +1,198 @@
+# Data Annotators
+# ===============
+# LinkedIn #4 Jobs on the Rise 2026
+# New role created by AI boom - training data labeling
+#
+# Sources:
+# - Wages: Glassdoor, Indeed, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: data-annotators
+name: Data Annotators
+slug: data-annotators
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Data Annotators label and categorize data used to train artificial intelligence and machine learning models. They identify objects in images, transcribe audio, classify text sentiment, verify AI outputs, and create the high-quality training datasets that make modern AI systems possible.
+
+  This emerging role has exploded with the AI boom, with demand at AI companies, tech giants, and specialized data labeling firms. Work can range from entry-level tasks done remotely to specialized annotation requiring domain expertise (medical imaging, legal documents). Many positions offer flexible, remote work arrangements.
+
+  Data Annotation provides an accessible entry point into the AI industry without requiring a technical degree. While some tasks are straightforward, specialized annotators with domain expertise (healthcare, legal, scientific) command higher wages. Career paths lead to quality assurance, annotation team leadership, or transitions into ML engineering with additional training.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Indeed, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 32000
+    pct_25: 40000
+    median: 52000
+    pct_75: 68000
+    pct_90: 85000
+    mean: null
+  hourly:
+    pct_10: 15
+    pct_25: 19
+    median: 25
+    pct_75: 33
+    pct_90: 41
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "High school diploma or equivalent"
+  work_experience_required: "None"
+  on_the_job_training: "Short-term"
+  time_to_job_ready:
+    min_years: 0
+    typical_years: 0.5
+    max_years: 1
+    earning_while_learning: true
+    notes: "Entry-level requires only high school diploma. Specialized annotation (medical, legal) may require domain background."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Direct entry with basic computer skills"
+    - "Domain expertise (medical, legal) for specialized roles"
+    - "Linguistics background for NLP annotation"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "In Transition"
+ai_resilience_tier: 3
+
+ai_assessment:
+  aiExposure:
+    score: 0.65
+    label: "High"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 40
+    source: "LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "Low"
+    epochScores:
+      empathy: 2
+      presence: 1
+      opinion: 3
+      creativity: 2
+      hope: 1
+  scoring:
+    exposurePoints: 0
+    growthPoints: 2
+    humanAdvantagePoints: 0
+    totalScore: 2
+  classification: "In Transition"
+  classificationRationale: |
+    Data Annotators have high AI exposure as AI systems increasingly automate basic labeling tasks, with humans focusing on edge cases and quality verification. Paradoxically, current growth of 40%+ is driven by massive AI training data needs. However, the role is evolving - basic annotation is being automated while demand grows for specialized annotators who can handle nuanced, domain-specific tasks. Long-term outlook depends on AI capabilities.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Label images by identifying and tagging objects, people, or features"
+  - "Transcribe and annotate audio and video content"
+  - "Classify text for sentiment, intent, or topic"
+  - "Verify and correct AI-generated outputs"
+  - "Follow detailed annotation guidelines and quality standards"
+  - "Flag ambiguous cases for review"
+  - "Maintain consistency across large datasets"
+  - "Provide feedback on annotation tool usability"
+
+technology_skills:
+  - "Annotation platforms (Labelbox, Scale AI, CVAT)"
+  - "Image editing basics"
+  - "Spreadsheets"
+  - "Quality assurance tools"
+  - "Communication tools (Slack, Teams)"
+  - "Basic data entry"
+
+abilities:
+  - "Attention to detail"
+  - "Pattern recognition"
+  - "Consistency"
+  - "Following instructions"
+  - "Time management"
+  - "Basic judgment"
+
+alternate_titles:
+  - "AI Trainer"
+  - "Data Labeler"
+  - "Machine Learning Data Associate"
+  - "Annotation Specialist"
+  - "Training Data Specialist"
+  - "AI Data Specialist"
+
+keywords:
+  - "data annotation"
+  - "data labeling"
+  - "AI training"
+  - "machine learning data"
+  - "image labeling"
+  - "text annotation"
+  - "AI trainer"
+  - "Labelbox"
+  - "Scale AI"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Indeed, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026 (#4)"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services"
+    - "Staffing and Recruiting"
+  locations:
+    - "Remote"
+    - "San Francisco Bay Area"
+    - "Austin"
+    - "Seattle"
+  remote_availability: "85% remote"
+  median_experience_years: 1
+  top_transitions_from:
+    - "Customer Service"
+    - "Data Entry"
+    - "Administrative Assistant"
+    - "Freelancer"
+  gender_distribution:
+    female: 55
+    male: 45

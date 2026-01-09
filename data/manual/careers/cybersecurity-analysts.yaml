@@ -1,0 +1,205 @@
+# Cybersecurity Analysts
+# ======================
+# Critical role protecting organizations from cyber threats
+# High demand due to increasing cyber attacks
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary, BLS (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: BLS OOH, LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: cybersecurity-analysts
+name: Cybersecurity Analysts
+slug: cybersecurity-analysts
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Cybersecurity Analysts monitor, detect, and respond to security threats targeting an organization's systems and data. They analyze security alerts, investigate incidents, implement protective measures, and help organizations maintain their security posture in an increasingly hostile digital landscape.
+
+  These professionals work across all industries, with particularly high demand in finance, healthcare, government, and technology. Many work in Security Operations Centers (SOCs), monitoring systems around the clock. The work involves analyzing logs, responding to alerts, conducting investigations, and collaborating with IT teams to remediate vulnerabilities.
+
+  Cybersecurity offers excellent job security, strong compensation, and meaningful work protecting critical systems. Entry paths include IT support roles, security certifications, or cybersecurity degree programs. Career advancement leads to senior analyst roles, incident response teams, or specialization in threat intelligence, penetration testing, or security engineering.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary, BLS (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 65000
+    pct_25: 80000
+    median: 105000
+    pct_75: 130000
+    pct_90: 160000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "Less than 1 year"
+  on_the_job_training: "Moderate-term"
+  time_to_job_ready:
+    min_years: 2
+    typical_years: 4
+    max_years: 6
+    earning_while_learning: false
+    notes: "Bachelor's in Cybersecurity, IT, or CS. Can enter with associate's plus certifications (Security+, CySA+). IT experience valued."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: true
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "IT support experience plus Security+ certification"
+    - "Associate's degree plus cybersecurity certifications"
+    - "Military cybersecurity training"
+    - "Cybersecurity bootcamp plus certifications"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Resilient"
+ai_resilience_tier: 1
+
+ai_assessment:
+  aiExposure:
+    score: 0.25
+    label: "Low"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 32
+    source: "BLS OOH, LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 2
+      presence: 2
+      opinion: 5
+      creativity: 4
+      hope: 2
+  scoring:
+    exposurePoints: 2
+    growthPoints: 2
+    humanAdvantagePoints: 2
+    totalScore: 6
+  classification: "AI-Resilient"
+  classificationRationale: |
+    Cybersecurity Analysts have low AI exposure because adversarial thinking, incident investigation, and security decision-making require human judgment. Attackers are humans who constantly evolve tactics. While AI enhances detection capabilities, analysts must interpret alerts, investigate incidents, and make critical decisions under pressure. Growth of 32%+ is driven by increasing cyber threats. High human advantage from judgment and adversarial thinking.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Monitor security systems and analyze alerts for potential threats"
+  - "Investigate security incidents and document findings"
+  - "Perform vulnerability assessments and recommend remediation"
+  - "Analyze malware and attack techniques"
+  - "Develop and update security policies and procedures"
+  - "Conduct security awareness training for employees"
+  - "Generate reports on security posture and incidents"
+  - "Collaborate with IT teams to implement security controls"
+
+technology_skills:
+  - "SIEM tools (Splunk, QRadar, Sentinel)"
+  - "Endpoint detection (CrowdStrike, Carbon Black)"
+  - "Network analysis (Wireshark)"
+  - "Vulnerability scanners (Nessus, Qualys)"
+  - "Firewalls and IDS/IPS"
+  - "Linux/Windows administration"
+  - "Scripting (Python, PowerShell)"
+  - "Threat intelligence platforms"
+
+abilities:
+  - "Analytical thinking"
+  - "Attention to detail"
+  - "Problem solving"
+  - "Communication"
+  - "Working under pressure"
+  - "Continuous learning"
+  - "Adversarial thinking"
+
+alternate_titles:
+  - "Information Security Analyst"
+  - "SOC Analyst"
+  - "Security Operations Analyst"
+  - "Cyber Defense Analyst"
+  - "Threat Analyst"
+  - "Security Analyst"
+
+keywords:
+  - "cybersecurity"
+  - "security analyst"
+  - "SOC analyst"
+  - "information security"
+  - "infosec"
+  - "threat detection"
+  - "incident response"
+  - "SIEM"
+  - "Security+"
+  - "cyber defense"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary, BLS OES (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "BLS Occupational Outlook Handbook, LinkedIn Jobs on the Rise 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "IT Services"
+    - "Financial Services"
+    - "Government"
+    - "Healthcare"
+  locations:
+    - "Washington DC Metro"
+    - "New York City"
+    - "Dallas"
+    - "Atlanta"
+    - "San Francisco Bay Area"
+  remote_availability: "45% remote/hybrid"
+  median_experience_years: 3
+  top_transitions_from:
+    - "IT Support Specialist"
+    - "Network Administrator"
+    - "Systems Administrator"
+    - "Help Desk Technician"
+  gender_distribution:
+    female: 24
+    male: 76

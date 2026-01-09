@@ -1,0 +1,282 @@
+# Manual Career Template
+# =====================
+# Copy this file and rename to [slug].yaml
+# Fill in all required fields following the PRD methodology
+#
+# Required research before publishing:
+# - Wages: Triangulate 2+ sources (Glassdoor, Levels.fyi, LinkedIn, Indeed)
+# - Tasks: Analyze 50+ job postings
+# - Skills: LinkedIn job postings + Indeed requirements
+# - AI Resilience: Editorial EPOCH assessment with written reasoning
+
+# =============================================================================
+# IDENTITY (Required)
+# =============================================================================
+
+# Unique identifier - use lowercase with hyphens
+id: career-slug
+
+# Display name - how it appears to users
+name: Career Title
+
+# URL-friendly slug (usually same as id)
+slug: career-slug
+
+# Must match one of the 22 existing categories:
+# - healthcare-clinical, healthcare-support, technology, engineering,
+#   business, legal, education, arts-entertainment, science,
+#   social-services, protective-services, food-service,
+#   personal-care, sales, office-admin, construction,
+#   production, transportation, maintenance, agriculture,
+#   management, military
+category: technology
+
+# Always 'manual' for manually-sourced careers
+data_source: manual
+
+# ISO date of last update (YYYY-MM-DD)
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION (Required)
+# =============================================================================
+
+# 2-3 paragraph description of the career
+# Focus on: what they do, who they work with, why it matters
+description: |
+  First paragraph: What does this role do day-to-day? What problems do they solve?
+
+  Second paragraph: What industries employ these professionals? What's the work
+  environment like?
+
+  Third paragraph: What makes this career appealing? Growth trajectory and impact.
+
+# =============================================================================
+# WAGES (Required)
+# =============================================================================
+# Triangulate from 2+ sources: Glassdoor, Levels.fyi, LinkedIn Salary, Indeed
+
+wages:
+  # Citation for wage data
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+
+  # Annual wages in USD (null if not available)
+  annual:
+    pct_10: 85000      # 10th percentile (entry level)
+    pct_25: 100000     # 25th percentile
+    median: 120000     # 50th percentile (typical)
+    pct_75: 150000     # 75th percentile
+    pct_90: 180000     # 90th percentile (senior)
+    mean: null         # Optional: mean salary
+
+  # Hourly wages (usually null for salaried roles)
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+
+  # Total US employment count (null if unknown)
+  employment_count: null
+
+# =============================================================================
+# EDUCATION & TRAINING (Required)
+# =============================================================================
+
+education:
+  # One of: "No formal educational credential", "High school diploma or equivalent",
+  # "Postsecondary nondegree award", "Some college, no degree",
+  # "Associate's degree", "Bachelor's degree", "Master's degree",
+  # "Doctoral or professional degree"
+  typical_entry_education: "Bachelor's degree"
+
+  # Experience needed before entry: "None", "Less than 1 year", "1-2 years",
+  # "2-5 years", "5+ years"
+  work_experience_required: "1-2 years"
+
+  # On-the-job training: "None", "Short-term", "Moderate-term", "Long-term",
+  # "Apprenticeship", "Internship/Residency"
+  on_the_job_training: "None"
+
+  # Time to become job-ready (for Career Compass timeline matching)
+  time_to_job_ready:
+    min_years: 4       # Fastest path
+    typical_years: 5   # Most common path
+    max_years: 6       # Including all prerequisites
+    earning_while_learning: false  # Can earn while training?
+    notes: "Bachelor's in CS/Math plus 1-2 years experience"
+
+  # Education pathway flags (for filtering)
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+
+  # Alternative pathways (optional)
+  alternative_pathways:
+    - "Self-taught with strong portfolio"
+    - "Coding bootcamp plus projects"
+
+# =============================================================================
+# AI RESILIENCE (Required)
+# =============================================================================
+# Use editorial EPOCH assessment methodology
+
+# Final classification: "AI-Resilient", "AI-Augmented", "In Transition", "High Disruption Risk"
+ai_resilience: "AI-Augmented"
+
+# Tier number: 1=AI-Resilient, 2=AI-Augmented, 3=In Transition, 4=High Disruption Risk
+ai_resilience_tier: 2
+
+# Detailed assessment
+ai_assessment:
+  # AI Exposure (0.0-1.0 scale)
+  aiExposure:
+    score: 0.35        # 0.0 = no exposure, 1.0 = fully automatable
+    label: "Medium"    # "Low", "Medium", "High"
+    source: "editorial"  # Always "editorial" for manual careers
+
+  # Job Growth outlook
+  jobGrowth:
+    label: "Growing"   # "Declining", "Stable", "Growing", "Rapid Growth"
+    percentChange: 25  # Projected % change over 10 years
+    source: "LinkedIn Jobs on the Rise 2026"  # Citation
+
+  # Human Advantage (EPOCH Framework)
+  # Score each 0-5 based on how essential it is
+  humanAdvantage:
+    category: "Moderate"  # "Low", "Moderate", "High", "Essential"
+    epochScores:
+      empathy: 2      # E: Emotional intelligence, bedside manner
+      presence: 2     # P: Physical presence required
+      opinion: 4      # O: Judgment, decision-making, strategy
+      creativity: 4   # C: Novel solutions, innovation
+      hope: 2         # H: Inspiration, motivation, leadership
+
+  # Scoring summary (for transparency)
+  scoring:
+    exposurePoints: 1     # 0-2 points based on AI exposure
+    growthPoints: 2       # 0-2 points based on job growth
+    humanAdvantagePoints: 1  # 0-2 points based on EPOCH sum
+    totalScore: 4         # Sum: 5-6=Resilient, 3-4=Augmented, 2=Transition, 0-1=Disruption
+
+  # Classification explanation (required for manual careers)
+  classification: "AI-Augmented"
+  classificationRationale: |
+    This career has moderate AI exposure because [explain which tasks are automatable].
+    However, strong job growth of X% and the need for [human skills] provide stability.
+    AI tools will augment rather than replace these professionals by [how AI helps].
+
+# =============================================================================
+# CONTENT (Required)
+# =============================================================================
+
+# 5-10 core job tasks (action-oriented, specific)
+tasks:
+  - "Design and implement [specific deliverable]"
+  - "Collaborate with [stakeholders] to [outcome]"
+  - "Analyze [data/inputs] to [decision/output]"
+  - "Maintain and optimize [systems/processes]"
+  - "Communicate [findings/recommendations] to [audience]"
+
+# 8-12 technical skills (tools, technologies, methodologies)
+technology_skills:
+  - "Python"
+  - "SQL"
+  - "Git"
+  - "AWS/GCP/Azure"
+  - "Specific Tool 1"
+  - "Specific Tool 2"
+
+# 5-8 key abilities (cognitive, interpersonal, physical)
+abilities:
+  - "Analytical thinking"
+  - "Problem solving"
+  - "Communication"
+  - "Attention to detail"
+  - "Collaboration"
+
+# Alternative job titles (for search/matching)
+alternate_titles:
+  - "Alternative Title 1"
+  - "Alternative Title 2"
+  - "Alternative Title 3"
+
+# Search keywords (for discoverability)
+keywords:
+  - "keyword1"
+  - "keyword2"
+  - "keyword3"
+
+# =============================================================================
+# SOURCE CITATIONS (Required for manual careers)
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026, BLS OOH"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA (Optional but recommended)
+# =============================================================================
+
+linkedin_data:
+  # Top industries employing this role
+  industries:
+    - "Technology and Internet"
+    - "IT Services and Consulting"
+    - "Financial Services"
+
+  # Top metro areas
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Seattle"
+
+  # Remote work availability
+  remote_availability: "53% remote/hybrid"
+
+  # Typical years of experience
+  median_experience_years: 3.5
+
+  # Common career transitions into this role
+  top_transitions_from:
+    - "Previous Role 1"
+    - "Previous Role 2"
+    - "Previous Role 3"
+
+  # Optional: gender distribution
+  gender_distribution:
+    female: 25
+    male: 75
+
+# =============================================================================
+# MEDIA (Optional)
+# =============================================================================
+
+# Video about the career (optional)
+video:
+  source: "youtube"  # "youtube" or "careeronestop"
+  id: "VIDEO_ID"     # YouTube video ID
+  title: "What does a [Career] do?"
+  duration: "5:30"
+
+# =============================================================================
+# RELATED CAREERS (Optional)
+# =============================================================================
+
+# Similar or related careers for exploration
+related_careers:
+  - slug: "related-career-1"
+    relationship: "similar"  # "similar", "advancement", "pivot"
+  - slug: "related-career-2"
+    relationship: "advancement"

@@ -1,0 +1,205 @@
+# Content Creators
+# ================
+# Digital content professionals across platforms
+# Growing role in the creator economy
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary, Creator economy reports (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: Industry reports, LinkedIn data
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: content-creators
+name: Content Creators
+slug: content-creators
+category: arts-media
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Content Creators produce engaging digital content for brands, media companies, and their own audiences. They develop videos, social media posts, articles, podcasts, and other media that inform, entertain, and build community. The role spans in-house brand content teams to independent creators building personal brands.
+
+  These professionals work at media companies, marketing agencies, brands, and as independent creators. The work involves ideation, production, editing, and distribution across platforms like YouTube, TikTok, Instagram, and podcasts. Success requires understanding platform algorithms, audience psychology, and content trends.
+
+  Content Creation offers creative fulfillment, growing demand, and multiple career paths from brand content to independent creation. The creator economy has opened unprecedented opportunities for talented creators. Career paths lead to content leadership roles, production, creative direction, or building independent media businesses.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary, Creator economy reports (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 40000
+    pct_25: 55000
+    median: 72000
+    pct_75: 100000
+    pct_90: 150000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "None"
+  on_the_job_training: "Short-term"
+  time_to_job_ready:
+    min_years: 0
+    typical_years: 3
+    max_years: 5
+    earning_while_learning: true
+    notes: "Bachelor's in Communications, Marketing, or related field helpful but not required. Portfolio and demonstrated audience building most important."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Self-taught through creating content and building audience"
+    - "Journalism or communications background"
+    - "Social media management experience"
+    - "Video production background"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.50
+    label: "High"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 25
+    source: "Creator economy reports, LinkedIn data"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 4
+      presence: 4
+      opinion: 4
+      creativity: 5
+      hope: 4
+  scoring:
+    exposurePoints: 0
+    growthPoints: 2
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Content Creators have high AI exposure as AI generates text, images, and video at increasing quality. However, authentic personal voice, audience relationships, and cultural relevance require human creativity and connection. Rapid growth of 25%+ in creator economy offsets automation pressure. High human advantage from authenticity, personal brand, and genuine audience connection that AI cannot replicate.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Develop content strategies aligned with brand or personal goals"
+  - "Create video content for YouTube, TikTok, and social platforms"
+  - "Write articles, newsletters, and social media posts"
+  - "Edit and produce multimedia content"
+  - "Engage with audience through comments and community"
+  - "Analyze content performance and optimize strategy"
+  - "Collaborate with brands on sponsored content"
+  - "Stay current with platform trends and algorithm changes"
+
+technology_skills:
+  - "Video editing (Premiere Pro, Final Cut, CapCut)"
+  - "Graphic design (Canva, Photoshop)"
+  - "Social media platforms"
+  - "Analytics tools (YouTube Studio, Instagram Insights)"
+  - "Audio editing (Audacity, Descript)"
+  - "Content management systems"
+  - "SEO basics"
+  - "Email marketing platforms"
+
+abilities:
+  - "Creativity"
+  - "Storytelling"
+  - "Communication"
+  - "Authenticity"
+  - "Adaptability"
+  - "Self-motivation"
+  - "Audience understanding"
+  - "Trend awareness"
+
+alternate_titles:
+  - "Digital Content Creator"
+  - "Social Media Content Creator"
+  - "Video Creator"
+  - "Brand Content Creator"
+  - "Influencer"
+  - "YouTuber"
+
+keywords:
+  - "content creator"
+  - "content creation"
+  - "social media"
+  - "YouTube"
+  - "TikTok"
+  - "influencer"
+  - "creator economy"
+  - "video creator"
+  - "digital content"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary, Creator economy reports (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "Creator economy industry reports, LinkedIn data"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Media and Entertainment"
+    - "Marketing and Advertising"
+    - "Technology and Internet"
+    - "E-commerce"
+  locations:
+    - "Los Angeles"
+    - "New York City"
+    - "San Francisco Bay Area"
+    - "Austin"
+    - "Miami"
+  remote_availability: "85% remote/hybrid"
+  median_experience_years: 3
+  top_transitions_from:
+    - "Social Media Manager"
+    - "Marketing Coordinator"
+    - "Video Editor"
+    - "Journalist"
+  gender_distribution:
+    female: 55
+    male: 45
