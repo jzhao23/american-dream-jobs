@@ -17,6 +17,7 @@ import {
 } from "@/types/career";
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
+import { FindJobsButton, FindJobsSection } from "@/components/jobs";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -229,6 +230,27 @@ export default async function SpecializationPage({ params }: PageProps) {
               )}
             </div>
           </div>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap gap-3 mt-6">
+            <FindJobsButton
+              careerSlug={spec.slug}
+              careerTitle={spec.title}
+              alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
+              variant="hero"
+            />
+            {parentCareer && (
+              <Link
+                href={`/careers/${parentCareer.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                View {parentCareer.title}
+              </Link>
+            )}
+          </div>
         </div>
       </header>
 
@@ -336,6 +358,14 @@ export default async function SpecializationPage({ params }: PageProps) {
             <AIAssessmentDetail assessment={spec.ai_assessment} />
           </Section>
         )}
+
+        {/* Find Jobs Section */}
+        <FindJobsSection
+          careerSlug={spec.slug}
+          careerTitle={spec.title}
+          alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
+          medianSalary={medianPay}
+        />
 
         {/* Compensation Details */}
         {payRange && (payRange.low > 0 || payRange.high > 0) && (
