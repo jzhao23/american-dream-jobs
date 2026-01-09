@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 // Table of contents item
 function TOCItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -45,7 +43,6 @@ export default function LegalPage() {
             <TOCItem href="#data-use">How We Use Your Data</TOCItem>
             <TOCItem href="#data-sharing">Data Sharing</TOCItem>
             <TOCItem href="#your-rights">Your Rights</TOCItem>
-            <TOCItem href="#contact">Contact Us</TOCItem>
           </div>
         </div>
 
@@ -63,7 +60,6 @@ export default function LegalPage() {
                 <TOCItem href="#data-use">How We Use Data</TOCItem>
                 <TOCItem href="#data-sharing">Data Sharing</TOCItem>
                 <TOCItem href="#your-rights">Your Rights</TOCItem>
-                <TOCItem href="#contact">Contact Us</TOCItem>
               </nav>
             </div>
           </aside>
@@ -513,24 +509,6 @@ export default function LegalPage() {
                     Your continued use of the Services after the effective date constitutes acceptance of the updated policy.
                   </p>
                 </div>
-              </div>
-            </section>
-
-            {/* Contact Section */}
-            <section id="contact" className="bg-warm-white border border-sage-muted rounded-2xl p-6">
-              <h2 className="font-display text-xl font-medium text-ds-slate mb-4">Contact Us</h2>
-              <p className="text-ds-slate-light text-sm mb-4">
-                If you have any questions about these Terms & Conditions or our Privacy Policy,
-                or if you wish to exercise any of your rights, please contact us:
-              </p>
-              <div className="space-y-2 text-sm text-ds-slate-light">
-                <p><strong className="text-ds-slate">Email:</strong> {contactEmail}</p>
-                <p><strong className="text-ds-slate">Website:</strong> {websiteUrl}</p>
-              </div>
-              <div className="mt-6">
-                <Link href="/" className="btn-sage">
-                  Return to Home
-                </Link>
               </div>
             </section>
 

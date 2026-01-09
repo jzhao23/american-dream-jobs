@@ -40,16 +40,29 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const result = await checkUserExists(email);
+    try {
+      const result = await checkUserExists(email);
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        exists: result.exists,
-        hasResume: result.hasResume,
-        userId: result.userId
-      }
-    });
+      return NextResponse.json({
+        success: true,
+        data: {
+          exists: result.exists,
+          hasResume: result.hasResume,
+          userId: result.userId
+        }
+      });
+    } catch (dbError) {
+      // If database table doesn't exist or other DB error, treat as new user
+      console.warn('Database check failed (table may not exist):', dbError);
+      return NextResponse.json({
+        success: true,
+        data: {
+          exists: false,
+          hasResume: false,
+          userId: undefined
+        }
+      });
+    }
   } catch (error) {
     console.error('Check user error:', error);
     return NextResponse.json(

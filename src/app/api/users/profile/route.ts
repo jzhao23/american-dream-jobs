@@ -20,6 +20,11 @@ const createUserSchema = z.object({
   tcVersion: z.string().optional().default('1.0')
 });
 
+// Generate a temporary user ID for when database is unavailable
+function generateTempUserId(): string {
+  return `temp_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -41,21 +46,36 @@ export async function POST(request: NextRequest) {
 
     const { email, locationCode, locationName, tcVersion } = validationResult.data;
 
-    const result = await getOrCreateUser({
-      email,
-      locationCode,
-      locationName,
-      tcVersion
-    });
+    try {
+      const result = await getOrCreateUser({
+        email,
+        locationCode,
+        locationName,
+        tcVersion
+      });
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        userId: result.userId,
-        isNew: result.isNew,
-        hasResume: result.hasResume
-      }
-    });
+      return NextResponse.json({
+        success: true,
+        data: {
+          userId: result.userId,
+          isNew: result.isNew,
+          hasResume: result.hasResume
+        }
+      });
+    } catch (dbError) {
+      // If database isn't available, generate a temp ID and continue
+      // The job search will still work, just won't persist user data
+      console.warn('Database unavailable, using temp user ID:', dbError);
+      return NextResponse.json({
+        success: true,
+        data: {
+          userId: generateTempUserId(),
+          isNew: true,
+          hasResume: false,
+          _note: 'Using temporary session (database unavailable)'
+        }
+      });
+    }
   } catch (error) {
     console.error('Create user error:', error);
     return NextResponse.json(
