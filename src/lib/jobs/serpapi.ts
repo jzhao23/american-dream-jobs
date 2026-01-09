@@ -53,7 +53,7 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
     }
   }
 
-  console.log(`[SerpApi] Searching for: "${params.query}" in "${params.location}"`);
+  console.log(`[SerpApi] Searching for: "${params.query}" in "${simplifiedLocation}" (original: "${params.location}")`);
   console.log(`[SerpApi] API Key present: ${!!apiKey}, length: ${apiKey?.length || 0}`);
 
   try {
@@ -82,12 +82,18 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
       throw new Error(`SerpApi error: ${data.error}`);
     }
 
-    const jobs = (data.jobs_results || [])
-      .slice(0, params.limit || 20)
+    // Transform and filter jobs
+    const allJobs = (data.jobs_results || [])
       .map(job => transformSerpApiJob(job))
       .filter(job => passesFilters(job, params.filters));
 
-    console.log(`[SerpApi] Found ${jobs.length} jobs (raw results: ${data.jobs_results?.length || 0})`);
+    // Post-filter to ensure jobs are in the expected location area
+    // SerpApi sometimes returns jobs from other locations
+    const locationFilteredJobs = filterJobsByLocation(allJobs, simplifiedLocation);
+
+    const jobs = locationFilteredJobs.slice(0, params.limit || 20);
+
+    console.log(`[SerpApi] Found ${jobs.length} jobs (raw: ${data.jobs_results?.length || 0}, after location filter: ${locationFilteredJobs.length})`);
 
     return {
       jobs,
@@ -257,6 +263,59 @@ function simplifyLocation(location: string): string {
   const firstCity = cityPart.split('-')[0].trim();
 
   return `${firstCity}, ${state}`;
+}
+
+/**
+ * Filter jobs to ensure they match the expected location
+ * SerpApi sometimes returns jobs from other locations
+ */
+function filterJobsByLocation(jobs: JobListing[], expectedLocation: string): JobListing[] {
+  // Extract city and state from expected location
+  const parts = expectedLocation.split(',').map(p => p.trim().toLowerCase());
+  const expectedCity = parts[0] || '';
+  const expectedState = parts[1] || '';
+
+  // Also handle state abbreviations
+  const stateAbbreviations: Record<string, string> = {
+    'ca': 'california', 'ny': 'new york', 'tx': 'texas', 'fl': 'florida',
+    'wa': 'washington', 'il': 'illinois', 'pa': 'pennsylvania', 'oh': 'ohio',
+    'ga': 'georgia', 'nc': 'north carolina', 'mi': 'michigan', 'nj': 'new jersey',
+    'va': 'virginia', 'az': 'arizona', 'ma': 'massachusetts', 'tn': 'tennessee',
+    'in': 'indiana', 'mo': 'missouri', 'md': 'maryland', 'wi': 'wisconsin',
+    'co': 'colorado', 'mn': 'minnesota', 'sc': 'south carolina', 'al': 'alabama',
+    'la': 'louisiana', 'ky': 'kentucky', 'or': 'oregon', 'ok': 'oklahoma',
+    'ct': 'connecticut', 'ut': 'utah', 'nv': 'nevada', 'ia': 'iowa',
+    'ar': 'arkansas', 'ms': 'mississippi', 'ks': 'kansas', 'nm': 'new mexico',
+    'ne': 'nebraska', 'wv': 'west virginia', 'id': 'idaho', 'hi': 'hawaii',
+    'nh': 'new hampshire', 'me': 'maine', 'mt': 'montana', 'ri': 'rhode island',
+    'de': 'delaware', 'sd': 'south dakota', 'nd': 'north dakota', 'ak': 'alaska',
+    'dc': 'district of columbia', 'vt': 'vermont', 'wy': 'wyoming'
+  };
+
+  const expectedStateFull = stateAbbreviations[expectedState] || expectedState;
+
+  return jobs.filter(job => {
+    const jobLocation = (job.location || '').toLowerCase();
+
+    // Remote jobs are always included
+    if (job.locationType === 'remote' || jobLocation.includes('remote')) {
+      return true;
+    }
+
+    // Check if job location contains the expected city
+    if (expectedCity && jobLocation.includes(expectedCity)) {
+      return true;
+    }
+
+    // Check if job location contains the expected state (abbreviation or full name)
+    if (expectedState && (jobLocation.includes(expectedState) || jobLocation.includes(expectedStateFull))) {
+      return true;
+    }
+
+    // Log filtered out jobs for debugging
+    console.log(`[SerpApi] Filtering out job: "${job.title}" at "${job.location}" (expected: ${expectedLocation})`);
+    return false;
+  });
 }
 
 /**
