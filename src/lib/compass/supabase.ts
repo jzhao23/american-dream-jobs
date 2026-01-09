@@ -20,6 +20,11 @@ export interface CareerEmbedding {
   median_salary: number | null;
   ai_resilience: string | null;
   job_zone: number | null;
+  // Consolidation fields
+  is_consolidated: boolean;
+  specialization_count: number | null;
+  parent_career_slug: string | null;
+  data_source: 'onet' | 'manual';
   embedding_input: Record<string, unknown> | null;
   created_at: string;
   updated_at: string;
@@ -56,6 +61,8 @@ export interface SimilarCareer {
   category: string;
   median_salary: number | null;
   ai_resilience: string | null;
+  is_consolidated: boolean;
+  specialization_count: number | null;
   similarity: number;
 }
 
@@ -165,6 +172,14 @@ export async function batchUpsertDWAEmbeddings(
 
 /**
  * Find similar careers using weighted multi-field search
+ *
+ * @param taskEmbedding - Vector embedding for task preferences
+ * @param narrativeEmbedding - Vector embedding for work environment preferences
+ * @param skillsEmbedding - Vector embedding for skills
+ * @param options - Search options
+ * @param options.preferConsolidated - When true (default), returns consolidated careers
+ *   instead of individual specializations. This ensures users see "Physicians" rather
+ *   than individual specializations like "Cardiologists" in Career Compass results.
  */
 export async function findSimilarCareers(
   taskEmbedding: number[],
@@ -175,6 +190,7 @@ export async function findSimilarCareers(
     narrativeWeight?: number;
     skillsWeight?: number;
     limit?: number;
+    preferConsolidated?: boolean;
   } = {}
 ): Promise<SimilarCareer[]> {
   const supabase = getSupabaseClient();
@@ -183,7 +199,8 @@ export async function findSimilarCareers(
     taskWeight = 0.5,
     narrativeWeight = 0.3,
     skillsWeight = 0.2,
-    limit = 50
+    limit = 50,
+    preferConsolidated = true
   } = options;
 
   // Use the custom function for weighted search
@@ -194,7 +211,8 @@ export async function findSimilarCareers(
     task_weight: taskWeight,
     narrative_weight: narrativeWeight,
     skills_weight: skillsWeight,
-    result_limit: limit
+    result_limit: limit,
+    prefer_consolidated: preferConsolidated
   });
 
   if (error) {

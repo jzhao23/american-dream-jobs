@@ -489,12 +489,19 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
             {paginatedCareers.map((career) => (
               <tr key={career.slug} className="hover:bg-sage-pale transition-colors">
                 <td className="px-4 py-3">
-                  <a
-                    href={`/careers/${career.slug}`}
-                    className="text-sage hover:text-sage-dark font-medium hover:underline"
-                  >
-                    {career.title}
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`/careers/${career.slug}`}
+                      className="text-sage hover:text-sage-dark font-medium hover:underline"
+                    >
+                      {career.title}
+                    </a>
+                    {career.specialization_count && career.specialization_count > 1 && (
+                      <span className="text-xs bg-sage-muted text-ds-slate-muted px-1.5 py-0.5 rounded">
+                        {career.specialization_count} specializations
+                      </span>
+                    )}
+                  </div>
                 </td>
                 <td className="px-4 py-3">
                   <a
@@ -555,6 +562,11 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   >
                     {career.title}
                   </a>
+                  {career.specialization_count && career.specialization_count > 1 && (
+                    <span className="ml-2 text-xs bg-sage-muted text-ds-slate-muted px-1.5 py-0.5 rounded">
+                      {career.specialization_count} specializations
+                    </span>
+                  )}
                 </h3>
                 <a
                   href={`/categories/${career.category}`}

@@ -12,6 +12,11 @@ import {
   getAIResilienceEmoji,
   type AIResilienceClassification,
 } from "@/types/career";
+import {
+  getSpecializationsForCareer,
+  getSpecializationBySlug,
+  hasEducationVariance,
+} from "@/lib/specializations";
 
 const careers = careersIndex as CareerIndex[];
 const fullCareers = careersData as Career[];
@@ -122,6 +127,8 @@ function CompareContent() {
   const [retirementAge] = useState(65);
   // Track institution type selections: { [careerSlug]: { [stageIndex]: institutionType } }
   const [institutionTypes, setInstitutionTypes] = useState<Record<string, Record<number, string>>>({});
+  // Track selected specialization for each career (for education requirements)
+  const [selectedSpecializations, setSelectedSpecializations] = useState<Record<string, string | null>>({});
 
   // Parse URL params for pre-selecting careers
   useEffect(() => {
@@ -158,6 +165,18 @@ function CompareContent() {
     return selectedSlugs.map(slug => fullCareers.find(c => c.slug === slug)).filter(Boolean) as Career[];
   }, [selectedSlugs]);
 
+  // Get effective education data for each career (from specialization if selected)
+  const getEffectiveEducation = (career: Career): Career['education'] => {
+    const selectedSpecSlug = selectedSpecializations[career.slug];
+    if (selectedSpecSlug) {
+      const spec = getSpecializationBySlug(selectedSpecSlug);
+      if (spec?.education) {
+        return spec.education;
+      }
+    }
+    return career.education;
+  };
+
   const filteredCareers = useMemo(() => {
     if (!searchQuery) return careers.slice(0, 50);
     const query = searchQuery.toLowerCase();
@@ -170,13 +189,15 @@ function CompareContent() {
   const careerPaths = useMemo(() => {
     return selectedCareers.map(career => {
       const stages: CareerPathStage[] = [];
+      // Get effective education (from specialization if selected)
+      const education = getEffectiveEducation(career);
       // Use education_duration (ground truth) if available, fall back to time_to_job_ready
-      const educationYears = career.education?.education_duration?.typical_years
-        ?? career.education?.time_to_job_ready?.typical_years
+      const educationYears = education?.education_duration?.typical_years
+        ?? education?.time_to_job_ready?.typical_years
         ?? 2;
       const timeline = career.career_progression?.timeline || [];
-      const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
-      const costByType = career.education?.cost_by_institution_type;
+      const costBreakdown = education?.estimated_cost?.cost_breakdown || [];
+      const costByType = education?.cost_by_institution_type;
 
       // Calculate total education cost based on institution type selections
       let educationCost = 0;
@@ -189,7 +210,7 @@ function CompareContent() {
         });
       } else {
         // Fallback to typical cost if no breakdown
-        educationCost = career.education?.estimated_cost?.typical_cost || 0;
+        educationCost = education?.estimated_cost?.typical_cost || 0;
       }
 
       let cumulative = 0;
@@ -199,7 +220,7 @@ function CompareContent() {
       cumulative -= educationCost;
       stages.push({
         type: "education",
-        label: career.education?.typical_entry_education || "Training",
+        label: education?.typical_entry_education || "Training",
         ageStart: startAge,
         ageEnd: educationEnd,
         annualAmount: -educationCost,
@@ -259,7 +280,7 @@ function CompareContent() {
         educationCost,
       };
     });
-  }, [selectedCareers, startAge, retirementAge, institutionTypes]);
+  }, [selectedCareers, startAge, retirementAge, institutionTypes, selectedSpecializations]);
 
   const addCareer = (slug: string) => {
     if (selectedSlugs.length < 3 && !selectedSlugs.includes(slug)) {
@@ -386,15 +407,55 @@ function CompareContent() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {selectedCareers.map((career, idx) => {
-                const costBreakdown = career.education?.estimated_cost?.cost_breakdown || [];
-                const costByType = career.education?.cost_by_institution_type;
+                // Get effective education (from specialization if selected)
+                const education = getEffectiveEducation(career);
+                const costBreakdown = education?.estimated_cost?.cost_breakdown || [];
+                const costByType = education?.cost_by_institution_type;
                 const hasBreakdown = costBreakdown.length > 0;
+                // Check if career has specializations with different education requirements
+                const specializationOptions = career.specialization_slugs
+                  ? getSpecializationsForCareer(career.specialization_slugs)
+                  : [];
+                const showSpecializationSelector = specializationOptions.length > 1 &&
+                  hasEducationVariance(career.specialization_slugs || []);
 
                 return (
                   <div key={career.slug} className={`p-4 rounded-lg ${colorClasses[colors[idx]].bgLight} border ${colorClasses[colors[idx]].border}`}>
                     <div className={`font-semibold mb-3 ${colorClasses[colors[idx]].text}`}>
                       {career.title}
                     </div>
+
+                    {/* Specialization Selector - shown when education varies */}
+                    {showSpecializationSelector && (
+                      <div className="mb-4 pb-3 border-b border-sage-muted">
+                        <div className="text-xs text-ds-slate-light mb-1">
+                          Specialization (affects education requirements)
+                        </div>
+                        <select
+                          value={selectedSpecializations[career.slug] || ''}
+                          onChange={(e) => {
+                            setSelectedSpecializations({
+                              ...selectedSpecializations,
+                              [career.slug]: e.target.value || null
+                            });
+                            // Reset institution types when specialization changes
+                            setInstitutionTypes(prev => {
+                              const newTypes = { ...prev };
+                              delete newTypes[career.slug];
+                              return newTypes;
+                            });
+                          }}
+                          className="w-full text-sm border border-sage-muted rounded px-2 py-1.5 bg-warm-white focus:outline-none focus:ring-2 focus:ring-sage"
+                        >
+                          <option value="">All specializations (default)</option>
+                          {specializationOptions.map(spec => (
+                            <option key={spec.slug} value={spec.slug}>
+                              {spec.title} ({spec.education_duration?.typical_years || '?'} years)
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
 
                     {hasBreakdown ? (
                       <div className="space-y-3">
@@ -436,7 +497,7 @@ function CompareContent() {
                       </div>
                     ) : (
                       <div className="text-sm text-ds-slate-light">
-                        <div className="font-medium">{formatPay(career.education?.estimated_cost?.typical_cost || 0)}</div>
+                        <div className="font-medium">{formatPay(education?.estimated_cost?.typical_cost || 0)}</div>
                         <div className="text-xs text-ds-slate-muted mt-1">No breakdown available</div>
                       </div>
                     )}

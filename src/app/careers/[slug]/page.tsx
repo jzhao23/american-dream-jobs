@@ -6,6 +6,15 @@ import careers from "../../../../data/output/careers.json";
 import careersIndex from "../../../../data/output/careers-index.json";
 import reviewsIndex from "../../../../data/reviews/reviews-index.json";
 import type { Career } from "@/types/career";
+import { SpecializationsTable } from "@/components/SpecializationsTable";
+
+// Try to load specializations if they exist
+let specializations: Career[] = [];
+try {
+  specializations = require("../../../../data/output/specializations.json") as Career[];
+} catch {
+  // Specializations file may not exist yet
+}
 import {
   formatPay,
   formatPayRange,
@@ -496,6 +505,45 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
+          {/* Specializations Section (for consolidated careers) */}
+          {(() => {
+            // Check if this career has specializations
+            const careerWithSpecs = career as Career & {
+              specialization_count?: number;
+              specialization_slugs?: string[];
+              display_strategy?: string;
+              specialization_label?: string;
+            };
+
+            if (
+              careerWithSpecs.display_strategy !== 'show-specializations' ||
+              !careerWithSpecs.specialization_slugs ||
+              careerWithSpecs.specialization_slugs.length === 0
+            ) {
+              return null;
+            }
+
+            // Find the specializations for this career
+            const careerSpecs = specializations.filter(
+              (s) => careerWithSpecs.specialization_slugs?.includes(s.slug)
+            );
+
+            if (careerSpecs.length === 0) return null;
+
+            return (
+              <Section
+                title={careerWithSpecs.specialization_label || "Specializations"}
+                icon="layers"
+              >
+                <SpecializationsTable
+                  specializations={careerSpecs}
+                  parentCareerSlug={career.slug}
+                  label={careerWithSpecs.specialization_label || "Specializations"}
+                />
+              </Section>
+            );
+          })()}
+
           {/* Related Careers */}
           {(() => {
             const relatedCareers = (careersIndex as { slug: string; title: string; category: string; median_pay: number }[])
@@ -678,6 +726,7 @@ const icons: Record<string, string> = {
   chat: "💬",
   video: "🎬",
   insight: "💡",
+  layers: "📑",
 };
 
 function Section({
