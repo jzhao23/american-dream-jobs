@@ -25,12 +25,16 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
     throw new Error('SERPAPI_API_KEY environment variable is not set');
   }
 
+  // Simplify location for SerpApi (it doesn't support verbose MSA names)
+  // "San Francisco-Oakland-Berkeley, CA" -> "San Francisco, CA"
+  const simplifiedLocation = simplifyLocation(params.location);
+
   // Build search URL
   const searchParams = new URLSearchParams({
     api_key: apiKey,
     engine: 'google_jobs',
     q: params.query,
-    location: params.location,
+    location: simplifiedLocation,
     google_domain: 'google.com',
     gl: 'us',
     hl: 'en'
@@ -230,6 +234,29 @@ function passesFilters(job: JobListing, filters?: JobSearchParams['filters']): b
   }
 
   return true;
+}
+
+/**
+ * Simplify location for SerpApi
+ * MSA names like "San Francisco-Oakland-Berkeley, CA" need to be simplified
+ * to just "San Francisco, CA" for the API to accept them
+ */
+function simplifyLocation(location: string): string {
+  // If it's a state-only location, keep as is
+  if (!location.includes(',')) {
+    return location;
+  }
+
+  // Split into city part and state
+  const parts = location.split(',');
+  const state = parts[parts.length - 1].trim();
+  const cityPart = parts[0].trim();
+
+  // If city part contains hyphens (MSA format), take just the first city
+  // "San Francisco-Oakland-Berkeley" -> "San Francisco"
+  const firstCity = cityPart.split('-')[0].trim();
+
+  return `${firstCity}, ${state}`;
 }
 
 /**
