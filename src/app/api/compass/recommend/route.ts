@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { matchCareers, CareerMatch, UserProfile, TrainingWillingness, MatchingModel } from '@/lib/compass/matching-engine';
 import { EducationLevel } from '@/lib/compass/resume-parser';
+import { saveCompassResponse } from '@/lib/db';
 
 // Request validation schema
 const educationLevelSchema = z.enum([
@@ -60,7 +61,13 @@ const recommendRequestSchema = z.object({
     useSupabase: z.boolean().optional(),
     trainingWillingness: trainingWillingnessSchema.optional(),
     model: matchingModelSchema.optional()
-  }).optional()
+  }).optional(),
+  // Session tracking for persistence
+  sessionId: z.string().optional(),
+  userId: z.string().uuid().optional(),
+  locationCode: z.string().optional(),
+  locationName: z.string().optional(),
+  resumeId: z.string().uuid().optional()
 });
 
 // Response types
@@ -125,7 +132,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
       );
     }
 
-    const { profile, preferences, options } = validation.data;
+    const { profile, preferences, options, sessionId, userId, locationCode, locationName, resumeId } = validation.data;
 
     // Check for minimum profile data
     // Note: Model B (no resume) only requires preferences, not skills
@@ -208,6 +215,32 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     console.log(`✅ Found ${result.matches.length} career matches`);
     console.log(`  Processing time: ${result.metadata.processingTimeMs}ms`);
     console.log(`  Estimated cost: $${result.metadata.costUsd.toFixed(4)}`);
+
+    // Save compass response to database (if sessionId provided)
+    if (sessionId) {
+      try {
+        await saveCompassResponse({
+          userId,
+          sessionId,
+          trainingWillingness: preferences.trainingWillingness,
+          educationLevel: preferences.educationLevel,
+          workBackground: preferences.workBackground,
+          salaryTarget: preferences.salaryTarget,
+          workStyle: preferences.workStyle,
+          additionalContext: preferences.additionalContext,
+          locationCode,
+          locationName,
+          resumeId,
+          recommendations: result.matches,
+          modelUsed: model,
+          processingTimeMs: result.metadata.processingTimeMs
+        });
+        console.log(`  Saved compass response for session: ${sessionId}`);
+      } catch (saveError) {
+        // Log but don't fail the request if save fails
+        console.warn('Failed to save compass response:', saveError);
+      }
+    }
 
     return NextResponse.json({
       success: true,
