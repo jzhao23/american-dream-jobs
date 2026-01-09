@@ -297,12 +297,8 @@ export function FindJobsModal({
     setError(null);
 
     try {
-      // Use shortName + state format for better API compatibility (e.g., "San Francisco, CA")
-      // instead of full MSA name (e.g., "San Francisco-Oakland-Berkeley, CA")
-      const locationForApi = location.state
-        ? `${location.shortName}, ${location.state}`
-        : location.shortName;
-
+      // Use shortName for API compatibility (e.g., "San Francisco, CA")
+      // shortName already includes city + state, unlike full MSA name (e.g., "San Francisco-Oakland-Berkeley, CA")
       const response = await fetch('/api/jobs/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -311,7 +307,7 @@ export function FindJobsModal({
           careerTitle,
           alternateJobTitles,
           locationCode: location.code,
-          locationName: locationForApi,
+          locationName: location.shortName,
           userId,
           limit: 20
         })

@@ -29,12 +29,17 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
   // "San Francisco-Oakland-Berkeley, CA" -> "San Francisco, CA"
   const simplifiedLocation = simplifyLocation(params.location);
 
+  // Include location in query for better geographic matching
+  // Google Jobs location parameter is a hint, not a strict filter
+  const queryWithLocation = `${params.query} in ${simplifiedLocation}`;
+
   // Build search URL
   const searchParams = new URLSearchParams({
     api_key: apiKey,
     engine: 'google_jobs',
-    q: params.query,
+    q: queryWithLocation,
     location: simplifiedLocation,
+    lrad: '50',  // 50km radius to restrict results geographically
     google_domain: 'google.com',
     gl: 'us',
     hl: 'en'
@@ -53,7 +58,7 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
     }
   }
 
-  console.log(`[SerpApi] Searching for: "${params.query}" in "${simplifiedLocation}" (original: "${params.location}")`);
+  console.log(`[SerpApi] Searching for: "${queryWithLocation}" (location param: "${simplifiedLocation}", radius: 50km)`);
   console.log(`[SerpApi] API Key present: ${!!apiKey}, length: ${apiKey?.length || 0}`);
 
   try {
