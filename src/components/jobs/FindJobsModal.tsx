@@ -128,19 +128,21 @@ export function FindJobsModal({
   // Determine initial step when modal opens
   useEffect(() => {
     if (isOpen && isInitialized) {
-      // If we have a saved user with userId, skip straight to search
-      if (userState.userId && location) {
-        startJobSearch(userState.userId);
-      } else if (!location) {
+      if (!location) {
+        // No location - ask for it first
         setStep('location');
-      } else if (userState.userId) {
-        // Have user but no location
-        setStep('location');
-      } else {
+      } else if (!userState.userId) {
+        // No user - ask for email
         setStep('email');
+      } else if (!userState.hasResume) {
+        // Have user but no resume - prompt for resume each time until uploaded
+        setStep('resume');
+      } else {
+        // Have user, location, and resume - go straight to search
+        startJobSearch(userState.userId);
       }
     }
-  }, [isOpen, isInitialized, location, userState.userId]);
+  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume]);
 
   // Location search effect
   useEffect(() => {
