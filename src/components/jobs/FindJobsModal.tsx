@@ -96,6 +96,7 @@ export function FindJobsModal({
     code: string;
     name: string;
     shortName: string;
+    states: string[];
     type: 'msa' | 'state';
   }>>([]);
   const [isSearchingLocation, setIsSearchingLocation] = useState(false);
@@ -166,12 +167,13 @@ export function FindJobsModal({
   }, [locationQuery]);
 
   // Handle location selection
-  const handleLocationSelect = useCallback((loc: { code: string; name: string; shortName: string; type: 'msa' | 'state' }) => {
+  const handleLocationSelect = useCallback((loc: { code: string; name: string; shortName: string; states: string[]; type: 'msa' | 'state' }) => {
     setLocation({
       code: loc.code,
       name: loc.name,
       shortName: loc.shortName,
-      state: loc.type === 'state' ? loc.code : '',
+      // For MSAs, use the first state from the states array; for states, use the code directly
+      state: loc.type === 'state' ? loc.code : (loc.states[0] || ''),
       type: loc.type
     });
     setLocationQuery('');
@@ -295,6 +297,12 @@ export function FindJobsModal({
     setError(null);
 
     try {
+      // Use shortName + state format for better API compatibility (e.g., "San Francisco, CA")
+      // instead of full MSA name (e.g., "San Francisco-Oakland-Berkeley, CA")
+      const locationForApi = location.state
+        ? `${location.shortName}, ${location.state}`
+        : location.shortName;
+
       const response = await fetch('/api/jobs/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -303,7 +311,7 @@ export function FindJobsModal({
           careerTitle,
           alternateJobTitles,
           locationCode: location.code,
-          locationName: location.name,
+          locationName: locationForApi,
           userId,
           limit: 20
         })
