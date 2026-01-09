@@ -28,6 +28,7 @@ export interface GeocodingData {
   msaMetadata: { [code: string]: MSAMetadata };
   stateMetadata: { [code: string]: StateMetadata };
   zipToMsa: { [zip: string]: string };
+  zipToState: { [zip: string]: string };
   searchIndex: { [term: string]: string[] };
 }
 
@@ -1117,7 +1118,25 @@ const zipToMsa: { [zip: string]: string } = {
   '78759': '12420',
 };
 
-// Build search index at module load time
+/**
+ * Build ZIP to state mapping from zipToMsa and msaMetadata.
+ * Derives the state code for each ZIP from its MSA's primary state.
+ */
+function buildZipToState(): { [zip: string]: string } {
+  const mapping: { [zip: string]: string } = {};
+
+  for (const [zip, msaCode] of Object.entries(zipToMsa)) {
+    const msa = msaMetadata[msaCode];
+    if (msa && msa.states.length > 0) {
+      mapping[zip] = msa.states[0];
+    }
+  }
+
+  return mapping;
+}
+
+// Build derived data at module load time
+const zipToState = buildZipToState();
 const searchIndex = buildSearchIndex();
 
 /**
@@ -1127,6 +1146,7 @@ export const geocodingData: GeocodingData = {
   msaMetadata,
   stateMetadata,
   zipToMsa,
+  zipToState,
   searchIndex,
 };
 
