@@ -36,30 +36,83 @@ export interface GetOrCreateUserResult {
 /**
  * Get or create a user by email
  *
- * Uses the database function for atomic operation
+ * Uses direct database operations for compatibility before migration is applied
  */
 export async function getOrCreateUser(input: CreateUserInput): Promise<GetOrCreateUserResult> {
   const supabase = getSupabaseClient();
+  const normalizedEmail = input.email.toLowerCase().trim();
 
-  const { data, error } = await supabase.rpc('get_or_create_user', {
-    p_email: input.email.toLowerCase().trim(),
-    p_location_code: input.locationCode || null,
-    p_location_name: input.locationName || null,
-    p_tc_version: input.tcVersion || '1.0'
-  });
+  // First, try to find existing user
+  const { data: existingUser, error: fetchError } = await supabase
+    .from('user_profiles')
+    .select('id')
+    .eq('email', normalizedEmail)
+    .is('deleted_at', null)
+    .single();
 
-  if (error) {
-    throw new Error(`Failed to get or create user: ${error.message}`);
+  // If user exists, check for resume and return
+  if (existingUser) {
+    // Check for active resume
+    const { data: resume } = await supabase
+      .from('user_resumes')
+      .select('id')
+      .eq('user_id', existingUser.id)
+      .eq('is_active', true)
+      .limit(1)
+      .single();
+
+    return {
+      userId: existingUser.id,
+      isNew: false,
+      hasResume: !!resume
+    };
   }
 
-  // RPC returns an array with one row
-  const result = Array.isArray(data) ? data[0] : data;
+  // User not found (PGRST116 is "not found" error) - try to create
+  if (fetchError && fetchError.code === 'PGRST116') {
+    const { data: newUser, error: createError } = await supabase
+      .from('user_profiles')
+      .insert({
+        email: normalizedEmail,
+        location_code: input.locationCode || null,
+        location_name: input.locationName || null,
+        tc_version: input.tcVersion || '1.0',
+        tc_accepted_at: new Date().toISOString()
+      })
+      .select('id')
+      .single();
 
-  return {
-    userId: result.user_id,
-    isNew: result.is_new,
-    hasResume: result.has_resume
-  };
+    if (createError) {
+      // Could be a race condition - another request created the user
+      // Try to fetch again
+      if (createError.code === '23505') { // Unique violation
+        const { data: retryUser, error: retryError } = await supabase
+          .from('user_profiles')
+          .select('id')
+          .eq('email', normalizedEmail)
+          .is('deleted_at', null)
+          .single();
+
+        if (retryUser && !retryError) {
+          return {
+            userId: retryUser.id,
+            isNew: false,
+            hasResume: false
+          };
+        }
+      }
+      throw new Error(`Failed to create user: ${createError.message}`);
+    }
+
+    return {
+      userId: newUser.id,
+      isNew: true,
+      hasResume: false
+    };
+  }
+
+  // Some other error occurred
+  throw new Error(`Failed to get or create user: ${fetchError?.message || 'Unknown error'}`);
 }
 
 /**

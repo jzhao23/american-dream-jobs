@@ -425,11 +425,11 @@ export function FindJobsModal({
                   />
                   <span className="text-sm text-gray-600">
                     I agree to the{' '}
-                    <a href="/terms" target="_blank" className="text-sage hover:underline">
+                    <a href="/legal#terms" target="_blank" rel="noopener noreferrer" className="text-sage hover:underline">
                       Terms & Conditions
                     </a>
                     {' '}and{' '}
-                    <a href="/privacy" target="_blank" className="text-sage hover:underline">
+                    <a href="/legal#privacy" target="_blank" rel="noopener noreferrer" className="text-sage hover:underline">
                       Privacy Policy
                     </a>
                   </span>
