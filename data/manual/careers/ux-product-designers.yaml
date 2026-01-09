@@ -1,0 +1,206 @@
+# UX/Product Designers
+# ====================
+# User experience and product design professionals
+# Critical role in product development
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: ux-product-designers
+name: UX/Product Designers
+slug: ux-product-designers
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  UX/Product Designers create user-centered digital experiences by researching user needs, designing interfaces, and validating solutions. They own the end-to-end design process from problem definition to final implementation, ensuring products are intuitive, accessible, and delightful to use.
+
+  These professionals work primarily in technology but UX roles exist across e-commerce, finance, healthcare, and any industry with digital products. They collaborate closely with product managers, engineers, and researchers in iterative design processes. Modern product design combines traditional UX skills with visual design, prototyping, and systems thinking.
+
+  UX/Product Design offers strong compensation, creative fulfillment, and direct impact on how millions of people interact with technology. Portfolios demonstrating user-centered thinking and business impact are essential for advancement. Career paths lead to senior/staff design roles, design management, or specialization in research, systems, or accessibility.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 75000
+    pct_25: 95000
+    median: 125000
+    pct_75: 165000
+    pct_90: 210000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "None"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 2
+    typical_years: 4
+    max_years: 6
+    earning_while_learning: false
+    notes: "Bachelor's in Design, HCI, or related field. Portfolio essential. Bootcamps provide faster entry path."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "UX bootcamp (12-24 weeks) plus strong portfolio"
+    - "Graphic design background plus UX skills"
+    - "Self-taught with comprehensive portfolio of case studies"
+    - "HCI or Design master's program"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.40
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 16
+    source: "LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 5
+      presence: 2
+      opinion: 4
+      creativity: 5
+      hope: 3
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    UX/Product Designers have moderate AI exposure as AI tools can generate UI mockups, create variations, and assist with design system management. However, understanding human psychology, conducting user research, and making strategic design decisions require deep empathy and creativity. Growth of 16% reflects continued demand for digital products. Human advantage is high due to empathy-driven design thinking.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Conduct user research through interviews, surveys, and usability testing"
+  - "Define user personas, journey maps, and design requirements"
+  - "Create wireframes, prototypes, and high-fidelity designs"
+  - "Develop and maintain design systems and component libraries"
+  - "Collaborate with product managers to define product strategy"
+  - "Work with engineers to ensure design implementation quality"
+  - "Analyze user behavior data to inform design decisions"
+  - "Present and advocate for design decisions to stakeholders"
+
+technology_skills:
+  - "Figma"
+  - "Sketch"
+  - "Adobe Creative Suite"
+  - "Prototyping tools (Principle, Framer)"
+  - "User research tools (UserTesting, Maze)"
+  - "Design systems"
+  - "HTML/CSS basics"
+  - "Analytics tools (Mixpanel, Amplitude)"
+  - "Collaboration tools (Miro, FigJam)"
+
+abilities:
+  - "Empathy"
+  - "Visual design"
+  - "Systems thinking"
+  - "Communication"
+  - "User research"
+  - "Problem solving"
+  - "Collaboration"
+  - "Storytelling"
+
+alternate_titles:
+  - "Product Designer"
+  - "UX Designer"
+  - "UI/UX Designer"
+  - "Experience Designer"
+  - "Interaction Designer"
+  - "Digital Product Designer"
+
+keywords:
+  - "product design"
+  - "UX design"
+  - "user experience"
+  - "UI design"
+  - "Figma"
+  - "user research"
+  - "design systems"
+  - "prototyping"
+  - "interaction design"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "Design Services"
+    - "Financial Services"
+    - "E-commerce"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Los Angeles"
+    - "Seattle"
+    - "Austin"
+  remote_availability: "70% remote/hybrid"
+  median_experience_years: 4
+  top_transitions_from:
+    - "Graphic Designer"
+    - "Web Designer"
+    - "UI Designer"
+    - "UX Researcher"
+  gender_distribution:
+    female: 45
+    male: 55

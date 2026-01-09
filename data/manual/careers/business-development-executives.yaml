@@ -1,0 +1,203 @@
+# Business Development Executives
+# ===============================
+# LinkedIn #16 Jobs on the Rise 2026
+# Strategic partnership and revenue growth professionals
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: business-development-executives
+name: Business Development Executives
+slug: business-development-executives
+category: sales
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Business Development Executives identify and pursue strategic growth opportunities for their organizations. They build partnerships, identify new markets, negotiate deals, and develop relationships that drive revenue growth. Unlike pure sales roles, BD focuses on strategic opportunities, partnerships, and market expansion rather than transactional selling.
+
+  These professionals work across industries, with particularly high demand in technology, professional services, and healthcare. They often work closely with executive leadership, sales teams, and product teams. The work involves extensive networking, relationship building, and strategic thinking about market opportunities.
+
+  Business Development offers strong compensation with significant upside through commissions and bonuses, exposure to executive decision-making, and variety in deal types. Career paths lead to VP of Business Development, Chief Revenue Officer, or executive leadership positions. Success requires a blend of strategic thinking and relationship skills.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 65000
+    pct_25: 85000
+    median: 115000
+    pct_75: 160000
+    pct_90: 220000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "2-5 years"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 6
+    max_years: 8
+    earning_while_learning: false
+    notes: "Bachelor's degree plus 2-5 years in sales, account management, or related role. MBA valued for senior positions."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Sales background with strategic deal experience"
+    - "Industry expertise plus business development training"
+    - "MBA plus sales internship experience"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Resilient"
+ai_resilience_tier: 1
+
+ai_assessment:
+  aiExposure:
+    score: 0.20
+    label: "Low"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 15
+    source: "LinkedIn Jobs on the Rise 2026 (#16)"
+  humanAdvantage:
+    category: "Essential"
+    epochScores:
+      empathy: 5
+      presence: 4
+      opinion: 4
+      creativity: 4
+      hope: 5
+  scoring:
+    exposurePoints: 2
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 5
+  classification: "AI-Resilient"
+  classificationRationale: |
+    Business Development Executives have low AI exposure because the role is fundamentally about human relationships, trust-building, and strategic negotiation. AI cannot replicate the rapport, influence, and judgment needed to close complex partnerships. Growth of 15% reflects continued need for strategic growth professionals. Essential human advantage from relationship building and high-stakes negotiation skills.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Identify and qualify strategic partnership opportunities"
+  - "Build and maintain relationships with key decision-makers"
+  - "Negotiate partnership agreements and contracts"
+  - "Develop go-to-market strategies for new markets"
+  - "Create business cases and proposals for opportunities"
+  - "Collaborate with product teams on partnership requirements"
+  - "Track pipeline and forecast revenue from BD activities"
+  - "Represent the company at conferences and networking events"
+
+technology_skills:
+  - "CRM (Salesforce, HubSpot)"
+  - "LinkedIn Sales Navigator"
+  - "PowerPoint/Google Slides"
+  - "Excel/financial modeling"
+  - "Contract management tools"
+  - "Video conferencing (Zoom, Teams)"
+  - "Market research tools"
+
+abilities:
+  - "Relationship building"
+  - "Negotiation"
+  - "Strategic thinking"
+  - "Communication"
+  - "Presentation skills"
+  - "Persistence"
+  - "Business acumen"
+  - "Networking"
+
+alternate_titles:
+  - "Business Development Manager"
+  - "BD Executive"
+  - "Strategic Partnerships Manager"
+  - "Partnership Development"
+  - "Corporate Development"
+  - "Alliance Manager"
+
+keywords:
+  - "business development"
+  - "BD"
+  - "partnerships"
+  - "strategic partnerships"
+  - "deal making"
+  - "revenue growth"
+  - "B2B sales"
+  - "enterprise sales"
+  - "alliance"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026 (#16)"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services"
+    - "Financial Services"
+    - "Healthcare"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Boston"
+    - "Chicago"
+    - "Los Angeles"
+  remote_availability: "50% remote/hybrid"
+  median_experience_years: 5
+  top_transitions_from:
+    - "Account Executive"
+    - "Sales Manager"
+    - "Account Manager"
+    - "Marketing Manager"
+  gender_distribution:
+    female: 35
+    male: 65

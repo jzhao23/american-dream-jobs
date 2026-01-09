@@ -152,9 +152,57 @@ Each occupation receives an education cost estimate with:
 | CIP-SOC Crosswalk | Every 5-7 years | With SOC updates |
 | Professional Programs | Annual | Manual review |
 
+## Manual Career Education Costs (v2.1)
+
+For manually-sourced careers (AI/ML Engineers, Product Managers, DevOps Engineers), education costs are generated using the same College Board methodology but without CIP-SOC mapping.
+
+### Generation Process
+
+The `generateEducationCost()` function in `scripts/load-manual-careers.ts`:
+
+1. **Determines Program Duration** from `typical_entry_education`:
+   | Education Level | Years |
+   |-----------------|-------|
+   | High school diploma | 0 |
+   | Some college, no degree | 1 |
+   | Postsecondary nondegree award | 1 |
+   | Associate's degree | 2 |
+   | Bachelor's degree | 4 |
+   | Master's degree | 6 (4+2) |
+   | Doctoral or professional degree | 8 (4+4) |
+
+2. **Applies Tech Field Multiplier** (1.15x) for `category: technology`
+
+3. **Calculates Costs** by institution type using College Board 2024-25 rates:
+   ```
+   public_in_state = $11,610/year × years × multiplier
+   public_out_of_state = $24,030/year × years × multiplier
+   private_nonprofit = $43,350/year × years × multiplier
+   ```
+
+### Example: AI/ML Engineers (Bachelor's, Tech Field)
+
+| Institution Type | Calculation | Total |
+|------------------|-------------|-------|
+| Public In-State | $11,610 × 4 × 1.15 | $53,406 |
+| Public Out-of-State | $24,030 × 4 × 1.15 | $110,538 |
+| Private Nonprofit | $43,350 × 4 × 1.15 | $199,410 |
+
+### Differences from O*NET Careers
+
+| Aspect | O*NET Careers | Manual Careers |
+|--------|---------------|----------------|
+| CIP Code Mapping | Yes | No |
+| Professional Programs | Association data | Standard rates |
+| Trade/Apprenticeship | Specific costs | Not applicable |
+| Confidence Level | High | Medium |
+
+---
+
 ## Files
 
-- `scripts/fetch-education-costs.ts` - Main processing script
+- `scripts/fetch-education-costs.ts` - Main processing script for O*NET careers
+- `scripts/load-manual-careers.ts` - Education cost generation for manual careers
 - `data/sources/education/cip_soc_crosswalk.xlsx` - CIP-SOC mapping
 - `data/sources/education/professional_programs.json` - Manual program data
 - `data/processed/education_costs.json` - Generated cost data

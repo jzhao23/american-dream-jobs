@@ -1,0 +1,203 @@
+# Executive Assistants
+# ====================
+# Strategic support professionals for senior executives
+# High-impact role requiring exceptional judgment
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: BLS, LinkedIn data
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: executive-assistants
+name: Executive Assistants
+slug: executive-assistants
+category: office-admin
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Executive Assistants provide high-level administrative support to senior executives, managing complex calendars, coordinating meetings, handling confidential information, and serving as gatekeepers who help leaders maximize their effectiveness. The role goes far beyond basic administrative tasks to include project management, communication, and strategic support.
+
+  These professionals work across all industries, supporting C-suite executives, founders, and senior leaders. The work requires exceptional judgment, discretion, and the ability to anticipate needs. Top EAs become trusted partners who influence executive decision-making and organizational priorities.
+
+  Executive Assistant roles at senior levels offer strong compensation, direct exposure to leadership, and significant impact on organizational success. Career paths lead to Chief of Staff roles, office management, operations leadership, or specialized EA roles supporting high-profile executives. The best EAs are in high demand and command premium compensation.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 50000
+    pct_25: 65000
+    median: 85000
+    pct_75: 115000
+    pct_90: 150000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "2-5 years"
+  on_the_job_training: "Short-term"
+  time_to_job_ready:
+    min_years: 2
+    typical_years: 5
+    max_years: 8
+    earning_while_learning: true
+    notes: "Bachelor's degree preferred. 2-5 years administrative experience. Progress from admin assistant to EA through demonstrated excellence."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Administrative assistant progressing to EA"
+    - "Office management experience"
+    - "Project coordinator transitioning to EA"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.40
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Stable"
+    percentChange: 5
+    source: "BLS, LinkedIn data"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 5
+      presence: 4
+      opinion: 4
+      creativity: 3
+      hope: 3
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Executive Assistants have moderate AI exposure as AI automates scheduling, email drafting, and basic administrative tasks. However, the role's value comes from judgment, discretion, relationship management, and anticipating executive needs - all deeply human skills. Growth is stable at 5% as demand consolidates at senior levels. High human advantage from emotional intelligence and executive relationship management.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Manage complex executive calendars and scheduling priorities"
+  - "Coordinate meetings, travel, and logistics"
+  - "Screen and prioritize communications"
+  - "Prepare presentations, reports, and correspondence"
+  - "Handle confidential information with discretion"
+  - "Manage projects and track action items"
+  - "Coordinate with stakeholders across the organization"
+  - "Anticipate executive needs and proactively address issues"
+
+technology_skills:
+  - "Microsoft Office Suite"
+  - "Google Workspace"
+  - "Calendar management tools"
+  - "Travel booking systems"
+  - "Expense management (Concur, Expensify)"
+  - "Video conferencing (Zoom, Teams)"
+  - "Project management tools (Asana, Monday)"
+  - "CRM basics"
+
+abilities:
+  - "Organization"
+  - "Discretion"
+  - "Communication"
+  - "Anticipation"
+  - "Problem solving"
+  - "Time management"
+  - "Adaptability"
+  - "Attention to detail"
+
+alternate_titles:
+  - "EA"
+  - "Executive Administrator"
+  - "Senior Executive Assistant"
+  - "C-Suite Executive Assistant"
+  - "Chief of Staff"
+  - "Personal Assistant"
+
+keywords:
+  - "executive assistant"
+  - "EA"
+  - "executive support"
+  - "C-suite"
+  - "administrative"
+  - "chief of staff"
+  - "calendar management"
+  - "executive admin"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "BLS Occupational Outlook, LinkedIn data"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "Financial Services"
+    - "Professional Services"
+    - "Healthcare"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Los Angeles"
+    - "Seattle"
+    - "Chicago"
+  remote_availability: "35% remote/hybrid"
+  median_experience_years: 6
+  top_transitions_from:
+    - "Administrative Assistant"
+    - "Office Manager"
+    - "Project Coordinator"
+    - "Customer Service"
+  gender_distribution:
+    female: 85
+    male: 15

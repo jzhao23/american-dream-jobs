@@ -1,0 +1,205 @@
+# Quantitative Analysts
+# =====================
+# LinkedIn #20 Jobs on the Rise 2026
+# Math-heavy finance role building trading models
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: quantitative-analysts
+name: Quantitative Analysts
+slug: quantitative-analysts
+category: business-finance
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Quantitative Analysts (Quants) develop mathematical models for pricing, trading, and risk management in financial markets. They apply advanced mathematics, statistics, and programming to analyze market data, build trading algorithms, and help financial institutions make data-driven investment decisions.
+
+  These professionals work primarily at investment banks, hedge funds, asset managers, and proprietary trading firms. The work is highly technical, combining finance domain knowledge with serious mathematical and programming skills. Quants often specialize in areas like derivatives pricing, algorithmic trading, or risk modeling.
+
+  Quantitative Analysis offers exceptional compensation among the highest in any field, intellectually challenging work, and direct impact on trading outcomes. The role typically requires an advanced degree in a quantitative field. Career paths lead to senior quant roles, portfolio management, or founding quantitative trading firms.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 120000
+    pct_25: 160000
+    median: 200000
+    pct_75: 300000
+    pct_90: 450000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Master's degree"
+  work_experience_required: "None"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 6
+    typical_years: 7
+    max_years: 10
+    earning_while_learning: false
+    notes: "Master's or PhD in Math, Physics, Statistics, or Financial Engineering typically required. Bachelor's possible at some firms."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: true
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "PhD in Physics, Math, or Statistics pivoting to finance"
+    - "Strong bachelor's in STEM plus exceptional programming/math skills"
+    - "Financial Engineering master's program"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.40
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 20
+    source: "LinkedIn Jobs on the Rise 2026 (#20)"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 1
+      presence: 1
+      opinion: 5
+      creativity: 5
+      hope: 2
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Quantitative Analysts have moderate AI exposure as ML models increasingly automate pattern recognition and basic modeling tasks. However, developing novel trading strategies, understanding market microstructure, and making risk decisions requires deep expertise and creativity. AI becomes a powerful tool that quants leverage rather than a replacement. Growth of 20% reflects continued demand for quantitative approaches in finance.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Develop mathematical models for pricing derivatives and financial instruments"
+  - "Build and backtest algorithmic trading strategies"
+  - "Analyze market data to identify patterns and opportunities"
+  - "Implement risk models and stress testing frameworks"
+  - "Optimize portfolio construction and asset allocation"
+  - "Collaborate with traders and portfolio managers on strategy"
+  - "Research and implement machine learning techniques for finance"
+  - "Validate and maintain production trading systems"
+
+technology_skills:
+  - "Python"
+  - "C++"
+  - "R"
+  - "SQL"
+  - "Statistics and probability"
+  - "Machine learning"
+  - "Time series analysis"
+  - "Bloomberg Terminal"
+  - "Numerical methods"
+  - "Linux"
+
+abilities:
+  - "Mathematical reasoning"
+  - "Analytical thinking"
+  - "Problem solving"
+  - "Attention to detail"
+  - "Programming"
+  - "Communication"
+  - "Working under pressure"
+
+alternate_titles:
+  - "Quant"
+  - "Quantitative Developer"
+  - "Quantitative Researcher"
+  - "Quant Trader"
+  - "Financial Engineer"
+  - "Algorithmic Trader"
+
+keywords:
+  - "quantitative analyst"
+  - "quant"
+  - "quantitative finance"
+  - "algorithmic trading"
+  - "derivatives"
+  - "hedge fund"
+  - "financial modeling"
+  - "quant developer"
+  - "trading strategies"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026 (#20)"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Financial Services"
+    - "Investment Banking"
+    - "Hedge Funds"
+    - "Asset Management"
+  locations:
+    - "New York City"
+    - "Chicago"
+    - "London"
+    - "San Francisco Bay Area"
+    - "Boston"
+  remote_availability: "25% remote/hybrid"
+  median_experience_years: 4
+  top_transitions_from:
+    - "PhD Graduate"
+    - "Data Scientist"
+    - "Software Engineer"
+    - "Research Scientist"
+  gender_distribution:
+    female: 20
+    male: 80

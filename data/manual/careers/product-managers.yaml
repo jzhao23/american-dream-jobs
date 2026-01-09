@@ -1,0 +1,213 @@
+# Product Managers
+# ================
+# Major tech career not well represented in O*NET
+# Scattered across multiple O*NET codes with no coherent career page
+#
+# Sources:
+# - Wages: Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Economic Graph data
+# - AI Assessment: Editorial EPOCH framework analysis
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: product-managers
+name: Product Managers
+slug: product-managers
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Product Managers define the vision, strategy, and roadmap for products, working at the intersection of business, technology, and user experience. They identify customer needs, prioritize features, and guide cross-functional teams through the product development lifecycle from ideation to launch and beyond.
+
+  Product Managers are ubiquitous in the technology industry and increasingly common in traditional industries undergoing digital transformation. They work closely with engineering, design, marketing, and sales teams, often acting as the "CEO of the product" without direct authority. The role requires balancing competing stakeholder needs while keeping the team focused on delivering value to customers.
+
+  This career offers strong compensation, significant influence over product direction, and a path to senior leadership. PMs can advance to Group PM, Director of Product, VP of Product, or CPO roles. Many also transition to general management, entrepreneurship, or venture capital.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 95000
+    pct_25: 125000
+    median: 160000
+    pct_75: 200000
+    pct_90: 260000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "2-5 years"
+  on_the_job_training: "Short-term"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 6
+    max_years: 8
+    earning_while_learning: true
+    notes: "Bachelor's degree plus 2-5 years in related role (engineering, design, analytics, consulting). Most enter PM from adjacent roles, not directly."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Engineering to PM transition at same company"
+    - "MBA with PM internship"
+    - "Associate PM programs (Google APM, Meta RPM)"
+    - "Startup founder experience"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Resilient"
+ai_resilience_tier: 1
+
+ai_assessment:
+  aiExposure:
+    score: 0.25
+    label: "Low"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 15
+    source: "LinkedIn Economic Graph 2026"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 5
+      presence: 3
+      opinion: 5
+      creativity: 4
+      hope: 4
+  scoring:
+    exposurePoints: 2
+    growthPoints: 2
+    humanAdvantagePoints: 2
+    totalScore: 6
+  classification: "AI-Resilient"
+  classificationRationale: |
+    Product Managers have low AI exposure because their core work involves understanding human needs, making strategic decisions with incomplete information, and navigating organizational dynamics - tasks that require deep human judgment. AI tools can assist with data analysis, user research synthesis, and documentation, but cannot replace the empathy needed to understand customer pain points, the judgment to prioritize competing demands, or the leadership to align teams around a vision. Strong job growth continues as more companies become software-driven. This role has high human advantage across empathy, opinion-forming, and hope/inspiration dimensions.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Define product vision, strategy, and roadmap aligned with business goals"
+  - "Gather and synthesize customer feedback, market research, and data insights"
+  - "Write product requirements documents (PRDs) and user stories"
+  - "Prioritize features and manage the product backlog"
+  - "Lead cross-functional teams through product development cycles"
+  - "Make go/no-go decisions on features and launches"
+  - "Measure product success through KPIs and user metrics"
+  - "Present product updates to stakeholders and executives"
+  - "Conduct competitive analysis and market research"
+
+technology_skills:
+  - "SQL"
+  - "Excel/Google Sheets"
+  - "Jira/Asana/Linear"
+  - "Figma"
+  - "Amplitude/Mixpanel"
+  - "Tableau/Looker"
+  - "A/B testing platforms"
+  - "Confluence/Notion"
+  - "Roadmapping tools (Productboard, Aha!)"
+
+abilities:
+  - "Strategic thinking"
+  - "Stakeholder management"
+  - "Data analysis"
+  - "Clear written communication"
+  - "Influencing without authority"
+  - "Customer empathy"
+  - "Decision-making under uncertainty"
+  - "Cross-functional collaboration"
+
+alternate_titles:
+  - "Product Manager"
+  - "PM"
+  - "Technical Product Manager"
+  - "Technical PM"
+  - "Senior Product Manager"
+  - "Group Product Manager"
+  - "Associate Product Manager"
+  - "APM"
+
+keywords:
+  - "product management"
+  - "product manager"
+  - "PM"
+  - "product strategy"
+  - "roadmap"
+  - "agile"
+  - "scrum"
+  - "user stories"
+  - "PRD"
+  - "product development"
+  - "tech product"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Levels.fyi, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Economic Graph 2026"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "IT Services and Consulting"
+    - "Financial Services"
+    - "E-commerce"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Seattle"
+    - "Boston"
+    - "Los Angeles"
+  remote_availability: "45% remote/hybrid"
+  median_experience_years: 5.2
+  top_transitions_from:
+    - "Software Engineer"
+    - "Management Consultant"
+    - "Data Analyst"
+    - "UX Designer"
+    - "Business Analyst"
+  gender_distribution:
+    female: 35
+    male: 65

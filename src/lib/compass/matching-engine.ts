@@ -67,21 +67,29 @@ interface CareerCandidate extends SimilarCareer {
 }
 
 interface CareerData {
-  onet_code: string;
+  // O*NET-specific fields (optional for manual careers)
+  onet_code?: string;  // Required for O*NET careers, undefined for manual
+  job_zone?: number;   // O*NET job zone (1-5), undefined for manual
+
+  // Core fields (required for all)
   title: string;
   slug: string;
   description: string;
   category: string;
-  job_zone: number;
   tasks: string[];
   technology_skills: string[];
   abilities: string[];
+
+  // Optional fields
   wages?: { annual?: { median?: number } };
   ai_resilience?: string;
   education?: {
     typical_entry_education?: string;
   };
   timeline_bucket?: 'asap' | '6-24-months' | '2-4-years' | '4-plus-years';
+
+  // Data source (v2.1)
+  data_source?: 'onet' | 'manual';
 }
 
 // Training willingness type for filtering

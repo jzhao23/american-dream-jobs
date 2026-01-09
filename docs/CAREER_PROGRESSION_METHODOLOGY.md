@@ -254,6 +254,121 @@ The timeline assumes steady progression through levels. Real careers often have:
 
 ---
 
+## Manual Career Progression (v2.1)
+
+For manually-sourced careers (careers not from O*NET, such as AI/ML Engineers, Product Managers, DevOps Engineers), we generate career progression using the same BLS percentile methodology:
+
+### Source: Wage Percentiles from YAML
+
+Manual careers define wage percentiles in their YAML files:
+
+```yaml
+wages:
+  source: "Editorial estimate based on Levels.fyi, Glassdoor, and LinkedIn Salary"
+  year: 2024
+  annual:
+    pct_10: 115000    # Entry level
+    pct_25: 140000    # Early career
+    median: 175000    # Mid-career
+    pct_75: 225000    # Experienced
+    pct_90: 300000    # Expert
+```
+
+### Transformation to Career Progression
+
+The `generateCareerProgression()` function in `scripts/load-manual-careers.ts` converts these percentiles:
+
+| Level | Percentile | Years Experience Range |
+|-------|------------|------------------------|
+| Entry | pct_10 (10th) | 0-2 years |
+| Early Career | pct_25 (25th) | 2-6 years |
+| Mid-Career | median (50th) | 5-15 years |
+| Experienced | pct_75 (75th) | 10-20 years |
+| Expert | pct_90 (90th) | 15-30 years |
+
+### Compensation Range Generation
+
+Each level includes a compensation range (±10% from the percentile):
+
+```typescript
+{
+  level_name: "Mid-Career",
+  level_number: 3,
+  years_experience: { min: 5, typical: 10, max: 15 },
+  compensation: {
+    total: {
+      min: Math.round(median * 0.9),    // 90% of median
+      median: median,
+      max: Math.round(median * 1.1),    // 110% of median
+    },
+    breakdown: null  // No base/bonus/equity breakdown for manual careers
+  }
+}
+```
+
+### Timeline Year Mapping
+
+Year-by-year expected compensation (years 0-20):
+
+| Year Range | Level | Compensation Source |
+|------------|-------|---------------------|
+| 0-2 | Entry | pct_10 |
+| 3-5 | Early Career | pct_25 |
+| 6-12 | Mid-Career | median |
+| 13-17 | Experienced | pct_75 |
+| 18-20 | Expert | pct_90 |
+
+### Missing Percentile Handling
+
+If a manual career is missing pct_25 or pct_75, they are interpolated:
+
+```typescript
+const earlyCareer = pct_25 || Math.round(pct_10 + (median - pct_10) * 0.4);
+const experienced = pct_75 || Math.round(median + (pct_90 - median) * 0.5);
+```
+
+### Output Schema
+
+Manual careers produce the same `career_progression` structure as O*NET careers:
+
+```json
+{
+  "source": "manual_percentiles",
+  "source_title": null,
+  "match_confidence": "approximate",
+  "levels": [...],     // 5 ProgressionLevel objects
+  "timeline": [...]    // 21 TimelineEntry objects (years 0-20)
+}
+```
+
+### Example: AI/ML Engineers
+
+Input wages:
+- pct_10: $115,000
+- pct_25: $140,000
+- median: $175,000
+- pct_75: $225,000
+- pct_90: $300,000
+
+Generated 20-year earnings projection:
+- Years 0-2 (Entry): $115,000 × 3 = $345,000
+- Years 3-5 (Early Career): $140,000 × 3 = $420,000
+- Years 6-12 (Mid-Career): $175,000 × 7 = $1,225,000
+- Years 13-17 (Experienced): $225,000 × 5 = $1,125,000
+- Years 18-20 (Expert): $300,000 × 3 = $900,000
+- **Total 20-year earnings: ~$4.0M**
+
+### Differences from O*NET Careers
+
+| Aspect | O*NET Careers | Manual Careers |
+|--------|---------------|----------------|
+| Data Source | BLS OES API | Editorial research |
+| Levels.fyi Integration | 41 tech roles have it | Not used |
+| Compensation Breakdown | May include base/bonus/equity | Total only |
+| Source Confidence | High (government data) | Approximate (editorial) |
+
+---
+
 ## References
 
 1. Bureau of Labor Statistics OES: https://www.bls.gov/oes/
@@ -266,6 +381,7 @@ The timeline assumes steady progression through levels. Real careers often have:
 
 | Date | Change |
 |------|--------|
+| 2025-01-08 | Added Manual Career Progression methodology (v2.1) |
 | 2025-12-26 | Added `estimateMissingPercentiles()` to handle BLS null values |
 | 2025-12-26 | Added validation in generate-final.ts to detect zeros |
 | 2025-12-25 | Initial implementation with Levels.fyi + BLS fallback |

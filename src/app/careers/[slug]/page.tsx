@@ -370,7 +370,11 @@ export default async function CareerPage({ params }: PageProps) {
                     <div>
                       <div className="text-sm text-ds-slate-light">Estimated Education Cost</div>
                       <div className="font-semibold text-ds-slate">
-                        {formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}
+                        {career.education.estimated_cost ? (
+                          <>{formatPay(career.education.estimated_cost.min_cost)} - {formatPay(career.education.estimated_cost.max_cost)}</>
+                        ) : (
+                          'Varies'
+                        )}
                       </div>
                       {career.education.time_to_job_ready?.earning_while_learning && (
                         <div className="text-sm text-green-600 mt-1">
@@ -578,24 +582,43 @@ export default async function CareerPage({ params }: PageProps) {
           <Section title="Data Sources" icon="link">
             <div className="text-sm text-ds-slate-light mb-4">
               Last updated: {career.last_updated}
-              <span className="ml-4 px-2 py-0.5 bg-sage-muted text-ds-slate-light rounded text-xs">
-                O*NET Code: {career.onet_code}
-              </span>
+              {career.onet_code && (
+                <span className="ml-4 px-2 py-0.5 bg-sage-muted text-ds-slate-light rounded text-xs">
+                  O*NET Code: {career.onet_code}
+                </span>
+              )}
+              {career.data_source === 'manual' && (
+                <span className="ml-4 px-2 py-0.5 bg-sage-muted text-ds-slate-light rounded text-xs">
+                  Manually Sourced
+                </span>
+              )}
             </div>
-            <ul className="space-y-2">
-              {career.data_sources.map((source, i) => (
-                <li key={i}>
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sage hover:text-sage-dark hover:underline"
-                  >
-                    {source.source} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* O*NET careers - show data sources */}
+            {career.data_sources && (
+              <ul className="space-y-2">
+                {career.data_sources.map((source, i) => (
+                  <li key={i}>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sage hover:text-sage-dark hover:underline"
+                    >
+                      {source.source} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {/* Manual careers - show source citations */}
+            {career.source_citations && (
+              <div className="space-y-2 text-sm">
+                <div><span className="text-ds-slate-light">Wages:</span> {career.source_citations.wages}</div>
+                <div><span className="text-ds-slate-light">Skills:</span> {career.source_citations.skills}</div>
+                <div><span className="text-ds-slate-light">Outlook:</span> {career.source_citations.outlook}</div>
+                <div><span className="text-ds-slate-light">AI Assessment:</span> {career.source_citations.ai_assessment}</div>
+              </div>
+            )}
           </Section>
 
           {/* Contribution CTA */}

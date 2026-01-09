@@ -1,0 +1,204 @@
+# Management Consultants
+# ======================
+# LinkedIn #7 Jobs on the Rise 2026
+# Strategic advisors helping organizations improve performance
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: management-consultants
+name: Management Consultants
+slug: management-consultants
+category: business-finance
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Management Consultants advise organizations on strategy, operations, and transformation. They analyze business problems, develop recommendations, and help clients implement changes to improve performance, reduce costs, or navigate major transitions like mergers, digital transformation, or market expansion.
+
+  These professionals work at consulting firms ranging from elite strategy houses (McKinsey, BCG, Bain) to Big Four firms (Deloitte, PwC, EY, KPMG) to specialized boutiques. The work involves significant client interaction, data analysis, presentation development, and travel. Projects typically last weeks to months, providing variety across industries and problem types.
+
+  Management Consulting offers excellent compensation, rapid skill development, and exposure to senior executives across industries. The demanding lifestyle includes long hours and travel. Career paths lead to partner roles at consulting firms, or "exit opportunities" to corporate strategy, private equity, or executive leadership positions.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 85000
+    pct_25: 110000
+    median: 150000
+    pct_75: 200000
+    pct_90: 280000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "None"
+  on_the_job_training: "Moderate-term"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 6
+    max_years: 8
+    earning_while_learning: false
+    notes: "Bachelor's from top university or MBA for experienced hires. Elite firms recruit heavily from top schools."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "MBA from top program for career changers"
+    - "Industry expertise plus MBA"
+    - "PhD in relevant field (economics, engineering)"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.35
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 18
+    source: "LinkedIn Jobs on the Rise 2026 (#7)"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 4
+      presence: 4
+      opinion: 5
+      creativity: 4
+      hope: 4
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Management Consultants have moderate AI exposure as AI tools accelerate research, data analysis, and presentation creation. However, the core value of understanding unique client contexts, building executive relationships, and navigating organizational politics requires human judgment and presence. Growth of 18% reflects continued demand for strategic advice. High human advantage from relationship building and executive influence.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Analyze client business problems and identify root causes"
+  - "Develop strategic recommendations and business cases"
+  - "Create presentations for executive stakeholders"
+  - "Conduct market research and competitive analysis"
+  - "Build financial models and perform data analysis"
+  - "Facilitate workshops and client meetings"
+  - "Support implementation of recommended changes"
+  - "Manage client relationships and project timelines"
+
+technology_skills:
+  - "PowerPoint/Google Slides"
+  - "Excel/Google Sheets"
+  - "Financial modeling"
+  - "Data visualization (Tableau, Power BI)"
+  - "Market research databases"
+  - "Project management tools"
+  - "SQL basics"
+  - "Python/R for analysis"
+
+abilities:
+  - "Analytical thinking"
+  - "Problem solving"
+  - "Communication"
+  - "Presentation skills"
+  - "Stakeholder management"
+  - "Time management"
+  - "Intellectual curiosity"
+  - "Adaptability"
+
+alternate_titles:
+  - "Strategy Consultant"
+  - "Business Consultant"
+  - "Associate Consultant"
+  - "Senior Consultant"
+  - "Engagement Manager"
+  - "Principal"
+
+keywords:
+  - "management consulting"
+  - "strategy consulting"
+  - "McKinsey"
+  - "BCG"
+  - "Bain"
+  - "Big Four"
+  - "business strategy"
+  - "consultant"
+  - "strategic advisor"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026 (#7)"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Management Consulting"
+    - "IT Services and Consulting"
+    - "Financial Services"
+    - "Healthcare"
+  locations:
+    - "New York City"
+    - "Chicago"
+    - "San Francisco Bay Area"
+    - "Boston"
+    - "Washington DC"
+  remote_availability: "30% remote/hybrid"
+  median_experience_years: 4
+  top_transitions_from:
+    - "Analyst"
+    - "MBA Graduate"
+    - "Investment Banking"
+    - "Corporate Strategy"
+  gender_distribution:
+    female: 40
+    male: 60

@@ -22,6 +22,7 @@ import {
   type AIExposureLabel,
   type JobGrowthLabel,
 } from '../src/lib/ai-resilience';
+import { loadManualCareers } from './load-manual-careers';
 
 const PROCESSED_DIR = path.join(process.cwd(), 'data/processed');
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -99,15 +100,33 @@ interface EPOCHScoreEntry {
 async function main() {
   console.log('\n=== Generating Final Dataset ===\n');
 
-  // Load completed occupations
+  // Load completed occupations (O*NET-based)
   const occupationsFile = path.join(PROCESSED_DIR, 'occupations_complete.json');
   const occupationsData = JSON.parse(fs.readFileSync(occupationsFile, 'utf-8'));
-  const occupations = occupationsData.occupations;
-  console.log(`Processing ${occupations.length} occupations...`);
+  const onetOccupations = occupationsData.occupations;
+  console.log(`Processing ${onetOccupations.length} O*NET occupations...`);
+
+  // Load manual careers (v2.1)
+  console.log('\nLoading manual careers...');
+  const { careers: manualCareers, errors: manualErrors } = loadManualCareers();
+  if (manualErrors.length > 0) {
+    console.log('⚠️  Manual career errors:');
+    manualErrors.forEach(e => console.log(`  ${e}`));
+  }
+  console.log(`Loaded ${manualCareers.length} manual careers`);
+
+  // Merge O*NET and manual careers
+  const occupations = [...onetOccupations, ...manualCareers];
+  console.log(`Total careers: ${occupations.length} (${onetOccupations.length} O*NET + ${manualCareers.length} manual)\n`);
 
   // Re-apply category mapping (to pick up any overrides from career-overrides.ts)
+  // Skip manual careers - they already have their category set
   let categoryOverrides = 0;
   for (const occ of occupations) {
+    // Skip manual careers - no O*NET code to map
+    if (occ.data_source === 'manual' || !occ.onet_code) {
+      continue;
+    }
     const newCategory = getCategory(occ.onet_code);
     if (newCategory !== occ.category) {
       console.log(`  Category override: ${occ.title} (${occ.onet_code}): ${occ.category} → ${newCategory}`);
@@ -248,9 +267,15 @@ async function main() {
     console.log('⚠️  No EPOCH scores file found - needs manual curation');
   }
 
-  // Apply Oxford AI risk scores to occupations
+  // Apply Oxford AI risk scores to occupations (O*NET only)
+  // Manual careers already have their AI risk, video, and inside_look set
   let oxfordApplied = 0;
   for (const occ of occupations) {
+    // Skip manual careers - they already have all their data set
+    if (occ.data_source === 'manual') {
+      continue;
+    }
+
     const oxfordMapping = oxfordMappings.get(occ.onet_code);
     if (oxfordMapping) {
       // Update AI risk with Oxford data (maintaining schema compatibility)
@@ -317,7 +342,16 @@ async function main() {
   };
 
   for (const occ of occupations) {
-    // Get data from all sources
+    // Skip manual careers - they already have AI Resilience data
+    if (occ.data_source === 'manual') {
+      if (occ.ai_resilience) {
+        classificationCounts[occ.ai_resilience]++;
+        aiResilienceApplied++;
+      }
+      continue;
+    }
+
+    // Get data from all sources (O*NET careers only)
     const gptsExposure = gptsExposureMap.get(occ.onet_code);
     const aioeExposure = aioeExposureMap.get(occ.onet_code);
     const blsProjection = blsProjectionsMap.get(occ.onet_code);
@@ -506,9 +540,13 @@ async function main() {
   // Generate final dataset
   const finalOutput = {
     metadata: {
-      version: '1.0',
+      version: '2.1',
       generated_at: new Date().toISOString(),
       total_occupations: occupations.length,
+      career_sources: {
+        onet: onetOccupations.length,
+        manual: manualCareers.length,
+      },
       data_sources: [
         { name: 'O*NET 30.1', url: 'https://www.onetcenter.org' },
         { name: 'BLS OES', url: 'https://www.bls.gov/oes/' },
@@ -519,6 +557,7 @@ async function main() {
         { name: 'AIOE Dataset (Felten et al. 2021) - AI Exposure Fallback', url: 'https://github.com/AIOE-Data/AIOE' },
         { name: 'BLS Employment Projections 2024-2034', url: 'https://www.bls.gov/emp/' },
         { name: 'EPOCH Framework - Human Advantage', url: 'Manual curation' },
+        { name: 'Manual Career Research', url: 'Glassdoor, LinkedIn, Indeed (Jan 2026)' },
       ],
       completeness: {
         wages: occupations.filter((o: { wages: unknown }) => o.wages).length,
@@ -591,6 +630,8 @@ async function main() {
     // NEW: AI Resilience fields
     ai_resilience?: string;
     ai_resilience_tier?: number;
+    // Data source discriminator (v2.1)
+    data_source?: 'onet' | 'manual';
     // ARCHIVED: national_importance removed from UI - see data/archived/importance-scores-backup.json
     // national_importance: { score: number; label: string; flag_count: number };
     description: string;
@@ -617,6 +658,8 @@ async function main() {
       // NEW: AI Resilience classification (4-tier system)
       ai_resilience: occ.ai_resilience || undefined,
       ai_resilience_tier: occ.ai_resilience_tier || undefined,
+      // Data source discriminator (v2.1)
+      data_source: occ.data_source || 'onet',
       // ARCHIVED: importance fields removed from UI - see data/archived/importance-scores-backup.json
       // importance: occ.national_importance?.score || 5,
       // importance_label: occ.national_importance?.label || 'important',

@@ -1,0 +1,204 @@
+# Growth Marketers
+# ================
+# Data-driven marketing professionals focused on user acquisition and retention
+# Essential role in startups and digital companies
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn data
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: growth-marketers
+name: Growth Marketers
+slug: growth-marketers
+category: sales
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Growth Marketers drive user acquisition, activation, and retention through data-driven experimentation and optimization. They combine marketing creativity with analytical rigor, running experiments across channels to find scalable growth opportunities and optimize the customer journey.
+
+  These professionals work primarily at startups, tech companies, and digital-first businesses where growth metrics directly impact success. The work spans paid advertising, SEO, email marketing, product marketing, and conversion optimization. Growth marketers are deeply analytical, constantly testing hypotheses and measuring results.
+
+  Growth Marketing offers strong compensation, high impact visibility, and the opportunity to directly drive business outcomes. The role requires a unique blend of creative and analytical skills. Career paths lead to Head of Growth, VP of Marketing, or CMO positions. Success in growth marketing is highly measurable, making it a meritocratic field.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 65000
+    pct_25: 85000
+    median: 115000
+    pct_75: 155000
+    pct_90: 200000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "1-2 years"
+  on_the_job_training: "None"
+  time_to_job_ready:
+    min_years: 4
+    typical_years: 5
+    max_years: 7
+    earning_while_learning: false
+    notes: "Bachelor's in Marketing, Business, or related field. 1-2 years marketing experience. Strong analytics skills essential."
+  requires_high_school: true
+  requires_bachelors: true
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Digital marketing background plus analytics skills"
+    - "Data analyst transitioning to marketing"
+    - "Growth-focused marketing bootcamp"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.45
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Growing"
+    percentChange: 15
+    source: "LinkedIn data"
+  humanAdvantage:
+    category: "Moderate"
+    epochScores:
+      empathy: 3
+      presence: 1
+      opinion: 4
+      creativity: 5
+      hope: 3
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 1
+    totalScore: 3
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Growth Marketers have moderate-high AI exposure as AI automates ad optimization, content generation, and basic analytics. However, strategic channel selection, creative campaign concepts, and understanding user psychology require human creativity and judgment. Growth of 15% reflects continued digital marketing demand. AI significantly augments productivity but strategic growth thinking remains human-driven.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Develop and execute growth strategies across acquisition channels"
+  - "Run A/B tests and experiments to optimize conversion"
+  - "Manage paid advertising campaigns (Google, Meta, LinkedIn)"
+  - "Analyze user data to identify growth opportunities"
+  - "Optimize landing pages and user onboarding flows"
+  - "Build and automate email and lifecycle marketing campaigns"
+  - "Collaborate with product teams on growth features"
+  - "Report on growth metrics and present insights to leadership"
+
+technology_skills:
+  - "Google Analytics/GA4"
+  - "Google Ads"
+  - "Meta Ads Manager"
+  - "SQL"
+  - "Excel/Google Sheets"
+  - "A/B testing tools (Optimizely, VWO)"
+  - "Email platforms (Klaviyo, Braze)"
+  - "Attribution tools (Segment, Mixpanel)"
+  - "SEO tools (Ahrefs, SEMrush)"
+
+abilities:
+  - "Analytical thinking"
+  - "Creativity"
+  - "Experimentation mindset"
+  - "Data analysis"
+  - "Communication"
+  - "Problem solving"
+  - "Adaptability"
+
+alternate_titles:
+  - "Growth Manager"
+  - "Performance Marketer"
+  - "Demand Generation Manager"
+  - "Digital Marketing Manager"
+  - "User Acquisition Manager"
+  - "Head of Growth"
+
+keywords:
+  - "growth marketing"
+  - "growth hacking"
+  - "user acquisition"
+  - "performance marketing"
+  - "digital marketing"
+  - "conversion optimization"
+  - "A/B testing"
+  - "paid media"
+  - "demand generation"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn hiring trends"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Technology and Internet"
+    - "E-commerce"
+    - "Software/SaaS"
+    - "Consumer Goods"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Los Angeles"
+    - "Austin"
+    - "Seattle"
+  remote_availability: "75% remote/hybrid"
+  median_experience_years: 4
+  top_transitions_from:
+    - "Digital Marketing"
+    - "Marketing Analyst"
+    - "Paid Media Specialist"
+    - "Product Marketing"
+  gender_distribution:
+    female: 50
+    male: 50

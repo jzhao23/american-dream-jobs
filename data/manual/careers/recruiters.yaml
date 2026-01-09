@@ -1,0 +1,205 @@
+# Recruiters
+# ==========
+# Talent acquisition professionals matching candidates with opportunities
+# Essential role across all industries
+#
+# Sources:
+# - Wages: Glassdoor, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: BLS, LinkedIn data
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: recruiters
+name: Recruiters
+slug: recruiters
+category: business-finance
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Recruiters source, screen, and hire talent for organizations. They identify qualified candidates, conduct interviews, manage hiring pipelines, and serve as the bridge between job seekers and employers. Their work directly impacts organizational success by ensuring companies find the right people for critical roles.
+
+  These professionals work in-house at companies (corporate recruiters), at staffing agencies, or as independent headhunters. Specializations include technical recruiting, executive search, healthcare recruiting, and high-volume hiring. The work involves significant relationship building, both with candidates and hiring managers.
+
+  Recruiting offers accessible entry points, commission-based earning potential, and the satisfaction of helping people find meaningful work. Top technical recruiters and executive search professionals can earn exceptional compensation. Career paths lead to recruiting management, talent acquisition leadership, or HR business partner roles.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 45000
+    pct_25: 58000
+    median: 75000
+    pct_75: 100000
+    pct_90: 140000
+    mean: null
+  hourly:
+    pct_10: null
+    pct_25: null
+    median: null
+    pct_75: null
+    pct_90: null
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Bachelor's degree"
+  work_experience_required: "None"
+  on_the_job_training: "Short-term"
+  time_to_job_ready:
+    min_years: 0
+    typical_years: 4
+    max_years: 5
+    earning_while_learning: true
+    notes: "Bachelor's degree common but not always required. Sales or customer service background valued. Learn on the job."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: false
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "Sales background transitioning to recruiting"
+    - "HR generalist moving to talent acquisition"
+    - "Industry expertise plus recruiting training"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Augmented"
+ai_resilience_tier: 2
+
+ai_assessment:
+  aiExposure:
+    score: 0.45
+    label: "Medium"
+    source: "editorial"
+  jobGrowth:
+    label: "Stable"
+    percentChange: 8
+    source: "BLS, LinkedIn hiring trends"
+  humanAdvantage:
+    category: "High"
+    epochScores:
+      empathy: 5
+      presence: 3
+      opinion: 4
+      creativity: 3
+      hope: 4
+  scoring:
+    exposurePoints: 1
+    growthPoints: 1
+    humanAdvantagePoints: 2
+    totalScore: 4
+  classification: "AI-Augmented"
+  classificationRationale: |
+    Recruiters have moderate-high AI exposure as AI automates sourcing, resume screening, and candidate matching. However, relationship building, assessing cultural fit, negotiating offers, and influencing candidates require human empathy and judgment. Growth is stable at 8% as hiring remains essential. High human advantage from relationship skills and emotional intelligence in sensitive career decisions.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Source candidates through job boards, LinkedIn, and networking"
+  - "Screen resumes and conduct initial phone interviews"
+  - "Coordinate interviews with hiring managers"
+  - "Manage candidate pipelines and applicant tracking systems"
+  - "Negotiate offers and close candidates"
+  - "Build relationships with hiring managers to understand needs"
+  - "Develop employer branding and recruiting content"
+  - "Attend career fairs and networking events"
+
+technology_skills:
+  - "LinkedIn Recruiter"
+  - "Applicant Tracking Systems (Greenhouse, Lever, Workday)"
+  - "Boolean search"
+  - "CRM tools"
+  - "Video interviewing platforms"
+  - "Google Workspace/Microsoft Office"
+  - "Social media platforms"
+  - "HRIS systems"
+
+abilities:
+  - "Communication"
+  - "Relationship building"
+  - "Sales skills"
+  - "Organization"
+  - "Empathy"
+  - "Negotiation"
+  - "Time management"
+  - "Persistence"
+
+alternate_titles:
+  - "Talent Acquisition Specialist"
+  - "Technical Recruiter"
+  - "Corporate Recruiter"
+  - "Sourcer"
+  - "Headhunter"
+  - "Staffing Specialist"
+
+keywords:
+  - "recruiter"
+  - "talent acquisition"
+  - "hiring"
+  - "recruiting"
+  - "headhunter"
+  - "staffing"
+  - "technical recruiter"
+  - "HR"
+  - "sourcing"
+  - "LinkedIn Recruiter"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "BLS Occupational Outlook, LinkedIn hiring trends"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "Staffing and Recruiting"
+    - "Technology and Internet"
+    - "Healthcare"
+    - "Financial Services"
+  locations:
+    - "San Francisco Bay Area"
+    - "New York City"
+    - "Los Angeles"
+    - "Chicago"
+    - "Dallas"
+  remote_availability: "65% remote/hybrid"
+  median_experience_years: 3
+  top_transitions_from:
+    - "Sales Representative"
+    - "Customer Service"
+    - "HR Coordinator"
+    - "Account Manager"
+  gender_distribution:
+    female: 62
+    male: 38

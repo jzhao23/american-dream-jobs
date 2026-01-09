@@ -56,7 +56,7 @@ export type AIExposureLabel = 'Low' | 'Medium' | 'High';
 export interface AIExposure {
   score: number;           // 0-1 β score from GPTs paper
   label: AIExposureLabel;  // Low/Medium/High for display
-  source: 'gpts' | 'aioe'; // Data source used
+  source: 'gpts' | 'aioe' | 'editorial'; // Data source ('editorial' for manual careers)
 }
 
 /**
@@ -219,10 +219,10 @@ export function getClassificationFromScore(score: number): {
  * Input for AI Resilience calculation
  */
 export interface AIResilienceInput {
-  // AI Exposure (GPTs primary, AIOE fallback)
+  // AI Exposure (GPTs primary, AIOE fallback, editorial for manual careers)
   gptsExposureBeta: number | null;  // 0-1, from GPTs paper
   aioeExposure: number | null;      // 0-1, fallback if GPTs unavailable
-  exposureSource?: 'gpts' | 'aioe';
+  exposureSource?: 'gpts' | 'aioe' | 'editorial'; // 'editorial' for manual career assessments
 
   // Job Growth
   blsGrowthPercent: number;         // e.g., 6 for +6%

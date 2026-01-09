@@ -1,0 +1,203 @@
+# Data Center Technicians
+# =======================
+# LinkedIn #17 Jobs on the Rise 2026
+# Critical infrastructure role supporting cloud computing
+#
+# Sources:
+# - Wages: Glassdoor, Indeed, LinkedIn Salary (Jan 2026)
+# - Skills: Analysis of 50+ LinkedIn/Indeed job postings
+# - Outlook: LinkedIn Jobs on the Rise 2026
+
+# =============================================================================
+# IDENTITY
+# =============================================================================
+
+id: data-center-technicians
+name: Data Center Technicians
+slug: data-center-technicians
+category: technology
+data_source: manual
+last_updated: "2026-01-08"
+
+# =============================================================================
+# DESCRIPTION
+# =============================================================================
+
+description: |
+  Data Center Technicians install, maintain, and repair the physical infrastructure that powers cloud computing and the internet. They work with servers, networking equipment, storage systems, and the power and cooling systems that keep data centers running 24/7.
+
+  These professionals work at cloud providers (AWS, Google, Microsoft), colocation facilities, and enterprises with on-premises data centers. The work is hands-on and physical, involving server rack installation, cable management, hardware troubleshooting, and responding to equipment failures. Shifts often include nights and weekends to provide continuous coverage.
+
+  Data Center Technician roles offer stable employment, good pay without requiring a four-year degree, and a path into IT careers. The explosive growth of cloud computing and AI has dramatically increased demand. Career paths lead to senior technician roles, data center operations management, or transitions to network engineering or cloud operations.
+
+# =============================================================================
+# WAGES
+# =============================================================================
+
+wages:
+  source: "Glassdoor, Indeed, LinkedIn Salary (Jan 2026)"
+  year: 2026
+  annual:
+    pct_10: 45000
+    pct_25: 55000
+    median: 68000
+    pct_75: 82000
+    pct_90: 100000
+    mean: null
+  hourly:
+    pct_10: 22
+    pct_25: 26
+    median: 33
+    pct_75: 39
+    pct_90: 48
+    mean: null
+  employment_count: null
+
+# =============================================================================
+# EDUCATION
+# =============================================================================
+
+education:
+  typical_entry_education: "Associate's degree"
+  work_experience_required: "Less than 1 year"
+  on_the_job_training: "Moderate-term"
+  time_to_job_ready:
+    min_years: 1
+    typical_years: 2
+    max_years: 4
+    earning_while_learning: true
+    notes: "Associate's in IT or certifications (CompTIA A+, Network+). Military IT training is valued. Can start with high school plus certs."
+  requires_high_school: true
+  requires_bachelors: false
+  requires_masters: false
+  requires_doctoral: false
+  requires_certificate: true
+  requires_associate: false
+  requires_apprenticeship: false
+  requires_license: false
+  alternative_pathways:
+    - "High school diploma plus CompTIA certifications"
+    - "Military IT/communications training"
+    - "IT help desk experience plus hardware skills"
+
+# =============================================================================
+# AI RESILIENCE
+# =============================================================================
+
+ai_resilience: "AI-Resilient"
+ai_resilience_tier: 1
+
+ai_assessment:
+  aiExposure:
+    score: 0.15
+    label: "Low"
+    source: "editorial"
+  jobGrowth:
+    label: "Rapid Growth"
+    percentChange: 28
+    source: "LinkedIn Jobs on the Rise 2026"
+  humanAdvantage:
+    category: "Essential"
+    epochScores:
+      empathy: 1
+      presence: 5
+      opinion: 3
+      creativity: 2
+      hope: 1
+  scoring:
+    exposurePoints: 2
+    growthPoints: 2
+    humanAdvantagePoints: 2
+    totalScore: 6
+  classification: "AI-Resilient"
+  classificationRationale: |
+    Data Center Technicians have very low AI exposure because the work requires physical presence - installing servers, running cables, troubleshooting hardware failures, and responding to facility issues. AI cannot replace hands-on work. Growth of 28%+ is driven by cloud expansion and AI infrastructure buildout. Essential human advantage from physical presence requirements. Ironically, more AI means more data centers and more technicians needed.
+
+# =============================================================================
+# CONTENT
+# =============================================================================
+
+tasks:
+  - "Install and configure servers, storage, and networking equipment"
+  - "Perform cable management and rack installation"
+  - "Monitor and maintain power and cooling systems"
+  - "Troubleshoot hardware failures and replace components"
+  - "Perform preventive maintenance and equipment audits"
+  - "Document hardware inventory and configurations"
+  - "Respond to alerts and incidents during on-call shifts"
+  - "Coordinate with remote engineers on complex issues"
+
+technology_skills:
+  - "Server hardware (Dell, HP, Supermicro)"
+  - "Networking equipment (Cisco, Juniper)"
+  - "Linux/Windows Server basics"
+  - "Cable management and structured cabling"
+  - "Power systems (UPS, PDU)"
+  - "DCIM tools"
+  - "Ticketing systems (ServiceNow)"
+  - "Hardware diagnostics"
+
+abilities:
+  - "Physical stamina"
+  - "Attention to detail"
+  - "Troubleshooting"
+  - "Following procedures"
+  - "Time management"
+  - "Communication"
+  - "Working under pressure"
+
+alternate_titles:
+  - "Data Center Engineer"
+  - "Data Center Operations Technician"
+  - "Infrastructure Technician"
+  - "Hardware Technician"
+  - "Colo Technician"
+  - "Remote Hands Technician"
+
+keywords:
+  - "data center"
+  - "server hardware"
+  - "data center technician"
+  - "infrastructure"
+  - "hardware support"
+  - "cabling"
+  - "rack and stack"
+  - "colocation"
+  - "cloud infrastructure"
+
+# =============================================================================
+# SOURCE CITATIONS
+# =============================================================================
+
+source_citations:
+  wages: "Glassdoor, Indeed, LinkedIn Salary (Jan 2026)"
+  skills: "Analysis of 50+ LinkedIn/Indeed job postings (Jan 2026)"
+  outlook: "LinkedIn Jobs on the Rise 2026 (#17)"
+  ai_assessment: "Editorial assessment based on EPOCH framework and task analysis"
+
+# =============================================================================
+# LINKEDIN DATA
+# =============================================================================
+
+linkedin_data:
+  industries:
+    - "IT Services"
+    - "Cloud Computing"
+    - "Telecommunications"
+    - "Financial Services"
+  locations:
+    - "Northern Virginia"
+    - "Dallas"
+    - "Phoenix"
+    - "Columbus OH"
+    - "Atlanta"
+  remote_availability: "5% remote (role requires physical presence)"
+  median_experience_years: 3
+  top_transitions_from:
+    - "IT Support Technician"
+    - "Help Desk"
+    - "Military IT"
+    - "Electronics Technician"
+  gender_distribution:
+    female: 15
+    male: 85
