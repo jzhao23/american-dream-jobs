@@ -68,24 +68,6 @@ const featuredCareers = [
   { title: "MRI Technologist", pay: "$83,740", time: "2 years", ai: "augmented", aiLabel: "🟡 Augmented", href: "/careers/magnetic-resonance-imaging-technologists" },
 ];
 
-const trustItems = [
-  {
-    icon: "📊",
-    title: "Official Government Data",
-    desc: "Bureau of Labor Statistics & O*NET—the same sources workforce pros use",
-  },
-  {
-    icon: "🤖",
-    title: "AI Impact Scores",
-    desc: "Know which jobs are future-proof before you invest in training",
-  },
-  {
-    icon: "💵",
-    title: "100% Free Forever",
-    desc: "No ads, no premium tiers, no data selling. Ever.",
-  },
-];
-
 const tools = [
   {
     icon: "🔍",
@@ -225,26 +207,6 @@ export default function HomePage() {
               </svg>
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
-        <p className="section-eyebrow">Why Trust Us</p>
-        <h2 className="section-title">Built different</h2>
-        <p className="section-subtitle mb-10">
-          We're not selling you bootcamps or job listings. Just honest info to help you decide.
-        </p>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
-          {trustItems.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-3">
-              <div className="w-14 h-14 bg-sage-muted rounded-2xl flex items-center justify-center text-2xl mb-1">
-                {item.icon}
-              </div>
-              <span className="font-semibold text-ds-slate">{item.title}</span>
-              <span className="text-sm text-ds-slate-light leading-relaxed">{item.desc}</span>
-            </div>
-          ))}
         </div>
       </section>
 
