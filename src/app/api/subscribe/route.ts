@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { createSubscription } from "@/lib/db/subscriptions";
 
 const subscribeSchema = z.object({
   email: z.string().email(),
@@ -11,24 +12,30 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = subscribeSchema.parse(body);
 
-    // Log the subscription (in production, integrate with ConvertKit/Mailchimp)
-    console.log("New subscription:", data);
+    try {
+      const result = await createSubscription({
+        email: data.email,
+        persona: data.persona,
+        source: 'website'
+      });
 
-    // In production, you would:
-    // 1. Send to ConvertKit/Mailchimp API
-    // 2. Store in database
-    // Example with ConvertKit:
-    // await fetch(`https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     api_key: process.env.CONVERTKIT_API_KEY,
-    //     email: data.email,
-    //     tags: [data.persona],
-    //   }),
-    // });
+      console.log("Subscription saved:", {
+        id: result.subscription.id,
+        email: data.email,
+        isNew: result.isNew
+      });
 
-    return NextResponse.json({ success: true });
+      return NextResponse.json({
+        success: true,
+        isNew: result.isNew
+      });
+    } catch (dbError) {
+      // Graceful degradation: log but don't fail if DB is unavailable
+      console.error("Database error (graceful degradation):", dbError);
+      console.log("Subscription logged (no persistence):", data);
+
+      return NextResponse.json({ success: true });
+    }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

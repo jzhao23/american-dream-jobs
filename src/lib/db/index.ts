@@ -59,3 +59,38 @@ export {
   cleanupExpiredJobCache,
   getJobCacheStats
 } from './job-search';
+
+// Subscription operations
+export {
+  type EmailSubscription,
+  type CreateSubscriptionInput,
+  type CreateSubscriptionResult,
+  createSubscription,
+  getSubscriptionByEmail,
+  unsubscribe,
+  deleteSubscription,
+  getSubscriptionStats
+} from './subscriptions';
+
+// Contribution operations
+export {
+  type CareerContribution,
+  type CreateContributionInput,
+  createContribution,
+  getContributionsByCareer,
+  getPendingContributions,
+  updateContributionStatus,
+  deleteContribution
+} from './contributions';
+
+// Career request operations
+export {
+  type CareerRequest,
+  type CreateCareerRequestInput,
+  type CreateCareerRequestResult,
+  createOrVoteCareerRequest,
+  getPopularCareerRequests,
+  getRecentCareerRequests,
+  updateCareerRequestStatus,
+  deleteCareerRequest
+} from './career-requests';
