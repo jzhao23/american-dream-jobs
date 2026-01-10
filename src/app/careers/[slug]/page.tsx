@@ -27,6 +27,7 @@ import {
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 import { LocalJobMarket } from "@/components/LocalJobMarket";
+import { FindJobsButton, FindJobsSection } from "@/components/jobs";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -227,6 +228,12 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Action CTAs */}
           <div className="flex flex-wrap gap-3 mt-6">
+            <FindJobsButton
+              careerSlug={career.slug}
+              careerTitle={career.title}
+              alternateJobTitles={career.alternate_titles?.slice(0, 5)}
+              variant="hero"
+            />
             <a
               href={`/compare?career=${career.slug}`}
               className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
@@ -458,6 +465,14 @@ export default async function CareerPage({ params }: PageProps) {
             careerSlug={career.slug}
             careerTitle={career.title}
             nationalMedianWage={medianPay}
+          />
+
+          {/* Find Jobs Section */}
+          <FindJobsSection
+            careerSlug={career.slug}
+            careerTitle={career.title}
+            alternateJobTitles={career.alternate_titles?.slice(0, 5)}
+            medianSalary={medianPay}
           />
 
           {/* Technology Skills */}

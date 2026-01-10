@@ -126,6 +126,9 @@ export function CareerCompassWizard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Session ID for tracking and persistence
+  const [sessionId] = useState(() => `compass_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+
   // Location search effect
   useEffect(() => {
     if (!locationQuery || locationQuery.length < 2) {
@@ -310,7 +313,11 @@ export function CareerCompassWizard() {
           options: {
             trainingWillingness: selectedTraining || 'significant',
             model: hasResume ? 'model-a' : 'model-b'
-          }
+          },
+          // Session tracking for persistence
+          sessionId,
+          locationCode: location?.code,
+          locationName: location?.name
         })
       }, 60000); // 60s timeout for career matching
 
