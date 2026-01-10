@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "@/lib/location-context";
 import { LocationSelector } from "@/components/LocationSelector";
 import { formatPay } from "@/types/career";
+import { FindJobsButton } from "@/components/jobs/FindJobsButton";
 
 interface LocalJobEntry {
   slug: string;
@@ -69,15 +70,14 @@ function formatNumber(num: number): string {
 // Career card component
 function CareerCard({ career, rankType }: { career: LocalJobEntry; rankType: "growth" | "jobs" | "concentration" }) {
   return (
-    <a
-      href={`/careers/${career.slug}`}
-      className="block p-4 bg-warm-white rounded-lg border border-sage-muted hover:border-sage hover:shadow-md transition-all"
-    >
+    <div className="p-4 bg-warm-white rounded-lg border border-sage-muted hover:border-sage hover:shadow-md transition-all">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h3 className="font-semibold text-ds-slate hover:text-sage transition-colors">
-            {career.title}
-          </h3>
+          <a href={`/careers/${career.slug}`} className="block">
+            <h3 className="font-semibold text-ds-slate hover:text-sage transition-colors">
+              {career.title}
+            </h3>
+          </a>
           <p className="text-sm text-ds-slate-muted">{career.category}</p>
         </div>
         {career.aiResilience && (
@@ -121,7 +121,16 @@ function CareerCard({ career, rankType }: { career: LocalJobEntry; rankType: "gr
           vs national average
         </div>
       )}
-    </a>
+
+      <div className="mt-3 pt-3 border-t border-sage-muted">
+        <FindJobsButton
+          careerSlug={career.slug}
+          careerTitle={career.title}
+          variant="primary"
+          className="w-full text-sm py-2"
+        />
+      </div>
+    </div>
   );
 }
 
