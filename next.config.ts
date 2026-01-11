@@ -6,19 +6,25 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
 
   // Configure server-side external packages for proper bundling in Vercel
-  // pdf-parse requires special handling as it loads test files at runtime
-  serverExternalPackages: ['pdf-parse'],
+  serverExternalPackages: ['pdfjs-dist'],
 
-  // Configure webpack to handle pdf-parse properly in Vercel
+  // Configure webpack to handle pdfjs-dist properly in Vercel
   webpack: (config, { isServer }) => {
     if (isServer) {
-      // Prevent pdf-parse from trying to load test files in production
       config.resolve.alias = {
         ...config.resolve.alias,
-        // Alias canvas to false - pdf-parse optionally uses canvas but we don't need it
+        // Alias canvas to false - pdfjs-dist optionally uses canvas but we don't need it
         canvas: false,
       };
     }
+
+    // Handle .mjs files for pdfjs-dist
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
     return config;
   },
 };
