@@ -4,6 +4,47 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
 
+// localStorage key for user session (shared with FindJobsModal)
+const USER_SESSION_KEY = 'adjn_user_session';
+
+interface StoredUserSession {
+  email: string;
+  userId: string;
+  hasResume: boolean;
+}
+
+interface ExistingResumeData {
+  resumeText: string;
+  metadata: {
+    resumeId: string;
+    fileName: string;
+    fileType: string;
+    textLength: number;
+    uploadedAt: string;
+  };
+}
+
+// Helper: Load user session from localStorage
+function loadUserSession(): StoredUserSession | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const saved = localStorage.getItem(USER_SESSION_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.email && parsed.userId) {
+        return {
+          email: parsed.email,
+          userId: parsed.userId,
+          hasResume: parsed.hasResume || false,
+        };
+      }
+    }
+  } catch {
+    console.warn('Failed to load user session');
+  }
+  return null;
+}
+
 // Helper: Fetch with timeout to prevent infinite loading
 async function fetchWithTimeout(
   url: string,
@@ -126,8 +167,46 @@ export function CareerCompassWizard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Existing resume state (shared between Find Jobs and Career Compass)
+  const [userSession, setUserSession] = useState<StoredUserSession | null>(null);
+  const [existingResume, setExistingResume] = useState<ExistingResumeData | null>(null);
+  const [isLoadingExistingResume, setIsLoadingExistingResume] = useState(false);
+  const [useExistingResume, setUseExistingResume] = useState(false);
+
   // Session ID for tracking and persistence
   const [sessionId] = useState(() => `compass_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+
+  // Check for existing resume on mount (shared with Find Jobs)
+  useEffect(() => {
+    const session = loadUserSession();
+    if (session) {
+      setUserSession(session);
+
+      // If user has a resume in their session, fetch the text
+      if (session.hasResume && session.userId) {
+        setIsLoadingExistingResume(true);
+        fetch(`/api/users/resume/text?userId=${encodeURIComponent(session.userId)}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.data?.hasResume && data.data.resumeText) {
+              setExistingResume({
+                resumeText: data.data.resumeText,
+                metadata: data.data.metadata,
+              });
+              // Pre-select to use existing resume
+              setUseExistingResume(true);
+              setResumeText(data.data.resumeText);
+            }
+          })
+          .catch(err => {
+            console.warn('Failed to fetch existing resume:', err);
+          })
+          .finally(() => {
+            setIsLoadingExistingResume(false);
+          });
+      }
+    }
+  }, []);
 
   // Location search effect
   useEffect(() => {
@@ -194,24 +273,56 @@ export function CareerCompassWizard() {
 
     setIsParsingFile(true);
     setResumeFile(file);
+    setUseExistingResume(false); // Clear existing resume selection when uploading new
     setError(null);
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
+      // If user has a session, upload to database for persistence (shared with Find Jobs)
+      if (userSession?.userId) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('userId', userSession.userId);
 
-      const response = await fetch('/api/compass/parse-file/', {
-        method: 'POST',
-        body: formData,
-      });
+        const response = await fetch('/api/users/resume', {
+          method: 'POST',
+          body: formData,
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!data.success) {
-        throw new Error(data.error?.message || 'Failed to parse file');
+        if (data.success) {
+          // Resume saved to database successfully - use the extracted text from response
+          setResumeText(data.data.extractedText);
+
+          // Update localStorage to reflect that user now has a resume
+          const updatedSession = { ...userSession, hasResume: true };
+          try {
+            localStorage.setItem(USER_SESSION_KEY, JSON.stringify(updatedSession));
+            setUserSession(updatedSession);
+          } catch {
+            console.warn('Failed to update user session');
+          }
+        } else {
+          throw new Error(data.error?.message || 'Failed to upload resume');
+        }
+      } else {
+        // No user session - just parse the file locally (original behavior)
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch('/api/compass/parse-file/', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Failed to parse file');
+        }
+
+        setResumeText(data.text);
       }
-
-      setResumeText(data.text);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to parse file');
       setResumeFile(null);
@@ -228,7 +339,18 @@ export function CareerCompassWizard() {
   const clearFile = () => {
     setResumeFile(null);
     setResumeText("");
+    setUseExistingResume(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  // Handler to switch to existing resume
+  const useExistingResumeHandler = () => {
+    if (existingResume) {
+      setUseExistingResume(true);
+      setResumeFile(null);
+      setResumeText(existingResume.resumeText);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
   };
 
   // Submit
@@ -483,13 +605,13 @@ export function CareerCompassWizard() {
             <button
               onClick={() => goToStep('resume')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm hover:opacity-80 cursor-pointer transition-all ${
-                resumeFile
+                resumeFile || useExistingResume
                   ? 'bg-sage-muted text-sage font-semibold'
                   : 'bg-gray-100 text-gray-400 font-medium italic'
               }`}
             >
               <span>📄</span>
-              <span>{resumeFile ? 'Uploaded' : 'Skipped'}</span>
+              <span>{resumeFile ? 'Uploaded' : useExistingResume ? 'Using existing' : 'Skipped'}</span>
             </button>
           )}
         </div>
@@ -912,21 +1034,83 @@ export function CareerCompassWizard() {
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                Upload your resume
+                {existingResume ? 'Your resume' : 'Upload your resume'}
               </h2>
               <p className="text-sm text-ds-slate-light mb-2">
-                This step is optional, but <strong className="text-sage">highly recommended</strong>
+                {existingResume
+                  ? <>We found your previously uploaded resume. You can use it or upload a new one.</>
+                  : <>This step is optional, but <strong className="text-sage">highly recommended</strong></>
+                }
               </p>
-              <p className="text-sm text-ds-slate-muted">
-                Resumes typically improve match accuracy by 2-3x by letting us understand your unique skills and experience
-              </p>
+              {!existingResume && (
+                <p className="text-sm text-ds-slate-muted">
+                  Resumes typically improve match accuracy by 2-3x by letting us understand your unique skills and experience
+                </p>
+              )}
             </div>
 
+            {/* Show existing resume option if available */}
+            {existingResume && !resumeFile && (
+              <div className={`border-2 rounded-xl p-6 mb-4 transition-all ${
+                useExistingResume
+                  ? 'border-sage bg-sage-pale'
+                  : 'border-sage-muted bg-cream'
+              }`}>
+                <div className="flex items-start gap-4">
+                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                    useExistingResume ? 'bg-sage border-sage' : 'border-sage-muted'
+                  }`}>
+                    {useExistingResume && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                  </div>
+                  <div className="flex-1">
+                    <button
+                      type="button"
+                      onClick={useExistingResumeHandler}
+                      className="text-left w-full"
+                    >
+                      <div className="font-semibold text-ds-slate mb-1">Use existing resume</div>
+                      <div className="text-sm text-ds-slate-muted">
+                        {existingResume.metadata.fileName}
+                        <span className="mx-2">•</span>
+                        Uploaded {new Date(existingResume.metadata.uploadedAt).toLocaleDateString()}
+                      </div>
+                    </button>
+                    {useExistingResume && (
+                      <div className="mt-3 text-sm text-sage flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        Your resume will be used for personalized matching
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Loading indicator for existing resume */}
+            {isLoadingExistingResume && (
+              <div className="border-2 border-sage-muted rounded-xl p-6 mb-4 bg-cream">
+                <div className="flex items-center justify-center gap-3">
+                  <svg className="animate-spin h-5 w-5 text-sage" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  <span className="text-sm text-ds-slate-muted">Checking for existing resume...</span>
+                </div>
+              </div>
+            )}
+
+            {/* Upload new resume option */}
             <label
               className={`block border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all mb-4 ${
                 resumeFile
                   ? 'border-sage bg-sage-pale border-solid'
-                  : 'border-sage-muted bg-cream hover:border-sage-light'
+                  : existingResume && !useExistingResume
+                    ? 'border-sage-muted bg-cream hover:border-sage-light'
+                    : existingResume
+                      ? 'border-sage-muted bg-warm-white hover:border-sage-light'
+                      : 'border-sage-muted bg-cream hover:border-sage-light'
               }`}
             >
               <input
@@ -960,20 +1144,30 @@ export function CareerCompassWizard() {
               ) : (
                 <div className="flex flex-col items-center gap-2">
                   <div className="text-3xl mb-1">📄</div>
-                  <span className="font-medium text-ds-slate">Click to upload your resume</span>
+                  <span className="font-medium text-ds-slate">
+                    {existingResume ? 'Or upload a different resume' : 'Click to upload your resume'}
+                  </span>
                   <span className="text-xs text-ds-slate-muted">PDF, DOC, DOCX, or TXT (max 5MB)</span>
                 </div>
               )}
             </label>
 
-            <div className="flex items-center justify-center gap-2 text-sm text-sage mb-6">
-              <span>✨</span>
-              <span><strong>Pro tip:</strong> Users who upload resumes get significantly more relevant career matches</span>
-            </div>
+            {!existingResume && !resumeFile && (
+              <div className="flex items-center justify-center gap-2 text-sm text-sage mb-6">
+                <span>✨</span>
+                <span><strong>Pro tip:</strong> Users who upload resumes get significantly more relevant career matches</span>
+              </div>
+            )}
+
+            {error && (
+              <div className="bg-red-50 text-red-700 px-4 py-3 rounded-xl mb-4 text-sm">
+                {error}
+              </div>
+            )}
 
             <div className="flex justify-between items-center pt-4 border-t border-sage-muted">
               <button onClick={() => goToStep('review')} className="text-sm text-ds-slate-light hover:text-ds-slate">
-                Skip, continue without resume
+                {resumeText.length > 0 || useExistingResume ? 'Back to review' : 'Skip, continue without resume'}
               </button>
               <button
                 onClick={() => goToStep('review')}
@@ -1072,8 +1266,13 @@ export function CareerCompassWizard() {
                   <span>📄</span>
                   <div>
                     <div className="text-xs text-ds-slate-muted">Resume</div>
-                    <div className={`font-medium ${resumeFile ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
-                      {resumeFile ? resumeFile.name : 'Not uploaded'}
+                    <div className={`font-medium ${resumeFile || useExistingResume ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
+                      {resumeFile
+                        ? resumeFile.name
+                        : useExistingResume && existingResume
+                          ? `${existingResume.metadata.fileName} (previously uploaded)`
+                          : 'Not uploaded'
+                      }
                     </div>
                   </div>
                 </div>
@@ -1081,10 +1280,10 @@ export function CareerCompassWizard() {
             </div>
 
             {/* Model indicator */}
-            <div className={`rounded-xl p-4 mb-6 flex items-center gap-3 ${resumeFile ? 'bg-sage-muted' : 'bg-sage-pale'}`}>
-              <span className="text-xl">{resumeFile ? '✨' : '💡'}</span>
+            <div className={`rounded-xl p-4 mb-6 flex items-center gap-3 ${resumeFile || useExistingResume ? 'bg-sage-muted' : 'bg-sage-pale'}`}>
+              <span className="text-xl">{resumeFile || useExistingResume ? '✨' : '💡'}</span>
               <span className="text-sm text-ds-slate">
-                {resumeFile
+                {resumeFile || useExistingResume
                   ? <>We&apos;ll use <strong className="text-sage">AI-powered matching</strong> with your resume for personalized results</>
                   : <>We&apos;ll match you with careers based on <strong className="text-sage">your preferences</strong></>
                 }
