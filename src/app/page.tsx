@@ -60,12 +60,12 @@ const curatedPaths = [
 ];
 
 const featuredCareers = [
-  { title: "Wind Turbine Technician", pay: "$61,770", time: "6–12 mo", ai: "resilient", aiLabel: "🟢 Resilient", href: "/careers/wind-turbine-service-technicians" },
-  { title: "Dental Hygienist", pay: "$87,530", time: "2 years", ai: "resilient", aiLabel: "🟢 Resilient", href: "/careers/dental-hygienists" },
+  { title: "Wind Turbine Technician", pay: "$61,770", time: "6–12 mo", ai: "resilient", aiLabel: "🟢 Resilient", href: "/specializations/wind-turbine-service-technicians" },
+  { title: "Dental Hygienist", pay: "$87,530", time: "2 years", ai: "resilient", aiLabel: "🟢 Resilient", href: "/specializations/dental-hygienists" },
   { title: "Respiratory Therapist", pay: "$77,960", time: "2 years", ai: "resilient", aiLabel: "🟢 Resilient", href: "/careers/respiratory-therapists" },
-  { title: "Electrician", pay: "$61,590", time: "4–5 years*", ai: "resilient", aiLabel: "🟢 Resilient", href: "/careers/electricians" },
-  { title: "Solar Panel Installer", pay: "$48,800", time: "<6 mo", ai: "resilient", aiLabel: "🟢 Resilient", href: "/careers/solar-photovoltaic-installers" },
-  { title: "MRI Technologist", pay: "$83,740", time: "2 years", ai: "augmented", aiLabel: "🟡 Augmented", href: "/careers/magnetic-resonance-imaging-technologists" },
+  { title: "Electrician", pay: "$61,590", time: "4–5 years*", ai: "resilient", aiLabel: "🟢 Resilient", href: "/specializations/electricians" },
+  { title: "Solar Panel Installer", pay: "$48,800", time: "<6 mo", ai: "resilient", aiLabel: "🟢 Resilient", href: "/specializations/solar-photovoltaic-installers" },
+  { title: "MRI Technologist", pay: "$83,740", time: "2 years", ai: "augmented", aiLabel: "🟡 Augmented", href: "/specializations/magnetic-resonance-imaging-technologists" },
 ];
 
 const tools = [
