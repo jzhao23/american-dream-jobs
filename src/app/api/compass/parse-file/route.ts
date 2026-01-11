@@ -20,11 +20,9 @@ function isSupportedType(type: string): type is SupportedMimeType {
 }
 
 async function parsePDF(buffer: Buffer): Promise<string> {
-  // Dynamic import to avoid issues with pdf-parse in edge runtime
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const pdfParse = require('pdf-parse');
-  const data = await pdfParse(buffer);
-  return data.text;
+  // Use our custom PDF parser that works in Vercel serverless environment
+  const { extractPDFText } = await import('@/lib/pdf-parser');
+  return extractPDFText(buffer);
 }
 
 async function parseDocx(buffer: Buffer): Promise<string> {

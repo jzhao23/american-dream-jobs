@@ -22,10 +22,9 @@ const SUPPORTED_TYPES: Record<string, string> = {
 };
 
 async function parsePDF(buffer: Buffer): Promise<string> {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const pdfParse = require('pdf-parse');
-  const data = await pdfParse(buffer);
-  return data.text;
+  // Use our custom PDF parser that works in Vercel serverless environment
+  const { extractPDFText } = await import('@/lib/pdf-parser');
+  return extractPDFText(buffer);
 }
 
 async function parseDocx(buffer: Buffer): Promise<string> {
@@ -191,6 +190,7 @@ export async function POST(request: NextRequest) {
         fileName: resume.file_name,
         fileType: resume.file_type,
         extractedLength: extractedText.length,
+        extractedText: extractedText, // Include text for immediate use by Career Compass
         version: resume.version
       }
     });
