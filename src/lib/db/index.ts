@@ -94,3 +94,40 @@ export {
   updateCareerRequestStatus,
   deleteCareerRequest
 } from './career-requests';
+
+// Training program operations
+export {
+  type TrainingProgram,
+  type CategoryTrainingResource,
+  type CareerTrainingProgramLink,
+  type UpsertTrainingProgramInput,
+  getTrainingProgramsForCareer,
+  getCategoryTrainingResources,
+  upsertTrainingProgram,
+  linkProgramToCareer,
+  unlinkProgramFromCareer,
+  addCategoryTrainingResource,
+  getAllTrainingPrograms,
+  getAllCareerProgramLinks,
+  deleteTrainingProgram
+} from './training-programs';
+
+// Financial aid operations
+export {
+  type Scholarship,
+  type CategoryFinancialResource,
+  type FederalAidInfo,
+  type CareerScholarshipLink,
+  type UpsertScholarshipInput,
+  getScholarshipsForCareer,
+  getCategoryFinancialResources,
+  getFederalAidEligibility,
+  getAllFederalAidRules,
+  upsertScholarship,
+  linkScholarshipToCareer,
+  unlinkScholarshipFromCareer,
+  addCategoryFinancialResource,
+  getAllScholarships,
+  getAllCareerScholarshipLinks,
+  deleteScholarship
+} from './financial-aid';

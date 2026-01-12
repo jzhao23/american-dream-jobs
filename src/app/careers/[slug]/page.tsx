@@ -28,6 +28,8 @@ import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 import { LocalJobMarket } from "@/components/LocalJobMarket";
 import { FindJobsButton, FindJobsSection } from "@/components/jobs";
+import { TrainingProgramsSection } from "@/components/TrainingProgramsSection";
+import { FinancialAidSection } from "@/components/FinancialAidSection";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -224,6 +226,20 @@ export default async function CareerPage({ params }: PageProps) {
                 {career.education?.typical_entry_education || "Varies"}
               </div>
             </div>
+            {career.time_to_paycheck && (
+              <div className="bg-cream rounded-lg p-4">
+                <div className="text-sm text-ds-slate-light mb-1">
+                  Time to First Paycheck
+                </div>
+                <div className="font-semibold text-ds-slate text-sm">
+                  {career.time_to_paycheck.can_earn_while_learning ? (
+                    <span className="text-green-600">Immediate (earn while training)</span>
+                  ) : (
+                    <span>{career.time_to_paycheck.min_months}-{career.time_to_paycheck.typical_months} months</span>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Action CTAs */}
@@ -450,6 +466,27 @@ export default async function CareerPage({ params }: PageProps) {
                   </div>
                 </div>
               </div>
+            </Section>
+          )}
+
+          {/* Training Programs */}
+          {career.training_programs && (
+            <Section title="Training Programs" icon="book">
+              <TrainingProgramsSection
+                programs={career.training_programs}
+                careerTitle={career.title}
+              />
+            </Section>
+          )}
+
+          {/* Scholarships & Financial Aid */}
+          {career.financial_aid && (
+            <Section title="Scholarships & Financial Aid" icon="star">
+              <FinancialAidSection
+                financialAid={career.financial_aid}
+                careerTitle={career.title}
+                estimatedCost={career.education?.estimated_cost}
+              />
             </Section>
           )}
 

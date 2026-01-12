@@ -213,6 +213,110 @@ export const CareerAIAssessmentSchema = z.object({
 export type CareerAIAssessment = z.infer<typeof CareerAIAssessmentSchema>;
 
 // ============================================================================
+// TIME TO PAYCHECK (v2.3)
+// ============================================================================
+
+// Time-to-first-paycheck estimates for job seekers
+export const TimeToPaycheckSchema = z.object({
+  min_months: z.number(),              // Fastest path (bootcamp, apprenticeship)
+  typical_months: z.number(),          // Standard education path
+  max_months: z.number(),              // Including job search buffer
+  can_earn_while_learning: z.boolean(), // Apprenticeships, work-study
+  immediate_entry_options: z.array(z.string()).optional(), // e.g., ["Paid apprenticeship", "Entry-level role"]
+  notes: z.string().optional(),
+  data_source: z.enum(['calculated', 'manual', 'verified']).optional(),
+  last_updated: z.string().optional(),
+});
+export type TimeToPaycheck = z.infer<typeof TimeToPaycheckSchema>;
+
+// ============================================================================
+// TRAINING PROGRAMS (v2.3)
+// ============================================================================
+
+// Training program types
+export const TrainingProgramTypeEnum = z.enum([
+  'bootcamp',
+  'certification',
+  'online_course',
+  'apprenticeship',
+  'degree_program',
+  'professional_development',
+]);
+export type TrainingProgramType = z.infer<typeof TrainingProgramTypeEnum>;
+
+// Individual training program
+export const TrainingProgramSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  type: TrainingProgramTypeEnum,
+  provider: z.string(),
+  url: z.string().url(),
+  description: z.string().optional(),
+  duration_months: z.number().optional(),
+  format: z.enum(['online', 'in-person', 'hybrid']).optional(),
+  cost: z.object({
+    amount: z.number().nullable(),
+    type: z.enum(['free', 'low', 'moderate', 'high']),
+    notes: z.string().optional(),
+  }).optional(),
+  credential_earned: z.string().optional(),
+  relevance_score: z.number().min(1).max(5).optional(),
+  verified: z.boolean().optional(),
+  last_verified: z.string().optional(),
+});
+export type TrainingProgram = z.infer<typeof TrainingProgramSchema>;
+
+// Training programs container for a career
+export const TrainingProgramsSchema = z.object({
+  programs: z.array(TrainingProgramSchema),
+  category_resources: z.array(z.object({
+    name: z.string(),
+    url: z.string().url(),
+    description: z.string(),
+  })).optional(),
+  last_updated: z.string(),
+});
+export type TrainingPrograms = z.infer<typeof TrainingProgramsSchema>;
+
+// ============================================================================
+// SCHOLARSHIPS & FINANCIAL AID (v2.3)
+// ============================================================================
+
+// Individual scholarship
+export const ScholarshipSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  url: z.string().url(),
+  provider: z.string(),
+  amount: z.union([
+    z.object({ min: z.number(), max: z.number() }),
+    z.string(), // For "Full tuition", "Varies", etc.
+  ]).optional(),
+  eligibility: z.string().optional(),
+  deadline: z.string().optional(),
+  renewable: z.boolean().optional(),
+  scope: z.enum(['national', 'state', 'local', 'institution']).optional(),
+  verified: z.boolean().optional(),
+  last_verified: z.string().optional(),
+});
+export type Scholarship = z.infer<typeof ScholarshipSchema>;
+
+// Financial aid container for a career
+export const FinancialAidSchema = z.object({
+  scholarships: z.array(ScholarshipSchema),
+  federal_aid_eligible: z.boolean(),
+  typical_aid_sources: z.array(z.string()),
+  employer_programs: z.array(z.string()).optional(),
+  category_resources: z.array(z.object({
+    name: z.string(),
+    url: z.string().url(),
+    description: z.string(),
+  })).optional(),
+  last_updated: z.string(),
+});
+export type FinancialAid = z.infer<typeof FinancialAidSchema>;
+
+// ============================================================================
 // MANUAL CAREER SUPPORT (v2.1)
 // ============================================================================
 
@@ -472,6 +576,15 @@ export const CareerSchema = z.object({
 
   // Career progression
   career_progression: CareerProgressionSchema.nullable(),
+
+  // Time to paycheck (v2.3)
+  time_to_paycheck: TimeToPaycheckSchema.nullable().optional(),
+
+  // Training programs (v2.3)
+  training_programs: TrainingProgramsSchema.nullable().optional(),
+
+  // Financial aid (v2.3)
+  financial_aid: FinancialAidSchema.nullable().optional(),
 
   // Media & content
   video: z.object({

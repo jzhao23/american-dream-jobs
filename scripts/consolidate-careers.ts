@@ -30,7 +30,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
-import type { AIResilienceClassification } from '../src/types/career';
+import type { AIResilienceClassification, TimeToPaycheck } from '../src/types/career';
+import { aggregateTimeToPaycheck } from './calculate-time-to-paycheck';
 
 // Paths
 const DEFINITIONS_FILE = path.join(process.cwd(), 'data/consolidation/career-definitions.json');
@@ -437,6 +438,11 @@ export function consolidateCareers(
       video: primaryCareer.video,
       inside_look: useAIContent ? aiContent.inside_look : primaryCareer.inside_look,
       career_progression: primaryCareer.career_progression,
+
+      // Time to paycheck - aggregate if available
+      time_to_paycheck: specs.some(s => s.time_to_paycheck)
+        ? aggregateTimeToPaycheck(specs.map(s => s.time_to_paycheck).filter(Boolean) as TimeToPaycheck[])
+        : null,
 
       // Data provenance
       data_sources: [

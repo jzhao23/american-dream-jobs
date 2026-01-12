@@ -228,6 +228,18 @@ export default async function SpecializationPage({ params }: PageProps) {
                   </div>
                 </div>
               )}
+              {spec.time_to_paycheck && (
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-sage">
+                    {spec.time_to_paycheck.can_earn_while_learning ? (
+                      <span className="text-green-600 text-lg">Immediate</span>
+                    ) : (
+                      <span>{spec.time_to_paycheck.min_months}-{spec.time_to_paycheck.typical_months}mo</span>
+                    )}
+                  </div>
+                  <div className="text-xs text-ds-slate-muted">To Paycheck</div>
+                </div>
+              )}
             </div>
           </div>
 
