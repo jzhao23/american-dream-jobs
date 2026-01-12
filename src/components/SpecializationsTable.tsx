@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import Link from "next/link";
 import { formatPay, getAIResilienceEmoji, type AIResilienceClassification } from "@/types/career";
 
@@ -73,9 +73,8 @@ export function SpecializationsTable({
           </thead>
           <tbody>
             {displayedSpecs.map((spec) => (
-              <>
+              <Fragment key={spec.slug}>
                 <tr
-                  key={spec.slug}
                   className={`border-b border-sage-muted/50 hover:bg-sage-muted/30 transition-colors ${
                     expandedSlug === spec.slug ? 'bg-sage-muted/20' : ''
                   }`}
@@ -126,7 +125,7 @@ export function SpecializationsTable({
                 </tr>
                 {/* Expanded Details Row */}
                 {expandedSlug === spec.slug && (
-                  <tr key={`${spec.slug}-details`} className="bg-sage-muted/10">
+                  <tr className="bg-sage-muted/10">
                     <td colSpan={5} className="px-4 py-4">
                       <div className="pl-6 space-y-3">
                         {spec.description && (
@@ -160,7 +159,7 @@ export function SpecializationsTable({
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>

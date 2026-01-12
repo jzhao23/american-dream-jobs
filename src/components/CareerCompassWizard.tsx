@@ -482,7 +482,7 @@ export function CareerCompassWizard() {
   // Progress indicator
   const getProgressStep = () => {
     if (currentStep === 'training') return 0;
-    if (['education', 'background', 'salary', 'workStyle'].includes(currentStep)) return 1;
+    if (['education', 'background', 'salary', 'workStyle', 'location'].includes(currentStep)) return 1;
     if (currentStep === 'resume') return 2;
     return 3;
   };
