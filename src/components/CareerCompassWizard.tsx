@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, forwardRef, useImperativeHandle } from "react";
 import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
 
@@ -74,7 +74,12 @@ async function fetchWithTimeout(
 type TrainingLevel = 'minimal' | 'short-term' | 'medium' | 'significant';
 type EducationLevel = 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
 type SalaryTarget = 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
-type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'location' | 'resume' | 'review';
+export type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'location' | 'resume' | 'review';
+
+// Ref handle for external control
+export interface CareerCompassWizardHandle {
+  goToStep: (step: WizardStep) => void;
+}
 
 interface ParsedProfile {
   skills: string[];
@@ -137,7 +142,7 @@ const workStyleOptions = [
 const ACCEPTED_FILE_TYPES = '.pdf,.docx,.doc,.md,.txt';
 const MAX_FILE_SIZE_MB = 5;
 
-export function CareerCompassWizard() {
+export const CareerCompassWizard = forwardRef<CareerCompassWizardHandle>(function CareerCompassWizard(_props, ref) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { location, setLocation, isLoading: locationLoading } = useLocation();
@@ -243,6 +248,11 @@ export function CareerCompassWizard() {
       setIsAnimating(false);
     }, 150);
   }, []);
+
+  // Expose goToStep to parent via ref
+  useImperativeHandle(ref, () => ({
+    goToStep,
+  }), [goToStep]);
 
   // Training selection
   const handleTrainingSelect = (id: TrainingLevel) => {
@@ -1329,4 +1339,4 @@ export function CareerCompassWizard() {
       </div>
     </div>
   );
-}
+});

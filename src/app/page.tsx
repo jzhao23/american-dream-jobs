@@ -1,8 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
-import { CareerCompassWizard } from "@/components/CareerCompassWizard";
+import { CareerCompassWizard, type CareerCompassWizardHandle } from "@/components/CareerCompassWizard";
+import { QuickStartCard } from "@/components/QuickStartCard";
 import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
@@ -90,6 +92,29 @@ const tools = [
 ];
 
 export default function HomePage() {
+  const wizardRef = useRef<CareerCompassWizardHandle>(null);
+
+  const scrollToWizard = () => {
+    document.getElementById("compass-wizard")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleTakeQuiz = () => {
+    scrollToWizard();
+    // Wizard starts at training step by default, so just scroll
+  };
+
+  const handleUploadResume = () => {
+    scrollToWizard();
+    // Small delay to ensure scroll completes before step change
+    setTimeout(() => {
+      wizardRef.current?.goToStep("resume");
+    }, 300);
+  };
+
+  const handleBrowseCareers = () => {
+    document.getElementById("careers")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
@@ -106,9 +131,18 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Quick Start Card - Onboarding for new users */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 animate-fadeUp" style={{ animationDelay: "0.15s" }}>
+        <QuickStartCard
+          onTakeQuiz={handleTakeQuiz}
+          onUploadResume={handleUploadResume}
+          onBrowseCareers={handleBrowseCareers}
+        />
+      </section>
+
       {/* Career Compass Wizard - Inline step-by-step flow */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 md:pb-16 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
-        <CareerCompassWizard />
+      <section id="compass-wizard" className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 md:pb-16 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
+        <CareerCompassWizard ref={wizardRef} />
       </section>
 
       {/* Curated Paths Section */}
