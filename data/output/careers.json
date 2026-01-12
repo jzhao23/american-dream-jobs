@@ -550,6 +550,58 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 18,
+      "typical_months": 77,
+      "max_months": 92,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [
+        "CNA certification (2-6 weeks) while pursuing RN"
+      ],
+      "notes": "1 accelerated pathway(s) available. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -1047,6 +1099,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -1557,6 +1631,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -2043,6 +2139,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 51,
+      "max_months": 81,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -2519,6 +2637,26 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 8,
+      "max_months": 27,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -2727,7 +2865,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 64,
+      "max_months": 112,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Air Transportation Workers",
@@ -3209,6 +3398,46 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 26,
+      "max_months": 63,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -3687,6 +3916,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -4175,6 +4425,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 6,
+      "typical_months": 16,
+      "max_months": 37,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -4678,6 +4938,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -5162,6 +5444,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -5621,6 +5924,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -6089,6 +6438,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 3,
+      "typical_months": 4,
+      "max_months": 5,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -6568,6 +6938,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 50,
+      "max_months": 80,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -7062,6 +7454,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -7235,7 +7649,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 74,
+      "max_months": 125,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Business finance Managers",
@@ -7726,6 +8162,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -8237,6 +8695,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -8745,6 +9225,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 3,
+      "typical_months": 4,
+      "max_months": 7,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -9188,6 +9689,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -9781,7 +10328,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Communications Equipment Operators",
@@ -10253,6 +10851,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -10721,6 +11340,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -11194,6 +11864,108 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 28,
+      "max_months": 52,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "google-it-support",
+          "name": "Google IT Support Professional Certificate",
+          "type": "certification",
+          "provider": "Google / Coursera",
+          "url": "https://www.coursera.org/professional-certificates/google-it-support",
+          "description": "Entry-level IT support training covering troubleshooting, networking, and security.",
+          "duration_months": 6,
+          "format": "online",
+          "cost": {
+            "amount": 234,
+            "type": "low"
+          },
+          "credential_earned": "Google IT Support Professional Certificate",
+          "relevance_score": 5,
+          "verified": true
+        },
+        {
+          "id": "pmp-certification",
+          "name": "Project Management Professional (PMP)",
+          "type": "certification",
+          "provider": "Project Management Institute",
+          "url": "https://www.pmi.org/certifications/project-management-pmp",
+          "description": "Gold standard project management certification recognized worldwide.",
+          "duration_months": 3,
+          "format": "online",
+          "cost": {
+            "amount": 555,
+            "type": "moderate"
+          },
+          "credential_earned": "PMP Certification",
+          "relevance_score": 5,
+          "verified": true
+        },
+        {
+          "id": "aws-cloud-practitioner",
+          "name": "AWS Certified Cloud Practitioner",
+          "type": "certification",
+          "provider": "Amazon Web Services",
+          "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+          "description": "Entry-level cloud certification validating cloud concepts and AWS services knowledge.",
+          "duration_months": 2,
+          "format": "online",
+          "cost": {
+            "amount": 100,
+            "type": "low"
+          },
+          "credential_earned": "AWS Cloud Practitioner Certification",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ]
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -11680,6 +12452,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -12166,6 +12984,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -12656,6 +13520,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -13126,6 +14036,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -13301,7 +14257,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 20,
+      "max_months": 64,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Cooks",
@@ -13782,6 +14760,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -14245,6 +15244,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -14413,7 +15463,57 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 5,
+      "max_months": 16,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "id": "data-center-technicians",
@@ -14586,7 +15686,57 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 14,
+      "max_months": 52,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Data Scientists & Analysts",
@@ -15099,6 +16249,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -15582,6 +16783,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -16030,6 +17282,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 6,
+      "typical_months": 17,
+      "max_months": 38,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -16528,6 +17790,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -17039,6 +18347,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -17253,7 +18583,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 64,
+      "max_months": 97,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Dietitians and Nutritionists",
@@ -17717,6 +19098,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 12,
+      "typical_months": 59,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -18221,6 +19648,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -18706,6 +20154,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Apprentice technician role"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -19139,6 +20610,51 @@
       "has_outlook": false,
       "has_tasks": false,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "emt-basic",
+          "name": "EMT-Basic Certification",
+          "type": "certification",
+          "provider": "National Registry of EMTs",
+          "url": "https://www.nremt.org/",
+          "description": "Entry-level emergency medical technician training.",
+          "duration_months": 4,
+          "format": "hybrid",
+          "cost": {
+            "amount": 2500,
+            "type": "moderate"
+          },
+          "credential_earned": "NREMT-B Certification",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": []
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -19643,6 +21159,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -20141,6 +21679,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -20642,6 +22202,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -21125,6 +22707,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -21298,7 +22901,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 32,
+      "max_months": 99,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Extraction Workers",
@@ -21784,6 +23409,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -22291,6 +23962,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -22774,6 +24467,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -23277,6 +24991,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -23751,6 +25487,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 6,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Police/fire academy (paid training)"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -24173,6 +25932,30 @@
       "has_outlook": false,
       "has_tasks": false,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 27,
+      "max_months": 66,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Military enlistment with paid training"
+      ],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -24617,6 +26400,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -25093,6 +26886,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -25575,6 +27378,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -26062,6 +27886,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 26,
+      "max_months": 50,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -26538,6 +28383,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -27015,6 +28881,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 26,
+      "max_months": 50,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -27490,6 +29377,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -27664,7 +29561,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 62,
+      "max_months": 110,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Healthcare Managers",
@@ -28174,6 +30093,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -28639,6 +30609,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -29106,6 +31122,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 5,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -29589,6 +31626,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -30071,6 +32129,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -30547,6 +32656,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -31040,6 +33200,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 6,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Police/fire academy (paid training)"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -31506,6 +33689,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 5,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. Bar exam required for attorneys",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -32001,6 +34205,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Bar exam required for attorneys",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -32494,6 +34708,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -32993,6 +35228,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -33457,6 +35714,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Apprentice technician role"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -33631,7 +35911,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 76,
+      "max_months": 127,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Material Moving Workers",
@@ -34111,6 +36413,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -34597,6 +36938,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -35095,6 +37457,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 76,
+      "max_months": 112,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -35579,6 +37991,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 6,
+      "typical_months": 16,
+      "max_months": 37,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -36069,6 +38491,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 28,
+      "max_months": 52,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -36524,6 +38967,96 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 2,
+      "typical_months": 17,
+      "max_months": 32,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [
+        "Short-term certification program"
+      ],
+      "notes": "1 accelerated pathway(s) available. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "cna-certification",
+          "name": "Certified Nursing Assistant Training",
+          "type": "certification",
+          "provider": "American Red Cross / Community Colleges",
+          "url": "https://www.redcross.org/take-a-class/cna",
+          "description": "4-12 week training program for entry-level nursing care.",
+          "duration_months": 2,
+          "format": "hybrid",
+          "cost": {
+            "amount": 1500,
+            "type": "moderate"
+          },
+          "credential_earned": "CNA Certification",
+          "relevance_score": 5,
+          "verified": true
+        },
+        {
+          "id": "phlebotomy-cert",
+          "name": "Phlebotomy Technician Certification",
+          "type": "certification",
+          "provider": "National Healthcareer Association",
+          "url": "https://www.nhanow.com/certifications/phlebotomy-technician",
+          "description": "Short-term certification for blood drawing and specimen collection.",
+          "duration_months": 3,
+          "format": "hybrid",
+          "cost": {
+            "amount": 2000,
+            "type": "moderate"
+          },
+          "credential_earned": "Certified Phlebotomy Technician (CPT)",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": []
+    },
+    "financial_aid": {
+      "scholarships": [
+        {
+          "id": "pell-grant",
+          "name": "Federal Pell Grant",
+          "url": "https://studentaid.gov/understand-aid/types/grants/pell",
+          "provider": "U.S. Department of Education",
+          "amount": {
+            "min": 750,
+            "max": 7395
+          },
+          "eligibility": "Undergraduate students with financial need",
+          "deadline": "FAFSA deadlines",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        },
+        {
+          "id": "wioa-training",
+          "name": "WIOA Training Grants",
+          "url": "https://www.dol.gov/agencies/eta/wioa",
+          "provider": "U.S. Department of Labor",
+          "amount": {
+            "min": 2000,
+            "max": 10000
+          },
+          "eligibility": "Unemployed or underemployed adults seeking training",
+          "deadline": "Rolling",
+          "renewable": false,
+          "scope": "national",
+          "verified": true
+        }
+      ],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -37018,6 +39551,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -37452,6 +40007,28 @@
       "has_outlook": false,
       "has_tasks": false,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -37943,6 +40520,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -38377,6 +40975,30 @@
       "has_outlook": false,
       "has_tasks": false,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 27,
+      "max_months": 66,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Military enlistment with paid training"
+      ],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -38817,6 +41439,30 @@
       "has_outlook": false,
       "has_tasks": false,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 27,
+      "max_months": 66,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Military enlistment with paid training"
+      ],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -39300,6 +41946,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -39787,6 +42472,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -40251,6 +42987,81 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 3,
+      "typical_months": 5,
+      "max_months": 8,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "cna-certification",
+          "name": "Certified Nursing Assistant Training",
+          "type": "certification",
+          "provider": "American Red Cross / Community Colleges",
+          "url": "https://www.redcross.org/take-a-class/cna",
+          "description": "4-12 week training program for entry-level nursing care.",
+          "duration_months": 2,
+          "format": "hybrid",
+          "cost": {
+            "amount": 1500,
+            "type": "moderate"
+          },
+          "credential_earned": "CNA Certification",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": []
+    },
+    "financial_aid": {
+      "scholarships": [
+        {
+          "id": "pell-grant",
+          "name": "Federal Pell Grant",
+          "url": "https://studentaid.gov/understand-aid/types/grants/pell",
+          "provider": "U.S. Department of Education",
+          "amount": {
+            "min": 750,
+            "max": 7395
+          },
+          "eligibility": "Undergraduate students with financial need",
+          "deadline": "FAFSA deadlines",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        },
+        {
+          "id": "wioa-training",
+          "name": "WIOA Training Grants",
+          "url": "https://www.dol.gov/agencies/eta/wioa",
+          "provider": "U.S. Department of Labor",
+          "amount": {
+            "min": 2000,
+            "max": 10000
+          },
+          "eligibility": "Unemployed or underemployed adults seeking training",
+          "deadline": "Rolling",
+          "renewable": false,
+          "scope": "national",
+          "verified": true
+        }
+      ],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -40732,6 +43543,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -41202,6 +44063,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -41685,6 +44567,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -42149,6 +45052,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 51,
+      "max_months": 81,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -42624,6 +45549,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 51,
+      "max_months": 81,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -43129,6 +46076,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -43579,6 +46548,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -44076,6 +47091,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -44561,6 +47626,48 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Entry-level helper/laborer position"
+      ],
+      "notes": "Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "NCCER Training",
+          "url": "https://www.nccer.org/",
+          "description": "Construction and craft training"
+        },
+        {
+          "name": "Union Apprenticeships",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Registered apprenticeship programs"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "Apprenticeship.gov",
+          "url": "https://www.apprenticeship.gov/",
+          "description": "Find paid apprenticeships",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -45095,6 +48202,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -45563,6 +48691,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -46069,6 +49218,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -46575,6 +49746,18 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 8,
+      "max_months": 27,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Apprentice technician role"
+      ],
+      "notes": "Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -47072,6 +50255,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -47601,6 +50835,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 51,
+      "max_months": 81,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -48083,6 +51339,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -48559,6 +51836,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -49050,6 +52348,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -49535,6 +52854,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 6,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Police/fire academy (paid training)"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -50017,6 +53359,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -50507,6 +53870,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -50991,6 +54405,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -51482,6 +54935,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 6,
+      "typical_months": 14,
+      "max_months": 35,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -51965,6 +55428,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 26,
+      "max_months": 50,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -52432,6 +55916,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -52902,6 +56407,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -53388,6 +56914,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -53857,6 +57429,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 6,
+      "typical_months": 17,
+      "max_months": 38,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -54370,6 +57952,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -54829,6 +58432,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -55300,6 +58949,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -55802,6 +59472,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -56315,6 +60035,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -56808,6 +60574,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 14,
+      "max_months": 39,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -57272,6 +61059,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -57833,6 +61666,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -58339,6 +62182,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -58550,7 +62415,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 38,
+      "max_months": 100,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Production Production Professionals",
@@ -59044,6 +62960,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -59526,6 +63463,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -59979,6 +63926,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -60459,6 +64427,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -60634,7 +64623,28 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 72,
+      "typical_months": 88,
+      "max_months": 157,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Radiologic Technologists",
@@ -61117,6 +65127,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -61586,6 +65617,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -61761,7 +65831,29 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 26,
+      "max_months": 64,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Registered Nurses",
@@ -62259,6 +66351,108 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 14,
+      "typical_months": 53,
+      "max_months": 68,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [
+        "CNA certification (2-6 weeks) while pursuing RN"
+      ],
+      "notes": "Standard path requires 4-year degree. 1 accelerated pathway(s) available. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "cna-certification",
+          "name": "Certified Nursing Assistant Training",
+          "type": "certification",
+          "provider": "American Red Cross / Community Colleges",
+          "url": "https://www.redcross.org/take-a-class/cna",
+          "description": "4-12 week training program for entry-level nursing care.",
+          "duration_months": 2,
+          "format": "hybrid",
+          "cost": {
+            "amount": 1500,
+            "type": "moderate"
+          },
+          "credential_earned": "CNA Certification",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ]
+    },
+    "financial_aid": {
+      "scholarships": [
+        {
+          "id": "nurse-corps",
+          "name": "NURSE Corps Scholarship Program",
+          "url": "https://bhw.hrsa.gov/funding/apply-scholarship/nurse-corps",
+          "provider": "HRSA (Health Resources & Services Administration)",
+          "amount": {
+            "min": 20000,
+            "max": 50000
+          },
+          "eligibility": "Nursing students willing to work in underserved areas",
+          "deadline": "February annually",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        },
+        {
+          "id": "pell-grant",
+          "name": "Federal Pell Grant",
+          "url": "https://studentaid.gov/understand-aid/types/grants/pell",
+          "provider": "U.S. Department of Education",
+          "amount": {
+            "min": 750,
+            "max": 7395
+          },
+          "eligibility": "Undergraduate students with financial need",
+          "deadline": "FAFSA deadlines",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        }
+      ],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -62714,6 +66908,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -63186,6 +67430,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -63673,6 +67938,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 26,
+      "max_months": 50,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -64160,6 +68446,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 50,
+      "max_months": 80,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -64644,6 +68952,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 1,
+      "max_months": 2,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -65120,6 +69449,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 53,
+      "max_months": 83,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -65610,6 +69961,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Teaching certification may add time",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -66094,6 +70466,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 27,
+      "max_months": 51,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -66597,6 +70990,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 120,
+      "typical_months": 137,
+      "max_months": 218,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard education-to-employment timeline",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -67101,6 +71504,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 28,
+      "max_months": 52,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -67603,6 +72027,28 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -68100,6 +72546,176 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 14,
+      "typical_months": 52,
+      "max_months": 67,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [
+        "Coding bootcamp (3-6 months)",
+        "Freelance/contract work while learning"
+      ],
+      "notes": "Standard path requires 4-year degree. 2 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [
+        {
+          "id": "freecodecamp",
+          "name": "freeCodeCamp Web Development",
+          "type": "online_course",
+          "provider": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free, comprehensive web development curriculum with hands-on projects.",
+          "duration_months": 12,
+          "format": "online",
+          "cost": {
+            "amount": null,
+            "type": "free"
+          },
+          "credential_earned": "freeCodeCamp Certifications",
+          "relevance_score": 4,
+          "verified": true
+        },
+        {
+          "id": "codecademy-fullstack",
+          "name": "Full-Stack Engineer Career Path",
+          "type": "online_course",
+          "provider": "Codecademy",
+          "url": "https://www.codecademy.com/learn/paths/full-stack-engineer-career-path",
+          "description": "Comprehensive full-stack web development curriculum covering front-end, back-end, and databases.",
+          "duration_months": 10,
+          "format": "online",
+          "cost": {
+            "amount": 240,
+            "type": "low"
+          },
+          "credential_earned": "Codecademy Full-Stack Certificate",
+          "relevance_score": 4,
+          "verified": true
+        },
+        {
+          "id": "general-assembly-sei",
+          "name": "Software Engineering Immersive",
+          "type": "bootcamp",
+          "provider": "General Assembly",
+          "url": "https://generalassemb.ly/education/software-engineering-immersive",
+          "description": "Intensive 12-week bootcamp covering full-stack development with career support.",
+          "duration_months": 3,
+          "format": "hybrid",
+          "cost": {
+            "amount": 15950,
+            "type": "high"
+          },
+          "credential_earned": "General Assembly Certificate",
+          "relevance_score": 5,
+          "verified": true
+        },
+        {
+          "id": "aws-cloud-practitioner",
+          "name": "AWS Certified Cloud Practitioner",
+          "type": "certification",
+          "provider": "Amazon Web Services",
+          "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+          "description": "Entry-level cloud certification validating cloud concepts and AWS services knowledge.",
+          "duration_months": 2,
+          "format": "online",
+          "cost": {
+            "amount": 100,
+            "type": "low"
+          },
+          "credential_earned": "AWS Cloud Practitioner Certification",
+          "relevance_score": 5,
+          "verified": true
+        }
+      ],
+      "last_updated": "2026-01-12",
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ]
+    },
+    "financial_aid": {
+      "scholarships": [
+        {
+          "id": "nsf-s-stem",
+          "name": "NSF S-STEM Scholarships",
+          "url": "https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=5257",
+          "provider": "National Science Foundation",
+          "amount": {
+            "min": 5000,
+            "max": 10000
+          },
+          "eligibility": "Low-income students in STEM fields",
+          "deadline": "Varies by institution",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        },
+        {
+          "id": "google-career-certs",
+          "name": "Google Career Certificates Scholarships",
+          "url": "https://grow.google/certificates/",
+          "provider": "Google.org",
+          "amount": {
+            "min": 0,
+            "max": 0
+          },
+          "amount_text": "Free certificates through partner organizations",
+          "eligibility": "Available through community organizations and workforce programs",
+          "deadline": "Rolling",
+          "renewable": false,
+          "scope": "national",
+          "verified": true
+        },
+        {
+          "id": "pell-grant",
+          "name": "Federal Pell Grant",
+          "url": "https://studentaid.gov/understand-aid/types/grants/pell",
+          "provider": "U.S. Department of Education",
+          "amount": {
+            "min": 750,
+            "max": 7395
+          },
+          "eligibility": "Undergraduate students with financial need",
+          "deadline": "FAFSA deadlines",
+          "renewable": true,
+          "scope": "national",
+          "verified": true
+        }
+      ],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -68275,7 +72891,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 124,
+      "max_months": 232,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Speech-Language Pathologists",
@@ -68745,6 +73412,56 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 60,
+      "typical_months": 77,
+      "max_months": 113,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Federal loans",
+        "Assistantships",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -69230,6 +73947,29 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 3,
+      "max_months": 6,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Police/fire academy (paid training)"
+      ],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -69734,6 +74474,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 120,
+      "typical_months": 137,
+      "max_months": 218,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -70192,6 +74978,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 29,
+      "max_months": 53,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 2-year degree. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -70652,6 +75459,57 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 48,
+      "typical_months": 52,
+      "max_months": 82,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -71141,6 +75999,16 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -71612,6 +76480,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -72063,6 +76970,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -72239,7 +77185,58 @@
     "is_consolidated": false,
     "specialization_count": 1,
     "display_strategy": "career-only",
-    "grouping_strategy": "singleton"
+    "grouping_strategy": "singleton",
+    "time_to_paycheck": {
+      "min_months": 24,
+      "typical_months": 52,
+      "max_months": 97,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Standard path requires 4-year degree",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    }
   },
   {
     "title": "Vehicle & Mobile Equipment Mechanics",
@@ -72727,6 +77724,18 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [
+        "Apprentice technician role"
+      ],
+      "notes": "Earn-while-learning options available. 1 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -73226,6 +78235,52 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 96,
+      "typical_months": 113,
+      "max_months": 188,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "American Red Cross Training",
+          "url": "https://www.redcross.org/take-a-class",
+          "description": "CNA, phlebotomy, and healthcare training"
+        },
+        {
+          "name": "NHA Certifications",
+          "url": "https://www.nhanow.com/",
+          "description": "Allied health certifications"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [],
+      "category_resources": [
+        {
+          "name": "HRSA Health Workforce",
+          "url": "https://bhw.hrsa.gov/",
+          "description": "Federal healthcare scholarship and loan programs",
+          "resource_type": "federal_aid"
+        },
+        {
+          "name": "StudentAid.gov",
+          "url": "https://studentaid.gov/",
+          "description": "Federal student aid portal",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -73694,6 +78749,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 3,
+      "typical_months": 5,
+      "max_months": 8,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. May require licensing exam after education",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -74162,6 +79238,45 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "FMCSA CDL Info",
+          "url": "https://www.fmcsa.dot.gov/registration/commercial-drivers-license",
+          "description": "Official CDL requirements and resources"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [
+        {
+          "name": "WIOA Training",
+          "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx",
+          "description": "Workforce training funds",
+          "resource_type": "federal_aid"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -74645,6 +79760,60 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 14,
+      "typical_months": 52,
+      "max_months": 67,
+      "can_earn_while_learning": false,
+      "immediate_entry_options": [
+        "Coding bootcamp (3-6 months)",
+        "Freelance/contract work while learning"
+      ],
+      "notes": "Standard path requires 4-year degree. 2 accelerated pathway(s) available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "training_programs": {
+      "programs": [],
+      "category_resources": [
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "description": "Free coding curriculum and certifications"
+        },
+        {
+          "name": "Coursera Tech Programs",
+          "url": "https://www.coursera.org/browse/information-technology",
+          "description": "Tech certificates from Google, IBM, and more"
+        }
+      ],
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": true,
+      "typical_aid_sources": [
+        "Pell Grant",
+        "Federal loans",
+        "Work-study",
+        "Scholarships"
+      ],
+      "category_resources": [
+        {
+          "name": "Grow with Google",
+          "url": "https://grow.google/",
+          "description": "Free training and scholarships",
+          "resource_type": "employer"
+        },
+        {
+          "name": "Microsoft Imagine Academy",
+          "url": "https://www.microsoft.com/en-us/education",
+          "description": "Tech training resources",
+          "resource_type": "employer"
+        }
+      ],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -75087,6 +80256,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   },
   {
@@ -75566,6 +80756,27 @@
       "has_outlook": false,
       "has_tasks": true,
       "completeness_score": 0.9
+    },
+    "time_to_paycheck": {
+      "min_months": 0,
+      "typical_months": 2,
+      "max_months": 3,
+      "can_earn_while_learning": true,
+      "immediate_entry_options": [],
+      "notes": "Entry possible with high school diploma. Earn-while-learning options available",
+      "data_source": "calculated",
+      "last_updated": "2026-01-12"
+    },
+    "financial_aid": {
+      "scholarships": [],
+      "federal_aid_eligible": false,
+      "typical_aid_sources": [
+        "WIOA grants",
+        "Apprenticeships",
+        "Employer training"
+      ],
+      "category_resources": [],
+      "last_updated": "2026-01-12"
     }
   }
 ]

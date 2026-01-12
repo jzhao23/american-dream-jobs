@@ -40,6 +40,9 @@ const AIOE_FILE = path.join(SOURCES_DIR, 'aioe/normalized.json');
 const BLS_FILE = path.join(SOURCES_DIR, 'bls/normalized.json');
 const EPOCH_FILE = path.join(SOURCES_DIR, 'epoch/normalized.json');
 const VIDEOS_FILE = path.join(SOURCES_DIR, 'videos/normalized.json');
+const SEED_DIR = path.join(process.cwd(), 'data/seed');
+const TRAINING_PROGRAMS_FILE = path.join(SEED_DIR, 'training-programs.json');
+const FINANCIAL_AID_FILE = path.join(SEED_DIR, 'scholarships.json');
 
 // Legacy files (for backwards compatibility)
 const OXFORD_FILE = path.join(process.cwd(), 'data/processed/oxford_ai_risk_mapping.json');
@@ -87,6 +90,8 @@ async function main() {
   const videosData = loadJson(VIDEOS_FILE, 'Videos data');
   const oxfordData = loadJson(OXFORD_FILE, 'Oxford AI risk');
   const insideCareerData = loadJson(INSIDE_CAREER_FILE, 'Inside career content');
+  const trainingProgramsData = loadJson(TRAINING_PROGRAMS_FILE, 'Training programs');
+  const financialAidData = loadJson(FINANCIAL_AID_FILE, 'Financial aid/scholarships');
 
   if (!onetData) {
     console.error('\nError: O*NET data is required. Run: npm run data:normalize:onet');
@@ -130,6 +135,69 @@ async function main() {
       insideCareerMap.set(socCode, content as InsideCareer);
     }
     console.log(`  Loaded ${insideCareerMap.size} inside career entries`);
+  }
+
+  // Training programs mapping (keyed by career slug)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const trainingProgramsMap = new Map<string, any>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const trainingCategoryResources = new Map<string, any[]>();
+  if (trainingProgramsData) {
+    const programs = trainingProgramsData.programs || [];
+    const programsById = new Map(programs.map((p: { id: string }) => [p.id, p]));
+    const mappings = trainingProgramsData.career_mappings || {};
+    for (const [careerSlug, programIds] of Object.entries(mappings)) {
+      const careerPrograms = (programIds as string[])
+        .map(id => programsById.get(id))
+        .filter(Boolean);
+      if (careerPrograms.length > 0) {
+        trainingProgramsMap.set(careerSlug, {
+          programs: careerPrograms,
+          last_updated: trainingProgramsData.last_updated,
+        });
+      }
+    }
+    // Category resources
+    const catResources = trainingProgramsData.category_resources || {};
+    for (const [category, resources] of Object.entries(catResources)) {
+      trainingCategoryResources.set(category, resources as any[]);
+    }
+    console.log(`  Loaded ${trainingProgramsMap.size} career training program mappings`);
+  }
+
+  // Financial aid mapping (keyed by career slug)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const financialAidMap = new Map<string, any>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const financialCategoryResources = new Map<string, any[]>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const federalAidRules = new Map<string, any>();
+  if (financialAidData) {
+    const scholarships = financialAidData.scholarships || [];
+    const scholarshipsById = new Map(scholarships.map((s: { id: string }) => [s.id, s]));
+    const mappings = financialAidData.career_mappings || {};
+    for (const [careerSlug, scholarshipIds] of Object.entries(mappings)) {
+      const careerScholarships = (scholarshipIds as string[])
+        .map(id => scholarshipsById.get(id))
+        .filter(Boolean);
+      if (careerScholarships.length > 0) {
+        financialAidMap.set(careerSlug, {
+          scholarships: careerScholarships,
+          last_updated: financialAidData.last_updated,
+        });
+      }
+    }
+    // Category resources
+    const catResources = financialAidData.category_resources || {};
+    for (const [category, resources] of Object.entries(catResources)) {
+      financialCategoryResources.set(category, resources as any[]);
+    }
+    // Federal aid rules by education level
+    const aidRules = financialAidData.federal_aid_rules || {};
+    for (const [eduLevel, rules] of Object.entries(aidRules)) {
+      federalAidRules.set(eduLevel, rules);
+    }
+    console.log(`  Loaded ${financialAidMap.size} career financial aid mappings`);
   }
 
   // Track stats
@@ -199,6 +267,36 @@ async function main() {
     const insideLook = insideCareerMap.get(socCode);
     if (insideLook) {
       career.inside_look = insideLook;
+    }
+
+    // Add training programs if available (lookup by slug)
+    const trainingPrograms = trainingProgramsMap.get(career.slug);
+    if (trainingPrograms) {
+      career.training_programs = {
+        ...trainingPrograms,
+        category_resources: trainingCategoryResources.get(career.category) || [],
+      };
+    } else if (trainingCategoryResources.has(career.category)) {
+      // Add category resources even if no specific programs
+      career.training_programs = {
+        programs: [],
+        category_resources: trainingCategoryResources.get(career.category),
+        last_updated: trainingProgramsData?.last_updated || new Date().toISOString().split('T')[0],
+      };
+    }
+
+    // Add financial aid if available (lookup by slug)
+    const financialAid = financialAidMap.get(career.slug);
+    const eduLevel = career.education?.typical_entry_education;
+    const federalAidInfo = eduLevel ? federalAidRules.get(eduLevel) : null;
+    if (financialAid || federalAidInfo || financialCategoryResources.has(career.category)) {
+      career.financial_aid = {
+        scholarships: financialAid?.scholarships || [],
+        federal_aid_eligible: federalAidInfo?.federal_aid_eligible ?? false,
+        typical_aid_sources: federalAidInfo?.typical_aid_sources || [],
+        category_resources: financialCategoryResources.get(career.category) || [],
+        last_updated: financialAidData?.last_updated || new Date().toISOString().split('T')[0],
+      };
     }
 
     // Calculate AI Resilience if we have the required data

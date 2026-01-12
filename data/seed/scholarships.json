@@ -1,0 +1,142 @@
+{
+  "scholarships": [
+    {
+      "id": "nurse-corps",
+      "name": "NURSE Corps Scholarship Program",
+      "url": "https://bhw.hrsa.gov/funding/apply-scholarship/nurse-corps",
+      "provider": "HRSA (Health Resources & Services Administration)",
+      "amount": { "min": 20000, "max": 50000 },
+      "eligibility": "Nursing students willing to work in underserved areas",
+      "deadline": "February annually",
+      "renewable": true,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "nsf-s-stem",
+      "name": "NSF S-STEM Scholarships",
+      "url": "https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=5257",
+      "provider": "National Science Foundation",
+      "amount": { "min": 5000, "max": 10000 },
+      "eligibility": "Low-income students in STEM fields",
+      "deadline": "Varies by institution",
+      "renewable": true,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "pell-grant",
+      "name": "Federal Pell Grant",
+      "url": "https://studentaid.gov/understand-aid/types/grants/pell",
+      "provider": "U.S. Department of Education",
+      "amount": { "min": 750, "max": 7395 },
+      "eligibility": "Undergraduate students with financial need",
+      "deadline": "FAFSA deadlines",
+      "renewable": true,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "wioa-training",
+      "name": "WIOA Training Grants",
+      "url": "https://www.dol.gov/agencies/eta/wioa",
+      "provider": "U.S. Department of Labor",
+      "amount": { "min": 2000, "max": 10000 },
+      "eligibility": "Unemployed or underemployed adults seeking training",
+      "deadline": "Rolling",
+      "renewable": false,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "apprenticeship-usa",
+      "name": "Registered Apprenticeship Programs",
+      "url": "https://www.apprenticeship.gov/",
+      "provider": "U.S. Department of Labor",
+      "amount": { "min": 0, "max": 0 },
+      "amount_text": "Earn while you learn - no tuition",
+      "eligibility": "High school graduates or GED holders",
+      "deadline": "Varies by program",
+      "renewable": false,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "techforce-foundation",
+      "name": "TechForce Foundation Scholarships",
+      "url": "https://techforcefoundation.org/",
+      "provider": "TechForce Foundation",
+      "amount": { "min": 1000, "max": 25000 },
+      "eligibility": "Students pursuing automotive, diesel, collision repair, or aviation careers",
+      "deadline": "Various throughout year",
+      "renewable": false,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "trade-school-grants",
+      "name": "Trade School Federal Student Aid",
+      "url": "https://studentaid.gov/understand-aid/types",
+      "provider": "U.S. Department of Education",
+      "amount": { "min": 1000, "max": 7000 },
+      "eligibility": "Students at accredited trade schools",
+      "deadline": "FAFSA deadlines",
+      "renewable": true,
+      "scope": "national",
+      "verified": true
+    },
+    {
+      "id": "google-career-certs",
+      "name": "Google Career Certificates Scholarships",
+      "url": "https://grow.google/certificates/",
+      "provider": "Google.org",
+      "amount": { "min": 0, "max": 0 },
+      "amount_text": "Free certificates through partner organizations",
+      "eligibility": "Available through community organizations and workforce programs",
+      "deadline": "Rolling",
+      "renewable": false,
+      "scope": "national",
+      "verified": true
+    }
+  ],
+  "career_mappings": {
+    "registered-nurses": ["nurse-corps", "pell-grant"],
+    "nursing-assistants": ["pell-grant", "wioa-training"],
+    "software-developers": ["nsf-s-stem", "google-career-certs", "pell-grant"],
+    "computer-support-specialists": ["google-career-certs", "wioa-training"],
+    "electricians": ["apprenticeship-usa", "trade-school-grants"],
+    "plumbers": ["apprenticeship-usa", "trade-school-grants"],
+    "hvac-technicians": ["apprenticeship-usa", "techforce-foundation", "trade-school-grants"],
+    "truck-drivers": ["wioa-training", "trade-school-grants"],
+    "automotive-technicians": ["techforce-foundation", "trade-school-grants"],
+    "medical-assistants": ["pell-grant", "wioa-training"],
+    "data-analysts": ["google-career-certs", "nsf-s-stem"]
+  },
+  "category_resources": {
+    "healthcare-clinical": [
+      { "name": "HRSA Health Workforce", "url": "https://bhw.hrsa.gov/", "description": "Federal healthcare scholarship and loan programs", "resource_type": "federal_aid" },
+      { "name": "StudentAid.gov", "url": "https://studentaid.gov/", "description": "Federal student aid portal", "resource_type": "federal_aid" }
+    ],
+    "technology": [
+      { "name": "Grow with Google", "url": "https://grow.google/", "description": "Free training and scholarships", "resource_type": "employer" },
+      { "name": "Microsoft Imagine Academy", "url": "https://www.microsoft.com/en-us/education", "description": "Tech training resources", "resource_type": "employer" }
+    ],
+    "construction": [
+      { "name": "Apprenticeship.gov", "url": "https://www.apprenticeship.gov/", "description": "Find paid apprenticeships", "resource_type": "federal_aid" }
+    ],
+    "transportation": [
+      { "name": "WIOA Training", "url": "https://www.careeronestop.org/LocalHelp/service-locator.aspx", "description": "Workforce training funds", "resource_type": "federal_aid" }
+    ]
+  },
+  "federal_aid_rules": {
+    "No formal educational credential": { "federal_aid_eligible": false, "typical_aid_sources": ["WIOA grants", "Employer training"] },
+    "High school diploma or equivalent": { "federal_aid_eligible": false, "typical_aid_sources": ["WIOA grants", "Apprenticeships", "Employer training"] },
+    "Postsecondary nondegree award": { "federal_aid_eligible": true, "typical_aid_sources": ["Pell Grant", "Trade school grants", "WIOA"] },
+    "Some college, no degree": { "federal_aid_eligible": true, "typical_aid_sources": ["Pell Grant", "Federal loans"] },
+    "Associate's degree": { "federal_aid_eligible": true, "typical_aid_sources": ["Pell Grant", "Federal loans", "Work-study"] },
+    "Bachelor's degree": { "federal_aid_eligible": true, "typical_aid_sources": ["Pell Grant", "Federal loans", "Work-study", "Scholarships"] },
+    "Master's degree": { "federal_aid_eligible": true, "typical_aid_sources": ["Federal loans", "Assistantships", "Scholarships"] },
+    "Doctoral or professional degree": { "federal_aid_eligible": true, "typical_aid_sources": ["Federal loans", "Assistantships", "Fellowships"] }
+  },
+  "last_updated": "2026-01-12"
+}
