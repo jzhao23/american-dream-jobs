@@ -153,7 +153,7 @@ export default async function SpecializationPage({ params }: PageProps) {
       <div className="bg-white border-b">
         <div className="max-w-5xl mx-auto px-4 py-3">
           <nav className="flex items-center gap-2 text-sm text-ds-slate-muted">
-            <Link href="/careers" className="hover:text-sage">
+            <Link href="/#careers" className="hover:text-sage">
               Careers
             </Link>
             <span>/</span>
