@@ -542,8 +542,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   <FindJobsButton
                     careerSlug={career.slug}
                     careerTitle={career.title}
-                    variant="primary"
-                    className="text-xs px-3 py-1.5"
+                    variant="compact"
                   />
                 </td>
               </tr>
@@ -612,8 +611,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <FindJobsButton
                 careerSlug={career.slug}
                 careerTitle={career.title}
-                variant="primary"
-                className="w-full text-sm py-2"
+                variant="compact"
               />
             </div>
           </div>

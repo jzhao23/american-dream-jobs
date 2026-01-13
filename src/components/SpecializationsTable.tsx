@@ -120,8 +120,7 @@ export function SpecializationsTable({
                     <FindJobsButton
                       careerSlug={spec.slug}
                       careerTitle={spec.title}
-                      variant="primary"
-                      className="text-xs px-3 py-1.5"
+                      variant="compact"
                     />
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -231,8 +230,7 @@ export function SpecializationsTable({
                   <FindJobsButton
                     careerSlug={spec.slug}
                     careerTitle={spec.title}
-                    variant="primary"
-                    className="text-sm"
+                    variant="compact"
                   />
                   <Link
                     href={`/specializations/${spec.slug}`}

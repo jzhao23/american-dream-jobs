@@ -207,8 +207,8 @@ export default function HomePage() {
                     <FindJobsButton
                       careerSlug={slug}
                       careerTitle={career.title}
-                      variant="primary"
-                      className="text-xs px-3 py-1.5 mt-2 md:mt-0"
+                      variant="compact"
+                      className="mt-2 md:mt-0"
                     />
                   </div>
                 </div>
