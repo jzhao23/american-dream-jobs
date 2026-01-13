@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
+import { FlagLogo } from "@/components/FlagLogo";
 import { LocationProvider } from "@/lib/location-context";
 import "./globals.css";
 
@@ -56,7 +57,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🇺🇸</span>
+              <FlagLogo size="lg" />
               <span className="font-display font-semibold text-lg text-sage">
                 American Dream Jobs
               </span>
