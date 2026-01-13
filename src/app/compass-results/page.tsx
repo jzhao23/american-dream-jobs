@@ -9,6 +9,7 @@ import {
   type AIResilienceClassification,
 } from "@/types/career";
 import { useLocation } from "@/lib/location-context";
+import { FindJobsButton } from "@/components/jobs";
 
 // Types from the API
 interface CareerMatch {
@@ -496,14 +497,20 @@ export default function CompassResultsPage() {
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="mt-4 pt-4 border-t border-sage-muted">
+              {/* Action Buttons */}
+              <div className="mt-4 pt-4 border-t border-sage-muted flex gap-3">
                 <Link
                   href={`/careers/${career.slug}`}
-                  className="btn-sage w-full text-center block"
+                  className="flex-1 text-center inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-sage text-white font-semibold rounded-lg hover:bg-sage-dark shadow-sm hover:shadow-md transition-all duration-200"
                 >
-                  View Full Career Details
+                  View Details
                 </Link>
+                <FindJobsButton
+                  careerSlug={career.slug}
+                  careerTitle={career.title}
+                  variant="primary"
+                  className="flex-1"
+                />
               </div>
             </div>
           ))}

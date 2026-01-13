@@ -186,22 +186,27 @@ function filterByTrainingWillingness(
     'masters-plus': 6
   };
 
-  // Career education requirements in years (based on timeline_bucket)
-  const careerEducationRequirements: Record<string, number> = {
-    'asap': 0,              // No formal education required
-    '6-24-months': 1,       // Certificate or short program
-    '2-4-years': 4,         // Bachelor's degree
-    '4-plus-years': 6       // Master's or professional degree
+  // Map typical_entry_education strings to years of education required
+  const educationStringToYears: Record<string, number> = {
+    'Less than high school': 0,
+    'High school diploma or equivalent': 0,
+    'Some college, no degree': 0.5,
+    'Post-secondary certificate': 0.5,
+    'Associate\'s degree': 2,
+    'Bachelor\'s degree': 4,
+    'Post-baccalaureate certificate': 4.5,
+    'Master\'s degree': 6,
+    'Doctoral degree': 8,
+    'Post-doctoral training': 10,
   };
 
   const userMaxYears = maxYears[trainingLevel];
   const userEducationYears = educationYears[userEducationLevel] || 0;
 
   careers.forEach(career => {
-    const careerBucket = career.timeline_bucket || '2-4-years';
-
-    // Get the career's education requirement in years
-    const careerRequiredYears = careerEducationRequirements[careerBucket] ?? 4;
+    // Use actual typical_entry_education field instead of timeline_bucket
+    const educationRequired = career.education?.typical_entry_education || "Bachelor's degree";
+    const careerRequiredYears = educationStringToYears[educationRequired] ?? 4;
 
     // Calculate ADDITIONAL training needed (can't be negative)
     const additionalTrainingNeeded = Math.max(0, careerRequiredYears - userEducationYears);
@@ -496,9 +501,39 @@ async function stage3LLMReasoning(
 
     const matches: CareerMatch[] = JSON.parse(jsonMatch[0]);
 
-    // Validate and enrich matches
+    // Build lookup maps from candidates to correct invalid slugs
+    const careers = loadCareersData();
+    const careerSlugSet = new Set(careers.map(c => c.slug));
+    const titleToSlug = new Map(candidates.map(c => [c.title.toLowerCase(), c.career_slug]));
+    const slugToSlug = new Map(candidates.map(c => [c.career_slug, c.career_slug]));
+
+    // Validate and enrich matches, correcting slugs when possible
     return matches
-      .filter(m => m.matchScore >= 60)
+      .map(m => {
+        let validSlug = m.slug;
+
+        // If slug is invalid, try to find the correct one
+        if (!careerSlugSet.has(m.slug)) {
+          // Try exact slug match from candidates
+          const candidateSlug = slugToSlug.get(m.slug);
+          if (candidateSlug) {
+            validSlug = candidateSlug;
+          } else {
+            // Try matching by title (case-insensitive)
+            const slugByTitle = titleToSlug.get(m.title.toLowerCase());
+            if (slugByTitle && careerSlugSet.has(slugByTitle)) {
+              console.warn(`    ⚠️  Corrected slug: ${m.slug} → ${slugByTitle} (matched by title)`);
+              validSlug = slugByTitle;
+            } else {
+              console.warn(`    ⚠️  LLM returned invalid slug: ${m.slug} - filtering out`);
+              return null; // Mark for filtering
+            }
+          }
+        }
+
+        return { ...m, slug: validSlug };
+      })
+      .filter((m): m is CareerMatch => m !== null && m.matchScore >= 60)
       .slice(0, 15)
       .map(m => ({
         ...m,
@@ -854,8 +889,39 @@ async function stage3HaikuReasoning(
 
     const matches: CareerMatch[] = JSON.parse(jsonMatch[0]);
 
+    // Build lookup maps from candidates to correct invalid slugs
+    const careers = loadCareersData();
+    const careerSlugSet = new Set(careers.map(c => c.slug));
+    const titleToSlug = new Map(candidates.map(c => [c.title.toLowerCase(), c.career_slug]));
+    const slugToSlug = new Map(candidates.map(c => [c.career_slug, c.career_slug]));
+
+    // Validate and enrich matches, correcting slugs when possible
     return matches
-      .filter(m => m.matchScore >= 60)
+      .map(m => {
+        let validSlug = m.slug;
+
+        // If slug is invalid, try to find the correct one
+        if (!careerSlugSet.has(m.slug)) {
+          // Try exact slug match from candidates
+          const candidateSlug = slugToSlug.get(m.slug);
+          if (candidateSlug) {
+            validSlug = candidateSlug;
+          } else {
+            // Try matching by title (case-insensitive)
+            const slugByTitle = titleToSlug.get(m.title.toLowerCase());
+            if (slugByTitle && careerSlugSet.has(slugByTitle)) {
+              console.warn(`    ⚠️  Corrected slug: ${m.slug} → ${slugByTitle} (matched by title)`);
+              validSlug = slugByTitle;
+            } else {
+              console.warn(`    ⚠️  Haiku returned invalid slug: ${m.slug} - filtering out`);
+              return null; // Mark for filtering
+            }
+          }
+        }
+
+        return { ...m, slug: validSlug };
+      })
+      .filter((m): m is CareerMatch => m !== null && m.matchScore >= 60)
       .slice(0, 15)
       .map(m => ({
         ...m,
@@ -908,6 +974,21 @@ export async function matchCareers(
   const stage2Start = Date.now();
   const stage2Candidates = stage2StructuredMatching(stage1Candidates, profile);
   console.log(`    Stage 2 time: ${Date.now() - stage2Start}ms`);
+
+  // Early return if no candidates - prevents LLM hallucination
+  if (stage2Candidates.length === 0) {
+    console.log('    ⚠️  No candidates after Stage 2 - returning empty results');
+    return {
+      matches: [],
+      metadata: {
+        stage1Candidates: stage1Candidates.length,
+        stage2Candidates: 0,
+        finalMatches: 0,
+        processingTimeMs: Date.now() - startTime,
+        costUsd
+      }
+    };
+  }
 
   // Stage 3: LLM reasoning (route based on model)
   const stage3Start = Date.now();
