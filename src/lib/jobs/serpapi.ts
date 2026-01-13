@@ -96,7 +96,7 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
     // SerpApi sometimes returns jobs from other locations
     const locationFilteredJobs = filterJobsByLocation(allJobs, simplifiedLocation);
 
-    const jobs = locationFilteredJobs.slice(0, params.limit || 20);
+    const jobs = locationFilteredJobs.slice(0, params.limit || 50);
 
     console.log(`[SerpApi] Found ${jobs.length} jobs (raw: ${data.jobs_results?.length || 0}, after location filter: ${locationFilteredJobs.length})`);
 

@@ -69,7 +69,7 @@ export async function searchJobsJSearch(params: JobSearchParams): Promise<JobSea
     }
 
     const jobs = (data.data || [])
-      .slice(0, params.limit || 20)
+      .slice(0, params.limit || 50)
       .map(job => transformJSearchJob(job))
       .filter(job => passesFilters(job, params.filters));
 

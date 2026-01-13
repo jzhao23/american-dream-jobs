@@ -36,7 +36,7 @@ export interface AggregatedSearchResult {
  * Search for jobs with caching and fallback
  */
 export async function searchJobs(params: AggregatedSearchParams): Promise<AggregatedSearchResult> {
-  const { careerSlug, careerTitle, locationCode, locationName, filters, limit = 20, userId } = params;
+  const { careerSlug, careerTitle, locationCode, locationName, filters, limit = 50, userId } = params;
 
   // Check cache first
   try {

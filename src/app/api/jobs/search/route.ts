@@ -23,7 +23,7 @@ const searchJobsSchema = z.object({
     datePosted: z.enum(['today', '3days', 'week', 'month']).optional(),
     experienceLevel: z.enum(['entry', 'mid', 'senior']).optional()
   }).optional(),
-  limit: z.number().min(1).max(50).optional().default(20)
+  limit: z.number().min(1).max(100).optional().default(50)
 });
 
 export async function POST(request: NextRequest) {
