@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useLocation } from "@/lib/location-context";
 import { JobListing } from "@/lib/jobs/types";
 import { getCompassResume } from "@/lib/resume-storage";
@@ -417,9 +418,16 @@ export function FindJobsModal({
   const displayedJobs = sortedJobs.slice(0, displayedCount);
   const hasMoreJobs = displayedCount < jobs.length;
 
-  if (!isOpen) return null;
+  // Track if component is mounted (for portal)
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (
+  if (!isOpen || !mounted) return null;
+
+  // Use portal to render at document.body level for proper viewport centering
+  return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       {/* Backdrop */}
       <div
@@ -786,7 +794,8 @@ export function FindJobsModal({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
