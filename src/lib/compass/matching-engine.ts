@@ -349,12 +349,21 @@ function stage2StructuredMatching(
   };
   targetSalary = salaryTargetMap[profile.preferences.salaryTarget] || 50000;
 
-  // Score each candidate
-  const scored = candidates.map(candidate => {
-    const careerData = careerLookup.get(candidate.career_slug);
-    if (!careerData) {
-      return { ...candidate, structuredScore: candidate.similarity * 0.5 };
+  // Filter out candidates whose slugs don't exist in careers.json
+  // This prevents 404 errors when linking to career detail pages
+  const validCandidates = candidates.filter(candidate => {
+    const exists = careerLookup.has(candidate.career_slug);
+    if (!exists) {
+      console.log(`    Filtering out invalid slug: ${candidate.career_slug}`);
     }
+    return exists;
+  });
+  console.log(`    Filtered ${candidates.length - validCandidates.length} candidates with invalid slugs`);
+
+  // Score each candidate
+  const scored = validCandidates.map(candidate => {
+    // careerData is guaranteed to exist since we filtered validCandidates above
+    const careerData = careerLookup.get(candidate.career_slug)!;
 
     // Skill overlap (Jaccard similarity)
     const userSkills = new Set(profile.resume.skills.map(s => s.toLowerCase()));
@@ -496,15 +505,28 @@ async function stage3LLMReasoning(
 
     const matches: CareerMatch[] = JSON.parse(jsonMatch[0]);
 
-    // Validate and enrich matches
-    return matches
-      .filter(m => m.matchScore >= 60)
+    // Load valid career slugs for validation
+    const careers = loadCareersData();
+    const validSlugs = new Set(careers.map(c => c.slug));
+
+    // Validate and enrich matches - filter out any slugs that don't exist in careers.json
+    const validatedMatches = matches
+      .filter(m => {
+        if (!validSlugs.has(m.slug)) {
+          console.log(`    Filtering out invalid LLM-returned slug: ${m.slug}`);
+          return false;
+        }
+        return m.matchScore >= 60;
+      })
       .slice(0, 15)
       .map(m => ({
         ...m,
         // Ensure skillsGap is exactly 3 items
         skillsGap: (m.skillsGap || ['General skills', 'Industry knowledge', 'Technical certifications']).slice(0, 3) as [string, string, string]
       }));
+
+    console.log(`    Validated ${validatedMatches.length} matches with valid slugs`);
+    return validatedMatches;
   } catch (error) {
     console.error('Failed to parse LLM response:', content.text);
     throw new Error('Failed to generate career recommendations');
@@ -854,13 +876,27 @@ async function stage3HaikuReasoning(
 
     const matches: CareerMatch[] = JSON.parse(jsonMatch[0]);
 
-    return matches
-      .filter(m => m.matchScore >= 60)
+    // Load valid career slugs for validation
+    const careers = loadCareersData();
+    const validSlugs = new Set(careers.map(c => c.slug));
+
+    // Validate and enrich matches - filter out any slugs that don't exist in careers.json
+    const validatedMatches = matches
+      .filter(m => {
+        if (!validSlugs.has(m.slug)) {
+          console.log(`    Filtering out invalid Haiku-returned slug: ${m.slug}`);
+          return false;
+        }
+        return m.matchScore >= 60;
+      })
       .slice(0, 15)
       .map(m => ({
         ...m,
         skillsGap: (m.skillsGap || ['General skills', 'Industry knowledge', 'Technical certifications']).slice(0, 3) as [string, string, string]
       }));
+
+    console.log(`    Validated ${validatedMatches.length} matches with valid slugs`);
+    return validatedMatches;
   } catch (error) {
     console.error('Failed to parse Haiku response:', content.text);
     throw new Error('Failed to generate career recommendations (Haiku)');
