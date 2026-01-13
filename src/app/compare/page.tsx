@@ -541,11 +541,11 @@ function CompareContent() {
               <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
                 {careerPaths.map((path, pathIndex) => (
                   <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
-                    {/* Career header */}
-                    <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border}`}>
+                    {/* Career header - fixed height for alignment */}
+                    <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border} min-h-[72px] flex flex-col justify-center`}>
                       <a
                         href={`/careers/${path.career.slug}`}
-                        className="font-bold text-sage hover:text-sage-dark hover:underline text-sm"
+                        className="font-bold text-sage hover:text-sage-dark hover:underline text-sm line-clamp-2"
                       >
                         {path.career.title}
                       </a>
