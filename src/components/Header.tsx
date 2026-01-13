@@ -114,7 +114,7 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className="block py-3 px-3 min-h-[44px] text-base font-medium text-ds-slate-light hover:text-sage active:bg-sage-muted rounded-lg transition-colors"
             >
-              Compare Careers
+              Compare
             </a>
             <a
               href="/calculator"
