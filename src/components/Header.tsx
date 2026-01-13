@@ -23,7 +23,7 @@ export function Header() {
               href="/compare"
               className="text-sm font-medium text-ds-slate-light hover:text-sage hover:bg-sage-muted px-3 py-2 rounded-lg transition-all"
             >
-              Compare
+              Compare Futures
             </a>
             <a
               href="/calculator"
@@ -113,7 +113,7 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className="block py-3 px-3 min-h-[44px] text-base font-medium text-ds-slate-light hover:text-sage active:bg-sage-muted rounded-lg transition-colors"
             >
-              Compare Careers
+              Compare Futures
             </a>
             <a
               href="/calculator"

@@ -79,7 +79,7 @@ function Footer() {
               </li>
               <li>
                 <a href="/compare" className="hover:text-sage transition-colors">
-                  Compare Careers
+                  Compare Futures
                 </a>
               </li>
               <li>

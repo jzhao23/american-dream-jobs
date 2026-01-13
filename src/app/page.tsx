@@ -77,8 +77,8 @@ const tools = [
   },
   {
     icon: "⚖️",
-    title: "Compare Careers",
-    desc: "Put two or more careers side by side. Compare salary, training requirements, job outlook, and AI impact in one view.",
+    title: "Compare Futures",
+    desc: "Which path will earn more in the long run? Compare up to 3 careers to see lifetime earnings, education costs, and ROI.",
     href: "/compare",
   },
   {

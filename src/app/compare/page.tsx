@@ -307,15 +307,36 @@ function CompareContent() {
       <section className="bg-warm-white border-b border-sage-muted">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="font-display text-3xl md:text-4xl font-semibold text-ds-slate mb-4">
-            Compare Career Paths
+            Compare Futures
           </h1>
           <p className="text-lg text-ds-slate-light max-w-2xl">
-            Visualize 1 to 3 careers to see their lifetime earnings trajectory, including education costs and career progression.
+            Answer the big question: Which career will earn more over your lifetime? Compare up to 3 paths and see the full picture.
           </p>
         </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Color Coding Legend */}
+        <div className="bg-sage-pale rounded-lg p-4 mb-6 flex flex-wrap items-center justify-center gap-6 text-sm">
+          <span className="font-medium text-ds-slate">How to read:</span>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded bg-green-500" />
+            <span className="text-ds-slate-light">Earnings (money in)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded bg-amber-500" />
+            <span className="text-ds-slate-light">Education Cost (investment)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-green-600 font-bold">+$</span>
+            <span className="text-ds-slate-light">Positive</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-amber-600 font-bold">-$</span>
+            <span className="text-ds-slate-light">Investment/Cost</span>
+          </div>
+        </div>
+
         {/* Career Selection */}
         <div className="card-warm p-6 mb-8">
           <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Select Careers to Compare</h2>
@@ -560,8 +581,13 @@ function CompareContent() {
                             </div>
                             <div className="text-right">
                               {stage.type === 'education' ? (
-                                <div className="text-red-600 font-bold text-sm">
-                                  -{formatPay(Math.abs(stage.annualAmount))}
+                                <div className="group relative">
+                                  <div className="text-amber-600 font-bold text-sm cursor-help">
+                                    Education Cost: -{formatPay(Math.abs(stage.annualAmount))}
+                                  </div>
+                                  <div className="absolute hidden group-hover:block right-0 bottom-full mb-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
+                                    This is an investment in your future earning potential
+                                  </div>
                                 </div>
                               ) : stage.type === 'career' ? (
                                 <div className="text-green-600 font-bold text-sm">
@@ -572,7 +598,7 @@ function CompareContent() {
                           </div>
                           {stage.type !== 'retirement' && (
                             <div className="text-xs text-ds-slate-muted mt-1">
-                              Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-red-600'}>
+                              Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-amber-600'}>
                                 {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
                               </span>
                             </div>
@@ -648,10 +674,18 @@ function CompareContent() {
                   <tbody className="divide-y divide-secondary-100">
                     {/* Education Cost */}
                     <tr>
-                      <td className="px-4 py-4 font-medium text-ds-slate">Education Cost</td>
+                      <td className="px-4 py-4 font-medium text-ds-slate">
+                        <div className="group relative inline-block cursor-help">
+                          Education Cost
+                          <span className="ml-1 text-ds-slate-muted">ⓘ</span>
+                          <div className="absolute hidden group-hover:block left-0 top-full mt-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
+                            Initial investment in education - pays off over your career lifetime
+                          </div>
+                        </div>
+                      </td>
                       {careerPaths.map((path, index) => (
                         <td key={path.career.slug} className={`text-center px-4 py-4 ${colorClasses[colors[index]].bgLight} bg-opacity-50`}>
-                          <div className="text-xl font-bold text-red-600">
+                          <div className="text-xl font-bold text-amber-600">
                             -{formatPay(path.educationCost)}
                           </div>
                         </td>
@@ -778,20 +812,92 @@ function CompareContent() {
             <div className="card-warm p-6">
               <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Key Insights</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Highest Lifetime Earnings */}
-                <div className="bg-green-50 rounded-lg p-4">
-                  <div className="text-sm text-green-700 mb-1">Highest Lifetime Net</div>
+                {/* Highest Lifetime Net - PRIMARY INSIGHT */}
+                <div className="bg-green-50 rounded-lg p-4 ring-2 ring-green-200">
+                  <div className="text-sm text-green-700 mb-1 font-semibold">Highest Lifetime Net</div>
                   {(() => {
                     const best = careerPaths.reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b);
+                    const second = careerPaths.filter(p => p !== best).reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b, { totalEarnings: 0, career: { slug: '', title: '' } });
+                    const diff = best.totalEarnings - second.totalEarnings;
                     return (
-                      <a href={`/careers/${best.career.slug}`} className="font-bold text-green-800 hover:underline block">
-                        {best.career.title}
-                      </a>
+                      <>
+                        <a href={`/careers/${best.career.slug}`} className="font-bold text-green-800 hover:underline block text-lg">
+                          {best.career.title}
+                        </a>
+                        <div className="text-sm text-green-600 font-medium">
+                          {formatPay(best.totalEarnings)}
+                        </div>
+                        {second.career.title && diff > 0 && (
+                          <div className="text-xs text-green-600 mt-1">
+                            +{formatPay(diff)} vs. next best
+                          </div>
+                        )}
+                      </>
                     );
                   })()}
-                  <div className="text-sm text-green-600">
-                    {formatPay(Math.max(...careerPaths.map(p => p.totalEarnings)))}
-                  </div>
+                </div>
+
+                {/* Best ROI (Earnings vs. Education Cost) */}
+                <div className="bg-emerald-50 rounded-lg p-4">
+                  <div className="text-sm text-emerald-700 mb-1">Best ROI (Earnings vs. Education Cost)</div>
+                  {(() => {
+                    const withROI = careerPaths.map(p => {
+                      const timeline = p.career.career_progression?.timeline || [];
+                      const totalEarnings = timeline.reduce((sum, t) => sum + t.expected_compensation, 0);
+                      const cost = p.educationCost || 1;
+                      const roi = Math.round(((totalEarnings - cost) / Math.max(cost, 1)) * 100);
+                      return { path: p, roi, totalEarnings, cost };
+                    });
+                    const best = withROI.reduce((b, curr) => curr.roi > b.roi ? curr : b);
+                    return (
+                      <>
+                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-emerald-800 hover:underline block">
+                          {best.path.career.title}
+                        </a>
+                        <div className="text-sm text-emerald-600">
+                          {best.roi.toLocaleString()}% return on education
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+
+                {/* Fastest to Positive (Break-even) */}
+                <div className="bg-cyan-50 rounded-lg p-4">
+                  <div className="text-sm text-cyan-700 mb-1">Fastest to Positive</div>
+                  {(() => {
+                    const withBreakeven = careerPaths.map(p => {
+                      const timeline = p.career.career_progression?.timeline || [];
+                      let cumulative = -p.educationCost;
+                      let breakEvenYear = -1;
+                      for (let year = 0; year < timeline.length; year++) {
+                        cumulative += timeline[year]?.expected_compensation || 0;
+                        if (cumulative >= 0 && breakEvenYear === -1) {
+                          breakEvenYear = year + 1;
+                          break;
+                        }
+                      }
+                      // If never breaks even in timeline, estimate
+                      if (breakEvenYear === -1 && timeline.length > 0) {
+                        const avgSalary = timeline.reduce((sum, t) => sum + t.expected_compensation, 0) / timeline.length;
+                        breakEvenYear = Math.ceil(p.educationCost / avgSalary);
+                      }
+                      return { path: p, breakEvenYear };
+                    });
+                    const best = withBreakeven.reduce((b, curr) =>
+                      (curr.breakEvenYear > 0 && (b.breakEvenYear < 0 || curr.breakEvenYear < b.breakEvenYear)) ? curr : b
+                    );
+                    return (
+                      <>
+                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-cyan-800 hover:underline block">
+                          {best.path.career.title}
+                        </a>
+                        <div className="text-sm text-cyan-600">
+                          Breaks even in ~{best.breakEvenYear} year{best.breakEvenYear !== 1 ? 's' : ''}
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
 
                 {/* Lowest Education Cost */}
@@ -808,6 +914,27 @@ function CompareContent() {
                   <div className="text-sm text-amber-600">
                     {formatPay(Math.min(...careerPaths.map(p => p.educationCost)))}
                   </div>
+                </div>
+
+                {/* Fastest to Start */}
+                <div className="bg-purple-50 rounded-lg p-4">
+                  <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
+                  {(() => {
+                    const best = selectedCareers.reduce((b, c) => (c.education?.time_to_job_ready?.typical_years || 10) < (b.education?.time_to_job_ready?.typical_years || 10) ? c : b);
+                    const years = best.education?.time_to_job_ready?.typical_years;
+                    return (
+                      <>
+                        <a href={`/careers/${best.slug}`} className="font-bold text-purple-800 hover:underline block">
+                          {best.title}
+                        </a>
+                        {years && (
+                          <div className="text-sm text-purple-600">
+                            {years} year{years !== 1 ? 's' : ''} to job-ready
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
 
                 {/* Most AI-Resilient */}
@@ -828,40 +955,6 @@ function CompareContent() {
                           </span>
                         )}
                       </>
-                    );
-                  })()}
-                </div>
-
-                {/* Fastest to Start */}
-                <div className="bg-purple-50 rounded-lg p-4">
-                  <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
-                  {(() => {
-                    const best = selectedCareers.reduce((b, c) => (c.education?.time_to_job_ready?.typical_years || 10) < (b.education?.time_to_job_ready?.typical_years || 10) ? c : b);
-                    return (
-                      <a href={`/careers/${best.slug}`} className="font-bold text-purple-800 hover:underline block">
-                        {best.title}
-                      </a>
-                    );
-                  })()}
-                </div>
-
-                {/* ARCHIVED: Highest National Importance card removed - see data/archived/importance-scores-backup.json */}
-
-                {/* Best ROI */}
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-emerald-700 mb-1">Best 10-Year ROI</div>
-                  {(() => {
-                    const withROI = careerPaths.map(p => {
-                      const timeline = p.career.career_progression?.timeline || [];
-                      const earnings = timeline.filter(t => t.year < 10).reduce((sum, t) => sum + t.expected_compensation, 0);
-                      const cost = p.educationCost || 1;
-                      return { path: p, roi: (earnings - cost) / Math.max(cost, 1) };
-                    });
-                    const best = withROI.reduce((b, curr) => curr.roi > b.roi ? curr : b);
-                    return (
-                      <a href={`/careers/${best.path.career.slug}`} className="font-bold text-emerald-800 hover:underline block">
-                        {best.path.career.title}
-                      </a>
                     );
                   })()}
                 </div>
