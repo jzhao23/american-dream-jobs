@@ -15,6 +15,33 @@ import {
 const careers = careersIndex as CareerIndex[];
 const fullCareers = careersData as Career[];
 
+// Tooltip component with info icon
+function Tooltip({ text }: { text: string }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <span className="relative inline-block ml-1">
+      <button
+        type="button"
+        className="inline-flex items-center justify-center w-4 h-4 text-xs text-ds-slate-muted hover:text-sage cursor-help rounded-full border border-ds-slate-muted hover:border-sage transition-colors"
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        onFocus={() => setIsVisible(true)}
+        onBlur={() => setIsVisible(false)}
+        aria-label="More information"
+      >
+        i
+      </button>
+      {isVisible && (
+        <span className="absolute z-20 w-56 px-3 py-2 text-xs text-ds-slate bg-warm-white border border-sage-muted rounded-lg shadow-lg -left-24 bottom-6">
+          {text}
+          <span className="absolute w-2 h-2 bg-warm-white border-r border-b border-sage-muted transform rotate-45 left-1/2 -translate-x-1/2 -bottom-1" />
+        </span>
+      )}
+    </span>
+  );
+}
+
 interface YearlyProjection {
   year: number;
   age: number;
@@ -38,6 +65,7 @@ function CalculatorContent() {
   const [retirementAge, setRetirementAge] = useState(65);
   const [educationCostIncluded, setEducationCostIncluded] = useState(true);
   const [selectedSpecialization, setSelectedSpecialization] = useState<string | null>(null);
+  const [comparisonScenario, setComparisonScenario] = useState<'none' | 'retire_later' | 'save_more'>('none');
 
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
@@ -162,6 +190,108 @@ function CalculatorContent() {
     };
   }, [projections]);
 
+  // Helper to calculate final net worth for a given scenario
+  const calculateNetWorthForScenario = (
+    scenarioRetirementAge: number,
+    scenarioSavingsRate: number
+  ): number => {
+    if (!selectedCareer) return 0;
+
+    const education = getEffectiveEducation();
+    const timeline = selectedCareer.career_progression?.timeline || [];
+    const educationCost = educationCostIncluded ? (education?.estimated_cost?.typical_cost || 0) : 0;
+    let netWorth = startingSavings - educationCost;
+
+    for (let age = currentAge; age <= scenarioRetirementAge; age++) {
+      const careerYear = age - currentAge;
+      const timelineIndex = Math.min(careerYear, timeline.length - 1);
+      const income = timeline[timelineIndex]?.expected_compensation || 0;
+      const yearlySavings = income * (scenarioSavingsRate / 100);
+      const investmentGrowthAmount = netWorth > 0 ? netWorth * (investmentReturn / 100) : 0;
+      netWorth = netWorth + investmentGrowthAmount + yearlySavings;
+    }
+
+    return netWorth;
+  };
+
+  // Calculate Key Insights
+  const insights = useMemo(() => {
+    if (!selectedCareer) return null;
+
+    const education = getEffectiveEducation();
+    const educationCost = educationCostIncluded ? (education?.estimated_cost?.typical_cost || 0) : 0;
+    const timeline = selectedCareer.career_progression?.timeline || [];
+
+    // Current final net worth
+    const currentNetWorth = projections[projections.length - 1]?.netWorth || 0;
+
+    // Net worth at age 65 (or current retirement age if already past 65)
+    const netWorthAt65 = calculateNetWorthForScenario(65, savingsRate);
+    const retirementVs65Difference = currentNetWorth - netWorthAt65;
+
+    // Impact of 1% more savings
+    const netWorthWith1MorePercent = calculateNetWorthForScenario(retirementAge, savingsRate + 1);
+    const impactOf1PercentSavings = netWorthWith1MorePercent - currentNetWorth;
+
+    // Find breakeven age where education investment pays off (net worth > 0 with education vs without)
+    let breakevenAge: number | null = null;
+    if (educationCost > 0) {
+      // Find when cumulative earnings from this career exceed what you'd have without the education cost
+      let netWorthWithEducation = startingSavings - educationCost;
+      for (let age = currentAge; age <= 100; age++) {
+        const careerYear = age - currentAge;
+        const timelineIndex = Math.min(careerYear, timeline.length - 1);
+        const income = timeline[timelineIndex]?.expected_compensation || 0;
+        const yearlySavings = income * (savingsRate / 100);
+        const growth = netWorthWithEducation > 0 ? netWorthWithEducation * (investmentReturn / 100) : 0;
+        netWorthWithEducation = netWorthWithEducation + growth + yearlySavings;
+
+        // Breakeven is when net worth becomes positive (paid off education debt)
+        if (netWorthWithEducation > 0 && breakevenAge === null) {
+          breakevenAge = age;
+          break;
+        }
+      }
+    }
+
+    // Find age to reach $1M
+    const millionAge = projections.find(p => p.netWorth >= 1000000)?.age || null;
+
+    // Impact of retiring 5 years later
+    const netWorthRetire5Later = calculateNetWorthForScenario(Math.min(retirementAge + 5, 100), savingsRate);
+    const retire5YearsLaterDiff = netWorthRetire5Later - currentNetWorth;
+
+    // Impact of saving 5% more
+    const netWorthSave5More = calculateNetWorthForScenario(retirementAge, Math.min(savingsRate + 5, 50));
+    const save5PercentMoreDiff = netWorthSave5More - currentNetWorth;
+
+    return {
+      currentNetWorth,
+      retirementVs65Difference,
+      impactOf1PercentSavings,
+      breakevenAge,
+      millionAge,
+      retire5YearsLaterDiff,
+      save5PercentMoreDiff,
+    };
+  }, [projections, selectedCareer, currentAge, startingSavings, savingsRate, investmentReturn, retirementAge, educationCostIncluded, selectedSpecialization]);
+
+  // Handle What-if button clicks
+  const handleWhatIf = (scenario: 'retire_later' | 'save_more') => {
+    if (comparisonScenario === scenario) {
+      // Reset to original
+      setComparisonScenario('none');
+    } else {
+      // Apply the scenario
+      setComparisonScenario(scenario);
+      if (scenario === 'retire_later') {
+        setRetirementAge(Math.min(retirementAge + 5, 100));
+      } else if (scenario === 'save_more') {
+        setSavingsRate(Math.min(savingsRate + 5, 50));
+      }
+    }
+  };
+
   const selectCareer = (slug: string) => {
     setSelectedSlug(slug);
     setSearchQuery("");
@@ -176,10 +306,22 @@ function CalculatorContent() {
           <h1 className="font-display text-3xl md:text-4xl font-semibold text-ds-slate mb-4">
             Net Worth Calculator
           </h1>
-          <p className="text-lg text-ds-slate-light max-w-2xl">
-            Project your lifetime earnings and net worth based on your career choice.
-            See how different paths compare over time.
+          <p className="text-lg text-ds-slate-light max-w-2xl mb-4">
+            See how your career choice impacts your lifetime wealth. This calculator
+            projects your net worth from now until retirement, factoring in your salary,
+            savings habits, and investment growth.
           </p>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-sage-pale rounded-full text-sage">
+              <span>1.</span> Pick a career
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-sage-pale rounded-full text-sage">
+              <span>2.</span> Adjust your details
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-sage-pale rounded-full text-sage">
+              <span>3.</span> See your projected wealth
+            </div>
+          </div>
         </div>
       </section>
 
@@ -275,20 +417,21 @@ function CalculatorContent() {
                   <input
                     type="range"
                     min={16}
-                    max={50}
+                    max={65}
                     value={currentAge}
                     onChange={(e) => setCurrentAge(Number(e.target.value))}
                     className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
                   <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>16</span>
-                    <span>50</span>
+                    <span>65</span>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Starting Savings: {formatPay(startingSavings)}
+                    <Tooltip text="Money you already have saved (checking, savings, investments)" />
                   </label>
                   <input
                     type="range"
@@ -308,6 +451,7 @@ function CalculatorContent() {
                 <div>
                   <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Savings Rate: {savingsRate}%
+                    <Tooltip text="Percentage of your income you'll save each year" />
                   </label>
                   <input
                     type="range"
@@ -327,6 +471,7 @@ function CalculatorContent() {
                 <div>
                   <label className="block text-sm font-medium text-ds-slate-light mb-1">
                     Investment Return: {investmentReturn}%
+                    <Tooltip text="Expected annual return on investments (7% is historical stock market average)" />
                   </label>
                   <input
                     type="range"
@@ -350,14 +495,14 @@ function CalculatorContent() {
                   <input
                     type="range"
                     min={55}
-                    max={70}
+                    max={100}
                     value={retirementAge}
                     onChange={(e) => setRetirementAge(Number(e.target.value))}
                     className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
                   <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>55</span>
-                    <span>70</span>
+                    <span>100</span>
                   </div>
                 </div>
 
@@ -535,18 +680,176 @@ function CalculatorContent() {
                   </div>
                 </div>
 
-                {/* Milestones */}
-                <div className="card-warm p-6">
-                  <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Milestones</h2>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    {milestones.map(milestone => (
-                      <div key={milestone.age} className="text-center p-3 bg-cream rounded-lg">
-                        <div className="text-sm text-ds-slate-light">Age {milestone.age}</div>
-                        <div className={`font-bold ${milestone.netWorth >= 1000000 ? 'text-green-600' : milestone.netWorth < 0 ? 'text-red-600' : 'text-ds-slate'}`}>
-                          {milestone.netWorth >= 0 ? formatPay(milestone.netWorth) : `-${formatPay(Math.abs(milestone.netWorth))}`}
+                {/* What-If Quick Actions */}
+                <div className="card-warm p-6 bg-blue-50 border-blue-200">
+                  <h2 className="font-display text-lg font-semibold text-ds-slate mb-3">Try What-If Scenarios</h2>
+                  <p className="text-sm text-ds-slate-light mb-4">See how small changes can impact your net worth</p>
+                  <div className="flex flex-wrap gap-3">
+                    <button
+                      onClick={() => handleWhatIf('retire_later')}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        retirementAge <= 95
+                          ? 'bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-300'
+                          : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      }`}
+                      disabled={retirementAge > 95}
+                    >
+                      Retire 5 years later
+                      {insights && retirementAge <= 95 && (
+                        <span className="ml-2 text-green-600">+{formatPay(insights.retire5YearsLaterDiff)}</span>
+                      )}
+                    </button>
+                    <button
+                      onClick={() => handleWhatIf('save_more')}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        savingsRate < 50
+                          ? 'bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-300'
+                          : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      }`}
+                      disabled={savingsRate >= 50}
+                    >
+                      Save 5% more
+                      {insights && savingsRate < 50 && (
+                        <span className="ml-2 text-green-600">+{formatPay(insights.save5PercentMoreDiff)}</span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Key Insights */}
+                {insights && (
+                  <div className="card-warm p-6 bg-gradient-to-br from-sage-pale to-white border-sage">
+                    <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Key Insights</h2>
+                    <div className="space-y-4">
+                      {/* Retirement age comparison */}
+                      {retirementAge !== 65 && (
+                        <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                          <span className="text-2xl">🎯</span>
+                          <div>
+                            <p className="text-sm font-medium text-ds-slate">
+                              Retiring at {retirementAge} vs 65 {insights.retirementVs65Difference >= 0 ? 'adds' : 'reduces your net worth by'}{' '}
+                              <span className={insights.retirementVs65Difference >= 0 ? 'text-green-600' : 'text-red-600'}>
+                                {formatPay(Math.abs(insights.retirementVs65Difference))}
+                              </span>
+                            </p>
+                            <p className="text-xs text-ds-slate-muted mt-1">
+                              {retirementAge > 65
+                                ? 'More working years means more savings and investment growth'
+                                : 'Fewer working years but more time to enjoy retirement'}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Savings rate impact */}
+                      <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                        <span className="text-2xl">💰</span>
+                        <div>
+                          <p className="text-sm font-medium text-ds-slate">
+                            Each 1% increase in savings rate adds{' '}
+                            <span className="text-green-600">{formatPay(insights.impactOf1PercentSavings)}</span>{' '}
+                            to your net worth
+                          </p>
+                          <p className="text-xs text-ds-slate-muted mt-1">
+                            Small consistent increases compound significantly over time
+                          </p>
                         </div>
                       </div>
-                    ))}
+
+                      {/* Education payback */}
+                      {insights.breakevenAge && educationCostIncluded && (
+                        <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                          <span className="text-2xl">🎓</span>
+                          <div>
+                            <p className="text-sm font-medium text-ds-slate">
+                              Your education investment pays back by age{' '}
+                              <span className="text-sage font-bold">{insights.breakevenAge}</span>
+                            </p>
+                            <p className="text-xs text-ds-slate-muted mt-1">
+                              {insights.breakevenAge <= currentAge + 5
+                                ? 'Great ROI! You\'ll be in the positive quickly'
+                                : insights.breakevenAge <= currentAge + 10
+                                ? 'Solid investment with reasonable payback period'
+                                : 'Longer payback, but education has non-financial benefits too'}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Million dollar milestone */}
+                      <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                        <span className="text-2xl">🏆</span>
+                        <div>
+                          <p className="text-sm font-medium text-ds-slate">
+                            {insights.millionAge
+                              ? <>At this rate, you&apos;ll hit <span className="text-green-600 font-bold">$1M</span> by age <span className="text-sage font-bold">{insights.millionAge}</span></>
+                              : <>To reach $1M, consider increasing your savings rate or retirement age</>
+                            }
+                          </p>
+                          <p className="text-xs text-ds-slate-muted mt-1">
+                            {insights.millionAge
+                              ? insights.millionAge <= 45
+                                ? 'Excellent trajectory! You\'re on track for early financial independence'
+                                : insights.millionAge <= 55
+                                ? 'Solid path to becoming a millionaire before typical retirement'
+                                : 'You\'ll reach this milestone during your career'
+                              : 'Try the what-if scenarios above to see how changes help'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Improved Milestones */}
+                <div className="card-warm p-6">
+                  <h2 className="font-display text-lg font-semibold text-ds-slate mb-4">Your Wealth Journey</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Key milestone amounts */}
+                    {[
+                      { amount: 100000, label: '$100K', icon: '🌱' },
+                      { amount: 250000, label: '$250K', icon: '🌿' },
+                      { amount: 500000, label: '$500K', icon: '🌳' },
+                      { amount: 1000000, label: '$1M', icon: '🏆' },
+                    ].map(target => {
+                      const reachAge = projections.find(p => p.netWorth >= target.amount)?.age;
+                      const isAchieved = reachAge !== undefined;
+                      return (
+                        <div
+                          key={target.amount}
+                          className={`flex items-center gap-3 p-3 rounded-lg ${
+                            isAchieved ? 'bg-green-50 border border-green-200' : 'bg-gray-50 border border-gray-200'
+                          }`}
+                        >
+                          <span className="text-2xl">{target.icon}</span>
+                          <div>
+                            <div className={`font-bold ${isAchieved ? 'text-green-700' : 'text-gray-500'}`}>
+                              {target.label}
+                            </div>
+                            <div className={`text-sm ${isAchieved ? 'text-green-600' : 'text-gray-400'}`}>
+                              {isAchieved
+                                ? `Reached at age ${reachAge}`
+                                : 'Not reached by retirement'}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Traditional age milestones */}
+                  <div className="mt-6 pt-4 border-t border-sage-muted">
+                    <h3 className="text-sm font-medium text-ds-slate-light mb-3">Net Worth by Age</h3>
+                    <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
+                      {milestones.map(milestone => (
+                        <div key={milestone.age} className="text-center p-2 bg-cream rounded-lg">
+                          <div className="text-xs text-ds-slate-light">Age {milestone.age}</div>
+                          <div className={`text-sm font-bold ${milestone.netWorth >= 1000000 ? 'text-green-600' : milestone.netWorth < 0 ? 'text-red-600' : 'text-ds-slate'}`}>
+                            {milestone.netWorth >= 0 ? formatPay(milestone.netWorth) : `-${formatPay(Math.abs(milestone.netWorth))}`}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -599,13 +902,31 @@ function CalculatorContent() {
               </>
             ) : (
               <div className="card-warm p-12 text-center">
-                <div className="text-6xl mb-4">Calculator</div>
-                <h3 className="text-xl font-semibold text-ds-slate mb-2">
-                  Select a career to get started
+                <div className="text-6xl mb-4">💰</div>
+                <h3 className="text-xl font-semibold text-ds-slate mb-3">
+                  Start Your Wealth Projection
                 </h3>
-                <p className="text-ds-slate-light">
-                  Choose a career path to see projected lifetime earnings and net worth calculations.
+                <p className="text-ds-slate-light mb-6 max-w-md mx-auto">
+                  Select a career on the left to see how your choices impact your lifetime net worth.
+                  You&apos;ll get personalized insights on reaching financial milestones.
                 </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-lg mx-auto">
+                  <div className="p-3 bg-sage-pale rounded-lg">
+                    <div className="text-lg mb-1">📊</div>
+                    <div className="text-sm font-medium text-ds-slate">Projections</div>
+                    <div className="text-xs text-ds-slate-muted">See net worth over time</div>
+                  </div>
+                  <div className="p-3 bg-sage-pale rounded-lg">
+                    <div className="text-lg mb-1">🎯</div>
+                    <div className="text-sm font-medium text-ds-slate">Milestones</div>
+                    <div className="text-xs text-ds-slate-muted">Track $100K to $1M goals</div>
+                  </div>
+                  <div className="p-3 bg-sage-pale rounded-lg">
+                    <div className="text-lg mb-1">💡</div>
+                    <div className="text-sm font-medium text-ds-slate">Insights</div>
+                    <div className="text-xs text-ds-slate-muted">Get personalized advice</div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
