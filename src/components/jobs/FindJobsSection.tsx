@@ -83,7 +83,7 @@ export function FindJobsSection({
                 <h3 className="font-semibold text-ds-slate">Find Jobs</h3>
               </div>
               <p className="text-sm text-ds-slate-light mb-4">
-                Search positions from LinkedIn, Indeed, Glassdoor, and more. Get 10-20 relevant job listings with salary info.
+                Search positions from LinkedIn, Indeed, Glassdoor, and more. Get up to 50 relevant job listings with salary info.
               </p>
               <ul className="flex flex-wrap gap-3 text-xs text-ds-slate-muted mb-4">
                 <li className="flex items-center gap-1">
