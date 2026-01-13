@@ -211,26 +211,33 @@ function getMockJobResults(careerTitle: string, location: string, limit: number)
   const companies = [
     'Acme Corporation', 'TechStart Inc', 'Global Solutions', 'Innovation Labs',
     'Premier Services', 'Dynamic Systems', 'Future Forward', 'NextGen Co',
-    'Apex Industries', 'Summit Enterprises'
+    'Apex Industries', 'Summit Enterprises', 'Metro Services', 'City Works',
+    'United Industries', 'Pacific Group', 'Atlantic Corp', 'Midwest Solutions',
+    'Southern Tech', 'Northern Systems', 'Central Services', 'Coastal Enterprises',
+    'Mountain View Co', 'Valley Partners', 'Harbor Group', 'Lakeside Corp',
+    'Riverfront Inc', 'Parkway Services', 'Gateway Systems', 'Crossroads Tech',
+    'Horizon Group', 'Skyline Industries', 'Landmark Corp', 'Pioneer Solutions',
+    'Frontier Tech', 'Cornerstone Inc', 'Keystone Services', 'Milestone Group',
+    'Pathway Corp', 'Ridgeway Systems', 'Springboard Inc', 'Trailblazer Co',
+    'Vanguard Services', 'Westward Group', 'Eastside Corp', 'Northstar Inc',
+    'Southgate Systems', 'Sunbelt Services', 'Heartland Group', 'Bayview Corp',
+    'Hillcrest Inc', 'Meadowbrook Co'
   ];
 
-  const locations = [
-    `${location}`, `Remote`, `${location} (Hybrid)`, `${location}`,
-    'Remote (US)', `${location}`, `${location}`, 'Remote',
-    `${location} (Hybrid)`, `${location}`
-  ];
+  const locationTypes = ['onsite', 'remote', 'hybrid', 'onsite', 'onsite'];
 
-  for (let i = 0; i < Math.min(limit, 10); i++) {
+  for (let i = 0; i < Math.min(limit, 50); i++) {
+    const locationType = locationTypes[i % locationTypes.length];
+    const jobLocation = locationType === 'remote' ? 'Remote (US)' :
+                        locationType === 'hybrid' ? `${location} (Hybrid)` : location;
     const baseSalary = 50000 + Math.floor(Math.random() * 80000);
-    const isRemote = locations[i].includes('Remote');
-    const isHybrid = locations[i].includes('Hybrid');
 
     mockJobs.push({
       id: `mock_${i}_${Date.now()}`,
       title: `${careerTitle}${i > 0 ? ` - Level ${i + 1}` : ''}`,
-      company: companies[i],
-      location: locations[i],
-      locationType: isRemote ? 'remote' : isHybrid ? 'hybrid' : 'onsite',
+      company: companies[i % companies.length],
+      location: jobLocation,
+      locationType: locationType as 'onsite' | 'remote' | 'hybrid',
       salary: {
         min: baseSalary,
         max: baseSalary + 20000,

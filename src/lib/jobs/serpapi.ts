@@ -17,6 +17,7 @@ const SERPAPI_BASE_URL = 'https://serpapi.com/search.json';
 
 /**
  * Search for jobs using SerpApi Google Jobs
+ * Fetches multiple pages to get more results (Google Jobs returns ~10 per page)
  */
 export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSearchResult> {
   const apiKey = process.env.SERPAPI_API_KEY;
@@ -33,83 +34,130 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
   // Google Jobs location parameter is a hint, not a strict filter
   const queryWithLocation = `${params.query} in ${simplifiedLocation}`;
 
-  // Build search URL
-  const searchParams = new URLSearchParams({
-    api_key: apiKey,
-    engine: 'google_jobs',
-    q: queryWithLocation,
-    location: simplifiedLocation,
-    lrad: '50',  // 50km radius to restrict results geographically
-    google_domain: 'google.com',
-    gl: 'us',
-    hl: 'en'
-  });
+  const targetLimit = params.limit || 50;
+  const allJobs: JobListing[] = [];
+  let searchId = '';
+  let totalRawResults = 0;
 
-  // Add date filter if specified
-  if (params.filters?.datePosted) {
-    const chipMap: Record<string, string> = {
-      'today': 'date_posted:today',
-      '3days': 'date_posted:3days',
-      'week': 'date_posted:week',
-      'month': 'date_posted:month'
-    };
-    if (chipMap[params.filters.datePosted]) {
-      searchParams.set('chips', chipMap[params.filters.datePosted]);
-    }
-  }
+  // Fetch multiple pages to get enough results (Google Jobs returns ~10 per page)
+  // Limit to 5 pages max to avoid excessive API calls
+  const maxPages = Math.min(Math.ceil(targetLimit / 10), 5);
 
   console.log(`[SerpApi] Searching for: "${queryWithLocation}" (location param: "${simplifiedLocation}", radius: 50km)`);
-  console.log(`[SerpApi] API Key present: ${!!apiKey}, length: ${apiKey?.length || 0}`);
+  console.log(`[SerpApi] Target: ${targetLimit} jobs, fetching up to ${maxPages} pages`);
 
-  try {
-    const response = await fetch(`${SERPAPI_BASE_URL}?${searchParams.toString()}`);
+  for (let page = 0; page < maxPages; page++) {
+    // Build search URL
+    const searchParams = new URLSearchParams({
+      api_key: apiKey,
+      engine: 'google_jobs',
+      q: queryWithLocation,
+      location: simplifiedLocation,
+      lrad: '50',  // 50km radius to restrict results geographically
+      google_domain: 'google.com',
+      gl: 'us',
+      hl: 'en',
+      start: String(page * 10)  // Pagination offset
+    });
 
-    console.log(`[SerpApi] Response status: ${response.status}`);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`[SerpApi] Error response: ${errorText}`);
-
-      if (response.status === 429) {
-        throw {
-          code: 'RATE_LIMITED',
-          message: 'API rate limit exceeded',
-          retryAfter: 60
-        };
+    // Add date filter if specified
+    if (params.filters?.datePosted) {
+      const chipMap: Record<string, string> = {
+        'today': 'date_posted:today',
+        '3days': 'date_posted:3days',
+        'week': 'date_posted:week',
+        'month': 'date_posted:month'
+      };
+      if (chipMap[params.filters.datePosted]) {
+        searchParams.set('chips', chipMap[params.filters.datePosted]);
       }
-      throw new Error(`SerpApi request failed: ${response.status} - ${errorText}`);
     }
 
-    const data: SerpApiJobsResponse = await response.json();
+    try {
+      const response = await fetch(`${SERPAPI_BASE_URL}?${searchParams.toString()}`);
 
-    if (data.error) {
-      console.error(`[SerpApi] API returned error: ${data.error}`);
-      throw new Error(`SerpApi error: ${data.error}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`[SerpApi] Error response on page ${page + 1}: ${errorText}`);
+
+        if (response.status === 429) {
+          throw {
+            code: 'RATE_LIMITED',
+            message: 'API rate limit exceeded',
+            retryAfter: 60
+          };
+        }
+        // If first page fails, throw error; otherwise break and use what we have
+        if (page === 0) {
+          throw new Error(`SerpApi request failed: ${response.status} - ${errorText}`);
+        }
+        break;
+      }
+
+      const data: SerpApiJobsResponse = await response.json();
+
+      if (data.error) {
+        console.error(`[SerpApi] API returned error on page ${page + 1}: ${data.error}`);
+        if (page === 0) {
+          throw new Error(`SerpApi error: ${data.error}`);
+        }
+        break;
+      }
+
+      // Store search ID from first page
+      if (page === 0) {
+        searchId = data.search_metadata?.id || `serpapi_${Date.now()}`;
+      }
+
+      const pageJobs = data.jobs_results || [];
+      totalRawResults += pageJobs.length;
+
+      console.log(`[SerpApi] Page ${page + 1}: found ${pageJobs.length} jobs`);
+
+      // No more results available
+      if (pageJobs.length === 0) {
+        break;
+      }
+
+      // Transform and filter jobs
+      const transformedJobs = pageJobs
+        .map(job => transformSerpApiJob(job))
+        .filter(job => passesFilters(job, params.filters));
+
+      allJobs.push(...transformedJobs);
+
+      // Stop if we have enough jobs
+      if (allJobs.length >= targetLimit) {
+        break;
+      }
+
+      // Small delay between requests to be nice to the API
+      if (page < maxPages - 1) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    } catch (error) {
+      if (page === 0) {
+        throw error;
+      }
+      console.warn(`[SerpApi] Error on page ${page + 1}, using results so far:`, error);
+      break;
     }
-
-    // Transform and filter jobs
-    const allJobs = (data.jobs_results || [])
-      .map(job => transformSerpApiJob(job))
-      .filter(job => passesFilters(job, params.filters));
-
-    // Post-filter to ensure jobs are in the expected location area
-    // SerpApi sometimes returns jobs from other locations
-    const locationFilteredJobs = filterJobsByLocation(allJobs, simplifiedLocation);
-
-    const jobs = locationFilteredJobs.slice(0, params.limit || 50);
-
-    console.log(`[SerpApi] Found ${jobs.length} jobs (raw: ${data.jobs_results?.length || 0}, after location filter: ${locationFilteredJobs.length})`);
-
-    return {
-      jobs,
-      totalResults: data.jobs_results?.length || 0,
-      source: 'serpapi',
-      searchId: data.search_metadata?.id || `serpapi_${Date.now()}`
-    };
-  } catch (error) {
-    console.error('[SerpApi] Search error:', error);
-    throw error;
   }
+
+  // Post-filter to ensure jobs are in the expected location area
+  // SerpApi sometimes returns jobs from other locations
+  const locationFilteredJobs = filterJobsByLocation(allJobs, simplifiedLocation);
+
+  const jobs = locationFilteredJobs.slice(0, targetLimit);
+
+  console.log(`[SerpApi] Final: ${jobs.length} jobs (raw: ${totalRawResults}, after location filter: ${locationFilteredJobs.length})`);
+
+  return {
+    jobs,
+    totalResults: totalRawResults,
+    source: 'serpapi',
+    searchId
+  };
 }
 
 /**

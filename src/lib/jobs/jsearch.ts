@@ -16,6 +16,7 @@ const JSEARCH_BASE_URL = 'https://jsearch.p.rapidapi.com/search';
 
 /**
  * Search for jobs using JSearch (RapidAPI)
+ * Fetches multiple pages to get more results
  */
 export async function searchJobsJSearch(params: JobSearchParams): Promise<JobSearchResult> {
   const apiKey = process.env.JSEARCH_API_KEY;
@@ -26,65 +27,114 @@ export async function searchJobsJSearch(params: JobSearchParams): Promise<JobSea
 
   // Build query with location
   const query = `${params.query} in ${params.location}`;
+  const targetLimit = params.limit || 50;
+  const allJobs: JobListing[] = [];
+  let searchId = '';
+  let totalRawResults = 0;
 
-  // Build request parameters
-  const searchParams = new URLSearchParams({
-    query,
-    page: '1',
-    num_pages: '1',
-    country: 'us',
-    date_posted: getDatePostedFilter(params.filters?.datePosted)
-  });
-
-  // Add remote filter if specified
-  if (params.filters?.remoteOnly) {
-    searchParams.set('remote_jobs_only', 'true');
-  }
+  // Fetch multiple pages to get enough results
+  // JSearch returns ~10 jobs per page, limit to 5 pages max
+  const maxPages = Math.min(Math.ceil(targetLimit / 10), 5);
 
   console.log(`[JSearch] Searching for: "${query}"`);
+  console.log(`[JSearch] Target: ${targetLimit} jobs, fetching up to ${maxPages} pages`);
 
-  try {
-    const response = await fetch(`${JSEARCH_BASE_URL}?${searchParams.toString()}`, {
-      headers: {
-        'X-RapidAPI-Key': apiKey,
-        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-      }
+  for (let page = 1; page <= maxPages; page++) {
+    // Build request parameters
+    const searchParams = new URLSearchParams({
+      query,
+      page: String(page),
+      num_pages: '1',
+      country: 'us',
+      date_posted: getDatePostedFilter(params.filters?.datePosted)
     });
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        throw {
-          code: 'RATE_LIMITED',
-          message: 'API rate limit exceeded',
-          retryAfter: 60
-        };
+    // Add remote filter if specified
+    if (params.filters?.remoteOnly) {
+      searchParams.set('remote_jobs_only', 'true');
+    }
+
+    try {
+      const response = await fetch(`${JSEARCH_BASE_URL}?${searchParams.toString()}`, {
+        headers: {
+          'X-RapidAPI-Key': apiKey,
+          'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+        }
+      });
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw {
+            code: 'RATE_LIMITED',
+            message: 'API rate limit exceeded',
+            retryAfter: 60
+          };
+        }
+        if (page === 1) {
+          throw new Error(`JSearch request failed: ${response.status}`);
+        }
+        break;
       }
-      throw new Error(`JSearch request failed: ${response.status}`);
+
+      const data: JSearchResponse = await response.json();
+
+      if (data.status !== 'OK') {
+        if (page === 1) {
+          throw new Error(`JSearch error: ${data.status}`);
+        }
+        break;
+      }
+
+      // Store search ID from first page
+      if (page === 1) {
+        searchId = data.request_id || `jsearch_${Date.now()}`;
+      }
+
+      const pageJobs = data.data || [];
+      totalRawResults += pageJobs.length;
+
+      console.log(`[JSearch] Page ${page}: found ${pageJobs.length} jobs`);
+
+      // No more results available
+      if (pageJobs.length === 0) {
+        break;
+      }
+
+      // Transform and filter jobs
+      const transformedJobs = pageJobs
+        .map(job => transformJSearchJob(job))
+        .filter(job => passesFilters(job, params.filters));
+
+      allJobs.push(...transformedJobs);
+
+      // Stop if we have enough jobs
+      if (allJobs.length >= targetLimit) {
+        break;
+      }
+
+      // Small delay between requests to be nice to the API
+      if (page < maxPages) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    } catch (error) {
+      if (page === 1) {
+        throw error;
+      }
+      console.warn(`[JSearch] Error on page ${page}, using results so far:`, error);
+      break;
     }
-
-    const data: JSearchResponse = await response.json();
-
-    if (data.status !== 'OK') {
-      throw new Error(`JSearch error: ${data.status}`);
-    }
-
-    const jobs = (data.data || [])
-      .slice(0, params.limit || 50)
-      .map(job => transformJSearchJob(job))
-      .filter(job => passesFilters(job, params.filters));
-
-    console.log(`[JSearch] Found ${jobs.length} jobs`);
-
-    return {
-      jobs,
-      totalResults: data.data?.length || 0,
-      source: 'jsearch',
-      searchId: data.request_id || `jsearch_${Date.now()}`
-    };
-  } catch (error) {
-    console.error('[JSearch] Search error:', error);
-    throw error;
   }
+
+  const jobs = allJobs.slice(0, targetLimit);
+
+  console.log(`[JSearch] Final: ${jobs.length} jobs (raw: ${totalRawResults})`);
+
+  return {
+    jobs,
+    totalResults: totalRawResults,
+    source: 'jsearch',
+    searchId
+  };
 }
 
 /**
