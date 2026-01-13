@@ -585,7 +585,7 @@ export function CareerCompassWizard() {
               }`}
             >
               <span>⚡</span>
-              <span>{selectedWorkStyle.length ? `${selectedWorkStyle.length} styles` : 'Skipped'}</span>
+              <span>{selectedWorkStyle.length ? `${selectedWorkStyle.length} work styles` : 'Skipped'}</span>
             </button>
           )}
 
@@ -847,14 +847,14 @@ export function CareerCompassWizard() {
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
                 What type of work appeals to you most?
               </h2>
-              <p className="text-sm text-ds-slate-light">Select up to 2, or skip to continue</p>
+              <p className="text-sm text-ds-slate-light">Select all that apply, or skip to continue</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
               {workStyleOptions.map((option) => (
                 <button
                   key={option.id}
-                  onClick={() => toggleOption(selectedWorkStyle, setSelectedWorkStyle, option.id, 2)}
+                  onClick={() => toggleOption(selectedWorkStyle, setSelectedWorkStyle, option.id)}
                   className={`flex flex-col items-start gap-1 p-4 rounded-xl border-2 transition-all ${
                     selectedWorkStyle.includes(option.id)
                       ? 'border-sage bg-sage-pale'

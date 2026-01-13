@@ -28,7 +28,7 @@ export interface UserPreferences {
   educationLevel: 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
   workBackground: string[];   // e.g., ['service', 'office', 'technical']
   salaryTarget: 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
-  workStyle: string[];        // e.g., ['hands-on', 'people'] - max 2
+  workStyle: string[];        // e.g., ['hands-on', 'people', 'analytical']
   additionalContext?: string; // "Anything else we should know" field
 }
 
