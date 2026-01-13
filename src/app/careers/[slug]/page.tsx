@@ -27,7 +27,7 @@ import {
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 import { LocalJobMarket } from "@/components/LocalJobMarket";
-import { FindJobsButton, FindJobsSection } from "@/components/jobs";
+import { FindJobsSection, CareerHeroCTAs, CareerPageWrapper } from "@/components/jobs";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -139,6 +139,12 @@ export default async function CareerPage({ params }: PageProps) {
   const allReviews = loadCareerReviews(career.slug);
 
   return (
+    <CareerPageWrapper
+      careerSlug={career.slug}
+      careerTitle={career.title}
+      onetCode={career.onet_code}
+      alternateJobTitles={career.alternate_titles?.slice(0, 5)}
+    >
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="bg-warm-white border-b border-sage-muted">
@@ -226,33 +232,13 @@ export default async function CareerPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Action CTAs */}
-          <div className="flex flex-wrap gap-3 mt-6">
-            <FindJobsButton
-              careerSlug={career.slug}
-              careerTitle={career.title}
-              alternateJobTitles={career.alternate_titles?.slice(0, 5)}
-              variant="hero"
-            />
-            <a
-              href={`/compare?career=${career.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              Compare with other careers
-            </a>
-            <a
-              href={`/calculator?career=${career.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              Calculate lifetime earnings
-            </a>
-          </div>
+          {/* Action CTAs - Find Jobs and Training are most prominent */}
+          <CareerHeroCTAs
+            careerSlug={career.slug}
+            careerTitle={career.title}
+            onetCode={career.onet_code}
+            alternateJobTitles={career.alternate_titles?.slice(0, 5)}
+          />
         </div>
       </section>
 
@@ -467,10 +453,11 @@ export default async function CareerPage({ params }: PageProps) {
             nationalMedianWage={medianPay}
           />
 
-          {/* Find Jobs Section */}
+          {/* Find Jobs & Training Section */}
           <FindJobsSection
             careerSlug={career.slug}
             careerTitle={career.title}
+            onetCode={career.onet_code}
             alternateJobTitles={career.alternate_titles?.slice(0, 5)}
             medianSalary={medianPay}
           />
@@ -725,6 +712,7 @@ export default async function CareerPage({ params }: PageProps) {
         </div>
       </div>
     </div>
+    </CareerPageWrapper>
   );
 }
 
