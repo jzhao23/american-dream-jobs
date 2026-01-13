@@ -3,6 +3,7 @@
 import { useState, Fragment } from "react";
 import Link from "next/link";
 import { formatPay, getAIResilienceEmoji, type AIResilienceClassification } from "@/types/career";
+import { FindJobsButton } from "@/components/jobs/FindJobsButton";
 
 interface Specialization {
   title: string;
@@ -68,7 +69,8 @@ export function SpecializationsTable({
               <th className="text-right py-3 px-4 font-medium text-ds-slate-muted">Median Pay</th>
               <th className="text-center py-3 px-4 font-medium text-ds-slate-muted">AI Outlook</th>
               <th className="text-right py-3 px-4 font-medium text-ds-slate-muted">O*NET Code</th>
-              <th className="text-center py-3 px-4 font-medium text-ds-slate-muted">Actions</th>
+              <th className="text-center py-3 px-4 font-medium text-ds-slate-muted">Find Jobs</th>
+              <th className="text-center py-3 px-4 font-medium text-ds-slate-muted">Details</th>
             </tr>
           </thead>
           <tbody>
@@ -115,6 +117,14 @@ export function SpecializationsTable({
                     )}
                   </td>
                   <td className="py-3 px-4 text-center">
+                    <FindJobsButton
+                      careerSlug={spec.slug}
+                      careerTitle={spec.title}
+                      variant="primary"
+                      className="text-xs px-3 py-1.5"
+                    />
+                  </td>
+                  <td className="py-3 px-4 text-center">
                     <Link
                       href={`/specializations/${spec.slug}`}
                       className="text-xs text-sage hover:text-sage-dark hover:underline"
@@ -126,7 +136,7 @@ export function SpecializationsTable({
                 {/* Expanded Details Row */}
                 {expandedSlug === spec.slug && (
                   <tr className="bg-sage-muted/10">
-                    <td colSpan={5} className="px-4 py-4">
+                    <td colSpan={6} className="px-4 py-4">
                       <div className="pl-6 space-y-3">
                         {spec.description && (
                           <p className="text-sm text-ds-slate-light line-clamp-3">
@@ -217,15 +227,23 @@ export function SpecializationsTable({
                     </span>
                   </div>
                 )}
-                <Link
-                  href={`/specializations/${spec.slug}`}
-                  className="inline-flex items-center gap-1 text-sm text-sage font-medium"
-                >
-                  View full details
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                <div className="flex flex-wrap items-center gap-3">
+                  <FindJobsButton
+                    careerSlug={spec.slug}
+                    careerTitle={spec.title}
+                    variant="primary"
+                    className="text-sm"
+                  />
+                  <Link
+                    href={`/specializations/${spec.slug}`}
+                    className="inline-flex items-center gap-1 text-sm text-sage font-medium"
+                  >
+                    View full details
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             )}
           </div>

@@ -3,6 +3,7 @@
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
 import { CareerCompassWizard } from "@/components/CareerCompassWizard";
+import { FindJobsButton } from "@/components/jobs/FindJobsButton";
 import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
 
@@ -179,29 +180,40 @@ export default function HomePage() {
           </div>
           <div className="bg-cream rounded-2xl overflow-hidden shadow-card">
             {/* Table Header */}
-            <div className="hidden md:grid grid-cols-[1fr_100px_100px_120px] gap-4 px-6 py-4 bg-sage text-white text-xs font-bold uppercase tracking-wide">
+            <div className="hidden md:grid grid-cols-[1fr_100px_100px_120px_110px] gap-4 px-6 py-4 bg-sage text-white text-xs font-bold uppercase tracking-wide">
               <span>Career</span>
               <span>Median Pay</span>
               <span>Training</span>
               <span>AI Outlook</span>
+              <span>Find Jobs</span>
             </div>
             {/* Table Rows */}
-            {featuredCareers.map((career, idx) => (
-              <a
-                key={idx}
-                href={career.href}
-                className="grid md:grid-cols-[1fr_100px_100px_120px] gap-2 md:gap-4 px-4 md:px-6 py-4 border-b border-sage-muted hover:bg-warm-white transition-colors items-center"
-              >
-                <span className="font-semibold text-ds-slate">{career.title}</span>
-                <span className="font-bold text-sage text-sm md:text-base">{career.pay}</span>
-                <span className="text-sm text-ds-slate-light">{career.time}</span>
-                <span className={`inline-flex items-center gap-1 text-xs md:text-sm font-semibold px-2 md:px-3 py-1 rounded-md w-fit ${
-                  career.ai === "resilient" ? "badge-ai-resilient" : "badge-ai-augmented"
-                }`}>
-                  {career.aiLabel}
-                </span>
-              </a>
-            ))}
+            {featuredCareers.map((career, idx) => {
+              const slug = career.href.split('/').pop() || '';
+              return (
+                <div
+                  key={idx}
+                  className="grid md:grid-cols-[1fr_100px_100px_120px_110px] gap-2 md:gap-4 px-4 md:px-6 py-4 border-b border-sage-muted hover:bg-warm-white transition-colors items-center"
+                >
+                  <a href={career.href} className="font-semibold text-ds-slate hover:text-sage hover:underline">{career.title}</a>
+                  <span className="font-bold text-sage text-sm md:text-base">{career.pay}</span>
+                  <span className="text-sm text-ds-slate-light">{career.time}</span>
+                  <span className={`inline-flex items-center gap-1 text-xs md:text-sm font-semibold px-2 md:px-3 py-1 rounded-md w-fit ${
+                    career.ai === "resilient" ? "badge-ai-resilient" : "badge-ai-augmented"
+                  }`}>
+                    {career.aiLabel}
+                  </span>
+                  <div className="md:block">
+                    <FindJobsButton
+                      careerSlug={slug}
+                      careerTitle={career.title}
+                      variant="primary"
+                      className="text-xs px-3 py-1.5 mt-2 md:mt-0"
+                    />
+                  </div>
+                </div>
+              );
+            })}
             {/* View All Link */}
             <a
               href="/#careers"

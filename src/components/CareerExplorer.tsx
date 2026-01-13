@@ -10,6 +10,7 @@ import {
   getAIResilienceEmoji,
   getAIResilienceColor,
 } from "@/types/career";
+import { FindJobsButton } from "@/components/jobs/FindJobsButton";
 
 interface CareerExplorerProps {
   careers: CareerIndex[];
@@ -483,6 +484,9 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
               <th className="text-center px-4 py-3 text-sm font-semibold">
                 AI Resilience
               </th>
+              <th className="text-center px-4 py-3 text-sm font-semibold">
+                Find Jobs
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-sage-muted">
@@ -534,6 +538,14 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                     </span>
                   )}
                 </td>
+                <td className="px-4 py-3 text-center">
+                  <FindJobsButton
+                    careerSlug={career.slug}
+                    careerTitle={career.title}
+                    variant="primary"
+                    className="text-xs px-3 py-1.5"
+                  />
+                </td>
               </tr>
             ))}
           </tbody>
@@ -582,10 +594,7 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                 {formatPay(career.median_pay)}
               </a>
             </div>
-            <a
-              href={`/careers/${career.slug}`}
-              className="flex flex-wrap gap-2 mt-3"
-            >
+            <div className="flex flex-wrap gap-2 mt-3">
               <span className="text-sm text-ds-slate-light">
                 {getTrainingTimeLabel(career.training_time, career.training_years || undefined)}
               </span>
@@ -598,7 +607,15 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
                   <span>{career.ai_resilience}</span>
                 </span>
               )}
-            </a>
+            </div>
+            <div className="mt-3 pt-3 border-t border-sage-muted">
+              <FindJobsButton
+                careerSlug={career.slug}
+                careerTitle={career.title}
+                variant="primary"
+                className="w-full text-sm py-2"
+              />
+            </div>
           </div>
         ))}
 
