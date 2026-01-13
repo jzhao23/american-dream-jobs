@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
+import { storeCompassResume } from "@/lib/resume-storage";
 
 // localStorage key for user session (shared with FindJobsModal)
 const USER_SESSION_KEY = 'adjn_user_session';
@@ -294,6 +295,9 @@ export function CareerCompassWizard() {
           // Resume saved to database successfully - use the extracted text from response
           setResumeText(data.data.extractedText);
 
+          // Store resume in sessionStorage for cross-page persistence (e.g., Find Jobs)
+          storeCompassResume(data.data.extractedText, file.name);
+
           // Update localStorage to reflect that user now has a resume
           const updatedSession = { ...userSession, hasResume: true };
           try {
@@ -322,6 +326,9 @@ export function CareerCompassWizard() {
         }
 
         setResumeText(data.text);
+
+        // Store resume in sessionStorage for cross-page persistence (e.g., Find Jobs)
+        storeCompassResume(data.text, file.name);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to parse file');
@@ -350,6 +357,9 @@ export function CareerCompassWizard() {
       setResumeFile(null);
       setResumeText(existingResume.resumeText);
       if (fileInputRef.current) fileInputRef.current.value = "";
+
+      // Store in sessionStorage for cross-page persistence
+      storeCompassResume(existingResume.resumeText, existingResume.metadata.fileName);
     }
   };
 
@@ -471,6 +481,12 @@ export function CareerCompassWizard() {
         anythingElse,
         timestamp: new Date().toISOString(),
       }));
+
+      // Ensure resume data is persisted for Find Jobs flow
+      if (hasResume && resumeText) {
+        const filename = resumeFile?.name || (useExistingResume && existingResume ? existingResume.metadata.fileName : undefined);
+        storeCompassResume(resumeText, filename);
+      }
 
       router.push('/compass-results');
     } catch (err) {
