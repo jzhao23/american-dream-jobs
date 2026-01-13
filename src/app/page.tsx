@@ -87,6 +87,12 @@ const tools = [
     desc: "Project your net worth over time. See how different career choices affect your long-term financial picture.",
     href: "/calculator",
   },
+  {
+    icon: "📍",
+    title: "Local Jobs",
+    desc: "See top careers and fastest-growing opportunities in your area. Real employment data from the Bureau of Labor Statistics.",
+    href: "/local-jobs",
+  },
 ];
 
 export default function HomePage() {
@@ -217,7 +223,7 @@ export default function HomePage() {
           <h2 className="section-title">More ways to explore</h2>
           <p className="section-subtitle">Dig deeper with our free career planning tools</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {tools.map((tool, idx) => (
             <a
               key={idx}

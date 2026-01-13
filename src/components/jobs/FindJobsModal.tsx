@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useLocation } from "@/lib/location-context";
 import { JobListing } from "@/lib/jobs/types";
+import { getCompassResume } from "@/lib/resume-storage";
 
 // Modal step types
 type ModalStep = 'location' | 'email' | 'resume' | 'searching' | 'results' | 'error';
@@ -104,9 +105,13 @@ export function FindJobsModal({
   // Resume state
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isUploadingResume, setIsUploadingResume] = useState(false);
+  const [hasCompassResume, setHasCompassResume] = useState(false);
 
   // Job results
   const [jobs, setJobs] = useState<JobListing[]>([]);
+  const [totalResults, setTotalResults] = useState<number>(0);
+  const [displayedCount, setDisplayedCount] = useState<number>(25);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [searchId, setSearchId] = useState<string | null>(null);
   const [isFromCache, setIsFromCache] = useState(false);
 
@@ -122,6 +127,13 @@ export function FindJobsModal({
       setEmailInput(savedSession.email);
       setTcAccepted(true); // They already accepted
     }
+
+    // Check for resume from Career Compass flow
+    const compassResume = getCompassResume();
+    if (compassResume && compassResume.text) {
+      setHasCompassResume(true);
+    }
+
     setIsInitialized(true);
   }, []);
 
@@ -134,15 +146,15 @@ export function FindJobsModal({
       } else if (!userState.userId) {
         // No user - ask for email
         setStep('email');
-      } else if (!userState.hasResume) {
-        // Have user but no resume - prompt for resume each time until uploaded
+      } else if (!userState.hasResume && !hasCompassResume) {
+        // Have user but no resume (from DB or Career Compass) - prompt for resume
         setStep('resume');
       } else {
         // Have user, location, and resume - go straight to search
         startJobSearch(userState.userId);
       }
     }
-  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume]);
+  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume, hasCompassResume]);
 
   // Location search effect
   useEffect(() => {
@@ -311,7 +323,7 @@ export function FindJobsModal({
           locationCode: location.code,
           locationName: location.shortName,
           userId,
-          limit: 20
+          limit: 50
         })
       });
 
@@ -319,6 +331,8 @@ export function FindJobsModal({
 
       if (data.success) {
         setJobs(data.data.jobs);
+        setTotalResults(data.data.totalResults || data.data.jobs.length);
+        setDisplayedCount(25); // Start by showing 25
         setSearchId(data.data.searchId);
         setIsFromCache(data.data.cached);
         setStep('results');
@@ -364,6 +378,16 @@ export function FindJobsModal({
     }
   };
 
+  // Handle Load More
+  const handleLoadMore = () => {
+    setIsLoadingMore(true);
+    // Simulate brief loading for UX
+    setTimeout(() => {
+      setDisplayedCount(prev => Math.min(prev + 25, jobs.length));
+      setIsLoadingMore(false);
+    }, 300);
+  };
+
   // Sort jobs
   const sortedJobs = [...jobs].sort((a, b) => {
     let comparison = 0;
@@ -388,6 +412,10 @@ export function FindJobsModal({
 
     return sortOrder === 'desc' ? -comparison : comparison;
   });
+
+  // Limit displayed jobs
+  const displayedJobs = sortedJobs.slice(0, displayedCount);
+  const hasMoreJobs = displayedCount < jobs.length;
 
   if (!isOpen) return null;
 
@@ -598,9 +626,10 @@ export function FindJobsModal({
                   <h3 className="text-lg font-medium text-gray-900">
                     Found {jobs.length} job{jobs.length !== 1 ? 's' : ''}
                   </h3>
-                  {isFromCache && (
-                    <p className="text-sm text-gray-500">Results from recent search</p>
-                  )}
+                  <p className="text-sm text-gray-500">
+                    Showing 1-{Math.min(displayedCount, jobs.length)} of {jobs.length} jobs
+                    {isFromCache && ' (from recent search)'}
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -636,7 +665,7 @@ export function FindJobsModal({
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {sortedJobs.map((job) => (
+                  {displayedJobs.map((job) => (
                     <div
                       key={job.id}
                       className="border border-gray-200 rounded-xl p-4 hover:border-sage hover:shadow-sm transition-all"
@@ -691,8 +720,30 @@ export function FindJobsModal({
                 </div>
               )}
 
+              {/* Load More Button */}
+              {hasMoreJobs && jobs.length > 0 && (
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={handleLoadMore}
+                    disabled={isLoadingMore}
+                    className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50 transition-colors inline-flex items-center gap-2"
+                  >
+                    {isLoadingMore ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                        Loading...
+                      </>
+                    ) : (
+                      <>
+                        Load More ({jobs.length - displayedCount} remaining)
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+
               {/* Resume prompt if skipped */}
-              {!userState.hasResume && !userState.resumeUploaded && (
+              {!userState.hasResume && !userState.resumeUploaded && !hasCompassResume && (
                 <div className="mt-6 p-4 bg-sage-pale rounded-xl">
                   <p className="text-sage-dark font-medium mb-2">
                     Want better job matches?
