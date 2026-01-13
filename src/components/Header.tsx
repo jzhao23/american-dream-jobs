@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LocationSelector } from "./LocationSelector";
+import { FlagLogo } from "./FlagLogo";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14">
           <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <span className="text-xl">🇺🇸</span>
+            <FlagLogo size="md" />
             <span className="font-display font-semibold text-lg text-sage">
               American Dream Jobs
             </span>
