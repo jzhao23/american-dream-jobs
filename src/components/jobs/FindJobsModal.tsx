@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useLocation } from "@/lib/location-context";
 import { JobListing } from "@/lib/jobs/types";
+import { getCompassResume } from "@/lib/resume-storage";
 
 // Modal step types
 type ModalStep = 'location' | 'email' | 'resume' | 'searching' | 'results' | 'error';
@@ -104,6 +105,7 @@ export function FindJobsModal({
   // Resume state
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isUploadingResume, setIsUploadingResume] = useState(false);
+  const [hasCompassResume, setHasCompassResume] = useState(false);
 
   // Job results
   const [jobs, setJobs] = useState<JobListing[]>([]);
@@ -122,6 +124,13 @@ export function FindJobsModal({
       setEmailInput(savedSession.email);
       setTcAccepted(true); // They already accepted
     }
+
+    // Check for resume from Career Compass flow
+    const compassResume = getCompassResume();
+    if (compassResume && compassResume.text) {
+      setHasCompassResume(true);
+    }
+
     setIsInitialized(true);
   }, []);
 
@@ -134,15 +143,15 @@ export function FindJobsModal({
       } else if (!userState.userId) {
         // No user - ask for email
         setStep('email');
-      } else if (!userState.hasResume) {
-        // Have user but no resume - prompt for resume each time until uploaded
+      } else if (!userState.hasResume && !hasCompassResume) {
+        // Have user but no resume (from DB or Career Compass) - prompt for resume
         setStep('resume');
       } else {
         // Have user, location, and resume - go straight to search
         startJobSearch(userState.userId);
       }
     }
-  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume]);
+  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume, hasCompassResume]);
 
   // Location search effect
   useEffect(() => {
@@ -692,7 +701,7 @@ export function FindJobsModal({
               )}
 
               {/* Resume prompt if skipped */}
-              {!userState.hasResume && !userState.resumeUploaded && (
+              {!userState.hasResume && !userState.resumeUploaded && !hasCompassResume && (
                 <div className="mt-6 p-4 bg-sage-pale rounded-xl">
                   <p className="text-sage-dark font-medium mb-2">
                     Want better job matches?
