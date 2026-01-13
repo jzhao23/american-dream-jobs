@@ -17,7 +17,7 @@ import {
 } from "@/types/career";
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
-import { FindJobsButton, FindJobsSection } from "@/components/jobs";
+import { FindJobsSection, CareerHeroCTAs, CareerPageWrapper } from "@/components/jobs";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -148,6 +148,12 @@ export default async function SpecializationPage({ params }: PageProps) {
   const aiResilience = spec.ai_resilience as AIResilienceClassification | undefined;
 
   return (
+    <CareerPageWrapper
+      careerSlug={spec.slug}
+      careerTitle={spec.title}
+      onetCode={spec.onet_code}
+      alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
+    >
     <main className="min-h-screen bg-cream">
       {/* Breadcrumb */}
       <div className="bg-white border-b">
@@ -231,15 +237,15 @@ export default async function SpecializationPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Action CTAs */}
-          <div className="flex flex-wrap gap-3 mt-6">
-            <FindJobsButton
-              careerSlug={spec.slug}
-              careerTitle={spec.title}
-              alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
-              variant="hero"
-            />
-            {parentCareer && (
+          {/* Action CTAs - Find Jobs and Training are most prominent */}
+          <CareerHeroCTAs
+            careerSlug={spec.slug}
+            careerTitle={spec.title}
+            onetCode={spec.onet_code}
+            alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
+          />
+          {parentCareer && (
+            <div className="mt-3">
               <Link
                 href={`/careers/${parentCareer.slug}`}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-warm-white border border-sage-muted rounded-lg text-ds-slate-light hover:border-sage hover:text-sage transition-colors"
@@ -249,8 +255,8 @@ export default async function SpecializationPage({ params }: PageProps) {
                 </svg>
                 View {parentCareer.title}
               </Link>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </header>
 
@@ -359,10 +365,11 @@ export default async function SpecializationPage({ params }: PageProps) {
           </Section>
         )}
 
-        {/* Find Jobs Section */}
+        {/* Find Jobs & Training Section */}
         <FindJobsSection
           careerSlug={spec.slug}
           careerTitle={spec.title}
+          onetCode={spec.onet_code}
           alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
           medianSalary={medianPay}
         />
@@ -422,5 +429,6 @@ export default async function SpecializationPage({ params }: PageProps) {
         </div>
       </div>
     </main>
+    </CareerPageWrapper>
   );
 }
