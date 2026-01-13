@@ -278,9 +278,14 @@ export default function LocalJobsPage() {
                     : "bg-warm-white text-ds-slate-light hover:bg-sage-muted"
                 }`}
               >
-                High Growth
+                Fastest Growing
               </button>
             </div>
+
+            {/* Data source context */}
+            <p className="text-sm text-ds-slate-muted -mt-2 mb-6">
+              Based on Bureau of Labor Statistics data for {data.location.name}
+            </p>
 
             {/* Most Jobs */}
             {activeTab === "mostJobs" && (
@@ -300,11 +305,11 @@ export default function LocalJobsPage() {
                     />
                   </svg>
                   <h2 className="text-xl font-display font-semibold text-ds-slate">
-                    Careers with Most Jobs
+                    Top Careers by Number of Jobs
                   </h2>
                 </div>
                 <p className="text-ds-slate-muted mb-6">
-                  The careers with the highest employment in {data.location.name}.
+                  Careers with the highest total employment in {data.location.name}.
                 </p>
 
                 <div className="grid gap-4 md:grid-cols-2">
@@ -339,11 +344,11 @@ export default function LocalJobsPage() {
                     />
                   </svg>
                   <h2 className="text-xl font-display font-semibold text-ds-slate">
-                    High Growth Careers
+                    Fastest Growing Careers
                   </h2>
                 </div>
                 <p className="text-ds-slate-muted mb-6">
-                  Careers growing at 5% or more per year in {data.location.name}.
+                  Careers with the highest projected growth rates in {data.location.name}.
                 </p>
 
                 <div className="grid gap-4 md:grid-cols-2">
