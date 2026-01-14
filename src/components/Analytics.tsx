@@ -4,11 +4,11 @@ import Script from "next/script";
 
 // Set these environment variables in your deployment:
 // NEXT_PUBLIC_PLAUSIBLE_DOMAIN - your domain for Plausible analytics
-// NEXT_PUBLIC_GA_ID - your Google Analytics 4 measurement ID
+
+const GA_MEASUREMENT_ID = "G-DKPP2NR5YN";
 
 export function Analytics() {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <>
@@ -22,23 +22,19 @@ export function Analytics() {
         />
       )}
 
-      {/* Google Analytics 4 (optional) */}
-      {gaId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}');
-            `}
-          </Script>
-        </>
-      )}
+      {/* Google Analytics 4 */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+      </Script>
     </>
   );
 }
