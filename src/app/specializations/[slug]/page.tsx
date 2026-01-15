@@ -18,6 +18,7 @@ import {
 import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 import { FindJobsSection, CareerHeroCTAs, CareerPageWrapper } from "@/components/jobs";
+import { TableOfContents } from "@/components/TableOfContents";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -72,14 +73,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 function Section({
   title,
   icon,
+  id,
   children,
 }: {
   title: string;
   icon?: string;
+  id?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="bg-white rounded-lg shadow-sm p-6">
+    <section id={id} className="bg-white rounded-lg shadow-sm p-6 scroll-mt-20">
       <h2 className="text-lg font-semibold text-ds-slate mb-4 flex items-center gap-2">
         {icon && <span className="text-sage">{getIcon(icon)}</span>}
         {title}
@@ -262,6 +265,20 @@ export default async function SpecializationPage({ params }: PageProps) {
 
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+        {/* Table of Contents */}
+        <TableOfContents
+          items={[
+            ...(spec.video ? [{ id: "career-video", label: "Career Overview Video" }] : []),
+            ...(spec.ai_assessment ? [{ id: "ai-resilience", label: "AI Impact Assessment" }] : []),
+            ...(spec.tasks && spec.tasks.length > 0 ? [{ id: "responsibilities", label: "Key Responsibilities" }] : []),
+            ...(spec.education ? [{ id: "education", label: "Education & Training" }] : []),
+            ...(spec.technology_skills && spec.technology_skills.length > 0 ? [{ id: "skills", label: "Technology Skills" }] : []),
+            ...(spec.abilities && spec.abilities.length > 0 ? [{ id: "abilities", label: "Key Abilities" }] : []),
+            { id: "jobs", label: "Find Jobs & Training" },
+            ...(payRange && (payRange.low > 0 || payRange.high > 0) ? [{ id: "compensation", label: "Compensation Details" }] : []),
+          ]}
+        />
+
         {/* Back to Parent Career */}
         {parentCareer && (
           <div className="bg-sage-muted/30 rounded-lg p-4 flex items-center gap-3">
@@ -282,14 +299,21 @@ export default async function SpecializationPage({ params }: PageProps) {
 
         {/* Video Section */}
         {spec.video && (
-          <Section title="Career Overview Video" icon="video">
+          <Section title="Career Overview Video" icon="video" id="career-video">
             <CareerVideoPlayer video={spec.video} careerTitle={spec.title} />
+          </Section>
+        )}
+
+        {/* AI Assessment - Moved up for visibility */}
+        {spec.ai_assessment && (
+          <Section title="AI Impact Assessment" icon="chip" id="ai-resilience">
+            <AIAssessmentDetail assessment={spec.ai_assessment} />
           </Section>
         )}
 
         {/* Key Responsibilities */}
         {spec.tasks && spec.tasks.length > 0 && (
-          <Section title="Key Responsibilities" icon="briefcase">
+          <Section title="Key Responsibilities" icon="briefcase" id="responsibilities">
             <ul className="space-y-2">
               {spec.tasks.slice(0, 10).map((task, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -307,7 +331,7 @@ export default async function SpecializationPage({ params }: PageProps) {
 
         {/* Education & Training */}
         {spec.education && (
-          <Section title="Education & Training" icon="book">
+          <Section title="Education & Training" icon="book" id="education">
             <div className="space-y-4">
               <div>
                 <h3 className="text-sm font-medium text-ds-slate mb-1">Typical Entry Education</h3>
@@ -334,7 +358,7 @@ export default async function SpecializationPage({ params }: PageProps) {
 
         {/* Technology Skills */}
         {spec.technology_skills && spec.technology_skills.length > 0 && (
-          <Section title="Technology Skills" icon="chip">
+          <Section title="Technology Skills" icon="chip" id="skills">
             <div className="flex flex-wrap gap-2">
               {spec.technology_skills.slice(0, 15).map((skill, i) => (
                 <span key={i} className="px-3 py-1 bg-sage-muted text-ds-slate rounded-full text-sm">
@@ -347,7 +371,7 @@ export default async function SpecializationPage({ params }: PageProps) {
 
         {/* Abilities */}
         {spec.abilities && spec.abilities.length > 0 && (
-          <Section title="Key Abilities" icon="brain">
+          <Section title="Key Abilities" icon="brain" id="abilities">
             <div className="flex flex-wrap gap-2">
               {spec.abilities.slice(0, 10).map((ability, i) => (
                 <span key={i} className="px-3 py-1 bg-cream text-ds-slate-light rounded-full text-sm border border-sage-muted">
@@ -358,25 +382,20 @@ export default async function SpecializationPage({ params }: PageProps) {
           </Section>
         )}
 
-        {/* AI Assessment */}
-        {spec.ai_assessment && (
-          <Section title="AI Impact Assessment" icon="chip">
-            <AIAssessmentDetail assessment={spec.ai_assessment} />
-          </Section>
-        )}
-
         {/* Find Jobs & Training Section */}
-        <FindJobsSection
-          careerSlug={spec.slug}
-          careerTitle={spec.title}
-          onetCode={spec.onet_code}
-          alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
-          medianSalary={medianPay}
-        />
+        <div id="jobs" className="scroll-mt-20">
+          <FindJobsSection
+            careerSlug={spec.slug}
+            careerTitle={spec.title}
+            onetCode={spec.onet_code}
+            alternateJobTitles={spec.alternate_titles?.slice(0, 5)}
+            medianSalary={medianPay}
+          />
+        </div>
 
         {/* Compensation Details */}
         {payRange && (payRange.low > 0 || payRange.high > 0) && (
-          <Section title="Compensation Details" icon="list">
+          <Section title="Compensation Details" icon="list" id="compensation">
             <div className="space-y-3">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
