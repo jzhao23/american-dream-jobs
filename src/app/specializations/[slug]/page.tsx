@@ -274,7 +274,7 @@ export default async function SpecializationPage({ params }: PageProps) {
             ...(spec.education ? [{ id: "education", label: "Education & Training" }] : []),
             ...(spec.technology_skills && spec.technology_skills.length > 0 ? [{ id: "skills", label: "Technology Skills" }] : []),
             ...(spec.abilities && spec.abilities.length > 0 ? [{ id: "abilities", label: "Key Abilities" }] : []),
-            { id: "jobs", label: "Find Jobs" },
+            { id: "jobs", label: "Find Jobs & Training" },
             ...(payRange && (payRange.low > 0 || payRange.high > 0) ? [{ id: "compensation", label: "Compensation Details" }] : []),
           ]}
         />
