@@ -536,6 +536,7 @@ export function CareerCompassWizard() {
       {/* Response Summary - show all answered/skipped questions */}
       {selectedTraining && currentStep !== 'training' && (
         <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+          <span className="text-sm text-ds-slate-light mr-1">Your Responses:</span>
           {/* Training - always show after selection */}
           <button
             onClick={() => goToStep('training')}
@@ -639,9 +640,14 @@ export function CareerCompassWizard() {
         {/* STEP: Training Selection */}
         {currentStep === 'training' && (
           <div>
-            <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate text-center mb-6">
-              How soon do you need to start earning?
-            </h2>
+            <div className="text-center mb-6">
+              <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
+                How soon do you need to start earning?
+              </h2>
+              <p className="text-sm text-ds-slate-light">
+                (on top of your current education and experience)
+              </p>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {trainingOptions.map((option) => (
                 <button
