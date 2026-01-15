@@ -67,7 +67,8 @@ export async function POST(request: NextRequest) {
         totalResults: result.totalResults,
         source: result.source,
         searchId: result.searchId,
-        cached: result.cached
+        cached: result.cached,
+        noDataReason: result.noDataReason
       },
       metadata: {
         careerSlug: params.careerSlug,

@@ -42,6 +42,7 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
   // Fetch multiple pages to get enough results (Google Jobs returns ~10 per page)
   // Limit to 5 pages max to avoid excessive API calls
   const maxPages = Math.min(Math.ceil(targetLimit / 10), 5);
+  let nextPageToken: string | undefined;
 
   console.log(`[SerpApi] Searching for: "${queryWithLocation}" (location param: "${simplifiedLocation}", radius: 50km)`);
   console.log(`[SerpApi] Target: ${targetLimit} jobs, fetching up to ${maxPages} pages`);
@@ -56,9 +57,13 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
       lrad: '50',  // 50km radius to restrict results geographically
       google_domain: 'google.com',
       gl: 'us',
-      hl: 'en',
-      start: String(page * 10)  // Pagination offset
+      hl: 'en'
     });
+
+    // Add pagination token for subsequent pages
+    if (nextPageToken) {
+      searchParams.set('next_page_token', nextPageToken);
+    }
 
     // Add date filter if specified
     if (params.filters?.datePosted) {
@@ -112,10 +117,19 @@ export async function searchJobsSerpApi(params: JobSearchParams): Promise<JobSea
       const pageJobs = data.jobs_results || [];
       totalRawResults += pageJobs.length;
 
-      console.log(`[SerpApi] Page ${page + 1}: found ${pageJobs.length} jobs`);
+      // Get next page token for pagination
+      nextPageToken = data.serpapi_pagination?.next_page_token;
+
+      console.log(`[SerpApi] Page ${page + 1}: found ${pageJobs.length} jobs${nextPageToken ? ' (has more pages)' : ''}`);
 
       // No more results available
       if (pageJobs.length === 0) {
+        break;
+      }
+
+      // No more pages available
+      if (!nextPageToken && page > 0) {
+        console.log(`[SerpApi] No more pages available`);
         break;
       }
 

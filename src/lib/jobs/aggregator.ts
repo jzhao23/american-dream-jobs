@@ -30,6 +30,8 @@ export interface AggregatedSearchResult {
   source: string;
   searchId: string;
   cached: boolean;
+  /** Reason why no data was returned (if jobs array is empty) */
+  noDataReason?: 'no_api_configured' | 'api_error' | 'no_results';
 }
 
 /**
@@ -37,6 +39,10 @@ export interface AggregatedSearchResult {
  */
 export async function searchJobs(params: AggregatedSearchParams): Promise<AggregatedSearchResult> {
   const { careerSlug, careerTitle, locationCode, locationName, filters, limit = 50, userId } = params;
+
+  // Log API configuration status at start
+  console.log('[Aggregator] Starting job search for:', careerTitle, 'in', locationName);
+  console.log('[Aggregator] API keys present - SerpApi:', !!process.env.SERPAPI_API_KEY, 'JSearch:', !!process.env.JSEARCH_API_KEY);
 
   // Check cache first
   try {
@@ -127,9 +133,14 @@ export async function searchJobs(params: AggregatedSearchParams): Promise<Aggreg
   }
 
   // No API configured or all failed
+  const serpApiConfigured = isSerpApiConfigured();
+  const jSearchConfigured = isJSearchConfigured();
+  const noApiConfigured = !serpApiConfigured && !jSearchConfigured;
   console.error('[Aggregator] No job search APIs available or all failed');
-  console.log('[Aggregator] SerpApi configured:', isSerpApiConfigured());
-  console.log('[Aggregator] JSearch configured:', isJSearchConfigured());
+  console.log('[Aggregator] SerpApi configured:', serpApiConfigured);
+  console.log('[Aggregator] JSearch configured:', jSearchConfigured);
+  console.log('[Aggregator] SERPAPI_API_KEY present:', !!process.env.SERPAPI_API_KEY);
+  console.log('[Aggregator] JSEARCH_API_KEY present:', !!process.env.JSEARCH_API_KEY);
 
   // Record the failed attempt
   try {
@@ -147,9 +158,15 @@ export async function searchJobs(params: AggregatedSearchParams): Promise<Aggreg
     console.warn('[Aggregator] Failed to record history:', e);
   }
 
-  // Return mock data as fallback (allows demo when APIs fail or aren't configured)
-  console.log('[Aggregator] Returning mock data as fallback');
-  return getMockJobResults(careerTitle, locationName, limit);
+  // Return empty result with reason (no mock data - be honest with users)
+  return {
+    jobs: [],
+    totalResults: 0,
+    source: 'none',
+    searchId: `empty_${Date.now()}`,
+    cached: false,
+    noDataReason: noApiConfigured ? 'no_api_configured' : 'api_error'
+  };
 }
 
 /**
@@ -200,69 +217,6 @@ async function cacheAndRecordResult(
   } catch (error) {
     console.warn('[Aggregator] Failed to record history:', error);
   }
-}
-
-/**
- * Get mock job results for development
- */
-function getMockJobResults(careerTitle: string, location: string, limit: number): AggregatedSearchResult {
-  const mockJobs: JobListing[] = [];
-
-  const companies = [
-    'Acme Corporation', 'TechStart Inc', 'Global Solutions', 'Innovation Labs',
-    'Premier Services', 'Dynamic Systems', 'Future Forward', 'NextGen Co',
-    'Apex Industries', 'Summit Enterprises', 'Metro Services', 'City Works',
-    'United Industries', 'Pacific Group', 'Atlantic Corp', 'Midwest Solutions',
-    'Southern Tech', 'Northern Systems', 'Central Services', 'Coastal Enterprises',
-    'Mountain View Co', 'Valley Partners', 'Harbor Group', 'Lakeside Corp',
-    'Riverfront Inc', 'Parkway Services', 'Gateway Systems', 'Crossroads Tech',
-    'Horizon Group', 'Skyline Industries', 'Landmark Corp', 'Pioneer Solutions',
-    'Frontier Tech', 'Cornerstone Inc', 'Keystone Services', 'Milestone Group',
-    'Pathway Corp', 'Ridgeway Systems', 'Springboard Inc', 'Trailblazer Co',
-    'Vanguard Services', 'Westward Group', 'Eastside Corp', 'Northstar Inc',
-    'Southgate Systems', 'Sunbelt Services', 'Heartland Group', 'Bayview Corp',
-    'Hillcrest Inc', 'Meadowbrook Co'
-  ];
-
-  const locationTypes = ['onsite', 'remote', 'hybrid', 'onsite', 'onsite'];
-
-  for (let i = 0; i < Math.min(limit, 50); i++) {
-    const locationType = locationTypes[i % locationTypes.length];
-    const jobLocation = locationType === 'remote' ? 'Remote (US)' :
-                        locationType === 'hybrid' ? `${location} (Hybrid)` : location;
-    const baseSalary = 50000 + Math.floor(Math.random() * 80000);
-
-    mockJobs.push({
-      id: `mock_${i}_${Date.now()}`,
-      title: `${careerTitle}${i > 0 ? ` - Level ${i + 1}` : ''}`,
-      company: companies[i % companies.length],
-      location: jobLocation,
-      locationType: locationType as 'onsite' | 'remote' | 'hybrid',
-      salary: {
-        min: baseSalary,
-        max: baseSalary + 20000,
-        currency: 'USD',
-        period: 'year'
-      },
-      description: `Join our team as a ${careerTitle}. We offer competitive compensation, great benefits, and opportunities for growth.`,
-      highlights: [
-        'Competitive salary and benefits',
-        'Professional development opportunities',
-        'Collaborative team environment'
-      ],
-      postedAt: `${i + 1} day${i > 0 ? 's' : ''} ago`,
-      applyUrl: `https://example.com/jobs/mock-${i}`,
-      source: 'Mock Data'
-    });
-  }
-
-  return {
-    jobs: mockJobs,
-    totalResults: mockJobs.length,
-    source: 'mock',
-    searchId: `mock_${Date.now()}`,
-    cached: false
-  };
 }
 
 /**
