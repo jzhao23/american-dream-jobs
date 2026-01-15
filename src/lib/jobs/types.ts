@@ -71,6 +71,10 @@ export interface SerpApiJobsResponse {
     device: string;
   };
   jobs_results?: SerpApiJob[];
+  serpapi_pagination?: {
+    next_page_token?: string;
+    next?: string;
+  };
   error?: string;
 }
 
