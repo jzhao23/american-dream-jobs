@@ -115,7 +115,6 @@ export function FindJobsModal({
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [searchId, setSearchId] = useState<string | null>(null);
   const [isFromCache, setIsFromCache] = useState(false);
-  const [noDataReason, setNoDataReason] = useState<'no_api_configured' | 'api_error' | 'no_results' | null>(null);
 
   // Sorting and filtering
   const [sortBy, setSortBy] = useState<'relevance' | 'salary' | 'date' | 'company'>('relevance');
@@ -337,12 +336,6 @@ export function FindJobsModal({
         setDisplayedCount(25); // Start by showing 25
         setSearchId(data.data.searchId);
         setIsFromCache(data.data.cached);
-        // Track why we have no data (if applicable)
-        if (data.data.jobs.length === 0) {
-          setNoDataReason(data.data.noDataReason || 'no_results');
-        } else {
-          setNoDataReason(null);
-        }
         setStep('results');
       } else {
         setError(data.error?.message || 'Failed to search for jobs');
@@ -682,13 +675,10 @@ export function FindJobsModal({
                     </svg>
                   </div>
                   <h4 className="text-lg font-medium text-gray-900 mb-2">
-                    No job listings found
+                    0 results found
                   </h4>
                   <p className="text-gray-600 max-w-md mx-auto mb-4">
-                    {noDataReason === 'no_api_configured' || noDataReason === 'api_error'
-                      ? `We couldn't fetch job listings for ${careerTitle} in your area right now. Our job search service is temporarily unavailable.`
-                      : `No job listings found for ${careerTitle} in ${location?.name || 'your area'}. Try expanding your search radius or check back later.`
-                    }
+                    No job listings found for {careerTitle} in {location?.name || 'your area'}. Try expanding your search radius or check back later.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a
