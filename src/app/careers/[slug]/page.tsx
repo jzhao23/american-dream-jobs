@@ -28,6 +28,7 @@ import { AIAssessmentDetail } from "@/components/AIAssessmentDetail";
 import { CareerVideoPlayer } from "@/components/CareerVideoPlayer";
 import { LocalJobMarket } from "@/components/LocalJobMarket";
 import { FindJobsSection, CareerHeroCTAs, CareerPageWrapper } from "@/components/jobs";
+import { TableOfContents } from "@/components/TableOfContents";
 // Raw review type from Reddit
 interface RawCareerReviewsSummary {
   slug: string;
@@ -244,10 +245,25 @@ export default async function CareerPage({ params }: PageProps) {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Table of Contents */}
+        <TableOfContents
+          items={[
+            ...(career.video ? [{ id: "career-video", label: "Video", emoji: "🎬" }] : []),
+            ...(aiAssessment ? [{ id: "ai-resilience", label: "AI Risk", emoji: "🤖" }] : []),
+            ...(career.tasks && career.tasks.length > 0 ? [{ id: "responsibilities", label: "Responsibilities", emoji: "📋" }] : []),
+            ...(career.inside_look ? [{ id: "inside-look", label: "Average Day", emoji: "💡" }] : []),
+            ...(career.career_progression?.levels ? [{ id: "career-progression", label: "Progression", emoji: "📈" }] : []),
+            ...(career.education ? [{ id: "education", label: "Education", emoji: "📚" }] : []),
+            { id: "local-jobs", label: "Local Jobs", emoji: "🇺🇸" },
+            ...(career.technology_skills && career.technology_skills.length > 0 ? [{ id: "skills", label: "Skills", emoji: "💻" }] : []),
+            ...(allReviews.length > 0 ? [{ id: "reviews", label: "What Workers Say", emoji: "💬" }] : []),
+          ]}
+        />
+
         <div className="space-y-8">
           {/* Career Video */}
           {career.video && (
-            <Section title="Career Video" icon="video">
+            <Section title="Career Video" icon="video" id="career-video">
               <div className="space-y-4">
                 <CareerVideoPlayer video={career.video} careerTitle={career.title} />
                 <a
@@ -271,9 +287,16 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
+          {/* AI Resilience Assessment - Moved up for visibility */}
+          {aiAssessment && (
+            <Section title="AI Resilience Assessment" icon="robot" id="ai-resilience">
+              <AIAssessmentDetail assessment={aiAssessment} />
+            </Section>
+          )}
+
           {/* Key Tasks */}
           {career.tasks && career.tasks.length > 0 && (
-            <Section title="Key Responsibilities" icon="clipboard">
+            <Section title="Key Responsibilities" icon="clipboard" id="responsibilities">
               <ul className="space-y-3">
                 {career.tasks.slice(0, 8).map((task, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -287,7 +310,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Inside This Career */}
           {career.inside_look && (
-            <Section title="Inside This Career" icon="insight">
+            <Section title="Inside This Career" icon="insight" id="inside-look">
               <div className="prose max-w-none">
                 {career.inside_look.content.split('\n\n').map((paragraph, i) => (
                   <p key={i} className="text-ds-slate-light leading-relaxed mb-4 last:mb-0">
@@ -300,7 +323,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Career Progression */}
           {career.career_progression && career.career_progression.levels && (
-            <Section title="Career Progression" icon="chart">
+            <Section title="Career Progression" icon="chart" id="career-progression">
               <div className="space-y-4">
                 {career.career_progression.levels.map((level, i) => (
                   <div key={i} className="flex items-center gap-4 bg-cream rounded-lg p-4">
@@ -334,7 +357,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Education & Training */}
           {career.education && (
-            <Section title="Education & Training" icon="book">
+            <Section title="Education & Training" icon="book" id="education">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-ds-slate mb-3">Requirements</h4>
@@ -439,19 +462,14 @@ export default async function CareerPage({ params }: PageProps) {
             </Section>
           )}
 
-          {/* AI Resilience Assessment */}
-          {aiAssessment && (
-            <Section title="AI Resilience Assessment" icon="robot">
-              <AIAssessmentDetail assessment={aiAssessment} />
-            </Section>
-          )}
-
           {/* Local Job Market */}
-          <LocalJobMarket
-            careerSlug={career.slug}
-            careerTitle={career.title}
-            nationalMedianWage={medianPay}
-          />
+          <div id="local-jobs" className="scroll-mt-20">
+            <LocalJobMarket
+              careerSlug={career.slug}
+              careerTitle={career.title}
+              nationalMedianWage={medianPay}
+            />
+          </div>
 
           {/* Find Jobs & Training Section */}
           <FindJobsSection
@@ -464,7 +482,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Technology Skills */}
           {career.technology_skills && career.technology_skills.length > 0 && (
-            <Section title="Technology Skills" icon="computer">
+            <Section title="Technology Skills" icon="computer" id="skills">
               <div className="flex flex-wrap gap-2">
                 {career.technology_skills.slice(0, 15).map((skill, i) => (
                   <span key={i} className="px-3 py-1 bg-sage-muted text-ds-slate-light rounded-full text-sm">
@@ -477,7 +495,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* Key Abilities */}
           {career.abilities && career.abilities.length > 0 && (
-            <Section title="Key Abilities" icon="star">
+            <Section title="Key Abilities" icon="star" id="abilities">
               <div className="grid md:grid-cols-2 gap-2">
                 {career.abilities.slice(0, 10).map((ability, i) => (
                   <div key={i} className="flex items-center gap-2 text-ds-slate-light">
@@ -590,7 +608,7 @@ export default async function CareerPage({ params }: PageProps) {
 
           {/* What Workers Say */}
           {allReviews.length > 0 && (
-            <Section title="What Workers Say" icon="chat">
+            <Section title="What Workers Say" icon="chat" id="reviews">
               <div className="space-y-4">
                 <p className="text-sm text-ds-slate-light">
                   {allReviews.length} testimonial{allReviews.length !== 1 ? 's' : ''} from Reddit
@@ -735,14 +753,16 @@ const icons: Record<string, string> = {
 function Section({
   title,
   icon,
+  id,
   children,
 }: {
   title: string;
   icon: string;
+  id?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="card-warm p-6 md:p-8">
+    <section id={id} className="card-warm p-6 md:p-8 scroll-mt-20">
       <h2 className="font-display text-xl font-semibold text-ds-slate mb-4 flex items-center gap-2">
         <span>{icons[icon] || "📌"}</span>
         {title}
