@@ -178,11 +178,10 @@ function CompareContent() {
   };
 
   const filteredCareers = useMemo(() => {
-    if (!searchQuery) return careers.slice(0, 50);
+    if (!searchQuery) return careers;
     const query = searchQuery.toLowerCase();
     return careers
-      .filter(c => c.title.toLowerCase().includes(query) || c.category.toLowerCase().includes(query))
-      .slice(0, 50);
+      .filter(c => c.title.toLowerCase().includes(query) || c.category.toLowerCase().includes(query));
   }, [searchQuery]);
 
   // Build career paths for each selected career
