@@ -1306,8 +1306,8 @@ export function CareerCompassWizard() {
               <span className="text-xl">{resumeFile || useExistingResume ? '✨' : '💡'}</span>
               <span className="text-sm text-ds-slate">
                 {resumeFile || useExistingResume
-                  ? <>We&apos;ll use <strong className="text-sage">AI-powered matching</strong> with your resume for personalized results</>
-                  : <>We&apos;ll match you with careers based on <strong className="text-sage">your preferences</strong></>
+                  ? <>We&apos;ll use <strong className="text-sage">AI-powered matching</strong> with your resume for personalized career and job recommendations</>
+                  : <>We&apos;ll match you with careers and <strong className="text-sage">real job openings</strong> based on your preferences</>
                 }
               </span>
             </div>
@@ -1335,11 +1335,11 @@ export function CareerCompassWizard() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  Finding your matches...
+                  Finding your career matches &amp; jobs...
                 </>
               ) : (
                 <>
-                  Get My Career Recommendations
+                  Get My Career &amp; Job Matches
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
