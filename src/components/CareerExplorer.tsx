@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import type { CareerIndex, TrainingTime, AIResilienceClassification } from "@/types/career";
 import {
   formatPay,
@@ -188,10 +188,42 @@ export function CareerExplorer({ careers, hideCategoryFilter = false }: CareerEx
     selectedTrainingTimes.length +
     selectedAIResilience.length;
 
+  // Sticky filter bar state
+  const [isStuck, setIsStuck] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  // Use Intersection Observer to detect when filter bar becomes sticky
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When sentinel is not intersecting (scrolled past), the filter bar is stuck
+        setIsStuck(!entry.isIntersecting);
+      },
+      {
+        // Account for header height (56px = top-14)
+        rootMargin: "-56px 0px 0px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
-      {/* Compact Filter Bar */}
-      <div className="card-warm p-3 mb-6">
+      {/* Sentinel element for detecting sticky state */}
+      <div ref={sentinelRef} className="h-0" aria-hidden="true" />
+
+      {/* Compact Filter Bar - Sticky */}
+      <div
+        className={`card-warm p-3 mb-6 sticky top-14 z-40 transition-shadow duration-200 ${
+          isStuck ? "shadow-md" : ""
+        }`}
+      >
         {/* Mobile: Search + Filters toggle */}
         <div className="flex items-center gap-2 md:hidden">
           <div className="flex-1">
