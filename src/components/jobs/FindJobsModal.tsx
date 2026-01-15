@@ -115,6 +115,7 @@ export function FindJobsModal({
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [searchId, setSearchId] = useState<string | null>(null);
   const [isFromCache, setIsFromCache] = useState(false);
+  const [noDataReason, setNoDataReason] = useState<'no_api_configured' | 'api_error' | 'no_results' | null>(null);
 
   // Sorting and filtering
   const [sortBy, setSortBy] = useState<'relevance' | 'salary' | 'date' | 'company'>('relevance');
@@ -336,6 +337,12 @@ export function FindJobsModal({
         setDisplayedCount(25); // Start by showing 25
         setSearchId(data.data.searchId);
         setIsFromCache(data.data.cached);
+        // Track why we have no data (if applicable)
+        if (data.data.jobs.length === 0) {
+          setNoDataReason(data.data.noDataReason || 'no_results');
+        } else {
+          setNoDataReason(null);
+        }
         setStep('results');
       } else {
         setError(data.error?.message || 'Failed to search for jobs');
@@ -668,8 +675,39 @@ export function FindJobsModal({
 
               {/* Job List */}
               {jobs.length === 0 ? (
-                <div className="text-center py-12 bg-gray-50 rounded-xl">
-                  <p className="text-gray-600">No jobs found. Try adjusting your search.</p>
+                <div className="text-center py-12 bg-sage-pale rounded-xl border border-sage-muted">
+                  <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-900 mb-2">
+                    No job listings found
+                  </h4>
+                  <p className="text-gray-600 max-w-md mx-auto mb-4">
+                    {noDataReason === 'no_api_configured' || noDataReason === 'api_error'
+                      ? `We couldn't fetch job listings for ${careerTitle} in your area right now. Our job search service is temporarily unavailable.`
+                      : `No job listings found for ${careerTitle} in ${location?.name || 'your area'}. Try expanding your search radius or check back later.`
+                    }
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a
+                      href={`/careers/${careerSlug}`}
+                      className="inline-flex items-center gap-2 text-sage hover:text-sage-dark font-medium"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Learn more about {careerTitle}
+                    </a>
+                    <span className="hidden sm:inline text-gray-300">|</span>
+                    <button
+                      onClick={onClose}
+                      className="text-gray-500 hover:text-gray-700 font-medium"
+                    >
+                      Close and try a different search
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <div className="space-y-4">
