@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
 
 interface FlagLogoProps {
   size?: "sm" | "md" | "lg";
@@ -70,65 +67,21 @@ function AmericanFlagSVG({ className }: { className?: string }) {
 }
 
 export function FlagLogo({ size = "md", className = "" }: FlagLogoProps) {
-  const [useFallback, setUseFallback] = useState(false);
-  const emojiRef = useRef<HTMLSpanElement>(null);
-
-  // Size mappings
-  const sizeClasses = {
-    sm: "text-lg",
-    md: "text-xl",
-    lg: "text-2xl",
-  };
-
   const svgSizeClasses = {
     sm: "w-5 h-3.5",
     md: "w-6 h-4",
     lg: "w-7 h-5",
   };
 
-  useEffect(() => {
-    // Check if emoji renders properly by measuring its width
-    // Regional indicator emojis (flags) should render as a single glyph
-    // If they render as two separate characters (US), the width will be different
-    if (emojiRef.current) {
-      const span = emojiRef.current;
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-
-      if (ctx) {
-        // Get computed font from the span
-        const computedStyle = window.getComputedStyle(span);
-        ctx.font = computedStyle.font;
-
-        // Measure the flag emoji
-        const flagWidth = ctx.measureText("🇺🇸").width;
-        // Measure a regular two-character string for comparison
-        const twoCharWidth = ctx.measureText("AA").width;
-
-        // If the flag renders as two separate regional indicators,
-        // it will be roughly the same width as two characters
-        // A proper emoji should be narrower (single glyph)
-        // Also check if the width is 0 (no emoji support at all)
-        if (flagWidth === 0 || flagWidth >= twoCharWidth * 0.9) {
-          setUseFallback(true);
-        }
-      }
-    }
-  }, []);
-
+  // Always use SVG for consistent rendering across all platforms
+  // Flag emojis don't render properly on many systems (showing "US" instead)
   return (
     <span
       className={`inline-flex items-center ${className}`}
       role="img"
       aria-label="American flag"
     >
-      {useFallback ? (
-        <AmericanFlagSVG className={svgSizeClasses[size]} />
-      ) : (
-        <span ref={emojiRef} className={sizeClasses[size]}>
-          🇺🇸
-        </span>
-      )}
+      <AmericanFlagSVG className={svgSizeClasses[size]} />
     </span>
   );
 }
