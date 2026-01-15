@@ -103,68 +103,19 @@ export default function HomePage() {
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
         <div className="inline-flex items-center gap-2 bg-sage-muted text-sage text-sm font-semibold px-4 py-2 rounded-full mb-6 animate-fadeDown">
           <span>✨</span>
-          Free career guidance · Real government data
+          Free career guidance · Find real job openings
         </div>
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-ds-slate leading-tight mb-5 animate-fadeUp">
           Ready for a <em className="italic text-sage">fresh start?</em>
         </h1>
         <p className="text-lg md:text-xl text-ds-slate-light max-w-xl mx-auto leading-relaxed animate-fadeUp" style={{ animationDelay: "0.1s" }}>
-          We help you find stable, well-paying careers you can actually train for—even mid-career. No fluff, just honest data from the Department of Labor.
+          Answer 5 quick questions, upload your resume, and we&apos;ll match you with careers and real job openings tailored to your goals.
         </p>
       </section>
 
       {/* Career Compass Wizard - Inline step-by-step flow */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 md:pb-16 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
         <CareerCompassWizard />
-      </section>
-
-      {/* Curated Paths Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16 md:pb-20">
-        <div className="text-center mb-8">
-          <p className="section-eyebrow">Popular Paths</p>
-          <h2 className="section-title">High-demand fields for career changers</h2>
-          <p className="section-subtitle">Clear training routes, strong job markets, good pay</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-          {curatedPaths.map((path) => (
-            <a
-              key={path.id}
-              href={path.href}
-              className="card-warm p-5 md:p-6 flex flex-col"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-sage-muted rounded-xl flex items-center justify-center text-2xl md:text-3xl flex-shrink-0">
-                  {path.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-lg md:text-xl font-semibold text-ds-slate mb-2">
-                    {path.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="tag-pay">{path.pay}</span>
-                    <span className="tag-time">{path.time}</span>
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-md ${
-                      path.aiStatus === "resilient" ? "badge-ai-resilient" :
-                      path.aiStatus === "augmented" ? "badge-ai-augmented" :
-                      "badge-ai-transition"
-                    }`}>
-                      {path.aiLabel}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-sm md:text-base text-ds-slate-light leading-relaxed mb-4 flex-1">
-                {path.desc}
-              </p>
-              <div className="pt-4 border-t border-sage-muted">
-                <p className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-1">
-                  Popular Roles
-                </p>
-                <p className="text-sm font-medium text-sage">{path.roles}</p>
-              </div>
-            </a>
-          ))}
-        </div>
       </section>
 
       {/* Category Strip */}
@@ -256,6 +207,57 @@ export default function HomePage() {
               </p>
             </a>
           ))}
+        </div>
+      </section>
+
+      {/* Popular Paths Section */}
+      <section className="bg-warm-white py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <p className="section-eyebrow">Popular Paths</p>
+            <h2 className="section-title">High-demand fields for career changers</h2>
+            <p className="section-subtitle">Clear training routes, strong job markets, good pay</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+          {curatedPaths.map((path) => (
+            <a
+              key={path.id}
+              href={path.href}
+              className="card-warm p-5 md:p-6 flex flex-col"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-sage-muted rounded-xl flex items-center justify-center text-2xl md:text-3xl flex-shrink-0">
+                  {path.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-display text-lg md:text-xl font-semibold text-ds-slate mb-2">
+                    {path.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="tag-pay">{path.pay}</span>
+                    <span className="tag-time">{path.time}</span>
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-md ${
+                      path.aiStatus === "resilient" ? "badge-ai-resilient" :
+                      path.aiStatus === "augmented" ? "badge-ai-augmented" :
+                      "badge-ai-transition"
+                    }`}>
+                      {path.aiLabel}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-sm md:text-base text-ds-slate-light leading-relaxed mb-4 flex-1">
+                {path.desc}
+              </p>
+              <div className="pt-4 border-t border-sage-muted">
+                <p className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-1">
+                  Popular Roles
+                </p>
+                <p className="text-sm font-medium text-sage">{path.roles}</p>
+              </div>
+            </a>
+          ))}
+          </div>
         </div>
       </section>
 
