@@ -248,15 +248,15 @@ export default async function CareerPage({ params }: PageProps) {
         {/* Table of Contents */}
         <TableOfContents
           items={[
-            ...(career.video ? [{ id: "career-video", label: "Video", emoji: "🎬" }] : []),
-            ...(aiAssessment ? [{ id: "ai-resilience", label: "AI Risk", emoji: "🤖" }] : []),
-            ...(career.tasks && career.tasks.length > 0 ? [{ id: "responsibilities", label: "Responsibilities", emoji: "📋" }] : []),
-            ...(career.inside_look ? [{ id: "inside-look", label: "Average Day", emoji: "💡" }] : []),
-            ...(career.career_progression?.levels ? [{ id: "career-progression", label: "Progression", emoji: "📈" }] : []),
-            ...(career.education ? [{ id: "education", label: "Education", emoji: "📚" }] : []),
-            { id: "local-jobs", label: "Local Jobs", emoji: "🇺🇸" },
-            ...(career.technology_skills && career.technology_skills.length > 0 ? [{ id: "skills", label: "Skills", emoji: "💻" }] : []),
-            ...(allReviews.length > 0 ? [{ id: "reviews", label: "What Workers Say", emoji: "💬" }] : []),
+            ...(career.video ? [{ id: "career-video", label: "Career Video" }] : []),
+            ...(aiAssessment ? [{ id: "ai-resilience", label: "AI Resilience Assessment" }] : []),
+            ...(career.tasks && career.tasks.length > 0 ? [{ id: "responsibilities", label: "Key Responsibilities" }] : []),
+            ...(career.inside_look ? [{ id: "inside-look", label: "Inside This Career" }] : []),
+            ...(career.career_progression?.levels ? [{ id: "career-progression", label: "Career Progression" }] : []),
+            ...(career.education ? [{ id: "education", label: "Education & Training" }] : []),
+            { id: "local-jobs", label: "Local Job Market" },
+            ...(career.technology_skills && career.technology_skills.length > 0 ? [{ id: "skills", label: "Technology Skills" }] : []),
+            ...(allReviews.length > 0 ? [{ id: "reviews", label: "What Workers Say" }] : []),
           ]}
         />
 
