@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 
 interface FlagLogoProps {
   size?: "sm" | "md" | "lg";
@@ -76,22 +79,76 @@ function AmericanFlagSVG({ className }: { className?: string }) {
   );
 }
 
+// Detect if flag emoji renders properly (not as "US" text)
+function checkFlagEmojiSupport(): boolean {
+  if (typeof document === "undefined") return false;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 20;
+  canvas.height = 20;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return false;
+
+  // Draw the flag emoji
+  ctx.font = "16px sans-serif";
+  ctx.fillText("🇺🇸", 0, 16);
+
+  // Sample pixels - a proper flag emoji will have colored pixels
+  // If it renders as "US" text, the pattern will be different
+  const imageData = ctx.getImageData(0, 0, 20, 20).data;
+
+  // Check for any non-black pixels with color (flag has red/blue)
+  let hasColor = false;
+  for (let i = 0; i < imageData.length; i += 4) {
+    const r = imageData[i];
+    const g = imageData[i + 1];
+    const b = imageData[i + 2];
+    const a = imageData[i + 3];
+
+    // Look for red or blue pixels (flag colors)
+    if (a > 0 && ((r > 150 && g < 100 && b < 100) || (b > 100 && r < 100 && g < 100))) {
+      hasColor = true;
+      break;
+    }
+  }
+
+  return hasColor;
+}
+
 export function FlagLogo({ size = "md", className = "" }: FlagLogoProps) {
+  // Start with SVG to avoid flash of "US" text, then switch to emoji if supported
+  const [useEmoji, setUseEmoji] = useState(false);
+
+  const emojiSizeClasses = {
+    sm: "text-lg leading-none",
+    md: "text-xl leading-none",
+    lg: "text-2xl leading-none",
+  };
+
   const svgSizeClasses = {
     sm: "w-5 h-3.5",
     md: "w-6 h-4",
     lg: "w-7 h-5",
   };
 
-  // Always use SVG for consistent rendering across all platforms
-  // Flag emojis don't render properly on many systems (showing "US" instead)
+  useEffect(() => {
+    // Check if flag emoji is supported on this device
+    if (checkFlagEmojiSupport()) {
+      setUseEmoji(true);
+    }
+  }, []);
+
   return (
     <span
       className={`inline-flex items-center ${className}`}
       role="img"
       aria-label="American flag"
     >
-      <AmericanFlagSVG className={svgSizeClasses[size]} />
+      {useEmoji ? (
+        <span className={emojiSizeClasses[size]}>🇺🇸</span>
+      ) : (
+        <AmericanFlagSVG className={svgSizeClasses[size]} />
+      )}
     </span>
   );
 }
