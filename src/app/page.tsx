@@ -111,29 +111,6 @@ export default function HomePage() {
         <p className="text-lg md:text-xl text-ds-slate-light max-w-xl mx-auto leading-relaxed animate-fadeUp" style={{ animationDelay: "0.1s" }}>
           Answer 5 quick questions, upload your resume, and we&apos;ll match you with careers and real job openings tailored to your goals.
         </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 animate-fadeUp" style={{ animationDelay: "0.15s" }}>
-          <a
-            href="#careers"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white font-semibold rounded-xl hover:bg-sage-dark transition-all hover:-translate-y-0.5 shadow-soft hover:shadow-hover"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4M12 8h.01" />
-            </svg>
-            Start Career Compass
-          </a>
-          <a
-            href="/local-jobs"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all hover:-translate-y-0.5 shadow-soft hover:shadow-hover"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            Find Jobs Near Me
-          </a>
-        </div>
       </section>
 
       {/* Career Compass Wizard - Inline step-by-step flow */}
@@ -234,13 +211,14 @@ export default function HomePage() {
       </section>
 
       {/* Popular Paths Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16 md:pb-20">
-        <div className="text-center mb-8">
-          <p className="section-eyebrow">Popular Paths</p>
-          <h2 className="section-title">High-demand fields for career changers</h2>
-          <p className="section-subtitle">Clear training routes, strong job markets, good pay</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+      <section className="bg-warm-white py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <p className="section-eyebrow">Popular Paths</p>
+            <h2 className="section-title">High-demand fields for career changers</h2>
+            <p className="section-subtitle">Clear training routes, strong job markets, good pay</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
           {curatedPaths.map((path) => (
             <a
               key={path.id}
@@ -279,6 +257,7 @@ export default function HomePage() {
               </div>
             </a>
           ))}
+          </div>
         </div>
       </section>
 
