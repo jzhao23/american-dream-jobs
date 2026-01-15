@@ -40,6 +40,10 @@ export interface AggregatedSearchResult {
 export async function searchJobs(params: AggregatedSearchParams): Promise<AggregatedSearchResult> {
   const { careerSlug, careerTitle, locationCode, locationName, filters, limit = 50, userId } = params;
 
+  // Log API configuration status at start
+  console.log('[Aggregator] Starting job search for:', careerTitle, 'in', locationName);
+  console.log('[Aggregator] API keys present - SerpApi:', !!process.env.SERPAPI_API_KEY, 'JSearch:', !!process.env.JSEARCH_API_KEY);
+
   // Check cache first
   try {
     const cachedResult = await getCachedJobSearch(careerSlug, locationCode, filters as Record<string, unknown> | undefined);
@@ -129,10 +133,14 @@ export async function searchJobs(params: AggregatedSearchParams): Promise<Aggreg
   }
 
   // No API configured or all failed
-  const noApiConfigured = !isSerpApiConfigured() && !isJSearchConfigured();
+  const serpApiConfigured = isSerpApiConfigured();
+  const jSearchConfigured = isJSearchConfigured();
+  const noApiConfigured = !serpApiConfigured && !jSearchConfigured;
   console.error('[Aggregator] No job search APIs available or all failed');
-  console.log('[Aggregator] SerpApi configured:', isSerpApiConfigured());
-  console.log('[Aggregator] JSearch configured:', isJSearchConfigured());
+  console.log('[Aggregator] SerpApi configured:', serpApiConfigured);
+  console.log('[Aggregator] JSearch configured:', jSearchConfigured);
+  console.log('[Aggregator] SERPAPI_API_KEY present:', !!process.env.SERPAPI_API_KEY);
+  console.log('[Aggregator] JSEARCH_API_KEY present:', !!process.env.JSEARCH_API_KEY);
 
   // Record the failed attempt
   try {
