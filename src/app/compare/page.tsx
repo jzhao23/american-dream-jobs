@@ -125,6 +125,7 @@ function CompareContent() {
   const [showSearch, setShowSearch] = useState(false);
   const [startAge] = useState(18); // Age when starting education/training
   const [retirementAge] = useState(65);
+  const [showYearByYear, setShowYearByYear] = useState(false); // Collapsible year-by-year breakdown
   // Track institution type selections: { [careerSlug]: { [stageIndex]: institutionType } }
   const [institutionTypes, setInstitutionTypes] = useState<Record<string, Record<number, string>>>({});
   // Track selected specialization for each career (for education requirements)
@@ -530,110 +531,6 @@ function CompareContent() {
 
         {selectedCareers.length >= 1 && (
           <>
-            {/* Career Path Timeline */}
-            <div className="card-warm p-6 mb-8">
-              <h2 className="font-display text-xl font-semibold text-ds-slate mb-2">
-                {selectedCareers.length === 1 ? 'Career Path Visualization' : 'Career Path Comparison'}
-              </h2>
-              <p className="text-sm text-ds-slate-light mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
-
-              <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
-                {careerPaths.map((path, pathIndex) => (
-                  <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
-                    {/* Career header - fixed height for alignment */}
-                    <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border} min-h-[72px] flex flex-col justify-center`}>
-                      <a
-                        href={`/careers/${path.career.slug}`}
-                        className="font-bold text-sage hover:text-sage-dark hover:underline text-sm line-clamp-2"
-                      >
-                        {path.career.title}
-                      </a>
-                      <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
-                        {path.career.category}
-                      </div>
-                    </div>
-
-                    {/* Stages */}
-                    <div className="border-x-2 border-b-2 border-sage-muted rounded-b-lg overflow-hidden">
-                      {path.stages.map((stage, stageIndex) => (
-                        <div
-                          key={stageIndex}
-                          className={`p-3 border-b border-sage-muted last:border-b-0 ${
-                            stage.type === 'education' ? 'bg-amber-50' :
-                            stage.type === 'retirement' ? 'bg-sage-muted' :
-                            stageIndex % 2 === 0 ? 'bg-warm-white' : 'bg-sage-pale'
-                          }`}
-                        >
-                          <div className="flex justify-between items-start mb-1">
-                            <div>
-                              <div className="text-xs text-ds-slate-muted">
-                                {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
-                              </div>
-                              <div className="font-medium text-sm text-ds-slate">
-                                {stage.type === 'education' ? stage.label :
-                                 stage.type === 'retirement' ? 'Retirement' :
-                                 stage.label}
-                              </div>
-                              {stage.levelName && stage.type === 'career' && (
-                                <div className="text-xs text-ds-slate-muted">{stage.levelName}</div>
-                              )}
-                            </div>
-                            <div className="text-right">
-                              {stage.type === 'education' ? (
-                                <div className="group relative">
-                                  <div className="text-amber-600 font-bold text-sm cursor-help">
-                                    Education Cost: -{formatPay(Math.abs(stage.annualAmount))}
-                                  </div>
-                                  <div className="absolute hidden group-hover:block right-0 bottom-full mb-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
-                                    This is an investment in your future earning potential
-                                  </div>
-                                </div>
-                              ) : stage.type === 'career' ? (
-                                <div className="text-green-600 font-bold text-sm">
-                                  +{formatPay(stage.annualAmount)}
-                                </div>
-                              ) : null}
-                            </div>
-                          </div>
-                          {stage.type !== 'retirement' && (
-                            <div className="text-xs text-ds-slate-muted mt-1">
-                              Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-amber-600'}>
-                                {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
-                              </span>
-                            </div>
-                          )}
-                          {stage.type === 'retirement' && (
-                            <div className="mt-2 p-2 bg-warm-white rounded border border-sage-muted">
-                              <div className="text-xs text-ds-slate-light">Total Lifetime Net</div>
-                              <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                                {formatPay(path.totalEarnings)}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Legend */}
-              <div className="flex justify-center gap-6 mt-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
-                  <span className="text-ds-slate-light">Education (Cost)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-warm-white border border-sage-muted rounded" />
-                  <span className="text-ds-slate-light">Career (Earnings)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-sage-muted border border-sage-muted rounded" />
-                  <span className="text-ds-slate-light">Retirement</span>
-                </div>
-              </div>
-            </div>
-
             {/* Summary Comparison Table */}
             <div className="card-warm overflow-hidden mb-8">
               {/* Mobile scroll hint */}
@@ -808,7 +705,7 @@ function CompareContent() {
 
             {/* Key Insights - only show when comparing 2+ careers */}
             {selectedCareers.length >= 2 && (
-            <div className="card-warm p-6">
+            <div className="card-warm p-6 mb-8">
               <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Key Insights</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Highest Lifetime Net - PRIMARY INSIGHT */}
@@ -960,6 +857,134 @@ function CompareContent() {
               </div>
             </div>
             )}
+
+            {/* Detailed Year-by-Year Breakdown - Collapsible */}
+            <div className="card-warm p-6">
+              <button
+                onClick={() => setShowYearByYear(!showYearByYear)}
+                className="w-full flex items-center justify-between text-left"
+              >
+                <div>
+                  <h2 className="font-display text-xl font-semibold text-ds-slate">
+                    Detailed Year-by-Year Breakdown
+                  </h2>
+                  <p className="text-sm text-ds-slate-light">Starting at age {startAge}, retiring at age {retirementAge}</p>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-sage-pale rounded-lg text-sage hover:bg-sage-muted transition-colors">
+                  <span className="text-sm font-medium">
+                    {showYearByYear ? 'Hide Details' : 'Show Details'}
+                  </span>
+                  <svg
+                    className={`w-5 h-5 transition-transform ${showYearByYear ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+
+              {showYearByYear && (
+                <div className="mt-6">
+                  <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
+                    {careerPaths.map((path, pathIndex) => (
+                      <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
+                        {/* Career header - fixed height for alignment */}
+                        <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border} min-h-[72px] flex flex-col justify-center`}>
+                          <a
+                            href={`/careers/${path.career.slug}`}
+                            className="font-bold text-sage hover:text-sage-dark hover:underline text-sm line-clamp-2"
+                          >
+                            {path.career.title}
+                          </a>
+                          <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
+                            {path.career.category}
+                          </div>
+                        </div>
+
+                        {/* Stages */}
+                        <div className="border-x-2 border-b-2 border-sage-muted rounded-b-lg overflow-hidden">
+                          {path.stages.map((stage, stageIndex) => (
+                            <div
+                              key={stageIndex}
+                              className={`p-3 border-b border-sage-muted last:border-b-0 ${
+                                stage.type === 'education' ? 'bg-amber-50' :
+                                stage.type === 'retirement' ? 'bg-sage-muted' :
+                                stageIndex % 2 === 0 ? 'bg-warm-white' : 'bg-sage-pale'
+                              }`}
+                            >
+                              <div className="flex justify-between items-start mb-1">
+                                <div>
+                                  <div className="text-xs text-ds-slate-muted">
+                                    {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
+                                  </div>
+                                  <div className="font-medium text-sm text-ds-slate">
+                                    {stage.type === 'education' ? stage.label :
+                                     stage.type === 'retirement' ? 'Retirement' :
+                                     stage.label}
+                                  </div>
+                                  {stage.levelName && stage.type === 'career' && (
+                                    <div className="text-xs text-ds-slate-muted">{stage.levelName}</div>
+                                  )}
+                                </div>
+                                <div className="text-right">
+                                  {stage.type === 'education' ? (
+                                    <div className="group relative">
+                                      <div className="text-amber-600 font-bold text-sm cursor-help">
+                                        Education Cost: -{formatPay(Math.abs(stage.annualAmount))}
+                                      </div>
+                                      <div className="absolute hidden group-hover:block right-0 bottom-full mb-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
+                                        This is an investment in your future earning potential
+                                      </div>
+                                    </div>
+                                  ) : stage.type === 'career' ? (
+                                    <div className="text-green-600 font-bold text-sm">
+                                      +{formatPay(stage.annualAmount)}
+                                    </div>
+                                  ) : null}
+                                </div>
+                              </div>
+                              {stage.type !== 'retirement' && (
+                                <div className="text-xs text-ds-slate-muted mt-1">
+                                  Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-amber-600'}>
+                                    {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
+                                  </span>
+                                </div>
+                              )}
+                              {stage.type === 'retirement' && (
+                                <div className="mt-2 p-2 bg-warm-white rounded border border-sage-muted">
+                                  <div className="text-xs text-ds-slate-light">Total Lifetime Net</div>
+                                  <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                    {formatPay(path.totalEarnings)}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Legend */}
+                  <div className="flex justify-center gap-6 mt-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
+                      <span className="text-ds-slate-light">Education (Cost)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-warm-white border border-sage-muted rounded" />
+                      <span className="text-ds-slate-light">Career (Earnings)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-sage-muted border border-sage-muted rounded" />
+                      <span className="text-ds-slate-light">Retirement</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </>
         )}
 
