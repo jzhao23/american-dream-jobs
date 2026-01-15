@@ -417,14 +417,21 @@ function CalculatorContent() {
                   <input
                     type="range"
                     min={16}
-                    max={65}
+                    max={100}
                     value={currentAge}
-                    onChange={(e) => setCurrentAge(Number(e.target.value))}
+                    onChange={(e) => {
+                      const newAge = Number(e.target.value);
+                      setCurrentAge(newAge);
+                      // Ensure retirement age is always >= current age
+                      if (newAge > retirementAge) {
+                        setRetirementAge(newAge);
+                      }
+                    }}
                     className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
                   <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
                     <span>16</span>
-                    <span>65</span>
+                    <span>100</span>
                   </div>
                 </div>
 
@@ -494,14 +501,14 @@ function CalculatorContent() {
                   </label>
                   <input
                     type="range"
-                    min={55}
+                    min={currentAge}
                     max={100}
                     value={retirementAge}
                     onChange={(e) => setRetirementAge(Number(e.target.value))}
                     className="w-full h-2 bg-sage-muted rounded-lg appearance-none cursor-pointer accent-sage"
                   />
                   <div className="flex justify-between text-xs text-ds-slate-muted mt-1">
-                    <span>55</span>
+                    <span>{currentAge}</span>
                     <span>100</span>
                   </div>
                 </div>
