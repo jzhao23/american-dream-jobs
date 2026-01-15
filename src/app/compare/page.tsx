@@ -125,6 +125,7 @@ function CompareContent() {
   const [showSearch, setShowSearch] = useState(false);
   const [startAge] = useState(18); // Age when starting education/training
   const [retirementAge] = useState(65);
+  const [showYearByYear, setShowYearByYear] = useState(false); // Collapsible year-by-year breakdown
   // Track institution type selections: { [careerSlug]: { [stageIndex]: institutionType } }
   const [institutionTypes, setInstitutionTypes] = useState<Record<string, Record<number, string>>>({});
   // Track selected specialization for each career (for education requirements)
@@ -530,109 +531,160 @@ function CompareContent() {
 
         {selectedCareers.length >= 1 && (
           <>
-            {/* Career Path Timeline */}
+            {/* Key Insights - only show when comparing 2+ careers */}
+            {selectedCareers.length >= 2 && (
             <div className="card-warm p-6 mb-8">
-              <h2 className="font-display text-xl font-semibold text-ds-slate mb-2">
-                {selectedCareers.length === 1 ? 'Career Path Visualization' : 'Career Path Comparison'}
-              </h2>
-              <p className="text-sm text-ds-slate-light mb-6">Starting at age {startAge}, retiring at age {retirementAge}</p>
-
-              <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
-                {careerPaths.map((path, pathIndex) => (
-                  <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
-                    {/* Career header - fixed height for alignment */}
-                    <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border} min-h-[72px] flex flex-col justify-center`}>
-                      <a
-                        href={`/careers/${path.career.slug}`}
-                        className="font-bold text-sage hover:text-sage-dark hover:underline text-sm line-clamp-2"
-                      >
-                        {path.career.title}
-                      </a>
-                      <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
-                        {path.career.category}
-                      </div>
-                    </div>
-
-                    {/* Stages */}
-                    <div className="border-x-2 border-b-2 border-sage-muted rounded-b-lg overflow-hidden">
-                      {path.stages.map((stage, stageIndex) => (
-                        <div
-                          key={stageIndex}
-                          className={`p-3 border-b border-sage-muted last:border-b-0 ${
-                            stage.type === 'education' ? 'bg-amber-50' :
-                            stage.type === 'retirement' ? 'bg-sage-muted' :
-                            stageIndex % 2 === 0 ? 'bg-warm-white' : 'bg-sage-pale'
-                          }`}
-                        >
-                          <div className="flex justify-between items-start mb-1">
-                            <div>
-                              <div className="text-xs text-ds-slate-muted">
-                                {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
-                              </div>
-                              <div className="font-medium text-sm text-ds-slate">
-                                {stage.type === 'education' ? stage.label :
-                                 stage.type === 'retirement' ? 'Retirement' :
-                                 stage.label}
-                              </div>
-                              {stage.levelName && stage.type === 'career' && (
-                                <div className="text-xs text-ds-slate-muted">{stage.levelName}</div>
-                              )}
-                            </div>
-                            <div className="text-right">
-                              {stage.type === 'education' ? (
-                                <div className="group relative">
-                                  <div className="text-amber-600 font-bold text-sm cursor-help">
-                                    Education Cost: -{formatPay(Math.abs(stage.annualAmount))}
-                                  </div>
-                                  <div className="absolute hidden group-hover:block right-0 bottom-full mb-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
-                                    This is an investment in your future earning potential
-                                  </div>
-                                </div>
-                              ) : stage.type === 'career' ? (
-                                <div className="text-green-600 font-bold text-sm">
-                                  +{formatPay(stage.annualAmount)}
-                                </div>
-                              ) : null}
-                            </div>
-                          </div>
-                          {stage.type !== 'retirement' && (
-                            <div className="text-xs text-ds-slate-muted mt-1">
-                              Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-amber-600'}>
-                                {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
-                              </span>
-                            </div>
-                          )}
-                          {stage.type === 'retirement' && (
-                            <div className="mt-2 p-2 bg-warm-white rounded border border-sage-muted">
-                              <div className="text-xs text-ds-slate-light">Total Lifetime Net</div>
-                              <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                                {formatPay(path.totalEarnings)}
-                              </div>
-                            </div>
-                          )}
+              <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Key Insights</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* Highest Lifetime Net - PRIMARY INSIGHT */}
+                <div className="bg-green-50 rounded-lg p-4 ring-2 ring-green-200">
+                  <div className="text-sm text-green-700 mb-1 font-semibold">Highest Lifetime Net</div>
+                  {(() => {
+                    const best = careerPaths.reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b);
+                    const second = careerPaths.filter(p => p !== best).reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b, { totalEarnings: 0, career: { slug: '', title: '' } });
+                    const diff = best.totalEarnings - second.totalEarnings;
+                    return (
+                      <>
+                        <a href={`/careers/${best.career.slug}`} className="font-bold text-green-800 hover:underline block text-lg">
+                          {best.career.title}
+                        </a>
+                        <div className="text-sm text-green-600 font-medium">
+                          {formatPay(best.totalEarnings)}
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                        {second.career.title && diff > 0 && (
+                          <div className="text-xs text-green-600 mt-1">
+                            +{formatPay(diff)} vs. next best
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
 
-              {/* Legend */}
-              <div className="flex justify-center gap-6 mt-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
-                  <span className="text-ds-slate-light">Education (Cost)</span>
+                {/* Best ROI (Earnings vs. Education Cost) */}
+                <div className="bg-emerald-50 rounded-lg p-4">
+                  <div className="text-sm text-emerald-700 mb-1">Best ROI (Earnings vs. Education Cost)</div>
+                  {(() => {
+                    const withROI = careerPaths.map(p => {
+                      const timeline = p.career.career_progression?.timeline || [];
+                      const totalEarnings = timeline.reduce((sum, t) => sum + t.expected_compensation, 0);
+                      const cost = p.educationCost || 1;
+                      const roi = Math.round(((totalEarnings - cost) / Math.max(cost, 1)) * 100);
+                      return { path: p, roi, totalEarnings, cost };
+                    });
+                    const best = withROI.reduce((b, curr) => curr.roi > b.roi ? curr : b);
+                    return (
+                      <>
+                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-emerald-800 hover:underline block">
+                          {best.path.career.title}
+                        </a>
+                        <div className="text-sm text-emerald-600">
+                          {best.roi.toLocaleString()}% return on education
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-warm-white border border-sage-muted rounded" />
-                  <span className="text-ds-slate-light">Career (Earnings)</span>
+
+                {/* Fastest to Positive (Break-even) */}
+                <div className="bg-cyan-50 rounded-lg p-4">
+                  <div className="text-sm text-cyan-700 mb-1">Fastest to Positive</div>
+                  {(() => {
+                    const withBreakeven = careerPaths.map(p => {
+                      const timeline = p.career.career_progression?.timeline || [];
+                      let cumulative = -p.educationCost;
+                      let breakEvenYear = -1;
+                      for (let year = 0; year < timeline.length; year++) {
+                        cumulative += timeline[year]?.expected_compensation || 0;
+                        if (cumulative >= 0 && breakEvenYear === -1) {
+                          breakEvenYear = year + 1;
+                          break;
+                        }
+                      }
+                      // If never breaks even in timeline, estimate
+                      if (breakEvenYear === -1 && timeline.length > 0) {
+                        const avgSalary = timeline.reduce((sum, t) => sum + t.expected_compensation, 0) / timeline.length;
+                        breakEvenYear = Math.ceil(p.educationCost / avgSalary);
+                      }
+                      return { path: p, breakEvenYear };
+                    });
+                    const best = withBreakeven.reduce((b, curr) =>
+                      (curr.breakEvenYear > 0 && (b.breakEvenYear < 0 || curr.breakEvenYear < b.breakEvenYear)) ? curr : b
+                    );
+                    return (
+                      <>
+                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-cyan-800 hover:underline block">
+                          {best.path.career.title}
+                        </a>
+                        <div className="text-sm text-cyan-600">
+                          Breaks even in ~{best.breakEvenYear} year{best.breakEvenYear !== 1 ? 's' : ''}
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-sage-muted border border-sage-muted rounded" />
-                  <span className="text-ds-slate-light">Retirement</span>
+
+                {/* Lowest Education Cost */}
+                <div className="bg-amber-50 rounded-lg p-4">
+                  <div className="text-sm text-amber-700 mb-1">Lowest Education Cost</div>
+                  {(() => {
+                    const best = careerPaths.reduce((b, p) => p.educationCost < b.educationCost ? p : b);
+                    return (
+                      <a href={`/careers/${best.career.slug}`} className="font-bold text-amber-800 hover:underline block">
+                        {best.career.title}
+                      </a>
+                    );
+                  })()}
+                  <div className="text-sm text-amber-600">
+                    {formatPay(Math.min(...careerPaths.map(p => p.educationCost)))}
+                  </div>
+                </div>
+
+                {/* Fastest to Start */}
+                <div className="bg-purple-50 rounded-lg p-4">
+                  <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
+                  {(() => {
+                    const best = selectedCareers.reduce((b, c) => (c.education?.time_to_job_ready?.typical_years || 10) < (b.education?.time_to_job_ready?.typical_years || 10) ? c : b);
+                    const years = best.education?.time_to_job_ready?.typical_years;
+                    return (
+                      <>
+                        <a href={`/careers/${best.slug}`} className="font-bold text-purple-800 hover:underline block">
+                          {best.title}
+                        </a>
+                        {years && (
+                          <div className="text-sm text-purple-600">
+                            {years} year{years !== 1 ? 's' : ''} to job-ready
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+
+                {/* Most AI-Resilient */}
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="text-sm text-blue-700 mb-1">Most AI-Resilient</div>
+                  {(() => {
+                    // Lower tier = more resilient (1=Resilient, 4=High Risk)
+                    const best = selectedCareers.reduce((b, c) => (c.ai_resilience_tier || 4) < (b.ai_resilience_tier || 4) ? c : b);
+                    const classification = best.ai_resilience as AIResilienceClassification | undefined;
+                    return (
+                      <>
+                        <a href={`/careers/${best.slug}`} className="font-bold text-blue-800 hover:underline block">
+                          {best.title}
+                        </a>
+                        {classification && (
+                          <span className="text-xs text-blue-600">
+                            {getAIResilienceEmoji(classification)} {classification}
+                          </span>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
+            )}
 
             {/* Summary Comparison Table */}
             <div className="card-warm overflow-hidden mb-8">
@@ -806,160 +858,133 @@ function CompareContent() {
               </div>
             </div>
 
-            {/* Key Insights - only show when comparing 2+ careers */}
-            {selectedCareers.length >= 2 && (
+            {/* Detailed Year-by-Year Breakdown - Collapsible */}
             <div className="card-warm p-6">
-              <h2 className="font-display text-xl font-semibold text-ds-slate mb-4">Key Insights</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Highest Lifetime Net - PRIMARY INSIGHT */}
-                <div className="bg-green-50 rounded-lg p-4 ring-2 ring-green-200">
-                  <div className="text-sm text-green-700 mb-1 font-semibold">Highest Lifetime Net</div>
-                  {(() => {
-                    const best = careerPaths.reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b);
-                    const second = careerPaths.filter(p => p !== best).reduce((b, p) => p.totalEarnings > b.totalEarnings ? p : b, { totalEarnings: 0, career: { slug: '', title: '' } });
-                    const diff = best.totalEarnings - second.totalEarnings;
-                    return (
-                      <>
-                        <a href={`/careers/${best.career.slug}`} className="font-bold text-green-800 hover:underline block text-lg">
-                          {best.career.title}
-                        </a>
-                        <div className="text-sm text-green-600 font-medium">
-                          {formatPay(best.totalEarnings)}
-                        </div>
-                        {second.career.title && diff > 0 && (
-                          <div className="text-xs text-green-600 mt-1">
-                            +{formatPay(diff)} vs. next best
+              <button
+                onClick={() => setShowYearByYear(!showYearByYear)}
+                className="w-full flex items-center justify-between text-left"
+              >
+                <div>
+                  <h2 className="font-display text-xl font-semibold text-ds-slate">
+                    Detailed Year-by-Year Breakdown
+                  </h2>
+                  <p className="text-sm text-ds-slate-light">Starting at age {startAge}, retiring at age {retirementAge}</p>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-sage-pale rounded-lg text-sage hover:bg-sage-muted transition-colors">
+                  <span className="text-sm font-medium">
+                    {showYearByYear ? 'Hide Details' : 'Show Details'}
+                  </span>
+                  <svg
+                    className={`w-5 h-5 transition-transform ${showYearByYear ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+
+              {showYearByYear && (
+                <div className="mt-6">
+                  <div className="flex flex-col md:flex-row gap-4 md:overflow-x-auto pb-4">
+                    {careerPaths.map((path, pathIndex) => (
+                      <div key={path.career.slug} className="flex-1 min-w-full md:min-w-[280px]">
+                        {/* Career header - fixed height for alignment */}
+                        <div className={`text-center p-3 rounded-t-lg ${colorClasses[colors[pathIndex]].bgLight} border-2 ${colorClasses[colors[pathIndex]].border} min-h-[72px] flex flex-col justify-center`}>
+                          <a
+                            href={`/careers/${path.career.slug}`}
+                            className="font-bold text-sage hover:text-sage-dark hover:underline text-sm line-clamp-2"
+                          >
+                            {path.career.title}
+                          </a>
+                          <div className={`text-xs ${getCategoryColor(path.career.category)} inline-block px-2 py-0.5 rounded-full mt-1`}>
+                            {path.career.category}
                           </div>
-                        )}
-                      </>
-                    );
-                  })()}
-                </div>
-
-                {/* Best ROI (Earnings vs. Education Cost) */}
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-emerald-700 mb-1">Best ROI (Earnings vs. Education Cost)</div>
-                  {(() => {
-                    const withROI = careerPaths.map(p => {
-                      const timeline = p.career.career_progression?.timeline || [];
-                      const totalEarnings = timeline.reduce((sum, t) => sum + t.expected_compensation, 0);
-                      const cost = p.educationCost || 1;
-                      const roi = Math.round(((totalEarnings - cost) / Math.max(cost, 1)) * 100);
-                      return { path: p, roi, totalEarnings, cost };
-                    });
-                    const best = withROI.reduce((b, curr) => curr.roi > b.roi ? curr : b);
-                    return (
-                      <>
-                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-emerald-800 hover:underline block">
-                          {best.path.career.title}
-                        </a>
-                        <div className="text-sm text-emerald-600">
-                          {best.roi.toLocaleString()}% return on education
                         </div>
-                      </>
-                    );
-                  })()}
-                </div>
 
-                {/* Fastest to Positive (Break-even) */}
-                <div className="bg-cyan-50 rounded-lg p-4">
-                  <div className="text-sm text-cyan-700 mb-1">Fastest to Positive</div>
-                  {(() => {
-                    const withBreakeven = careerPaths.map(p => {
-                      const timeline = p.career.career_progression?.timeline || [];
-                      let cumulative = -p.educationCost;
-                      let breakEvenYear = -1;
-                      for (let year = 0; year < timeline.length; year++) {
-                        cumulative += timeline[year]?.expected_compensation || 0;
-                        if (cumulative >= 0 && breakEvenYear === -1) {
-                          breakEvenYear = year + 1;
-                          break;
-                        }
-                      }
-                      // If never breaks even in timeline, estimate
-                      if (breakEvenYear === -1 && timeline.length > 0) {
-                        const avgSalary = timeline.reduce((sum, t) => sum + t.expected_compensation, 0) / timeline.length;
-                        breakEvenYear = Math.ceil(p.educationCost / avgSalary);
-                      }
-                      return { path: p, breakEvenYear };
-                    });
-                    const best = withBreakeven.reduce((b, curr) =>
-                      (curr.breakEvenYear > 0 && (b.breakEvenYear < 0 || curr.breakEvenYear < b.breakEvenYear)) ? curr : b
-                    );
-                    return (
-                      <>
-                        <a href={`/careers/${best.path.career.slug}`} className="font-bold text-cyan-800 hover:underline block">
-                          {best.path.career.title}
-                        </a>
-                        <div className="text-sm text-cyan-600">
-                          Breaks even in ~{best.breakEvenYear} year{best.breakEvenYear !== 1 ? 's' : ''}
+                        {/* Stages */}
+                        <div className="border-x-2 border-b-2 border-sage-muted rounded-b-lg overflow-hidden">
+                          {path.stages.map((stage, stageIndex) => (
+                            <div
+                              key={stageIndex}
+                              className={`p-3 border-b border-sage-muted last:border-b-0 ${
+                                stage.type === 'education' ? 'bg-amber-50' :
+                                stage.type === 'retirement' ? 'bg-sage-muted' :
+                                stageIndex % 2 === 0 ? 'bg-warm-white' : 'bg-sage-pale'
+                              }`}
+                            >
+                              <div className="flex justify-between items-start mb-1">
+                                <div>
+                                  <div className="text-xs text-ds-slate-muted">
+                                    {stage.type === 'retirement' ? `Age ${stage.ageStart}` : `Age ${stage.ageStart}-${stage.ageEnd}`}
+                                  </div>
+                                  <div className="font-medium text-sm text-ds-slate">
+                                    {stage.type === 'education' ? stage.label :
+                                     stage.type === 'retirement' ? 'Retirement' :
+                                     stage.label}
+                                  </div>
+                                  {stage.levelName && stage.type === 'career' && (
+                                    <div className="text-xs text-ds-slate-muted">{stage.levelName}</div>
+                                  )}
+                                </div>
+                                <div className="text-right">
+                                  {stage.type === 'education' ? (
+                                    <div className="group relative">
+                                      <div className="text-amber-600 font-bold text-sm cursor-help">
+                                        Education Cost: -{formatPay(Math.abs(stage.annualAmount))}
+                                      </div>
+                                      <div className="absolute hidden group-hover:block right-0 bottom-full mb-1 w-48 p-2 bg-ds-slate text-white text-xs rounded shadow-lg z-10">
+                                        This is an investment in your future earning potential
+                                      </div>
+                                    </div>
+                                  ) : stage.type === 'career' ? (
+                                    <div className="text-green-600 font-bold text-sm">
+                                      +{formatPay(stage.annualAmount)}
+                                    </div>
+                                  ) : null}
+                                </div>
+                              </div>
+                              {stage.type !== 'retirement' && (
+                                <div className="text-xs text-ds-slate-muted mt-1">
+                                  Cumulative: <span className={stage.cumulative >= 0 ? 'text-green-600' : 'text-amber-600'}>
+                                    {stage.cumulative >= 0 ? '' : '-'}{formatPay(Math.abs(stage.cumulative))}
+                                  </span>
+                                </div>
+                              )}
+                              {stage.type === 'retirement' && (
+                                <div className="mt-2 p-2 bg-warm-white rounded border border-sage-muted">
+                                  <div className="text-xs text-ds-slate-light">Total Lifetime Net</div>
+                                  <div className={`font-bold ${path.totalEarnings >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                    {formatPay(path.totalEarnings)}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
                         </div>
-                      </>
-                    );
-                  })()}
-                </div>
+                      </div>
+                    ))}
+                  </div>
 
-                {/* Lowest Education Cost */}
-                <div className="bg-amber-50 rounded-lg p-4">
-                  <div className="text-sm text-amber-700 mb-1">Lowest Education Cost</div>
-                  {(() => {
-                    const best = careerPaths.reduce((b, p) => p.educationCost < b.educationCost ? p : b);
-                    return (
-                      <a href={`/careers/${best.career.slug}`} className="font-bold text-amber-800 hover:underline block">
-                        {best.career.title}
-                      </a>
-                    );
-                  })()}
-                  <div className="text-sm text-amber-600">
-                    {formatPay(Math.min(...careerPaths.map(p => p.educationCost)))}
+                  {/* Legend */}
+                  <div className="flex justify-center gap-6 mt-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-amber-50 border border-amber-200 rounded" />
+                      <span className="text-ds-slate-light">Education (Cost)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-warm-white border border-sage-muted rounded" />
+                      <span className="text-ds-slate-light">Career (Earnings)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-sage-muted border border-sage-muted rounded" />
+                      <span className="text-ds-slate-light">Retirement</span>
+                    </div>
                   </div>
                 </div>
-
-                {/* Fastest to Start */}
-                <div className="bg-purple-50 rounded-lg p-4">
-                  <div className="text-sm text-purple-700 mb-1">Fastest to Start</div>
-                  {(() => {
-                    const best = selectedCareers.reduce((b, c) => (c.education?.time_to_job_ready?.typical_years || 10) < (b.education?.time_to_job_ready?.typical_years || 10) ? c : b);
-                    const years = best.education?.time_to_job_ready?.typical_years;
-                    return (
-                      <>
-                        <a href={`/careers/${best.slug}`} className="font-bold text-purple-800 hover:underline block">
-                          {best.title}
-                        </a>
-                        {years && (
-                          <div className="text-sm text-purple-600">
-                            {years} year{years !== 1 ? 's' : ''} to job-ready
-                          </div>
-                        )}
-                      </>
-                    );
-                  })()}
-                </div>
-
-                {/* Most AI-Resilient */}
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <div className="text-sm text-blue-700 mb-1">Most AI-Resilient</div>
-                  {(() => {
-                    // Lower tier = more resilient (1=Resilient, 4=High Risk)
-                    const best = selectedCareers.reduce((b, c) => (c.ai_resilience_tier || 4) < (b.ai_resilience_tier || 4) ? c : b);
-                    const classification = best.ai_resilience as AIResilienceClassification | undefined;
-                    return (
-                      <>
-                        <a href={`/careers/${best.slug}`} className="font-bold text-blue-800 hover:underline block">
-                          {best.title}
-                        </a>
-                        {classification && (
-                          <span className="text-xs text-blue-600">
-                            {getAIResilienceEmoji(classification)} {classification}
-                          </span>
-                        )}
-                      </>
-                    );
-                  })()}
-                </div>
-              </div>
+              )}
             </div>
-            )}
           </>
         )}
 
