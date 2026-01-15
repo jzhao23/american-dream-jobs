@@ -10,6 +10,8 @@ import {
 } from "@/types/career";
 import { useLocation } from "@/lib/location-context";
 import { FindJobsButton } from "@/components/jobs";
+import { CareerJobsList, AllJobsModal } from "@/components/compass";
+import { useJobsForCareers } from "@/lib/hooks/useJobsForCareers";
 
 // Types from the API
 interface CareerMatch {
@@ -122,6 +124,14 @@ export default function CompassResultsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
   const [localCareerData, setLocalCareerData] = useState<{ [slug: string]: LocalCareerEntry } | null>(null);
+  const [showAllJobsModal, setShowAllJobsModal] = useState(false);
+
+  // Fetch jobs for visible careers
+  const visibleCareers = showAll ? recommendations : recommendations.slice(0, 10);
+  const { jobsByCareer, allJobs, isLoading: jobsLoading, totalJobCount } = useJobsForCareers(
+    visibleCareers.map((c) => ({ slug: c.slug, title: c.title })),
+    location
+  );
 
   // Load local career data for each recommendation when location is set
   useEffect(() => {
@@ -497,6 +507,14 @@ export default function CompassResultsPage() {
                 </div>
               </div>
 
+              {/* Inline Job Listings */}
+              <CareerJobsList
+                jobs={jobsByCareer[career.slug] || []}
+                careerSlug={career.slug}
+                careerTitle={career.title}
+                isLoading={jobsLoading && !!location}
+              />
+
               {/* Action Buttons */}
               <div className="mt-4 pt-4 border-t border-sage-muted flex gap-3">
                 <Link
@@ -529,7 +547,40 @@ export default function CompassResultsPage() {
               </button>
             </div>
           )}
+
+          {/* View All Jobs Button - only show if there are jobs */}
+          {totalJobCount > 0 && (
+            <div className="text-center pt-6">
+              <button
+                onClick={() => setShowAllJobsModal(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white font-semibold rounded-xl hover:bg-sage-dark shadow-md hover:shadow-lg transition-all duration-200"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                View All {totalJobCount} Jobs
+              </button>
+            </div>
+          )}
         </div>
+
+        {/* All Jobs Modal */}
+        <AllJobsModal
+          isOpen={showAllJobsModal}
+          onClose={() => setShowAllJobsModal(false)}
+          jobs={allJobs}
+          careers={visibleCareers.map((c) => ({ slug: c.slug, title: c.title }))}
+        />
 
         {/* Next Steps */}
         <div className="card-warm p-6 mt-8 bg-sage-pale border border-sage-muted">
