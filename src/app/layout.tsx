@@ -6,9 +6,10 @@ import { LocationProvider } from "@/lib/location-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "American Dream Jobs - Find Careers That Build America",
+  metadataBase: new URL("https://americandreamjobs.org"),
+  title: "American Dream Jobs - Find Top Jobs in Minutes",
   description:
-    "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like.",
+    "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
   keywords: [
     "careers",
     "jobs",
@@ -17,6 +18,28 @@ export const metadata: Metadata = {
     "salary",
     "job market",
   ],
+  openGraph: {
+    title: "American Dream Jobs - Find Top Jobs in Minutes",
+    description:
+      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
+    images: [
+      {
+        url: "/us-flag-circle.svg",
+        width: 512,
+        height: 512,
+        alt: "American Dream Jobs - Circular American Flag",
+      },
+    ],
+    type: "website",
+    siteName: "American Dream Jobs",
+  },
+  twitter: {
+    card: "summary",
+    title: "American Dream Jobs - Find Top Jobs in Minutes",
+    description:
+      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
+    images: ["/us-flag-circle.svg"],
+  },
 };
 
 export default function RootLayout({
