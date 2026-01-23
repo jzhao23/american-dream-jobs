@@ -37,7 +37,8 @@
     "data:fetch-msa": "npx tsx scripts/fetch-bls-msa-wages.ts",
     "data:build-geocoding": "npx tsx scripts/build-msa-geocoding.ts",
     "data:generate-local": "npx tsx scripts/generate-local-careers-index.ts",
-    "data:local": "npm run data:fetch-msa && npm run data:build-geocoding && npm run data:generate-local"
+    "data:local": "npm run data:fetch-msa && npm run data:build-geocoding && npm run data:generate-local",
+    "compass:generate-embeddings": "npx tsx scripts/generate-career-embeddings.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

@@ -3,7 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
-import { storeCompassResume } from "@/lib/resume-storage";
+import { useAuth } from "@/lib/auth-context";
+import { storeCompassResume, getCompassResume, clearCompassResume } from "@/lib/resume-storage";
 
 // localStorage key for user session (shared with FindJobsModal)
 const USER_SESSION_KEY = 'adjn_user_session';
@@ -142,6 +143,7 @@ export function CareerCompassWizard() {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { location, setLocation, isLoading: locationLoading } = useLocation();
+  const { user, userProfileId, isAuthenticated, isLoading: authLoading } = useAuth();
 
   // Wizard state
   const [currentStep, setCurrentStep] = useState<WizardStep>('training');
@@ -178,7 +180,40 @@ export function CareerCompassWizard() {
   const [sessionId] = useState(() => `compass_${Date.now()}_${Math.random().toString(36).slice(2)}`);
 
   // Check for existing resume on mount (shared with Find Jobs)
+  // Now also checks for authenticated user's resume via Supabase Auth
   useEffect(() => {
+    // If authenticated via Supabase Auth, use that user's profile
+    if (isAuthenticated && userProfileId && !authLoading) {
+      setIsLoadingExistingResume(true);
+      fetch(`/api/users/resume/text?userId=${encodeURIComponent(userProfileId)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data?.hasResume && data.data.resumeText) {
+            setExistingResume({
+              resumeText: data.data.resumeText,
+              metadata: data.data.metadata,
+            });
+            // Pre-select to use existing resume
+            setUseExistingResume(true);
+            setResumeText(data.data.resumeText);
+            // Also update userSession to reflect auth state
+            setUserSession({
+              email: user?.email || '',
+              userId: userProfileId,
+              hasResume: true,
+            });
+          }
+        })
+        .catch(err => {
+          console.warn('Failed to fetch existing resume:', err);
+        })
+        .finally(() => {
+          setIsLoadingExistingResume(false);
+        });
+      return;
+    }
+
+    // Fall back to legacy localStorage session (for anonymous users)
     const session = loadUserSession();
     if (session) {
       setUserSession(session);
@@ -206,8 +241,26 @@ export function CareerCompassWizard() {
             setIsLoadingExistingResume(false);
           });
       }
+    } else {
+      // No user session - check for locally stored resume in localStorage
+      const localResume = getCompassResume();
+      if (localResume && localResume.text) {
+        setExistingResume({
+          resumeText: localResume.text,
+          metadata: {
+            resumeId: 'local',
+            fileName: localResume.filename || 'Previously uploaded resume',
+            fileType: 'application/pdf',
+            textLength: localResume.text.length,
+            uploadedAt: localResume.storedAt || new Date().toISOString(),
+          },
+        });
+        // Pre-select to use existing resume
+        setUseExistingResume(true);
+        setResumeText(localResume.text);
+      }
     }
-  }, []);
+  }, [isAuthenticated, userProfileId, authLoading, user?.email]);
 
   // Location search effect
   useEffect(() => {
@@ -278,11 +331,14 @@ export function CareerCompassWizard() {
     setError(null);
 
     try {
-      // If user has a session, upload to database for persistence (shared with Find Jobs)
-      if (userSession?.userId) {
+      // Determine the user ID to use (prefer authenticated user, fall back to legacy session)
+      const effectiveUserId = userProfileId || userSession?.userId;
+
+      // If user has an account, upload to database for persistence (shared with Find Jobs)
+      if (effectiveUserId) {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('userId', userSession.userId);
+        formData.append('userId', effectiveUserId);
 
         const response = await fetch('/api/users/resume', {
           method: 'POST',
@@ -298,13 +354,15 @@ export function CareerCompassWizard() {
           // Store resume in sessionStorage for cross-page persistence (e.g., Find Jobs)
           storeCompassResume(data.data.extractedText, file.name);
 
-          // Update localStorage to reflect that user now has a resume
-          const updatedSession = { ...userSession, hasResume: true };
-          try {
-            localStorage.setItem(USER_SESSION_KEY, JSON.stringify(updatedSession));
-            setUserSession(updatedSession);
-          } catch {
-            console.warn('Failed to update user session');
+          // Update localStorage to reflect that user now has a resume (only if userSession exists)
+          if (userSession) {
+            const updatedSession: StoredUserSession = { ...userSession, hasResume: true };
+            try {
+              localStorage.setItem(USER_SESSION_KEY, JSON.stringify(updatedSession));
+              setUserSession(updatedSession);
+            } catch {
+              console.warn('Failed to update user session');
+            }
           }
         } else {
           throw new Error(data.error?.message || 'Failed to upload resume');
@@ -343,11 +401,17 @@ export function CareerCompassWizard() {
     if (file) parseFile(file);
   };
 
-  const clearFile = () => {
+  const clearFile = (alsoRemoveStored: boolean = false) => {
     setResumeFile(null);
     setResumeText("");
     setUseExistingResume(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
+
+    // If removing stored resume entirely, clear from localStorage
+    if (alsoRemoveStored) {
+      clearCompassResume();
+      setExistingResume(null);
+    }
   };
 
   // Handler to switch to existing resume
@@ -418,6 +482,9 @@ export function CareerCompassWizard() {
         .filter(Boolean)
         .join(', ');
 
+      // Determine the user ID to pass (prefer authenticated user, fall back to legacy session)
+      const effectiveUserId = userProfileId || userSession?.userId || null;
+
       // Get recommendations
       const recommendResponse = await fetchWithTimeout('/api/compass/recommend/', {
         method: 'POST',
@@ -448,6 +515,8 @@ export function CareerCompassWizard() {
           },
           // Session tracking for persistence
           sessionId,
+          // User ID for authenticated users (links compass_responses to user_profiles)
+          userId: effectiveUserId,
           locationCode: location?.code,
           locationName: location?.name
         })
@@ -1098,11 +1167,20 @@ export function CareerCompassWizard() {
                       </div>
                     </button>
                     {useExistingResume && (
-                      <div className="mt-3 text-sm text-sage flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        Your resume will be used for personalized matching
+                      <div className="mt-3 flex items-center justify-between">
+                        <div className="text-sm text-sage flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          Your resume will be used for personalized matching
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => clearFile(true)}
+                          className="text-xs text-terracotta hover:underline"
+                        >
+                          Remove saved resume
+                        </button>
                       </div>
                     )}
                   </div>
