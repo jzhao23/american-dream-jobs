@@ -3,6 +3,8 @@ import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
 import { FlagLogo } from "@/components/FlagLogo";
 import { LocationProvider } from "@/lib/location-context";
+import { AuthProvider } from "@/lib/auth-context";
+import { AuthModal } from "@/components/auth/AuthModal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -63,10 +65,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen">
         <LocationProvider>
-          <Analytics />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <AuthProvider>
+            <Analytics />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <AuthModal />
+          </AuthProvider>
         </LocationProvider>
       </body>
     </html>
