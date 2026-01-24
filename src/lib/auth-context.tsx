@@ -180,7 +180,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Don't close modal on signup - let the modal show the confirmation message
     // The user needs to confirm their email first
     // Check if email confirmation is required (user created but not confirmed)
-    const needsEmailConfirmation = !error && data?.user && !data.user.confirmed_at;
+    const needsEmailConfirmation = !error && data?.user && !data.user.confirmed_at ? true : false;
 
     return { error, needsEmailConfirmation };
   }, []);
