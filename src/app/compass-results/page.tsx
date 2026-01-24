@@ -129,7 +129,7 @@ export default function CompassResultsPage() {
   // Fetch jobs for visible careers - memoize to prevent infinite loop
   const visibleCareers = showAll ? recommendations : recommendations.slice(0, 10);
   const careersForJobs = useMemo(
-    () => visibleCareers.slice(0, 5).map((c) => ({ slug: c.slug, title: c.title })),
+    () => visibleCareers.slice(0, 10).map((c) => ({ slug: c.slug, title: c.title })),
     // Only recompute when the slugs actually change
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [visibleCareers.map(c => c.slug).join(',')]
