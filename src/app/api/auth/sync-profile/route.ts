@@ -34,21 +34,12 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error("RPC error syncing user profile:", error);
+      console.error("RPC error syncing user profile:", error.message, error.code);
 
-      // Fallback: Try direct database operations if RPC function doesn't exist
-      if (error.message.includes("function") || error.code === "42883") {
-        console.log("RPC function not found, using fallback direct DB operations");
-        return await fallbackSyncProfile(supabase, authId, email, locationCode, locationName);
-      }
-
-      return NextResponse.json(
-        {
-          success: false,
-          error: { code: "DB_ERROR", message: "Failed to sync user profile. Please try again later." },
-        },
-        { status: 500 }
-      );
+      // Fallback: Try direct database operations if RPC function doesn't exist or any RPC error
+      // This handles: function not found, permission errors, or other RPC issues
+      console.log("RPC failed, using fallback direct DB operations. Error:", error.message);
+      return await fallbackSyncProfile(supabase, authId, email, locationCode, locationName);
     }
 
     const result = data?.[0] || data;
@@ -114,25 +105,26 @@ async function fallbackSyncProfile(
     });
   }
 
-  // Try to find by email (for linking anonymous profiles)
+  // Try to find by email (for linking anonymous profiles or profiles without auth_id)
   const { data: existingByEmail } = await supabase
     .from("user_profiles")
-    .select("id")
+    .select("id, auth_id")
     .eq("email", normalizedEmail)
-    .is("auth_id", null)
     .is("deleted_at", null)
     .single();
 
   if (existingByEmail) {
-    // Link existing profile to auth
-    await supabase
-      .from("user_profiles")
-      .update({
-        auth_id: authId,
-        email_verified: true,
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", existingByEmail.id);
+    // If profile exists but has different/no auth_id, update it to link to current auth
+    if (!existingByEmail.auth_id || existingByEmail.auth_id !== authId) {
+      await supabase
+        .from("user_profiles")
+        .update({
+          auth_id: authId,
+          email_verified: true,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", existingByEmail.id);
+    }
 
     const { data: resume } = await supabase
       .from("user_resumes")
