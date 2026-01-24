@@ -12,6 +12,11 @@ import { useLocation } from "@/lib/location-context";
 import { FindJobsButton } from "@/components/jobs";
 import { CareerJobsList, AllJobsModal } from "@/components/compass";
 import { useJobsForCareers } from "@/lib/hooks/useJobsForCareers";
+import {
+  getCompassResultsSummary,
+  clearCompassResults,
+  formatRelativeTime,
+} from "@/lib/compass-results-storage";
 
 // Types from the API
 interface CareerMatch {
@@ -125,6 +130,7 @@ export default function CompassResultsPage() {
   const [showAll, setShowAll] = useState(false);
   const [localCareerData, setLocalCareerData] = useState<{ [slug: string]: LocalCareerEntry } | null>(null);
   const [showAllJobsModal, setShowAllJobsModal] = useState(false);
+  const [savedResultsInfo, setSavedResultsInfo] = useState<ReturnType<typeof getCompassResultsSummary>>(null);
 
   // Fetch jobs for visible careers - memoize to prevent infinite loop
   const visibleCareers = showAll ? recommendations : recommendations.slice(0, 10);
@@ -194,11 +200,20 @@ export default function CompassResultsPage() {
         setProfile(JSON.parse(profileData));
       }
       setIsLoading(false);
+
+      // Check for saved results in localStorage
+      const savedInfo = getCompassResultsSummary();
+      setSavedResultsInfo(savedInfo);
     } else {
       // If no data, redirect back to compass
       router.push("/compass");
     }
   }, [router]);
+
+  const handleClearSavedResults = () => {
+    clearCompassResults();
+    setSavedResultsInfo(null);
+  };
 
   if (isLoading || !submissionData || recommendations.length === 0) {
     return (
@@ -351,7 +366,7 @@ export default function CompassResultsPage() {
             </div>
           )}
 
-          {/* Section 3: Impressive stat + Save button */}
+          {/* Section 3: Impressive stat + Save/Clear buttons */}
           <div className={`pt-6 border-t border-sage-muted ${profile?.skills?.length ? '' : 'mt-0'}`}>
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
@@ -359,16 +374,41 @@ export default function CompassResultsPage() {
                   Out of <span className="font-bold text-sage">{TOTAL_CAREERS.toLocaleString()}</span> careers,
                   we found your <span className="font-bold text-sage">top {recommendations.length} matches</span>
                 </p>
+                {savedResultsInfo && (
+                  <p className="text-sm text-ds-slate-muted mt-1 flex items-center gap-1">
+                    <svg className="w-4 h-4 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Saved {formatRelativeTime(savedResultsInfo.savedAt)}
+                    {savedResultsInfo.isExpiringSoon && (
+                      <span className="text-terracotta ml-1">(expires soon)</span>
+                    )}
+                  </p>
+                )}
               </div>
-              <button
-                onClick={() => window.print()}
-                className="print:hidden inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-sage border border-sage rounded-lg hover:bg-sage-pale transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Save as PDF
-              </button>
+              <div className="flex items-center gap-2 print:hidden">
+                {savedResultsInfo && (
+                  <button
+                    onClick={handleClearSavedResults}
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-ds-slate-muted border border-sage-muted rounded-lg hover:bg-cream hover:text-ds-slate transition-colors"
+                    title="Clear saved results from your browser"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    Clear Saved
+                  </button>
+                )}
+                <button
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-sage border border-sage rounded-lg hover:bg-sage-pale transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Save as PDF
+                </button>
+              </div>
             </div>
           </div>
 

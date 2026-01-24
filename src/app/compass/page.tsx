@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { CareerCompassWizard } from "@/components/CareerCompassWizard";
+import { SavedResultsBanner } from "@/components/SavedResultsBanner";
 
 function CompassPageLoading() {
   return (
@@ -26,6 +27,8 @@ export default function CompassPage() {
             Answer a few questions to discover career paths that match your goals.
           </p>
         </div>
+
+        <SavedResultsBanner />
 
         <Suspense fallback={<CompassPageLoading />}>
           <CareerCompassWizard />

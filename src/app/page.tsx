@@ -3,6 +3,7 @@
 import { CareerExplorer } from "@/components/CareerExplorer";
 import { CategoryStrip } from "@/components/CategoryStrip";
 import { CareerCompassWizard } from "@/components/CareerCompassWizard";
+import { SavedResultsBanner } from "@/components/SavedResultsBanner";
 import { FindJobsButton } from "@/components/jobs/FindJobsButton";
 import careersIndex from "../../data/output/careers-index.json";
 import type { CareerIndex } from "@/types/career";
@@ -115,6 +116,7 @@ export default function HomePage() {
 
       {/* Career Compass Wizard - Inline step-by-step flow */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 md:pb-16 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
+        <SavedResultsBanner />
         <CareerCompassWizard />
       </section>
 

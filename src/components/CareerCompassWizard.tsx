@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
 import { useAuth } from "@/lib/auth-context";
 import { storeCompassResume, getCompassResume, clearCompassResume } from "@/lib/resume-storage";
+import { saveCompassResults, clearCompassResults } from "@/lib/compass-results-storage";
 
 // localStorage key for user session (shared with FindJobsModal)
 const USER_SESSION_KEY = 'adjn_user_session';
@@ -538,11 +539,8 @@ export function CareerCompassWizard() {
         throw new Error('No career matches found. Try adjusting your preferences.');
       }
 
-      // Store and navigate
-      sessionStorage.setItem('compass-results', JSON.stringify(recommendData.recommendations));
-      sessionStorage.setItem('compass-metadata', JSON.stringify(recommendData.metadata));
-      sessionStorage.setItem('compass-profile', JSON.stringify(profile));
-      sessionStorage.setItem('compass-submission', JSON.stringify({
+      // Build submission data
+      const submissionData = {
         training: selectedTraining,
         education: selectedEducation,
         background: selectedBackground,
@@ -552,12 +550,32 @@ export function CareerCompassWizard() {
         hasResume,
         anythingElse,
         timestamp: new Date().toISOString(),
-      }));
+      };
+
+      // Store in sessionStorage for immediate use
+      sessionStorage.setItem('compass-results', JSON.stringify(recommendData.recommendations));
+      sessionStorage.setItem('compass-metadata', JSON.stringify(recommendData.metadata));
+      sessionStorage.setItem('compass-profile', JSON.stringify(profile));
+      sessionStorage.setItem('compass-submission', JSON.stringify(submissionData));
+
+      // Save comprehensive results to localStorage for persistence across sessions
+      const resumeFilename = resumeFile?.name || (useExistingResume && existingResume ? existingResume.metadata.fileName : null);
+      saveCompassResults({
+        recommendations: recommendData.recommendations,
+        metadata: recommendData.metadata,
+        submission: submissionData,
+        profile: profile,
+        resume: hasResume && resumeText ? {
+          text: resumeText,
+          filename: resumeFilename,
+        } : null,
+        generatedAt: new Date().toISOString(),
+        sessionId,
+      });
 
       // Ensure resume data is persisted for Find Jobs flow
       if (hasResume && resumeText) {
-        const filename = resumeFile?.name || (useExistingResume && existingResume ? existingResume.metadata.fileName : undefined);
-        storeCompassResume(resumeText, filename);
+        storeCompassResume(resumeText, resumeFilename || undefined);
       }
 
       router.push('/compass-results');
