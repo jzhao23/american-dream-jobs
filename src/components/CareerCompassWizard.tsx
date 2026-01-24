@@ -74,7 +74,7 @@ async function fetchWithTimeout(
 
 // Types
 type TrainingLevel = 'minimal' | 'short-term' | 'medium' | 'significant';
-type EducationLevel = 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
+type EducationLevel = 'current-hs' | 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
 type SalaryTarget = 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
 type WizardStep = 'training' | 'education' | 'background' | 'salary' | 'workStyle' | 'location' | 'resume' | 'review';
 
@@ -87,7 +87,7 @@ interface ParsedProfile {
   confidence: number;
 }
 
-// Options data - Q1: Training Willingness (framed as "how soon do you need to earn?")
+// Options data - Q1: Training Willingness
 const trainingOptions = [
   { id: "minimal" as TrainingLevel, icon: "⚡", title: "Right away", desc: "Minimal training — a few weeks max" },
   { id: "short-term" as TrainingLevel, icon: "📅", title: "Within 6 months", desc: "Short program — certificate or bootcamp" },
@@ -97,6 +97,7 @@ const trainingOptions = [
 
 // Q2: Education Level
 const educationOptions = [
+  { id: "current-hs" as EducationLevel, label: "Still completing high school" },
   { id: "high-school" as EducationLevel, label: "High school diploma or GED" },
   { id: "some-college" as EducationLevel, label: "Some college or Associate's degree" },
   { id: "bachelors" as EducationLevel, label: "Bachelor's degree" },
@@ -453,6 +454,7 @@ export function CareerCompassWizard() {
         // Model B: Minimal profile based on questionnaire
         // Map education level from wizard format to API format
         const eduLevelMap: Record<string, string> = {
+          'current-hs': 'current_hs',
           'high-school': 'high_school',
           'some-college': 'some_college',
           'bachelors': 'bachelors',
@@ -712,10 +714,10 @@ export function CareerCompassWizard() {
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                How soon do you need to start earning?
+                How much time can you invest in training?
               </h2>
               <p className="text-sm text-ds-slate-light">
-                (on top of your current education and experience)
+                This helps us match you with careers that fit your timeline
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
@@ -1139,6 +1141,9 @@ export function CareerCompassWizard() {
                   Resumes typically improve match accuracy by 2-3x by letting us understand your unique skills and experience
                 </p>
               )}
+              <p className="text-xs text-ds-slate-muted mt-2">
+                🔒 Your privacy matters: We only analyze your skills and experience, not your name or contact information.
+              </p>
             </div>
 
             {/* Show existing resume option if available */}
@@ -1425,6 +1430,13 @@ export function CareerCompassWizard() {
                 </>
               )}
             </button>
+
+            {/* Loading state message */}
+            {isSubmitting && (
+              <p className="text-sm text-ds-slate-muted text-center mt-3">
+                Finding your best career matches... This may take up to 30 seconds.
+              </p>
+            )}
           </div>
         )}
       </div>
