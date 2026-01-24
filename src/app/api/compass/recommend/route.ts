@@ -64,10 +64,10 @@ const recommendRequestSchema = z.object({
   }).optional(),
   // Session tracking for persistence
   sessionId: z.string().optional(),
-  userId: z.string().uuid().optional(),
+  userId: z.string().uuid().nullish(), // Allow null or undefined for unauthenticated users
   locationCode: z.string().optional(),
   locationName: z.string().optional(),
-  resumeId: z.string().uuid().optional()
+  resumeId: z.string().uuid().nullish() // Allow null or undefined
 });
 
 // Response types
@@ -220,7 +220,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     if (sessionId) {
       try {
         await saveCompassResponse({
-          userId,
+          userId: userId ?? undefined, // Convert null to undefined
           sessionId,
           trainingWillingness: preferences.trainingWillingness,
           educationLevel: preferences.educationLevel,
@@ -230,7 +230,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
           additionalContext: preferences.additionalContext,
           locationCode,
           locationName,
-          resumeId,
+          resumeId: resumeId ?? undefined, // Convert null to undefined
           recommendations: result.matches,
           modelUsed: model,
           processingTimeMs: result.metadata.processingTimeMs

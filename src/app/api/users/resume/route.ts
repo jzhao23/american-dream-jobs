@@ -73,10 +73,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify user exists
-    const user = await getUserById(userId);
+    let user;
+    try {
+      user = await getUserById(userId);
+    } catch (dbError) {
+      console.error('Database error verifying user:', dbError);
+      return NextResponse.json(
+        { success: false, error: { code: 'DB_ERROR', message: 'Unable to verify user. Please try signing in again.' } },
+        { status: 500 }
+      );
+    }
+
     if (!user) {
       return NextResponse.json(
-        { success: false, error: { code: 'USER_NOT_FOUND', message: 'User not found' } },
+        { success: false, error: { code: 'USER_NOT_FOUND', message: 'User account not found. Please sign out and sign in again.' } },
         { status: 404 }
       );
     }
@@ -196,12 +206,15 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Resume upload error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
       {
         success: false,
         error: {
           code: 'INTERNAL_ERROR',
-          message: 'Failed to upload resume'
+          message: errorMessage.includes('storage') || errorMessage.includes('bucket')
+            ? 'Resume storage is temporarily unavailable. Please try again later.'
+            : 'Failed to upload resume. Please try again.'
         }
       },
       { status: 500 }

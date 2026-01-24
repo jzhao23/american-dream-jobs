@@ -483,7 +483,7 @@ export function CareerCompassWizard() {
         .join(', ');
 
       // Determine the user ID to pass (prefer authenticated user, fall back to legacy session)
-      const effectiveUserId = userProfileId || userSession?.userId || null;
+      const effectiveUserId = userProfileId || userSession?.userId || undefined;
 
       // Get recommendations
       const recommendResponse = await fetchWithTimeout('/api/compass/recommend/', {
