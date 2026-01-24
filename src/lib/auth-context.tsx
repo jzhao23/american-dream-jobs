@@ -23,7 +23,7 @@ import {
   useCallback,
   ReactNode,
 } from "react";
-import { getSupabaseBrowserClient, User, Session } from "./supabase-browser";
+import { getSupabaseBrowserClient, isSupabaseAuthEnabled, User, Session } from "./supabase-browser";
 import type { AuthError } from "@supabase/supabase-js";
 
 // Types
@@ -33,6 +33,7 @@ export interface AuthContextState {
   userProfileId: string | null;
   isLoading: boolean;
   isAuthenticated: boolean;
+  isAuthEnabled: boolean;
   isAuthModalOpen: boolean;
   authModalMode: "sign-in" | "sign-up";
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
@@ -59,9 +60,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalMode, setAuthModalMode] = useState<"sign-in" | "sign-up">("sign-in");
 
+  // Check if Supabase auth is configured
+  const isAuthEnabled = isSupabaseAuthEnabled();
+
   // Initialize auth state from Supabase
   useEffect(() => {
+    // If Supabase is not configured, skip initialization
+    if (!isAuthEnabled) {
+      setIsLoading(false);
+      return;
+    }
+
     const supabase = getSupabaseBrowserClient();
+
+    // This should never happen since we check isAuthEnabled, but TypeScript needs this
+    if (!supabase) {
+      setIsLoading(false);
+      return;
+    }
 
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -98,7 +114,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [isAuthEnabled]);
 
   // Sync user profile with database
   const syncUserProfile = async (authUser: User) => {
@@ -154,6 +170,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign in with email/password
   const signIn = useCallback(async (email: string, password: string) => {
     const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
+      return { error: { message: "Authentication is not configured", name: "AuthConfigError" } as AuthError };
+    }
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -169,6 +188,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign up with email/password
   const signUp = useCallback(async (email: string, password: string) => {
     const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
+      return { error: { message: "Authentication is not configured", name: "AuthConfigError" } as AuthError };
+    }
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -184,6 +206,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign out
   const signOut = useCallback(async () => {
     const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
+      return;
+    }
     await supabase.auth.signOut();
     setUserProfileId(null);
     localStorage.removeItem(USER_PROFILE_KEY);
@@ -192,6 +217,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Request password reset email
   const resetPassword = useCallback(async (email: string) => {
     const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
+      return { error: { message: "Authentication is not configured", name: "AuthConfigError" } as AuthError };
+    }
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/auth/reset-password`,
     });
@@ -201,6 +229,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Update password (used after clicking reset link)
   const updatePassword = useCallback(async (password: string) => {
     const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
+      return { error: { message: "Authentication is not configured", name: "AuthConfigError" } as AuthError };
+    }
     const { error } = await supabase.auth.updateUser({ password });
     return { error };
   }, []);
@@ -221,6 +252,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     userProfileId,
     isLoading,
     isAuthenticated: !!user,
+    isAuthEnabled,
     isAuthModalOpen,
     authModalMode,
     signIn,

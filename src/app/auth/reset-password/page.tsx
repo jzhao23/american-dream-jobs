@@ -21,7 +21,7 @@ import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const { updatePassword, isAuthenticated } = useAuth();
+  const { updatePassword, isAuthenticated, isAuthEnabled } = useAuth();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -33,7 +33,21 @@ export default function ResetPasswordPage() {
   // Check if we have a valid recovery session from the URL
   useEffect(() => {
     const checkSession = async () => {
+      // If auth is not enabled, show error
+      if (!isAuthEnabled) {
+        setIsValidToken(false);
+        setError("Authentication is not configured.");
+        return;
+      }
+
       const supabase = getSupabaseBrowserClient();
+
+      // If Supabase client is not available, show error
+      if (!supabase) {
+        setIsValidToken(false);
+        setError("Authentication is not configured.");
+        return;
+      }
 
       // Supabase automatically handles the URL hash and exchanges it for a session
       // when detectSessionInUrl is true (which it is in our client config)
@@ -56,7 +70,7 @@ export default function ResetPasswordPage() {
     };
 
     checkSession();
-  }, []);
+  }, [isAuthEnabled]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

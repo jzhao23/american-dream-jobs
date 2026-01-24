@@ -13,12 +13,27 @@ import { createClient, SupabaseClient, User, Session } from '@supabase/supabase-
 
 // Singleton browser client
 let browserClient: SupabaseClient | null = null;
+let isSupabaseConfigured: boolean | null = null;
+
+/**
+ * Check if Supabase browser auth is configured
+ * Returns true if the required environment variables are set
+ */
+export function isSupabaseAuthEnabled(): boolean {
+  if (isSupabaseConfigured === null) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
+  }
+  return isSupabaseConfigured;
+}
 
 /**
  * Get the browser-side Supabase client
  * Uses public anon key (safe for browser)
+ * Returns null if Supabase environment variables are not configured
  */
-export function getSupabaseBrowserClient(): SupabaseClient {
+export function getSupabaseBrowserClient(): SupabaseClient | null {
   if (browserClient) {
     return browserClient;
   }
@@ -27,10 +42,8 @@ export function getSupabaseBrowserClient(): SupabaseClient {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error(
-      'Missing Supabase browser environment variables. ' +
-      'Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local'
-    );
+    // Supabase auth is not configured - this is fine, auth features will be disabled
+    return null;
   }
 
   browserClient = createClient(supabaseUrl, supabaseAnonKey, {
@@ -45,4 +58,4 @@ export function getSupabaseBrowserClient(): SupabaseClient {
 }
 
 // Re-export types for convenience
-export type { User, Session };
+export type { User, Session, SupabaseClient };
