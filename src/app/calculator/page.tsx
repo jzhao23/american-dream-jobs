@@ -66,7 +66,7 @@ function CalculatorContent() {
   const [educationCostIncluded, setEducationCostIncluded] = useState(true);
   const [selectedSpecialization, setSelectedSpecialization] = useState<string | null>(null);
   const [comparisonScenario, setComparisonScenario] = useState<'none' | 'retire_later' | 'save_more'>('none');
-  const [showHelperResources, setShowHelperResources] = useState(false);
+  const [showHelperResources, setShowHelperResources] = useState(true);
 
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
