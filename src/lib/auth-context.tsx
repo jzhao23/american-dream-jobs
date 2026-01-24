@@ -36,7 +36,7 @@ export interface AuthContextState {
   isAuthModalOpen: boolean;
   authModalMode: "sign-in" | "sign-up";
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
-  signUp: (email: string, password: string) => Promise<{ error: AuthError | null }>;
+  signUp: (email: string, password: string) => Promise<{ error: AuthError | null; needsEmailConfirmation?: boolean }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>;
   updatePassword: (password: string) => Promise<{ error: AuthError | null }>;
@@ -169,16 +169,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign up with email/password
   const signUp = useCallback(async (email: string, password: string) => {
     const supabase = getSupabaseBrowserClient();
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/confirm`,
+      },
     });
 
-    if (!error) {
-      setIsAuthModalOpen(false);
-    }
+    // Don't close modal on signup - let the modal show the confirmation message
+    // The user needs to confirm their email first
+    // Check if email confirmation is required (user created but not confirmed)
+    const needsEmailConfirmation = !error && data?.user && !data.user.confirmed_at;
 
-    return { error };
+    return { error, needsEmailConfirmation };
   }, []);
 
   // Sign out

@@ -107,20 +107,31 @@ export function AuthModal() {
     setIsSubmitting(true);
 
     try {
-      const { error: authError } = mode === "sign-in"
-        ? await signIn(email, password)
-        : await signUp(email, password);
-
-      if (authError) {
-        // Map common Supabase error messages to user-friendly ones
-        if (authError.message.includes("Invalid login credentials")) {
-          setError("Invalid email or password");
-        } else if (authError.message.includes("User already registered")) {
-          setError("An account with this email already exists. Try signing in instead.");
-        } else if (authError.message.includes("Password should be")) {
-          setError("Password must be at least 8 characters");
-        } else {
-          setError(authError.message);
+      if (mode === "sign-in") {
+        const { error: authError } = await signIn(email, password);
+        if (authError) {
+          if (authError.message.includes("Invalid login credentials")) {
+            setError("Invalid email or password");
+          } else {
+            setError(authError.message);
+          }
+        }
+      } else {
+        // Sign up flow
+        const { error: authError, needsEmailConfirmation } = await signUp(email, password);
+        if (authError) {
+          if (authError.message.includes("User already registered")) {
+            setError("An account with this email already exists. Try signing in instead.");
+          } else if (authError.message.includes("Password should be")) {
+            setError("Password must be at least 8 characters");
+          } else {
+            setError(authError.message);
+          }
+        } else if (needsEmailConfirmation) {
+          // Show success message for email confirmation
+          setSuccessMessage(
+            "Account created! Please check your email inbox (and spam folder) for a confirmation link from Supabase. You must confirm your email before you can sign in."
+          );
         }
       }
     } catch {
@@ -305,8 +316,8 @@ export function AuthModal() {
               </div>
             )}
 
-            {/* Submit button (hide if success message shown in forgot-password mode) */}
-            {!(mode === "forgot-password" && successMessage) && (
+            {/* Submit button (hide if success message shown in forgot-password or sign-up mode) */}
+            {!((mode === "forgot-password" || mode === "sign-up") && successMessage) && (
               <button
                 type="submit"
                 disabled={isSubmitting}
