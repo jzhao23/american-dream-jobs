@@ -49,8 +49,10 @@ async function fetchJobsSequentially(
 
       if (response.ok) {
         const data = await response.json();
-        if (data.jobs && data.jobs.length > 0) {
-          jobsMap[career.slug] = data.jobs;
+        // API returns { success, data: { jobs: [] } }
+        const jobs = data.data?.jobs || data.jobs || [];
+        if (jobs.length > 0) {
+          jobsMap[career.slug] = jobs;
         }
       }
     } catch {
