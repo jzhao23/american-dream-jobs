@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
@@ -126,10 +126,16 @@ export default function CompassResultsPage() {
   const [localCareerData, setLocalCareerData] = useState<{ [slug: string]: LocalCareerEntry } | null>(null);
   const [showAllJobsModal, setShowAllJobsModal] = useState(false);
 
-  // Fetch jobs for visible careers
+  // Fetch jobs for visible careers - memoize to prevent infinite loop
   const visibleCareers = showAll ? recommendations : recommendations.slice(0, 10);
+  const careersForJobs = useMemo(
+    () => visibleCareers.slice(0, 5).map((c) => ({ slug: c.slug, title: c.title })),
+    // Only recompute when the slugs actually change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [visibleCareers.map(c => c.slug).join(',')]
+  );
   const { jobsByCareer, allJobs, isLoading: jobsLoading, totalJobCount } = useJobsForCareers(
-    visibleCareers.map((c) => ({ slug: c.slug, title: c.title })),
+    careersForJobs,
     location
   );
 

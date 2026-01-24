@@ -7,7 +7,7 @@
  * Returns a map of careerSlug -> JobListing[]
  */
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { JobListing } from "@/lib/jobs/types";
 import { LocationInfo } from "@/lib/location-context";
 
@@ -25,56 +25,40 @@ interface UseJobsForCareersResult {
   refetch: () => void;
 }
 
-// Helper to fetch jobs sequentially in batches to avoid overwhelming the browser
-async function fetchJobsInBatches(
+// Helper to fetch jobs one at a time to avoid overwhelming the browser
+async function fetchJobsSequentially(
   careers: CareerInfo[],
   location: LocationInfo,
-  limit: number,
-  batchSize: number = 3
+  limit: number
 ): Promise<Record<string, JobListing[]>> {
   const jobsMap: Record<string, JobListing[]> = {};
 
-  // Process in batches
-  for (let i = 0; i < careers.length; i += batchSize) {
-    const batch = careers.slice(i, i + batchSize);
+  for (const career of careers) {
+    try {
+      const response = await fetch("/api/jobs/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          careerSlug: career.slug,
+          careerTitle: career.title,
+          locationCode: location.code,
+          locationName: location.shortName,
+          limit,
+        }),
+      });
 
-    const results = await Promise.allSettled(
-      batch.map(async (career) => {
-        const response = await fetch("/api/jobs/search", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            careerSlug: career.slug,
-            careerTitle: career.title,
-            locationCode: location.code,
-            locationName: location.shortName,
-            limit,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch jobs for ${career.title}`);
-        }
-
+      if (response.ok) {
         const data = await response.json();
-        return {
-          slug: career.slug,
-          jobs: data.jobs || [],
-        };
-      })
-    );
-
-    // Process batch results
-    results.forEach((result) => {
-      if (result.status === "fulfilled" && result.value.jobs.length > 0) {
-        jobsMap[result.value.slug] = result.value.jobs;
+        if (data.jobs && data.jobs.length > 0) {
+          jobsMap[career.slug] = data.jobs;
+        }
       }
-    });
-
-    // Small delay between batches to prevent overwhelming the browser
-    if (i + batchSize < careers.length) {
-      await new Promise((resolve) => setTimeout(resolve, 100));
+    } catch {
+      // Silently ignore individual failures
     }
+
+    // Small delay between requests
+    await new Promise((resolve) => setTimeout(resolve, 200));
   }
 
   return jobsMap;
@@ -88,37 +72,52 @@ export function useJobsForCareers(
   const [jobsByCareer, setJobsByCareer] = useState<Record<string, JobListing[]>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [fetchTrigger, setFetchTrigger] = useState(0);
 
-  const fetchJobs = useCallback(async () => {
+  // Track what we've already fetched to prevent duplicate requests
+  const lastFetchKey = useRef<string>("");
+  const isFetching = useRef(false);
+
+  // Create a stable key for the current request
+  const fetchKey = careers.map(c => c.slug).sort().join(',') + '|' + (location?.code || '');
+
+  useEffect(() => {
     // Don't fetch if no location or no careers
     if (!location || careers.length === 0) {
       setJobsByCareer({});
-      setIsLoading(false);
       return;
     }
 
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      // Fetch jobs in batches of 3 to avoid overwhelming the browser
-      const jobsMap = await fetchJobsInBatches(careers, location, limit, 3);
-      setJobsByCareer(jobsMap);
-    } catch (err) {
-      // Silently fail - don't show error to user
-      console.error("Error fetching jobs for careers:", err);
-      setError(err instanceof Error ? err.message : "Failed to fetch jobs");
-      setJobsByCareer({});
-    } finally {
-      setIsLoading(false);
+    // Don't fetch if we already fetched this exact combination
+    if (fetchKey === lastFetchKey.current) {
+      return;
     }
-  }, [careers, location, limit]);
 
-  // Fetch when dependencies change
-  useEffect(() => {
-    fetchJobs();
-  }, [fetchJobs, fetchTrigger]);
+    // Don't start a new fetch if one is in progress
+    if (isFetching.current) {
+      return;
+    }
+
+    const doFetch = async () => {
+      isFetching.current = true;
+      lastFetchKey.current = fetchKey;
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const jobsMap = await fetchJobsSequentially(careers, location, limit);
+        setJobsByCareer(jobsMap);
+      } catch (err) {
+        console.error("Error fetching jobs for careers:", err);
+        setError(err instanceof Error ? err.message : "Failed to fetch jobs");
+        setJobsByCareer({});
+      } finally {
+        setIsLoading(false);
+        isFetching.current = false;
+      }
+    };
+
+    doFetch();
+  }, [fetchKey, careers, location, limit]);
 
   // Compute allJobs with career info attached
   const allJobs = Object.entries(jobsByCareer).flatMap(([slug, jobs]) => {
@@ -136,7 +135,8 @@ export function useJobsForCareers(
   );
 
   const refetch = useCallback(() => {
-    setFetchTrigger((prev) => prev + 1);
+    // Clear the cache to force refetch
+    lastFetchKey.current = "";
   }, []);
 
   return {
