@@ -23,7 +23,7 @@ import {
   useCallback,
   ReactNode,
 } from "react";
-import { getSupabaseBrowserClient, isSupabaseConfigured, User, Session } from "./supabase-browser";
+import { getSupabaseBrowserClient, User, Session } from "./supabase-browser";
 import type { AuthError } from "@supabase/supabase-js";
 
 // Types
@@ -61,17 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Initialize auth state from Supabase
   useEffect(() => {
-    // If Supabase is not configured, skip auth initialization
-    if (!isSupabaseConfigured()) {
-      setIsLoading(false);
-      return;
-    }
-
     const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      setIsLoading(false);
-      return;
-    }
 
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -164,9 +154,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign in with email/password
   const signIn = useCallback(async (email: string, password: string) => {
     const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      return { error: { message: "Authentication not configured" } as AuthError };
-    }
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -182,9 +169,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign up with email/password
   const signUp = useCallback(async (email: string, password: string) => {
     const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      return { error: { message: "Authentication not configured" } as AuthError };
-    }
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -200,9 +184,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Sign out
   const signOut = useCallback(async () => {
     const supabase = getSupabaseBrowserClient();
-    if (supabase) {
-      await supabase.auth.signOut();
-    }
+    await supabase.auth.signOut();
     setUserProfileId(null);
     localStorage.removeItem(USER_PROFILE_KEY);
   }, []);
@@ -210,9 +192,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Request password reset email
   const resetPassword = useCallback(async (email: string) => {
     const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      return { error: { message: "Authentication not configured" } as AuthError };
-    }
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/auth/reset-password`,
     });
@@ -222,9 +201,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Update password (used after clicking reset link)
   const updatePassword = useCallback(async (password: string) => {
     const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      return { error: { message: "Authentication not configured" } as AuthError };
-    }
     const { error } = await supabase.auth.updateUser({ password });
     return { error };
   }, []);

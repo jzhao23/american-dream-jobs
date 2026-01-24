@@ -35,13 +35,6 @@ export default function ResetPasswordPage() {
     const checkSession = async () => {
       const supabase = getSupabaseBrowserClient();
 
-      // If Supabase is not configured, show error
-      if (!supabase) {
-        setIsValidToken(false);
-        setError("Authentication is not configured. Please contact support.");
-        return;
-      }
-
       // Supabase automatically handles the URL hash and exchanges it for a session
       // when detectSessionInUrl is true (which it is in our client config)
       const { data: { session }, error } = await supabase.auth.getSession();
