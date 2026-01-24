@@ -232,48 +232,9 @@ export function LocalJobMarket({
     );
   }
 
-  // Error/no data state
+  // Error/no data state - hide section entirely
   if (error || !localData) {
-    return (
-      <section className="card-warm p-6 mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-display font-semibold text-ds-slate flex items-center gap-2">
-            <svg
-              className="w-5 h-5 text-sage"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            Local Job Market
-          </h2>
-          <LocationSelector variant="header" />
-        </div>
-
-        <div className="text-center py-6 text-ds-slate-muted">
-          <p className="mb-2">Limited local data available for this career in {location.shortName}.</p>
-          <p className="text-sm">This may mean few positions exist in your area.</p>
-          {nationalMedianWage && (
-            <p className="mt-4 text-sm">
-              <span className="font-medium text-ds-slate">National median:</span>{" "}
-              {formatPay(nationalMedianWage)}
-            </p>
-          )}
-        </div>
-      </section>
-    );
+    return null;
   }
 
   // Full data display

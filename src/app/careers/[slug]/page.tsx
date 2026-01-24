@@ -324,6 +324,17 @@ export default async function CareerPage({ params }: PageProps) {
           {/* Career Progression */}
           {career.career_progression && career.career_progression.levels && (
             <Section title="Career Progression" icon="chart" id="career-progression">
+              <details className="mb-4 group">
+                <summary className="text-sm text-sage hover:text-sage-dark cursor-pointer inline-flex items-center gap-1">
+                  <svg className="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  What does this mean?
+                </summary>
+                <p className="text-sm text-ds-slate-muted mt-2 pl-5">
+                  This shows how earnings typically grow with experience. Entry level represents starting salaries, while Expert shows top earners (90th percentile). Most workers reach mid-career earnings within 5-10 years. Figures are national averages and vary by location and employer.
+                </p>
+              </details>
               <div className="space-y-4">
                 {career.career_progression.levels.map((level, i) => (
                   <div key={i} className="flex items-center gap-4 bg-cream rounded-lg p-4">
