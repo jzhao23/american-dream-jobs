@@ -25,6 +25,61 @@ interface UseJobsForCareersResult {
   refetch: () => void;
 }
 
+// Helper to fetch jobs sequentially in batches to avoid overwhelming the browser
+async function fetchJobsInBatches(
+  careers: CareerInfo[],
+  location: LocationInfo,
+  limit: number,
+  batchSize: number = 3
+): Promise<Record<string, JobListing[]>> {
+  const jobsMap: Record<string, JobListing[]> = {};
+
+  // Process in batches
+  for (let i = 0; i < careers.length; i += batchSize) {
+    const batch = careers.slice(i, i + batchSize);
+
+    const results = await Promise.allSettled(
+      batch.map(async (career) => {
+        const response = await fetch("/api/jobs/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            careerSlug: career.slug,
+            careerTitle: career.title,
+            locationCode: location.code,
+            locationName: location.shortName,
+            limit,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch jobs for ${career.title}`);
+        }
+
+        const data = await response.json();
+        return {
+          slug: career.slug,
+          jobs: data.jobs || [],
+        };
+      })
+    );
+
+    // Process batch results
+    results.forEach((result) => {
+      if (result.status === "fulfilled" && result.value.jobs.length > 0) {
+        jobsMap[result.value.slug] = result.value.jobs;
+      }
+    });
+
+    // Small delay between batches to prevent overwhelming the browser
+    if (i + batchSize < careers.length) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  }
+
+  return jobsMap;
+}
+
 export function useJobsForCareers(
   careers: CareerInfo[],
   location: LocationInfo | null,
@@ -47,43 +102,8 @@ export function useJobsForCareers(
     setError(null);
 
     try {
-      // Fetch jobs for all careers in parallel using Promise.allSettled
-      const results = await Promise.allSettled(
-        careers.map(async (career) => {
-          const response = await fetch("/api/jobs/search", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              careerSlug: career.slug,
-              careerTitle: career.title,
-              locationCode: location.code,
-              locationName: location.shortName,
-              limit,
-            }),
-          });
-
-          if (!response.ok) {
-            throw new Error(`Failed to fetch jobs for ${career.title}`);
-          }
-
-          const data = await response.json();
-          return {
-            slug: career.slug,
-            jobs: data.jobs || [],
-          };
-        })
-      );
-
-      // Process results - only include successful fetches
-      const jobsMap: Record<string, JobListing[]> = {};
-
-      results.forEach((result) => {
-        if (result.status === "fulfilled" && result.value.jobs.length > 0) {
-          jobsMap[result.value.slug] = result.value.jobs;
-        }
-        // Silently ignore failures - the career card will just not show jobs
-      });
-
+      // Fetch jobs in batches of 3 to avoid overwhelming the browser
+      const jobsMap = await fetchJobsInBatches(careers, location, limit, 3);
       setJobsByCareer(jobsMap);
     } catch (err) {
       // Silently fail - don't show error to user
