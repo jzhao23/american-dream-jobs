@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { LocationSelector } from "./LocationSelector";
 import { FlagLogo } from "./FlagLogo";
+import { useAuth } from "@/lib/auth-context";
+import { UserMenu } from "./auth/UserMenu";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAuthenticated, isLoading: authLoading, openAuthModal } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 bg-warm-white/95 backdrop-blur-md border-b border-sage-muted">
@@ -52,6 +55,21 @@ export function Header() {
             </a>
             <div className="ml-3 border-l border-sage-muted pl-3">
               <LocationSelector variant="header" />
+            </div>
+            {/* Auth section */}
+            <div className="ml-3 border-l border-sage-muted pl-3">
+              {authLoading ? (
+                <div className="w-8 h-8 rounded-full bg-sage-muted animate-pulse" />
+              ) : isAuthenticated ? (
+                <UserMenu />
+              ) : (
+                <button
+                  onClick={() => openAuthModal("sign-in")}
+                  className="text-sm font-medium text-ds-slate-light hover:text-sage px-3 py-2 rounded-lg transition-all"
+                >
+                  Sign In
+                </button>
+              )}
             </div>
           </nav>
 
@@ -144,6 +162,28 @@ export function Header() {
             >
               Career Compass
             </a>
+            {/* Auth section for mobile */}
+            <div className="mt-4 pt-4 border-t border-sage-muted">
+              {authLoading ? (
+                <div className="py-3 px-3">
+                  <div className="w-full h-11 rounded-lg bg-sage-muted animate-pulse" />
+                </div>
+              ) : isAuthenticated ? (
+                <div className="py-3 px-3 flex items-center justify-between">
+                  <UserMenu />
+                </div>
+              ) : (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openAuthModal("sign-in");
+                  }}
+                  className="block w-full py-3 px-3 min-h-[44px] text-base font-medium text-sage hover:text-sage-light rounded-lg transition-colors text-center border border-sage"
+                >
+                  Sign In
+                </button>
+              )}
+            </div>
           </nav>
         </div>
       )}
