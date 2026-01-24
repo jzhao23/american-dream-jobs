@@ -11,7 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { matchCareers, CareerMatch, UserProfile, TrainingWillingness, MatchingModel } from '@/lib/compass/matching-engine';
 import { EducationLevel } from '@/lib/compass/resume-parser';
-import { saveCompassResponse } from '@/lib/db';
+import { upsertUserCompassResponse } from '@/lib/db';
 
 // Request validation schema
 const educationLevelSchema = z.enum([
@@ -67,7 +67,9 @@ const recommendRequestSchema = z.object({
   userId: z.string().uuid().nullish(), // Allow null or undefined for unauthenticated users
   locationCode: z.string().optional(),
   locationName: z.string().optional(),
-  resumeId: z.string().uuid().nullish() // Allow null or undefined
+  locationShortName: z.string().optional(),
+  resumeId: z.string().uuid().nullish(), // Allow null or undefined
+  resumeText: z.string().optional() // Full resume text for comprehensive storage
 });
 
 // Response types
@@ -132,7 +134,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
       );
     }
 
-    const { profile, preferences, options, sessionId, userId, locationCode, locationName, resumeId } = validation.data;
+    const { profile, preferences, options, sessionId, userId, locationCode, locationName, locationShortName, resumeId, resumeText } = validation.data;
 
     // Check for minimum profile data
     // Note: Model B (no resume) only requires preferences, not skills
@@ -217,10 +219,11 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     console.log(`  Estimated cost: $${result.metadata.costUsd.toFixed(4)}`);
 
     // Save compass response to database (if sessionId provided)
+    // For users with accounts, upsert overwrites previous results
     if (sessionId) {
       try {
-        await saveCompassResponse({
-          userId: userId ?? undefined, // Convert null to undefined
+        await upsertUserCompassResponse({
+          userId: userId ?? undefined,
           sessionId,
           trainingWillingness: preferences.trainingWillingness,
           educationLevel: preferences.educationLevel,
@@ -230,12 +233,23 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
           additionalContext: preferences.additionalContext,
           locationCode,
           locationName,
-          resumeId: resumeId ?? undefined, // Convert null to undefined
+          locationShortName,
+          resumeId: resumeId ?? undefined,
+          resumeText,
+          parsedProfile: {
+            skills: profile.skills,
+            jobTitles: profile.jobTitles,
+            education: profile.education,
+            industries: profile.industries,
+            experienceYears: profile.experienceYears,
+            confidence: 0.9
+          },
           recommendations: result.matches,
+          metadata: result.metadata,
           modelUsed: model,
           processingTimeMs: result.metadata.processingTimeMs
         });
-        console.log(`  Saved compass response for session: ${sessionId}`);
+        console.log(`  Saved compass response for session: ${sessionId}${userId ? ` (user: ${userId})` : ''}`);
       } catch (saveError) {
         // Log but don't fail the request if save fails
         console.warn('Failed to save compass response:', saveError);

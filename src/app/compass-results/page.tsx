@@ -12,11 +12,46 @@ import { useLocation } from "@/lib/location-context";
 import { FindJobsButton } from "@/components/jobs";
 import { CareerJobsList, AllJobsModal } from "@/components/compass";
 import { useJobsForCareers } from "@/lib/hooks/useJobsForCareers";
-import {
-  getCompassResultsSummary,
-  clearCompassResults,
-  formatRelativeTime,
-} from "@/lib/compass-results-storage";
+
+// localStorage key for user session
+const USER_SESSION_KEY = 'adjn_user_session';
+
+interface UserSession {
+  email: string;
+  userId?: string;
+}
+
+interface SavedResultsInfo {
+  savedAt: Date;
+  matchCount: number;
+  hasResume: boolean;
+}
+
+/**
+ * Format a relative time string for display
+ */
+function formatRelativeTime(date: Date): string {
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMinutes = Math.floor(diffMs / (1000 * 60));
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffMinutes < 1) {
+    return 'just now';
+  } else if (diffMinutes < 60) {
+    return `${diffMinutes} minute${diffMinutes === 1 ? '' : 's'} ago`;
+  } else if (diffHours < 24) {
+    return `${diffHours} hour${diffHours === 1 ? '' : 's'} ago`;
+  } else if (diffDays < 7) {
+    return `${diffDays} day${diffDays === 1 ? '' : 's'} ago`;
+  } else {
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+    });
+  }
+}
 
 // Types from the API
 interface CareerMatch {
@@ -130,7 +165,8 @@ export default function CompassResultsPage() {
   const [showAll, setShowAll] = useState(false);
   const [localCareerData, setLocalCareerData] = useState<{ [slug: string]: LocalCareerEntry } | null>(null);
   const [showAllJobsModal, setShowAllJobsModal] = useState(false);
-  const [savedResultsInfo, setSavedResultsInfo] = useState<ReturnType<typeof getCompassResultsSummary>>(null);
+  const [savedResultsInfo, setSavedResultsInfo] = useState<SavedResultsInfo | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
 
   // Fetch jobs for visible careers - memoize to prevent infinite loop
   const visibleCareers = showAll ? recommendations : recommendations.slice(0, 10);
@@ -201,18 +237,53 @@ export default function CompassResultsPage() {
       }
       setIsLoading(false);
 
-      // Check for saved results in localStorage
-      const savedInfo = getCompassResultsSummary();
-      setSavedResultsInfo(savedInfo);
+      // Check for saved results in Supabase (for logged-in users)
+      const sessionData = localStorage.getItem(USER_SESSION_KEY);
+      if (sessionData) {
+        try {
+          const session: UserSession = JSON.parse(sessionData);
+          if (session.userId) {
+            setUserId(session.userId);
+            // Fetch saved results summary from API
+            fetch(`/api/compass/saved?userId=${session.userId}&summary=true`)
+              .then(res => res.json())
+              .then(data => {
+                if (data.hasSavedResults && data.summary) {
+                  setSavedResultsInfo({
+                    savedAt: new Date(data.summary.savedAt),
+                    matchCount: data.summary.matchCount,
+                    hasResume: data.summary.hasResume,
+                  });
+                }
+              })
+              .catch(() => {
+                // Ignore errors fetching saved status
+              });
+          }
+        } catch {
+          // Ignore parse errors
+        }
+      }
     } else {
       // If no data, redirect back to compass
       router.push("/compass");
     }
   }, [router]);
 
-  const handleClearSavedResults = () => {
-    clearCompassResults();
-    setSavedResultsInfo(null);
+  const handleClearSavedResults = async () => {
+    if (!userId) return;
+
+    try {
+      const response = await fetch(`/api/compass/saved?userId=${userId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setSavedResultsInfo(null);
+      }
+    } catch (error) {
+      console.error('Failed to clear saved results:', error);
+    }
   };
 
   if (isLoading || !submissionData || recommendations.length === 0) {
@@ -379,10 +450,7 @@ export default function CompassResultsPage() {
                     <svg className="w-4 h-4 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Saved {formatRelativeTime(savedResultsInfo.savedAt)}
-                    {savedResultsInfo.isExpiringSoon && (
-                      <span className="text-terracotta ml-1">(expires soon)</span>
-                    )}
+                    Saved to your account {formatRelativeTime(savedResultsInfo.savedAt)}
                   </p>
                 )}
               </div>

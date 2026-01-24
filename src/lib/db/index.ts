@@ -37,11 +37,20 @@ export {
 export {
   type CompassResponse,
   type SaveCompassResponseInput,
+  type ParsedProfile,
+  type CareerMatch,
+  type CompassMetadata,
+  type CompassResultsSummary,
   saveCompassResponse,
+  upsertUserCompassResponse,
   getUserCompassResponses,
   getLatestCompassResponse,
+  getCompassResultsForUser,
+  getCompassResultsSummary,
+  deleteUserCompassResults,
   linkCompassResponsesToUser,
-  updateCompassRecommendations
+  updateCompassRecommendations,
+  formatRelativeTime
 } from './compass';
 
 // Job search operations

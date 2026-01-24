@@ -2,51 +2,157 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  getCompassResultsSummary,
-  formatRelativeTime,
-  clearCompassResults,
-  restoreResultsToSession,
-} from "@/lib/compass-results-storage";
+
+// localStorage key for user session (shared with FindJobsModal and CareerCompassWizard)
+const USER_SESSION_KEY = 'adjn_user_session';
+
+interface UserSession {
+  email: string;
+  userId?: string;
+}
+
+interface SavedResultsSummary {
+  savedAt: string;
+  matchCount: number;
+  topMatch: string;
+  hasResume: boolean;
+}
 
 interface SavedResultsBannerProps {
   onStartNew?: () => void;
 }
 
+/**
+ * Format a relative time string for display
+ */
+function formatRelativeTime(dateString: string): string {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMinutes = Math.floor(diffMs / (1000 * 60));
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffMinutes < 1) {
+    return 'just now';
+  } else if (diffMinutes < 60) {
+    return `${diffMinutes} minute${diffMinutes === 1 ? '' : 's'} ago`;
+  } else if (diffHours < 24) {
+    return `${diffHours} hour${diffHours === 1 ? '' : 's'} ago`;
+  } else if (diffDays < 7) {
+    return `${diffDays} day${diffDays === 1 ? '' : 's'} ago`;
+  } else {
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+    });
+  }
+}
+
 export function SavedResultsBanner({ onStartNew }: SavedResultsBannerProps) {
   const router = useRouter();
-  const [summary, setSummary] = useState<ReturnType<typeof getCompassResultsSummary>>(null);
+  const [summary, setSummary] = useState<SavedResultsSummary | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isClearing, setIsClearing] = useState(false);
 
   useEffect(() => {
-    // Check for saved results on mount
-    const resultsSummary = getCompassResultsSummary();
-    if (resultsSummary) {
-      setSummary(resultsSummary);
-      setIsVisible(true);
+    // Check for user session and fetch saved results
+    async function checkSavedResults() {
+      try {
+        // Get user session from localStorage
+        const sessionData = localStorage.getItem(USER_SESSION_KEY);
+        if (!sessionData) {
+          setIsLoading(false);
+          return;
+        }
+
+        const session: UserSession = JSON.parse(sessionData);
+        if (!session.userId) {
+          setIsLoading(false);
+          return;
+        }
+
+        setUserId(session.userId);
+
+        // Fetch saved results summary from API
+        const response = await fetch(`/api/compass/saved?userId=${session.userId}&summary=true`);
+        if (!response.ok) {
+          setIsLoading(false);
+          return;
+        }
+
+        const data = await response.json();
+        if (data.hasSavedResults && data.summary) {
+          setSummary(data.summary);
+          setIsVisible(true);
+        }
+      } catch (error) {
+        console.warn('Failed to check for saved results:', error);
+      } finally {
+        setIsLoading(false);
+      }
     }
+
+    checkSavedResults();
   }, []);
 
-  const handleViewResults = () => {
-    // Restore results to sessionStorage and navigate
-    if (restoreResultsToSession()) {
+  const handleViewResults = async () => {
+    if (!userId) return;
+
+    try {
+      // Fetch full results from API
+      const response = await fetch(`/api/compass/saved?userId=${userId}`);
+      if (!response.ok) return;
+
+      const data = await response.json();
+      if (!data.hasSavedResults || !data.results) return;
+
+      // Restore results to sessionStorage for the results page
+      sessionStorage.setItem('compass-results', JSON.stringify(data.results.recommendations));
+      sessionStorage.setItem('compass-submission', JSON.stringify(data.results.submission));
+
+      if (data.results.metadata) {
+        sessionStorage.setItem('compass-metadata', JSON.stringify(data.results.metadata));
+      }
+      if (data.results.parsedProfile) {
+        sessionStorage.setItem('compass-profile', JSON.stringify(data.results.parsedProfile));
+      }
+
       router.push('/compass-results');
+    } catch (error) {
+      console.error('Failed to load saved results:', error);
     }
   };
 
-  const handleStartNew = () => {
-    // Clear saved results
-    clearCompassResults();
-    setIsVisible(false);
-    // Call optional callback
-    onStartNew?.();
+  const handleClearResults = async () => {
+    if (!userId || isClearing) return;
+
+    setIsClearing(true);
+    try {
+      const response = await fetch(`/api/compass/saved?userId=${userId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setIsVisible(false);
+        setSummary(null);
+        onStartNew?.();
+      }
+    } catch (error) {
+      console.error('Failed to clear saved results:', error);
+    } finally {
+      setIsClearing(false);
+    }
   };
 
   const handleDismiss = () => {
     setIsVisible(false);
   };
 
-  if (!isVisible || !summary) {
+  // Don't render while loading or if no saved results
+  if (isLoading || !isVisible || !summary) {
     return null;
   }
 
@@ -63,9 +169,7 @@ export function SavedResultsBanner({ onStartNew }: SavedResultsBannerProps) {
           <p className="text-sm text-ds-slate-light mb-3">
             Found {summary.matchCount} career matches {formatRelativeTime(summary.savedAt)}.
             {summary.hasResume && " Based on your resume."}
-            {summary.isExpiringSoon && (
-              <span className="text-terracotta font-medium"> Expires soon!</span>
-            )}
+            {" Your top match: "}<span className="font-medium text-sage">{summary.topMatch}</span>
           </p>
           <div className="flex flex-wrap gap-2">
             <button
@@ -78,10 +182,11 @@ export function SavedResultsBanner({ onStartNew }: SavedResultsBannerProps) {
               View Results
             </button>
             <button
-              onClick={handleStartNew}
-              className="inline-flex items-center gap-2 px-4 py-2 border border-sage text-sage font-semibold rounded-lg hover:bg-sage-muted transition-colors text-sm"
+              onClick={handleClearResults}
+              disabled={isClearing}
+              className="inline-flex items-center gap-2 px-4 py-2 border border-sage text-sage font-semibold rounded-lg hover:bg-sage-muted transition-colors text-sm disabled:opacity-50"
             >
-              Start Fresh
+              {isClearing ? 'Clearing...' : 'Start Fresh'}
             </button>
           </div>
         </div>

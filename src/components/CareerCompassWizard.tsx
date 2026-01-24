@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useLocation } from "@/lib/location-context";
 import { useAuth } from "@/lib/auth-context";
 import { storeCompassResume, getCompassResume, clearCompassResume } from "@/lib/resume-storage";
-import { saveCompassResults, clearCompassResults } from "@/lib/compass-results-storage";
 
 // localStorage key for user session (shared with FindJobsModal)
 const USER_SESSION_KEY = 'adjn_user_session';
@@ -522,7 +521,10 @@ export function CareerCompassWizard() {
           // Only include if we have a valid user ID
           ...(effectiveUserId ? { userId: effectiveUserId } : {}),
           locationCode: location?.code,
-          locationName: location?.name
+          locationName: location?.name,
+          locationShortName: location?.shortName,
+          // Include resume text for comprehensive storage in Supabase
+          resumeText: hasResume ? resumeText : undefined
         })
       }, 60000); // 60s timeout for career matching
 
@@ -539,7 +541,7 @@ export function CareerCompassWizard() {
         throw new Error('No career matches found. Try adjusting your preferences.');
       }
 
-      // Build submission data
+      // Build submission data for session storage (immediate use on results page)
       const submissionData = {
         training: selectedTraining,
         education: selectedEducation,
@@ -552,30 +554,19 @@ export function CareerCompassWizard() {
         timestamp: new Date().toISOString(),
       };
 
-      // Store in sessionStorage for immediate use
+      // Store in sessionStorage for immediate use on results page
       sessionStorage.setItem('compass-results', JSON.stringify(recommendData.recommendations));
       sessionStorage.setItem('compass-metadata', JSON.stringify(recommendData.metadata));
       sessionStorage.setItem('compass-profile', JSON.stringify(profile));
       sessionStorage.setItem('compass-submission', JSON.stringify(submissionData));
 
-      // Save comprehensive results to localStorage for persistence across sessions
-      const resumeFilename = resumeFile?.name || (useExistingResume && existingResume ? existingResume.metadata.fileName : null);
-      saveCompassResults({
-        recommendations: recommendData.recommendations,
-        metadata: recommendData.metadata,
-        submission: submissionData,
-        profile: profile,
-        resume: hasResume && resumeText ? {
-          text: resumeText,
-          filename: resumeFilename,
-        } : null,
-        generatedAt: new Date().toISOString(),
-        sessionId,
-      });
+      // Note: Comprehensive data is saved to Supabase via the API endpoint
+      // For users with accounts, their results are permanently stored and can be retrieved later
 
-      // Ensure resume data is persisted for Find Jobs flow
+      // Ensure resume data is persisted in localStorage for Find Jobs flow
       if (hasResume && resumeText) {
-        storeCompassResume(resumeText, resumeFilename || undefined);
+        const resumeFilename = resumeFile?.name || (useExistingResume && existingResume ? existingResume.metadata.fileName : undefined);
+        storeCompassResume(resumeText, resumeFilename);
       }
 
       router.push('/compass-results');
