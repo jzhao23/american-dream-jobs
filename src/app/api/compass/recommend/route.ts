@@ -64,10 +64,10 @@ const recommendRequestSchema = z.object({
   }).optional(),
   // Session tracking for persistence
   sessionId: z.string().optional(),
-  userId: z.string().uuid().optional(),
+  userId: z.string().uuid().nullish(), // Allow null or undefined for unauthenticated users
   locationCode: z.string().optional(),
   locationName: z.string().optional(),
-  resumeId: z.string().uuid().optional()
+  resumeId: z.string().uuid().nullish() // Allow null or undefined
 });
 
 // Response types
