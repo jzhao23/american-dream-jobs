@@ -483,7 +483,7 @@ export function CareerCompassWizard() {
         .join(', ');
 
       // Determine the user ID to pass (prefer authenticated user, fall back to legacy session)
-      const effectiveUserId = userProfileId || userSession?.userId || null;
+      const effectiveUserId = userProfileId || userSession?.userId || undefined;
 
       // Get recommendations
       const recommendResponse = await fetchWithTimeout('/api/compass/recommend/', {
@@ -516,7 +516,8 @@ export function CareerCompassWizard() {
           // Session tracking for persistence
           sessionId,
           // User ID for authenticated users (links compass_responses to user_profiles)
-          userId: effectiveUserId,
+          // Only include if we have a valid user ID
+          ...(effectiveUserId ? { userId: effectiveUserId } : {}),
           locationCode: location?.code,
           locationName: location?.name
         })
