@@ -66,6 +66,7 @@ function CalculatorContent() {
   const [educationCostIncluded, setEducationCostIncluded] = useState(true);
   const [selectedSpecialization, setSelectedSpecialization] = useState<string | null>(null);
   const [comparisonScenario, setComparisonScenario] = useState<'none' | 'retire_later' | 'save_more'>('none');
+  const [showHelperResources, setShowHelperResources] = useState(false);
 
   const selectedCareer = useMemo(() => {
     return fullCareers.find(c => c.slug === selectedSlug);
@@ -550,6 +551,61 @@ function CalculatorContent() {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Helper Resources Section */}
+            <div className="card-warm p-4">
+              <button
+                onClick={() => setShowHelperResources(!showHelperResources)}
+                className="flex items-center justify-between w-full text-left"
+              >
+                <span className="text-sm font-medium text-ds-slate-light">New to financial planning?</span>
+                <span className="text-ds-slate-muted text-xs">
+                  {showHelperResources ? '−' : '+'}
+                </span>
+              </button>
+              {showHelperResources && (
+                <div className="mt-3 pt-3 border-t border-sage-muted">
+                  <p className="text-xs text-ds-slate-muted mb-3">
+                    Learn the basics with these beginner-friendly resources:
+                  </p>
+                  <ul className="space-y-2">
+                    <li>
+                      <a
+                        href="https://www.investopedia.com/terms/s/savings-rate.asp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-sage hover:text-sage-dark hover:underline"
+                      >
+                        Understanding savings rates →
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.investor.gov/additional-resources/information/youth/teachers-classroom-resources/compound-interest"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-sage hover:text-sage-dark hover:underline"
+                      >
+                        How compound interest works →
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.nerdwallet.com/article/investing/how-to-start-investing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-sage hover:text-sage-dark hover:underline"
+                      >
+                        Getting started with investing →
+                      </a>
+                    </li>
+                  </ul>
+                  <p className="text-xs text-ds-slate-muted mt-3 pt-2 border-t border-sage-muted italic">
+                    External resources for educational purposes only, not financial advice.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
