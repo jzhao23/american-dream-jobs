@@ -516,7 +516,8 @@ export function CareerCompassWizard() {
           // Session tracking for persistence
           sessionId,
           // User ID for authenticated users (links compass_responses to user_profiles)
-          userId: effectiveUserId,
+          // Only include if we have a valid user ID
+          ...(effectiveUserId ? { userId: effectiveUserId } : {}),
           locationCode: location?.code,
           locationName: location?.name
         })
