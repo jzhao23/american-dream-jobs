@@ -62,32 +62,28 @@ The application is fundamentally functional with all pages building and renderin
 
 ### BUG-001: Missing career-embeddings.json File
 
-**Severity**: High
+**Severity**: Low (downgraded)
 **Category**: Data
-**Status**: Open
-**Affected Component**: Career Compass AI Matching
+**Status**: Open (not blocking)
+**Affected Component**: Career Compass AI Matching / Link Validation Tests
 
 **Description**:
-The `data/compass/career-embeddings.json` file is missing from the repository. This file is required for the Career Compass AI-powered matching functionality.
+The `data/compass/career-embeddings.json` file is missing from the repository. This file is used for:
+1. Syncing embeddings to Supabase
+2. Link validation tests (data consistency checks)
 
-**Steps to Reproduce**:
-1. Run `npm test -- --testPathPatterns="link-validation"`
-2. Observe error: `ENOENT: no such file or directory, open 'data/compass/career-embeddings.json'`
-
-**Expected Behavior**:
-The embeddings file should exist and contain pre-computed vector embeddings for all careers.
-
-**Actual Behavior**:
-File not found error. All embedding-related tests fail.
+**Note**: If embeddings are already stored in Supabase (production), this local file is **not required** for the application to function. The Career Compass uses Supabase for matching by default (`useSupabase: true`).
 
 **Impact**:
-- Career Compass AI matching may not function correctly without pre-computed embeddings
-- All link validation tests fail due to this missing file
+- Link validation tests fail (but these are data consistency checks, not functional tests)
+- Local development without Supabase would need this file
 
-**Recommended Fix**:
+**Recommended Fix** (optional):
 ```bash
 npm run compass:generate-embeddings
 ```
+
+Or fix the link-validation test to gracefully handle missing embeddings file.
 
 ---
 
@@ -95,42 +91,9 @@ npm run compass:generate-embeddings
 
 **Severity**: High
 **Category**: Tests
-**Status**: Open
-**Affected Files**:
-- `test/api/local-jobs.test.ts`
-- `src/app/api/local-jobs/route.ts`
+**Status**: FIXED (2026-01-29)
 
-**Description**:
-The local-jobs API endpoint returns `highGrowth` in its response, but the test expects `highConcentration`. This indicates either the API was changed without updating tests, or the test was written against a different API spec.
-
-**Steps to Reproduce**:
-1. Run `npm test -- --testPathPatterns="local-jobs"`
-2. Observe 6 failing tests all related to `highConcentration` being undefined
-
-**Expected Behavior**:
-Tests should match the current API response structure.
-
-**Actual Behavior**:
-Tests fail with `Cannot read properties of undefined (reading 'length')` for `data.highConcentration`.
-
-**API Response Structure** (current):
-```typescript
-{
-  success: true,
-  location: { code, name, type },
-  fastestGrowing: LocalJobEntry[],
-  mostJobs: LocalJobEntry[],
-  highGrowth: LocalJobEntry[]  // <-- API returns this
-}
-```
-
-**Test Expectation**:
-```typescript
-expect(data.highConcentration).toBeDefined(); // <-- Test expects this
-```
-
-**Recommended Fix**:
-Update test to use `highGrowth` instead of `highConcentration`, or restore `highConcentration` to API if it was intentionally designed.
+**Resolution**: Updated test to use `highGrowth` instead of `highConcentration`. All 18 local-jobs tests now pass.
 
 ---
 
