@@ -454,7 +454,7 @@ export function CareerCompassWizard() {
         // Model B: Minimal profile based on questionnaire
         // Map education level from wizard format to API format
         const eduLevelMap: Record<string, string> = {
-          'current-hs': 'current_hs',
+          'current-hs': 'high_school',  // Treat as high school level for matching purposes
           'high-school': 'high_school',
           'some-college': 'some_college',
           'bachelors': 'bachelors',
