@@ -440,6 +440,9 @@ export function FindJobsModal({
               <p className="text-gray-600">
                 We&apos;re scanning job boards for the best opportunities in {location?.name}.
               </p>
+              <p className="text-sm text-gray-500 mt-3">
+                This can take up to a minute as we search through many potential jobs.
+              </p>
             </div>
           )}
 
