@@ -4,7 +4,8 @@ import { Header } from "@/components/Header";
 import { FlagLogo } from "@/components/FlagLogo";
 import { LocationProvider } from "@/lib/location-context";
 import { AuthProvider } from "@/lib/auth-context";
-import { AuthModal } from "@/components/auth/AuthModal";
+// TODO: Re-enable after auth security audit
+// import { AuthModal } from "@/components/auth/AuthModal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -70,7 +71,8 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <Footer />
-            <AuthModal />
+            {/* TODO: Re-enable after auth security audit */}
+            {/* <AuthModal /> */}
           </AuthProvider>
         </LocationProvider>
       </body>

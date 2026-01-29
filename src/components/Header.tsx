@@ -1,14 +1,27 @@
 "use client";
 
+/**
+ * Header Component
+ *
+ * Navigation header with logo, links, and location selector.
+ *
+ * NOTE: Sign-in functionality is disabled for alpha launch.
+ * Auth-related code is preserved in src/lib/_stashed/auth/ for future use.
+ */
+
 import { useState } from "react";
 import { LocationSelector } from "./LocationSelector";
 import { FlagLogo } from "./FlagLogo";
-import { useAuth } from "@/lib/auth-context";
-import { UserMenu } from "./auth/UserMenu";
+
+// TODO: Re-enable after auth security audit
+// import { useAuth } from "@/lib/auth-context";
+// import { UserMenu } from "./auth/UserMenu";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isAuthenticated, isLoading: authLoading, openAuthModal } = useAuth();
+
+  // Auth is disabled for alpha launch
+  // const { isAuthenticated, isLoading: authLoading, openAuthModal } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 bg-warm-white/95 backdrop-blur-md border-b border-sage-muted">
@@ -56,7 +69,8 @@ export function Header() {
             <div className="ml-3 border-l border-sage-muted pl-3">
               <LocationSelector variant="header" />
             </div>
-            {/* Auth section */}
+            {/* Auth section - DISABLED for alpha launch */}
+            {/* TODO: Re-enable after auth security audit
             <div className="ml-3 border-l border-sage-muted pl-3">
               {authLoading ? (
                 <div className="w-8 h-8 rounded-full bg-sage-muted animate-pulse" />
@@ -71,6 +85,7 @@ export function Header() {
                 </button>
               )}
             </div>
+            */}
           </nav>
 
           {/* Mobile menu button */}
@@ -162,7 +177,8 @@ export function Header() {
             >
               Career Compass
             </a>
-            {/* Auth section for mobile */}
+            {/* Auth section for mobile - DISABLED for alpha launch */}
+            {/* TODO: Re-enable after auth security audit
             <div className="mt-4 pt-4 border-t border-sage-muted">
               {authLoading ? (
                 <div className="py-3 px-3">
@@ -184,6 +200,7 @@ export function Header() {
                 </button>
               )}
             </div>
+            */}
           </nav>
         </div>
       )}
