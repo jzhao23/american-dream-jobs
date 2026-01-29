@@ -139,12 +139,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<AnalyzeRe
         );
       }
 
+      // Don't expose internal error details to clients
+      console.error('Extraction failed:', error.message);
       return NextResponse.json(
         {
           success: false,
           error: {
             code: 'EXTRACTION_FAILED',
-            message: error.message
+            message: 'Failed to extract information from resume. Please try again.'
           }
         },
         { status: 500 }

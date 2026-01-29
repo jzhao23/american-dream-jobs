@@ -47,12 +47,8 @@ export async function POST(request: NextRequest) {
         voteCount: result.voteCount
       });
     } catch (dbError) {
-      // Graceful degradation
-      console.error("Database error (graceful degradation):", dbError);
-      console.log("Career request logged (no persistence):", {
-        ...data,
-        timestamp: new Date().toISOString(),
-      });
+      // Graceful degradation - do not log PII (email)
+      console.error("Database error (graceful degradation):", dbError instanceof Error ? dbError.message : "Unknown error");
 
       return NextResponse.json({ success: true });
     }

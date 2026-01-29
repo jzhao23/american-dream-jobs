@@ -48,12 +48,8 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({ success: true, id: contribution.id });
     } catch (dbError) {
-      // Graceful degradation
-      console.error("Database error (graceful degradation):", dbError);
-      console.log("Contribution logged (no persistence):", {
-        ...data,
-        timestamp: new Date().toISOString(),
-      });
+      // Graceful degradation - do not log PII (name, email, content)
+      console.error("Database error (graceful degradation):", dbError instanceof Error ? dbError.message : "Unknown error");
 
       return NextResponse.json({ success: true });
     }
