@@ -6,11 +6,8 @@ import { useLocation } from "@/lib/location-context";
 import { JobListing } from "@/lib/jobs/types";
 import { getCompassResume } from "@/lib/resume-storage";
 
-// Modal step types
-type ModalStep = 'location' | 'email' | 'resume' | 'searching' | 'results' | 'error';
-
-// localStorage key for persisting user session
-const USER_SESSION_KEY = 'adjn_user_session';
+// Modal step types - removed 'email' step for alpha launch
+type ModalStep = 'location' | 'resume' | 'searching' | 'results' | 'error';
 
 interface FindJobsModalProps {
   isOpen: boolean;
@@ -18,50 +15,6 @@ interface FindJobsModalProps {
   careerSlug: string;
   careerTitle: string;
   alternateJobTitles?: string[];
-}
-
-interface UserState {
-  email: string;
-  userId: string | null;
-  hasResume: boolean;
-  resumeUploaded: boolean;
-}
-
-// Helper to load user session from localStorage
-function loadUserSession(): UserState | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const saved = localStorage.getItem(USER_SESSION_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Validate the structure
-      if (parsed.email && parsed.userId) {
-        return {
-          email: parsed.email,
-          userId: parsed.userId,
-          hasResume: parsed.hasResume || false,
-          resumeUploaded: false
-        };
-      }
-    }
-  } catch (e) {
-    console.warn('Failed to load user session:', e);
-  }
-  return null;
-}
-
-// Helper to save user session to localStorage
-function saveUserSession(state: UserState): void {
-  if (typeof window === 'undefined') return;
-  try {
-    localStorage.setItem(USER_SESSION_KEY, JSON.stringify({
-      email: state.email,
-      userId: state.userId,
-      hasResume: state.hasResume
-    }));
-  } catch (e) {
-    console.warn('Failed to save user session:', e);
-  }
 }
 
 export function FindJobsModal({
@@ -79,19 +32,6 @@ export function FindJobsModal({
   const [error, setError] = useState<string | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // User state
-  const [userState, setUserState] = useState<UserState>({
-    email: '',
-    userId: null,
-    hasResume: false,
-    resumeUploaded: false
-  });
-
-  // Form state
-  const [emailInput, setEmailInput] = useState('');
-  const [tcAccepted, setTcAccepted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   // Location search state
   const [locationQuery, setLocationQuery] = useState('');
   const [locationResults, setLocationResults] = useState<Array<{
@@ -105,8 +45,10 @@ export function FindJobsModal({
 
   // Resume state
   const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [resumeText, setResumeText] = useState<string | null>(null);
   const [isUploadingResume, setIsUploadingResume] = useState(false);
   const [hasCompassResume, setHasCompassResume] = useState(false);
+  const [resumeUploaded, setResumeUploaded] = useState(false);
 
   // Job results
   const [jobs, setJobs] = useState<JobListing[]>([]);
@@ -120,19 +62,12 @@ export function FindJobsModal({
   const [sortBy, setSortBy] = useState<'relevance' | 'salary' | 'date' | 'company'>('relevance');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
-  // Load saved user session on mount
+  // Load saved resume from Career Compass on mount
   useEffect(() => {
-    const savedSession = loadUserSession();
-    if (savedSession) {
-      setUserState(savedSession);
-      setEmailInput(savedSession.email);
-      setTcAccepted(true); // They already accepted
-    }
-
-    // Check for resume from Career Compass flow
     const compassResume = getCompassResume();
     if (compassResume && compassResume.text) {
       setHasCompassResume(true);
+      setResumeText(compassResume.text);
     }
 
     setIsInitialized(true);
@@ -144,18 +79,15 @@ export function FindJobsModal({
       if (!location) {
         // No location - ask for it first
         setStep('location');
-      } else if (!userState.userId) {
-        // No user - ask for email
-        setStep('email');
-      } else if (!userState.hasResume && !hasCompassResume) {
-        // Have user but no resume (from DB or Career Compass) - prompt for resume
+      } else if (!hasCompassResume && !resumeUploaded) {
+        // Have location but no resume - prompt for resume
         setStep('resume');
       } else {
-        // Have user, location, and resume - go straight to search
-        startJobSearch(userState.userId);
+        // Have location and resume - go straight to search
+        startJobSearch();
       }
     }
-  }, [isOpen, isInitialized, location, userState.userId, userState.hasResume, hasCompassResume]);
+  }, [isOpen, isInitialized, location, hasCompassResume, resumeUploaded]);
 
   // Location search effect
   useEffect(() => {
@@ -181,99 +113,39 @@ export function FindJobsModal({
     return () => clearTimeout(searchTimeout);
   }, [locationQuery]);
 
-  // Handle location selection
+  // Handle location selection - skip email, go to resume or search
   const handleLocationSelect = useCallback((loc: { code: string; name: string; shortName: string; states: string[]; type: 'msa' | 'state' }) => {
     setLocation({
       code: loc.code,
       name: loc.name,
       shortName: loc.shortName,
-      // For MSAs, use the first state from the states array; for states, use the code directly
       state: loc.type === 'state' ? loc.code : (loc.states[0] || ''),
       type: loc.type
     });
     setLocationQuery('');
     setLocationResults([]);
-    setStep('email');
-  }, [setLocation]);
 
-  // Handle email submission
-  const handleEmailSubmit = async () => {
-    if (!emailInput || !tcAccepted) return;
-
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      // Check if user exists
-      const checkResponse = await fetch(`/api/users/check?email=${encodeURIComponent(emailInput)}`);
-      const checkData = await checkResponse.json();
-
-      if (checkData.success && checkData.data.exists) {
-        // Existing user
-        const newState = {
-          email: emailInput,
-          userId: checkData.data.userId,
-          hasResume: checkData.data.hasResume,
-          resumeUploaded: false
-        };
-        setUserState(newState);
-        saveUserSession(newState);
-
-        if (checkData.data.hasResume) {
-          // Skip resume step
-          await startJobSearch(checkData.data.userId);
-        } else {
-          setStep('resume');
-        }
-      } else {
-        // Create new user
-        const createResponse = await fetch('/api/users/profile', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: emailInput,
-            locationCode: location?.code,
-            locationName: location?.name,
-            tcAccepted: true
-          })
-        });
-
-        const createData = await createResponse.json();
-
-        if (createData.success) {
-          const newState = {
-            email: emailInput,
-            userId: createData.data.userId,
-            hasResume: false,
-            resumeUploaded: false
-          };
-          setUserState(newState);
-          saveUserSession(newState);
-          setStep('resume');
-        } else {
-          setError(createData.error?.message || 'Failed to create account');
-        }
-      }
-    } catch {
-      setError('Something went wrong. Please try again.');
+    // Skip email step - go directly to resume or search
+    if (hasCompassResume || resumeUploaded) {
+      // Have resume from Career Compass - go to search
+      startJobSearch();
+    } else {
+      // No resume - offer to upload one
+      setStep('resume');
     }
+  }, [setLocation, hasCompassResume, resumeUploaded]);
 
-    setIsSubmitting(false);
-  };
-
-  // Handle resume upload
+  // Handle resume upload (local only - just parse and store text)
   const handleResumeUpload = async (file: File) => {
-    if (!userState.userId) return;
-
     setIsUploadingResume(true);
     setError(null);
 
     try {
+      // Use the parse-file endpoint to extract text (doesn't store on server)
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('userId', userState.userId);
 
-      const response = await fetch('/api/users/resume', {
+      const response = await fetch('/api/compass/parse-file', {
         method: 'POST',
         body: formData
       });
@@ -281,15 +153,14 @@ export function FindJobsModal({
       const data = await response.json();
 
       if (data.success) {
-        const updatedState = { ...userState, hasResume: true, resumeUploaded: true };
-        setUserState(updatedState);
-        saveUserSession(updatedState);
-        await startJobSearch(userState.userId);
+        setResumeText(data.text);
+        setResumeUploaded(true);
+        await startJobSearch();
       } else {
-        setError(data.error?.message || 'Failed to upload resume');
+        setError(data.error?.message || 'Failed to process resume');
       }
     } catch {
-      setError('Failed to upload resume. Please try again.');
+      setError('Failed to process resume. Please try again.');
     }
 
     setIsUploadingResume(false);
@@ -297,12 +168,11 @@ export function FindJobsModal({
 
   // Handle skip resume
   const handleSkipResume = async () => {
-    if (!userState.userId) return;
-    await startJobSearch(userState.userId);
+    await startJobSearch();
   };
 
   // Start job search
-  const startJobSearch = async (userId: string) => {
+  const startJobSearch = async () => {
     if (!location) {
       setError('Location is required');
       return;
@@ -312,8 +182,6 @@ export function FindJobsModal({
     setError(null);
 
     try {
-      // Use shortName for API compatibility (e.g., "San Francisco, CA")
-      // shortName already includes city + state, unlike full MSA name (e.g., "San Francisco-Oakland-Berkeley, CA")
       const response = await fetch('/api/jobs/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -323,7 +191,7 @@ export function FindJobsModal({
           alternateJobTitles,
           locationCode: location.code,
           locationName: location.shortName,
-          userId,
+          // No userId - anonymous search for alpha launch
           limit: 50
         })
       });
@@ -333,7 +201,7 @@ export function FindJobsModal({
       if (data.success) {
         setJobs(data.data.jobs);
         setTotalResults(data.data.totalResults || data.data.jobs.length);
-        setDisplayedCount(25); // Start by showing 25
+        setDisplayedCount(25);
         setSearchId(data.data.searchId);
         setIsFromCache(data.data.cached);
         setStep('results');
@@ -382,7 +250,6 @@ export function FindJobsModal({
   // Handle Load More
   const handleLoadMore = () => {
     setIsLoadingMore(true);
-    // Simulate brief loading for UX
     setTimeout(() => {
       setDisplayedCount(prev => Math.min(prev + 25, jobs.length));
       setIsLoadingMore(false);
@@ -400,21 +267,18 @@ export function FindJobsModal({
         comparison = salaryA - salaryB;
         break;
       case 'date':
-        // Simple comparison based on posted string
         comparison = a.postedAt.localeCompare(b.postedAt);
         break;
       case 'company':
         comparison = a.company.localeCompare(b.company);
         break;
       default:
-        // Keep original order for relevance
         return 0;
     }
 
     return sortOrder === 'desc' ? -comparison : comparison;
   });
 
-  // Limit displayed jobs
   const displayedJobs = sortedJobs.slice(0, displayedCount);
   const hasMoreJobs = displayedCount < jobs.length;
 
@@ -426,7 +290,6 @@ export function FindJobsModal({
 
   if (!isOpen || !mounted) return null;
 
-  // Use portal to render at document.body level for proper viewport centering
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       {/* Backdrop */}
@@ -503,64 +366,11 @@ export function FindJobsModal({
             </div>
           )}
 
-          {/* Email Step */}
-          {step === 'email' && (
-            <div className="max-w-md mx-auto">
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                Enter your email to continue
-              </h3>
-              <p className="text-gray-600 mb-6">
-                We&apos;ll notify you when the American Dream Jobs Network launches with more job matching features.
-              </p>
-
-              <div className="space-y-4">
-                <input
-                  type="email"
-                  value={emailInput}
-                  onChange={(e) => setEmailInput(e.target.value)}
-                  placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage"
-                />
-
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={tcAccepted}
-                    onChange={(e) => setTcAccepted(e.target.checked)}
-                    className="mt-1 w-4 h-4 text-sage border-gray-300 rounded focus:ring-sage"
-                  />
-                  <span className="text-sm text-gray-600">
-                    I agree to the{' '}
-                    <a href="/legal#terms" target="_blank" rel="noopener noreferrer" className="text-sage hover:underline">
-                      Terms & Conditions
-                    </a>
-                    {' '}and{' '}
-                    <a href="/legal#privacy" target="_blank" rel="noopener noreferrer" className="text-sage hover:underline">
-                      Privacy Policy
-                    </a>
-                  </span>
-                </label>
-
-                {error && (
-                  <p className="text-red-600 text-sm">{error}</p>
-                )}
-
-                <button
-                  onClick={handleEmailSubmit}
-                  disabled={!emailInput || !tcAccepted || isSubmitting}
-                  className="w-full py-3 bg-sage text-white rounded-lg font-medium hover:bg-sage-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {isSubmitting ? 'Please wait...' : 'Continue'}
-                </button>
-              </div>
-            </div>
-          )}
-
           {/* Resume Step */}
           {step === 'resume' && (
             <div className="max-w-md mx-auto">
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                Upload your resume
+                Upload your resume (optional)
               </h3>
               <p className="text-gray-600 mb-6">
                 Uploading your resume helps us find better job matches for you. You can skip this step if you prefer.
@@ -588,13 +398,21 @@ export function FindJobsModal({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                   {isUploadingResume ? (
-                    <p className="text-sage font-medium">Uploading {resumeFile?.name}...</p>
+                    <p className="text-sage font-medium">Processing {resumeFile?.name}...</p>
                   ) : (
                     <>
                       <p className="text-gray-700 font-medium">Click to upload your resume</p>
                       <p className="text-sm text-gray-500 mt-1">PDF, Word, or text file (max 5MB)</p>
                     </>
                   )}
+                </div>
+
+                {/* Privacy notice */}
+                <div className="flex items-start gap-2 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg">
+                  <svg className="w-4 h-4 text-sage flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span>Your resume stays on your device. We only extract the text for matching and never store your file on our servers.</span>
                 </div>
 
                 {error && (
@@ -779,7 +597,7 @@ export function FindJobsModal({
               )}
 
               {/* Resume prompt if skipped */}
-              {!userState.hasResume && !userState.resumeUploaded && !hasCompassResume && (
+              {!hasCompassResume && !resumeUploaded && (
                 <div className="mt-6 p-4 bg-sage-pale rounded-xl">
                   <p className="text-sage-dark font-medium mb-2">
                     Want better job matches?
@@ -813,7 +631,7 @@ export function FindJobsModal({
                 {error || 'We couldn\'t complete your search. Please try again.'}
               </p>
               <button
-                onClick={() => userState.userId && startJobSearch(userState.userId)}
+                onClick={() => startJobSearch()}
                 className="px-6 py-3 bg-sage text-white rounded-lg font-medium hover:bg-sage-dark transition-colors"
               >
                 Try again
