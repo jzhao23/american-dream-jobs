@@ -1144,6 +1144,7 @@ export function CareerCompassWizard() {
               )}
               <p className="text-xs text-ds-slate-muted mt-2">
                 🔒 Your privacy matters: We only analyze your skills and experience, not your name or contact information.
+                Your data is stored locally on your device and our developers do not have access to it.
               </p>
             </div>
 
@@ -1174,20 +1175,25 @@ export function CareerCompassWizard() {
                       </div>
                     </button>
                     {useExistingResume && (
-                      <div className="mt-3 flex items-center justify-between">
-                        <div className="text-sm text-sage flex items-center gap-2">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          Your resume will be used for personalized matching
+                      <div className="mt-3">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm text-sage flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            Your resume will be used for personalized matching
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => clearFile(true)}
+                            className="text-xs text-terracotta hover:underline"
+                          >
+                            Remove saved resume
+                          </button>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => clearFile(true)}
-                          className="text-xs text-terracotta hover:underline"
-                        >
-                          Remove saved resume
-                        </button>
+                        <p className="text-xs text-ds-slate-muted mt-2">
+                          Stored locally on this device only.
+                        </p>
                       </div>
                     )}
                   </div>
@@ -1240,6 +1246,7 @@ export function CareerCompassWizard() {
                 <div className="flex flex-col items-center gap-2">
                   <div className="text-3xl">✓</div>
                   <span className="font-semibold text-sage">{resumeFile.name}</span>
+                  <span className="text-xs text-ds-slate-muted">Stored locally on this device only</span>
                   <button
                     type="button"
                     onClick={(e) => { e.preventDefault(); clearFile(); }}
