@@ -1,30 +1,37 @@
 "use client";
 
 /**
- * Authentication Context
+ * Authentication Context (DISABLED for Alpha Launch)
  *
- * Manages user authentication state across the application.
- * Features:
- * - Email/password sign-in and sign-up via Supabase Auth
- * - Session persistence across page refreshes
- * - Auth modal visibility control
- * - Anonymous-to-authenticated data migration
+ * This is a stub version of the auth context that maintains the same interface
+ * but does not perform actual authentication. This allows existing components
+ * to continue working without modification while auth is disabled.
  *
- * Usage:
- * - Wrap your app with <AuthProvider>
- * - Use useAuth() hook to access auth state and methods
+ * Original auth implementation is preserved in:
+ * src/lib/_stashed/auth/auth-context.tsx
+ *
+ * TODO: Re-enable after auth security audit
  */
 
 import {
   createContext,
   useContext,
-  useState,
-  useEffect,
-  useCallback,
   ReactNode,
 } from "react";
-import { getSupabaseBrowserClient, User, Session } from "./supabase-browser";
-import type { AuthError } from "@supabase/supabase-js";
+
+// Stub types to maintain interface compatibility
+interface User {
+  id: string;
+  email?: string;
+}
+
+interface Session {
+  user: User;
+}
+
+interface AuthError {
+  message: string;
+}
 
 // Types
 export interface AuthContextState {
@@ -44,189 +51,63 @@ export interface AuthContextState {
   closeAuthModal: () => void;
 }
 
-// Create context
+// Create context with disabled auth state
 const AuthContext = createContext<AuthContextState | null>(null);
 
-// Storage key for user profile ID
-const USER_PROFILE_KEY = "adj_auth_user_profile_id";
+// Disabled error message
+const AUTH_DISABLED_ERROR: AuthError = {
+  message: "Authentication is temporarily disabled for alpha launch. Your data is stored locally in your browser.",
+};
 
-// Provider component
+/**
+ * Auth Provider - Stub version for alpha launch
+ *
+ * All auth operations return errors indicating auth is disabled.
+ * User state is always null (not authenticated).
+ */
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [userProfileId, setUserProfileId] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalMode, setAuthModalMode] = useState<"sign-in" | "sign-up">("sign-in");
-
-  // Initialize auth state from Supabase
-  useEffect(() => {
-    const supabase = getSupabaseBrowserClient();
-
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-
-      // Load cached user profile ID
-      if (session?.user) {
-        const cachedProfileId = localStorage.getItem(USER_PROFILE_KEY);
-        if (cachedProfileId) {
-          setUserProfileId(cachedProfileId);
-        }
-      }
-
-      setIsLoading(false);
-    });
-
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-
-      if (event === "SIGNED_IN" && session?.user) {
-        // Fetch or create user profile
-        await syncUserProfile(session.user);
-      } else if (event === "SIGNED_OUT") {
-        setUserProfileId(null);
-        localStorage.removeItem(USER_PROFILE_KEY);
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  // Sync user profile with database
-  const syncUserProfile = async (authUser: User) => {
-    try {
-      const response = await fetch("/api/auth/sync-profile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          authId: authUser.id,
-          email: authUser.email,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success && data.data.userId) {
-        setUserProfileId(data.data.userId);
-        localStorage.setItem(USER_PROFILE_KEY, data.data.userId);
-
-        // Migrate anonymous data if this is a new user linking
-        if (data.data.isNew === false) {
-          await migrateAnonymousData(authUser.id);
-        }
-      }
-    } catch (error) {
-      console.error("Failed to sync user profile:", error);
-    }
+  // Stub implementations that indicate auth is disabled
+  const signIn = async (): Promise<{ error: AuthError | null }> => {
+    console.warn("Auth disabled: signIn called but authentication is disabled for alpha launch");
+    return { error: AUTH_DISABLED_ERROR };
   };
 
-  // Migrate anonymous session data to authenticated user
-  const migrateAnonymousData = async (authUserId: string) => {
-    try {
-      // Get session ID from sessionStorage (used by CareerCompassWizard)
-      const compassSession = sessionStorage.getItem("compass-submission");
-      if (compassSession) {
-        const parsed = JSON.parse(compassSession);
-        if (parsed.sessionId) {
-          await fetch("/api/auth/migrate-anonymous-data", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              authUserId,
-              sessionId: parsed.sessionId,
-            }),
-          });
-        }
-      }
-    } catch (error) {
-      console.error("Failed to migrate anonymous data:", error);
-    }
+  const signUp = async (): Promise<{ error: AuthError | null; needsEmailConfirmation?: boolean }> => {
+    console.warn("Auth disabled: signUp called but authentication is disabled for alpha launch");
+    return { error: AUTH_DISABLED_ERROR };
   };
 
-  // Sign in with email/password
-  const signIn = useCallback(async (email: string, password: string) => {
-    const supabase = getSupabaseBrowserClient();
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  const signOut = async (): Promise<void> => {
+    console.warn("Auth disabled: signOut called but authentication is disabled for alpha launch");
+  };
 
-    if (!error) {
-      setIsAuthModalOpen(false);
-    }
+  const resetPassword = async (): Promise<{ error: AuthError | null }> => {
+    console.warn("Auth disabled: resetPassword called but authentication is disabled for alpha launch");
+    return { error: AUTH_DISABLED_ERROR };
+  };
 
-    return { error };
-  }, []);
+  const updatePassword = async (): Promise<{ error: AuthError | null }> => {
+    console.warn("Auth disabled: updatePassword called but authentication is disabled for alpha launch");
+    return { error: AUTH_DISABLED_ERROR };
+  };
 
-  // Sign up with email/password
-  const signUp = useCallback(async (email: string, password: string) => {
-    const supabase = getSupabaseBrowserClient();
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/confirm`,
-      },
-    });
+  const openAuthModal = (): void => {
+    console.warn("Auth disabled: openAuthModal called but authentication is disabled for alpha launch");
+    // Could optionally show a message to users here
+  };
 
-    // Don't close modal on signup - let the modal show the confirmation message
-    // The user needs to confirm their email first
-    // Check if email confirmation is required (user created but not confirmed)
-    const needsEmailConfirmation = !error && data?.user && !data.user.confirmed_at ? true : false;
-
-    return { error, needsEmailConfirmation };
-  }, []);
-
-  // Sign out
-  const signOut = useCallback(async () => {
-    const supabase = getSupabaseBrowserClient();
-    await supabase.auth.signOut();
-    setUserProfileId(null);
-    localStorage.removeItem(USER_PROFILE_KEY);
-  }, []);
-
-  // Request password reset email
-  const resetPassword = useCallback(async (email: string) => {
-    const supabase = getSupabaseBrowserClient();
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password`,
-    });
-    return { error };
-  }, []);
-
-  // Update password (used after clicking reset link)
-  const updatePassword = useCallback(async (password: string) => {
-    const supabase = getSupabaseBrowserClient();
-    const { error } = await supabase.auth.updateUser({ password });
-    return { error };
-  }, []);
-
-  // Modal controls
-  const openAuthModal = useCallback((mode: "sign-in" | "sign-up" = "sign-in") => {
-    setAuthModalMode(mode);
-    setIsAuthModalOpen(true);
-  }, []);
-
-  const closeAuthModal = useCallback(() => {
-    setIsAuthModalOpen(false);
-  }, []);
+  const closeAuthModal = (): void => {
+    // No-op
+  };
 
   const value: AuthContextState = {
-    user,
-    session,
-    userProfileId,
-    isLoading,
-    isAuthenticated: !!user,
-    isAuthModalOpen,
-    authModalMode,
+    user: null,
+    session: null,
+    userProfileId: null,
+    isLoading: false, // Not loading since auth is disabled
+    isAuthenticated: false,
+    isAuthModalOpen: false,
+    authModalMode: "sign-in",
     signIn,
     signUp,
     signOut,
@@ -243,7 +124,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Hook to use auth context
+/**
+ * Hook to use auth context
+ *
+ * Returns stub auth state with isAuthenticated always false.
+ */
 export function useAuth(): AuthContextState {
   const context = useContext(AuthContext);
   if (!context) {
@@ -252,8 +137,11 @@ export function useAuth(): AuthContextState {
   return context;
 }
 
-// Hook to check if user is authenticated
+/**
+ * Hook to check if user is authenticated
+ *
+ * Always returns false since auth is disabled.
+ */
 export function useIsAuthenticated(): boolean {
-  const { isAuthenticated, isLoading } = useAuth();
-  return !isLoading && isAuthenticated;
+  return false;
 }
