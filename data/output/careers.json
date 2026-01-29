@@ -31043,8 +31043,8 @@
     }
   },
   {
-    "title": "Legal Legal Professionals",
-    "slug": "legal-legal-professionals",
+    "title": "Legal Support Workers",
+    "slug": "legal-support-workers",
     "description": "Legal professionals in this category provide essential support services to attorneys, law firms, and legal departments by conducting research, preparing documents, and examining records. These specialists investigate facts, draft legal correspondence, maintain filing systems, and analyze property titles and related documentation. They work in law offices, real estate companies, government agencies, and insurance firms to ensure legal processes run smoothly and accurately.",
     "category": "legal",
     "subcategory": "Legal Occupations",
@@ -31245,7 +31245,7 @@
       "Inductive Reasoning"
     ],
     "alternate_titles": [
-      "Legal Legal Professionals",
+      "Legal Support Workers",
       "Certified Paralegal",
       "Contract Preparer",
       "Contracts Specialist",
@@ -41205,7 +41205,7 @@
     }
   },
   {
-    "title": "Office admin Clerks",
+    "title": "Office Admin Clerks",
     "slug": "office-admin-clerks",
     "description": "Office administrative clerks perform essential support functions across various industries by collecting information, processing applications, maintaining records, and assisting customers with inquiries and transactions. These professionals work in diverse settings including libraries, financial institutions, human resources departments, and customer service centers, where they handle tasks ranging from conducting interviews and managing reservations to organizing files and providing information to the public. Their role typically involves detailed data entry, verification processes, and direct interaction with clients or patrons to ensure smooth daily operations.",
     "category": "office-admin",
@@ -41424,7 +41424,7 @@
       "Deductive Reasoning"
     ],
     "alternate_titles": [
-      "Office admin Clerks",
+      "Office Admin Clerks",
       "Admissions Advisor",
       "Admissions Associate",
       "Admissions Clerk",
@@ -41688,7 +41688,7 @@
     }
   },
   {
-    "title": "Office admin Workers",
+    "title": "Office Admin Workers",
     "slug": "office-admin-workers",
     "description": "Office administrative workers provide essential support services across various industries by managing data, maintaining records, and performing specialized clerical functions. These professionals work in offices, government agencies, and business organizations where they compile statistical information, verify data accuracy, and support daily administrative operations. Their roles range from statistical analysis and actuarial support to general office management and organizational tasks.",
     "category": "office-admin",
@@ -41888,7 +41888,7 @@
       "Deductive Reasoning"
     ],
     "alternate_titles": [
-      "Office admin Workers",
+      "Office Admin Workers",
       "Actuarial Analyst",
       "Actuarial Assistant",
       "Actuarial Technician",
@@ -51485,8 +51485,8 @@
     }
   },
   {
-    "title": "Personal care Personal care Professionals",
-    "slug": "personal-care-personal-care-professionals",
+    "title": "Tour & Travel Guides",
+    "slug": "tour-travel-guides",
     "description": "Personal care professionals in this category specialize in guiding and escorting individuals or groups through various destinations and points of interest. They plan itineraries, arrange travel logistics, and provide informative commentary during tours of museums, historical sites, or extended expeditions. These professionals ensure visitor safety while delivering educational experiences in diverse settings from local attractions to international destinations.",
     "category": "personal-care",
     "subcategory": "Personal Care and Service",
@@ -51704,7 +51704,7 @@
       "Deductive Reasoning"
     ],
     "alternate_titles": [
-      "Personal care Personal care Professionals",
+      "Tour & Travel Guides",
       "Admitting Office Escort",
       "Adventure Guide",
       "Alpine Guide",
@@ -51968,7 +51968,7 @@
     }
   },
   {
-    "title": "Personal care Professionals",
+    "title": "Personal Care Professionals",
     "slug": "personal-care-professionals",
     "description": "Personal care professionals in hospitality settings assist guests and travelers with various service needs at hotels, transportation terminals, and similar establishments. These professionals handle luggage, escort guests to accommodations, and provide concierge services such as making reservations, offering local recommendations, and arranging transportation. They focus on ensuring customer comfort and satisfaction through personalized assistance and expert knowledge of area amenities.",
     "category": "personal-care",
@@ -52171,7 +52171,7 @@
       "Time Sharing"
     ],
     "alternate_titles": [
-      "Personal care Professionals",
+      "Personal Care Professionals",
       "Airport Guide",
       "Baggage Agent",
       "Baggage Checker",
@@ -58553,8 +58553,8 @@
     "grouping_strategy": "singleton"
   },
   {
-    "title": "Production Production Professionals",
-    "slug": "production-production-professionals",
+    "title": "Production Workers",
+    "slug": "production-workers",
     "description": "Production professionals operate, maintain, and monitor specialized machinery and equipment to manufacture, process, and package a wide variety of products across industries including electronics, food processing, textiles, and consumer goods. These workers perform tasks such as machine setup, quality control inspections, surface treatments, and material handling in manufacturing facilities, factories, and production plants. They ensure products meet specifications while maintaining safe and efficient production operations.",
     "category": "production",
     "subcategory": "Production Occupations",
@@ -58783,7 +58783,7 @@
       "Flexibility of Closure"
     ],
     "alternate_titles": [
-      "Production Production Professionals",
+      "Production Workers",
       "Ampoule Filler",
       "Ampoule Sealer",
       "Apple Press Operator",
@@ -66600,7 +66600,7 @@
     }
   },
   {
-    "title": "Social services Professionals",
+    "title": "Social Services Professionals",
     "slug": "social-services-professionals",
     "description": "Social services professionals provide counseling, support, and advocacy services to help individuals, families, and communities address mental health challenges, substance abuse issues, educational needs, and social problems. These professionals work in diverse settings including schools, hospitals, community centers, rehabilitation facilities, and government agencies to promote well-being and positive life changes. They maintain detailed records, develop treatment plans, and connect clients with resources while ensuring confidentiality and professional standards.",
     "category": "social-services",
@@ -66840,7 +66840,7 @@
       "Information Ordering"
     ],
     "alternate_titles": [
-      "Social services Professionals",
+      "Social Services Professionals",
       "Addiction Counselor",
       "Addiction Recovery Specialist",
       "Addiction Therapist",
@@ -67104,8 +67104,8 @@
     }
   },
   {
-    "title": "Social services Social services Professionals",
-    "slug": "social-services-social-services-professionals",
+    "title": "Social Work Specialists",
+    "slug": "social-work-specialists",
     "description": "Social services professionals in religious settings provide spiritual guidance, conduct worship services, and develop educational programs for their communities. These professionals work in churches, temples, mosques, and other religious organizations, where they deliver sermons, coordinate outreach activities, and offer counseling to congregation members. They play essential roles in promoting faith-based values and supporting individuals through life's challenges.",
     "category": "social-services",
     "subcategory": "Community and Social Service",
@@ -67342,7 +67342,7 @@
       "Fluency of Ideas"
     ],
     "alternate_titles": [
-      "Social services Social services Professionals",
+      "Social Work Specialists",
       "Administrator Pastor",
       "Bishop",
       "Brother",

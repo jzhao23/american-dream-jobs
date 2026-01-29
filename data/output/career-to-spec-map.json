@@ -535,7 +535,7 @@
     "21-1094.00",
     "21-1099.00"
   ],
-  "social-services-social-services-professionals": [
+  "social-work-specialists": [
     "21-2011.00",
     "21-2021.00",
     "21-2099.00"
@@ -547,7 +547,7 @@
     "23-1022.00",
     "23-1023.00"
   ],
-  "legal-legal-professionals": [
+  "legal-support-workers": [
     "23-2011.00",
     "23-2093.00",
     "23-2099.00"
@@ -801,7 +801,7 @@
     "39-6011.00",
     "39-6012.00"
   ],
-  "personal-care-personal-care-professionals": [
+  "tour-travel-guides": [
     "39-7011.00",
     "39-7012.00"
   ],
@@ -1197,7 +1197,7 @@
     "51-9082.00",
     "51-9083.00"
   ],
-  "production-production-professionals": [
+  "production-workers": [
     "51-9111.00",
     "51-9123.00",
     "51-9124.00",

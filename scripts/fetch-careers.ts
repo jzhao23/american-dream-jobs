@@ -30,7 +30,10 @@ const COS_BASE_URL = "https://api.careeronestop.org";
 const CACHE_DIR = path.join(process.cwd(), "data", "cache", "careeronestop");
 const OUTPUT_FILE = path.join(process.cwd(), "data", "careers.generated.json");
 const INDEX_FILE = path.join(process.cwd(), "data", "careers-index.json");
-const SEED_FILE = path.join(process.cwd(), "data", "seed_careers.json");
+// Note: This seed file contains O*NET source codes for data generation.
+// The slugs here do NOT match the final website URLs (careers are consolidated during processing).
+// For actual website career slugs, see data/output/careers-index.json
+const SEED_FILE = path.join(process.cwd(), "data", "pipeline_seed_careers.json");
 
 // Rate limiting
 const CONCURRENCY_LIMIT = 3;
@@ -649,7 +652,7 @@ async function main(): Promise<void> {
 
   // Load seed careers
   if (!fs.existsSync(SEED_FILE)) {
-    console.error("Error: seed_careers.json not found");
+    console.error("Error: pipeline_seed_careers.json not found");
     process.exit(1);
   }
 

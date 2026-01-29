@@ -84,7 +84,7 @@ function Footer() {
   return (
     <footer className="bg-warm-white border-t border-sage-muted mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <FlagLogo size="lg" />
@@ -158,6 +158,23 @@ function Footer() {
                   className="hover:text-sage transition-colors"
                 >
                   O*NET
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-4">
+              Legal
+            </h3>
+            <ul className="space-y-2 text-sm text-ds-slate-light">
+              <li>
+                <a href="/legal#privacy-policy" className="hover:text-sage transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/legal#terms" className="hover:text-sage transition-colors">
+                  Terms of Service
                 </a>
               </li>
             </ul>
