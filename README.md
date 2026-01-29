@@ -80,7 +80,7 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 american-dream-jobs/
 ├── data/
-│   ├── seed_careers.json      # Seed data with O*NET codes
+│   ├── pipeline_seed_careers.json  # Seed data with O*NET codes (for data pipeline only)
 │   ├── careers.generated.json # Generated full career data
 │   └── careers-index.json     # Lightweight index for explorer
 ├── scripts/
@@ -182,7 +182,7 @@ See [Education Cost Methodology](docs/education-cost-methodology.md) for details
 
 ## Adding New Careers
 
-1. Add entry to `data/seed_careers.json`:
+1. Add entry to `data/pipeline_seed_careers.json`:
    ```json
    {
      "slug": "career-slug",

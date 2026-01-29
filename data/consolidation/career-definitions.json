@@ -1662,7 +1662,7 @@
     },
     "social-services-professionals": {
       "id": "social-services-professionals",
-      "title": "Social services Professionals",
+      "title": "Social Services Professionals",
       "category": "social-services",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -1697,9 +1697,9 @@
         "career"
       ]
     },
-    "social-services-social-services-professionals": {
-      "id": "social-services-social-services-professionals",
-      "title": "Social services Social services Professionals",
+    "social-work-specialists": {
+      "id": "social-work-specialists",
+      "title": "Social Work Specialists",
       "category": "social-services",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -1747,9 +1747,9 @@
         "officers"
       ]
     },
-    "legal-legal-professionals": {
-      "id": "legal-legal-professionals",
-      "title": "Legal Legal Professionals",
+    "legal-support-workers": {
+      "id": "legal-support-workers",
+      "title": "Legal Support Workers",
       "category": "legal",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -2533,7 +2533,7 @@
     },
     "personal-care-professionals": {
       "id": "personal-care-professionals",
-      "title": "Personal care Professionals",
+      "title": "Personal Care Professionals",
       "category": "personal-care",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -2551,9 +2551,9 @@
         "concierges"
       ]
     },
-    "personal-care-personal-care-professionals": {
-      "id": "personal-care-personal-care-professionals",
-      "title": "Personal care Personal care Professionals",
+    "tour-travel-guides": {
+      "id": "tour-travel-guides",
+      "title": "Tour & Travel Guides",
       "category": "personal-care",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -2837,7 +2837,7 @@
     },
     "office-admin-clerks": {
       "id": "office-admin-clerks",
-      "title": "Office admin Clerks",
+      "title": "Office Admin Clerks",
       "category": "office-admin",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -2974,7 +2974,7 @@
     },
     "office-admin-workers": {
       "id": "office-admin-workers",
-      "title": "Office admin Workers",
+      "title": "Office Admin Workers",
       "category": "office-admin",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",
@@ -3753,9 +3753,9 @@
         "precipitating"
       ]
     },
-    "production-production-professionals": {
-      "id": "production-production-professionals",
-      "title": "Production Production Professionals",
+    "production-workers": {
+      "id": "production-workers",
+      "title": "Production Workers",
       "category": "production",
       "groupingStrategy": "soc-based",
       "displayStrategy": "show-specializations",

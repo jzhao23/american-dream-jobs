@@ -1476,8 +1476,8 @@
     "specialization_count": 10
   },
   {
-    "title": "Legal Legal Professionals",
-    "slug": "legal-legal-professionals",
+    "title": "Legal Support Workers",
+    "slug": "legal-support-workers",
     "category": "legal",
     "subcategory": "Legal Occupations",
     "median_pay": 60803,
@@ -1955,7 +1955,7 @@
     "specialization_count": 2
   },
   {
-    "title": "Office admin Clerks",
+    "title": "Office Admin Clerks",
     "slug": "office-admin-clerks",
     "category": "office-admin",
     "subcategory": "Office and Administrative Support",
@@ -1977,7 +1977,7 @@
     "specialization_count": 9
   },
   {
-    "title": "Office admin Workers",
+    "title": "Office Admin Workers",
     "slug": "office-admin-workers",
     "category": "office-admin",
     "subcategory": "Office and Administrative Support",
@@ -2417,8 +2417,8 @@
     "specialization_count": 6
   },
   {
-    "title": "Personal care Personal care Professionals",
-    "slug": "personal-care-personal-care-professionals",
+    "title": "Tour & Travel Guides",
+    "slug": "tour-travel-guides",
     "category": "personal-care",
     "subcategory": "Personal Care and Service",
     "median_pay": 36060,
@@ -2439,7 +2439,7 @@
     "specialization_count": 2
   },
   {
-    "title": "Personal care Professionals",
+    "title": "Personal Care Professionals",
     "slug": "personal-care-professionals",
     "category": "personal-care",
     "subcategory": "Personal Care and Service",
@@ -2743,8 +2743,8 @@
     "specialization_count": 1
   },
   {
-    "title": "Production Production Professionals",
-    "slug": "production-production-professionals",
+    "title": "Production Workers",
+    "slug": "production-workers",
     "category": "production",
     "subcategory": "Production Occupations",
     "median_pay": 41944,
@@ -3129,7 +3129,7 @@
     "specialization_count": 17
   },
   {
-    "title": "Social services Professionals",
+    "title": "Social Services Professionals",
     "slug": "social-services-professionals",
     "category": "social-services",
     "subcategory": "Community and Social Service",
@@ -3151,8 +3151,8 @@
     "specialization_count": 15
   },
   {
-    "title": "Social services Social services Professionals",
-    "slug": "social-services-social-services-professionals",
+    "title": "Social Work Specialists",
+    "slug": "social-work-specialists",
     "category": "social-services",
     "subcategory": "Community and Social Service",
     "median_pay": 53983,
