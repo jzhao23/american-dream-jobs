@@ -502,7 +502,8 @@ export function CareerCompassWizard() {
           preferences: {
             // New structured preferences
             trainingWillingness: selectedTraining || 'significant',
-            educationLevel: selectedEducation || 'high-school',
+            // Map 'current-hs' to 'high-school' since API doesn't accept 'current-hs'
+            educationLevel: selectedEducation === 'current-hs' ? 'high-school' : (selectedEducation || 'high-school'),
             workBackground: selectedBackground,
             salaryTarget: selectedSalary || '40-60k',
             workStyle: selectedWorkStyle,
