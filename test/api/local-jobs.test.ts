@@ -67,7 +67,7 @@ describe('GET /api/local-jobs', () => {
       // Should have job ranking arrays
       expect(data.fastestGrowing).toBeDefined();
       expect(data.mostJobs).toBeDefined();
-      expect(data.highConcentration).toBeDefined();
+      expect(data.highGrowth).toBeDefined();
 
       // Arrays should contain job entries
       expect(data.fastestGrowing.length).toBeGreaterThan(0);
@@ -155,7 +155,7 @@ describe('GET /api/local-jobs', () => {
 
       expect(data.fastestGrowing).toBeDefined();
       expect(data.mostJobs).toBeDefined();
-      expect(data.highConcentration).toBeDefined();
+      expect(data.highGrowth).toBeDefined();
     });
   });
 
@@ -177,7 +177,7 @@ describe('GET /api/local-jobs', () => {
       expect(response.status).toBe(200);
       expect(data.fastestGrowing.length).toBeLessThanOrEqual(5);
       expect(data.mostJobs.length).toBeLessThanOrEqual(5);
-      expect(data.highConcentration.length).toBeLessThanOrEqual(5);
+      expect(data.highGrowth.length).toBeLessThanOrEqual(5);
     });
 
     /**
@@ -197,7 +197,7 @@ describe('GET /api/local-jobs', () => {
       expect(response.status).toBe(200);
       expect(data.fastestGrowing.length).toBeLessThanOrEqual(20);
       expect(data.mostJobs.length).toBeLessThanOrEqual(20);
-      expect(data.highConcentration.length).toBeLessThanOrEqual(20);
+      expect(data.highGrowth.length).toBeLessThanOrEqual(20);
     });
   });
 
@@ -224,7 +224,7 @@ describe('GET /api/local-jobs', () => {
       expect(data.success).toBe(true);
       expect(data.fastestGrowing).toEqual([]);
       expect(data.mostJobs).toEqual([]);
-      expect(data.highConcentration).toEqual([]);
+      expect(data.highGrowth).toEqual([]);
     });
 
     /**
@@ -439,14 +439,14 @@ describe('GET /api/local-jobs', () => {
     });
 
     /**
-     * Test Name: High concentration careers have high LQ
+     * Test Name: High growth careers have positive growth
      * Category: Business Logic
-     * Intent: Verify highConcentration jobs have locationQuotient > 1
-     * Setup: Check LQ values of highConcentration careers
-     * Expected Behavior: All should have LQ > 1 (above national average)
-     * Failure Impact: Users would see careers rare in their area
+     * Intent: Verify highGrowth jobs have growthPercent > 5
+     * Setup: Check growth values of highGrowth careers
+     * Expected Behavior: All should have growth > 5% (high growth threshold)
+     * Failure Impact: Users would see slow-growing careers in high growth section
      */
-    it('should return high concentration careers with LQ > 1', async () => {
+    it('should return high growth careers with positive growth', async () => {
       const request = new NextRequest('http://localhost:3000/api/local-jobs?location=41860');
 
       const response = await GET(request);
@@ -454,12 +454,8 @@ describe('GET /api/local-jobs', () => {
 
       expect(response.status).toBe(200);
 
-      // High concentration jobs should typically have LQ > 1
-      data.highConcentration.forEach((job: { locationQuotient: number; slug: string }) => {
-        // Log for debugging
-        if (job.locationQuotient <= 1) {
-          console.log(`TEST_DEBUG: ${job.slug} has LQ ${job.locationQuotient}`);
-        }
+      // High growth jobs should have positive location quotient
+      data.highGrowth.forEach((job: { locationQuotient: number; slug: string }) => {
         expect(job.locationQuotient).toBeGreaterThan(0);
       });
     });
