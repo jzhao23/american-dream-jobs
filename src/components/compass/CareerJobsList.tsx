@@ -17,6 +17,7 @@ interface CareerJobsListProps {
   careerSlug: string;
   careerTitle: string;
   isLoading?: boolean;
+  locationName?: string;
 }
 
 export function CareerJobsList({
@@ -24,25 +25,17 @@ export function CareerJobsList({
   careerSlug,
   careerTitle,
   isLoading = false,
+  locationName,
 }: CareerJobsListProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Loading skeleton
+  // Simple loading message
   if (isLoading) {
     return (
       <div className="mt-4 pt-4 border-t border-sage-muted">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="h-4 w-4 bg-sage-muted rounded animate-pulse" />
-          <div className="h-4 w-32 bg-sage-muted rounded animate-pulse" />
-        </div>
-        <div className="space-y-2">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="h-16 bg-sage-pale rounded-lg animate-pulse"
-            />
-          ))}
-        </div>
+        <p className="text-sm text-ds-slate-muted italic">
+          Searching for {careerTitle} jobs{locationName ? ` in ${locationName}` : ''}...
+        </p>
       </div>
     );
   }
