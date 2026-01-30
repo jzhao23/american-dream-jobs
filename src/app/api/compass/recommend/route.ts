@@ -11,7 +11,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { matchCareers, CareerMatch, UserProfile, TrainingWillingness, MatchingModel } from '@/lib/compass/matching-engine';
 import { EducationLevel } from '@/lib/compass/resume-parser';
-import { saveCompassResponse } from '@/lib/db';
 
 // Request validation schema
 const educationLevelSchema = z.enum([
@@ -215,32 +214,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
     console.log(`✅ Found ${result.matches.length} career matches`);
     console.log(`  Processing time: ${result.metadata.processingTimeMs}ms`);
     console.log(`  Estimated cost: $${result.metadata.costUsd.toFixed(4)}`);
-
-    // Save compass response to database (if sessionId provided)
-    if (sessionId) {
-      try {
-        await saveCompassResponse({
-          userId: userId ?? undefined, // Convert null to undefined
-          sessionId,
-          trainingWillingness: preferences.trainingWillingness,
-          educationLevel: preferences.educationLevel,
-          workBackground: preferences.workBackground,
-          salaryTarget: preferences.salaryTarget,
-          workStyle: preferences.workStyle,
-          additionalContext: preferences.additionalContext,
-          locationCode,
-          locationName,
-          resumeId: resumeId ?? undefined, // Convert null to undefined
-          recommendations: result.matches,
-          modelUsed: model,
-          processingTimeMs: result.metadata.processingTimeMs
-        });
-        console.log(`  Saved compass response for session: ${sessionId}`);
-      } catch (saveError) {
-        // Log but don't fail the request if save fails
-        console.warn('Failed to save compass response:', saveError);
-      }
-    }
 
     return NextResponse.json({
       success: true,
