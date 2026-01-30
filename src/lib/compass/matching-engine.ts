@@ -541,7 +541,8 @@ async function stage3LLMReasoning(
         skillsGap: (m.skillsGap || ['General skills', 'Industry knowledge', 'Technical certifications']).slice(0, 3) as [string, string, string]
       }));
   } catch (error) {
-    console.error('Failed to parse LLM response:', content.text);
+    // Don't log the raw LLM response as it may contain user profile data
+    console.error('Failed to parse LLM response - JSON extraction failed');
     throw new Error('Failed to generate career recommendations');
   }
 }
@@ -928,7 +929,8 @@ async function stage3HaikuReasoning(
         skillsGap: (m.skillsGap || ['General skills', 'Industry knowledge', 'Technical certifications']).slice(0, 3) as [string, string, string]
       }));
   } catch (error) {
-    console.error('Failed to parse Haiku response:', content.text);
+    // Don't log the raw Haiku response as it may contain user profile data
+    console.error('Failed to parse Haiku response - JSON extraction failed');
     throw new Error('Failed to generate career recommendations (Haiku)');
   }
 }

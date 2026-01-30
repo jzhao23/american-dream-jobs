@@ -19,9 +19,9 @@ export async function POST(request: NextRequest) {
         source: 'website'
       });
 
+      // Log success without PII - email is sensitive data
       console.log("Subscription saved:", {
         id: result.subscription.id,
-        email: data.email,
         isNew: result.isNew
       });
 
@@ -31,8 +31,8 @@ export async function POST(request: NextRequest) {
       });
     } catch (dbError) {
       // Graceful degradation: log but don't fail if DB is unavailable
-      console.error("Database error (graceful degradation):", dbError);
-      console.log("Subscription logged (no persistence):", data);
+      // Note: Do not log PII (email) even during failures
+      console.error("Database error (graceful degradation):", dbError instanceof Error ? dbError.message : "Unknown error");
 
       return NextResponse.json({ success: true });
     }

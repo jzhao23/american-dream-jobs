@@ -291,12 +291,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<Recommend
         );
       }
 
+      // Don't expose internal error details to clients
+      console.error('Matching failed:', error.message);
       return NextResponse.json(
         {
           success: false,
           error: {
             code: 'MATCHING_FAILED',
-            message: error.message
+            message: 'Failed to generate career matches. Please try again.'
           }
         },
         { status: 500 }

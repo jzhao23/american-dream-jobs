@@ -201,7 +201,8 @@ export async function parseResumeWithLLM(resumeText: string): Promise<ParsedResu
         parsed = JSON.parse(content.text);
       }
     } catch (parseError) {
-      console.error('Failed to parse Claude response:', content.text);
+      // Don't log the raw response as it may contain sensitive user data
+      console.error('Failed to parse Claude response - JSON extraction failed');
       throw new Error('Failed to parse resume analysis result');
     }
 

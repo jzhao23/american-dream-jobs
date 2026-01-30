@@ -20,13 +20,8 @@ interface DetectSuccessResponse {
     shortName: string;
     state: string;
   } | null;
-  raw?: {
-    city: string | null;
-    region: string | null;
-    country: string | null;
-    latitude: string | null;
-    longitude: string | null;
-  };
+  // Note: raw geolocation data (lat/lng, city) is intentionally NOT exposed
+  // to the client to protect user privacy. Only the resolved MSA/state is returned.
 }
 
 interface DetectErrorResponse {
@@ -115,7 +110,8 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
     const latitude = request.headers.get('x-vercel-ip-latitude');
     const longitude = request.headers.get('x-vercel-ip-longitude');
 
-    const raw = { city, region, country, latitude, longitude };
+    // Note: raw geolocation data (lat/lng, city) is NOT exposed to protect user privacy
+    // We only use it internally to resolve to a coarser-grained MSA or state
 
     // Only process US locations
     if (country && country !== 'US') {
@@ -124,7 +120,6 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
         detected: false,
         locationType: null,
         location: null,
-        raw,
       });
     }
 
@@ -148,7 +143,6 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
               shortName: msa.shortName,
               state: msa.states[0] || region || '',
             },
-            raw,
           });
         }
 
@@ -165,7 +159,6 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
               shortName: state,
               state,
             },
-            raw,
           });
         }
       }
@@ -183,7 +176,6 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
           shortName: region,
           state: region,
         },
-        raw,
       });
     }
 
@@ -193,7 +185,6 @@ export async function GET(request: NextRequest): Promise<NextResponse<DetectResp
       detected: false,
       locationType: null,
       location: null,
-      raw,
     });
   } catch (error) {
     console.error('Location detection error:', error);
