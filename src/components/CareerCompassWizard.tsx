@@ -332,63 +332,25 @@ export function CareerCompassWizard() {
     setError(null);
 
     try {
-      // Determine the user ID to use (prefer authenticated user, fall back to legacy session)
-      const effectiveUserId = userProfileId || userSession?.userId;
+      // Always parse locally - server-side storage is disabled for alpha launch
+      const formData = new FormData();
+      formData.append('file', file);
 
-      // If user has an account, upload to database for persistence (shared with Find Jobs)
-      if (effectiveUserId) {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('userId', effectiveUserId);
+      const response = await fetch('/api/compass/parse-file/', {
+        method: 'POST',
+        body: formData,
+      });
 
-        const response = await fetch('/api/users/resume', {
-          method: 'POST',
-          body: formData,
-        });
+      const data = await response.json();
 
-        const data = await response.json();
-
-        if (data.success) {
-          // Resume saved to database successfully - use the extracted text from response
-          setResumeText(data.data.extractedText);
-
-          // Store resume in sessionStorage for cross-page persistence (e.g., Find Jobs)
-          storeCompassResume(data.data.extractedText, file.name);
-
-          // Update localStorage to reflect that user now has a resume (only if userSession exists)
-          if (userSession) {
-            const updatedSession: StoredUserSession = { ...userSession, hasResume: true };
-            try {
-              localStorage.setItem(USER_SESSION_KEY, JSON.stringify(updatedSession));
-              setUserSession(updatedSession);
-            } catch {
-              console.warn('Failed to update user session');
-            }
-          }
-        } else {
-          throw new Error(data.error?.message || 'Failed to upload resume');
-        }
-      } else {
-        // No user session - just parse the file locally (original behavior)
-        const formData = new FormData();
-        formData.append('file', file);
-
-        const response = await fetch('/api/compass/parse-file/', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const data = await response.json();
-
-        if (!data.success) {
-          throw new Error(data.error?.message || 'Failed to parse file');
-        }
-
-        setResumeText(data.text);
-
-        // Store resume in sessionStorage for cross-page persistence (e.g., Find Jobs)
-        storeCompassResume(data.text, file.name);
+      if (!data.success) {
+        throw new Error(data.error?.message || 'Failed to parse file');
       }
+
+      setResumeText(data.text);
+
+      // Store resume in localStorage for cross-page persistence (e.g., Find Jobs)
+      storeCompassResume(data.text, file.name);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to parse file');
       setResumeFile(null);

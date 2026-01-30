@@ -519,6 +519,7 @@ export default function CompassResultsPage() {
                 careerSlug={career.slug}
                 careerTitle={career.title}
                 isLoading={jobsLoading && !!location}
+                locationName={location?.shortName}
               />
 
               {/* Action Buttons */}
