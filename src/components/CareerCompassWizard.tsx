@@ -1285,62 +1285,89 @@ export function CareerCompassWizard() {
             {/* Summary */}
             <div className="bg-cream rounded-xl p-4 mb-6">
               <h3 className="text-xs font-bold uppercase tracking-wide text-ds-slate-muted mb-3">Your selections</h3>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
+              <div className="space-y-1">
+                <button
+                  onClick={() => goToStep('training')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>📚</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Training</div>
                     <div className="font-medium text-ds-slate">{trainingOptions.find(t => t.id === selectedTraining)?.title || 'Open to anything'}</div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('education')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>🎓</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Education</div>
                     <div className={`font-medium ${selectedEducation ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {selectedEducation ? educationOptions.find(e => e.id === selectedEducation)?.label : 'Skipped'}
                     </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('background')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>💼</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Work Background</div>
                     <div className={`font-medium ${selectedBackground.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {selectedBackground.length ? selectedBackground.map(b => workBackgroundOptions.find(o => o.id === b)?.label).join(', ') : 'Skipped'}
                     </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('salary')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>💰</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Salary Target</div>
                     <div className={`font-medium ${selectedSalary ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {selectedSalary ? salaryOptions.find(s => s.id === selectedSalary)?.label : 'Skipped'}
                     </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('workStyle')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>⚡</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Work Style</div>
                     <div className={`font-medium ${selectedWorkStyle.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {selectedWorkStyle.length ? selectedWorkStyle.map(w => workStyleOptions.find(o => o.id === w)?.label).join(', ') : 'Skipped'}
                     </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('location')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>📍</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Location</div>
                     <div className={`font-medium ${location ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {location ? location.name : 'Not set'}
                     </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
+                <button
+                  onClick={() => goToStep('resume')}
+                  className="w-full flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-sage-pale transition-colors text-left group"
+                >
                   <span>📄</span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs text-ds-slate-muted">Resume</div>
                     <div className={`font-medium ${resumeFile || useExistingResume ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
                       {resumeFile
@@ -1351,7 +1378,8 @@ export function CareerCompassWizard() {
                       }
                     </div>
                   </div>
-                </div>
+                  <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
+                </button>
               </div>
             </div>
 
