@@ -142,10 +142,10 @@ const hasResume = resumeText.length >= 100;
 const model = hasResume ? 'model-a' : 'model-b';
 ```
 
-| Scenario | Model | LLM Used | Cost | Processing Time |
-|----------|-------|----------|------|-----------------|
-| User uploads resume | **Model A** | Claude Sonnet 4 | ~$0.01 | ~5-10s |
-| No resume uploaded | **Model B** | Claude Haiku 3.5 | ~$0.001 | ~2-4s |
+| Scenario | Model | Description |
+|----------|-------|-------------|
+| User uploads resume | **Model A** | Full analysis with personalized skill matching |
+| No resume uploaded | **Model B** | Preference-based matching optimized for speed |
 
 ---
 
@@ -232,7 +232,6 @@ const model = hasResume ? 'model-a' : 'model-b';
     │  │  • Search Supabase pgvector or local embeddings               │  │
     │  │  • Apply timeline filter                                      │  │
     │  │  • OUTPUT: Top 50 candidates                                  │  │
-    │  │  • Cost: ~$0.0004 (embedding generation)                      │  │
     │  └───────────────────────────────────────────────────────────────┘  │
     │                          │                                          │
     │                          ▼                                          │
@@ -243,7 +242,6 @@ const model = hasResume ? 'model-a' : 'model-b';
     │  │  • Salary expectations match                                  │  │
     │  │  • AI resilience bonus/penalty                                │  │
     │  │  • OUTPUT: Top 30 candidates (re-ranked)                      │  │
-    │  │  • Cost: $0 (local computation)                               │  │
     │  └───────────────────────────────────────────────────────────────┘  │
     │                          │                                          │
     │                          ▼                                          │
@@ -259,7 +257,6 @@ const model = hasResume ? 'model-a' : 'model-b';
     │  │  • Generates personalized reasoning                           │  │
     │  │  • Identifies 3 specific skills gaps per career               │  │
     │  │  • OUTPUT: 10-15 matches with reasoning                       │  │
-    │  │  • Cost: ~$0.01                                               │  │
     │  └───────────────────────────────────────────────────────────────┘  │
     └─────────────────────────────────────────────────────────────────────┘
            │
@@ -343,7 +340,6 @@ const model = hasResume ? 'model-a' : 'model-b';
     │  │    - Industry fit                                             │  │
     │  │  • Shorter, encouraging reasoning                             │  │
     │  │  • OUTPUT: 10-15 matches                                      │  │
-    │  │  • Cost: ~$0.001 (90% cheaper than Sonnet)                    │  │
     │  └───────────────────────────────────────────────────────────────┘  │
     └─────────────────────────────────────────────────────────────────────┘
            │
@@ -391,8 +387,7 @@ const model = hasResume ? 'model-a' : 'model-b';
                     ▼                                      ▼
             ┌───────────────┐                      ┌───────────────┐
             │ Sonnet 4      │                      │ Haiku 3.5     │
-            │ ~$0.01        │                      │ ~$0.001       │
-            │ ~5-10 sec     │                      │ ~2-4 sec      │
+            │ Full Analysis │                      │ Fast Match    │
             └───────┬───────┘                      └───────┬───────┘
                     │                                      │
                     └──────────────┬───────────────────────┘
@@ -570,9 +565,7 @@ structuredScore =
   "metadata": {
     "stage1Candidates": 50,
     "stage2Candidates": 30,
-    "finalMatches": 15,
-    "processingTimeMs": 5234,
-    "costUsd": 0.0104
+    "finalMatches": 15
   }
 }
 ```
@@ -603,18 +596,6 @@ structuredScore =
 | `data/output/careers.json` | Full career data (O*NET + enrichments) |
 | `data/compass/career-embeddings.json` | Pre-computed career embeddings (local fallback) |
 | `data/compass/career-dwas.json` | Detailed Work Activities mapping |
-
----
-
-## Cost Estimates
-
-| Component | Cost per Request |
-|-----------|-----------------|
-| OpenAI Embeddings | ~$0.0004 |
-| Claude Sonnet 4 (Model A) | ~$0.01 |
-| Claude Haiku 3.5 (Model B) | ~$0.001 |
-| **Total Model A** | ~$0.0104 |
-| **Total Model B** | ~$0.0014 |
 
 ---
 
