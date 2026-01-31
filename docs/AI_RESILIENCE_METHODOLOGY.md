@@ -6,12 +6,12 @@ The AI Resilience Classification is a 4-tier system that assesses how likely a c
 
 ## The Four Classification Tiers
 
-| Tier | Emoji | Description |
-|------|-------|-------------|
-| **AI-Resilient** | :green_circle: | Strong human advantage or growing demand protects this career from AI displacement |
-| **AI-Augmented** | :yellow_circle: | AI assists this work but human skills remain essential |
-| **In Transition** | :orange_circle: | This career is being transformed by AI; adaptation and skill evolution needed |
-| **High Disruption Risk** | :red_circle: | High AI exposure combined with declining demand creates significant risk |
+| Tier | Description |
+|------|-------------|
+| **AI-Resilient** | Strong human advantage or growing demand protects this career from AI displacement |
+| **AI-Augmented** | AI assists this work but human skills remain essential |
+| **In Transition** | This career is being transformed by AI; adaptation and skill evolution needed |
+| **High Disruption Risk** | High AI exposure combined with declining demand creates significant risk |
 
 ## Four Input Dimensions
 
