@@ -1,208 +1,60 @@
 # American Dream Jobs
 
-A CareerOneStop-quality data product with modern UX, focused on economic ROI, time to employability, AI resilience, and importance to US industrial capacity.
+**Discover rewarding careers you can start in 6 months to 2 years—no 4-year degree required.**
+
+[americandreamjobs.org](https://americandreamjobs.org)
+
+## What is American Dream Jobs?
+
+American Dream Jobs is a free, open-source career discovery platform that helps Americans find practical paths to economic opportunity. We focus on careers with strong earning potential, fast time-to-employment, and resilience in an AI-driven economy.
+
+Whether you're a career changer, exploring alternatives to traditional college, or concerned about automation—we provide the data you need to make informed decisions.
 
 ## Features
 
-- **Career Explorer**: Filter and sort 25+ careers by pay, training time, AI resilience, and category
-- **Detailed Career Pages**: Comprehensive information including wage trajectories, entry paths, and fit assessment
-- **Contribution System**: Allow practitioners to submit corrections and share experiences
-- **Career Requests**: Users can request new careers to be added
-- **Email Capture**: Newsletter signup for updates
+- **Career Explorer** – Browse 1,000+ careers filtered by pay, training time, AI resilience, and industry
+- **Career Compass** – Take a quick quiz and optionally upload your resume for personalized career matches
+- **Career Comparison** – Compare up to 3 careers side-by-side on lifetime earnings, education costs, and net worth
+- **Earnings Calculator** – Project your long-term net worth under different career scenarios
+- **Local Job Market Data** – See wages and job availability for 350+ metro areas powered by Bureau of Labor Statistics data
+- **AI Resilience Ratings** – Understand which careers are protected, augmented, or at risk from AI automation
+- **Curated Career Paths** – Guided pathways for Healthcare, Skilled Trades, Tech (No Degree), and Transportation & Logistics
 
-## Tech Stack
+## Data Sources
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Validation**: Zod
-- **Data**: Static JSON generated from CareerOneStop API
-- **Deployment**: Vercel (recommended) or Netlify
+Our data comes from authoritative sources:
 
-## Getting Started
+- [O*NET](https://www.onetcenter.org/) – Occupation definitions, skills, and education requirements
+- [Bureau of Labor Statistics](https://www.bls.gov/) – Wage and employment projections
+- [CareerOneStop](https://www.careeronestop.org/) – U.S. Department of Labor career resources
+- [AIOE Dataset](https://github.com/AIOE-Data/AIOE) – AI occupational exposure research
 
-### Prerequisites
+We also include real practitioner perspectives sourced from Reddit discussions.
 
-- Node.js 18+
-- npm
+## Contributing
 
-### Installation
+We welcome contributions from the community!
+
+- **Content feedback** (career data corrections, missing information, suggestions): [Submit via Google Form](https://forms.gle/AUDDvhvbBtiHVkZE8)
+- **Product features, bug fixes, or UI/UX improvements**: [Open a Pull Request](https://github.com/jzhao23/american-dream-jobs/pulls)
+
+## Getting Started (Developers)
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/jzhao23/american-dream-jobs.git
 cd american-dream-jobs
 
 # Install dependencies
 npm install
 
-# Generate career data (uses seed data if no API keys set)
-npm run fetch-careers
-
 # Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000) to view the site locally.
 
-### Environment Variables
-
-Copy `.env.example` to `.env.local` and configure:
-
-```bash
-cp .env.example .env.local
-```
-
-#### CareerOneStop API (Optional)
-
-To fetch real-time data from CareerOneStop:
-
-1. Register at [CareerOneStop Web API](https://www.careeronestop.org/Developers/WebAPI/registration.aspx)
-2. Set environment variables:
-
-```env
-COS_API_KEY=your_api_key
-COS_USER_ID=your_user_id
-```
-
-#### Analytics (Optional)
-
-```env
-# Plausible (recommended)
-NEXT_PUBLIC_PLAUSIBLE_DOMAIN=your-domain.com
-
-# Google Analytics 4
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-```
-
-## Project Structure
-
-```
-american-dream-jobs/
-├── data/
-│   ├── pipeline_seed_careers.json  # Seed data with O*NET codes (for data pipeline only)
-│   ├── careers.generated.json # Generated full career data
-│   └── careers-index.json     # Lightweight index for explorer
-├── scripts/
-│   └── fetch-careers.ts       # Data ingestion script
-├── src/
-│   ├── app/
-│   │   ├── page.tsx           # Homepage with explorer
-│   │   ├── careers/[slug]/    # Career detail pages
-│   │   ├── contribute/        # Contribution form
-│   │   ├── request/           # Career request form
-│   │   └── api/               # API routes
-│   ├── components/
-│   │   ├── CareerExplorer.tsx # Filter/sort table
-│   │   ├── EmailCapture.tsx   # Newsletter signup
-│   │   ├── Header.tsx         # Site header with mobile menu
-│   │   └── Analytics.tsx      # Analytics scripts
-│   └── types/
-│       └── career.ts          # Zod schemas and types
-└── package.json
-```
-
-## Scripts
-
-### Development
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-
-### Data Pipeline
-- `npm run data:process-onet` - Process O*NET occupation data
-- `npm run data:fetch-wages` - Fetch BLS wage data
-- `npm run data:fetch-education` - Calculate education costs
-- `npm run data:score-ai-risk` - Calculate AI automation risk scores
-- `npm run data:score-importance` - Calculate industrial importance scores
-- `npm run data:generate-final` - Generate final JSON files
-- `npm run data:refresh` - Run full data pipeline
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy
-
-### Netlify
-
-1. Push to GitHub
-2. Import project in Netlify
-3. Set build command: `npm run build`
-4. Set publish directory: `.next`
-5. Add environment variables
-6. Deploy
-
-## Methodology & Data Sources
-
-This project uses data from multiple authoritative sources. All methodologies are documented in detail.
-
-### Career Data
-- [O*NET 30.1](https://www.onetcenter.org/) - Occupation definitions, tasks, skills, education requirements (1,016 occupations)
-- [Bureau of Labor Statistics](https://www.bls.gov/) - Wage and employment data
-- [CareerOneStop](https://www.careeronestop.org/) - U.S. Department of Labor career resources
-
-### AI Resilience Classification
-
-We use a 4-tier AI Resilience system to assess career viability in an AI-augmented economy:
-
-| Tier | Description |
-|------|-------------|
-| **AI-Resilient** | Strong human advantage or growing demand protects this career |
-| **AI-Augmented** | AI assists this work but human skills remain essential |
-| **In Transition** | Career is being transformed by AI; adaptation needed |
-| **High Disruption Risk** | High AI exposure with declining demand creates significant risk |
-
-**Data sources for AI Resilience:**
-- [AIOE Dataset](https://github.com/AIOE-Data/AIOE) (Felten, Raj, Seamans 2021) - AI occupational exposure scores
-- [BLS Employment Projections 2024-2034](https://www.bls.gov/emp/) - Job growth trends
-- EPOCH Framework - Human advantage assessment (Empathy, Presence, Opinion, Creativity, Hope)
-
-See **[AI Resilience Methodology](docs/AI_RESILIENCE_METHODOLOGY.md)** for complete documentation including the classification algorithm and academic citations.
-
-### Education Cost Data
-- [College Board Trends in College Pricing](https://research.collegeboard.org/trends/college-pricing) - National average tuition
-- [NCES CIP-SOC Crosswalk](https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56) - Maps occupations to programs
-- Professional association data (AAMC, ABA/LSAC) for specialized programs
-
-See [Education Cost Methodology](docs/education-cost-methodology.md) for details.
-
-### All Documentation
-
-| Document | Description |
-|----------|-------------|
-| [AI Resilience Methodology](docs/AI_RESILIENCE_METHODOLOGY.md) | 4-tier classification system, EPOCH framework, algorithm |
-| [Data Sources](docs/DATA_SOURCES.md) | Complete data source reference with processing pipelines |
-| [Education Cost Methodology](docs/education-cost-methodology.md) | Tuition estimation by institution type |
-| [Career Progression Methodology](docs/CAREER_PROGRESSION_METHODOLOGY.md) | Salary trajectory calculations |
-| [Category System](docs/CATEGORY_SYSTEM.md) | Career categorization approach |
-
-## Adding New Careers
-
-1. Add entry to `data/pipeline_seed_careers.json`:
-   ```json
-   {
-     "slug": "career-slug",
-     "title": "Official O*NET Title",
-     "onetCode": "XX-XXXX.XX",
-     "category": "trades|healthcare|operations|office|technology",
-     "flagship": true
-   }
-   ```
-
-2. Run data ingestion:
-   ```bash
-   npm run fetch-careers:refresh
-   ```
-
-3. Rebuild the site
-
-## Contributing
-
-Contributions are welcome! Please see our contribution guidelines.
+See the `docs/` folder for detailed methodology documentation on AI resilience scoring, education costs, and data processing.
 
 ## License
 
@@ -210,4 +62,4 @@ MIT
 
 ---
 
-Built with data from the U.S. Department of Labor. This site is not affiliated with the federal government.
+Built with data from the U.S. Department of Labor. This project is not affiliated with the federal government.
