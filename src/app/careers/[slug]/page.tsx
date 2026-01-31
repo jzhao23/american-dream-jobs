@@ -700,27 +700,22 @@ export default async function CareerPage({ params }: PageProps) {
             )}
           </Section>
 
-          {/* Contribution CTA */}
+          {/* Feedback CTA */}
           <div className="bg-gradient-to-r from-sage to-sage-dark rounded-xl p-8 text-white">
             <h2 className="font-display text-2xl font-semibold mb-3">
-              Work as a {career.title.split(",")[0]}?
+              Have feedback about this page?
             </h2>
             <p className="text-white/80 mb-6">
-              Help us make this page better. Share your real-world experience,
-              correct any errors, or add context that helps others.
+              Help us make this page better. Share your experience, correct errors, or suggest improvements.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href={`/contribute?career=${career.slug}`}
+                href="https://forms.gle/AUDDvhvbBtiHVkZE8"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2.5 bg-white text-sage rounded-lg font-semibold hover:bg-sage-pale transition-colors"
               >
-                Share Your Experience
-              </a>
-              <a
-                href={`/contribute?career=${career.slug}&type=correction`}
-                className="inline-flex items-center px-5 py-2.5 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
-              >
-                Report an Error
+                Give Feedback
               </a>
             </div>
             <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-white/20">

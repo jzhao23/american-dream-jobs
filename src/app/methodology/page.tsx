@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
 // Collapsible section component
 function CollapsibleSection({
@@ -561,12 +560,14 @@ export default function MethodologyPage() {
                 please let us know.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/contribute"
+                <a
+                  href="https://forms.gle/AUDDvhvbBtiHVkZE8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-sage"
                 >
                   Submit Feedback
-                </Link>
+                </a>
               </div>
             </section>
 
