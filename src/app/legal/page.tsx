@@ -156,8 +156,9 @@ export default function LegalPage() {
               <div>
                 <h3 className="font-semibold text-ds-slate mb-2">Analytics</h3>
                 <p>
-                  By default, we don't run any analytics. If we enable privacy-friendly analytics (Plausible),
-                  it's cookieless and doesn't collect personal data - just aggregate page view counts.
+                  We use Google Analytics to track basic usage metrics like page views and visitor counts.
+                  This helps us understand how many people use the site and which pages are popular.
+                  Google Analytics uses cookies but we don't use it to identify or track individual users.
                 </p>
               </div>
 

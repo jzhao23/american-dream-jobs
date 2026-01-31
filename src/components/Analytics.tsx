@@ -2,23 +2,24 @@
 
 import Script from "next/script";
 
-// Optional: Set NEXT_PUBLIC_PLAUSIBLE_DOMAIN for privacy-friendly analytics
-// Plausible is cookieless and doesn't collect personal data
+// Google Analytics for basic usage metrics (page views, visitor counts)
+const GA_MEASUREMENT_ID = "G-DKPP2NR5YN";
 
 export function Analytics() {
-  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-
-  // Only load Plausible if configured - no tracking by default
-  if (!plausibleDomain) {
-    return null;
-  }
-
   return (
-    <Script
-      defer
-      data-domain={plausibleDomain}
-      src="https://plausible.io/js/script.js"
-      strategy="afterInteractive"
-    />
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+      </Script>
+    </>
   );
 }
