@@ -136,8 +136,13 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/contribute" className="hover:text-sage transition-colors">
-                  Contribute
+                <a
+                  href="https://forms.gle/AUDDvhvbBtiHVkZE8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sage transition-colors"
+                >
+                  Feedback
                 </a>
               </li>
               <li>
