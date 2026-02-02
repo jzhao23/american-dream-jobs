@@ -26,6 +26,12 @@ interface ExistingResumeData {
   };
 }
 
+// Helper: Validate UUID format
+function isValidUUID(str: string): boolean {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(str);
+}
+
 // Helper: Load user session from localStorage
 function loadUserSession(): StoredUserSession | null {
   if (typeof window === 'undefined') return null;
@@ -33,7 +39,8 @@ function loadUserSession(): StoredUserSession | null {
     const saved = localStorage.getItem(USER_SESSION_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (parsed.email && parsed.userId) {
+      // Only return session if userId is a valid UUID (prevents API validation errors)
+      if (parsed.email && parsed.userId && isValidUUID(parsed.userId)) {
         return {
           email: parsed.email,
           userId: parsed.userId,
