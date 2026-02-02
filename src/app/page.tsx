@@ -109,7 +109,7 @@ export default function HomePage() {
           Ready for a <em className="italic text-sage">fresh start?</em>
         </h1>
         <p className="text-lg md:text-xl text-ds-slate-light max-w-xl mx-auto leading-relaxed animate-fadeUp" style={{ animationDelay: "0.1s" }}>
-          Answer 5 quick questions, upload your resume, and we&apos;ll match you with careers and real job openings tailored to your goals.
+          Answer a few quick questions, upload your resume, and we&apos;ll match you with careers and real job openings tailored to your goals.
         </p>
       </section>
 
@@ -170,7 +170,7 @@ export default function HomePage() {
               href="/#careers"
               className="flex items-center justify-center gap-2 px-6 py-4 font-semibold text-sage hover:bg-sage-muted transition-colors border-t border-sage-muted group"
             >
-              View all 200+ quick-start careers
+              View all 50+ quick-start careers
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
