@@ -2579,7 +2579,52 @@
         "Self-taught with strong portfolio of ML projects",
         "Bootcamp plus personal projects demonstrating ML expertise",
         "Transition from software engineering with ML coursework"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 53406,
+        "max_cost": 199410,
+        "typical_cost": 110538,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 53406,
+            "max": 199410,
+            "typical": 110538
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Field adjustment: 115% for CS/Math/AI programs."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 53406,
+          "per_year": 13351
+        },
+        "public_out_of_state": {
+          "total": 110538,
+          "per_year": 27634
+        },
+        "private_nonprofit": {
+          "total": 199410,
+          "per_year": 49852
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0102",
+          "11.0103",
+          "11.0701",
+          "11.0802",
+          "27.0101",
+          "27.0301",
+          "27.0501"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -7116,7 +7161,48 @@
         "Sales background with strategic deal experience",
         "Industry expertise plus business development training",
         "MBA plus sales internship experience"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Business or related degree typically required."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "52.0201",
+          "52.0206",
+          "52.1401"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Resilient",
     "ai_resilience_tier": 1,
@@ -13181,7 +13267,48 @@
         "Journalism or communications background",
         "Social media management experience",
         "Video production background"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Communications, Marketing, or Media degree helpful but not required. Many successful creators are self-taught."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "09.0101",
+          "09.0102",
+          "09.0401"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -14299,7 +14426,34 @@
         "Direct entry with basic computer skills",
         "Domain expertise (medical, legal) for specialized roles",
         "Linguistics background for NLP annotation"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 0,
+        "max_cost": 5000,
+        "typical_cost": 1000,
+        "cost_breakdown": [
+          {
+            "item": "Basic training/certification",
+            "min": 0,
+            "max": 5000,
+            "typical": 1000
+          }
+        ],
+        "notes": "Entry-level role requiring only high school diploma. Optional certifications or short courses available."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": null,
+        "public_out_of_state": null,
+        "private_nonprofit": null,
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "editorial_estimate",
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "In Transition",
     "ai_resilience_tier": 3,
@@ -14467,7 +14621,51 @@
         "High school diploma plus CompTIA certifications",
         "Military IT/communications training",
         "IT help desk experience plus hardware skills"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 9177,
+        "max_cost": 99705,
+        "typical_cost": 27634,
+        "cost_breakdown": [
+          {
+            "item": "Associate's degree",
+            "min": 9177,
+            "max": 99705,
+            "typical": 27634
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Field adjustment: 115% for IT programs. Community college is most common path."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 26703,
+          "per_year": 13351
+        },
+        "public_out_of_state": {
+          "total": 55269,
+          "per_year": 27634
+        },
+        "private_nonprofit": {
+          "total": 99705,
+          "per_year": 49852
+        },
+        "community_college": {
+          "total": 9177,
+          "per_year": 4588
+        },
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0101",
+          "11.0901",
+          "11.1001"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Resilient",
     "ai_resilience_tier": 1,
@@ -17100,7 +17298,51 @@
         "Software developer moving into infrastructure",
         "Bootcamp plus cloud certifications",
         "Self-taught with homelab and cloud portfolio"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 53406,
+        "max_cost": 199410,
+        "typical_cost": 110538,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 53406,
+            "max": 199410,
+            "typical": 110538
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Field adjustment: 115% for CS/IT programs."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 53406,
+          "per_year": 13351
+        },
+        "public_out_of_state": {
+          "total": 110538,
+          "per_year": 27634
+        },
+        "private_nonprofit": {
+          "total": 199410,
+          "per_year": 49852
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0102",
+          "11.0103",
+          "11.0401",
+          "11.0701",
+          "11.1001",
+          "11.1003"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -21179,7 +21421,47 @@
         "Administrative assistant progressing to EA",
         "Office management experience",
         "Project coordinator transitioning to EA"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Bachelor's preferred but not required. Many advance from administrative roles."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "52.0201",
+          "52.0401"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -27544,7 +27826,48 @@
         "Digital marketing background plus analytics skills",
         "Data analyst transitioning to marketing",
         "Growth-focused marketing bootcamp"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Marketing, Business, or related degree typically required."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "52.1401",
+          "52.1402",
+          "52.0201"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -33511,7 +33834,48 @@
         "MBA from top program for career changers",
         "Industry expertise plus MBA",
         "PhD in relevant field (economics, engineering)"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Top consulting firms strongly prefer candidates from target schools. MBA common for advancement."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "52.0201",
+          "52.0206",
+          "45.0601"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -58400,7 +58764,50 @@
         "MBA with PM internship",
         "Associate PM programs (Google APM, Meta RPM)",
         "Startup founder experience"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Reflects average across business, CS, and general programs."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0102",
+          "52.0201",
+          "52.0206",
+          "52.1401",
+          "52.1402"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Resilient",
     "ai_resilience_tier": 1,
@@ -60513,7 +60920,55 @@
         "PhD in Physics, Math, or Statistics pivoting to finance",
         "Strong bachelor's in STEM plus exceptional programming/math skills",
         "Financial Engineering master's program"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 69660,
+        "max_cost": 260100,
+        "typical_cost": 144180,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          },
+          {
+            "item": "Master's degree",
+            "min": 23220,
+            "max": 86700,
+            "typical": 48060
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Master's in Financial Engineering, Statistics, or related quantitative field typically required."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 69660,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 144180,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 260100,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "27.0301",
+          "27.0502",
+          "52.0801",
+          "52.0807"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -61640,7 +62095,47 @@
         "Sales background transitioning to recruiting",
         "HR generalist moving to talent acquisition",
         "Industry expertise plus recruiting training"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 46440,
+        "max_cost": 173400,
+        "typical_cost": 96120,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 46440,
+            "max": 173400,
+            "typical": 96120
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Bachelor's common but not always required. Many enter from sales or HR backgrounds."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 46440,
+          "per_year": 11610
+        },
+        "public_out_of_state": {
+          "total": 96120,
+          "per_year": 24030
+        },
+        "private_nonprofit": {
+          "total": 173400,
+          "per_year": 43350
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "52.1001",
+          "52.0201"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
@@ -68154,7 +68649,48 @@
         "Software engineering background plus client-facing experience",
         "Technical consulting background",
         "Senior engineering role plus AWS/Azure certifications"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 53406,
+        "max_cost": 199410,
+        "typical_cost": 110538,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 53406,
+            "max": 199410,
+            "typical": 110538
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Field adjustment: 115% for CS/IT programs."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 53406,
+          "per_year": 13351
+        },
+        "public_out_of_state": {
+          "total": 110538,
+          "per_year": 27634
+        },
+        "private_nonprofit": {
+          "total": 199410,
+          "per_year": 49852
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0102",
+          "11.0103",
+          "11.0701"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Resilient",
     "ai_resilience_tier": 1,
@@ -72118,7 +72654,48 @@
         "Graphic design background plus UX skills",
         "Self-taught with comprehensive portfolio of case studies",
         "HCI or Design master's program"
-      ]
+      ],
+      "estimated_cost": {
+        "min_cost": 53406,
+        "max_cost": 199410,
+        "typical_cost": 110538,
+        "cost_breakdown": [
+          {
+            "item": "Bachelor's degree",
+            "min": 53406,
+            "max": 199410,
+            "typical": 110538
+          }
+        ],
+        "notes": "Based on College Board 2024-25 tuition data. Field adjustment: 115% for design/CS programs. Bootcamp alternatives range $10k-$20k."
+      },
+      "cost_by_institution_type": {
+        "public_in_state": {
+          "total": 53406,
+          "per_year": 13351
+        },
+        "public_out_of_state": {
+          "total": 110538,
+          "per_year": 27634
+        },
+        "private_nonprofit": {
+          "total": 199410,
+          "per_year": 49852
+        },
+        "community_college": null,
+        "trade_school": null,
+        "apprenticeship": null
+      },
+      "cost_data_source": {
+        "primary": "college_board",
+        "cip_codes": [
+          "11.0102",
+          "50.0409",
+          "50.0411"
+        ],
+        "year": 2024,
+        "confidence": "medium"
+      }
     },
     "ai_resilience": "AI-Augmented",
     "ai_resilience_tier": 2,
