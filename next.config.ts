@@ -5,6 +5,36 @@ const nextConfig: NextConfig = {
   // All pages are still statically generated
   trailingSlash: true,
 
+  async redirects() {
+    return [
+      {
+        source: '/privacy',
+        destination: '/legal#privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/terms',
+        destination: '/legal#terms',
+        permanent: true,
+      },
+      {
+        source: '/career-compass',
+        destination: '/compass',
+        permanent: true,
+      },
+      {
+        source: '/careers',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/explore',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
+
   // Configure server-side external packages for proper bundling in Vercel
   // pdf-parse needs to be external to avoid bundling issues with its test file
   serverExternalPackages: ['pdf-parse'],

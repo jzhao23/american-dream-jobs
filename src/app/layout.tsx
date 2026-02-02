@@ -21,7 +21,11 @@ export const metadata: Metadata = {
     "salary",
     "job market",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
+    url: "https://americandreamjobs.org",
     title: "American Dream Jobs - Find Top Jobs in Minutes",
     description:
       "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
