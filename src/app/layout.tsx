@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://americandreamjobs.org"),
   title: "American Dream Jobs - Find Top Jobs in Minutes",
   description:
-    "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
+    "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and get hundreds of job listings in seconds.",
   keywords: [
     "careers",
     "jobs",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "American Dream Jobs - Find Top Jobs in Minutes",
     description:
-      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
+      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and get hundreds of job listings in seconds.",
     images: [
       {
         url: "/us-flag-circle.svg",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "American Dream Jobs - Find Top Jobs in Minutes",
     description:
-      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and apply to hundreds of jobs in seconds.",
+      "Discover high-paying, AI-resilient careers that matter. Explore training paths, wages, and what jobs are actually like and get hundreds of job listings in seconds.",
     images: ["/us-flag-circle.svg"],
   },
 };
