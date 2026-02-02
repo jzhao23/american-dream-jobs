@@ -73,7 +73,7 @@ const tools = [
   {
     icon: "🔍",
     title: "Explore Careers",
-    desc: "Browse 1,000+ careers with filters for pay, training time, and AI resilience. Find options you didn't know existed.",
+    desc: "Browse hundreds of careers with filters for pay, training time, and AI resilience. Find options you didn't know existed.",
     href: "/#careers",
   },
   {
@@ -266,7 +266,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="section-eyebrow">All Careers</p>
-            <h2 className="section-title">Explore 1,000+ Careers</h2>
+            <h2 className="section-title">Explore Hundreds of Careers</h2>
             <p className="section-subtitle">Filter by pay, training time, category, and AI resilience</p>
           </div>
           <CareerExplorer careers={careers} hideCategoryFilter />
