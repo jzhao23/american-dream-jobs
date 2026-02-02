@@ -537,12 +537,15 @@ export function CareerCompassWizard() {
     }
   };
 
-  // Progress indicator
+  // Progress indicator - 5 steps for the main questions (excludes resume)
   const getProgressStep = () => {
     if (currentStep === 'training') return 0;
-    if (['education', 'background', 'salary', 'workStyle', 'location'].includes(currentStep)) return 1;
-    if (currentStep === 'resume') return 2;
-    return 3;
+    if (currentStep === 'education') return 1;
+    if (currentStep === 'background') return 2;
+    if (currentStep === 'salary') return 3;
+    if (currentStep === 'workStyle') return 4;
+    if (currentStep === 'location') return 5;
+    return 0; // resume and review - hide progress
   };
 
   // Checkbox icon
@@ -554,11 +557,11 @@ export function CareerCompassWizard() {
 
   return (
     <div className="bg-warm-white rounded-2xl p-6 md:p-8 shadow-soft">
-      {/* Progress indicator - only show after training selection */}
-      {currentStep !== 'training' && (
+      {/* Progress indicator - show for main 5 question steps (hide on training, resume, review) */}
+      {getProgressStep() > 0 && (
         <div className="mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
-            {[1, 2, 3].map((step) => (
+            {[1, 2, 3, 4, 5].map((step) => (
               <div
                 key={step}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
@@ -570,7 +573,7 @@ export function CareerCompassWizard() {
             ))}
           </div>
           <p className="text-center text-sm text-ds-slate-muted">
-            Step {getProgressStep()} of 3
+            Step {getProgressStep()} of 5
           </p>
         </div>
       )}
