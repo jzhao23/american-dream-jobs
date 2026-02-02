@@ -1133,7 +1133,7 @@
     "slug": "first-line-military-supervisors",
     "category": "military",
     "subcategory": "Military Specific",
-    "median_pay": 0,
+    "median_pay": 90000,
     "training_time": "2-4yr",
     "training_years": {
       "min": 2,
@@ -1155,7 +1155,7 @@
     "slug": "fishing-hunting-workers",
     "category": "agriculture",
     "subcategory": "Farming, Fishing, and Forestry",
-    "median_pay": 0,
+    "median_pay": 42000,
     "training_time": "<6mo",
     "training_years": {
       "min": 0,
@@ -1805,7 +1805,7 @@
     "slug": "military-enlisted-careers",
     "category": "military",
     "subcategory": "Military Specific",
-    "median_pay": 0,
+    "median_pay": 55000,
     "training_time": "2-4yr",
     "training_years": {
       "min": 2,
@@ -1827,7 +1827,7 @@
     "slug": "military-officer-careers",
     "category": "military",
     "subcategory": "Military Specific",
-    "median_pay": 0,
+    "median_pay": 95000,
     "training_time": "2-4yr",
     "training_years": {
       "min": 2,
