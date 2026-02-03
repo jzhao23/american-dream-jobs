@@ -127,7 +127,7 @@ export default function HomePage() {
           <div className="text-center mb-8">
             <p className="section-eyebrow">Quick-Start Careers</p>
             <h2 className="section-title">Top careers you can start in under 2 years</h2>
-            <p className="section-subtitle">Sorted by AI resilience—your job security matters</p>
+            <p className="section-subtitle">Explore rapid pathways to resilient, growing jobs</p>
           </div>
           <div className="bg-cream rounded-2xl overflow-hidden shadow-card">
             {/* Table Header */}
