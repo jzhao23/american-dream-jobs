@@ -542,7 +542,11 @@ export default function MethodologyPage() {
                       <td className="py-3">2024</td>
                     </tr>
                     <tr>
-                      <td className="py-3 pr-4 text-ds-slate">EPOCH Framework</td>
+                      <td className="py-3 pr-4">
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5028371" target="_blank" rel="noopener noreferrer" className="text-sage hover:text-sage-light hover:underline">
+                          EPOCH Framework
+                        </a>
+                      </td>
                       <td className="py-3 pr-4">Human advantage scoring</td>
                       <td className="py-3">2024</td>
                     </tr>
