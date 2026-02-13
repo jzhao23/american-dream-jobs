@@ -37,7 +37,7 @@ const profileSchema = z.object({
 const preferencesSchema = z.object({
   // New structured selections from wizard
   trainingWillingness: z.enum(['minimal', 'short-term', 'medium', 'significant']),
-  educationLevel: z.enum(['high-school', 'some-college', 'bachelors', 'masters-plus']),
+  educationLevel: z.enum(['current-hs', 'high-school', 'some-college', 'bachelors', 'masters-plus']),
   workBackground: z.array(z.string()),
   salaryTarget: z.enum(['under-40k', '40-60k', '60-80k', '80-100k', '100k-plus']),
   workStyle: z.array(z.string()),

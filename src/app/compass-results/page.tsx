@@ -91,7 +91,12 @@ const backgroundLabels: Record<string, string> = {
   'sales': 'Sales & Marketing',
   'finance': 'Business & Finance',
   'education': 'Education',
-  'creative': 'Creative/Media'
+  'creative': 'Creative/Media',
+  // Student backgrounds
+  'clubs-activities': 'Clubs & Activities',
+  'volunteering': 'Volunteering',
+  'classes-coursework': 'Career-Focused Classes',
+  'part-time': 'Part-Time Jobs',
 };
 
 const workStyleLabels: Record<string, string> = {
