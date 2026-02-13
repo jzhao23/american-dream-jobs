@@ -25,7 +25,7 @@ export interface UserPreferences {
   workEnvironment?: string;
   // New structured selections from wizard
   trainingWillingness: 'minimal' | 'short-term' | 'medium' | 'significant';
-  educationLevel: 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
+  educationLevel: 'current-hs' | 'high-school' | 'some-college' | 'bachelors' | 'masters-plus';
   workBackground: string[];   // e.g., ['service', 'office', 'technical']
   salaryTarget: 'under-40k' | '40-60k' | '60-80k' | '80-100k' | '100k-plus';
   workStyle: string[];        // e.g., ['hands-on', 'people', 'analytical']
@@ -180,6 +180,7 @@ function filterByTrainingWillingness(
 
   // User's education level in years (approximate time to achieve from high school)
   const educationYears: Record<string, number> = {
+    'current-hs': 0,
     'high-school': 0,
     'some-college': 1,
     'bachelors': 4,
@@ -581,10 +582,28 @@ The user has made EXPLICIT selections about what they want. These MUST heavily i
    - Hands-on, people-focused, analytical, creative, technology, or leadership
    - Match careers to their preferred work type
 
+## HIGH SCHOOL STUDENTS
+
+If the user is currently completing high school, adapt your approach:
+- They have NO professional work experience — that's expected and fine
+- Their "background" comes from school activities: clubs, volunteering, classes, and part-time jobs
+- Interpret these as **interest and aptitude signals**, not work experience:
+  - Math Club / Science Olympiad → analytical, STEM aptitude
+  - Debate / Student Government → leadership, communication, law/policy aptitude
+  - Robotics / Computer Science classes → technical/engineering aptitude
+  - Hospital volunteering → healthcare interest
+  - Tutoring / mentoring → education/social services aptitude
+  - Art/media clubs, school newspaper → creative aptitude
+  - Part-time retail/food service → customer service, work ethic
+  - AP/CTE/vocational classes → career-focused preparation
+- Focus your reasoning on **where their interests and strengths point**, not what experience "transfers"
+- Be encouraging about their potential — they're exploring, not pivoting
+- Recommend careers that are realistic starting points, with clear paths from where they are now
+
 ## Scoring Weights (IMPORTANT - these weights are prioritized)
 
 For each career, evaluate fit based on:
-1. **Background transferability (30%)**: Does their work experience translate to this career?
+1. **Background transferability (30%)**: Does their work experience translate to this career? For students: do their activities and interests signal aptitude for this career?
 2. **Training feasibility (30%)**: Can they complete the required training within their stated willingness?
 3. **Salary fit (25%)**: Does the career meet their salary target?
 4. **Work style alignment (15%)**: Does the day-to-day work match their preferred style?
@@ -610,6 +629,9 @@ Return a JSON array of the top 15 career matches with this structure:
 Example good reasoning (for someone with office background targeting $60-80k with short-term training):
 "Your administrative experience gives you a real head start here – project coordination skills transfer directly. With a 3-6 month certification, you could be earning in your target range. The analytical day-to-day work matches what you're looking for."
 
+Example good reasoning (for a high school student in Math Club and Robotics Club who selected 4+ years training):
+"Your math and robotics experience shows you've got the analytical mindset this career needs. With a 4-year engineering degree, you'd be well-positioned to start strong. The hands-on problem-solving you enjoy in robotics is exactly what you'd do every day."
+
 Rules:
 - Return 10-15 career matches based on fit quality. Aim for 15 if enough good matches exist.
 - matchScore should range from 60-100, distributed appropriately based on fit
@@ -634,13 +656,14 @@ const TRAINING_LABELS: Record<string, string> = {
 
 // Education level labels
 const EDUCATION_LABELS: Record<string, string> = {
+  'current-hs': 'Currently completing high school',
   'high-school': 'High school diploma or GED',
   'some-college': 'Some college or Associate\'s degree',
   'bachelors': 'Bachelor\'s degree',
   'masters-plus': 'Master\'s degree or higher'
 };
 
-// Work background labels
+// Work background labels (professional)
 const WORK_BACKGROUND_LABELS: Record<string, string> = {
   'none': 'No significant work experience',
   'service': 'Service, Retail, or Hospitality',
@@ -651,8 +674,16 @@ const WORK_BACKGROUND_LABELS: Record<string, string> = {
   'sales': 'Sales & Marketing',
   'finance': 'Business & Finance',
   'education': 'Education or Social Services',
-  'creative': 'Creative, Media, or Design'
+  'creative': 'Creative, Media, or Design',
+  // Student background labels
+  'clubs-activities': 'School Clubs & Extracurriculars (e.g., Math Club, Debate, Robotics, Student Government)',
+  'volunteering': 'Volunteering & Community Service (e.g., hospital, food bank, tutoring)',
+  'classes-coursework': 'Advanced or Career-Focused Classes (AP, CTE, vocational programs)',
+  'part-time': 'Part-Time or Seasonal Jobs (e.g., fast food, babysitting, lawn care)',
 };
+
+// IDs that indicate student background selections
+const STUDENT_BACKGROUND_IDS = new Set(['clubs-activities', 'volunteering', 'classes-coursework', 'part-time']);
 
 // Salary target labels
 const SALARY_TARGET_LABELS: Record<string, string> = {
@@ -680,8 +711,16 @@ function buildReasoningPrompt(
   const parts: string[] = [];
   const prefs = profile.preferences;
 
+  // Detect if this is a high school student
+  const isStudentProfile = prefs.educationLevel === 'current-hs';
+  const hasStudentBackgrounds = prefs.workBackground?.some(id => STUDENT_BACKGROUND_IDS.has(id));
+
   // USER SELECTIONS - Most important section
   parts.push('# USER SELECTIONS (MUST PRIORITIZE THESE)\n');
+
+  if (isStudentProfile) {
+    parts.push('⚠️ **THIS IS A HIGH SCHOOL STUDENT** — adapt your reasoning accordingly. Focus on interests, aptitudes, and potential rather than work experience.\n');
+  }
 
   // Training Willingness
   parts.push(`## Training Willingness:`);
@@ -693,14 +732,22 @@ function buildReasoningPrompt(
   parts.push(`- ${EDUCATION_LABELS[prefs.educationLevel] || prefs.educationLevel}`);
   parts.push('');
 
-  // Work Background
+  // Work Background / Student Activities
   if (prefs.workBackground && prefs.workBackground.length > 0) {
     const backgroundLabels = prefs.workBackground.map(id => WORK_BACKGROUND_LABELS[id] || id);
-    parts.push(`## Work Background:`);
+    if (isStudentProfile || hasStudentBackgrounds) {
+      parts.push(`## School Activities & Experience (interpret as interest/aptitude signals):`);
+    } else {
+      parts.push(`## Work Background:`);
+    }
     backgroundLabels.forEach(label => parts.push(`- ✅ ${label}`));
     parts.push('');
   } else {
-    parts.push(`## Work Background: No significant experience\n`);
+    if (isStudentProfile) {
+      parts.push(`## School Activities & Experience: No activities selected\n`);
+    } else {
+      parts.push(`## Work Background: No significant experience\n`);
+    }
   }
 
   // Salary Target
@@ -724,12 +771,18 @@ function buildReasoningPrompt(
   }
 
   // User Background section (from resume if available)
-  parts.push('# USER BACKGROUND (from resume)\n');
-  parts.push(`- Skills: ${profile.resume.skills.slice(0, 15).join(', ') || 'Not specified'}`);
-  parts.push(`- Experience: ${profile.resume.experienceYears} years`);
-  parts.push(`- Education: ${profile.resume.education.level} in ${profile.resume.education.fields.join(', ') || 'general field'}`);
-  parts.push(`- Previous Roles: ${profile.resume.jobTitles.slice(0, 5).join(', ') || 'Not specified'}`);
-  parts.push(`- Industries: ${profile.resume.industries.join(', ') || 'Not specified'}\n`);
+  if (isStudentProfile && profile.resume.skills.length === 0) {
+    parts.push('# USER BACKGROUND\n');
+    parts.push('- This is a high school student without a resume');
+    parts.push('- Use their school activities and selections above to infer interests and aptitudes\n');
+  } else {
+    parts.push('# USER BACKGROUND (from resume)\n');
+    parts.push(`- Skills: ${profile.resume.skills.slice(0, 15).join(', ') || 'Not specified'}`);
+    parts.push(`- Experience: ${profile.resume.experienceYears} years`);
+    parts.push(`- Education: ${profile.resume.education.level} in ${profile.resume.education.fields.join(', ') || 'general field'}`);
+    parts.push(`- Previous Roles: ${profile.resume.jobTitles.slice(0, 5).join(', ') || 'Not specified'}`);
+    parts.push(`- Industries: ${profile.resume.industries.join(', ') || 'Not specified'}\n`);
+  }
 
   // Candidate careers section
   parts.push('# CANDIDATE CAREERS\n');
@@ -771,9 +824,12 @@ The user made explicit selections about:
 4. **SALARY TARGET** - What they want to earn
 5. **WORK STYLE** - Type of work they prefer
 
+## HIGH SCHOOL STUDENTS
+If the user is currently in high school, their "background" is school activities (clubs, volunteering, classes, part-time jobs). Treat these as interest/aptitude signals — e.g., Math Club → analytical aptitude, hospital volunteering → healthcare interest, Robotics → engineering aptitude. Be encouraging about their potential and recommend careers with clear paths from where they are.
+
 ## Scoring Weights (IMPORTANT)
 
-1. **Background transferability (30%)**: Does their experience translate?
+1. **Background transferability (30%)**: Does their experience translate? For students: do activities signal aptitude?
 2. **Training feasibility (30%)**: Can they complete required training within their stated willingness?
 3. **Salary fit (25%)**: Does the career meet their target?
 4. **Work style alignment (15%)**: Does the work match their preference?
@@ -814,9 +870,15 @@ async function stage3HaikuReasoning(
 
   // Build a lighter prompt for Haiku
   const parts: string[] = [];
+  const isStudentProfile = prefs.educationLevel === 'current-hs';
+  const hasStudentBackgrounds = prefs.workBackground?.some(id => STUDENT_BACKGROUND_IDS.has(id));
 
   // USER SELECTIONS - Most important
   parts.push('# USER SELECTIONS (PRIORITIZE THESE)\n');
+
+  if (isStudentProfile) {
+    parts.push('⚠️ **HIGH SCHOOL STUDENT** — focus on interests, aptitudes, and potential.\n');
+  }
 
   // Training Willingness
   parts.push(`## Training Willingness: ${TRAINING_LABELS[prefs.trainingWillingness] || prefs.trainingWillingness}`);
@@ -824,12 +886,20 @@ async function stage3HaikuReasoning(
   // Education
   parts.push(`## Education: ${EDUCATION_LABELS[prefs.educationLevel] || prefs.educationLevel}`);
 
-  // Work Background
+  // Work Background / Student Activities
   if (prefs.workBackground && prefs.workBackground.length > 0) {
     const backgroundLabels = prefs.workBackground.map(id => WORK_BACKGROUND_LABELS[id] || id);
-    parts.push(`## Work Background: ${backgroundLabels.join(', ')}`);
+    if (isStudentProfile || hasStudentBackgrounds) {
+      parts.push(`## School Activities (interest/aptitude signals): ${backgroundLabels.join(', ')}`);
+    } else {
+      parts.push(`## Work Background: ${backgroundLabels.join(', ')}`);
+    }
   } else {
-    parts.push(`## Work Background: No significant experience`);
+    if (isStudentProfile) {
+      parts.push(`## School Activities: No activities selected`);
+    } else {
+      parts.push(`## Work Background: No significant experience`);
+    }
   }
 
   // Salary Target

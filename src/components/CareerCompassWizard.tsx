@@ -111,7 +111,7 @@ const educationOptions = [
   { id: "masters-plus" as EducationLevel, label: "Master's degree or higher" },
 ];
 
-// Q3: Work Background
+// Q3: Work Background (professional)
 const workBackgroundOptions = [
   { id: "none", label: "No significant work experience" },
   { id: "service", label: "Service, Retail, or Hospitality" },
@@ -123,6 +123,15 @@ const workBackgroundOptions = [
   { id: "finance", label: "Business & Finance" },
   { id: "education", label: "Education or Social Services" },
   { id: "creative", label: "Creative, Media, or Design" },
+];
+
+// Q3: Student Background (shown when education = current-hs)
+const studentBackgroundOptions = [
+  { id: "clubs-activities", label: "Clubs & Extracurriculars", desc: "Math Club, Debate, Robotics, Student Government, etc." },
+  { id: "volunteering", label: "Volunteering & Community Service", desc: "Hospital, food bank, tutoring, church groups, etc." },
+  { id: "classes-coursework", label: "Advanced or Career-Focused Classes", desc: "AP courses, CTE, vocational programs, JROTC, etc." },
+  { id: "part-time", label: "Part-Time or Seasonal Jobs", desc: "Babysitting, fast food, lawn care, lifeguard, etc." },
+  { id: "none", label: "None of the above" },
 ];
 
 // Q4: Salary Target
@@ -186,6 +195,21 @@ export function CareerCompassWizard() {
 
   // Session ID for tracking and persistence
   const [sessionId] = useState(() => `compass_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+
+  // Student path: adapt background options based on education level
+  const isStudent = selectedEducation === 'current-hs';
+  const activeBackgroundOptions = isStudent ? studentBackgroundOptions : workBackgroundOptions;
+  // All background options combined (for label lookups in review/summary)
+  const allBackgroundOptions = [...workBackgroundOptions, ...studentBackgroundOptions];
+
+  // Clear background selections when switching between student/professional paths
+  const prevIsStudentRef = useRef(isStudent);
+  useEffect(() => {
+    if (prevIsStudentRef.current !== isStudent) {
+      setSelectedBackground([]);
+      prevIsStudentRef.current = isStudent;
+    }
+  }, [isStudent]);
 
   // Check for existing resume on mount (shared with Find Jobs)
   // Now also checks for authenticated user's resume via Supabase Auth
@@ -438,14 +462,14 @@ export function CareerCompassWizard() {
             fields: []
           },
           industries: [],
-          experienceYears: selectedBackground.includes('none') ? 0 : 3,
+          experienceYears: isStudent ? 0 : (selectedBackground.includes('none') ? 0 : 3),
           confidence: 0.5
         };
       }
 
       // Build preference labels for display/context
       const backgroundLabels = selectedBackground
-        .map(id => workBackgroundOptions.find(o => o.id === id)?.label)
+        .map(id => allBackgroundOptions.find(o => o.id === id)?.label)
         .filter(Boolean)
         .join(', ');
       const workStyleLabels = selectedWorkStyle
@@ -471,8 +495,7 @@ export function CareerCompassWizard() {
           preferences: {
             // New structured preferences
             trainingWillingness: selectedTraining || 'significant',
-            // Map 'current-hs' to 'high-school' since API doesn't accept 'current-hs'
-            educationLevel: selectedEducation === 'current-hs' ? 'high-school' : (selectedEducation || 'high-school'),
+            educationLevel: selectedEducation || 'high-school',
             workBackground: selectedBackground,
             salaryTarget: selectedSalary || '40-60k',
             workStyle: selectedWorkStyle,
@@ -617,7 +640,7 @@ export function CareerCompassWizard() {
               }`}
             >
               <span>💼</span>
-              <span>{selectedBackground.length ? `${selectedBackground.length} backgrounds` : 'Skipped'}</span>
+              <span>{selectedBackground.length ? `${selectedBackground.length} ${isStudent ? 'activities' : 'backgrounds'}` : 'Skipped'}</span>
             </button>
           )}
 
@@ -785,35 +808,59 @@ export function CareerCompassWizard() {
           </div>
         )}
 
-        {/* STEP: Work Background */}
+        {/* STEP: Work Background (adapts for students) */}
         {currentStep === 'background' && (
           <div>
             <div className="text-center mb-6">
               <h2 className="font-display text-xl md:text-2xl font-medium text-ds-slate mb-2">
-                What best describes your work experience?
+                {isStudent
+                  ? 'What activities or experience do you have?'
+                  : 'What best describes your work experience?'}
               </h2>
-              <p className="text-sm text-ds-slate-light">Select all that apply, or skip to continue</p>
+              <p className="text-sm text-ds-slate-light">
+                {isStudent
+                  ? 'Select all that apply \u2014 these help us understand your interests and strengths'
+                  : 'Select all that apply, or skip to continue'}
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-              {workBackgroundOptions.map((option) => (
+              {activeBackgroundOptions.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => toggleOption(selectedBackground, setSelectedBackground, option.id)}
-                  className={`flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
+                  className={`flex ${('desc' in option && option.desc) ? 'flex-col items-start gap-1' : 'items-center gap-3'} p-4 rounded-xl border-2 transition-all ${
                     selectedBackground.includes(option.id)
                       ? 'border-sage bg-sage-pale'
                       : 'border-transparent bg-cream hover:border-sage-light'
                   }`}
                 >
-                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
-                    selectedBackground.includes(option.id)
-                      ? 'bg-sage border-sage text-white'
-                      : 'border-sage-muted'
-                  }`}>
-                    {selectedBackground.includes(option.id) && <CheckIcon />}
-                  </div>
-                  <span className="font-medium text-ds-slate text-sm">{option.label}</span>
+                  {'desc' in option && option.desc ? (
+                    <>
+                      <div className="flex items-center gap-3 w-full">
+                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
+                          selectedBackground.includes(option.id)
+                            ? 'bg-sage border-sage text-white'
+                            : 'border-sage-muted'
+                        }`}>
+                          {selectedBackground.includes(option.id) && <CheckIcon />}
+                        </div>
+                        <span className="font-medium text-ds-slate text-sm">{option.label}</span>
+                      </div>
+                      <span className="text-xs text-ds-slate-light pl-8">{option.desc}</span>
+                    </>
+                  ) : (
+                    <>
+                      <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
+                        selectedBackground.includes(option.id)
+                          ? 'bg-sage border-sage text-white'
+                          : 'border-sage-muted'
+                      }`}>
+                        {selectedBackground.includes(option.id) && <CheckIcon />}
+                      </div>
+                      <span className="font-medium text-ds-slate text-sm">{option.label}</span>
+                    </>
+                  )}
                 </button>
               ))}
             </div>
@@ -1326,9 +1373,9 @@ export function CareerCompassWizard() {
                 >
                   <span>💼</span>
                   <div className="flex-1">
-                    <div className="text-xs text-ds-slate-muted">Work Background</div>
+                    <div className="text-xs text-ds-slate-muted">{isStudent ? 'Activities & Experience' : 'Work Background'}</div>
                     <div className={`font-medium ${selectedBackground.length ? 'text-ds-slate' : 'text-ds-slate-muted italic'}`}>
-                      {selectedBackground.length ? selectedBackground.map(b => workBackgroundOptions.find(o => o.id === b)?.label).join(', ') : 'Skipped'}
+                      {selectedBackground.length ? selectedBackground.map(b => allBackgroundOptions.find(o => o.id === b)?.label).join(', ') : 'Skipped'}
                     </div>
                   </div>
                   <span className="text-ds-slate-muted opacity-0 group-hover:opacity-100 transition-opacity text-sm">Edit</span>
