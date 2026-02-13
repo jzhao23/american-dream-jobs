@@ -825,32 +825,19 @@ export function CareerCompassWizard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-              {activeBackgroundOptions.map((option) => (
-                <button
-                  key={option.id}
-                  onClick={() => toggleOption(selectedBackground, setSelectedBackground, option.id)}
-                  className={`flex ${('desc' in option && option.desc) ? 'flex-col items-start gap-1' : 'items-center gap-3'} p-4 rounded-xl border-2 transition-all ${
-                    selectedBackground.includes(option.id)
-                      ? 'border-sage bg-sage-pale'
-                      : 'border-transparent bg-cream hover:border-sage-light'
-                  }`}
-                >
-                  {'desc' in option && option.desc ? (
-                    <>
-                      <div className="flex items-center gap-3 w-full">
-                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
-                          selectedBackground.includes(option.id)
-                            ? 'bg-sage border-sage text-white'
-                            : 'border-sage-muted'
-                        }`}>
-                          {selectedBackground.includes(option.id) && <CheckIcon />}
-                        </div>
-                        <span className="font-medium text-ds-slate text-sm">{option.label}</span>
-                      </div>
-                      <span className="text-xs text-ds-slate-light pl-8">{option.desc}</span>
-                    </>
-                  ) : (
-                    <>
+              {activeBackgroundOptions.map((option) => {
+                const desc = 'desc' in option ? (option as { desc: string }).desc : undefined;
+                return (
+                  <button
+                    key={option.id}
+                    onClick={() => toggleOption(selectedBackground, setSelectedBackground, option.id)}
+                    className={`flex ${desc ? 'flex-col items-start gap-1' : 'items-center gap-3'} p-4 rounded-xl border-2 transition-all ${
+                      selectedBackground.includes(option.id)
+                        ? 'border-sage bg-sage-pale'
+                        : 'border-transparent bg-cream hover:border-sage-light'
+                    }`}
+                  >
+                    <div className={`flex items-center gap-3 ${desc ? 'w-full' : ''}`}>
                       <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${
                         selectedBackground.includes(option.id)
                           ? 'bg-sage border-sage text-white'
@@ -859,10 +846,11 @@ export function CareerCompassWizard() {
                         {selectedBackground.includes(option.id) && <CheckIcon />}
                       </div>
                       <span className="font-medium text-ds-slate text-sm">{option.label}</span>
-                    </>
-                  )}
-                </button>
-              ))}
+                    </div>
+                    {desc && <span className="text-xs text-ds-slate-light pl-8">{desc}</span>}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Resume prompt */}
